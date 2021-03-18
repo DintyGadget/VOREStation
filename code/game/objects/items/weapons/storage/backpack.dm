@@ -3,8 +3,8 @@
  */
 
 /obj/item/weapon/storage/backpack
-	name = "backpack"
-	desc = "You wear this on your back and put items into it."
+	name = "Рюкзак"
+	desc = "Он надевается на спину и используется для хранения предметов."
 	icon = 'icons/obj/clothing/backpack.dmi'
 	icon_state = "backpack"
 	sprite_sheets = list(
@@ -37,8 +37,8 @@
  */
 
 /obj/item/weapon/storage/backpack/holding
-	name = "bag of holding"
-	desc = "A backpack that opens into a localized pocket of Blue Space."
+	name = "Рюкзак-хранилище"
+	desc = "Рюкзак, открывающий портативный карман в Блюспейсе."
 	origin_tech = list(TECH_BLUESPACE = 4)
 	icon_state = "holdingpack"
 	max_w_class = ITEMSIZE_LARGE
@@ -46,12 +46,12 @@
 	storage_cost = INVENTORY_STANDARD_SPACE + 1
 
 /obj/item/weapon/storage/backpack/holding/duffle
-	name = "dufflebag of holding"
+	name = "Вещмешок-хранилище"
 	icon_state = "holdingduffle"
 
 /obj/item/weapon/storage/backpack/holding/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/weapon/storage/backpack/holding))
-		to_chat(user, "<span class='warning'>The Bluespace interfaces of the two devices conflict and malfunction.</span>")
+		to_chat(user, "<span class='warning'>Блюспейсовые интерфейсы конфликтуют друг с другом и дают сбой.</span>")
 		qdel(W)
 		return
 	. = ..()
@@ -63,8 +63,8 @@
 	return ..()
 
 /obj/item/weapon/storage/backpack/santabag
-	name = "\improper Santa's gift bag"
-	desc = "Space Santa uses this to deliver toys to all the nice children in space in Christmas! Wow, it's pretty big!"
+	name = "Мешок с подарками Санты"
+	desc = "Космический Санта доставляет в нём подарки послушным детям. Вау, огромный!"
 	icon_state = "giftbag0"
 	item_state_slots = list(slot_r_hand_str = "giftbag", slot_l_hand_str = "giftbag")
 	w_class = ITEMSIZE_LARGE
@@ -73,58 +73,58 @@
 	item_state_slots = null
 
 /obj/item/weapon/storage/backpack/cultpack
-	name = "trophy rack"
-	desc = "It's useful for both carrying extra gear and proudly declaring your insanity."
+	name = "Трофейная витрина"
+	desc = "Полезная как для хранения экипировки, так и для гордой демонстрации своего безумия."
 	icon_state = "cultpack"
 
 /obj/item/weapon/storage/backpack/clown
-	name = "Giggles von Honkerton"
-	desc = "It's a backpack made by Honk! Co."
+	name = "Полный Хохотач"
+	desc = "Этот рюкзак изготовлен Хонк! Кo."
 	icon_state = "clownpack"
 
 /obj/item/weapon/storage/backpack/medic
-	name = "medical backpack"
-	desc = "It's a backpack especially designed for use in a sterile environment."
+	name = "Медицинский рюкзак"
+	desc = "Этот рюкзак предначен для использования в стерильной среде."
 	icon_state = "medicalpack"
 
 /obj/item/weapon/storage/backpack/security
-	name = "security backpack"
-	desc = "It's a very robust backpack."
+	name = "Рюкзак службы безопасности"
+	desc = "Очень надёжный рюкзак."
 	icon_state = "securitypack"
 
 /obj/item/weapon/storage/backpack/captain
-	name = "site manager's backpack"
-	desc = "It's a special backpack made exclusively for officers."
+	name = "Рюкзак Директора колонии"
+	desc = "Особый рюкзак, изготавливаемый исключительно для руководителей."
 	icon_state = "captainpack"
 
 /obj/item/weapon/storage/backpack/industrial
-	name = "industrial backpack"
-	desc = "It's a tough backpack for the daily grind of station life."
+	name = "Промышленный рюкзак"
+	desc = "Прочный рюкзак, предназначенный для ежедневной рутинной работы на станции."
 	icon_state = "engiepack"
 
 /obj/item/weapon/storage/backpack/toxins
-	name = "laboratory backpack"
-	desc = "It's a light backpack modeled for use in laboratories and other scientific institutions."
+	name = "Лабораторный рюкзак"
+	desc = "Лёгкий рюкзак, предназначенный для использования в лабораториях и прочих научных местах."
 	icon_state = "toxpack"
 
 /obj/item/weapon/storage/backpack/hydroponics
-	name = "herbalist's backpack"
-	desc = "It's a green backpack with many pockets to store plants and tools in."
+	name = "Травнический рюкзак"
+	desc = "Зелёный рюкзак с большим количеством карманов для хранения как растений, так и инструментов."
 	icon_state = "hydpack"
 
 /obj/item/weapon/storage/backpack/genetics
-	name = "geneticist backpack"
-	desc = "It's a backpack fitted with slots for diskettes and other workplace tools."
+	name = "Рюкзак генетика"
+	desc = "Это рюкзак, обладающий кармашками для дискет и прочих инструментов."
 	icon_state = "genpack"
 
 /obj/item/weapon/storage/backpack/virology
-	name = "sterile backpack"
-	desc = "It's a sterile backpack able to withstand different pathogens from entering its fabric."
+	name = "Стерильный рюкзак"
+	desc = "Это стерильный рюкзак, не поддающийся воздействию различных патогенов."
 	icon_state = "viropack"
 
 /obj/item/weapon/storage/backpack/chemistry
-	name = "chemistry backpack"
-	desc = "It's an orange backpack which was designed to hold beakers, pill bottles and bottles."
+	name = "Химический рюкзак"
+	desc = "Это оранжевый рюкзак, приспособленный для хранения мензурок, пузырьков и склянок."
 	icon_state = "chempack"
 
 /*
@@ -132,56 +132,56 @@
  */
 
 /obj/item/weapon/storage/backpack/dufflebag
-	name = "dufflebag"
-	desc = "A large dufflebag for holding extra things."
+	name = "Вещмешок"
+	desc = "Крупный вещмешок для хранения принадлежностей."
 	icon_state = "duffle"
 	slowdown = 1
 	max_storage_space = INVENTORY_DUFFLEBAG_SPACE
 
 /obj/item/weapon/storage/backpack/dufflebag/syndie
-	name = "black dufflebag"
-	desc = "A large dufflebag for holding extra tactical supplies. This one appears to be made out of lighter material than usual."
+	name = "Чёрный вещмешок"
+	desc = "Крупный вещмешок для хранения дополнительных тактических припасов. Этот, кажется, из более лёгкого материала, чем обычно."
 	icon_state = "duffle_syndie"
 	slowdown = 0
 
 /obj/item/weapon/storage/backpack/dufflebag/syndie/med
-	name = "medical dufflebag"
-	desc = "A large dufflebag for holding extra tactical medical supplies. This one appears to be made out of lighter material than usual."
+	name = "Медицинский вещмешок"
+	desc = "Крупный вещмешок для хранения дополнительных медицинских припасов. Этот, кажется, из более лёгкого материала, чем обычно."
 	icon_state = "duffle_syndiemed"
 
 /obj/item/weapon/storage/backpack/dufflebag/syndie/ammo
-	name = "ammunition dufflebag"
-	desc = "A large dufflebag for holding extra weapons ammunition and supplies. This one appears to be made out of lighter material than usual."
+	name = "Вещмешок для боеприпасов"
+	desc = "Крупный вещмешок для хранения дополнительных тактических припасов и патронов. Этот, кажется, из более лёгкого материала, чем обычно."
 	icon_state = "duffle_syndieammo"
 
 /obj/item/weapon/storage/backpack/dufflebag/captain
-	name = "site manager's dufflebag"
-	desc = "A large dufflebag for holding extra captainly goods."
+	name = "Вещмешок Директора колонии"
+	desc = "Крупный вещмешок для хранения директорских принадлежностей."
 	icon_state = "duffle_captain"
 
 /obj/item/weapon/storage/backpack/dufflebag/med
-	name = "medical dufflebag"
-	desc = "A large dufflebag for holding extra medical supplies."
+	name = "Медицинский вещмешок"
+	desc = "Крупный вещмешок для хранения дополнительных медицинских припасов."
 	icon_state = "duffle_med"
 
 /obj/item/weapon/storage/backpack/dufflebag/emt
-	name = "EMT dufflebag"
-	desc = "A large dufflebag for holding extra medical supplies. This one has reflective stripes!"
+	name = "Вещмешок парамедика"
+	desc = "Крупный вещмешок для хранения дополнительных медицинских припасов. На этом вещмешке есть светоотражательные полосы!"
 	icon_state = "duffle_emt"
 
 /obj/item/weapon/storage/backpack/dufflebag/sec
-	name = "security dufflebag"
-	desc = "A large dufflebag for holding extra security supplies and ammunition."
+	name = "Вещмешок службы безопасности"
+	desc = "Крупный вещмешок для хранения дополнительных припасов и патронов службы безопасности."
 	icon_state = "duffle_sec"
 
 /obj/item/weapon/storage/backpack/dufflebag/eng
-	name = "industrial dufflebag"
-	desc = "A large dufflebag for holding extra tools and supplies."
+	name = "Рабочий вещмешок"
+	desc = "Крупный вещмешок для хранения дополнительных припасов и инструментов."
 	icon_state = "duffle_eng"
 
 /obj/item/weapon/storage/backpack/dufflebag/sci
-	name = "science dufflebag"
-	desc = "A large dufflebag for holding circuits and beakers."
+	name = "Научный вещмешок"
+	desc = "Крупный вещмешок для хранения всевозможных микросхем и мензурок."
 	icon_state = "duffle_sci"
 
 /*
@@ -189,8 +189,8 @@
  */
 
 /obj/item/weapon/storage/backpack/satchel
-	name = "leather satchel"
-	desc = "It's a very fancy satchel made with fine leather."
+	name = "Кожаная сумка"
+	desc = "Очень стильная сумка из качественной кожи."
 	icon_state = "satchel"
 	item_state_slots = list(slot_r_hand_str = "briefcase", slot_l_hand_str = "briefcase")
 
@@ -198,91 +198,91 @@
 	starts_with = list(/obj/item/weapon/storage/wallet/random)
 
 /obj/item/weapon/storage/backpack/satchel/norm
-	name = "satchel"
-	desc = "A trendy looking satchel."
+	name = "Сумка"
+	desc = "Довольно модная сумка."
 	icon_state = "satchel-norm"
 
 /obj/item/weapon/storage/backpack/satchel/eng
-	name = "industrial satchel"
-	desc = "A tough satchel with extra pockets."
+	name = "Промышленная сумка"
+	desc = "Надёжная сумка с кучей карманов."
 	icon_state = "satchel-eng"
 	item_state_slots = list(slot_r_hand_str = "engiepack", slot_l_hand_str = "engiepack")
 
 /obj/item/weapon/storage/backpack/satchel/med
-	name = "medical satchel"
-	desc = "A sterile satchel used in medical departments."
+	name = "Медицинская сумка"
+	desc = "Стерильная сумка, предназначенная для использования в медицинском отделе."
 	icon_state = "satchel-med"
 	item_state_slots = list(slot_r_hand_str = "medicalpack", slot_l_hand_str = "medicalpack")
 
 /obj/item/weapon/storage/backpack/satchel/vir
-	name = "virologist satchel"
-	desc = "A sterile satchel with virologist colours."
+	name = "Сумка вирусолога"
+	desc = "Стерильная сумка в расцветке вирусолога."
 	icon_state = "satchel-vir"
 	item_state_slots = list(slot_r_hand_str = "viropack", slot_l_hand_str = "viropack")
 
 /obj/item/weapon/storage/backpack/satchel/chem
-	name = "chemist satchel"
-	desc = "A sterile satchel with chemist colours."
+	name = "Сумка химика"
+	desc = "Стерильная сумка в расцветке химика."
 	icon_state = "satchel-chem"
 	item_state_slots = list(slot_r_hand_str = "chempack", slot_l_hand_str = "chempack")
 
 /obj/item/weapon/storage/backpack/satchel/gen
-	name = "geneticist satchel"
-	desc = "A sterile satchel with geneticist colours."
+	name = "Сумка генетика"
+	desc = "Стерильная сумка в расцветке генетика."
 	icon_state = "satchel-gen"
 	item_state_slots = list(slot_r_hand_str = "genpack", slot_l_hand_str = "genpack")
 
 /obj/item/weapon/storage/backpack/satchel/tox
-	name = "scientist satchel"
-	desc = "Useful for holding research materials."
+	name = "Сумка учёного"
+	desc = "Полезна для хранения различных материалов для исследований."
 	icon_state = "satchel-tox"
 	item_state_slots = list(slot_r_hand_str = "toxpack", slot_l_hand_str = "toxpack")
 
 /obj/item/weapon/storage/backpack/satchel/sec
-	name = "security satchel"
-	desc = "A robust satchel for security related needs."
+	name = "Сумка службы безопасности"
+	desc = "Надёжная сумка для всех нужд службы безопаности."
 	icon_state = "satchel-sec"
 	item_state_slots = list(slot_r_hand_str = "securitypack", slot_l_hand_str = "securitypack")
 
 /obj/item/weapon/storage/backpack/satchel/hyd
-	name = "hydroponics satchel"
-	desc = "A green satchel for plant related work."
+	name = "Сумка ботаника"
+	desc = "Зелёная сумка для всего, что связано с растениями."
 	icon_state = "satchel_hyd"
 
 /obj/item/weapon/storage/backpack/satchel/cap
-	name = "site manager's satchel"
-	desc = "An exclusive satchel for officers."
+	name = "Сумка Директора колонии"
+	desc = "Сумка, предназначенная исключительно для руководителя."
 	icon_state = "satchel-cap"
 	item_state_slots = list(slot_r_hand_str = "captainpack", slot_l_hand_str = "captainpack")
 
 //ERT backpacks.
 /obj/item/weapon/storage/backpack/ert
-	name = "emergency response team backpack"
-	desc = "A spacious backpack with lots of pockets, used by members of the Emergency Response Team."
+	name = "Рюкзак группы экстренного реагирования"
+	desc = "Просторный рюкзак с множеством карманов, используемый членами группы экстренного аварийного реагирования."
 	icon_state = "ert_commander"
 	item_state_slots = list(slot_r_hand_str = "securitypack", slot_l_hand_str = "securitypack")
 
 //Commander
 /obj/item/weapon/storage/backpack/ert/commander
-	name = "emergency response team commander backpack"
-	desc = "A spacious backpack with lots of pockets, worn by the commander of an Emergency Response Team."
+	name = "Рюкзак руководителя группы экстренного реагирования"
+	desc = "Просторный рюкзак с множеством карманов, используемый руководителями группы экстренного аварийного реагирования."
 
 //Security
 /obj/item/weapon/storage/backpack/ert/security
-	name = "emergency response team security backpack"
-	desc = "A spacious backpack with lots of pockets, worn by security members of an Emergency Response Team."
+	name = "Рюкзак службы безопасности экстренного реагирования"
+	desc = "Просторный рюкзак с множеством карманов, используемый членами службы безопасности группы экстренного аварийного реагирования."
 	icon_state = "ert_security"
 
 //Engineering
 /obj/item/weapon/storage/backpack/ert/engineer
-	name = "emergency response team engineer backpack"
-	desc = "A spacious backpack with lots of pockets, worn by engineering members of an Emergency Response Team."
+	name = "Рюкзак инженера группы экстренного реагирования"
+	desc = "Просторный рюкзак с множеством карманов, используемый инженерами группы экстренного аварийного реагирования."
 	icon_state = "ert_engineering"
 
 //Medical
 /obj/item/weapon/storage/backpack/ert/medical
-	name = "emergency response team medical backpack"
-	desc = "A spacious backpack with lots of pockets, worn by medical members of an Emergency Response Team."
+	name = "Рюкзак врача группы экстренного реагирования"
+	desc = "Просторный рюкзак с множеством карманов, используемый врачами группы экстренного аварийного реагирования."
 	icon_state = "ert_medical"
 
 /*
@@ -290,54 +290,54 @@
  */
 
 /obj/item/weapon/storage/backpack/messenger
-	name = "messenger bag"
-	desc = "A sturdy backpack worn over one shoulder."
+	name = "Курьерская сумка"
+	desc = "Надёжный рюкзак, надеваемый на одно плечо."
 	icon_state = "courierbag"
 	item_state_slots = list(slot_r_hand_str = "backpack", slot_l_hand_str = "backpack")
 
 /obj/item/weapon/storage/backpack/messenger/chem
-	name = "chemistry messenger bag"
-	desc = "A serile backpack worn over one shoulder.  This one is in Chemsitry colors."
+	name = "Курьерская сумка химика"
+	desc = "Стерильный рюкзак, надеваемый на одно плечо. Этот рюкзак в расцветке химика."
 	icon_state = "courierbagchem"
 	item_state_slots = list(slot_r_hand_str = "chempack", slot_l_hand_str = "chempack")
 
 /obj/item/weapon/storage/backpack/messenger/med
-	name = "medical messenger bag"
-	desc = "A sterile backpack worn over one shoulder used in medical departments."
+	name = "Курьерская сумка врача"
+	desc = "Стерильный рюкзак, надеваемый на одно плечо и предназначенный для использования в медицинском отделе."
 	icon_state = "courierbagmed"
 	item_state_slots = list(slot_r_hand_str = "medicalpack", slot_l_hand_str = "medicalpack")
 
 /obj/item/weapon/storage/backpack/messenger/viro
-	name = "virology messenger bag"
-	desc = "A sterile backpack worn over one shoulder.  This one is in Virology colors."
+	name = "Курьерская сумка вирусолога"
+	desc = "Стерильный рюкзак, надеваемый на одно плечо. Этот рюкзак в расцветке вирусолога."
 	icon_state = "courierbagviro"
 	item_state_slots = list(slot_r_hand_str = "viropack", slot_l_hand_str = "viropack")
 
 /obj/item/weapon/storage/backpack/messenger/tox
-	name = "research messenger bag"
-	desc = "A backpack worn over one shoulder.  Useful for holding science materials."
+	name = "Курьерская сумка учёного"
+	desc = "Рюкзак, надеваемый на одно плечо. Позволяет хранить различные материалы для исследований."
 	icon_state = "courierbagtox"
 	item_state_slots = list(slot_r_hand_str = "toxpack", slot_l_hand_str = "toxpack")
 
 /obj/item/weapon/storage/backpack/messenger/com
-	name = "command messenger bag"
-	desc = "A special backpack worn over one shoulder.  This one is made specifically for officers."
+	name = "Курьерская сумка Управления"
+	desc = "Особый рюкзак, надеваемый на одно плечо. Этот изготовлен исключительно для руководителей."
 	icon_state = "courierbagcom"
 	item_state_slots = list(slot_r_hand_str = "captainpack", slot_l_hand_str = "captainpack")
 
 /obj/item/weapon/storage/backpack/messenger/engi
-	name = "engineering messenger bag"
+	name = "Курьерская сумка инженера"
 	icon_state = "courierbagengi"
 	item_state_slots = list(slot_r_hand_str = "engiepack", slot_l_hand_str = "engiepack")
 
 /obj/item/weapon/storage/backpack/messenger/hyd
-	name = "hydroponics messenger bag"
-	desc = "A backpack worn over one shoulder.  This one is designed for plant-related work."
+	name = "Курьерская сумка ботаника"
+	desc = "Рюкзак, надеваемый на одно плечо. Эта сумка предназначена для работы с растительностью."
 	icon_state = "courierbaghyd"
 
 /obj/item/weapon/storage/backpack/messenger/sec
-	name = "security messenger bag"
-	desc = "A tactical backpack worn over one shoulder. This one is in Security colors."
+	name = "Курьерская сумка службы безопасности"
+	desc = "Тактический рюкзак, надеваемый на одно плечо. Эта сумка в расцветке службы безопасности."
 	icon_state = "courierbagsec"
 	item_state_slots = list(slot_r_hand_str = "securitypack", slot_l_hand_str = "securitypack")
 
@@ -347,8 +347,8 @@
 
 //Purses
 /obj/item/weapon/storage/backpack/purse
-	name = "purse"
-	desc = "A small, fashionable bag typically worn over the shoulder."
+	name = "Сумочка"
+	desc = "Небольшая модная сумочка, надеваемая через плечо."
 	icon_state = "purse"
 	item_state_slots = list(slot_r_hand_str = "lgpurse", slot_l_hand_str = "lgpurse")
 	w_class = ITEMSIZE_LARGE
@@ -357,8 +357,8 @@
 
 //Parachutes
 /obj/item/weapon/storage/backpack/parachute
-	name = "parachute"
-	desc = "A specially made backpack, designed to help one survive jumping from incredible heights. It sacrifices some storage space for that added functionality."
+	name = "Парашут"
+	desc = "Особый рюкзак, позволяющий прыгать с невероятных высот. За счёт сложенного парашута в нём значительно меньше свободного места."
 	icon_state = "parachute"
 	item_state_slots = list(slot_r_hand_str = "backpack", slot_l_hand_str = "backpack")
 	max_storage_space = ITEMSIZE_COST_NORMAL * 5
@@ -367,16 +367,16 @@
 	. = ..()
 	if(Adjacent(user))
 		if(parachute)
-			. += "It seems to be packed."
+			. += "Парашут сложен."
 		else
-			. += "It seems to be unpacked."
+			. += "Парашут разложен."
 
 /obj/item/weapon/storage/backpack/parachute/handleParachute()
 	parachute = FALSE	//If you parachute in, the parachute has probably been used.
 
 /obj/item/weapon/storage/backpack/parachute/verb/pack_parachute()
 
-	set name = "Pack/Unpack Parachute"
+	set name = "Сложить/Разложить Парашут"
 	set category = "Object"
 	set src in usr
 
@@ -390,39 +390,39 @@
 	if(H.stat)
 		return
 	if(H.back == src)
-		to_chat(H, "<span class='warning'>How do you expect to work on \the [src] while it's on your back?</span>")
+		to_chat(H, "<span class='warning'>Вы как собрались работать с [ru_getcase(src, "icase")], если [ru_g_obj(src, "он", "", "а", "о", "и")] у Вас на спине?</span>")
 		return
 
 	if(!parachute)	//This packs the parachute
-		H.visible_message("<span class='notice'>\The [H] starts to pack \the [src]!</span>", \
-					"<span class='notice'>You start to pack \the [src]!</span>", \
-					"You hear the shuffling of cloth.")
+		H.visible_message("<span class='notice'>[H] [ru_g_mob(H, "начина", "ет", "ет", "ет", "ют")] упаковывать [ru_getcase(src, "acase")]!</span>", \
+					"<span class='notice'>Вы начинаете упаковывать [ru_getcase(src, "acase")]!</span>", \
+					"Вы слышите запихивание ткани.")
 		if(do_after(H, 50))
-			H.visible_message("<span class='notice'>\The [H] finishes packing \the [src]!</span>", \
-					"<span class='notice'>You finish packing \the [src]!</span>", \
-					"You hear the shuffling of cloth.")
+			H.visible_message("<span class='notice'>[H] [ru_g_mob(H, "упаковал")] [ru_getcase(src, "acase")]!</span>", \
+					"<span class='notice'>Вы упаковали [ru_getcase(src, "acase")]!</span>", \
+					"Вы слышите запихивание ткани.")
 			parachute = TRUE
 		else
-			H.visible_message("<span class='notice'>\The [src] gives up on packing \the [src]!</span>", \
-					"<span class='notice'>You give up on packing \the [src]!</span>")
+			H.visible_message("<span class='notice'>[H] [ru_g_mob(H, "передумал")] упаковывать [ru_getcase(src, "acase")]!</span>", \
+					"<span class='notice'>Вы передумали упаковывать [ru_getcase(src, "acase")]!</span>")
 			return
 	else			//This unpacks the parachute
-		H.visible_message("<span class='notice'>\The [src] starts to unpack \the [src]!</span>", \
-					"<span class='notice'>You start to unpack \the [src]!</span>", \
-					"You hear the shuffling of cloth.")
+		H.visible_message("<span class='notice'>[H] [ru_g_mob(H, "начина", "ет", "ет", "ет", "ют")] распаковывать [ru_getcase(src, "acase")]!</span>", \
+					"<span class='notice'>Вы начинаете распаковывать [ru_getcase(src, "acase")]!</span>", \
+					"Вы слышите запихивание ткани.")
 		if(do_after(H, 25))
-			H.visible_message("<span class='notice'>\The [src] finishes unpacking \the [src]!</span>", \
-					"<span class='notice'>You finish unpacking \the [src]!</span>", \
-					"You hear the shuffling of cloth.")
+			H.visible_message("<span class='notice'>[H] [ru_g_mob(H, "распаковал")] [ru_getcase(src, "acase")]!</span>", \
+					"<span class='notice'>Вы распаковали [ru_getcase(src, "acase")]!</span>", \
+					"Вы слышите запихивание ткани.")
 			parachute = FALSE
 		else
-			H.visible_message("<span class='notice'>\The [src] decides not to unpack \the [src]!</span>", \
-					"<span class='notice'>You decide not to unpack \the [src]!</span>")
+			H.visible_message("<span class='notice'>[H] [ru_g_mob(H, "передумал")] распаковывать [ru_getcase(src, "acase")]!</span>", \
+					"<span class='notice'>Вы передумали распаковывать [ru_getcase(src, "acase")]!</span>")
 	return
 
 /obj/item/weapon/storage/backpack/satchel/ranger
-	name = "ranger satchel"
-	desc = "A satchel designed for the Go Go ERT Rangers series to allow for slightly bigger carry capacity for the ERT-Rangers.\
-	 Unlike the show claims, it is not a phoron-enhanced satchel of holding with plot-relevant content."
+	name = "Сумка рейнджера"
+	desc = "Сумка Go Go ERT Рейнджеров, позволяющая хранить большое количество вещей. \
+	Вопреки сериалу, это не фороновая сумка, в которой волшебным образом появляются нужные вещи."
 	icon = 'icons/obj/clothing/ranger.dmi'
 	icon_state = "ranger_satchel"

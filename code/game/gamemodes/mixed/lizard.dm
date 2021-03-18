@@ -1,7 +1,7 @@
 /datum/game_mode/lizard
 	name = "Technomancers & Changelings"
-	round_description = "A space wizard and changelings have invaded the station!"
-	extended_round_description = "Changelings and a wizard spawn during this round."
+	round_description = "Космический волшебник и подменыши вторглись на станцию!"
+	extended_round_description = "В этом раунде появляются подменыши и волшебник."
 	config_tag = "lizard"
 	required_players = 2
 	required_players_secret = 8

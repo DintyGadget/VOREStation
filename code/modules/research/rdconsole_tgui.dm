@@ -58,7 +58,7 @@
 				"loaded_item" = linked_destroy.loaded_item,
 				"origin_tech" = tgui_GetOriginTechForItem(linked_destroy.loaded_item),
 			)
-		
+
 		data["info"]["linked_lathe"] = list("present" = FALSE)
 		if(linked_lathe)
 			data["info"]["linked_lathe"] = list(
@@ -165,7 +165,7 @@
 				data["info"]["t_disk"]["name"] = t_disk.stored.name
 				data["info"]["t_disk"]["level"] = t_disk.stored.level
 				data["info"]["t_disk"]["desc"] = t_disk.stored.desc
-		
+
 		data["info"]["d_disk"] = list("present" = FALSE)
 		if(d_disk)
 			data["info"]["d_disk"] = list(
@@ -393,7 +393,7 @@
 		if("eject_item") //Eject the item inside the destructive analyzer.
 			if(linked_destroy)
 				if(linked_destroy.busy)
-					to_chat(usr, "<span class='notice'>The destructive analyzer is busy at the moment.</span>")
+					to_chat(usr, "<span class='notice'>Деструктивный анализатор сейчас занят.</span>")
 					return FALSE
 
 				if(linked_destroy.loaded_item)
@@ -491,7 +491,7 @@
 						if(!istype(S, /obj/machinery/r_n_d/server/centcom) && server_processed)
 							S.produce_heat()
 					busy_msg = null
-					files.RefreshResearch()				
+					files.RefreshResearch()
 					update_tgui_static_data(usr, ui)
 			return TRUE
 
@@ -583,7 +583,7 @@
 
 		if("find_device") //The R&D console looks for devices nearby to link up with.
 			busy_msg = "Updating Database..."
-			
+
 			spawn(10)
 				busy_msg = null
 				SyncRDevices()

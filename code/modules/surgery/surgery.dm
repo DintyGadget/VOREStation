@@ -137,7 +137,7 @@
 		return 0
 	var/zone = user.zone_sel.selecting
 	if(zone in M.op_stage.in_progress) //Can't operate on someone repeatedly.
-		to_chat(user, "<span class='warning'>You can't operate on this area while surgery is already in progress.</span>")
+		to_chat(user, "<span class='warning'>Вы не можете прооперировать эту область, пока операция уже выполняется.</span>")
 		return 1
 
 	for(var/datum/surgery_step/S in surgery_steps)
@@ -147,7 +147,7 @@
 			if(step_is_valid && S.is_valid_target(M))
 
 				if(M == user)	// Once we determine if we can actually do a step at all, give a slight delay to self-surgery to confirm attempts.
-					to_chat(user, "<span class='critical'>You focus on attempting to perform surgery upon yourself.</span>")
+					to_chat(user, "<span class='critical'>Вы сосредотачиваетесь на попытке сделать себе операцию.</span>")
 
 					if(!do_after(user, 3 SECONDS, M))
 						return 0
@@ -172,7 +172,7 @@
 					var/calc_duration = rand(S.min_duration, S.max_duration)
 					if(!do_mob(user, M, calc_duration * toolspeed, zone, exclusive = TRUE))
 						success = FALSE
-						to_chat(user, "<span class='warning'>You must remain close to and keep focused on your patient to conduct surgery.</span>")
+						to_chat(user, "<span class='warning'>Вы должны оставаться рядом с пациентом и сосредоточиваться на нем, чтобы провести операцию.</span>")
 
 				if(success)
 					S.end_step(user, M, zone, src)

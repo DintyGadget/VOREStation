@@ -1,10 +1,10 @@
 /datum/language/binary
-	name = "Robot Talk"
+	name = "Роботический"
 	desc = "Most human stations support free-use communications protocols and routing hubs for synthetic use."
 	colour = "say_quote"
-	speech_verb = "states"
-	ask_verb = "queries"
-	exclaim_verb = "declares"
+	speech_verb = "докладывает"
+	ask_verb = "спрашивает"
+	exclaim_verb = "объявляет"
 	key = "b"
 	machine_understands = 0
 	flags = RESTRICTED | HIVEMIND
@@ -58,11 +58,11 @@
 		R.cell_use_power(C.active_usage)
 
 /datum/language/binary/drone
-	name = "Drone Talk"
+	name = "Дроновое Общение"
 	desc = "A heavily encoded damage control coordination stream."
-	speech_verb = "transmits"
-	ask_verb = "transmits"
-	exclaim_verb = "transmits"
+	speech_verb = "передает"
+	ask_verb = "передает"
+	exclaim_verb = "передает"
 	colour = "say_quote"
 	key = "d"
 	machine_understands = 0

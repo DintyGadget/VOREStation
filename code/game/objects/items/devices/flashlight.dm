@@ -1,12 +1,12 @@
 /obj/item/device/flashlight
 	name = "flashlight"
-	desc = "A hand-held emergency light."
+	desc = "Ручной фонарик."
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "flashlight"
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_BELT
 	matter = list(DEFAULT_WALL_MATERIAL = 50,"glass" = 20)
-	action_button_name = "Toggle Flashlight"
+	action_button_name = "Переключить Фонарик"
 	var/on = 0
 	var/brightness_on = 4 //luminosity when on
 	var/flashlight_power = 0.8	//lighting power when on
@@ -14,7 +14,7 @@
 	var/obj/item/weapon/cell/cell
 	var/cell_type = /obj/item/weapon/cell/device
 	var/list/brightness_levels
-	var/brightness_level = "medium"
+	var/brightness_level = "средний"
 	var/power_usage
 	var/power_use = 1
 
@@ -23,11 +23,11 @@
 
 	if(power_use && cell_type)
 		cell = new cell_type(src)
-		brightness_levels = list("low" = 0.25, "medium" = 0.5, "high" = 1)
+		brightness_levels = list("низкий" = 0.25, "средний" = 0.5, "высокий" = 1)
 		power_usage = brightness_levels[brightness_level]
 	else
 		verbs -= /obj/item/device/flashlight/verb/toggle
-	
+
 	update_icon()
 
 /obj/item/device/flashlight/Destroy()
@@ -39,17 +39,17 @@
 	return cell
 
 /obj/item/device/flashlight/verb/toggle()
-	set name = "Toggle Flashlight Brightness"
+	set name = "Переключить Яркость Фонарика"
 	set category = "Object"
 	set src in usr
 	set_brightness(usr)
 
 /obj/item/device/flashlight/proc/set_brightness(mob/user as mob)
-	var/choice = input("Choose a brightness level.") as null|anything in brightness_levels
+	var/choice = input("Выберите уровень яркости.") as null|anything in brightness_levels
 	if(choice)
 		brightness_level = choice
 		power_usage = brightness_levels[choice]
-		to_chat(user, "<span class='notice'>You set the brightness level on \the [src] to [brightness_level].</span>")
+		to_chat(user, "<span class='notice'>Вы переключаете уровень яркости фонарика на [brightness_level].</span>")
 		update_icon()
 
 /obj/item/device/flashlight/process()
@@ -58,7 +58,7 @@
 
 	if(brightness_level && power_usage)
 		if(cell.use(power_usage) != power_usage) // we weren't able to use our full power_usage amount!
-			visible_message("<span class='warning'>\The [src] flickers before going dull.</span>")
+			visible_message("<span class='warning'>[src] мигает, перед тем как затухнуть.</span>")
 			set_light(0)
 			playsound(src, 'sound/effects/sparks3.ogg', 10, 1, -3) //Small cue that your light went dull in your pocket.
 			on = 0
@@ -69,9 +69,9 @@
 	if(on)
 		icon_state = "[initial(icon_state)]-on"
 
-		if(brightness_level == "low")
+		if(brightness_level == "низкий")
 			set_light(brightness_on/2, flashlight_power*0.75, flashlight_colour)
-		else if(brightness_level == "high")
+		else if(brightness_level == "высокий")
 			set_light(brightness_on*1.5, flashlight_power*1.1, flashlight_colour)
 		else
 			set_light(brightness_on, flashlight_power, flashlight_colour)
@@ -83,26 +83,26 @@
 /obj/item/device/flashlight/examine(mob/user)
 	. = ..()
 	if(power_use && brightness_level)
-		. += "\The [src] is set to [brightness_level]."
+		. += "[src] установлен на [brightness_level] уровень освещения."
 		if(cell)
-			. += "\The [src] has a \the [cell] attached."
+			. += "К фонарику прикреплена [cell]."
 
 			if(cell.charge <= cell.maxcharge*0.25)
-				. += "It appears to have a low amount of power remaining."
+				. += "Кажется, в батарейке осталось мало заряда."
 			else if(cell.charge > cell.maxcharge*0.25 && cell.charge <= cell.maxcharge*0.5)
-				. += "It appears to have an average amount of power remaining."
+				. += "Кажется, в батарейке ещё осталось сколько-то заряда."
 			else if(cell.charge > cell.maxcharge*0.5 && cell.charge <= cell.maxcharge*0.75)
-				. += "It appears to have an above average amount of power remaining."
+				. += "Кажется, в батарейке осталось вполне достаточно заряда."
 			else if(cell.charge > cell.maxcharge*0.75 && cell.charge <= cell.maxcharge)
-				. += "It appears to have a high amount of power remaining."
+				. += "Кажется, в батарейке ещё много заряда."
 
 /obj/item/device/flashlight/attack_self(mob/user)
 	if(power_use)
 		if(!isturf(user.loc))
-			to_chat(user, "You cannot turn the light on while in this [user.loc].") //To prevent some lighting anomalities.
+			to_chat(user, "Вы не можете включить фонарик, находясь в [user.loc].") //To prevent some lighting anomalities.
 			return 0
 		if(!cell || cell.charge == 0)
-			to_chat(user, "You flick the switch on [src], but nothing happens.")
+			to_chat(user, "Вы переключаете свет на своём фонарике, но ничего не происходит.")
 			return 0
 	on = !on
 	if(on && power_use)
@@ -130,38 +130,38 @@
 		if(istype(H))
 			for(var/obj/item/clothing/C in list(H.head,H.wear_mask,H.glasses))
 				if(istype(C) && (C.body_parts_covered & EYES))
-					to_chat(user, "<span class='warning'>You're going to need to remove [C.name] first.</span>")
+					to_chat(user, "<span class='warning'>Нужно сперва убрать [C.name].</span>")
 					return
 
 			var/obj/item/organ/vision
 			if(H.species.vision_organ)
 				vision = H.internal_organs_by_name[H.species.vision_organ]
 			if(!vision)
-				to_chat(user, "<span class='warning'>You can't find any [H.species.vision_organ ? H.species.vision_organ : "eyes"] on [H]!</span>")
+				to_chat(user, "<span class='warning'Вы не можете найти у [H] каких-либо [H.species.vision_organ ? H.species.vision_organ : "глаз"]!</span>")
 
-			user.visible_message("<span class='notice'>\The [user] directs [src] to [M]'s eyes.</span>", \
-							 	 "<span class='notice'>You direct [src] to [M]'s eyes.</span>")
+			user.visible_message("<span class='notice'>[user] направляет [src] в глаза [M].</span>", \
+							 	 "<span class='notice'>Вы направляете [src] в глаза [M].</span>")
 			if(H != user)	//can't look into your own eyes buster
 				if(M.stat == DEAD || M.blinded)	//mob is dead or fully blind
-					to_chat(user, "<span class='warning'>\The [M]'s pupils do not react to the light!</span>")
+					to_chat(user, "<span class='warning'>Зрачки [M] не реагируют на свет!</span>")
 					return
 				if(XRAY in M.mutations)
-					to_chat(user, "<span class='notice'>\The [M] pupils give an eerie glow!</span>")
+					to_chat(user, "<span class='notice'>Зрачки [M] отблескивают жутковатым светом!</span>")
 				if(vision.is_bruised())
-					to_chat(user, "<span class='warning'>There's visible damage to [M]'s [vision.name]!</span>")
+					to_chat(user, "<span class='warning'>Вам видны повреждения на [vision.name] [M]!</span>")
 				else if(M.eye_blurry)
-					to_chat(user, "<span class='notice'>\The [M]'s pupils react slower than normally.</span>")
+					to_chat(user, "<span class='notice'>Зрачки [M]' реагируют очень медленно.</span>")
 				if(M.getBrainLoss() > 15)
-					to_chat(user, "<span class='notice'>There's visible lag between left and right pupils' reactions.</span>")
+					to_chat(user, "<span class='notice'>Зрачки реагируют с заметной задержкой друг от друга.</span>")
 
 				var/list/pinpoint = list("oxycodone"=1,"tramadol"=5)
 				var/list/dilating = list("space_drugs"=5,"mindbreaker"=1)
 				if(M.reagents.has_any_reagent(pinpoint) || H.ingested.has_any_reagent(pinpoint))
-					to_chat(user, "<span class='notice'>\The [M]'s pupils are already pinpoint and cannot narrow any more.</span>")
+					to_chat(user, "<span class='notice'>Зрачки [M] уже меньше некуда.</span>")
 				else if(M.reagents.has_any_reagent(dilating) || H.ingested.has_any_reagent(dilating))
-					to_chat(user, "<span class='notice'>\The [M]'s pupils narrow slightly, but are still very dilated.</span>")
+					to_chat(user, "<span class='notice'>Зрачки[M] немного сужаются, однако всё ещё расширены.</span>")
 				else
-					to_chat(user, "<span class='notice'>\The [M]'s pupils narrow.</span>")
+					to_chat(user, "<span class='notice'>Зрачки [M] сужаются.</span>")
 
 			user.setClickCooldown(user.get_attack_speed(src)) //can be used offensively
 			M.flash_eyes()
@@ -174,7 +174,7 @@
 			cell.update_icon()
 			user.put_in_hands(cell)
 			cell = null
-			to_chat(user, "<span class='notice'>You remove the cell from the [src].</span>")
+			to_chat(user, "<span class='notice'>Вы достаете батарейку из фонарика.</span>")
 			playsound(src, 'sound/machines/button.ogg', 30, 1, 0)
 			on = 0
 			update_icon()
@@ -223,20 +223,20 @@
 					user.drop_item()
 					W.loc = src
 					cell = W
-					to_chat(user, "<span class='notice'>You install a cell in \the [src].</span>")
+					to_chat(user, "<span class='notice'>Вы вставляете в [src] батарейку.</span>")
 					playsound(src, 'sound/machines/button.ogg', 30, 1, 0)
 					update_icon()
 				else
-					to_chat(user, "<span class='notice'>\The [src] already has a cell.</span>")
+					to_chat(user, "<span class='notice'>[src] уже содержит в себе батарейку.</span>")
 			else
-				to_chat(user, "<span class='notice'>\The [src] cannot use that type of cell.</span>")
+				to_chat(user, "<span class='notice'>Такая батарейка не подходит для фонарика.</span>")
 
 	else
 		..()
 
 /obj/item/device/flashlight/pen
 	name = "penlight"
-	desc = "A pen-sized light, used by medical staff."
+	desc = "Фонарик размером с ручку. Используется врачами."
 	icon_state = "penlight"
 	item_state = "pen"
 	drop_sound = 'sound/items/drop/accessory.ogg'
@@ -248,33 +248,33 @@
 
 /obj/item/device/flashlight/color	//Default color is blue, just roll with it.
 	name = "blue flashlight"
-	desc = "A hand-held emergency light. This one is blue."
+	desc = "Ручной фонарик. Этот синего цвета."
 	icon_state = "flashlight_blue"
 
 /obj/item/device/flashlight/color/red
 	name = "red flashlight"
-	desc = "A hand-held emergency light. This one is red."
+	desc = "Ручной фонарик. Этот красного цвета."
 	icon_state = "flashlight_red"
 
 /obj/item/device/flashlight/color/orange
 	name = "orange flashlight"
-	desc = "A hand-held emergency light. This one is orange."
+	desc = "Ручной фонарик. Этот оранжевого цвета."
 	icon_state = "flashlight_orange"
 
 /obj/item/device/flashlight/color/yellow
 	name = "yellow flashlight"
-	desc = "A hand-held emergency light. This one is yellow."
+	desc = "Ручной фонарик. Этот желтого цвета."
 	icon_state = "flashlight_yellow"
 
 /obj/item/device/flashlight/maglight
 	name = "maglight"
-	desc = "A very, very heavy duty flashlight."
+	desc = "Очень и очень тяжёлый военный фонарик."
 	icon_state = "maglight"
 	flashlight_colour = LIGHT_COLOR_FLUORESCENT_FLASHLIGHT
 	force = 10
 	slot_flags = SLOT_BELT
 	w_class = ITEMSIZE_SMALL
-	attack_verb = list ("smacked", "thwacked", "thunked")
+	attack_verb = list ("ударяет", "врезает", "стукает")
 	matter = list(DEFAULT_WALL_MATERIAL = 200,"glass" = 50)
 	hitsound = "swing_hit"
 

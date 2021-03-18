@@ -3,14 +3,14 @@
 	Weaken(3)
 	spin(32,2)
 	visible_message(
-		"<span class='danger'>[src] rolls on the floor, trying to put themselves out!</span>",
-		"<span class='notice'>You stop, drop, and roll!</span>"
+		"<span class='danger'>[src] [src] катается по полу, пытаясь высвободиться!</span>",
+		"<span class='notice'>Вы останавливаетесь, падаете и катитесь!</span>"
 		)
 	sleep(30)
 	if(fire_stacks <= 0)
 		visible_message(
-			"<span class='danger'>[src] has successfully extinguished themselves!</span>",
-			"<span class='notice'>You extinguish yourself.</span>"
+			"<span class='danger'>[src] успешно затухает!</span>",
+			"<span class='notice'>Вы гасите себя.</span>"
 			)
 		ExtinguishMob()
 	return TRUE
@@ -21,7 +21,7 @@
 		I = handcuffed
 	else if(legcuffed)
 		I = legcuffed
-	
+
 	if(I)
 		setClickCooldown(100)
 		cuff_resist(I, cuff_break = can_break_cuffs())
@@ -30,7 +30,7 @@
 	return FALSE
 
 /mob/living/carbon/proc/cuff_resist(obj/item/weapon/handcuffs/I, breakouttime = 1200, cuff_break = 0)
-	
+
 	if(istype(I))
 		breakouttime = I.breakouttime
 
@@ -42,15 +42,15 @@
 		displaytime /= reduceCuffTime
 
 	if(cuff_break)
-		visible_message("<span class='danger'>[src] is trying to break [I]!</span>",
-			"<span class='warning'>You attempt to break your [I]. (This will take around 5 seconds and you need to stand still)</span>")
+		visible_message("<span class='danger'>[src] пытается сломать [I]!</span>",
+			"<span class='warning'>Вы пытаетесь сломать [I]. (Это займет около 5 секунд, и вам нужно будет стоять на месте.)</span>")
 
 		if(do_after(src, 5 SECONDS, target = src, incapacitation_flags = INCAPACITATION_DEFAULT & ~INCAPACITATION_RESTRAINED))
 			if(!I || buckled)
 				return
-			visible_message("<span class='danger'>[src] manages to break [I]!</span>",
-				"<span class='warning'>You successfully break your [I].</span>")
-			say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!" ))
+			visible_message("<span class='danger'>[src] удается сломать [I]!</span>",
+				"<span class='warning'>Вы успешно сломали [I].</span>")
+			say(pick(";РАААААХХХ!", ";НННГГГХХХ!", ";ВАААААААРГХ!", "ННННГГГХХХХ!", ";АААААААА!" ))
 
 			if(I == handcuffed)
 				handcuffed = null
@@ -58,20 +58,20 @@
 			else if(I == legcuffed)
 				legcuffed = null
 				update_inv_legcuffed()
-	
+
 			if(buckled && buckled.buckle_require_restraints)
 				buckled.unbuckle_mob()
 
 			qdel(I)
 		else
-			to_chat(src, "<span class='warning'>You fail to break [I].</span>")
+			to_chat(src, "<span class='warning'>Вы не можете сломать [I].</span>")
 		return
-	
-	visible_message("<span class='danger'>[src] attempts to remove [I]!</span>",
-		"<span class='warning'>You attempt to remove [I]. (This will take around [displaytime] seconds and you need to stand still)</span>")
+
+	visible_message("<span class='danger'>[src] пытается удалить [I]!</span>",
+		"<span class='warning'>Вы пытаетесь удалить [I]. (Это займет около [displaytime] секунд, и вам нужно будет стоять на месте)</span>")
 	if(do_after(src, breakouttime, target = src, incapacitation_flags = INCAPACITATION_DISABLED & INCAPACITATION_KNOCKDOWN))
-		visible_message("<span class='danger'>[src] manages to remove [I]!</span>",
-			"<span class='notice'>You successfully remove [I].</span>")
+		visible_message("<span class='danger'>[src] удается удалить [I]!</span>",
+			"<span class='notice'>Вы успешно удалили [I].</span>")
 		drop_from_inventory(I)
 
 /mob/living/carbon/resist_buckle()

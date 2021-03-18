@@ -2,23 +2,23 @@ var/global/list/prevent_respawns = list()
 
 /hook/death/proc/quit_notify(mob/dead)
 	if(ishuman(dead))
-		to_chat(dead,"<span class='notice'>You're dead! If you don't intend to continue playing this round as this character, please use the <b>Quit This Round</b> verb in the OOC tab to free your job slot.</span>")
+		to_chat(dead,"<span class='notice'>Вы мертвы! Если Вы не планируете играть за этого персонажа в раунде, пожалуйста, используйте глагол <b>Покинуть Раунд</b> во вкладке ООС, чтобы освободить свой рабочий слот.</span>")
 
 	return TRUE
 
 /mob/observer/dead/verb/cleanup()
-	set name = "Quit This Round"
+	set name = "Покинуть Раунд"
 	set category = "OOC"
-	set desc = "Free your job slot, remove yourself from the manifest, and prevent respawning as this character for this round."
+	set desc = "Освободить слот на работу, убрать себя из списка экипажа и запретить респавн персонажа в этом раунде."
 
-	var/confirm = alert("This will free up your job slot, remove you from the manifest, and allow you to respawn as this character. You can rejoin as another \
-	character if you like. Do this now?","Quit This Round","Quit Round","Cancel")
-	if(confirm != "Quit Round")
+	var/confirm = alert("Это действие освободит Ваш рабочий слот, удалит Вас из списка экипажа и позволит Вам респавниться за другого персонажа. \
+	Вы точно хотите этого?","Покинуть Раунд","Покинуть","Остаться")
+	if(confirm != "Покинуть")
 		return
 
 	//Why are you clicking this button?
 	if(!mind || !mind.assigned_role)
-		to_chat(src,"<span class='warning'>Either you haven't played this round, or you already used this verb.</span>")
+		to_chat(src,"<span class='warning'>Вы либо ещё не играли в этом раунде, либо уже воспользовались этим глаголом.</span>")
 		return
 
 	//Add them to the nope list
@@ -28,7 +28,7 @@ var/global/list/prevent_respawns = list()
 	for(var/datum/objective/O in all_objectives)
 		if(O.target == src.mind)
 			if(O.owner && O.owner.current)
-				to_chat(O.owner.current,"<span class='warning'>You get the feeling your target is no longer within your reach...</span>")
+				to_chat(O.owner.current,"<span class='warning'>Вы чувствуете, как Ваша цель ускользает от Вас...</span>")
 			qdel(O)
 
 	//Resleeving cleanup
@@ -65,4 +65,4 @@ var/global/list/prevent_respawns = list()
 	src.mind.assigned_role = null
 
 	//Feedback
-	to_chat(src,"<span class='notice'>Your job has been free'd up, and you can rejoin as another character or quit. Thanks for using this verb, it helps the server!</span>")
+	to_chat(src,"<span class='notice'>Ваш слот был освобождён, и Вы можете зайти за другого персонажа или покинуть игру. Спасибо за использование этого глагола, это помогает серверу!</span>")

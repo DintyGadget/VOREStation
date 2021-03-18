@@ -76,7 +76,7 @@
 		if(paper_spawn_loc)
 			// Create and pass on the bomb code paper.
 			var/obj/item/weapon/paper/P = new(paper_spawn_loc)
-			P.info = "The nuclear authorization code is: <b>[code]</b>"
+			P.info = "Код ядерной авторизации:: <b>[code]</b>"
 			P.name = "nuclear bomb code"
 			if(leader && leader.current)
 				if(get_turf(P) == get_turf(leader.current))
@@ -85,10 +85,10 @@
 		if(!code_owner && leader)
 			code_owner = leader
 		if(code_owner)
-			code_owner.store_memory("<B>Nuclear Bomb Code</B>: [code]", 0, 0)
-			to_chat(code_owner.current, "The nuclear authorization code is: <B>[code]</B>")
+			code_owner.store_memory("<B>Кодекс ядерной бомбы</B>: [code]", 0, 0)
+			to_chat(code_owner.current, "Код ядерной авторизации:: <B>[code]</B>")
 	else
-		message_admins("<span class='danger'>Could not spawn nuclear bomb. Contact a developer.</span>")
+		message_admins("<span class='danger'>Не могц заспавнить ядерную бомбу. Свяжитесь с разработчиком.</span>")
 		return
 
 	spawned_nuke = code
@@ -101,7 +101,7 @@
 	window_flash(player.current.client)
 
 	// Basic intro text.
-	to_chat(player.current, "<span class='danger'><font size=3>You are a [role_text]!</font></span>")
+	to_chat(player.current, "<span class='danger'><font size=3>Вы [role_text]!</font></span>")
 	if(leader_welcome_text && player == leader)
 		to_chat(player.current, "<span class='notice'>[leader_welcome_text]</span>")
 	else
@@ -118,7 +118,7 @@
 
 /datum/antagonist/proc/set_antag_name(var/mob/living/player)
 	// Choose a name, if any.
-	var/newname = sanitize(input(player, "You are a [role_text]. Would you like to change your name to something else?", "Name change") as null|text, MAX_NAME_LEN)
+	var/newname = sanitize(input(player, "Вы [role_text]. Хотите сменить имя на другое?", "Name change") as null|text, MAX_NAME_LEN)
 	if (newname)
 		player.real_name = newname
 		player.name = player.real_name

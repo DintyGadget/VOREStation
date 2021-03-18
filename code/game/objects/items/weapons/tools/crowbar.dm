@@ -4,7 +4,7 @@
 
 /obj/item/weapon/tool/crowbar
 	name = "crowbar"
-	desc = "Used to remove floors and to pry open doors."
+	desc = "Используется для снятия полов и открывания дверей."
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "crowbar"
 	slot_flags = SLOT_BELT
@@ -15,7 +15,7 @@
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_ENGINEERING = 1)
 	matter = list(DEFAULT_WALL_MATERIAL = 50)
-	attack_verb = list("attacked", "bashed", "battered", "bludgeoned", "whacked")
+	attack_verb = list("атакует", "избивает", "избивает", "избивает", "избивает")
 	usesound = 'sound/items/crowbar.ogg'
 	drop_sound = 'sound/items/drop/crowbar.ogg'
 	pickup_sound = 'sound/items/pickup/crowbar.ogg'
@@ -31,8 +31,8 @@
 
 
 /datum/category_item/catalogue/anomalous/precursor_a/alien_crowbar
-	name = "Precursor Alpha Object - Hard Light Pry Tool"
-	desc = "An object which bears striking resemblence to the common crowbar. \
+	name = "Предвестник Альфа-объекта - Инструмент Hard Light Pry"
+	desc = "Предмет, поразительно напоминающий обычный лом. \
 	It appears to also serve a similar purpose, being used for prying. Unlike \
 	a crowbar, however, this object is made of some form of 'hard light'.\
 	<br><br>\
@@ -65,7 +65,7 @@
 
 /obj/item/weapon/tool/crowbar/cyborg
 	name = "hydraulic crowbar"
-	desc = "A hydraulic prying tool, compact but powerful. Designed to replace crowbars in industrial synthetics."
+	desc = "Компактный, но мощный гидравлический инструмент для взлома. Предназначен для замены ломов в промышленной синтетике."
 	usesound = 'sound/items/jaws_pry.ogg'
 	force = 10
 	toolspeed = 0.5
@@ -100,4 +100,4 @@
 	counterpart.forceMove(get_turf(src))
 	src.forceMove(counterpart)
 	user.put_in_active_hand(counterpart)
-	to_chat(user, "<span class='notice'>You attach the cutting jaws to [src].</span>")
+	to_chat(user, "<span class='notice'>Вы прикрепляете режущие губки к [src].</span>")

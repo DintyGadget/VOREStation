@@ -28,7 +28,7 @@ var/datum/antagonist/technomancer/technomancers
 
 /datum/antagonist/technomancer/update_antag_mob(var/datum/mind/technomancer)
 	..()
-	technomancer.store_memory("<B>Remember:</B> Do not forget to purchase the functions and equipment you need.")
+	technomancer.store_memory("<B>Помните:</B> Не забудьте приобрести необходимые функции и оборудование.")
 	technomancer.current.real_name = "[pick(wizard_first)] [pick(wizard_second)]"
 	technomancer.current.name = technomancer.current.real_name
 
@@ -78,7 +78,7 @@ var/datum/antagonist/technomancer/technomancers
 		break
 	if(!survivor)
 		feedback_set_details("round_end_result","loss - technomancer killed")
-		to_world("<span class='danger'><font size = 3>The [(current_antagonists.len>1)?"[role_text_plural] have":"[role_text] has"] been killed!</font></span>")
+		to_world("<span class='danger'><font size = 3>[(current_antagonists.len>1)?"[role_text_plural] был":"[role_text] был"] убит!</font></span>")
 
 /datum/antagonist/technomancer/print_player_summary()
 	..()
@@ -98,6 +98,6 @@ var/datum/antagonist/technomancer/technomancers
 		if(core)
 			text += "<br>Bought [english_list(core.spells)], and used \a [core]."
 		else
-			text += "<br>They've lost their core."
+			text += "<br>Они потеряли ядро."
 
 	return text

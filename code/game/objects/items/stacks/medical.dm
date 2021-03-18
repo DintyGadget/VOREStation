@@ -17,17 +17,17 @@
 
 /obj/item/stack/medical/attack(mob/living/carbon/M as mob, mob/user as mob)
 	if (!istype(M))
-		to_chat(user, "<span class='warning'>\The [src] cannot be applied to [M]!</span>")
+		to_chat(user, "<span class='warning'>[src] нельзя применить к [M]!</span>")
 		return 1
 
 	if ( ! (istype(user, /mob/living/carbon/human) || \
 			istype(user, /mob/living/silicon)) )
-		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
+		to_chat(user, "<span class='warning'>У вас не хватит на это сноровки!</span>")
 		return 1
 
 	var/available = get_amount()
 	if(!available)
-		to_chat(user, "<span class='warning'>There's not enough [uses_charge ? "charge" : "items"] left to use that!</span>")
+		to_chat(user, "<span class='warning'>Для этого недостаточно [uses_charge ? "заряда" : "предметов"]!</span>")
 		return 1
 
 	if (istype(M, /mob/living/carbon/human))
@@ -35,24 +35,24 @@
 		var/obj/item/organ/external/affecting = H.get_organ(user.zone_sel.selecting)
 
 		if(!affecting)
-			to_chat(user, "<span class='warning'>No body part there to work on!</span>")
+			to_chat(user, "<span class='warning'>Нет части тела, чтобы работать!</span>")
 			return 1
 
 		if(affecting.organ_tag == BP_HEAD)
 			if(H.head && istype(H.head,/obj/item/clothing/head/helmet/space))
-				to_chat(user, "<span class='warning'>You can't apply [src] through [H.head]!</span>")
+				to_chat(user, "<span class='warning'>Вы не можете применить [src] через [H.head]!</span>")
 				return 1
 		else
 			if(H.wear_suit && istype(H.wear_suit,/obj/item/clothing/suit/space))
-				to_chat(user, "<span class='warning'>You can't apply [src] through [H.wear_suit]!</span>")
+				to_chat(user, "<span class='warning'>Вы не можете применить [src] через [H.wear_suit]!</span>")
 				return 1
 
 		if(affecting.robotic == ORGAN_ROBOT)
-			to_chat(user, "<span class='warning'>This isn't useful at all on a robotic limb.</span>")
+			to_chat(user, "<span class='warning'>Это совершенно бесполезно на роботизированной конечности.</span>")
 			return 1
 
 		if(affecting.robotic >= ORGAN_LIFELIKE)
-			to_chat(user, "<span class='warning'>You apply the [src], but it seems to have no effect...</span>")
+			to_chat(user, "<span class='warning'>Вы применяете [src], но это, кажется, не имеет никакого эффекта...</span>")
 			use(1)
 			return 1
 
@@ -62,8 +62,8 @@
 
 		M.heal_organ_damage((src.heal_brute/2), (src.heal_burn/2))
 		user.visible_message( \
-			"<span class='notice'>[M] has been applied with [src] by [user].</span>", \
-			"<span class='notice'>You apply \the [src] to [M].</span>" \
+			"<span class='notice'>[M] применяет [src] к [user].</span>", \
+			"<span class='notice'>Вы применяете [src] к [M].</span>" \
 		)
 		use(1)
 
@@ -83,7 +83,7 @@
 /obj/item/stack/medical/crude_pack
 	name = "crude bandage"
 	singular_name = "crude bandage length"
-	desc = "Some bandages to wrap around bloody stumps."
+	desc = "Несколько бинтов, чтобы обмотать окровавленные культяпки."
 	icon_state = "gauze"
 	origin_tech = list(TECH_BIO = 1)
 	no_variants = FALSE
@@ -108,8 +108,8 @@
 			return 1
 		else
 			var/available = get_amount()
-			user.visible_message("<span class='notice'>\The [user] starts bandaging [M]'s [affecting.name].</span>", \
-					             "<span class='notice'>You start bandaging [M]'s [affecting.name].</span>" )
+			user.visible_message("<span class='notice'>[user] начинает перевязывать [affecting.name] [M].</span>", \
+					             "<span class='notice'>Вы начинаете перевязывать [affecting.name] [M].</span>" )
 			var/used = 0
 			for (var/datum/wound/W in affecting.wounds)
 				if(W.internal)
@@ -119,7 +119,7 @@
 				if(used == amount)
 					break
 				if(!do_mob(user, M, W.damage/3, exclusive = TRUE))
-					to_chat(user, "<span class='notice'>You must stand still to bandage wounds.</span>")
+					to_chat(user, "<span class='notice'>Вы должны стоять неподвижно, чтобы перевязать раны.</span>")
 					break
 
 				if(affecting.is_bandaged()) // We do a second check after the delay, in case it was bandaged after the first check.
@@ -127,9 +127,9 @@
 					return 1
 
 				if(used >= available)
-					to_chat(user, "<span class='warning'>You run out of [src]!</span>")
+					to_chat(user, "<span class='warning'>У вас закончился [src]!</span>")
 					break
-				
+
 				if (W.current_stage <= W.max_bleeding_stage)
 					user.visible_message("<span class='notice'>\The [user] bandages \a [W.desc] on [M]'s [affecting.name].</span>", \
 					                              "<span class='notice'>You bandage \a [W.desc] on [M]'s [affecting.name].</span>" )
@@ -150,7 +150,7 @@
 /obj/item/stack/medical/bruise_pack
 	name = "roll of gauze"
 	singular_name = "gauze length"
-	desc = "Some sterile gauze to wrap around bloody stumps."
+	desc = "Немного стерильной марли, чтобы обернуть вокруг окровавленных культей."
 	icon_state = "brutepack"
 	origin_tech = list(TECH_BIO = 1)
 	no_variants = FALSE
@@ -188,7 +188,7 @@
 				if(used == amount)
 					break
 				if(!do_mob(user, M, W.damage/5, exclusive = TRUE))
-					to_chat(user, "<span class='notice'>You must stand still to bandage wounds.</span>")
+					to_chat(user, "<span class='notice'>Вы должны стоять спокойно, чтобы перевязывать раны.</span>")
 					break
 
 				if(affecting.is_bandaged()) // We do a second check after the delay, in case it was bandaged after the first check.
@@ -223,7 +223,7 @@
 
 /obj/item/stack/medical/ointment
 	name = "ointment"
-	desc = "Used to treat those nasty burns."
+	desc = "Используется для лечения ожогов."
 	gender = PLURAL
 	singular_name = "ointment"
 	icon_state = "ointment"
@@ -267,7 +267,7 @@
 /obj/item/stack/medical/advanced/bruise_pack
 	name = "advanced trauma kit"
 	singular_name = "advanced trauma kit"
-	desc = "An advanced trauma kit for severe injuries."
+	desc = "Продвинутый травм набор для лечения тяжелых травм."
 	icon_state = "traumakit"
 	heal_brute = 7 //VOREStation Edit
 	origin_tech = list(TECH_BIO = 1)
@@ -301,7 +301,7 @@
 				//if(used == amount) //VOREStation Edit
 				//	break //VOREStation Edit
 				if(!do_mob(user, M, W.damage/5, exclusive = TRUE))
-					to_chat(user, "<span class='notice'>You must stand still to bandage wounds.</span>")
+					to_chat(user, "<span class='notice'>Вы должны стоять спокойно, чтобы перевязывать раны.</span>")
 					break
 				if(affecting.is_bandaged() && affecting.is_disinfected()) // We do a second check after the delay, in case it was bandaged after the first check.
 					to_chat(user, "<span class='warning'>The wounds on [M]'s [affecting.name] have already been bandaged.</span>")
@@ -337,7 +337,7 @@
 /obj/item/stack/medical/advanced/ointment
 	name = "advanced burn kit"
 	singular_name = "advanced burn kit"
-	desc = "An advanced treatment kit for severe burns."
+	desc = "Продвинутый набор для лечения сильных ожогов."
 	icon_state = "burnkit"
 	heal_burn = 7 //VOREStation Edit
 	origin_tech = list(TECH_BIO = 1)
@@ -377,7 +377,7 @@
 /obj/item/stack/medical/splint
 	name = "medical splints"
 	singular_name = "medical splint"
-	desc = "Modular splints capable of supporting and immobilizing bones in all areas of the body."
+	desc = "Модульные шины, способные поддерживать и фиксировать кости во всех частях тела."
 	icon_state = "splint"
 	amount = 5
 	max_amount = 5
@@ -441,7 +441,7 @@
 /obj/item/stack/medical/splint/ghetto
 	name = "makeshift splints"
 	singular_name = "makeshift splint"
-	desc = "For holding your limbs in place with duct tape and scrap metal."
+	desc = "Для фиксации конечностей с помощью изоленты и металлолома."
 	icon_state = "tape-splint"
 	amount = 1
 	splintable_organs = list(BP_L_ARM, BP_R_ARM, BP_L_LEG, BP_R_LEG)

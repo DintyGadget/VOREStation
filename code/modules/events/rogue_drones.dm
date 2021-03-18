@@ -25,19 +25,17 @@
 	//VOREStation Edit Start TFF 16/12/19 - Sif -> Virgo 3b
 	switch(rng)
 		if(1)
-			msg = "A combat drone wing operating in close orbit above Virgo 3b has failed to return from a anti-piracy sweep.  If any are sighted, \
-			approach with caution."
+			msg = "Крыло боевого дрона, работающее на близкой орбите над Virgo 3b, не смогло вернуться после антипиратской атаки. Если они заметны, подходите к ним осторожно."
 		if(2)
-			msg = "Contact has been lost with a combat drone wing in Virgo 3b orbit.  If any are sighted in the area, approach with \
-			caution."
+			msg = "Утерян контакт с крылом боевого дрона на орбите Virgo 3b. Если они обнаружены в этом районе, подходите к ним осторожно."
 		if(3)
-			msg = "Unidentified hackers have targeted a combat drone wing deployed around Virgo 3b. If any are sighted in the area, approach with caution."
+			msg = "Неизвестные хакеры нацелились на крыло боевого дрона, развернутое вокруг Virgo 3b. Если они обнаружены в этом районе, подходите к ним осторожно."
 		if(4)
-			msg = "A passing derelict ship's drone defense systems have just activated. If any are sighted in the area, use caution."
+			msg = "Только что активировались системы защиты дронов проходящего заброшенного корабля. Если они обнаружены в этом районе, будьте осторожны."
 		if(5)
-			msg = "We're detecting a swarm of small objects approaching your station.  Most likely a bunch of drones.  Please exercise caution if you see any."
+			msg = "Мы обнаруживаем рой мелких объектов, приближающихся к вашей станции. Скорее всего куча дронов. Будьте осторожны, если увидите их."
 	//VOREStation Edit End
-	command_announcement.Announce(msg, "Rogue drone alert")
+	command_announcement.Announce(msg, "Оповещение о беспилотниках")
 
 /datum/event/rogue_drone/end()
 	var/num_recovered = 0
@@ -52,6 +50,6 @@
 		num_recovered++
 
 	if(num_recovered > drones_list.len * 0.75)
-		command_announcement.Announce("The drones that were malfunctioning have been recovered safely.", "Rogue drone alert")
+		command_announcement.Announce("Дроны, которые вышли из строя, были благополучно восстановлены.", "Оповещение о беспилотниках")
 	else
-		command_announcement.Announce("We're disappointed at the loss of the drones, but the survivors have been recovered.", "Rogue drone alert")
+		command_announcement.Announce("Мы разочарованы потерей дронов, но выжившие были восстановлены.", "Оповещение о беспилотниках")

@@ -102,7 +102,7 @@
 		//VOREStation Edit - Algae for oxygen generator
 		BIOGEN_ITEM("4 Algae Sheets", /obj/item/stack/material/algae, 4, 400),
 	)
-	
+
 /obj/machinery/biogenerator/tgui_static_data(mob/user)
 	var/list/static_data[0]
 
@@ -155,7 +155,7 @@
 
 			if(!(category in item_list) || !(name in item_list[category])) // Not trying something that's not in the list, are you?
 				return
-			
+
 			var/datum/data/biogenerator_item/bi = item_list[category][name]
 			if(!istype(bi))
 				var/datum/data/biogenerator_reagent/br = item_list[category][name]
@@ -165,20 +165,20 @@
 					return
 				var/cost = round(br.cost / build_eff)
 				if(cost > points)
-					to_chat(usr, "<span class='danger'>Insufficient biomass.</span>")
+					to_chat(usr, "<span class='danger'>Недостаточная биомасса.</span>")
 					return
 				var/amt_to_actually_dispense = round(min(beaker.reagents.get_free_space(), br.reagent_amt))
 				if(amt_to_actually_dispense <= 0)
-					to_chat(usr, "<span class='danger'>The loaded beaker is full!</span>")
+					to_chat(usr, "<span class='danger'>Стакан заполнен!</span>")
 					return
 				points -= (cost * (amt_to_actually_dispense / br.reagent_amt))
 				beaker.reagents.add_reagent(br.reagent_id, amt_to_actually_dispense)
 				playsound(src, 'sound/machines/reagent_dispense.ogg', 25, 1)
 				return
-			
+
 			var/cost = round(bi.cost / build_eff)
 			if(cost > points)
-				to_chat(usr, "<span class='danger'>Insufficient biomass.</span>")
+				to_chat(usr, "<span class='danger'>Недостаточная биомасса.</span>")
 				return
 
 			points -= cost
@@ -218,20 +218,20 @@
 		return
 	if(istype(O, /obj/item/weapon/reagent_containers/glass))
 		if(beaker)
-			to_chat(user, "<span class='notice'>\The [src] is already loaded.</span>")
+			to_chat(user, "<span class='notice'>[src] загружен.</span>")
 		else
 			user.remove_from_mob(O)
 			O.loc = src
 			beaker = O
 			updateUsrDialog()
 	else if(processing)
-		to_chat(user, "<span class='notice'>\The [src] is currently processing.</span>")
+		to_chat(user, "<span class='notice'>[src] в настоящее время обрабатывается.</span>")
 	else if(istype(O, /obj/item/weapon/storage/bag/plants))
 		var/i = 0
 		for(var/obj/item/weapon/reagent_containers/food/snacks/grown/G in contents)
 			i++
 		if(i >= 10)
-			to_chat(user, "<span class='notice'>\The [src] is already full! Activate it.</span>")
+			to_chat(user, "<span class='notice'>[src] уже заполнен! Активируйте это.</span>")
 		else
 			for(var/obj/item/weapon/reagent_containers/food/snacks/grown/G in O.contents)
 				G.loc = src
@@ -269,7 +269,7 @@
 	if(stat) //NOPOWER etc
 		return
 	if(processing)
-		to_chat(usr, "<span class='notice'>The biogenerator is in the process of working.</span>")
+		to_chat(usr, "<span class='notice'>Биогенератор в процессе работы.</span>")
 		return
 	var/S = 0
 	for(var/obj/item/weapon/reagent_containers/food/snacks/grown/I in contents)
@@ -289,7 +289,7 @@
 		playsound(src, 'sound/machines/biogenerator_end.ogg', 40, 1)
 		update_icon()
 	else
-		to_chat(usr, "<span class='warning'>Error: No growns inside. Please insert growns.</span>")
+		to_chat(usr, "<span class='warning'>Ошибка: growns не растет. Пожалуйста, вставьте ростки.</span>")
 	return
 
 /obj/machinery/biogenerator/RefreshParts()

@@ -4,8 +4,8 @@
 #define ADIABATIC_EXPONENT 0.667 //Actually adiabatic exponent - 1.
 
 /obj/machinery/atmospherics/binary/circulator
-	name = "circulator"
-	desc = "A gas circulator turbine and heat exchanger."
+	name = "циркулятор"
+	desc = "Турбина с циркуляционным газом и теплообменник."
 	icon = 'icons/obj/power.dmi'
 	icon_state = "circ-unassembled"
 	anchored = 0
@@ -97,9 +97,9 @@
 	if(W.is_wrench())
 		playsound(src, W.usesound, 75, 1)
 		anchored = !anchored
-		user.visible_message("[user.name] [anchored ? "secures" : "unsecures"] the bolts holding [src.name] to the floor.", \
-					"You [anchored ? "secure" : "unsecure"] the bolts holding [src] to the floor.", \
-					"You hear a ratchet.")
+		user.visible_message("[user.name] [anchored ? "закрепляет" : "открепляет"] болты, удерживающие [src] на полу.", \
+					"Вы [anchored ? "закрепляете" : "открепляете"] болты, удерживающие [src] на полу.", \
+					"Вы слышите трещотку.")
 
 		if(anchored)
 			temperature_overlay = null
@@ -131,7 +131,7 @@
 		..()
 
 /obj/machinery/atmospherics/binary/circulator/verb/rotate_clockwise()
-	set name = "Rotate Circulator Clockwise"
+	set name = "Вращать Циркулятор По Часовой"
 	set category = "Object"
 	set src in view(1)
 
@@ -143,7 +143,7 @@
 
 
 /obj/machinery/atmospherics/binary/circulator/verb/rotate_counterclockwise()
-	set name = "Rotate Circulator Counterclockwise"
+	set name = "Вращать Циркулятор Против Часовой"
 	set category = "Object"
 	set src in view(1)
 

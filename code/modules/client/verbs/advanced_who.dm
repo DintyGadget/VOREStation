@@ -1,15 +1,15 @@
 
 /client/verb/who_advanced()
-	set name = "Advanced Who"
+	set name = "Кто Играет"
 	set category = "OOC"
 
-	var/msg = "<b>Current Players:</b>\n"
+	var/msg = "<meta charset=\"utf-8\"><b>Игроки на сервере:</b>\n"
 
 	var/list/Lines = list()
 
 	if(holder)
 		for(var/client/C in GLOB.clients)
-			var/entry = "<tr><td>[C.key]"
+			var/entry = "<meta charset=\"utf-8\"><tr><td>[C.key]"
 			if(C.holder && C.holder.fakekey)
 				entry += " <i>(as [C.holder.fakekey])</i>"
 
@@ -18,23 +18,23 @@
 			if(C.mob.real_name)
 				switch(C.mob.stat)
 					if(UNCONSCIOUS)
-						entry += "<span class='darkgray'><b>Unconscious</b></span>" // these are literally all spans so I can apply .inverted to them because black on dark grey isn't legible
+						entry += "<span class='darkgray'><b>Без сознания</b></span>" // these are literally all spans so I can apply .inverted to them because black on dark grey isn't legible
 
 					if(DEAD)
 						if(isobserver(C.mob))
 							var/mob/observer/dead/O = C.mob
 							if(O.started_as_observer)
-								entry += "<span class='gray'>Observing</span>"
+								entry += "<span class='gray'>Наблюдает</span>"
 							else
-								entry += "<span class='black'><b>Died</b></span>"
+								entry += "<span class='black'><b>Мёртв</b></span>"
 
 					else
-						entry += "<span class='green'>Playing</span>"
+						entry += "<span class='green'>Играет</span>"
 
 				entry += " as [C.mob.real_name]"
 
 			else if(isnewplayer(C.mob))
-				entry += "<span class='blue'><b>In lobby</b></span>"
+				entry += "<span class='blue'><b>В лобби</b></span>"
 
 			entry += "</td><td>"
 
@@ -56,15 +56,15 @@
 				if(C.mob?.mind?.special_role)
 					entry += "<b><span class='red'>[C.mob.mind.special_role]</span></b>"
 				else
-					entry += "<b><span class='red'>Antagonist</span></b>"
+					entry += "<b><span class='red'>Антагонист</span></b>"
 
 			entry += "</td><td>"
 
 			if(C.is_afk())
 				var/seconds = C.last_activity_seconds()
-				entry += " (AFK - "
-				entry += "[round(seconds / 60)] minutes, "
-				entry += "[seconds % 60] seconds)"
+				entry += " (АФК - "
+				entry += "[round(seconds / 60)] минут, "
+				entry += "[seconds % 60] секунд)"
 
 			entry += "</td><td>"
 			entry += " (<A HREF='?_src_=holder;adminmoreinfo=\ref[C.mob]'>?</A>)"
@@ -80,11 +80,11 @@
 				entry += "[C.key]"
 			var/mob/observer/dead/O = C.mob
 			if(isobserver(O))
-				entry += " - <span class='gray'>Observing</span><br>"
+				entry += " - <span class='gray'>Наблюдает</span><br>"
 			else if(istype(O,/mob/new_player))
-				entry += " - <span class='blue'>In Lobby</span><br>"
+				entry += " - <span class='blue'>В лобби</span><br>"
 			else
-				entry += " - <span class='green'>Playing</span><br>"
+				entry += " - <span class='green'>Играет</span><br>"
 
 			Lines += entry
 
@@ -92,6 +92,6 @@
 	for(var/line in sortList(Lines))
 		msg += "[line]"
 	msg += "</table>"
-	msg += "<b>Total Players: [length(Lines)]</b>"
+	msg += "<b>Всего игроков: [length(Lines)]</b>"
 	msg = "<span class='filter_info'>" + msg + "</span>"
 	to_chat(src, msg)

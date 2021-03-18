@@ -1,6 +1,6 @@
 /obj/item/weapon/storage/briefcase
-	name = "briefcase"
-	desc = "It's made of AUTHENTIC faux-leather and has a price-tag still attached. Its owner must be a real professional."
+	name = "чемодан"
+	desc = "Сделан из САМОЙ НАСТОЯЩЕЙ искусственной кожи, и на ручке всё ещё висит ценни. Владелец, должно быть, самый настоящий профессионал."
 	icon_state = "briefcase"
 	force = 8.0
 	throw_speed = 1
@@ -13,8 +13,8 @@
 	pickup_sound = 'sound/items/pickup/backpack.ogg'
 
 /obj/item/weapon/storage/briefcase/clutch
-	name = "clutch purse"
-	desc = "A fashionable handheld bag typically used by women."
+	name = "клатч"
+	desc = "Стильная женская сумочка."
 	icon_state = "clutch"
 	item_state_slots = list(slot_r_hand_str = "smpurse", slot_l_hand_str = "smpurse")
 	force = 0

@@ -180,7 +180,7 @@
 		if(I && !(I.status & ORGAN_CUT_AWAY) && I.parent_organ == target_zone)
 			attached_organs |= organ
 
-	var/organ_to_remove = input(user, "Which organ do you want to prepare for removal?") as null|anything in attached_organs
+	var/organ_to_remove = input(user, "Какой орган вы хотите подготовить к удалению?") as null|anything in attached_organs
 	if(!organ_to_remove)
 		return 0
 
@@ -241,7 +241,7 @@
 		if(istype(I) && (I.status & ORGAN_CUT_AWAY) && I.parent_organ == target_zone)
 			removable_organs |= organ
 
-	var/organ_to_remove = input(user, "Which organ do you want to remove?") as null|anything in removable_organs
+	var/organ_to_remove = input(user, "Какой орган вы хотите удалить?") as null|anything in removable_organs
 	if(!organ_to_remove)
 		return 0
 
@@ -297,11 +297,11 @@
 		return 0
 
 	if((affected.robotic >= ORGAN_ROBOT) && !(O.robotic >= ORGAN_ROBOT))
-		to_chat(user, "<span class='danger'>You cannot install a naked organ into a robotic body.</span>")
+		to_chat(user, "<span class='danger'>Вы не можете поместить обнаженный орган в тело робота.</span>")
 		return SURGERY_FAILURE
 
 	if(!target.species)
-		to_chat(user, "<span class='danger'>You have no idea what species this person is. Report this on the bug tracker.</span>")
+		to_chat(user, "<span class='danger'>Вы не представляете, к какой расе относится это. Сообщите об этом в системе отслеживания ошибок.</span>")
 		return SURGERY_FAILURE
 
 	var/o_is = (O.gender == PLURAL) ? "are" : "is"

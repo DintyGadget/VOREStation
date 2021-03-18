@@ -1,13 +1,13 @@
 /obj/item/weapon/storage/belt
-	name = "belt"
-	desc = "Can hold various things."
+	name = "Ремень"
+	desc = "Позволяет держать при себе разные вещи."
 	icon = 'icons/obj/clothing/belts.dmi'
 	icon_state = "utility"
 	storage_slots = 7
 	max_storage_space = ITEMSIZE_COST_NORMAL * 7 //This should ensure belts always have enough room to store whatever.
 	max_w_class = ITEMSIZE_NORMAL
 	slot_flags = SLOT_BELT
-	attack_verb = list("whipped", "lashed", "disciplined")
+	attack_verb = list("хлестает", "хлыщет", "наказывает")
 	equip_sound = 'sound/items/toolbelt_equip.ogg'
 	drop_sound = 'sound/items/drop/toolbelt.ogg'
 	pickup_sound = 'sound/items/pickup/toolbelt.ogg'
@@ -16,11 +16,11 @@
 	var/show_above_suit = 0
 
 /obj/item/weapon/storage/belt/verb/toggle_layer()
-	set name = "Switch Belt Layer"
+	set name = "Сменить Слой Ремня"
 	set category = "Object"
 
 	if(show_above_suit == -1)
-		to_chat(usr, "<span class='notice'>\The [src] cannot be worn above your suit!</span>")
+		to_chat(usr, "<span class='notice'>[capitalize(ru_getcase(src, "acase"))] нельзя носить поверх верхней одежды!</span>")
 		return
 	show_above_suit = !show_above_suit
 	update_icon()
@@ -41,8 +41,8 @@
 		M.update_inv_belt()
 
 /obj/item/weapon/storage/belt/utility
-	name = "tool-belt" //Carn: utility belt is nicer, but it bamboozles the text parsing.
-	desc = "Can hold various tools."
+	name = "Пояс для инструментов" //Carn: utility belt is nicer, but it bamboozles the text parsing.
+	desc = "Вмещает различные инструменты."
 	icon_state = "utility"
 	can_hold = list(
 		///obj/item/weapon/combitool,
@@ -93,8 +93,8 @@
 	)
 
 /obj/item/weapon/storage/belt/utility/chief
-	name = "chief engineer's toolbelt"
-	desc = "Holds tools, looks snazzy."
+	name = "Пояс Главного инженера"
+	desc = "Вмещает инструменты, выглядит шикарно."
 	icon_state = "utilitybelt_ce"
 	item_state = "utility_ce"
 
@@ -110,8 +110,8 @@
 	)
 
 /obj/item/weapon/storage/belt/medical
-	name = "medical belt"
-	desc = "Can hold various medical equipment."
+	name = "Пояс врача"
+	desc = "Вмещает различное медицинские принадлежности."
 	icon_state = "medical"
 	can_hold = list(
 		/obj/item/device/healthanalyzer,
@@ -143,13 +143,13 @@
 		)
 
 /obj/item/weapon/storage/belt/medical/emt
-	name = "EMT utility belt"
-	desc = "A sturdy black webbing belt with attached pouches."
+	name = "Пояс парамедика"
+	desc = "Прочный чёрный ремень с прикреплёнными карманами."
 	icon_state = "ems"
 
 /obj/item/weapon/storage/belt/security
-	name = "security belt"
-	desc = "Can hold security gear like handcuffs and flashes."
+	name = "Пояс службы безопасности"
+	desc = "Вмещает в себя защитное снаряжение, например, наручники или дубинки."
 	icon_state = "security"
 	max_w_class = ITEMSIZE_NORMAL
 	can_hold = list(
@@ -186,8 +186,8 @@
 		)
 
 /obj/item/weapon/storage/belt/detective
-	name = "forensic utility belt"
-	desc = "A belt for holding forensics equipment."
+	name = "Пояс криминалиста"
+	desc = "Ремень для хранения оборудования для криминалистики."
 	icon_state = "security"
 	storage_slots = 7
 	max_w_class = ITEMSIZE_NORMAL
@@ -229,8 +229,8 @@
 		)
 
 /obj/item/weapon/storage/belt/soulstone
-	name = "soul stone belt"
-	desc = "Designed for ease of access to the shards during a fight, as to not let a single enemy spirit slip away"
+	name = "Пояс камней души"
+	desc = "Предназначен для легкого доступа к осколкам во время боя, чтобы не дать ни одному духу противника ускользнуть."
 	icon_state = "soulstone"
 	storage_slots = 6
 	can_hold = list(
@@ -241,8 +241,8 @@
 	starts_with = list(/obj/item/device/soulstone = 6)
 
 /obj/item/weapon/storage/belt/utility/alien
-	name = "alien belt"
-	desc = "A belt(?) that can hold things."
+	name = "Инопланетный пояс"
+	desc = "Ремень (?), который может держать в себе предметы."
 	icon = 'icons/obj/abductor.dmi'
 	icon_state = "belt"
 	item_state = "security"
@@ -259,8 +259,8 @@
 	)
 
 /obj/item/weapon/storage/belt/medical/alien
-	name = "alien belt"
-	desc = "A belt(?) that can hold things."
+	name = "Инопланетный пояс"
+	desc = "Ремень (?), который может держать в себе предметы."
 	icon = 'icons/obj/abductor.dmi'
 	icon_state = "belt"
 	item_state = "security"
@@ -306,8 +306,8 @@
 	)
 
 /obj/item/weapon/storage/belt/champion
-	name = "championship belt"
-	desc = "Proves to the world that you are the strongest!"
+	name = "Пояс чемпиона"
+	desc = "Докажите миру, что Вы лучше всех!"
 	icon_state = "champion"
 	storage_slots = 1
 	can_hold = list(
@@ -315,21 +315,21 @@
 		)
 
 /obj/item/weapon/storage/belt/security/tactical
-	name = "combat belt"
-	desc = "Can hold security gear like handcuffs and flashes, with more pouches for more storage."
+	name = "Боевой пояс"
+	desc = "Вмещает в себя защитное снаряжение, например, наручники или дубинки. Имеет большое количество карманов для большего объема хранения."
 	icon_state = "swat"
 	storage_slots = 9
 	max_w_class = ITEMSIZE_NORMAL
 	max_storage_space = ITEMSIZE_COST_NORMAL * 7
 
 /obj/item/weapon/storage/belt/security/tactical/bandolier
-	name = "combat belt"
-	desc = "Can hold security gear like handcuffs and flashes, with more pouches for more storage."
+	name = "Боевой пояс"
+	desc = "Вмещает в себя защитное снаряжение, например, наручники или дубинки. Имеет большое количество карманов для большего объема хранения."
 	icon_state = "bandolier"
 
 /obj/item/weapon/storage/belt/janitor
-	name = "janitorial belt"
-	desc = "A belt used to hold most janitorial supplies."
+	name = "Пояс уборщика"
+	desc = "Пояс, используемый для хранения большинства принадлежностей для уборки."
 	icon_state = "janitor"
 	storage_slots = 7
 	max_w_class = ITEMSIZE_NORMAL
@@ -353,8 +353,8 @@
 		)
 
 /obj/item/weapon/storage/belt/archaeology
-	name = "excavation gear-belt"
-	desc = "Can hold various excavation gear."
+	name = "Археологический пояс"
+	desc = "Может содержать различное оборудование для проведения раскопок."
 	icon_state = "gear"
 	can_hold = list(
 		/obj/item/weapon/storage/box/samplebags,
@@ -386,8 +386,8 @@
 		)
 
 /obj/item/weapon/storage/belt/fannypack
-	name = "leather fannypack"
-	desc = "A dorky fannypack for keeping small items in."
+	name = "Кожаная поясная сумка"
+	desc = "Забавная поясная сумка для хранения мелких предметов."
 	icon_state = "fannypack_leather"
 	item_state = "fannypack_leather"
 	max_w_class = ITEMSIZE_SMALL
@@ -395,52 +395,52 @@
 	max_storage_space = ITEMSIZE_COST_NORMAL * 2
 
 /obj/item/weapon/storage/belt/fannypack/black
- 	name = "black fannypack"
+ 	name = "Чёрная поясная сумка"
  	icon_state = "fannypack_black"
  	item_state = "fannypack_black"
 
 /obj/item/weapon/storage/belt/fannypack/blue
- 	name = "blue fannypack"
+ 	name = "Синяя поясная сумка"
  	icon_state = "fannypack_blue"
  	item_state = "fannypack_blue"
 
 /obj/item/weapon/storage/belt/fannypack/cyan
- 	name = "cyan fannypack"
+ 	name = "Голубая поясная сумка"
  	icon_state = "fannypack_cyan"
  	item_state = "fannypack_cyan"
 
 /obj/item/weapon/storage/belt/fannypack/green
- 	name = "green fannypack"
+ 	name = "Зелёная поясная сумка"
  	icon_state = "fannypack_green"
  	item_state = "fannypack_green"
 
 /obj/item/weapon/storage/belt/fannypack/orange
- 	name = "orange fannypack"
+ 	name = "Оранжевая поясная сумка"
  	icon_state = "fannypack_orange"
  	item_state = "fannypack_orange"
 
 /obj/item/weapon/storage/belt/fannypack/purple
- 	name = "purple fannypack"
+ 	name = "Фиолетовая поясная сумка"
  	icon_state = "fannypack_purple"
  	item_state = "fannypack_purple"
 
 /obj/item/weapon/storage/belt/fannypack/red
- 	name = "red fannypack"
+ 	name = "Красная поясная сумка"
  	icon_state = "fannypack_red"
  	item_state = "fannypack_red"
 
 /obj/item/weapon/storage/belt/fannypack/white
- 	name = "white fannypack"
+ 	name = "Белая поясная сумка"
  	icon_state = "fannypack_white"
  	item_state = "fannypack_white"
 
 /obj/item/weapon/storage/belt/fannypack/yellow
- 	name = "yellow fannypack"
+ 	name = "Жёлтая поясная сумка"
  	icon_state = "fannypack_yellow"
  	item_state = "fannypack_yellow"
 
 /obj/item/weapon/storage/belt/ranger
-	name = "ranger belt"
-	desc = "The fancy utility-belt holding the tools, cuffs and gadgets of the Go Go ERT-Rangers. The belt buckle is not real phoron, but it is still surprisingly comfortable to wear."
+	name = "Пояс рейнджера"
+	desc = "Пафосный пояс для всевозможных гаджетов, наручников и инструментов, прям как у Go Go ERT-Рейнджеров. Пряжка не из настоящего форона, но в целом пояс удобный."
 	icon = 'icons/obj/clothing/ranger.dmi'
 	icon_state = "ranger_belt"

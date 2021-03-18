@@ -11,7 +11,7 @@
 
 /obj/item/weapon/melee
 	name = "weapon"
-	desc = "Murder device."
+	desc = "Устройство убийства."
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "baton"
 	slot_flags = SLOT_BELT
@@ -20,7 +20,7 @@
 
 /obj/item/weapon/melee/classic_baton
 	name = "police baton"
-	desc = "A wooden truncheon for beating criminal scum."
+	desc = "Деревянная дубинка для избиения преступной нечисти."
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "baton"
 	item_state = "classic_baton"
@@ -31,7 +31,7 @@
 
 /obj/item/weapon/melee/classic_baton/attack(mob/M as mob, mob/living/user as mob)
 	if ((CLUMSY in user.mutations) && prob(50))
-		to_chat(user, "<span class='warning'>You club yourself over the head.</span>")
+		to_chat(user, "<span class='warning'>Вы бьете себя по голове.</span>")
 		user.Weaken(3 * force)
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
@@ -44,7 +44,7 @@
 //Telescopic baton
 /obj/item/weapon/melee/telebaton
 	name = "telescopic baton"
-	desc = "A compact yet rebalanced personal defense weapon. Can be concealed when folded."
+	desc = "Компактное, но сбалансированное оружие индивидуальной защиты. В сложенном состоянии можно спрятать."
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "telebaton0"
 	item_state = "telebaton0"
@@ -58,18 +58,18 @@
 /obj/item/weapon/melee/telebaton/attack_self(mob/user as mob)
 	on = !on
 	if(on)
-		user.visible_message("<span class='warning'>With a flick of their wrist, [user] extends their telescopic baton.</span>",\
-		"<span class='warning'>You extend the baton.</span>",\
-		"You hear an ominous click.")
+		user.visible_message("<span class='warning'>Одним движением запястье, [user] вытаскивает телескопическую дубинку.</span>",\
+		"<span class='warning'>Вы вытягиваете дубинку.</span>",\
+		"Вы слышите зловещий щелчок.")
 		icon_state = "telebaton1"
 		item_state = icon_state
 		w_class = ITEMSIZE_NORMAL
 		force = 15//quite robust
 		attack_verb = list("smacked", "struck", "slapped")
 	else
-		user.visible_message("<span class='notice'>\The [user] collapses their telescopic baton.</span>",\
-		"<span class='notice'>You collapse the baton.</span>",\
-		"You hear a click.")
+		user.visible_message("<span class='notice'>[user] складывает телескопическую дубинку.</span>",\
+		"<span class='notice'>Вы опускаете дубинку.</span>",\
+		"Вы слышите щелчок.")
 		icon_state = "telebaton0"
 		item_state = icon_state
 		w_class = ITEMSIZE_SMALL
@@ -99,7 +99,7 @@
 /obj/item/weapon/melee/telebaton/attack(mob/target as mob, mob/living/user as mob)
 	if(on)
 		if ((CLUMSY in user.mutations) && prob(50))
-			to_chat(user, "<span class='warning'>You club yourself over the head.</span>")
+			to_chat(user, "<span class='warning'>Вы бьете себя по голове.</span>")
 			user.Weaken(3 * force)
 			if(ishuman(user))
 				var/mob/living/carbon/human/H = user

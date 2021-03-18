@@ -10,14 +10,14 @@
 	faction = "Station"
 	total_positions = -1
 	spawn_positions = -1
-	supervisors = "absolutely everyone"
+	supervisors = "всеми на станции"
 	selection_color = "#515151"
 	economic_modifier = 1
 	access = list()			//See /datum/job/assistant/get_access()
 	minimal_access = list()	//See /datum/job/assistant/get_access()
 
 	outfit_type = /decl/hierarchy/outfit/job/assistant
-	job_description = "An Assistant does whatever is requested of them. Though they are part of the crew, they have no real authority."
+	job_description = "Ассистент делает все, что от него требуется. Хотя он и является частью экипажа, у него нет реальной власти."
 /*	alt_titles = list("Technical Assistant" = /datum/alt_title/tech_assist,
 						"Medical Intern"= /datum/alt_title/med_intern, "Research Assistant" = /datum/alt_title/research_assist,
 						"Visitor" = /datum/alt_title/visitor)
@@ -37,23 +37,19 @@
 
 /datum/alt_title/med_intern
 	title = "Medical Intern"
-	title_blurb = "A Medical Intern attempts to provide whatever the Medical department needs. They are frequently asked to pay attention to \
-					the suit sensors console. A Medical Intern has no real authority."
+	title_blurb = "Врач-интерн пытается выполнять все, что нужно медицинскому отделу. Их часто просят обратить внимание на консоль датчиков \
+					костюмов. У медицинского Стажёра нет реальной власти."
 
 /datum/alt_title/research_assist
 	title = "Research Assistant"
-	title_blurb = "A Research Assistant attempts to assist anyone working in the Research department. They are expected to follow the instruction \
-					of proper Research staff, as it is frequently a matter of safety. A Research Assistant has no real authority."
+	title_blurb = "Научный Ассистент пытается помочь всем, кто работает в научном отделе. Ожидается, что они будут следовать указаниям научных сотрудников, поскольку это часто является вопросом безопасности. Научный Ассистент не имеет никакого реального авторитета."
 
 /datum/alt_title/visitor
 	title = "Visitor"
-	title_blurb = "A Visitor is anyone who has arrived on the station but does not have a specific job to do. Many off-duty crewmembers \
-					who care to make use of the station's facilities arrive as Visitors. Properly registered Vistors are considered \
-					to be part of the crew for most if not all purposes, but they have no real authority."
+	title_blurb = "Посетитель - это любой человек, который прибыл на станцию, но не имеет определенной работы. Многие свободные от дежурства члены экипажа, желающие воспользоваться услугами станции, прибывают в качестве посетителей. Должным образом зарегистрированные посетители считаются частью экипажа, но они не имеют никаких реальных полномочий."
 	title_outfit = /decl/hierarchy/outfit/job/assistant/visitor
 
 /datum/alt_title/resident		// Just in case it makes a comeback
 	title = "Resident"
-	title_blurb = "A Resident is an individual who resides on the station, frequently in a different part of the station than what is seen. \
-					They are considered to be part of the crew for most purposes, but have no real authority."
+	title_blurb = "Резидент - это человек, который живет на станции, часто в другой части станциb. Они считаются частью экипажа для большинства, но не имеют никакого реального авторитета."
 	title_outfit = /decl/hierarchy/outfit/job/assistant/resident

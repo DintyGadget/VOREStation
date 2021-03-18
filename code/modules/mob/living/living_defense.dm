@@ -31,13 +31,13 @@
 			if(absorb_text)
 				to_chat(src, "<span class='danger'>[absorb_text]</span>")
 			else
-				to_chat(src, "<span class='danger'>Your armor absorbs the blow!</span>")
+				to_chat(src, "<span class='danger'>Ваша броня поглощает удар!</span>")
 
 		else if(armor > 0)
 			if(soften_text)
 				to_chat(src, "<span class='danger'>[soften_text]</span>")
 			else
-				to_chat(src, "<span class='danger'>Your armor softens the blow!</span>")
+				to_chat(src, "<span class='danger'>Ваша броня смягчает удар!</span>")
 		if(Debug2)
 			to_world_log("## DEBUG: Armor when [src] was attacked was [armor].")
 	return armor
@@ -188,7 +188,7 @@
 	var/armor_pen = 0
 	var/armor_check = "melee"
 	var/damage_type = BRUTE
-	var/attack_message = "The blob attacks you!"
+	var/attack_message = "Блоб атакует вас!"
 	var/attack_verb = "attacks"
 	var/def_zone = pick(BP_HEAD, BP_TORSO, BP_GROIN, BP_L_ARM, BP_R_ARM, BP_L_LEG, BP_R_LEG)
 
@@ -277,7 +277,7 @@
 			visible_message("<font color='blue'>\The [O] misses [src] narrowly!</font>")
 			return
 
-		src.visible_message("<font color='red'>[src] has been hit by [O].</font>")
+		src.visible_message("<font color='red'>[src] ударил [O].</font>")
 		var/armor = run_armor_check(null, "melee")
 		var/soaked = get_armor_soak(null, "melee")
 
@@ -304,7 +304,7 @@
 		if(O.throw_source && momentum >= THROWNOBJ_KNOCKBACK_SPEED)
 			var/dir = get_dir(O.throw_source, src)
 
-			visible_message("<font color='red'>[src] staggers under the impact!</font>","<font color='red'>You stagger under the impact!</font>")
+			visible_message("<font color='red'>[src] шатается от удара!</font>","<font color='red'>Вы шатаетесь от удара!</font>")
 			src.throw_at(get_edge_target_turf(src,dir),1,momentum)
 
 			if(!O || !src) return
@@ -320,7 +320,7 @@
 
 				if(T)
 					src.loc = T
-					visible_message("<span class='warning'>[src] is pinned to the wall by [O]!</span>","<span class='warning'>You are pinned to the wall by [O]!</span>")
+					visible_message("<span class='warning'>[src] прижимает к стене [O]!</span>","<span class='warning'>[O] прижал вас к стене!</span>")
 					src.anchored = 1
 					src.pinned += O
 
@@ -470,7 +470,7 @@
 	stuttering += 20
 	make_jittery(150)
 	emp_act(1)
-	to_chat(src, span("critical", "You've been struck by lightning!"))
+	to_chat(src, span("critical", "Вас ударила молния!"))
 
 // Called when touching a lava tile.
 // Does roughly 100 damage to unprotected mobs, and 20 to fully protected mobs.

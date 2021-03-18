@@ -64,7 +64,7 @@
 
 /obj/item/weapon/storage/box/syndie_kit
 	name = "box"
-	desc = "A sleek, sturdy box"
+	desc = "Элегантная прочная коробка"
 	icon_state = "box_of_doom"
 
 /obj/item/weapon/storage/box/syndie_kit/imp_freedom
@@ -128,7 +128,7 @@
 
 /obj/item/weapon/storage/box/syndie_kit/imp_aug/sprinter
 	case_type = /obj/item/weapon/implantcase/sprinter
-	
+
 /obj/item/weapon/storage/box/syndie_kit/imp_aug/armblade
 	case_type = /obj/item/weapon/implantcase/armblade
 
@@ -146,7 +146,7 @@
 
 /obj/item/weapon/storage/box/syndie_kit/chameleon
 	name = "chameleon kit"
-	desc = "Comes with all the clothes you need to impersonate most people.  Acting lessons sold seperately."
+	desc = "Поставляется со всей одеждой, которая вам понадобится, чтобы выдать себя за большинство людей. Уроки актерского мастерства продаются отдельно."
 	starts_with = list(
 		/obj/item/weapon/storage/backpack/chameleon/full,
 		/obj/item/weapon/gun/energy/chameleon
@@ -154,7 +154,7 @@
 
 /obj/item/weapon/storage/box/syndie_kit/clerical
 	name = "clerical kit"
-	desc = "Comes with all you need to fake paperwork. Assumes you have passed basic writing lessons."
+	desc = "Поставляется со всем необходимым для фальшивых документов. Предполагается, что вы прошли базовые уроки письма."
 	starts_with = list(
 		/obj/item/weapon/stamp/chameleon,
 		/obj/item/weapon/pen/chameleon,
@@ -165,7 +165,7 @@
 
 /obj/item/weapon/storage/box/syndie_kit/spy
 	name = "spy kit"
-	desc = "For when you want to conduct voyeurism from afar."
+	desc = "Когда вы хотите провести вуайеризм издалека."
 	starts_with = list(
 		/obj/item/device/camerabug/spy = 6,
 		/obj/item/device/bug_monitor/spy
@@ -173,7 +173,7 @@
 
 /obj/item/weapon/storage/box/syndie_kit/g9mm
 	name = "\improper Smooth operator"
-	desc = "Compact 9mm with silencer kit."
+	desc = "Компактный 9 мм с комплектом глушителя."
 	starts_with = list(
 		/obj/item/weapon/gun/projectile/pistol,
 		/obj/item/weapon/silencer
@@ -181,7 +181,7 @@
 
 /obj/item/weapon/storage/box/syndie_kit/toxin
 	name = "toxin kit"
-	desc = "An apple will not be enough to keep the doctor away after this."
+	desc = "После этого одного яблока будет недостаточно, чтобы привести врача."
 	starts_with = list(
 		/obj/item/weapon/reagent_containers/glass/beaker/vial/random/toxin,
 		/obj/item/weapon/reagent_containers/syringe
@@ -189,7 +189,7 @@
 
 /obj/item/weapon/storage/box/syndie_kit/cigarette
 	name = "\improper Tricky smokes"
-	desc = "Comes with the following brands of cigarettes, in this order: 2xFlash, 2xSmoke, 1xMindBreaker, 1xTricordrazine. Avoid mixing them up."
+	desc = "Поставляется с сигаретами следующих марок в указанном порядке: 2xFlash, 2xSmoke, 1xMindBreaker, 1xTricordrazine. Не смешивайте их."
 
 /obj/item/weapon/storage/box/syndie_kit/cigarette/Initialize()
 	. = ..()
@@ -233,7 +233,7 @@
 
 /obj/item/weapon/storage/box/syndie_kit/ewar_voice
 	name = "Electrowarfare and Voice Synthesiser kit"
-	desc = "Kit for confounding organic and synthetic entities alike."
+	desc = "Набор для смешения как органических, так и синтетических сущностей."
 	starts_with = list(
 		/obj/item/rig_module/electrowarfare_suite,
 		/obj/item/rig_module/voice
@@ -241,12 +241,12 @@
 
 /obj/item/weapon/storage/secure/briefcase/money
 	name = "suspicious briefcase"
-	desc = "An ominous briefcase that has the unmistakeable smell of old, stale, cigarette smoke, and gives those who look at it a bad feeling."
+	desc = "Зловещий портфель, от которого безошибочно пахнет старым, затхлым сигаретным дымом и доставляет неприятные ощущения тем, кто на него смотрит."
 	starts_with = list(/obj/item/weapon/spacecash/c1000 = 10)
 
 /obj/item/weapon/storage/box/syndie_kit/combat_armor
 	name = "combat armor kit"
-	desc = "Contains a full set of combat armor."
+	desc = "Содержит полный комплект боевой брони."
 	starts_with = list(
 		/obj/item/clothing/head/helmet/combat,
 		/obj/item/clothing/suit/armor/combat,
@@ -323,9 +323,9 @@
 
 /obj/item/weapon/storage/secure/briefcase/fuelrod
 	name = "heavy briefcase"
-	desc = "A heavy, locked briefcase."
-	description_fluff = "The container, upon opening, looks to have a few oddly shaped indentations in its packing."
-	description_antag = "This case will likely contain a charged fuel rod gun, and a few fuel rods to go with it. It can only hold the fuel rod gun, fuel rods, batteries, a screwdriver, and stock machine parts."
+	desc = "Тяжелый закрытый портфель."
+	description_fluff = "При открытии контейнера кажется, что в упаковке есть несколько углублений странной формы."
+	description_antag = "В этом ящике, вероятно, будет заряженная пушка с топливными стержнями и несколько топливных стержней. В нем можно разместить только топливный стержень, топливные стержни, батареи, отвертку и стандартные детали машин."
 	force = 12 //Anti-rad lined i.e. Lead, probably gonna hurt a bit if you get bashed with it.
 	can_hold = list(/obj/item/weapon/gun/magnetic/fuelrod, /obj/item/weapon/fuel_assembly, /obj/item/weapon/cell, /obj/item/weapon/stock_parts, /obj/item/weapon/tool/screwdriver)
 	cant_hold = list(/obj/item/weapon/tool/screwdriver/power)

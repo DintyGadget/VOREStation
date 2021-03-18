@@ -22,7 +22,7 @@
 		qdel(target_spot)
 
 /datum/event/drone_pod_drop/announce()
-	command_announcement.Announce("An unidentified drone pod has been detected landing near the surface facilty. Open and examine at your own risk.", "NanoTrasen Orbital Monitoring")
+	command_announcement.Announce("Только что была обнаружена неопознанная беспилотная капсула, приземлившаяся вблизи надназемного объекта колонии. Открывайте и исследуйте ее на свой страх и риск.", "Орбитальный Мониторинг Nanotrasen")
 
 /datum/event/drone_pod_drop/start()
 	if(!land_target)

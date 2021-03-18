@@ -7,12 +7,12 @@ var/datum/antagonist/stowaway/stowaways
 	role_text_plural = "Stowaways"
 	bantype = "renegade"
 	avoid_silicons = TRUE // This was previously allowing cyborgs to be stowaways, but given that they would just connect to the AI, it didn't make much sense
-	welcome_text = "People are known to run from many things, or to many things, for many different reasons. You happen to be one of those people."
-	antag_text = "You are a <b>minor</b> antagonist! Within the server rules, do whatever it is \
-		that you came to the station to do. Espionage, thievery, or just running from the law are all examples. \
-		Try to make sure other players have <i>fun</i>! If you are confused or at a loss, always adminhelp, \
-		and before taking extreme actions, please try to also contact the administration! \
-		Think through your actions and make the roleplay immersive! <b>Please remember all \
-		rules aside from those with explicit exceptions apply to antagonists.</b>"
+	welcome_text = "Люди, как известно, бегут от многих вещей или ко многим вещам по многим различным причинам. Так уж случилось, что вы один из этих людей."
+	antag_text = "Вы <b>второстепенный</b> антагонист! В рамках правил сервера делайте то, для чего вы пришли на станцию. \
+		Шпионаж, воровство или просто бегство от закона - все это примеры. \
+		Постарайтесь, чтобы другие игроки тоже <i>развлекались от вашей игры</i>! Если вы запутались или растерялись, всегда обращайтесь за помощью к администратору, \
+		а прежде чем предпринимать крайние меры, попробуйте также связаться с администрацией! \
+		Продумайте свои действия и сделайте ролевую игру захватывающей! <b>Пожалуйста, помните, что все правила, \
+		кроме некоторых, без явных исключений, применяются к антагонистам.</b>"
 	flags = ANTAG_SUSPICIOUS | ANTAG_IMPLANT_IMMUNE | ANTAG_RANDSPAWN | ANTAG_VOTABLE
 	can_speak_aooc = FALSE

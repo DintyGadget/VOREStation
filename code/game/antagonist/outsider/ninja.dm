@@ -7,7 +7,7 @@ var/datum/antagonist/ninja/ninjas
 	role_text_plural = "Ninja"
 	bantype = "ninja"
 	landmark_id = "ninjastart"
-	welcome_text = "<span class='info'>You are an elite mercenary assassin of the Spider Clan. You have a variety of abilities at your disposal, thanks to your nano-enhanced cyber armor.</span>"
+	welcome_text = "<span class='info'>Вы элитный наемный убийца из клана Пауков. В вашем распоряжении множество способностей, благодаря вашей наноусиленной кибер-броне.</span>"
 	flags = ANTAG_OVERRIDE_JOB | ANTAG_CLEAR_EQUIPMENT | ANTAG_CHOOSE_NAME | ANTAG_RANDSPAWN | ANTAG_VOTABLE | ANTAG_SET_APPEARANCE
 	antaghud_indicator = "hudninja"
 
@@ -37,7 +37,7 @@ var/datum/antagonist/ninja/ninjas
 				var/datum/objective/assassinate/ninja_objective = new
 				ninja_objective.owner = ninja
 				ninja_objective.target = ninja_objective.find_target()
-				if(ninja_objective.target != "Free Objective")
+				if(ninja_objective.target != "Свободная цель")
 					ninja.objectives += ninja_objective
 				else
 					i++
@@ -51,7 +51,7 @@ var/datum/antagonist/ninja/ninjas
 				var/datum/objective/protect/ninja_objective = new
 				ninja_objective.owner = ninja
 				ninja_objective.target = ninja_objective.find_target()
-				if(ninja_objective.target != "Free Objective")
+				if(ninja_objective.target != "Свободная цель")
 					ninja.objectives += ninja_objective
 				else
 					i++
@@ -66,7 +66,7 @@ var/datum/antagonist/ninja/ninjas
 				var/datum/objective/harm/ninja_objective = new
 				ninja_objective.owner = ninja
 				ninja_objective.target = ninja_objective.find_target()
-				if(ninja_objective.target != "Free Objective")
+				if(ninja_objective.target != "Свободная цель")
 					ninja.objectives += ninja_objective
 				else
 					i++
@@ -85,8 +85,8 @@ var/datum/antagonist/ninja/ninjas
 	if(!..())
 		return 0
 	var/directive = generate_ninja_directive("heel")
-	player.store_memory("<B>Directive:</B> <span class='danger'>[directive]</span><br>")
-	to_chat(player, "<b>Remember your directive:</b> [directive].")
+	player.store_memory("<B>Директива:</B> <span class='danger'>[directive]</span><br>")
+	to_chat(player, "<b>Помните свою директиву:</b> [directive].")
 
 /datum/antagonist/ninja/update_antag_mob(var/datum/mind/player)
 	..()
@@ -126,48 +126,48 @@ var/datum/antagonist/ninja/ninjas
 		if(player.internal)
 			player.internals.icon_state = "internal1"
 		else
-			to_chat(player, "<span class='danger'>You forgot to turn on your internals! Quickly, toggle the valve!</span>")
+			to_chat(player, "<span class='danger'>Вы забыли включить свои внутренние устройства! Быстро переключай вентиль!</span>")
 
 /datum/antagonist/ninja/proc/generate_ninja_directive(side)
-	var/directive = "[side=="face"?"[using_map.company_name]":"A criminal syndicate"] is your employer. "//Let them know which side they're on.
+	var/directive = "[side=="face"?"[using_map.company_name]":"Преступный синдикат"] - ваш работодатель. "//Let them know which side they're on.
 	switch(rand(1,19))
 		if(1)
-			directive += "The Spider Clan must not be linked to this operation. Remain hidden and covert when possible."
+			directive += "Клан Паука не должен быть связан с этой операцией. По возможности оставайтесь скрытыми."
 		if(2)
-			directive += "[station_name()] is financed by an enemy of the Spider Clan. Cause as much structural damage as desired."
+			directive += "[station_name()] финансируется врагами клана пауков. Вызовите столько структурных повреждений, сколько нужно."
 		if(3)
-			directive += "A wealthy animal rights activist has made a request we cannot refuse. Prioritize saving animal lives whenever possible."
+			directive += "Богатый защитник прав животных обратился с просьбой, в которой мы не можем отказать. По возможности отдавайте приоритет спасению жизней животных."
 		if(4)
-			directive += "The Spider Clan absolutely cannot be linked to this operation. Eliminate witnesses at your discretion."
+			directive += "Клан Паука никак не может быть связан с этой операцией. Устраняйте свидетелей по своему усмотрению."
 		if(5)
-			directive += "We are currently negotiating with [using_map.company_name] [using_map.boss_name]. Prioritize saving human lives over ending them."
+			directive += "В настоящее время мы ведем переговоры с [using_map.company_name] [using_map.boss_name]. Ставьте приоритет в спасение человеческих жизней, а не их уничтожения."
 		if(6)
-			directive += "We are engaged in a legal dispute over [station_name()]. If a laywer is present on board, force their cooperation in the matter."
+			directive += "Мы вовлечены в судебный спор по поводу [station_name()]. Если на судне присутствует секретарь/адвокат, заставьте его сотрудничать в этом вопросе."
 		if(7)
-			directive += "A financial backer has made an offer we cannot refuse. Implicate criminal involvement in the operation."
+			directive += "Финансовый спонсор сделал предложение, от которого мы не можем отказаться. Вовлеките экипаж в преступное участие операции."
 		if(8)
-			directive += "Let no one question the mercy of the Spider Clan. Ensure the safety of all non-essential personnel you encounter."
+			directive += "Пусть никто не сомневается в милосердии клана пауков. Обеспечьте безопасность всего существенного персонала, с которым вы столкнетесь."
 		if(9)
-			directive += "A free agent has proposed a lucrative business deal. Implicate [using_map.company_name] involvement in the operation."
+			directive += "Свободный агент предложил выгодную коммерческую сделку. Сообщите об участии [using_map.company_name] в операции."
 		if(10)
-			directive += "Our reputation is on the line. Harm as few civilians and innocents as possible."
+			directive += "На кону наша репутация. Наносите вред как можно меньшему количеству мирных жителей и невинных людей."
 		if(11)
-			directive += "Our honor is on the line. Utilize only honorable tactics when dealing with opponents."
+			directive += "На кону наша честь. Используйте только благородную тактику при общении с противниками."
 		if(12)
-			directive += "We are currently negotiating with a mercenary leader. Disguise assassinations as suicide or other natural causes."
+			directive += "В настоящее время мы ведем переговоры с лидером наемников. Маскируйте убийства под самоубийство или другие естественные причины."
 		if(13)
-			directive += "Some disgruntled [using_map.company_name] employees have been supportive of our operations. Be wary of any mistreatment by command staff."
+			directive += "Некоторые недовольные сотрудники [using_map.company_name] поддерживали нашу деятельность. Остерегайтесь жестокого обращения со стороны командного состава."
 		if(14)
 			var/xenorace = pick(SPECIES_UNATHI, SPECIES_TAJ, SPECIES_SKRELL)
-			directive += "A group of [xenorace] radicals have been loyal supporters of the Spider Clan. Favor [xenorace] crew whenever possible."
+			directive += "Группа радикалов [xenorace] были верными сторонниками клана Паука. По возможности отдайте предпочтение команде [xenorace]."
 		if(15)
-			directive += "The Spider Clan has recently been accused of religious insensitivity. Attempt to speak with the Chaplain and prove these accusations false."
+			directive += "Клан Паука недавно был обвинен в нечувствительности к религии. Попытайтесь поговорить с священником и доказать ложность этих обвинений."
 		if(16)
-			directive += "The Spider Clan has been bargaining with a competing prosthetics manufacturer. Try to shine [using_map.company_name] prosthetics in a bad light."
+			directive += "Клан пауков ведет переговоры с конкурирующим производителем протезов. Попробуйте рассказать про протезы  [using_map.company_name] не в лучшем виде."
 		if(17)
-			directive += "The Spider Clan has recently begun recruiting outsiders. Consider suitable candidates and assess their behavior amongst the crew."
+			directive += "Клан Паука недавно начал вербовать посторонних. Рассмотрите подходящих кандидатов и оцените их поведение в команде."
 		if(18)
-			directive += "A cyborg liberation group has expressed interest in our serves. Prove the Spider Clan merciful towards law-bound synthetics."
+			directive += "Группа освобождения киборгов проявила интерес к нашим услугам. Докажите, что клан пауков милосерден по отношению к запрещенной законом синтетике."
 		else
-			directive += "There are no special supplemental instructions at this time."
+			directive += "В настоящее время нет никаких специальных дополнительных инструкций."
 	return directive

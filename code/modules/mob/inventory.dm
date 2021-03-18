@@ -56,7 +56,7 @@ var/list/slot_equipment_priority = list( \
 
 		else
 			if(!disable_warning)
-				to_chat(src, "<font color='red'>You are unable to equip that.</font>") //Only print if del_on_fail is false
+				to_chat(src, "<font color='red'>Вы не можете это надеть.</font>") //Only print if del_on_fail is false
 		return 0
 
 	equip_to_slot(W, slot, redraw_mob) //This proc should not ever fail.
@@ -75,7 +75,7 @@ var/list/slot_equipment_priority = list( \
 /mob/proc/equip_voidsuit_to_slot_or_del_with_refit(obj/item/clothing/suit/space/void/W as obj, slot, species = SPECIES_HUMAN)
 	W.refit_for_species(species)
 	return equip_to_slot_if_possible(W, slot, 1, 1, 0)
-	
+
 /mob/proc/equip_voidhelm_to_slot_or_del_with_refit(obj/item/clothing/head/helmet/space/void/W as obj, slot, species = SPECIES_HUMAN)
 	W.refit_for_species(species)
 	return equip_to_slot_if_possible(W, slot, 1, 1, 0)

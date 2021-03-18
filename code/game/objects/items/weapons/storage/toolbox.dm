@@ -96,14 +96,14 @@
 
 /obj/item/weapon/storage/toolbox/lunchbox
 	max_storage_space = ITEMSIZE_COST_SMALL * 4 //slightly smaller than a toolbox
-	name = "rainbow lunchbox"
+	name = "радужный ланчбокс"
 	icon_state = "lunchbox_rainbow"
 	item_state_slots = list(slot_r_hand_str = "toolbox_pink", slot_l_hand_str = "toolbox_pink")
-	desc = "A little lunchbox. This one is the colors of the rainbow!"
+	desc = "Небольшой ланчбокс. Этот ланчбокс раскрашен во все цвета радуги!"
 	w_class = ITEMSIZE_NORMAL
 	max_w_class = ITEMSIZE_SMALL
 	var/filled = FALSE
-	attack_verb = list("lunched")
+	attack_verb = list("ланчбоксит")
 
 /obj/item/weapon/storage/toolbox/lunchbox/Initialize()
 	if(filled)
@@ -124,64 +124,64 @@
 	filled = TRUE
 
 /obj/item/weapon/storage/toolbox/lunchbox/heart
-	name = "heart lunchbox"
+	name = "ланчбокс с сердечком"
 	icon_state = "lunchbox_lovelyhearts"
 	item_state_slots = list(slot_r_hand_str = "toolbox_pink", slot_l_hand_str = "toolbox_pink")
-	desc = "A little lunchbox. This one has cute little hearts on it!"
+	desc = "Небольшой ланчбокс. На этом ланчбоксе маленькие сердечки!"
 
 /obj/item/weapon/storage/toolbox/lunchbox/heart/filled
 	filled = TRUE
 
 /obj/item/weapon/storage/toolbox/lunchbox/cat
-	name = "cat lunchbox"
+	name = "ланчбокс с котиком"
 	icon_state = "lunchbox_sciencecatshow"
 	item_state_slots = list(slot_r_hand_str = "toolbox_green", slot_l_hand_str = "toolbox_green")
-	desc = "A little lunchbox. This one has a cute little science cat from a popular show on it!"
+	desc = "Небольшой ланчбокс. На этом ланчбоксе нарисован кот-учёный из одного сериала!"
 
 /obj/item/weapon/storage/toolbox/lunchbox/cat/filled
 	filled = TRUE
 
 /obj/item/weapon/storage/toolbox/lunchbox/nt
-	name = "NanoTrasen brand lunchbox"
+	name = "ланчбокс NanoTrasen"
 	icon_state = "lunchbox_nanotrasen"
 	item_state_slots = list(slot_r_hand_str = "toolbox_blue", slot_l_hand_str = "toolbox_blue")
-	desc = "A little lunchbox. This one is branded with the NanoTrasen logo!"
+	desc = "Небольшой ланчбокс. На этом ланчбоксе логотип NanoTrasen!"
 
 /obj/item/weapon/storage/toolbox/lunchbox/nt/filled
 	filled = TRUE
 
 /obj/item/weapon/storage/toolbox/lunchbox/mars
-	name = "\improper Mojave university lunchbox"
+	name = "ланчбокс университета Mojave"
 	icon_state = "lunchbox_marsuniversity"
 	item_state_slots = list(slot_r_hand_str = "toolbox_red", slot_l_hand_str = "toolbox_red")
-	desc = "A little lunchbox. This one is branded with the Mojave university logo!"
+	desc = "Небольшой ланчбокс. На нём логотип университета Mojave!"
 
 /obj/item/weapon/storage/toolbox/lunchbox/mars/filled
 	filled = TRUE
 
 /obj/item/weapon/storage/toolbox/lunchbox/cti
-	name = "\improper CTI lunchbox"
+	name = "ланчбокс CTI"
 	icon_state = "lunchbox_cti"
 	item_state_slots = list(slot_r_hand_str = "toolbox_blue", slot_l_hand_str = "toolbox_blue")
-	desc = "A little lunchbox. This one is branded with the CTI logo!"
+	desc = "Небольшой ланчбокс. На нём логотип CTI!"
 
 /obj/item/weapon/storage/toolbox/lunchbox/cti/filled
 	filled = TRUE
 
 /obj/item/weapon/storage/toolbox/lunchbox/nymph
-	name = "\improper Diona nymph lunchbox"
+	name = "ланчбокс с дионой"
 	icon_state = "lunchbox_dionanymph"
 	item_state_slots = list(slot_r_hand_str = "toolbox_yellow", slot_l_hand_str = "toolbox_yellow")
-	desc = "A little lunchbox. This one is an adorable Diona nymph on the side!"
+	desc = "Небольшой ланчбокс. На нём изображена милая диона!"
 
 /obj/item/weapon/storage/toolbox/lunchbox/nymph/filled
 	filled = TRUE
 
 /obj/item/weapon/storage/toolbox/lunchbox/syndicate
-	name = "black and red lunchbox"
+	name = "черно-красный ланчбокс"
 	icon_state = "lunchbox_syndie"
 	item_state_slots = list(slot_r_hand_str = "toolbox_syndi", slot_l_hand_str = "toolbox_syndi")
-	desc = "A little lunchbox. This one is a sleek black and red, made of a durable steel!"
+	desc = "Небольшой ланчбокс. Этот ланчбокс глянцевого черно-красного цвета и изготовлен из прочной стали!"
 
 /obj/item/weapon/storage/toolbox/lunchbox/syndicate/filled
 	filled = TRUE

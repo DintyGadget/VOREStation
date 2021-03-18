@@ -52,7 +52,7 @@
 	//Pyogenic Abscess
 	if (. >= 1)
 		if(prob(1))
-			owner.custom_pain("There's a sharp pain in your upper-right abdomen!",1)
+			owner.custom_pain("Резкая боль возникает в правом верхнем углу живота!",1)
 	if (. >= 2)
 		if(prob(1) && owner.getToxLoss() < owner.getMaxHealth()*0.3)
 			//to_chat(owner, "") //Toxins provide their own messages for pain

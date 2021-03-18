@@ -1,7 +1,7 @@
 //These bone objects are mostly for mapping and decoration. They have no actual medical use, so maybe don't try to put them in anybody.
 /obj/item/weapon/bone
 	name = "bone"
-	desc = "A non-descript bone. It's so old and worn you can barely tell which part of the body it's from."
+	desc = "Неописуемая кость. Она такая старая и изношенная, что едва ли можно сказать, из какой части тела она сделана."
 	icon = 'icons/obj/bones.dmi'
 	icon_state = "bone"
 	force = 5
@@ -12,35 +12,35 @@
 
 /obj/item/weapon/bone/skull
 	name = "skull"
-	desc = "A skull. Judging by the shape and size, you'd guess that it might be human."
+	desc = "Череп. Судя по форме и размеру, можно было предположить, что это человек."
 	icon_state = "skull"
 	throwforce = 7
 
 /obj/item/weapon/bone/skull/tajaran
-	desc = "A skull. Judging by the shape and size, you'd guess that it might be tajaran."
+	desc = "Череп. Судя по форме и размеру, можно было предположить, что это таяра."
 	icon_state = "tajskull"
 
 /obj/item/weapon/bone/skull/unathi
-	desc = "A skull. Judging by the shape and size, you'd guess that it might be unathi."
+	desc = "Череп. Судя по форме и размеру, можно было предположить, что это унати."
 	icon_state = "unaskull"
 
 /obj/item/weapon/bone/skull/unknown
-	desc = "A skull. You're not sure what species it might be, though."
+	desc = "Череп. Однако вы не уверены, что это за вид."
 	icon_state = "xenoskull"
 
 /obj/item/weapon/bone/arm
 	name = "arm bone"
-	desc = "Wielding this, you're armed and dangerous, no bones about it."
+	desc = "Вооружившись этим, вы вооружены и опасны, без всяких сомнений."
 	attack_verb = list("attacked", "bashed", "battered", "bludgeoned", "whacked", "bonked", "boned", "slapped", "punched")
 	icon_state = "arm"
 
 /obj/item/weapon/bone/leg
 	name = "leg bone"
-	desc = "Don't worry about getting into an argument with the owner of this. They don't have a leg to stand on."
+	desc = "Не беспокойтесь о том, чтобы спорить с владельцем этого. У них нет ноги, на которой можно стоять."
 	attack_verb = list("attacked", "bashed", "battered", "bludgeoned", "whacked", "bonked", "boned", "kicked")
 	icon_state = "leg"
 
 /obj/item/weapon/bone/ribs
 	name = "ribcage"
-	desc = "If you had some mallets, you could probably use this as a makeshift xylophone."
+	desc = "Если бы у вас были молотки, вы, вероятно, могли бы использовать их как импровизированный ксилофон."
 	icon_state = "ribs"

@@ -18,22 +18,22 @@
 	var/autohiss_mode = AUTOHISS_OFF
 
 /client/verb/toggle_autohiss()
-	set name = "Toggle Auto-Hiss"
+	set name = "Переключить Авто-Шипение"
 	set desc = "Toggle automatic hissing as Unathi and r-rolling as Taj"
 	set category = "OOC"
 
 	autohiss_mode = (autohiss_mode + 1) % AUTOHISS_NUM
 	switch(autohiss_mode)
 		if(AUTOHISS_OFF)
-			to_chat(src, "Auto-hiss is now OFF.")
+			to_chat(src, "Авто-шипение ВЫКЛЮЧЕНО.")
 		if(AUTOHISS_BASIC)
-			to_chat(src, "Auto-hiss is now BASIC.")
+			to_chat(src, "Авто-шипение СЛАБОЕ.")
 		if(AUTOHISS_FULL)
-			to_chat(src, "Auto-hiss is now FULL.")
+			to_chat(src, "Авто-шипение ПОЛНОЕ")
 		else
 			soft_assert(0, "invalid autohiss value [autohiss_mode]")
 			autohiss_mode = AUTOHISS_OFF
-			to_chat(src, "Auto-hiss is now OFF.")
+			to_chat(src, "Авто-шипение ВЫКЛЮЧЕНО.")
 
 /datum/species
 	var/list/autohiss_basic_map = null
@@ -42,16 +42,16 @@
 
 /datum/species/unathi
 	autohiss_basic_map = list(
-			"s" = list("ss", "sss", "ssss")
+			"с" = list("сс", "ссс", "сссс")
 		)
 	autohiss_extra_map = list(
-			"x" = list("ks", "kss", "ksss")
+			"ш" = list("шш", "шщщ", "щщ")
 		)
 	autohiss_exempt = list(LANGUAGE_UNATHI)
 
 /datum/species/tajaran
 	autohiss_basic_map = list(
-			"r" = list("rr", "rrr", "rrrr")
+			"р" = list("рр", "ррр", "рррр")
 		)
 	autohiss_exempt = list(LANGUAGE_SIIK,LANGUAGE_AKHANI)
 
@@ -83,8 +83,8 @@
 		if(!min_char) // we didn't find any of the mapping characters
 			. += message
 			break
-		. += copytext(message, 1, min_index)
-		if(copytext(message, min_index, min_index+1) == uppertext(min_char))
+		. += copytext_char(message, 1, min_index)
+		if(copytext_char(message, min_index, min_index+1) == uppertext(min_char))
 			switch(text2ascii(message, min_index+1))
 				if(65 to 90) // A-Z, uppercase; uppercase R/S followed by another uppercase letter, uppercase the entire replacement string
 					. += uppertext(pick(map[min_char]))
@@ -92,7 +92,7 @@
 					. += capitalize(pick(map[min_char]))
 		else
 			. += pick(map[min_char])
-		message = copytext(message, min_index + 1)
+		message = copytext_char(message, min_index + 1)
 
 	return jointext(., null)
 

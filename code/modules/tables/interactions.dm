@@ -40,10 +40,10 @@
 		if(prob(chance))
 			health -= P.damage/2
 			if (health > 0)
-				visible_message("<span class='warning'>[P] hits \the [src]!</span>")
+				visible_message("<span class='warning'>[P] бьет [src]!</span>")
 				return 0
 			else
-				visible_message("<span class='warning'>[src] breaks down!</span>")
+				visible_message("<span class='warning'>[src] не работает!</span>")
 				break_to_parts()
 				return 1
 	return 1
@@ -102,7 +102,7 @@
 							if(prob(2))
 								M.embed(S, def_zone = BP_HEAD)
 				else
-					to_chat(user, "<span class='danger'>You need a better grip to do that!</span>")
+					to_chat(user, "<span class='danger'>Для этого вам нужен захват!</span>")
 					return
 			else if(G.state > GRAB_AGGRESSIVE || world.time >= (G.last_action + UPGRADE_COOLDOWN))
 				M.forceMove(get_turf(src))

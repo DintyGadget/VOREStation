@@ -36,10 +36,10 @@
 	//Pyelonephritis
 	if (. >= 1)
 		if(prob(1))
-			owner.custom_pain("There's a stabbing pain in your lower back!",1)
+			owner.custom_pain("В пояснице возникла колющая боль!",1)
 	if (. >= 2)
 		if(prob(1))
-			owner.custom_pain("You feel extremely tired, like you can't move!",1)
+			owner.custom_pain("Вы очень устали, как будто не можете пошевелиться!",1)
 			owner.m_intent = "walk"
 			owner.hud_used.move_intent.icon_state = "walking"
 

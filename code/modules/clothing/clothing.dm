@@ -95,7 +95,7 @@
 					wearable = 1
 
 			if(!wearable && !(slot in list(slot_l_store, slot_r_store, slot_s_store)))
-				to_chat(H, "<span class='danger'>Your species cannot wear [src].</span>")
+				to_chat(H, "<span class='danger'>Ваша раса не может носить [ru_getcase(src, "acase")].</span>")
 				return 0
 	return 1
 
@@ -183,7 +183,7 @@
 	if(usr.stat || usr.restrained() || usr.incapacitated())
 		return
 
-	var/new_color = input(usr, "Pick a new color", "Color", color) as color|null
+	var/new_color = input(usr, "Выберите новый цвет", "Цвет", color) as color|null
 
 	if(new_color && (new_color != color))
 		color = new_color
@@ -326,7 +326,7 @@
 	var/punch_damtype = BRUTE	//What type of damage does this make fists be?
 	body_parts_covered = HANDS
 	slot_flags = SLOT_GLOVES
-	attack_verb = list("challenged")
+	attack_verb = list("вызывает на дуэль")
 	sprite_sheets = list(
 		SPECIES_TESHARI = 'icons/mob/species/seromi/gloves.dmi',
 		SPECIES_VOX = 'icons/mob/species/vox/gloves.dmi'
@@ -385,13 +385,13 @@
 		if(istype(G))
 			ring = H.gloves
 			if(ring.glove_level >= src.glove_level)
-				to_chat(user, "You are unable to wear \the [src] as \the [H.gloves] are in the way.")
+				to_chat(user, "Вы не можете надеть [ru_getcase(src, "acase")], так как Вы уже в [ru_getcase(H.gloves, "pcase")].")
 				ring = null
 				return 0
 			else
 				H.drop_from_inventory(ring)	//Remove the ring (or other under-glove item in the hand slot?) so you can put on the gloves.
 				ring.forceMove(src)
-				to_chat(user, "You slip \the [src] on over \the [src.ring].")
+				to_chat(user, "Вы надеваете [ru_getcase(src, "acase")] поверх кольца.")
 				if(!(flags & THICKMATERIAL))
 					punch_force += ring.punch_force
 		else
@@ -479,10 +479,10 @@
 /obj/item/clothing/head/attack_self(mob/user)
 	if(brightness_on)
 		if(!isturf(user.loc))
-			to_chat(user, "You cannot turn the light on while in this [user.loc]")
+			to_chat(user, "Вы не можете включить фонарик, находясь в [user.loc].")
 			return
 		on = !on
-		to_chat(user, "You [on ? "enable" : "disable"] the helmet light.")
+		to_chat(user, "Вы [on ? "включаете" : "выключаете"] фонарик на голове.")
 		update_flashlight(user)
 	else
 		return ..(user)
@@ -527,9 +527,9 @@
 	if(!success)
 		return 0
 	else if(success == 2)
-		to_chat(user, "<span class='warning'>You are already wearing a hat.</span>")
+		to_chat(user, "<span class='warning'>На Вас уже есть головной убор.</span>")
 	else if(success == 1)
-		to_chat(user, "<span class='notice'>You crawl under \the [src].</span>")
+		to_chat(user, "<span class='notice'>Вы забираетесь под [ru_getcase(src, "acase")].</span>")
 	return 1
 
 /obj/item/clothing/head/update_icon(var/mob/user)
@@ -606,7 +606,7 @@
 		slot_l_hand_str = 'icons/mob/items/lefthand_shoes.dmi',
 		slot_r_hand_str = 'icons/mob/items/righthand_shoes.dmi',
 		)
-	desc = "Comfortable-looking shoes."
+	desc = "Удобная на вид обувь."
 	gender = PLURAL //Carn: for grammarically correct text-parsing
 	siemens_coefficient = 0.9
 	body_parts_covered = FEET
@@ -637,8 +637,8 @@
 	pickup_sound = 'sound/items/pickup/shoes.ogg'
 
 /obj/item/clothing/shoes/proc/draw_knife()
-	set name = "Draw Boot Knife"
-	set desc = "Pull out your boot knife."
+	set name = "Вытащить Нож из Ботинка"
+	set desc = "Вытащить из Вашего ботинка нож."
 	set category = "IC"
 	set src in usr
 
@@ -653,7 +653,7 @@
 		holding = null
 		overlays -= image(icon, "[icon_state]_knife")
 	else
-		to_chat(usr, "<span class='warning'>Your need an empty, unbroken hand to do that.</span>")
+		to_chat(usr, "<span class='warning'>Для этого необходима пустая (и целая) рука.</span>")
 		holding.forceMove(src)
 
 	if(!holding)
@@ -674,23 +674,23 @@
 	 istype(I, /obj/item/weapon/material/kitchen/utensil) || \
 	 istype(I, /obj/item/weapon/material/knife/tacknife)))
 		if(holding)
-			to_chat(user, "<span class='warning'>\The [src] is already holding \a [holding].</span>")
+			to_chat(user, "<span class='warning'>В [ru_getcase(src, "pcase")] уже есть [ru_getcase(holding, "acase")].</span>")
 			return
 		user.unEquip(I)
 		I.forceMove(src)
 		holding = I
-		user.visible_message("<span class='notice'>\The [user] shoves \the [I] into \the [src].</span>")
+		user.visible_message("<span class='notice'>[user] вставляет [ru_getcase(I, "acase")] в [ru_getcase(src, "acase")].</span>")
 		verbs |= /obj/item/clothing/shoes/proc/draw_knife
 		update_icon()
 	else
 		return ..()
 
 /obj/item/clothing/shoes/verb/toggle_layer()
-	set name = "Switch Shoe Layer"
+	set name = "Сменить Слой Обуви"
 	set category = "Object"
 
 	if(shoes_under_pants == -1)
-		to_chat(usr, "<span class='notice'>\The [src] cannot be worn above your suit!</span>")
+		to_chat(usr, "<span class='notice'>[capitalize(src.ncase)] нельзя носить поверх Вашего костюма!</span>")
 		return
 	shoes_under_pants = !shoes_under_pants
 	update_icon()
@@ -980,55 +980,55 @@
 	. = ..()
 	switch(src.sensor_mode)
 		if(0)
-			. += "Its sensors appear to be disabled."
+			. += "Датчик, кажется, отключён."
 		if(1)
-			. += "Its binary life sensors appear to be enabled."
+			. += "Бинарный датчик здоровья, кажется, включен."
 		if(2)
-			. += "Its vital tracker appears to be enabled."
+			. += "Датчики жизненно важных органов, кажется, включены."
 		if(3)
-			. += "Its vital tracker and tracking beacon appear to be enabled."
+			. += "Датчики органов и маячок отслеживания, кажется, включены."
 
 /obj/item/clothing/under/proc/set_sensors(mob/usr as mob)
 	var/mob/M = usr
 	if (istype(M, /mob/observer)) return
 	if (usr.stat || usr.restrained()) return
 	if(has_sensor >= 2)
-		to_chat(usr, "The controls are locked.")
+		to_chat(usr, "Управление заблокировано.")
 		return 0
 	if(has_sensor <= 0)
-		to_chat(usr, "This suit does not have any sensors.")
+		to_chat(usr, "В этом костюме не встроены датчики.")
 		return 0
 
-	var/list/modes = list("Off", "Binary sensors", "Vitals tracker", "Tracking beacon")
-	var/switchMode = input("Select a sensor mode:", "Suit Sensor Mode", modes[sensor_mode + 1]) in modes
+	var/list/modes = list("Отключен", "Бинарный датчик", "Датчики органов", "Маячок отслеживания")
+	var/switchMode = input("Выберите режим датчиков:", "Режим Датчиков Костюма", modes[sensor_mode + 1]) in modes
 	if(get_dist(usr, src) > 1)
-		to_chat(usr, "You have moved too far away.")
+		to_chat(usr, "Вы отошли слишком далеко.")
 		return
 	sensor_mode = modes.Find(switchMode) - 1
 
 	if (src.loc == usr)
 		switch(sensor_mode)
 			if(0)
-				usr.visible_message("[usr] adjusts their sensors.", "You disable your suit's remote sensing equipment.")
+				usr.visible_message("[usr] регулирует датчики.", "Вы отключаете датчики на своём костюме.")
 			if(1)
-				usr.visible_message("[usr] adjusts their sensors.", "Your suit will now report whether you are live or dead.")
+				usr.visible_message("[usr] регулирует датчики.", "Ваш костюм теперь отслеживает, живы Вы или нет.")
 			if(2)
-				usr.visible_message("[usr] adjusts their sensors.", "Your suit will now report your vital lifesigns.")
+				usr.visible_message("[usr] регулирует датчики.", "Ваш костюм теперь докладывает о Ваших жизненно важных органах.")
 			if(3)
-				usr.visible_message("[usr] adjusts their sensors.", "Your suit will now report your vital lifesigns as well as your coordinate position.")
+				usr.visible_message("[usr] регулирует датчики.", "Ваш костюм теперь докладывает о Вашем состоянии и местонахождении.")
 
 	else if (istype(src.loc, /mob))
-		usr.visible_message("[usr] adjusts [src.loc]'s sensors.", "You adjust [src.loc]'s sensors.")
+		usr.visible_message("[usr] регулирует датчики [src.loc].", "Вы отрегулировали датчик [src.loc].")
 
 /obj/item/clothing/under/verb/toggle()
-	set name = "Toggle Suit Sensors"
+	set name = "Переключить Датчики"
 	set category = "Object"
 	set src in usr
 	set_sensors(usr)
 	..()
 
 /obj/item/clothing/under/verb/rollsuit()
-	set name = "Roll Down Jumpsuit"
+	set name = "Спустить Рукава"
 	set category = "Object"
 	set src in usr
 	if(!istype(usr, /mob/living)) return
@@ -1036,7 +1036,7 @@
 
 	update_rolldown_status()
 	if(rolled_down == -1)
-		to_chat(usr, "<span class='notice'>You cannot roll down [src]!</span>")
+		to_chat(usr, "<span class='notice'>Вы не можете опустить рукава [ru_getcase(src, "gcase")]]!</span>")
 		return
 	if((rolled_sleeves == 1) && !(rolled_down))
 		rolled_sleeves = 0
@@ -1051,17 +1051,17 @@
 		else
 			item_state_slots[slot_w_uniform_str] = "[worn_state]_d"
 
-		to_chat(usr, "<span class='notice'>You roll down your [src].</span>")
+		to_chat(usr, "<span class='notice'>Вы опустили рукава [ru_getcase(src, "gcase")]].</span>")
 	else
 		body_parts_covered = initial(body_parts_covered)
 		if(icon_override == rolled_down_icon)
 			icon_override = initial(icon_override)
 		item_state_slots[slot_w_uniform_str] = "[worn_state]"
-		to_chat(usr, "<span class='notice'>You roll up your [src].</span>")
+		to_chat(usr, "<span class='notice'>Вы закатили рукава [ru_getcase(src, "gcase")]].</span>")
 	update_clothing_icon()
 
 /obj/item/clothing/under/verb/rollsleeves()
-	set name = "Roll Up Sleeves"
+	set name = "Закатать Рукава"
 	set category = "Object"
 	set src in usr
 	if(!istype(usr, /mob/living)) return
@@ -1069,10 +1069,10 @@
 
 	update_rollsleeves_status()
 	if(rolled_sleeves == -1)
-		to_chat(usr, "<span class='notice'>You cannot roll up your [src]'s sleeves!</span>")
+		to_chat(usr, "<span class='notice'>Вы не можете закатить рукава [ru_getcase(src, "gcase")]]!</span>")
 		return
 	if(rolled_down == 1)
-		to_chat(usr, "<span class='notice'>You must roll up your [src] first!</span>")
+		to_chat(usr, "<span class='notice'>Нужно сначала закатить рукава [ru_getcase(src, "gcase")]]!</span>")
 		return
 
 	rolled_sleeves = !rolled_sleeves
@@ -1083,13 +1083,13 @@
 			item_state_slots[slot_w_uniform_str] = "[worn_state]"
 		else
 			item_state_slots[slot_w_uniform_str] = "[worn_state]_r"
-		to_chat(usr, "<span class='notice'>You roll up your [src]'s sleeves.</span>")
+		to_chat(usr, "<span class='notice'>Вы закатили рукава [ru_getcase(src, "gcase")]].</span>")
 	else
 		body_parts_covered = initial(body_parts_covered)
 		if(icon_override == rolled_down_sleeves_icon)
 			icon_override = initial(icon_override)
 		item_state_slots[slot_w_uniform_str] = "[worn_state]"
-		to_chat(usr, "<span class='notice'>You roll down your [src]'s sleeves.</span>")
+		to_chat(usr, "<span class='notice'>Вы опустили рукава [ru_getcase(src, "gcase")]].</span>")
 	update_clothing_icon()
 
 /obj/item/clothing/under/rank/New()

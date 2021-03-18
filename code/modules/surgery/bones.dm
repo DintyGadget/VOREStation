@@ -31,21 +31,21 @@
 /datum/surgery_step/glue_bone/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	if (affected.stage == 0)
-		user.visible_message("<span class='notice'>[user] starts applying medication to the damaged bones in [target]'s [affected.name] with \the [tool].</span>" , \
-		"<span class='notice'>You start applying medication to the damaged bones in [target]'s [affected.name] with \the [tool].</span>")
-	target.custom_pain("Something in your [affected.name] is causing you a lot of pain!", 50)
+		user.visible_message("<span class='notice'>[user] начинает применять лекарство к поврежденным костям в [affected.name] [target] с помощью [tool].</span>" , \
+		"<span class='notice'>Вы начинаете наносить лекарство на поврежденные кости в [affected.name] [target] с помощью [tool].</span>")
+	target.custom_pain("Что-то в [affected.name] причиняет вам много боли!", 50)
 	..()
 
 /datum/surgery_step/glue_bone/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("<span class='notice'>[user] applies some [tool] to [target]'s bone in [affected.name]</span>", \
-		"<span class='notice'>You apply some [tool] to [target]'s bone in [affected.name] with \the [tool].</span>")
+	user.visible_message("<span class='notice'>[user] применяет [tool] к кости [target] в [affected.name]</span>", \
+		"<span class='notice'>Вы применяете [tool] к костям [target] в [affected.name] с помощью [tool].</span>")
 	affected.stage = 1
 
 /datum/surgery_step/glue_bone/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("<span class='danger'>[user]'s hand slips, smearing [tool] in the incision in [target]'s [affected.name]!</span>" , \
-	"<span class='danger'>Your hand slips, smearing [tool] in the incision in [target]'s [affected.name]!</span>")
+	user.visible_message("<span class='danger'>Рука [user] соскальзывает, размазывая [tool] в надрезе [affected.name] [target]!</span>" , \
+	"<span class='danger'>Ваша рука с [tool] соскальзывает в разрезе [affected.name] [target]!</span>")
 
 ///////////////////////////////////////////////////////////////
 // Bone Setting Surgery
@@ -71,9 +71,9 @@
 
 /datum/surgery_step/set_bone/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("<span class='notice'>[user] is beginning to set the bone in [target]'s [affected.name] in place with \the [tool].</span>" , \
-		"<span class='notice'>You are beginning to set the bone in [target]'s [affected.name] in place with \the [tool].</span>")
-	target.custom_pain("The pain in your [affected.name] is going to make you pass out!", 50)
+	user.visible_message("<span class='notice'>[user] начинает устанавливать кость в [affected.name] [target] на место, используя [tool].</span>" , \
+		"<span class='notice'>Вы начинаете устанавливать кость в [affected.name] [target] на место с помощью [tool].</span>")
+	target.custom_pain("Из-за боли в [affected.name] вы теряете сознание!", 50)
 	..()
 
 /datum/surgery_step/set_bone/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)

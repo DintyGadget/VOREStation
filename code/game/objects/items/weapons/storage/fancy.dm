@@ -17,7 +17,7 @@
 /obj/item/weapon/storage/fancy/
 	icon = 'icons/obj/food.dmi'
 	icon_state = "donutbox6"
-	name = "donut box"
+	name = "Коробка для пончиков"
 	var/icon_type = "donut"
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
@@ -27,16 +27,21 @@
 	icon_state = "[icon_type]box[total_contents]"
 	return
 
+var/ru_icon_type_1 = "пончик"
+var/ru_icon_type_2 = "пончика"
+var/ru_icon_type_3 = "пончиков"
+var/ru_icon_type_4 = "остался последний пончик"
+
 /obj/item/weapon/storage/fancy/examine(mob/user)
 	. = ..()
-
+	var/ru_counter = ru_countitems(contents, single_text = ru_icon_type_1, few_text = ru_icon_type_2, many_text = ru_icon_type_3)
 	if(Adjacent(user))
 		if(!contents.len)
-			. += "There are no [icon_type]s left in the box."
+			. += "В [ru_getcase(src, "pcase")] не осталось [ru_icon_type_3]."
 		else if(contents.len == 1)
-			. += "There is one [icon_type] left in the box."
+			. += "В [ru_getcase(src, "pcase")] [ru_icon_type_4]."
 		else
-			. += "There are [contents.len] [icon_type]s in the box."
+			. += "В [ru_getcase(src, "pcase")] [ru_counter]."
 
 /*
  * Egg Box
@@ -46,7 +51,7 @@
 	icon = 'icons/obj/food.dmi'
 	icon_state = "eggbox"
 	icon_type = "egg"
-	name = "egg box"
+	name = "Коробка яиц"
 	center_of_mass = list("x" = 16,"y" = 7)
 	storage_slots = 12
 	can_hold = list(
@@ -60,8 +65,8 @@
  */
 
 /obj/item/weapon/storage/fancy/candle_box
-	name = "red candle pack"
-	desc = "A pack of red candles."
+	name = "Набор красных свечек"
+	desc = "Комплект красных свечек."
 	icon = 'icons/obj/candle.dmi'
 	icon_state = "candlebox5"
 	icon_type = "candle"
@@ -72,8 +77,8 @@
 	starts_with = list(/obj/item/weapon/flame/candle = 5)
 
 /obj/item/weapon/storage/fancy/whitecandle_box
-	name = "white candle pack"
-	desc = "A pack of white candles."
+	name = "Набор белых свечек"
+	desc = "Комплект белых свечек."
 	icon = 'icons/obj/candle.dmi'
 	icon_state = "whitecandlebox5"
 	icon_type = "whitecandle"
@@ -84,8 +89,8 @@
 	starts_with = list(/obj/item/weapon/flame/candle/white = 5)
 
 /obj/item/weapon/storage/fancy/blackcandle_box
-	name = "black candle pack"
-	desc = "A pack of black candles."
+	name = "Набор чёрных свечек"
+	desc = "Комплект черных свечек."
 	icon = 'icons/obj/candle.dmi'
 	icon_state = "blackcandlebox5"
 	icon_type = "blackcandle"
@@ -101,8 +106,8 @@
  */
 
 /obj/item/weapon/storage/fancy/crayons
-	name = "box of crayons"
-	desc = "A box of crayons for all your rune drawing needs."
+	name = "Коробка мелков"
+	desc = "Коробка восковых мелков для всех Ваших рунических нужд."
 	icon = 'icons/obj/crayons.dmi'
 	icon_state = "crayonbox"
 	w_class = ITEMSIZE_SMALL
@@ -134,16 +139,16 @@
 	if(istype(W,/obj/item/weapon/pen/crayon))
 		switch(W:colourName)
 			if("mime")
-				to_chat(user, "This crayon is too sad to be contained in this box.")
+				to_chat(user, "Этот мелок слишком грустный, чтобы храниться в коробке.")
 				return
 			if("rainbow")
-				to_chat(user, "This crayon is too powerful to be contained in this box.")
+				to_chat(user, "Этот мелок слишком силён, чтобы коробка могла его сдержать.")
 				return
 	..()
 
 /obj/item/weapon/storage/fancy/markers
-	name = "box of markers"
-	desc = "A very professional looking box of permanent markers."
+	name = "Коробка маркеров"
+	desc = "Очень профессиональная на вид коробка перманентных маркеров."
 	icon = 'icons/obj/crayons.dmi'
 	icon_state = "markerbox"
 	w_class = ITEMSIZE_SMALL
@@ -176,10 +181,10 @@
 	if(istype(W,/obj/item/weapon/pen/crayon/marker))
 		switch(W:colourName)
 			if("mime")
-				to_chat(user, "This marker is too depressing to be contained in this box.")
+				to_chat(user, "Этот маркер слишком угнетающий, чтобы содержаться в этой коробке.")
 				return
 			if("rainbow")
-				to_chat(user, "This marker is too childish to be contained in this box.")
+				to_chat(user, "Этот маркер слишком детский, чтобы содержаться в этой коробке.")
 				return
 	..()
 
@@ -188,7 +193,7 @@
  */
 
 /obj/item/weapon/storage/fancy/crackers
-	name = "\improper Getmore Crackers"
+	name = "Пачка крекеров Getmore"
 	icon = 'icons/obj/food.dmi'
 	icon_state = "crackerbox"
 	icon_type = "cracker"
@@ -202,9 +207,9 @@
 //CIG PACK//
 ////////////
 /obj/item/weapon/storage/fancy/cigarettes
-	name = "\improper pack of Trans-Stellar Duty-frees"
-	desc = "A ubiquitous brand of cigarettes, found in every major spacefaring corporation in the universe. As mild and flavorless as it gets."
-	description_fluff = "The Trans-Stellar Duty-Free Cigarette Company was created as an imprint of NanoTrasen.  They are the most boring, tasteless, dry cigarettes on the market, but due to just how unremarkable (not to mention cheap to produce) they are, they sold in vending machines in almost every corner of the galaxy."
+	name = "Пачка Транскосмических Дюти Фри"
+	desc = "Распространенная марка сигарет, которую можно встретить в любой корпорации во вселенной. Безвкуснее некуда."
+	description_fluff = "Сигаретная Компания Транскосмических Дюти Фри была создана непосредственно NanoTrasen. Это самые скучные, безвкусные и сухие сигареты на рынке, но благодаря своей неприметности (и уж тем более дешевизне), их можно найти на любом конце галактики."
 	icon = 'icons/obj/cigarettes.dmi'
 	icon_state = "cigpacket"
 	item_state_slots = list(slot_r_hand_str = "cigpacket", slot_l_hand_str = "cigpacket")
@@ -215,7 +220,7 @@
 	can_hold = list(/obj/item/clothing/mask/smokable/cigarette, /obj/item/weapon/flame/lighter, /obj/item/trash/cigbutt)
 	icon_type = "cigarette"
 	starts_with = list(/obj/item/clothing/mask/smokable/cigarette = 6)
-	var/brand = "\improper Trans-Stellar Duty-free"
+	var/brand = "Транскосмическая Дюти Фри"
 
 /obj/item/weapon/storage/fancy/cigarettes/Initialize()
 	. = ..()
@@ -225,7 +230,7 @@
 	if(brand)
 		for(var/obj/item/clothing/mask/smokable/cigarette/C in src)
 			C.brand = brand
-			C.desc += " This one is \a [brand]."
+			C.desc += " Эта сигарета - [brand]."
 
 /obj/item/weapon/storage/fancy/cigarettes/update_icon()
 	icon_state = "[initial(icon_state)][contents.len]"
@@ -247,7 +252,7 @@
 		var/obj/item/clothing/mask/smokable/cigarette/cig = locate() in src
 
 		if(cig == null)
-			to_chat(user, "<span class='notice'>Looks like the packet is out of cigarettes.</span>")
+			to_chat(user, "<span class='notice'>Похоже, в пачке кончились сигареты.</span>")
 			return
 
 		// Instead of running equip_to_slot_if_possible() we check here first,
@@ -261,65 +266,65 @@
 		user.equip_to_slot(cig, slot_wear_mask)
 
 		reagents.maximum_volume = 15 * contents.len
-		to_chat(user, "<span class='notice'>You take a cigarette out of the pack.</span>")
+		to_chat(user, "<span class='notice'>Вы достаёте сигарету из пачки.</span>")
 		update_icon()
 	else
 		..()
 
 /obj/item/weapon/storage/fancy/cigarettes/dromedaryco
-	name = "\improper DromedaryCo packet"
-	desc = "A packet of six Earth-export DromedaryCo cancer sticks. A label on the packaging reads, \"Wouldn't a slow death make a change?\""
-	description_fluff = "DromedaryCo is one of Sol's oldest cigarette brands, and takes pride in having sourced tobcacco from the same Indian plantations since 2044. Popular with those willing to pay extra for a little nostalgia."
+	name = "Пачка ДромедариКо"
+	desc = "Пачка раковых палочек ДромедариКо земляного экспорта. На упаковке написано \"Медленная смерть - не так уж и банально.\"."
+	description_fluff = "ДромедариКо - одна из самых старых сигаретных марок Сол, производитель которой очень гордится использованием один их и тех же индийских плантаций с 2044. Для тех, кто не против подраскошелиться на ностальгию."
 	icon_state = "Dpacket"
-	brand = "\improper Dromedary Co. cigarette"
+	brand = "ДромедариКо"
 
 /obj/item/weapon/storage/fancy/cigarettes/killthroat
-	name = "\improper AcmeCo packet"
-	desc = "A packet of six AcmeCo cigarettes. For those who want to obtain a record for the most cancerous tumors on a budget."
-	description_fluff = "Available anywhere people breathe and want to breathe less, AcmeCo is the cheapest, most widespread cigarette brand in the galaxy. They taste like trash, but when you're keeping them inside your jumpsuit on a 16 hour shift, you're probably not too concerned with flavour."
+	name = "Пачка АкмеКо"
+	desc = "Пачка шести сигарет АкмеКо. Для тех, кто подыскивает себе самый бюджетный рак."
+	description_fluff = "Доступны везде, где дышашие люди желают дышать поменьше. АкмеКо - самая дешевая и распространенная марка в галактике. На вкус позорные, но когда находишь их в своем комбинезоне после 16-часовой смены, то сойдёт и это."
 	icon_state = "Apacket"
-	brand = "\improper Acme Co. cigarette"
+	brand = "АкмеКо"
 
 // New exciting ways to kill your lungs! - Earthcrusher //
 
 /obj/item/weapon/storage/fancy/cigarettes/luckystars
-	name = "\improper pack of Lucky Stars"
-	desc = "A mellow blend made from synthetic, pod-grown tobacco. The commercial jingle is guaranteed to get stuck in your head."
-	description_fluff = "Lucky Stars are some of the most prolific advertisers in the business, with Gilthari Exports plastering the name and slogan on everything from workplace safety videos to racing bikes. 'Feel the gentle warmth of your Lucky Star'."
+	name = "Пачка Лаки Старов"
+	desc = "Скромная смесь из синтетически выращенного табака. Напевка из рекламы имеет свойство застревать в голове."
+	description_fluff = "В Лаки Старс работают одни из самых амбициозных маркетологов на рынке, и их слоганы Gilthari Exports пластают абсолютно на всё, что можно, начиная с видеоинструктажей по безопасности на рабочем месте и заканчивая гоночными мотоциклами. 'Почувствуй тепло Лаки Стар.'."
 	icon_state = "LSpacket"
-	brand = "\improper Lucky Star"
+	brand = "Лаки Стар"
 
 /obj/item/weapon/storage/fancy/cigarettes/jerichos
-	name = "\improper pack of Jerichos"
-	desc = "Typically seen dangling from the lips of Fleet veterans and border world hustlers. Tastes like hickory smoke, feels like warm liquid death down your lungs."
-	description_fluff = "The Jericho brand has carefully cultivated its 'rugged' image ever since its completely accidental association with the SolGov-Hegemony war due to their sizable corporate presence in the region. Prior to the war, Jerichos were considered the realm of drunks and sad divorcees."
+	name = "Пачка Джерико"
+	desc = "Обычно свисают с губ ветеранов флота и приграничных торговцев. На вкус как кариевый дым, по ощущениям словно жидкая смерть, что стекает в твои легкие."
+	description_fluff = "Бренду Джерико пришлось долго восстанавливать свой 'потертый' имидж после своей совершенно случайно ассоциации с войной между ПравСол и гегемонией в связи со своим корпоративным присутствием в регионе. До войны Джерико ассоциировались с алкашами и разведенными мужчинами."
 	icon_state = "Jpacket"
-	brand = "\improper Jericho"
+	brand = "Джерико"
 
 /obj/item/weapon/storage/fancy/cigarettes/menthols
-	name = "\improper pack of Temperamento Menthols"
-	desc = "With a sharp and natural organic menthol flavor, these Temperamentos are a favorite of science vessel crews. Hardly anyone knows they make 'em in non-menthol!"
-	description_fluff = "Temperamento Menthols are a product of the Aether Atmospherics and Recycling company, and the 'smooth' menthol taste is rumoured to be the chemical by-product of some far more profitable industrial synthesis."
+	name = "Пачка Темпераменто с ментолом"
+	desc = "Неотъемлемый атрибут научно-исследовательского персонала, эти Темпераменто обладают резким натуральным вкусом ментола. Все уже и забыли, какие на вкус обычные!"
+	description_fluff = "Темпераменто с ментолом изготавливаются Aether Atmospherics and Recyling. Вкус ментола по слухам придаётся за счет более прибыльного и дешевого химического вещества."
 	icon_state = "TMpacket"
-	brand = "\improper Temperamento Menthol"
+	brand = "Темпераменто с ментолом"
 
 /obj/item/weapon/storage/fancy/cigarettes/carcinomas
-	name = "\improper pack of Carcinoma Angels"
-	desc = "This previously unknown brand was slated for the chopping block, until they were publicly endorsed by an old Earthling gonzo journalist. The rest is history. They sell a variety for cats, too."
-	description_fluff = "The bitter taste of a Carcinoma Angel is considered desirable by many equally bitter wash-ups who consider themselves to be 'hard-boiled'. The smell is practically inseparable from urban security offices, and old men with exonet radio shows."
-	brand = "\improper Carcinoma Angel"
+	name = "Пачка Карцинома Эйнджелов"
+	desc = "Прежде известный как вымирающий бренд до того, как их публично одобрила некая важная персона со старой Земли. Остальная история как в тумане. А ещё они продаёт особые сигареты для котов."
+	description_fluff = "Горький вкус Карцинома Эйнджелов высоко ценится настолько же горькими типами, которые считают себя личностями 'сильной закалки'. Запах ассоциируется с городскими постами охраны порядка, а также стариками с экзонетными шоу."
+	brand = "Карцинома Эйнджел"
 
 /obj/item/weapon/storage/fancy/cigarettes/professionals
-	name = "\improper pack of Professional 120s"
-	desc = "Let's face it - if you're smoking these, you're either trying to look upper-class or you're 80 years old. That's the only excuse. They are, however, very good quality."
-	description_fluff = "Grown and rolled in a meticulously maintained biosphere orbitting Love, P120 tobacco is marketed as 'probably the best in the galaxy'. The premium price point, and the fact that the vast majority of consumers couldn't really tell the difference between this and the next leading brand."
+	name = "Пачка Профессиональных 120-ок"
+	desc = "Будем честны, если Вы отдаёте предпочтение этим сигаретами, то либо Вы играете в богача, либо Вам за 80. Третьего не дано. Правда, они довольно высокого качества."
+	description_fluff = "Выращенные и скрученные в тщательно обработанной биосфере, П120-ки рекламируются как 'чуть ли не лучшие в галактике'. Наверное, в виду своей цены, а также факта того, что большинство потребителей не учует разницу между П120-ками и любым другим ведущим брендом."
 	icon_state = "P100packet"
-	brand = "\improper Professional 120"
+	brand = "Профессиональная 120-ка"
 
 /obj/item/weapon/storage/fancy/cigar
-	name = "cigar case"
-	desc = "A case for holding your cigars when you are not smoking them."
-	description_fluff = "The tastefully engraved palm tree tells you that these 'Palma Grande' premium cigars are only sold on the luxury cruises and resorts of Oasis, though ten separate companies produce them for that purpose galaxy-wide. The standard is however very high."
+	name = "Чехол для сигар"
+	desc = "Чехолчик для хранения сигар тогда, когда они Вам не нужны."
+	description_fluff = "Замечательно обработанное пальмовое дерево говорит о том, что эти премиум-сигары 'Palma Grande' продаются только на роскошных лайнерах и курортах Оазиса, но на самом деле такие делают аж десять разных компаний по всей галактике. Качество, однако, весьма хорошее."
 	icon_state = "cigarcase"
 	icon = 'icons/obj/cigarettes.dmi'
 	w_class = ITEMSIZE_TINY
@@ -346,8 +351,8 @@
 	..()
 
 /obj/item/weapon/storage/rollingpapers
-	name = "rolling paper pack"
-	desc = "A small cardboard pack containing several folded rolling papers."
+	name = "Пачка закруточной бумаги"
+	desc = "Небольшая пачка бумаги для самокруток."
 	icon_state = "paperbox"
 	icon = 'icons/obj/cigarettes.dmi'
 	w_class = ITEMSIZE_TINY
@@ -365,15 +370,15 @@
 	icon = 'icons/obj/vialbox.dmi'
 	icon_state = "vialbox6"
 	icon_type = "vial"
-	name = "vial storage box"
-	desc = "A helpful rack to hold test tubes."
+	name = "Подставка для пробирок"
+	desc = "Полезная подставка для пробирок."
 	storage_slots = 6
 	can_hold = list(/obj/item/weapon/reagent_containers/glass/beaker/vial)
 	starts_with = list(/obj/item/weapon/reagent_containers/glass/beaker/vial = 6)
 
 /obj/item/weapon/storage/lockbox/vials
-	name = "secure vial storage box"
-	desc = "A locked box for keeping things away from children."
+	name = "Надёжная коробка для пробирок"
+	desc = "Запертая коробка для всего, что не игрушка детям."
 	icon = 'icons/obj/vialbox.dmi'
 	icon_state = "vialbox0"
 	item_state_slots = list(slot_r_hand_str = "syringe_kit", slot_l_hand_str = "syringe_kit")
@@ -409,7 +414,7 @@
 
 /obj/item/weapon/storage/fancy/heartbox
 	icon_state = "heartbox"
-	name = "box of chocolates"
+	name = "Коробка шоколадных конфет"
 	icon_type = "chocolate"
 
 	var/startswith = 6

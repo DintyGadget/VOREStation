@@ -198,11 +198,11 @@
 		else
 			f_name = "a "
 		if(blood_color != SYNTH_BLOOD_COLOUR)
-			f_name += "<span class='danger'>blood-stained</span> [name][infix]!"
+			f_name += "[name][infix] <span class='danger'>в крови</span>!</span>"
 		else
-			f_name += "oil-stained [name][infix]."
+			f_name += "[name][infix] в масле."
 
-	var/list/output = list("[bicon(src)] That's [f_name] [suffix]", desc)
+	var/list/output = list("Это [bicon(src)] [f_name] [suffix]", desc)
 
 	if(user.client?.prefs.examine_text_mode == EXAMINE_MODE_INCLUDE_USAGE)
 		output += description_info

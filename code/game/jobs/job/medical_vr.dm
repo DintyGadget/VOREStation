@@ -38,8 +38,7 @@
 
 /datum/alt_title/orderly
 	title = "Orderly"
-	title_blurb = "An Orderly acts as Medbay's general helping hand, assisting any doctor that might need some form of help, as well as handling manual \
-					and dirty labor around the department."
+	title_blurb = "Медицинский сотрудник помогает врачам с ручной и грязной работой."
 	title_outfit = /decl/hierarchy/outfit/job/medical/doctor/nurse
 
 
@@ -49,7 +48,7 @@
 
 /datum/alt_title/pharmacologist
 	title = "Pharmacologist"
-	title_blurb = "A Pharmacologist focuses on the chemical needs of the Medical Department, primarily specializing in producing more advanced forms of medicine."
+	title_blurb = "Фармаколог специализируется на изготовлении лекарств и выдаче таковых персоналу по рецепту."
 
 
 /datum/job/psychiatrist

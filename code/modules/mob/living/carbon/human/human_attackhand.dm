@@ -42,7 +42,7 @@
 		if(H.hand)
 			temp = H.organs_by_name["l_hand"]
 		if(!temp || !temp.is_usable())
-			to_chat(H, "<font color='red'>You can't use your hand.</font>")
+			to_chat(H, "<font color='red'>Вы не можете использовать свою руку.</font>")
 			return
 	if(H.lying)
 		return
@@ -57,7 +57,7 @@
 			if(!hit_zone)
 				H.do_attack_animation(src)
 				playsound(src, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
-				visible_message("<font color='red'><B>[H] reaches for [src], but misses!</B></font>")
+				visible_message("<font color='red'><B>[H] пытается достать до [src], но промазывает!</B></font>")
 				return FALSE
 
 		if(H != src && check_shields(0, null, H, H.zone_sel.selecting, H.name))
@@ -77,16 +77,16 @@
 			// VOREStation Edit - End
 			if(istype(H) && health < config.health_threshold_crit)
 				if(!H.check_has_mouth())
-					to_chat(H, "<span class='danger'>You don't have a mouth, you cannot perform CPR!</span>")
+					to_chat(H, "<span class='danger'>У Вас нет рта, Вы не можете сделать искусственное дыхание!</span>")
 					return
 				if(!check_has_mouth())
-					to_chat(H, "<span class='danger'>They don't have a mouth, you cannot perform CPR!</span>")
+					to_chat(H, "<span class='danger'>У этого существа нет рта, Вы не можете сделать искусственное дыхание!</span>")
 					return
 				if((H.head && (H.head.body_parts_covered & FACE)) || (H.wear_mask && (H.wear_mask.body_parts_covered & FACE)))
-					to_chat(H, "<span class='notice'>Remove your mask!</span>")
+					to_chat(H, "<span class='notice'>Снимите с себя маску!</span>")
 					return 0
 				if((head && (head.body_parts_covered & FACE)) || (wear_mask && (wear_mask.body_parts_covered & FACE)))
-					to_chat(H, "<span class='notice'>Remove [src]'s mask!</span>")
+					to_chat(H, "<span class='notice'>Снимите с [src] маску!</span>")
 					return 0
 
 				if (!cpr_time)
@@ -96,18 +96,18 @@
 				spawn(30)
 					cpr_time = 1
 
-				H.visible_message("<span class='danger'>\The [H] is trying to perform CPR on \the [src]!</span>")
+				H.visible_message("<span class='danger'>[H] пытается сделать [src] искусственное дыхание!</span>")
 
 				if(!do_after(H, 30))
 					return
 
-				H.visible_message("<span class='danger'>\The [H] performs CPR on \the [src]!</span>")
-				to_chat(H, "<span class='warning'>Repeat at least every 7 seconds.</span>")
+				H.visible_message("<span class='danger'>[H] делает искусственное дыхание [src]!</span>")
+				to_chat(H, "<span class='warning'>Повторяйте как минимум каждые семь секунд.</span>")
 
 				if(istype(H) && health > config.health_threshold_dead)
 					adjustOxyLoss(-(min(getOxyLoss(), 5)))
 					updatehealth()
-					to_chat(src, "<span class='notice'>You feel a breath of fresh air enter your lungs. It feels good.</span>")
+					to_chat(src, "<span class='notice'>Вы чувствуете, как в Ваши легкие поступает свежий воздух. Это приятно.</span>")
 
 			else if(!(M == src && apply_pressure(M, M.zone_sel.selecting)))
 				help_shake_act(M)
@@ -118,14 +118,14 @@
 				return 0
 			for(var/obj/item/weapon/grab/G in src.grabbed_by)
 				if(G.assailant == M)
-					to_chat(M, "<span class='notice'>You already grabbed [src].</span>")
+					to_chat(M, "<span class='notice'>Вы уже схватили [src].</span>")
 					return
 			if(w_uniform)
 				w_uniform.add_fingerprint(M)
 
 			var/obj/item/weapon/grab/G = new /obj/item/weapon/grab(M, src)
 			if(buckled)
-				to_chat(M, "<span class='notice'>You cannot grab [src], [TT.he] is buckled in!</span>")
+				to_chat(M, "<span class='notice'>Вы не можете схватить [src], [TT.his] нужно сперва расстегнуть!</span>")
 				return
 			if(!G)	//the grab will delete itself in New if affecting is anchored
 				return
@@ -136,7 +136,7 @@
 			H.do_attack_animation(src)
 			playsound(src, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 			//VORESTATION EDIT
-			visible_message("<span class='warning'>[M] has grabbed [src] [(M.zone_sel.selecting == BP_L_HAND || M.zone_sel.selecting == BP_R_HAND)? "by [(gender==FEMALE)? "her" : ((gender==MALE)? "his": "their")] hands": "passively"]!</span>")
+			visible_message("<span class='warning'>[M] схватил [src] [(M.zone_sel.selecting == BP_L_HAND || M.zone_sel.selecting == BP_R_HAND)? "за руки": "ненастойчиво"]!</span>")
 			//VORESTATION END END
 			return TRUE
 
@@ -145,15 +145,15 @@
 			if(M.zone_sel.selecting == "mouth" && wear_mask && istype(wear_mask, /obj/item/weapon/grenade))
 				var/obj/item/weapon/grenade/G = wear_mask
 				if(!G.active)
-					visible_message("<span class='danger'>\The [M] pulls the pin from \the [src]'s [G.name]!</span>")
+					visible_message("<span class='danger'>[M] выдёргивает чеку [G.name] [src]!</span>")
 					G.activate(M)
 					update_inv_wear_mask()
 				else
-					to_chat(M, "<span class='warning'>\The [G] is already primed! Run!</span>")
+					to_chat(M, "<span class='warning'>[G] уже запущена! Бегите!</span>")
 				return
 
 			if(!istype(H))
-				attack_generic(H,rand(1,3),"punched")
+				attack_generic(H,rand(1,3),"ударяет")
 				return
 
 			var/rand_damage = rand(1, 5)
@@ -163,7 +163,7 @@
 			var/obj/item/organ/external/affecting = get_organ(hit_zone)
 
 			if(!affecting || affecting.is_stump())
-				to_chat(M, "<span class='danger'>They are missing that limb!</span>")
+				to_chat(M, "<span class='danger'>У этого существа нет такой конечности!</span>")
 				return TRUE
 
 			switch(src.a_intent)
@@ -214,21 +214,21 @@
 				*/
 
 				if(!hit_zone)
-					attack_message = "[H] attempted to strike [src], but missed!"
+					attack_message = "[H] пытается ударить [src], но мимо!"
 					miss_type = 1
 
 				if(prob(80))
 					hit_zone = ran_zone(hit_zone, 70) //70% chance to hit what you're aiming at seems fair?
 				if(prob(15) && hit_zone != BP_TORSO) // Missed!
 					if(!src.lying)
-						attack_message = "[H] attempted to strike [src], but missed!"
+						attack_message = "[H] пытается ударить [src], но мимо!"
 					else
-						attack_message = "[H] attempted to strike [src], but [TT.he] rolled out of the way!"
+						attack_message = "[H] пытается ударить [src], но [TT.he] увернулся!"
 						src.set_dir(pick(cardinal))
 					miss_type = 1
 
 			if(!miss_type && block)
-				attack_message = "[H] went for [src]'s [affecting.name] but was blocked!"
+				attack_message = "[H] попытался ударить [src] по [affecting.name], но удар был заблокирован!"
 				miss_type = 2
 
 			// See what attack they use
@@ -247,7 +247,7 @@
 
 			playsound(src, ((miss_type) ? (miss_type == 1 ? attack.miss_sound : 'sound/weapons/thudswoosh.ogg') : attack.attack_sound), 25, 1, -1)
 
-			add_attack_logs(H,src,"Melee attacked with fists (miss/block)")
+			add_attack_logs(H,src,"Удар кулаками (мимо/блок)")
 
 			if(miss_type)
 				return FALSE
@@ -278,7 +278,7 @@
 			apply_damage(real_damage, hit_dam_type, hit_zone, armour, soaked, sharp=attack.sharp, edge=attack.edge)
 
 		if(I_DISARM)
-			add_attack_logs(H,src,"Disarmed")
+			add_attack_logs(H,src,"Обезоружил")
 
 			M.do_attack_animation(src)
 
@@ -296,11 +296,11 @@
 						turfs += T
 					if(turfs.len)
 						var/turf/target = pick(turfs)
-						visible_message("<span class='danger'>[src]'s [W] goes off during the struggle!</span>")
+						visible_message("<span class='danger'>[W] [src] срабатывает во время битвы!</span>")
 						return W.afterattack(target,src)
 
 			if(last_push_time + 30 > world.time)
-				visible_message("<span class='warning'>[M] has weakly pushed [src]!</span>")
+				visible_message("<span class='warning'>[M] слабо толкает [src]!</span>")
 				return
 
 			var/randn = rand(1, 100)
@@ -313,9 +313,9 @@
 				apply_effect(3, WEAKEN, armor_check)
 				playsound(src, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 				if(armor_check < 60)
-					visible_message("<span class='danger'>[M] has pushed [src]!</span>")
+					visible_message("<span class='danger'>[M] толкает [src]!</span>")
 				else
-					visible_message("<span class='warning'>[M] attempted to push [src]!</span>")
+					visible_message("<span class='warning'>[M] пытается толкнуть [src]!</span>")
 				return
 
 			if(randn <= 60)
@@ -328,12 +328,12 @@
 				for(var/obj/item/I in holding)
 					if(I)
 						drop_from_inventory(I)
-						visible_message("<span class='danger'>[M] has disarmed [src]!</span>")
+						visible_message("<span class='danger'>[M] обезоруживает [src]!</span>")
 						playsound(src, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 						return
 
 			playsound(src, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
-			visible_message("<font color='red'> <B>[M] attempted to disarm [src]!</B></font>")
+			visible_message("<font color='red'> <B>[M] пытается обезоружить [src]!</B></font>")
 	return
 
 /mob/living/carbon/human/proc/afterattack(atom/target as mob|obj|turf|area, mob/living/user as mob|obj, inrange, params)
@@ -344,8 +344,8 @@
 	if(!damage)
 		return
 
-	add_attack_logs(user,src,"Melee attacked with fists (miss/block)",admin_notify = FALSE) //No admin notice since this is usually fighting simple animals
-	src.visible_message("<span class='danger'>[user] has [attack_message] [src]!</span>")
+	add_attack_logs(user,src,"Атаковал кулаками (мимо/блок)",admin_notify = FALSE) //No admin notice since this is usually fighting simple animals
+	src.visible_message("<span class='danger'>[user] [attack_message] [src]!</span>")
 	user.do_attack_animation(src)
 
 	var/dam_zone = pick(organs_by_name)
@@ -375,10 +375,10 @@
 	if(!organ || organ.dislocated > 0 || organ.dislocated == -1) //don't use is_dislocated() here, that checks parent
 		return FALSE
 
-	user.visible_message("<span class='warning'>[user] begins to dislocate [src]'s [organ.joint]!</span>")
+	user.visible_message("<span class='warning'>[user] пытается обезвредить [organ.joint] [src]!</span>")
 	if(do_after(user, 100))
 		organ.dislocate(1)
-		src.visible_message("<span class='danger'>[src]'s [organ.joint] [pick("gives way","caves in","crumbles","collapses")]!</span>")
+		src.visible_message("<span class='danger'>[organ.joint] [src] [pick("поддаётся","зажимается","сдаёт","поджимается")]!</span>")
 		return TRUE
 	return FALSE
 
@@ -386,21 +386,21 @@
 /mob/living/carbon/human/proc/break_all_grabs(mob/living/carbon/user)
 	var/success = FALSE
 	if(pulling)
-		visible_message("<span class='danger'>[user] has broken [src]'s grip on [pulling]!</span>")
+		visible_message("<span class='danger'>[user] разжимает хватку [src] на [pulling]!</span>")
 		success = TRUE
 		stop_pulling()
 
 	if(istype(l_hand, /obj/item/weapon/grab))
 		var/obj/item/weapon/grab/lgrab = l_hand
 		if(lgrab.affecting)
-			visible_message("<span class='danger'>[user] has broken [src]'s grip on [lgrab.affecting]!</span>")
+			visible_message("<span class='danger'>[user] разжимает хватку [src] на [lgrab.affecting]!</span>")
 			success = TRUE
 		spawn(1)
 			qdel(lgrab)
 	if(istype(r_hand, /obj/item/weapon/grab))
 		var/obj/item/weapon/grab/rgrab = r_hand
 		if(rgrab.affecting)
-			visible_message("<span class='danger'>[user] has broken [src]'s grip on [rgrab.affecting]!</span>")
+			visible_message("<span class='danger'>[user] разжимает хватку [src] на [rgrab.affecting]!</span>")
 			success = TRUE
 		spawn(1)
 			qdel(rgrab)
@@ -419,16 +419,16 @@
 		return FALSE
 
 	if(organ.applied_pressure)
-		var/message = "<span class='warning'>Someone is already applying pressure to [user == src ? "your [organ.name]" : "[src]'s [organ.name]"].</span>"
+		var/message = "<span class='warning'>Кто-то уже прикладывает давление к [user == src ? "Вашей [organ.name]" : "[organ.name] [src]"].</span>"
 		to_chat(user,message)
 		return FALSE
 
-	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+	//var/datum/gender/TU = gender_datums[user.get_visible_gender()]
 
 	if(user == src)
-		user.visible_message("\The [user] starts applying pressure to [TU.his] [organ.name]!", "You start applying pressure to your [organ.name]!")
+		user.visible_message("[user] начинает прикладывать давление к своей [organ.name]!", "Вы начинаете прикладывать давление к своей [organ.name]!")
 	else
-		user.visible_message("\The [user] starts applying pressure to [src]'s [organ.name]!", "You start applying pressure to [src]'s [organ.name]!")
+		user.visible_message("[user] начинает прикладывать давление к [organ.name] [src]!", "Вы начинаете прикладывать давление к [organ.name] [src]!")
 	spawn(0)
 		organ.applied_pressure = user
 
@@ -438,27 +438,27 @@
 		organ.applied_pressure = null
 
 		if(user == src)
-			user.visible_message("\The [user] stops applying pressure to [TU.his] [organ.name]!", "You stop applying pressure to your [organ]!")
+			user.visible_message("[user] прекращает прикладывать давление к своей [organ.name]!", "Вы прекращаете прикладывать давление к своей [organ.name]!")
 		else
-			user.visible_message("\The [user] stops applying pressure to [src]'s [organ.name]!", "You stop applying pressure to [src]'s [organ.name]!")
+			user.visible_message("[user] прекращает прикладывать давление к [organ.name] [src]!", "Вы прекращаете прикладывать давление к [organ.name] [src]!")
 
 	return TRUE
 
 /mob/living/carbon/human/verb/check_attacks()
-	set name = "Check Attacks"
+	set name = "Проверить Атаки"
 	set category = "IC"
 	set src = usr
 
-	var/dat = "<b><font size = 5>Known Attacks</font></b><br/><br/>"
+	var/dat = "<b><font size = 5>Известные атаки</font></b><br/><br/>"
 
 	if(default_attack)
-		dat += "Current default attack: [default_attack.attack_name] - <a href='byond://?src=\ref[src];default_attk=reset_attk'>reset</a><br/><br/>"
+		dat += "Текущая атака по умолчанию: [default_attack.attack_name] - <a href='byond://?src=\ref[src];default_attk=reset_attk'>сбросить</a><br/><br/>"
 
 	for(var/datum/unarmed_attack/u_attack in species.unarmed_attacks)
 		if(u_attack == default_attack)
-			dat += "<b>Primarily [u_attack.attack_name]</b> - default - <a href='byond://?src=\ref[src];default_attk=reset_attk'>reset</a><br/><br/><br/>"
+			dat += "<b>Основная: [u_attack.attack_name]</b> - по умолчанию - <a href='byond://?src=\ref[src];default_attk=reset_attk'>сбросить</a><br/><br/><br/>"
 		else
-			dat += "<b>Primarily [u_attack.attack_name]</b> - <a href='byond://?src=\ref[src];default_attk=\ref[u_attack]'>set default</a><br/><br/><br/>"
+			dat += "<b>Основная: [u_attack.attack_name]</b> - <a href='byond://?src=\ref[src];default_attk=\ref[u_attack]'>поставить по умолчанию</a><br/><br/><br/>"
 
 	src << browse(dat, "window=checkattack")
 

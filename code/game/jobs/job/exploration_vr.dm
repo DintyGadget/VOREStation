@@ -6,15 +6,15 @@
 	secondary_color = rgb(127,223,223)
 
 /obj/item/weapon/card/id/explorer
-	name = "identification card"
-	desc = "A card issued to station exploration staff."
+	name = "идентификационная карта"
+	desc = "Карта, выданная геологоразведочным работникам станции."
 	icon_state = "cyan"
 	primary_color = rgb(47,189,189)
 	secondary_color = rgb(127,223,223)
 
 /obj/item/weapon/card/id/explorer/head
-	name = "identification card"
-	desc = "A card which represents discovery of the unknown."
+	name = "идентификационная карта"
+	desc = "Карта, которая представляет открытие неизвестного."
 	icon_state = "cyanGold"
 	primary_color = rgb(47,189,189)
 	secondary_color = rgb(127,223,223)
@@ -36,7 +36,7 @@
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the Head of Personnel"
+	supervisors = "Главой персонала"
 	selection_color = "#d6d05c"
 	economic_modifier = 8
 	minimal_player_age = 7
@@ -46,7 +46,7 @@
 	access = list(access_eva, access_maint_tunnels, access_external_airlocks, access_pilot, access_explorer, access_gateway)
 	minimal_access = list(access_eva, access_maint_tunnels, access_external_airlocks, access_pilot, access_explorer, access_gateway)
 	outfit_type = /decl/hierarchy/outfit/job/pathfinder
-	job_description = "The Pathfinder's job is to lead and manage expeditions, and is the primary authority on all off-station expeditions."
+	job_description = "Работа Первопроходца заключается в проведении экспедиций, в которых он занимает роль лидера."
 	alt_titles = list("Expedition Lead" = /datum/alt_title/expedition_lead, "Exploration Manager" = /datum/alt_title/exploration_manager)
 
 /datum/alt_title/expedition_lead
@@ -64,7 +64,7 @@
 	faction = "Station"
 	total_positions = 5
 	spawn_positions = 5
-	supervisors = "the Head of Personnel"
+	supervisors = "Первопроходцем и Главой персонала"
 	selection_color = "#515151"
 	economic_modifier = 5
 	minimal_player_age = 3
@@ -72,12 +72,12 @@
 	access = list(access_pilot)
 	minimal_access = list(access_pilot)
 	outfit_type = /decl/hierarchy/outfit/job/pilot
-	job_description = "A Pilot flies the various shuttles in the Virgo-Erigone System."
+	job_description = "Пилот управляет различными шаттлами в системе Дева-Эригон."
 	alt_titles = list("Co-Pilot" = /datum/alt_title/co_pilot, "Navigator" = /datum/alt_title/navigator)
 
 /datum/alt_title/co_pilot
 	title = "Co-Pilot"
-	title_blurb = "A Co-Pilot is there primarily to assist main pilot as well as learn from them"
+	title_blurb = "Запасной пилот помогает главному, а так же набирается от него опыта."
 
 /datum/alt_title/navigator
 	title = "Navigator"
@@ -91,14 +91,14 @@
 	faction = "Station"
 	total_positions = 3
 	spawn_positions = 3
-	supervisors = "the Pathfinder and the Head of Personnel"
+	supervisors = "Первопроходцем и Главой персонала"
 	selection_color = "#999440"
 	economic_modifier = 6
 	pto_type = PTO_EXPLORATION
 	access = list(access_explorer, access_external_airlocks, access_eva)
 	minimal_access = list(access_explorer, access_external_airlocks, access_eva)
 	outfit_type = /decl/hierarchy/outfit/job/explorer2
-	job_description = "An Explorer searches for interesting things, and returns them to the station."
+	job_description = "Искатель ищет на планетах интересные вещи и приносит их на станцию."
 	alt_titles = list("Surveyor" = /datum/alt_title/surveyor, "Offsite Scout" = /datum/alt_title/offsite_scout)
 
 /datum/alt_title/surveyor
@@ -116,7 +116,7 @@
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the Pathfinder and the Chief Medical Officer"
+	supervisors = "Первопроходцем и Главврачом"
 	selection_color = "#999440"
 	economic_modifier = 6
 	minimal_player_age = 3
@@ -124,7 +124,7 @@
 	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_eva, access_maint_tunnels, access_external_airlocks, access_pilot)
 	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_pilot)
 	outfit_type = /decl/hierarchy/outfit/job/medical/sar
-	job_description = "A Field medic works as the field doctor of expedition teams."
+	job_description = "Военврач работает полевым врачом экспедиционных отрядов."
 	alt_titles = list("Expedition Medic" = /datum/alt_title/expedition_medic)
 
 /datum/alt_title/expedition_medic

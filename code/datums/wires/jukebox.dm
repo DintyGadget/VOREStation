@@ -22,25 +22,25 @@
 /datum/wires/jukebox/get_status()
 	var/obj/machinery/media/jukebox/A = holder
 	. = ..()
-	. += "The power light is [A.stat & (BROKEN|NOPOWER) ? "off." : "on."]"
-	. += "The parental guidance light is [A.hacked ? "off." : "on."]"
-	. += "The data light is [is_cut(WIRE_REVERSE) ? "hauntingly dark." : "glowing softly."]"
+	. += "Индикатор питания [A.stat & (BROKEN|NOPOWER) ? "выключен." : "включен."]"
+	. += "Индикатор родительского контроля [A.hacked ? "выключен." : "включен."]"
+	. += "Информационный световой индикатор [is_cut(WIRE_REVERSE) ? "не горит." : "ярко горит."]"
 
 // Give a hint as to what each wire does
 /datum/wires/jukebox/on_pulse(wire)
 	var/obj/machinery/media/jukebox/A = holder
 	switch(wire)
 		if(WIRE_MAIN_POWER1)
-			holder.visible_message("<span class='notice'>[bicon(holder)] The power light flickers.</span>")
+			holder.visible_message("<span class='notice'>[bicon(holder)] Индикатор питания мигает.</span>")
 			A.shock(usr, 90)
 		if(WIRE_JUKEBOX_HACK)
-			holder.visible_message("<span class='notice'>[bicon(holder)] The parental guidance light flickers.</span>")
+			holder.visible_message("<span class='notice'>[bicon(holder)] Индикатор родительского контроля мигает.</span>")
 		if(WIRE_REVERSE)
-			holder.visible_message("<span class='notice'>[bicon(holder)] The data light blinks ominously.</span>")
+			holder.visible_message("<span class='notice'>[bicon(holder)] Индикатор данных зловеще мигает.</span>")
 		if(WIRE_SPEEDUP)
-			holder.visible_message("<span class='notice'>[bicon(holder)] The speakers squeaks.</span>")
+			holder.visible_message("<span class='notice'>[bicon(holder)] Динамики поскрипывают.</span>")
 		if(WIRE_SPEEDDOWN)
-			holder.visible_message("<span class='notice'>[bicon(holder)] The speakers rumble.</span>")
+			holder.visible_message("<span class='notice'>[bicon(holder)] Динамики грохочут.</span>")
 		if(WIRE_START)
 			A.StartPlaying()
 		if(WIRE_STOP)

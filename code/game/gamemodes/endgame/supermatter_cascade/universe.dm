@@ -9,7 +9,7 @@ var/global/universe_has_ended = 0
 
 /datum/universal_state/supermatter_cascade/OnShuttleCall(var/mob/user)
 	if(user)
-		to_chat(user, "<span class='sinister'>All you hear on the frequency is static and panicked screaming. There will be no shuttle call today.</span>")
+		to_chat(user, "<span class='sinister'>Все, что вы слышите на этой частоте, - это статический и панический крик. Сегодня шаттла не будет.</span>")
 	return 0
 
 /datum/universal_state/supermatter_cascade/OnTurfChange(var/turf/T)
@@ -37,7 +37,7 @@ var/global/universe_has_ended = 0
 // Apply changes when entering state
 /datum/universal_state/supermatter_cascade/OnEnter()
 	set background = 1
-	to_world("<span class='sinister' style='font-size:22pt'>You are blinded by a brilliant flash of energy.</span>")
+	to_world("<span class='sinister' style='font-size:22pt'>Вы ослеплены яркой вспышкой энергии.</span>")
 
 	world << sound('sound/effects/cascade.ogg')
 
@@ -45,7 +45,7 @@ var/global/universe_has_ended = 0
 		M.flash_eyes()
 
 	if(emergency_shuttle.can_recall())
-		priority_announcement.Announce("The emergency shuttle has returned due to bluespace distortion.")
+		priority_announcement.Announce("Аварийный шаттл вернулся из-за искажения синего пространства.")
 		emergency_shuttle.recall()
 
 	AreaSet()
@@ -61,15 +61,15 @@ var/global/universe_has_ended = 0
 	new /obj/singularity/narsie/large/exit(pick(endgame_exits))
 	spawn(rand(30,60) SECONDS)
 		var/txt = {"
-There's been a galaxy-wide electromagnetic pulse.  All of our systems are heavily damaged and many personnel are dead or dying. We are seeing increasing indications of the universe itself beginning to unravel.
+Произошел электромагнитный импульс по всей галактике.  Все наши системы сильно повреждены, и многие сотрудники погибли или умирают. Мы видим все больше признаков того, что сама Вселенная начинает распадаться.
 
-[station_name()], you are the only facility nearby a bluespace rift, which is near your research outpost. You are hereby directed to enter the rift using all means necessary, quite possibly as the last of your species alive.
+[station_name()], вы - единственный объект рядом с разломом в космическом пространстве, рядом с вашим исследовательским форпостом. Настоящим вы получаете указание войти в разлом, используя все необходимые средства, вполне возможно, в качестве последнего живого представителя вашего вида.
 
-You have five minutes before the universe collapses. Good l\[\[###!!!-
+У вас есть пять минут до коллапса вселенной. Удч\[\[###!!!-
 
-AUTOMATED ALERT: Link to [command_name()] lost.
+АВТОМАТИЧЕСКОЕ ОПОВЕЩЕНИЕ: Связь с [command_name()] потеряна.
 
-The access requirements on the Asteroid Shuttles' consoles have now been revoked.
+Требования к доступу к консолям Asteroid Shuttles отменены.
 "}
 		priority_announcement.Announce(txt,"SUPERMATTER CASCADE DETECTED")
 

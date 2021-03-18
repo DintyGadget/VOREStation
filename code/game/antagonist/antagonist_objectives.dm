@@ -38,18 +38,15 @@
 	if(!mind)
 		return
 	if(!is_special_character(mind))
-		to_chat(src, "<span class='warning'>While you may perhaps have goals, this verb's meant to only be visible \
-		to antagonists.  Please make a bug report!</span>")
+		to_chat(src, "<span class='warning'>Хоть у Вас и могут быть цели, этот глагол должен быть виден только антагонистам. Пожалуйста, сообщите об ошибке!</span>")
 		return
-	var/new_ambitions = input(src, "Write a short sentence of what your character hopes to accomplish \
-	today as an antagonist.  Remember that this is purely optional.  It will be shown at the end of the \
-	round for everybody else.", "Ambitions", mind.ambitions) as null|message
+	var/new_ambitions = input(src, "Напишите короткое предложение о том, чего ваш персонаж надеется достичь сегодня как антагонист. Помните, что это совершенно необязательно. Оно будет показан в конце раунда всем остальным.", "Амбиции", mind.ambitions) as null|message
 	if(isnull(new_ambitions))
 		return
 	new_ambitions = sanitize(new_ambitions)
 	mind.ambitions = new_ambitions
 	if(new_ambitions)
-		to_chat(src, "<span class='notice'>You've set your goal to be '[new_ambitions]'.</span>")
+		to_chat(src, "<span class='notice'>Вы поставили перед собой цель '[new_ambitions]'.</span>")
 	else
-		to_chat(src, "<span class='notice'>You leave your ambitions behind.</span>")
-	log_and_message_admins("has set their ambitions to now be: [new_ambitions].")
+		to_chat(src, "<span class='notice'>Вы оставляете свои амбиции позади.</span>")
+	log_and_message_admins("установил новые амбиции: [new_ambitions].")

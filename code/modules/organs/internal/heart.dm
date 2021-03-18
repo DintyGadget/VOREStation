@@ -16,10 +16,10 @@
 	//Endocarditis (very rare, usually for artificially implanted heart valves/pacemakers)
 	if (. >= 1)
 		if(prob(1))
-			owner.custom_pain("Your chest feels uncomfortably tight!",0)
+			owner.custom_pain("В груди ощущается дискомфорт!",0)
 	if (. >= 2)
 		if(prob(1))
-			owner.custom_pain("A stabbing pain rolls through your chest!",1)
+			owner.custom_pain("Колющая боль прокатывается по твоей груди!",1)
 			owner.apply_damage(damage = 25, damagetype = HALLOSS, def_zone = parent_organ)
 
 /obj/item/organ/internal/heart/robotize()

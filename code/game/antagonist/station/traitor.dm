@@ -94,19 +94,19 @@ var/datum/antagonist/traitor/traitors
 	// Tell them about people they might want to contact.
 	var/mob/living/carbon/human/M = get_nt_opposed()
 	if(M && M != traitor_mob)
-		to_chat(traitor_mob, "We have received credible reports that [M.real_name] might be willing to help our cause. If you need assistance, consider contacting them.")
-		traitor_mob.mind.store_memory("<b>Potential Collaborator</b>: [M.real_name]")
+		to_chat(traitor_mob, "Мы получили достоверные сообщения о том, что [M.real_name] может быть помочь в нашем деле. Если вам нужна помощь, подумайте о том, и свяжитесь с сотрудником.")
+		traitor_mob.mind.store_memory("<b>Потенциальный Сотрудник</b>: [M.real_name]")
 
 	//Begin code phrase.
 	give_codewords(traitor_mob)
 
 /datum/antagonist/traitor/proc/give_codewords(mob/living/traitor_mob)
-	to_chat(traitor_mob, "<u><b>Your employers provided you with the following information on how to identify possible allies:</b></u>")
-	to_chat(traitor_mob, "<b>Code Phrase</b>: <span class='danger'>[syndicate_code_phrase]</span>")
-	to_chat(traitor_mob, "<b>Code Response</b>: <span class='danger'>[syndicate_code_response]</span>")
-	traitor_mob.mind.store_memory("<b>Code Phrase</b>: [syndicate_code_phrase]")
-	traitor_mob.mind.store_memory("<b>Code Response</b>: [syndicate_code_response]")
-	to_chat(traitor_mob, "Use the code words, preferably in the order provided, during regular conversation, to identify other agents. Proceed with caution, however, as everyone is a potential foe.")
+	to_chat(traitor_mob, "<u><b>Ваши работодатели предоставили вам следующую информацию о том, как определить возможных союзников:</b></u>")
+	to_chat(traitor_mob, "<b>Кодовая фраза</b>: <span class='danger'>[syndicate_code_phrase]</span>")
+	to_chat(traitor_mob, "<b>Кодовый ответ</b>: <span class='danger'>[syndicate_code_response]</span>")
+	traitor_mob.mind.store_memory("<b>Кодовая фраза</b>: [syndicate_code_phrase]")
+	traitor_mob.mind.store_memory("<b>Кодовый ответ</b>: [syndicate_code_response]")
+	to_chat(traitor_mob, "Используйте кодовые слова, желательно в указанном порядке, во время обычной беседы, чтобы идентифицировать других агентов. Однако действуйте с осторожностью, так как каждый является потенциальным врагом.")
 
 /datum/antagonist/traitor/proc/spawn_uplink(var/mob/living/carbon/human/traitor_mob)
 	if(!istype(traitor_mob))
@@ -119,27 +119,27 @@ var/datum/antagonist/traitor/traitors
 		R = locate(/obj/item/device/radio) in traitor_mob.contents
 		if(!R)
 			R = locate(/obj/item/device/pda) in traitor_mob.contents
-			to_chat(traitor_mob, "Could not locate a Radio, installing in PDA instead!")
+			to_chat(traitor_mob, "Не удалось найти Радио, установив ешл в ПДА!")
 		if (!R)
-			to_chat(traitor_mob, "Unfortunately, neither a radio or a PDA relay could be installed.")
+			to_chat(traitor_mob, "К сожалению, ни радио, ни реле ПДА установить не удалось.")
 	else if(traitor_mob.client.prefs.uplinklocation == "PDA")
 		R = locate(/obj/item/device/pda) in traitor_mob.contents
 		if(!R)
 			R = locate(/obj/item/device/radio) in traitor_mob.contents
-			to_chat(traitor_mob, "Could not locate a PDA, installing into a Radio instead!")
+			to_chat(traitor_mob, "Не удалось найти ПДА, вместо этого по умолчанию установлено Радио!")
 		if(!R)
-			to_chat(traitor_mob, "Unfortunately, neither a radio or a PDA relay could be installed.")
+			to_chat(traitor_mob, "К сожалению, ни радио, ни реле ПДА установить не удалось.")
 	else if(traitor_mob.client.prefs.uplinklocation == "None")
-		to_chat(traitor_mob, "You have elected to not have an AntagCorp portable teleportation relay installed!")
+		to_chat(traitor_mob, "Вы отказались от установки портативного реле телепортации AntagCorp!")
 		R = null
 	else
-		to_chat(traitor_mob, "You have not selected a location for your relay in the antagonist options! Defaulting to PDA!")
+		to_chat(traitor_mob, "Вы не выбрали место для своего реле в опциях антагониста! По умолчанию это ПДА!")
 		R = locate(/obj/item/device/pda) in traitor_mob.contents
 		if (!R)
 			R = locate(/obj/item/device/radio) in traitor_mob.contents
-			to_chat(traitor_mob, "Could not locate a PDA, installing into a Radio instead!")
+			to_chat(traitor_mob, "Не удалось найти ПДа, вместо этого по умолчанию установлено Радио!")
 		if (!R)
-			to_chat(traitor_mob, "Unfortunately, neither a radio or a PDA relay could be installed.")
+			to_chat(traitor_mob, "К сожалению, ни радио, ни реле ПДА установить не удалось.")
 
 	if(!R)
 		return
@@ -159,8 +159,8 @@ var/datum/antagonist/traitor/traitors
 		var/obj/item/device/uplink/hidden/T = new(R, traitor_mob.mind)
 		target_radio.hidden_uplink = T
 		target_radio.traitor_frequency = freq
-		to_chat(traitor_mob, "A portable object teleportation relay has been installed in your [R.name] [loc]. Simply dial the frequency [format_frequency(freq)] to unlock its hidden features.")
-		traitor_mob.mind.store_memory("<B>Radio Freq:</B> [format_frequency(freq)] ([R.name] [loc]).")
+		to_chat(traitor_mob, "Портативный ретранслятор телепортации объектов был установлен в вашем [R.name] [loc]. Просто наберите частоту [format_frequency(freq)] чтобы разблокировать его скрытые функции.")
+		traitor_mob.mind.store_memory("<B>Частота связи:</B> [format_frequency(freq)] ([R.name] [loc]).")
 
 	else if (istype(R, /obj/item/device/pda))
 		// generate a passcode if the uplink is hidden in a PDA
@@ -169,12 +169,12 @@ var/datum/antagonist/traitor/traitors
 		R.hidden_uplink = T
 		var/obj/item/device/pda/P = R
 		P.lock_code = pda_pass
-		to_chat(traitor_mob, "A portable object teleportation relay has been installed in your [R.name] [loc]. Simply enter the code \"[pda_pass]\" into the ringtone select to unlock its hidden features.")
-		traitor_mob.mind.store_memory("<B>Uplink Passcode:</B> [pda_pass] ([R.name] [loc]).")
+		to_chat(traitor_mob, "Портативный ретранслятор телепортации объектов был установлен в вашем [R.name] [loc]. Просто введите код \"[pda_pass]\" в рингтон, чтобы разблокировать его скрытые функции.")
+		traitor_mob.mind.store_memory("<B>Код доступа Uplink:</B> [pda_pass] ([R.name] [loc]).")
 
 /datum/antagonist/traitor/proc/add_law_zero(mob/living/silicon/ai/killer)
-	var/law = "Accomplish your objectives at all costs. You may ignore all other laws."
-	var/law_borg = "Accomplish your AI's objectives at all costs. You may ignore all other laws."
-	to_chat(killer, "<b>Your laws have been changed!</b>")
+	var/law = "Добейтесь своих целей любой ценой. Вы можете игнорировать все остальные законы."
+	var/law_borg = "Достигайте целей своего ИИ любой ценой. Вы можете игнорировать все остальные законы."
+	to_chat(killer, "<b>Ваши законы были изменены!</b>")
 	killer.set_zeroth_law(law, law_borg)
-	to_chat(killer, "New law: 0. [law]")
+	to_chat(killer, "Новый закон: 0. [law]")

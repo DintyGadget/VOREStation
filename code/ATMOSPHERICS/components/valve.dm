@@ -238,7 +238,7 @@
 	if(!powered())
 		return
 	if(!src.allowed(user))
-		to_chat(user, "<span class='warning'>Access denied.</span>")
+		to_chat(user, "<span class='warning'>Доступ запрещен.</span>")
 		return
 	..()
 
@@ -291,21 +291,21 @@
 	if (!W.is_wrench())
 		return ..()
 	if (istype(src, /obj/machinery/atmospherics/valve/digital) && !src.allowed(user))
-		to_chat(user, "<span class='warning'>Access denied.</span>")
+		to_chat(user, "<span class='warning'>Доступ запрещен.</span>")
 		return 1
 	if(!can_unwrench())
-		to_chat(user, "<span class='warning'>You cannot unwrench \the [src], it is too exerted due to internal pressure.</span>")
+		to_chat(user, "<span class='warning'>Вы не можете открутить [src], он слишком напряжен из-за внутреннего давления.</span>")
 		add_fingerprint(user)
 		return 1
 	playsound(src, W.usesound, 50, 1)
-	to_chat(user, "<span class='notice'>You begin to unfasten \the [src]...</span>")
+	to_chat(user, "<span class='notice'>Вы начинаете отстегивать [src]...</span>")
 	if (do_after(user, 40 * W.toolspeed))
 		user.visible_message( \
-			"<span class='notice'>\The [user] unfastens \the [src].</span>", \
-			"<span class='notice'>You have unfastened \the [src].</span>", \
+			"<span class='notice'>[user] открепляет [src].</span>", \
+			"<span class='notice'>Вы открепили [src].</span>", \
 			"You hear a ratchet.")
 		deconstruct()
 
 /obj/machinery/atmospherics/valve/examine(mob/user)
 	. = ..()
-	. += "It is [open ? "open" : "closed"]."
+	. += "Теперь [open ? "отркыт" : "закрыт"]."

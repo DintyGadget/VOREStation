@@ -10,7 +10,7 @@
 
 /obj/machinery/media/jukebox/
 	name = "space jukebox"
-	desc = "Filled with songs both past and present!"
+	desc = "Наполнен песнями прошлого и настоящего!"
 	icon = 'icons/obj/jukebox.dmi'
 	icon_state = "jukebox2-nopower"
 	var/state_base = "jukebox2"
@@ -119,7 +119,7 @@
 	if(current_track && playing)
 		media_url = current_track.url
 		media_start_time = world.time
-		visible_message("<span class='notice'>\The [src] begins to play [current_track.display()].</span>")
+		visible_message("<span class='notice'>[src] начинает играть [current_track.display()].</span>")
 	else
 		media_url = ""
 		media_start_time = 0
@@ -148,7 +148,7 @@
 	if(W.is_wrench())
 		if(playing)
 			StopPlaying()
-		user.visible_message("<span class='warning'>[user] has [anchored ? "un" : ""]secured \the [src].</span>", "<span class='notice'>You [anchored ? "un" : ""]secure \the [src].</span>")
+		user.visible_message("<span class='warning'>[user] [anchored ? "снимает" : "закрепляет"] [src].</span>", "<span class='notice'>Вы [anchored ? "снимает" : "закрепляет"] [src].</span>")
 		anchored = !anchored
 		playsound(src, W.usesound, 50, 1)
 		power_change()
@@ -190,16 +190,16 @@
 
 /obj/machinery/media/jukebox/interact(mob/user)
 	if(inoperable())
-		to_chat(usr, "\The [src] doesn't appear to function.")
+		to_chat(usr, "[src] не работает.")
 		return
 	tgui_interact(user)
 
 /obj/machinery/media/jukebox/tgui_status(mob/user)
 	if(inoperable())
-		to_chat(user, "<span class='warning'>[src] doesn't appear to function.</span>")
+		to_chat(user, "<span class='warning'>[src] не работает.</span>")
 		return STATUS_CLOSE
 	if(!anchored)
-		to_chat(user, "<span class='warning'>You must secure [src] first.</span>")
+		to_chat(user, "<span class='warning'>Сначала вы должны закрепить [src].</span>")
 		return STATUS_CLOSE
 	. = ..()
 
@@ -211,7 +211,7 @@
 
 /obj/machinery/media/jukebox/tgui_data(mob/user, datum/tgui/ui, datum/tgui_state/state)
 	var/list/data = ..()
-	
+
 	data["playing"] = playing
 	data["loop_mode"] = loop_mode
 	data["volume"] = volume

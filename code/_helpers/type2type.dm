@@ -155,7 +155,7 @@
 /proc/hex2rgb(hex)
 	// Strips the starting #, in case this is ever supplied without one, so everything doesn't break.
 	if(findtext(hex,"#",1,2))
-		hex = copytext(hex, 2)
+		hex = copytext_char(hex, 2)
 	return list(hex2rgb_r(hex), hex2rgb_g(hex), hex2rgb_b(hex))
 
 // The three procs below require that the '#' part of the hex be stripped, which hex2rgb() does automatically.

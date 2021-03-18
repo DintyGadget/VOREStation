@@ -1,8 +1,8 @@
 /client/verb/who()
-	set name = "Who"
+	set name = "Кто Онлайн"
 	set category = "OOC"
 
-	var/msg = "<b>Current Players:</b>\n"
+	var/msg = "<b>Игроки на сервере:</b>\n"
 
 	var/list/Lines = list()
 
@@ -10,20 +10,20 @@
 		for(var/client/C in GLOB.clients)
 			var/entry = "\t[C.key]"
 			if(C.holder && C.holder.fakekey)
-				entry += " <i>(as [C.holder.fakekey])</i>"
-			entry += " - Playing as [C.mob.real_name]"
+				entry += " <i><meta charset=\"utf-8\"><i>(за [C.holder.fakekey])</i>"
+			entry += " - Играет за [C.mob.real_name]"
 			switch(C.mob.stat)
 				if(UNCONSCIOUS)
-					entry += " - <font color='darkgray'><b>Unconscious</b></font>"
+					entry += " - <font color='darkgray'><b>Без сознания</b></font>"
 				if(DEAD)
 					if(isobserver(C.mob))
 						var/mob/observer/dead/O = C.mob
 						if(O.started_as_observer)
-							entry += " - <font color='gray'>Observing</font>"
+							entry += " - <font color='gray'>Наблюдает</font>"
 						else
-							entry += " - <font color='black'><b>DEAD</b></font>"
+							entry += " - <font color='black'><b>МЁРТВ</b></font>"
 					else
-						entry += " - <font color='black'><b>DEAD</b></font>"
+						entry += " - <font color='black'><b>МЁРТВ</b></font>"
 
 			var/age
 			if(isnum(C.player_age))
@@ -39,13 +39,13 @@
 			entry += " - [age]"
 
 			if(is_special_character(C.mob))
-				entry += " - <b><font color='red'>Antagonist</font></b>"
+				entry += " - <b><font color='red'>Антагонист</font></b>"
 
 			if(C.is_afk())
 				var/seconds = C.last_activity_seconds()
-				entry += " (AFK - "
-				entry += "[round(seconds / 60)] minutes, "
-				entry += "[seconds % 60] seconds)"
+				entry += " (АФК - "
+				entry += "[round(seconds / 60)] минут, "
+				entry += "[seconds % 60] секунд)"
 
 			entry += " (<A HREF='?_src_=holder;adminmoreinfo=\ref[C.mob]'>?</A>)"
 			Lines += entry
@@ -59,7 +59,7 @@
 	for(var/line in sortList(Lines))
 		msg += "[line]\n"
 
-	msg += "<b>Total Players: [length(Lines)]</b>"
+	msg += "<b>Игроков на сервере: [length(Lines)]</b>"
 	to_chat(src,msg)
 
 /client/verb/staffwho()
@@ -79,7 +79,7 @@
 	var/num_admins_online = 0
 	var/num_devs_online = 0
 	var/num_event_managers_online = 0
-	
+
 	if(holder)
 		for(var/client/C in GLOB.admins)
 			if(R_ADMIN & C.holder.rights && R_BAN & C.holder.rights)

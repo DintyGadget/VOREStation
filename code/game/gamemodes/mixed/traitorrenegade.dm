@@ -1,7 +1,7 @@
 /datum/game_mode/traitorren
 	name = "Traitors & Renegades"
-	round_description = "Subversive elements have invaded the station, and certain individuals are feeling uncertain about their safety."
-	extended_round_description = "Traitors and renegades spawn during this round."
+	round_description = "Подрывные элементы вторглись на станцию, и некоторые люди не уверены в своей безопасности."
+	extended_round_description = "В этом раунде появляются предатели и ренегаты."
 	config_tag = "traitorren"
 	required_players = 11			//I don't think we can have it lower and not need an ERT every round.
 	required_players_secret = 11	//I don't think we can have it lower and not need an ERT every round.

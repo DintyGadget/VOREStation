@@ -1,7 +1,7 @@
 /datum/game_mode/traitorling
 	name = "Traitors & Changelings"
-	round_description = "There are traitors and alien changelings on the station. Do not let the changelings succeed!"
-	extended_round_description = "Traitors and changelings both spawn during this mode."
+	round_description = "На станции есть предатели и инопланетные подменыши. Не дайте подменышам добиться успеха!"
+	extended_round_description = "В этом режиме появляются как предатели, так и подменыши."
 	config_tag = "traitorling"
 	required_players = 10
 	required_players_secret = 10

@@ -5,10 +5,10 @@
 
 /datum/modifier/bloodpump
 	name = "external blood pumping"
-	desc = "Your blood flows thanks to the wonderful power of science."
+	desc = "Ваша кровь течет благодаря чудесной силе науки."
 
-	on_created_text = "<span class='notice'>You feel alive.</span>"
-	on_expired_text = "<span class='notice'>You feel.. less alive.</span>"
+	on_created_text = "<span class='notice'>Вы чувствуете себя живым.</span>"
+	on_expired_text = "<span class='notice'>Вы чувствуете себя .. менее живым.</span>"
 	stacks = MODIFIER_STACK_EXTEND
 
 	pulse_set_level = PULSE_NORM
@@ -20,10 +20,10 @@
 
 /datum/modifier/bloodpump_corpse
 	name = "forced blood pumping"
-	desc = "Your blood flows thanks to the wonderful power of science."
+	desc = "Ваша кровь течет благодаря чудесной силе науки."
 
-	on_created_text = "<span class='notice'>You feel alive.</span>"
-	on_expired_text = "<span class='notice'>You feel.. less alive.</span>"
+	on_created_text = "<span class='notice'>Вы чувствуете себя живым.</span>"
+	on_expired_text = "<span class='notice'>Вы чувствуете себя .. менее живым.</span>"
 	stacks = MODIFIER_STACK_EXTEND
 
 	pulse_set_level = PULSE_SLOW
@@ -39,11 +39,11 @@
 
 /datum/modifier/cryogelled
 	name = "cryogelled"
-	desc = "Your body begins to freeze."
+	desc = "Ваше тело начинает мерзнуть."
 	mob_overlay_state = "chilled"
 
-	on_created_text = "<span class='danger'>You feel like you're going to freeze! It's hard to move.</span>"
-	on_expired_text = "<span class='warning'>You feel somewhat warmer and more mobile now.</span>"
+	on_created_text = "<span class='danger'>Вы чувствуете, что вот-вот замерзнете! Трудно двигаться.</span>"
+	on_expired_text = "<span class='warning'>Теперь вы чувствуете себя немного теплее и подвижнее.</span>"
 	stacks = MODIFIER_STACK_ALLOWED
 
 	slowdown = 0.1
@@ -53,10 +53,10 @@
 
 /datum/modifier/clone_stabilizer
 	name = "clone stabilized"
-	desc = "Your body's regeneration is highly restricted."
+	desc = "Регенерация вашего тела сильно ограничена."
 
-	on_created_text = "<span class='danger'>You feel nauseous.</span>"
-	on_expired_text = "<span class='warning'>You feel healthier.</span>"
+	on_created_text = "<span class='danger'>Вас тошнит.</span>"
+	on_expired_text = "<span class='warning'>Вы чувствуете себя здоровее.</span>"
 	stacks = MODIFIER_STACK_EXTEND
 
 	incoming_healing_percent = 0.1

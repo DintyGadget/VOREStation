@@ -84,15 +84,15 @@
 	if(.)
 		return
 	if(panel_open)
-		to_chat(user, "<span class='warning'>The panel must be closed before operating this machine!</span>")
+		to_chat(user, "<span class='warning'>Панель должна быть закрыта перед работой на этой машине!</span>")
 		return
 
 	if(istype(get_area(src), /area/shuttle))
-		to_chat(user, "<span class='warning'>This is too unstable a platform for \the [src] to operate on!</span>")
+		to_chat(user, "<span class='warning'>Это слишком нестабильная платформа для работы [src]!</span>")
 		return
 
 	if(!powernet)
-		to_chat(user, "<span class='warning'>[src] is not attached to a powernet!</span>")
+		to_chat(user, "<span class='warning'>[src] не подключен к сети!</span>")
 		return
 
 	if(!linked_pad || QDELETED(linked_pad))

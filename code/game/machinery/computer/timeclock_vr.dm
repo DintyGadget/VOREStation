@@ -58,7 +58,7 @@
 			SStgui.update_uis(src)
 			update_icon()
 		else if(card)
-			to_chat(user, "<span class='warning'>There is already ID card inside.</span>")
+			to_chat(user, "<span class='warning'>Внутри уже есть ID-карта.</span>")
 		return
 	. = ..()
 

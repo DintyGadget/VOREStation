@@ -4,11 +4,11 @@
 	set hidden = 1
 
 	if (stat == DEAD)
-		to_chat(src, "You're already dead!")
+		to_chat(src, "Вы мертвы!")
 		return
 
 	if (!ticker)
-		to_chat(src, "You can't commit suicide before the game starts!")
+		to_chat(src, "Вы не можете покончить жизнь самоубийством до начала игры!")
 		return
 
 	if(!player_is_antag(mind))
@@ -73,9 +73,9 @@
 				return
 
 		log_and_message_admins("[key_name(src)] commited suicide")
-		
+
 		var/datum/gender/T = gender_datums[get_visible_gender()]
-		
+
 		var/suicidemsg
 		suicidemsg = pick("<span class='danger'>[src] is attempting to bite [T.his] tongue off! It looks like [T.he] [T.is] trying to commit suicide.</span>", \
 		                     "<span class='danger'>[src] is jamming [T.his] thumbs into [T.his] eye sockets! It looks like [T.he] [T.is] trying to commit suicide.</span>", \

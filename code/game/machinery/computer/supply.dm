@@ -34,7 +34,7 @@
 	if(..())
 		return
 	if(!allowed(user))
-		to_chat(user, "<span class='warning'>You don't have the required access to use this console.</span>")
+		to_chat(user, "<span class='warning'>У вас нет необходимого доступа для использования этой консоли.</span>")
 		return
 	user.set_machine(src)
 	tgui_interact(user)
@@ -42,7 +42,7 @@
 
 /obj/machinery/computer/supplycomp/emag_act(var/remaining_charges, var/mob/user)
 	if(!can_order_contraband)
-		to_chat(user, "<span class='notice'>Special supplies unlocked.</span>")
+		to_chat(user, "<span class='notice'>Особые поставки открыты.</span>")
 		authorization |= SUP_CONTRABAND
 		req_access = list()
 		can_order_contraband = TRUE
@@ -63,7 +63,7 @@
 	var/datum/shuttle/autodock/ferry/supply/shuttle = SSsupply.shuttle
 	if(shuttle)
 		if(shuttle.has_arrive_time())
-			shuttle_status["location"] = "In transit"
+			shuttle_status["location"] = "В пути"
 			shuttle_status["mode"] = SUP_SHUTTLE_TRANSIT
 			shuttle_status["time"] = shuttle.eta_seconds()
 
@@ -73,26 +73,26 @@
 				if(shuttle.shuttle_docking_controller)
 					switch(shuttle.shuttle_docking_controller.get_docking_status())
 						if("docked")
-							shuttle_status["location"] = "Docked"
+							shuttle_status["location"] = "Пристыкован"
 							shuttle_status["mode"] = SUP_SHUTTLE_DOCKED
 						if("undocked")
-							shuttle_status["location"] = "Undocked"
+							shuttle_status["location"] = "Не пристыкован"
 							shuttle_status["mode"] = SUP_SHUTTLE_UNDOCKED
 						if("docking")
-							shuttle_status["location"] = "Docking"
+							shuttle_status["location"] = "Стыкуется"
 							shuttle_status["mode"] = SUP_SHUTTLE_DOCKING
 							shuttle_status["force"] = shuttle.can_force()
 						if("undocking")
-							shuttle_status["location"] = "Undocking"
+							shuttle_status["location"] = "Отстыковывается"
 							shuttle_status["mode"] = SUP_SHUTTLE_UNDOCKING
 							shuttle_status["force"] = shuttle.can_force()
 
 				else
-					shuttle_status["location"] = "Station"
+					shuttle_status["location"] = "Станция"
 					shuttle_status["mode"] = SUP_SHUTTLE_DOCKED
 
 			else
-				shuttle_status["location"] = "Away"
+				shuttle_status["location"] = "Далеко"
 				shuttle_status["mode"] = SUP_SHUTTLE_AWAY
 
 			if(shuttle.can_launch())
@@ -104,11 +104,11 @@
 
 		switch(shuttle.moving_status)
 			if(SHUTTLE_IDLE)
-				shuttle_status["engine"] = "Idle"
+				shuttle_status["engine"] = "Бездействие"
 			if(SHUTTLE_WARMUP)
-				shuttle_status["engine"] = "Warming up"
+				shuttle_status["engine"] = "Зажигание"
 			if(SHUTTLE_INTRANSIT)
-				shuttle_status["engine"] = "Engaged"
+				shuttle_status["engine"] = "Летит"
 
 	else
 		shuttle_status["mode"] = SUP_SHUTTLE_ERROR
@@ -124,14 +124,14 @@
 			"status" = S.status,
 			"cost" = S.cost,
 			"entries" = list(
-				list("field" = "Supply Pack", "entry" = S.name),
-				list("field" = "Cost", "entry" = S.cost),
-				list("field" = "Index", "entry" = S.index),
-				list("field" = "Reason", "entry" = S.comment),
-				list("field" = "Ordered by", "entry" = S.ordered_by),
-				list("field" = "Ordered at", "entry" = S.ordered_at),
-				list("field" = "Approved by", "entry" = S.approved_by),
-				list("field" = "Approved at", "entry" = S.approved_at)
+				list("field" = "Предмет", "entry" = S.name),
+				list("field" = "Цена", "entry" = S.cost),
+				list("field" = "Индекс", "entry" = S.index),
+				list("field" = "Причина", "entry" = S.comment),
+				list("field" = "Заказал", "entry" = S.ordered_by),
+				list("field" = "Заказано", "entry" = S.ordered_at),
+				list("field" = "Одобрил", "entry" = S.approved_by),
+				list("field" = "Одобрено", "entry" = S.approved_at)
 				)
 			)))
 
@@ -160,7 +160,7 @@
 
 /obj/machinery/computer/supplycomp/tgui_static_data(mob/user)
 	var/list/data = ..()
-	
+
 	var/list/pack_list = list()
 	for(var/pack_name in SSsupply.supply_pack)
 		var/datum/supply_pack/P = SSsupply.supply_pack[pack_name]
@@ -247,19 +247,19 @@
 				idrank = "Stationbound synthetic"
 
 			var/obj/item/weapon/paper/reqform = new /obj/item/weapon/paper(loc)
-			reqform.name = "Requisition Form - [S.name]"
+			reqform.name = "Форма запроса - [S.name]"
 			reqform.info += "<h3>[station_name()] Supply Requisition Form</h3><hr>"
-			reqform.info += "INDEX: #[SSsupply.ordernum]<br>"
-			reqform.info += "REQUESTED BY: [idname]<br>"
-			reqform.info += "RANK: [idrank]<br>"
-			reqform.info += "REASON: [reason]<br>"
-			reqform.info += "SUPPLY CRATE TYPE: [S.name]<br>"
-			reqform.info += "ACCESS RESTRICTION: [get_access_desc(S.access)]<br>"
-			reqform.info += "AMOUNT: [amount]<br>"
-			reqform.info += "CONTENTS:<br>"
+			reqform.info += "ИНДЕКС: #[SSsupply.ordernum]<br>"
+			reqform.info += "ЗАПРОСИЛ: [idname]<br>"
+			reqform.info += "ДОЛЖНОСТЬ: [idrank]<br>"
+			reqform.info += "ПРИЧИНА: [reason]<br>"
+			reqform.info += "ТИП ЯЩИКА ПОСТАВКИ: [S.name]<br>"
+			reqform.info += "КАТЕГОРИЯ ПОСТАВКИ: [get_access_desc(S.access)]<br>"
+			reqform.info += "КОЛИЧЕСТВО: [amount]<br>"
+			reqform.info += "СОДЕРЖИМОЕ:<br>"
 			reqform.info +=  S.get_html_manifest()
 			reqform.info += "<hr>"
-			reqform.info += "STAMP BELOW TO APPROVE THIS REQUISITION:<br>"
+			reqform.info += "ШТАМП НИЖЕ, ЧТОБЫ УТВЕРДИТЬ ЭТУ ЗАЯВКУ:<br>"
 
 			reqform.update_icon()	//Fix for appearing blank when printed.
 			reqtime = (world.time + 5) % 1e5
@@ -280,9 +280,9 @@
 				return FALSE
 
 			var/timeout = world.time + 600
-			var/reason = sanitize(input(usr, "Reason:","Why do you require this item?","") as null|text)
+			var/reason = sanitize(input(usr, "Reason:","Зачем вам нужен этот предмет?","") as null|text)
 			if(world.time > timeout)
-				to_chat(usr, "<span class='warning'>Error. Request timed out.</span>")
+				to_chat(usr, "<span class='warning'>Ошибка. Время ожидания запроса истекло.</span>")
 				return FALSE
 			if(!reason)
 				return FALSE
@@ -300,18 +300,18 @@
 				idrank = "Stationbound synthetic"
 
 			var/obj/item/weapon/paper/reqform = new /obj/item/weapon/paper(loc)
-			reqform.name = "Requisition Form - [S.name]"
+			reqform.name = "Форма запроса - [S.name]"
 			reqform.info += "<h3>[station_name()] Supply Requisition Form</h3><hr>"
-			reqform.info += "INDEX: #[SSsupply.ordernum]<br>"
-			reqform.info += "REQUESTED BY: [idname]<br>"
-			reqform.info += "RANK: [idrank]<br>"
-			reqform.info += "REASON: [reason]<br>"
-			reqform.info += "SUPPLY CRATE TYPE: [S.name]<br>"
-			reqform.info += "ACCESS RESTRICTION: [get_access_desc(S.access)]<br>"
-			reqform.info += "CONTENTS:<br>"
+			reqform.info += "ИНДЕКС: #[SSsupply.ordernum]<br>"
+			reqform.info += "ЗАПРОСИЛ: [idname]<br>"
+			reqform.info += "ДОЛЖНОСТЬ: [idrank]<br>"
+			reqform.info += "ПРИЧИНА: [reason]<br>"
+			reqform.info += "ТИП ЯЩИКА ПОСТАВКИ: [S.name]<br>"
+			reqform.info += "КАТЕГОРИЯ ПОСТАВКИ: [get_access_desc(S.access)]<br>"
+			reqform.info += "СОДЕРЖИМОЕ:<br>"
 			reqform.info +=  S.get_html_manifest()
 			reqform.info += "<hr>"
-			reqform.info += "STAMP BELOW TO APPROVE THIS REQUISITION:<br>"
+			reqform.info += "ШТАМП НИЖЕ, ЧТОБЫ УТВЕРДИТЬ ЭТУ ЗАЯВКУ:<br>"
 
 			reqform.update_icon()	//Fix for appearing blank when printed.
 			reqtime = (world.time + 5) % 1e5
@@ -323,7 +323,7 @@
 				return FALSE
 			if(!(authorization & SUP_ACCEPT_ORDERS))
 				return FALSE
-			var/new_val = sanitize(input(usr, params["edit"], "Enter the new value for this field:", params["default"]) as null|text)
+			var/new_val = sanitize(input(usr, params["edit"], "Введите новое значение для этого поля:", params["default"]) as null|text)
 			if(!new_val)
 				return FALSE
 
@@ -394,9 +394,9 @@
 			if(!(authorization & SUP_ACCEPT_ORDERS))
 				return FALSE
 			var/list/L = E.contents[params["index"]]
-			var/field = alert(usr, "Select which field to edit", , "Name", "Quantity", "Value")
+			var/field = alert(usr, "Выберите поле для редактирования", , "Name", "Quantity", "Value")
 
-			var/new_val = sanitize(input(usr, field, "Enter the new value for this field:", L[lowertext(field)]) as null|text)
+			var/new_val = sanitize(input(usr, field, "Введите новое значение для этого поля:", L[lowertext(field)]) as null|text)
 			if(!new_val)
 				return
 
@@ -439,7 +439,7 @@
 				return FALSE
 			if(!(authorization & SUP_ACCEPT_ORDERS))
 				return FALSE
-			var/new_val = sanitize(input(usr, params["edit"], "Enter the new value for this field:", params["default"]) as null|text)
+			var/new_val = sanitize(input(usr, params["edit"], "Введите новое значение для этого поля:", params["default"]) as null|text)
 			if(!new_val)
 				return
 

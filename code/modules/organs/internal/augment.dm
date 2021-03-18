@@ -65,7 +65,7 @@
 			return
 
 	if(robotic && owner.get_restraining_bolt())
-		to_chat(owner, "<span class='warning'>\The [src] doesn't respond.</span>")
+		to_chat(owner, "<span class='warning'>[src] не отвечает.</span>")
 		return
 
 	var/item_to_equip = integrated_object
@@ -103,7 +103,7 @@
 // The next two procs simply handle the radial menu for augment activation.
 
 /mob/living/carbon/human/proc/augment_menu()
-	set name = "Open Augment Menu"
+	set name = "Открыть Меню Аугментаций"
 	set desc = "Toggle your augment menu."
 	set category = "Augments"
 
@@ -153,11 +153,11 @@
 	if(buckled)
 		var/obj/Ob = buckled
 		if(Ob.buckle_lying)
-			to_chat(M, "<span class='notice'>You cannot use your augments when restrained.</span>")
+			to_chat(M, "<span class='notice'>Вы не можете использовать свои аугментации, когда они ограничены.</span>")
 			return 0
 
 	if((slot == slot_l_hand && l_hand) || (slot == slot_r_hand && r_hand))
-		to_chat(M,"<span class='warning'>Your hand is full.  Drop something first.</span>")
+		to_chat(M,"<span class='warning'>Ваша рука заняты.Бросьте что-нибудь.</span>")
 		return 0
 
 	var/del_if_failure = destroy_on_drop

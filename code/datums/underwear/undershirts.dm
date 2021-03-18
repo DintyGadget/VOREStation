@@ -1,193 +1,188 @@
 /datum/category_item/underwear/undershirt/none
 	is_default = TRUE
-	name = "None"
+	name = "Нет"
 	always_last = TRUE
 
 /datum/category_item/underwear/undershirt/shirt
-	name = "Shirt"
+	name = "Футболка"
 	icon_state = "undershirt"
 	has_color = TRUE
 
 /datum/category_item/underwear/undershirt/shirt_fem
-	name = "Babydoll shirt"
+	name = "Футболка женская"
 	icon_state = "undershirt_fem"
 	has_color = TRUE
 
 /datum/category_item/underwear/undershirt/shirt_long
-	name = "Longsleeve Shirt"
+	name = "Футболка, длинные рукава"
 	icon_state = "undershirt_long"
 	has_color = TRUE
 
 /datum/category_item/underwear/undershirt/shirt_long_s
-	name = "Shirt, button-down"
+	name = "Рубашка на пуговицах"
 	icon_state = "shirt_long_s"
 	has_color = TRUE
 
 /datum/category_item/underwear/undershirt/shirt_long_fem
-	name = "Longsleeve Shirt, feminine"
+	name = "Рубашка с длинными рукавами"
 	icon_state = "undershirt_long_fem"
 	has_color = TRUE
 
 /datum/category_item/underwear/undershirt/shirt_long_female_s
-	name = "Button-down Shirt, feminine"
+	name = "Рубашка с длинными рукавами, женская"
 	icon_state = "shirt_long_female_s"
 	has_color = TRUE
 
 
 /datum/category_item/underwear/undershirt/fishnet_simple
-	name = "Fishnet shirt"
+	name = "Рубашка в сеточку"
 	icon_state = "fishnet_simple"
 
 /datum/category_item/underwear/undershirt/tank_top
-	name = "Tank top"
+	name = "Майка"
 	icon_state = "tanktop"
 	has_color = TRUE
 
 /datum/category_item/underwear/undershirt/tank_top_alt
-	name = "Tank top, alt"
+	name = "Майка, альт"
 	icon_state = "tanktop_alt"
 	has_color = TRUE
 
 /datum/category_item/underwear/undershirt/tank_top_alt_fem
-	name = "Tank top, alt, feminine"
+	name = "Майка, альт, женская"
 	icon_state = "tanktop_alt_fem"
 	has_color = TRUE
 
 /datum/category_item/underwear/undershirt/tank_top_alt_fem_vneck
-	name = "Tank top, feminine, v-neck"
+	name = "Майка, женская, V-вырез"
 	icon_state = "tanktop_alt_fem_vneck"
 	has_color = TRUE
 
 /datum/category_item/underwear/undershirt/tank_cropped_vneck
-	name = "Tank top, feminine, cropped & v-neck"
+	name = "Майка, женская, обрезанная, V-вырез"
 	icon_state = "tanktop_cropped_vneck"
 	has_color = TRUE
 
 /datum/category_item/underwear/undershirt/tank_top_fire
-	name = "Tank top, fire"
+	name = "Майка, пламя"
 	icon_state = "tank_fire_s"
 
 /datum/category_item/underwear/undershirt/tank_top_fire_fem
-	name = "Tank top, fire, feminine"
+	name = "Майка, пламя, женская"
 	icon_state = "tank_fire_fem_s"
 
 /datum/category_item/underwear/undershirt/tank_top_rainbow
-	name = "Tank top, rainbow"
+	name = "Майка, радуга"
 	icon_state = "tank_rainbow_s"
 
 /datum/category_item/underwear/undershirt/tank_top_stripes
-	name = "Tank top, striped"
+	name = "Майка, полосатая"
 	icon_state = "tank_stripes_s"
 
 /datum/category_item/underwear/undershirt/tank_top_sun
-	name = "Tank top, sun"
+	name = "Майка, солнце"
 	icon_state = "tank_sun_s"
 
 /datum/category_item/underwear/undershirt/shirt_heart
-	name = "Shirt, heart"
+	name = "Футболка, сердце"
 	icon_state = "lover_s"
 
 /datum/category_item/underwear/undershirt/shirt_heart_fem
-	name = "Shirt, heart, babydoll"
+	name = "Футболка, сердце, женская"
 	icon_state = "lover_fem_s"
 
 /datum/category_item/underwear/undershirt/shirt_nt
-	name = "Shirt, NT"
+	name = "Футболка, NT"
 	icon_state = "shirt_nano_s"
 
 /datum/category_item/underwear/undershirt/shirt_love_nt
-	name = "Shirt, I<3NT"
+	name = "Футболка, I<3NT"
 	icon_state = "ilovent_s"
 
 /datum/category_item/underwear/undershirt/shirt_love_nt_fem
-	name = "Shirt, I<3NT, babydoll"
+	name = "Футболка, I<3NT, женская"
 	icon_state = "ilovent_fem_s"
 
 /datum/category_item/underwear/undershirt/shortsleeve_shirt
-	name = "Shortsleeve shirt"
+	name = "Рубашка, короткие рукава"
 	icon_state = "shortsleeve"
 	has_color = TRUE
 
 /datum/category_item/underwear/undershirt/shortsleeve_shirt_fem
-	name = "Shortsleeve babydoll shirt"
+	name = "Рубашка, короткие рукава, женская"
 	icon_state = "shortsleeve_fem"
 	has_color = TRUE
 
 /datum/category_item/underwear/undershirt/shortsleeve_shirt_fem_vneck
-	name = "Shortsleeve babydoll shirt, v-neck"
+	name = "Рубашка, короткие рукава, женская, V-вырез"
 	icon_state = "shortsleeve_fem_vneck"
 	has_color = TRUE
 
 /datum/category_item/underwear/undershirt/polo_shirt
-	name = "Polo shirt"
+	name = "Поло"
 	icon_state = "polo"
 	has_color = TRUE
 
 /datum/category_item/underwear/undershirt/sport_shirt_green
-	name = "Sport shirt, green"
+	name = "Спортивная футболка, зеленая"
 	icon_state = "greenshirtsport_s"
 
 /datum/category_item/underwear/undershirt/sport_shirt_red
-	name = "Sport shirt, red"
+	name = "Спортивная футболка, красная"
 	icon_state = "redshirtsport_s"
 
 /datum/category_item/underwear/undershirt/sport_shirt_blue
-	name = "Sport shirt, blue"
+	name = "Спортивная футболка, синяя"
 	icon_state = "blueshirtsport_s"
 
 /datum/category_item/underwear/undershirt/shirt_tiedye
-	name = "Shirt, tiedye"
+	name = "Футболка, око"
 	icon_state = "shirt_tiedye_s"
 
 /datum/category_item/underwear/undershirt/shirt_blue_striped
-	name = "Shirt, blue stripes"
+	name = "Футболка, синие полосы"
 	icon_state = "shirt_stripes_s"
 
 /datum/category_item/underwear/undershirt/bowling
-	name = "Bowling Shirt, Red"
+	name = "Рубашка для боулинга, красная"
 	icon_state = "bowling"
 
 /datum/category_item/underwear/undershirt/bowlingp
-	name = "Bowling Shirt, Pink"
+	name = "Рубашка для боулинга, розовая"
 	icon_state = "bowlingp"
 
 /datum/category_item/underwear/undershirt/bowlinga
-	name = "Bowling Shirt, Aqua"
+	name = "Рубашка для боулинга, голубая"
 	icon_state = "bowlinga"
 
 /datum/category_item/underwear/undershirt/bowlingw
-	name = "Bowling Shirt, White"
+	name = "Рубашка для боулинга, белая"
 	icon_state = "bowlingw"
 
 /datum/category_item/underwear/undershirt/longjon
-	name = "Long John Shirt"
+	name = "Рубашка с длинными рукавами, альт"
 	icon_state = "ljont"
 	has_color = TRUE
 
 /datum/category_item/underwear/undershirt/longstripe_black
-	name = "Longsleeve Striped Shirt, Black"
+	name = "Рубашка с длинными рукавами, черные полосы"
 	icon_state = "longstripe"
 
 /datum/category_item/underwear/undershirt/longstripe_blue
-	name = "Longsleeve Striped Shirt, Blue"
+	name = "Рубашка с длинными рукавами, синие полосы"
 	icon_state = "longstripe_blue"
 
-/datum/category_item/underwear/undershirt/tiedye
-	name = "Tiedye Shirt"
-	icon_state = "tiedye"
-
 /datum/category_item/underwear/undershirt/longstripe_pink
-	name = "Longsleeve Striped Shirt, Pink"
+	name = "Рубашка с длинными рукавами, розовые полосы"
 	icon_state = "longstripe_pink_s"
 
 /datum/category_item/underwear/undershirt/wingshirt
-	name = "Pink Wing Shirt"
+	name = "Футболка, розовое крыло"
 	icon_state = "wing_shirt_s"
 
 /datum/category_item/underwear/undershirt/pinkblack_tshirt
-	name = "Pink and Black T-Shirt"
+	name = "Футболка, черно-розовая"
 	icon_state = "pinkblack_tshirt"
-
 /datum/category_item/underwear/undershirt/turtle
 	name = "Turtleneck"
 	icon_state = "turtleneck"

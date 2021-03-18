@@ -101,22 +101,22 @@
 		new_character.key = key		//now transfer the key to link the client to our new body
 
 /datum/mind/proc/store_memory(new_text)
-	memory += "[new_text]<BR>"
+	memory += "<meta charset=\"utf-8\">[new_text]<BR>"
 
 /datum/mind/proc/show_memory(mob/recipient)
-	var/output = "<B>[current.real_name]'s Memory</B><HR>"
+	var/output = "<meta charset=\"utf-8\"><B>Воспоминания [current.real_name]</B><HR>"
 	output += memory
 
 	if(objectives.len>0)
-		output += "<HR><B>Objectives:</B>"
+		output += "<HR><B>Цели:</B>"
 
 		var/obj_count = 1
 		for(var/datum/objective/objective in objectives)
-			output += "<B>Objective #[obj_count]</B>: [objective.explanation_text]"
+			output += "<B>Цель #[obj_count]</B>: [objective.explanation_text]"
 			obj_count++
 
 	if(ambitions)
-		output += "<HR><B>Ambitions:</B> [ambitions]<br>"
+		output += "<HR><B>Амбиции:</B> [ambitions]<br>"
 	recipient << browse(output,"window=memory")
 
 /datum/mind/proc/edit_memory()
@@ -124,34 +124,34 @@
 		alert("Not before round-start!", "Alert")
 		return
 
-	var/out = "<B>[name]</B>[(current&&(current.real_name!=name))?" (as [current.real_name])":""]<br>"
-	out += "Mind currently owned by key: [key] [active?"(synced)":"(not synced)"]<br>"
-	out += "Assigned role: [assigned_role]. <a href='?src=\ref[src];role_edit=1'>Edit</a><br>"
+	var/out = "<meta charset=\"utf-8\"><B>[name]</B>[(current&&(current.real_name!=name))?" (as [current.real_name])":""]<br>"
+	out += "Разум в настоящее время принадлежит ключу: [key] [active?"(synced)":"(not synced)"]<br>"
+	out += "Назначенная роль: [assigned_role]. <a href='?src=\ref[src];role_edit=1'>Изм</a><br>"
 	out += "<hr>"
-	out += "Factions and special roles:<br><table>"
+	out += "Фракции и особые роли:<br><table>"
 	for(var/antag_type in all_antag_types)
 		var/datum/antagonist/antag = all_antag_types[antag_type]
 		out += "[antag.get_panel_entry(src)]"
 	out += "</table><hr>"
-	out += "<b>Objectives</b></br>"
+	out += "<b>Цели</b></br>"
 
 	if(objectives && objectives.len)
 		var/num = 1
 		for(var/datum/objective/O in objectives)
-			out += "<b>Objective #[num]:</b> [O.explanation_text] "
+			out += "<b>Цель #[num]:</b> [O.explanation_text] "
 			if(O.completed)
-				out += "(<font color='green'>complete</font>)"
+				out += "(<font color='green'>завершена</font>)"
 			else
-				out += "(<font color='red'>incomplete</font>)"
-			out += " <a href='?src=\ref[src];obj_completed=\ref[O]'>\[toggle\]</a>"
-			out += " <a href='?src=\ref[src];obj_delete=\ref[O]'>\[remove\]</a><br>"
+				out += "(<font color='red'>не завершена</font>)"
+			out += " <a href='?src=\ref[src];obj_completed=\ref[O]'>\[перекл.\]</a>"
+			out += " <a href='?src=\ref[src];obj_delete=\ref[O]'>\[удалить\]</a><br>"
 			num++
 		out += "<br><a href='?src=\ref[src];obj_announce=1'>\[announce objectives\]</a>"
 
 	else
 		out += "None."
-	out += "<br><a href='?src=\ref[src];obj_add=1'>\[add\]</a><br><br>"
-	out += "<b>Ambitions:</b> [ambitions ? ambitions : "None"] <a href='?src=\ref[src];amb_edit=\ref[src]'>\[edit\]</a></br>"
+	out += "<br><a href='?src=\ref[src];obj_add=1'>\[доб.\]</a><br><br>"
+	out += "<b>Амбиции:</b> [ambitions ? ambitions : "None"] <a href='?src=\ref[src];amb_edit=\ref[src]'>\[изм.\]</a></br>"
 	usr << browse(out, "window=edit_memory[src]")
 
 /datum/mind/Topic(href, href_list)
@@ -163,7 +163,7 @@
 			if(antag.add_antagonist(src, 1, 1, 0, 1, 1)) // Ignore equipment and role type for this.
 				log_admin("[key_name_admin(usr)] made [key_name(src)] into a [antag.role_text].")
 			else
-				to_chat(usr, "<span class='warning'>[src] could not be made into a [antag.role_text]!</span>")
+				to_chat(usr, "<span class='warning'>[src] не удалось превратить в [antag.role_text]!</span>")
 
 	else if(href_list["remove_antagonist"])
 		var/datum/antagonist/antag = all_antag_types[href_list["remove_antagonist"]]
@@ -182,12 +182,12 @@
 		if(antag) antag.place_mob(src.current)
 
 	else if (href_list["role_edit"])
-		var/new_role = input("Select new role", "Assigned role", assigned_role) as null|anything in joblist
+		var/new_role = input("Выберите новую роль", "Назначение роли", assigned_role) as null|anything in joblist
 		if (!new_role) return
 		assigned_role = new_role
 
 	else if (href_list["memory_edit"])
-		var/new_memo = sanitize(input("Write new memory", "Memory", memory) as null|message)
+		var/new_memo = sanitize(input("Введите новые воспоминания", "Воспоминания", memory) as null|message)
 		if (isnull(new_memo)) return
 		memory = new_memo
 
@@ -195,12 +195,12 @@
 		var/datum/mind/mind = locate(href_list["amb_edit"])
 		if(!mind)
 			return
-		var/new_ambition = input("Enter a new ambition", "Memory", mind.ambitions) as null|message
+		var/new_ambition = input("Введите новые амбиции", "Воспоминания", mind.ambitions) as null|message
 		if(isnull(new_ambition))
 			return
 		if(mind)
 			mind.ambitions = sanitize(new_ambition)
-			to_chat(mind.current, "<span class='warning'>Your ambitions have been changed by higher powers, they are now: [mind.ambitions]</span>")
+			to_chat(mind.current, "<span class='warning'>Ваши амбиции были изменены высшими силами, теперь они: [mind.ambitions]</span>")
 		log_and_message_admins("made [key_name(mind.current)]'s ambitions be '[mind.ambitions]'.")
 
 	else if (href_list["obj_edit"] || href_list["obj_add"])
@@ -219,7 +219,7 @@
 			if(!def_value)//If it's a custom objective, it will be an empty string.
 				def_value = "custom"
 
-		var/new_obj_type = input("Select objective type:", "Objective type", def_value) as null|anything in list("assassinate", "debrain", "protect", "prevent", "harm", "brig", "hijack", "escape", "survive", "steal", "download", "mercenary", "capture", "absorb", "custom")
+		var/new_obj_type = input("Тип цели:", "Objective type", def_value) as null|anything in list("assassinate", "debrain", "protect", "prevent", "harm", "brig", "hijack", "escape", "survive", "steal", "download", "mercenary", "capture", "absorb", "custom")
 		if (!new_obj_type) return
 
 		var/datum/objective/new_objective = null
@@ -231,7 +231,7 @@
 				var/objective_type_text = copytext(new_obj_type, 2)//Leave the rest of the text.
 				var/objective_type = "[objective_type_capital][objective_type_text]"//Add them together into a text string.
 
-				var/list/possible_targets = list("Free objective")
+				var/list/possible_targets = list("Свободная цель")
 				for(var/datum/mind/possible_target in ticker.minds)
 					if ((possible_target != src) && istype(possible_target.current, /mob/living/carbon/human))
 						possible_targets += possible_target.current
@@ -241,7 +241,7 @@
 				if (objective&&(objective.type in objective_list) && objective:target)
 					def_target = objective:target.current
 
-				var/new_target = input("Select target:", "Objective target", def_target) as null|anything in possible_targets
+				var/new_target = input("Выберите цель:", "Objective target", def_target) as null|anything in possible_targets
 				if (!new_target) return
 
 				var/objective_path = text2path("/datum/objective/[new_obj_type]")
@@ -250,7 +250,7 @@
 					new_objective = new objective_path
 					new_objective.owner = src
 					new_objective:target = null
-					new_objective.explanation_text = "Free objective"
+					new_objective.explanation_text = "Свободная цель"
 				else
 					new_objective = new objective_path
 					new_objective.owner = src
@@ -292,25 +292,25 @@
 				if(objective&&objective.type==text2path("/datum/objective/[new_obj_type]"))
 					def_num = objective.target_amount
 
-				var/target_number = input("Input target number:", "Objective", def_num) as num|null
+				var/target_number = input("Введите номер цели:", "Цель", def_num) as num|null
 				if (isnull(target_number))//Ordinarily, you wouldn't need isnull. In this case, the value may already exist.
 					return
 
 				switch(new_obj_type)
 					if("download")
 						new_objective = new /datum/objective/download
-						new_objective.explanation_text = "Download [target_number] research levels."
+						new_objective.explanation_text = "Скачайте [target_number] уровней исследований."
 					if("capture")
 						new_objective = new /datum/objective/capture
-						new_objective.explanation_text = "Accumulate [target_number] capture points."
+						new_objective.explanation_text = "Накопите [target_number] capture points."
 					if("absorb")
 						new_objective = new /datum/objective/absorb
-						new_objective.explanation_text = "Absorb [target_number] compatible genomes."
+						new_objective.explanation_text = "Поглотите [target_number] совместимых генома."
 				new_objective.owner = src
 				new_objective.target_amount = target_number
 
 			if ("custom")
-				var/expl = sanitize(input("Custom objective:", "Objective", objective ? objective.explanation_text : "") as text|null)
+				var/expl = sanitize(input("Своя цель:", "Objective", objective ? objective.explanation_text : "") as text|null)
 				if (!expl) return
 				new_objective = new /datum/objective
 				new_objective.owner = src
@@ -346,10 +346,10 @@
 						if(I in organs.implants)
 							qdel(I)
 							break
-				to_chat(H, "<span class='notice'><font size =3><B>Your loyalty implant has been deactivated.</B></font></span>")
+				to_chat(H, "<span class='notice'><font size =3><B>Ваш имплант лояльности отключен.</B></font></span>")
 				log_admin("[key_name_admin(usr)] has de-loyalty implanted [current].")
 			if("add")
-				to_chat(H, "<span class='danger'><font size =3>You somehow have become the recepient of a loyalty transplant, and it just activated!</font></span>")
+				to_chat(H, "<span class='danger'><font size =3>Вы каким-то образом стали получателем трансплантата лояльности, и он просто активирован!</font></span>")
 				H.implant_loyalty(override = TRUE)
 				log_admin("[key_name_admin(usr)] has loyalty implanted [current].")
 			else
@@ -406,15 +406,15 @@
 				//	var/obj/item/device/uplink/hidden/suplink = find_syndicate_uplink() No longer needed, uses stored in mind
 					var/crystals
 					crystals = tcrystals
-					crystals = input("Amount of telecrystals for [key]", crystals) as null|num
+					crystals = input("Кол-во телекристаллов на [key]", crystals) as null|num
 					if (!isnull(crystals))
 						tcrystals = crystals
 
 	else if (href_list["obj_announce"])
 		var/obj_count = 1
-		to_chat(current, "<font color='blue'>Your current objectives:</font>")
+		to_chat(current, "<font color='blue'>Ваши текущие цели:</font>")
 		for(var/datum/objective/objective in objectives)
-			to_chat(current, "<B>Objective #[obj_count]</B>: [objective.explanation_text]")
+			to_chat(current, "<B>Цель #[obj_count]</B>: [objective.explanation_text]")
 			obj_count++
 	edit_memory()
 

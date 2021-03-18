@@ -7,13 +7,13 @@
 	feedback_tag = "changeling_objective"
 	avoid_silicons = TRUE
 	protected_jobs = list("Security Officer", "Warden", "Detective", "Head of Security", "Site Manager")
-	welcome_text = "Use say \"#g message\" to communicate with your fellow changelings. Remember: you get all of their absorbed DNA if you absorb them."
+	welcome_text = "Используйте \"#g\" в чате, чтобы общаться с другими подменышами. Помните: вы получаете всю их поглощенную ДНК, если поглощаете их."
 	antag_sound = 'sound/effects/antag_notice/ling_alert.ogg'
 	flags = ANTAG_SUSPICIOUS | ANTAG_RANDSPAWN | ANTAG_VOTABLE
 	antaghud_indicator = "hudchangeling"
 
 /datum/antagonist/changeling/get_special_objective_text(var/datum/mind/player)
-	return "<br><b>Changeling ID:</b> [player.changeling.changelingID].<br><b>Genomes Absorbed:</b> [player.changeling.absorbedcount]"
+	return "<br><b>ID Подменыша:</b> [player.changeling.changelingID].<br><b>Поглощенные геномы:</b> [player.changeling.absorbedcount]"
 
 /datum/antagonist/changeling/update_antag_mob(var/datum/mind/player)
 	..()

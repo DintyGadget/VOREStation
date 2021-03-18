@@ -7,16 +7,15 @@ var/datum/antagonist/renegade/renegades
 	role_text_plural = "Renegades"
 	bantype = "renegade"
 	avoid_silicons = TRUE
-	welcome_text = "Something's going to go wrong today, you can just feel it. You're paranoid, you've got a gun, and you're going to survive."
+	welcome_text = "Что-то сегодня пойдет не так, вы можете просто почувствовать это. Вы параноик, у вас есть пистолет, и вы выживете."
 	antag_sound = 'sound/effects/antag_notice/general_goodie_alert.ogg'
-	antag_text = "You are a <b>minor</b> antagonist! Within the rules, \
-		try to protect yourself and what's important to you. You aren't here to cause trouble, \
-		you're just more willing (and equipped) to go to extremes to stop it than others are. \
-		Your job is to somewhat oppose the other antagonists, should they threaten you, in ways that aren't quite legal themselves. \
-		Try to make sure other players have <i>fun</i>! If you are confused or at a loss, always adminhelp, \
-		and before taking extreme actions, please try to also contact the administration! \
-		Think through your actions and make the roleplay immersive! <b>Please remember all \
-		rules aside from those without explicit exceptions apply to antagonists.</b>"
+	antag_text = "Вы <b>второстепенный</b> антагонист! В рамках правил постарайтесь защитить себя и то, что для вас важно. Вы здесь не для того, \
+		чтобы создавать проблемы, вы просто более готовы пойти на крайности, чтобы остановить беспредел, чем другие. \
+		Ваша задача - противостоять другим антагонистам, если они угрожают вам, не совсем законными способами. \
+		Постарайтесь, чтобы другие игроки тоже <i>развлекались от вашей игры</i>! Если вы запутались или растерялись, всегда обращайтесь за помощью к администратору, \
+		а прежде чем предпринимать крайние меры, попробуйте также связаться с администрацией! \
+		Продумайте свои действия и сделайте ролевую игру захватывающей! <b>Пожалуйста, помните, что все правила, \
+		кроме некоторых, без явных исключений, применяются к антагонистам.</b>"
 	flags = ANTAG_SUSPICIOUS | ANTAG_IMPLANT_IMMUNE | ANTAG_RANDSPAWN | ANTAG_VOTABLE
 	can_speak_aooc = FALSE	// They aren't 'true' antags, but they still need to hear blanket antag instructions
 
@@ -98,7 +97,7 @@ var/datum/antagonist/renegade/renegades
 
 
 /proc/rightandwrong()
-	to_chat(usr, "<B>You summoned guns!</B>")
+	to_chat(usr, "<B>Вы вызвали пушки!</B>")
 	message_admins("[key_name_admin(usr, 1)] summoned guns!")
 	for(var/mob/living/carbon/human/H in player_list)
 		if(H.stat == 2 || !(H.client)) continue

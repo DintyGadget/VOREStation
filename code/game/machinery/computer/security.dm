@@ -25,23 +25,23 @@
 	var/static/list/field_edit_choices
 
 /obj/machinery/computer/secure_data/Initialize()
-	. = ..()
+	..()
 	field_edit_questions = list(
 		// General
-		"name" = "Please enter new name:",
-		"id" = "Please enter new id:",
-		"sex" = "Please select new sex:",
-		"age" = "Please input new age:",
-		"rank" = "Please enter new rank:",
-		"fingerprint" = "Please input new fingerprint hash:",
+		"name" = "Введите новое Ф.И:",
+		"id" = "Введите новый id:",
+		"sex" = "Введите новый пол:",
+		"age" = "Введите новый возраст:",
+		"rank" = "Введите новую должность:",
+		"fingerprint" = "Внесите новый отпечаток пальца:",
 		// Security
-		"brain_type" = "Please select new brain type:",
-		"criminal" = "Please select new criminal status:",
-		"mi_crim" = "Please input new minor crime:",
-		"mi_crim_d" = "Please input minor crime summary.",
-		"ma_crim" = "Please input new major crime:",
-		"ma_crim_d" = "Please input new major crime summary.",
-		"notes" = "Please input new important notes:",
+		"brain_type" = "Выберите тип мозга:",
+		"criminal" = "Выберите криминальный статус:",
+		"mi_crim" = "Введите название мелкого преступления:",
+		"mi_crim_d" = "Введите описание незначительного преступления.",
+		"ma_crim" = "Введите название серьезного преступления:",
+		"ma_crim_d" = "Введите новое описание крупного преступления.",
+		"notes" = "Введите новые важные примечания:",
 	)
 	field_edit_choices = list(
 		// General
@@ -57,26 +57,26 @@
 
 /obj/machinery/computer/secure_data/verb/eject_id()
 	set category = "Object"
-	set name = "Eject ID Card"
+	set name = "Извлечь ID карту"
 	set src in oview(1)
 
 	if(!usr || usr.stat || usr.lying)	return
 
 	if(scan)
-		to_chat(usr, "You remove \the [scan] from \the [src].")
+		to_chat(usr, "Вы удаляете [scan] bp [src].")
 		scan.loc = get_turf(src)
 		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
 			usr.put_in_hands(scan)
 		scan = null
 	else
-		to_chat(usr, "There is nothing to remove from the console.")
+		to_chat(usr, "С консоли удалить нечего.")
 	return
 
 /obj/machinery/computer/secure_data/attackby(var/obj/item/O, var/mob/user)
 	if(istype(O, /obj/item/weapon/card/id) && !scan && user.unEquip(O))
 		O.loc = src
 		scan = O
-		to_chat(user, "You insert \the [O].")
+		to_chat(user, "Вы вставляете [O].")
 		tgui_interact(user)
 	else
 		..()
@@ -144,15 +144,15 @@
 				if(istype(active1, /datum/data/record) && data_core.general.Find(active1))
 					var/list/fields = list()
 					general["fields"] = fields
-					fields[++fields.len] = FIELD("Name", active1.fields["name"], "name")
+					fields[++fields.len] = FIELD("Ф.И", active1.fields["name"], "name")
 					fields[++fields.len] = FIELD("ID", active1.fields["id"], "id")
-					fields[++fields.len] = FIELD("Entity Classification", active1.fields["brain_type"], "brain_type")
-					fields[++fields.len] = FIELD("Sex", active1.fields["sex"], "sex")
-					fields[++fields.len] = FIELD("Age", "[active1.fields["age"]]", "age")
-					fields[++fields.len] = FIELD("Rank", active1.fields["rank"], "rank")
-					fields[++fields.len] = FIELD("Fingerprint", active1.fields["fingerprint"], "fingerprint")
-					fields[++fields.len] = FIELD("Physical Status", active1.fields["p_stat"], null)
-					fields[++fields.len] = FIELD("Mental Status", active1.fields["m_stat"], null)
+					fields[++fields.len] = FIELD("Классификация", active1.fields["brain_type"], "brain_type")
+					fields[++fields.len] = FIELD("Пол", active1.fields["sex"], "sex")
+					fields[++fields.len] = FIELD("Возраст", active1.fields["age"], "age")
+					fields[++fields.len] = FIELD("Должность", active1.fields["rank"], "rank")
+					fields[++fields.len] = FIELD("Отпечаток", active1.fields["fingerprint"], "fingerprint")
+					fields[++fields.len] = FIELD("Физ. состояние", active1.fields["p_stat"], null)
+					fields[++fields.len] = FIELD("Псих. состояние", active1.fields["m_stat"], null)
 					var/list/photos = list()
 					general["photos"] = photos
 					photos[++photos.len] = active1.fields["photo-south"]
@@ -167,12 +167,12 @@
 				if(istype(active2, /datum/data/record) && data_core.security.Find(active2))
 					var/list/fields = list()
 					security["fields"] = fields
-					fields[++fields.len] = FIELD("Criminal Status", active2.fields["criminal"], "criminal")
-					fields[++fields.len] = FIELD("Minor Crimes", active2.fields["mi_crim"], "mi_crim")
-					fields[++fields.len] = FIELD("Details", active2.fields["mi_crim_d"], "mi_crim_d")
-					fields[++fields.len] = FIELD("Major Crimes", active2.fields["ma_crim"], "ma_crim")
-					fields[++fields.len] = FIELD("Details", active2.fields["ma_crim_d"], "ma_crim_d")
-					fields[++fields.len] = FIELD("Important Notes", active2.fields["notes"], "notes")
+					fields[++fields.len] = FIELD("Статус", active2.fields["criminal"], "criminal")
+					fields[++fields.len] = FIELD("Мелкие преступления", active2.fields["mi_crim"], "mi_crim")
+					fields[++fields.len] = FIELD("Детали", active2.fields["mi_crim_d"], "mi_crim_d")
+					fields[++fields.len] = FIELD("Серьезные преступления", active2.fields["ma_crim"], "ma_crim")
+					fields[++fields.len] = FIELD("Детали", active2.fields["ma_crim_d"], "ma_crim_d")
+					fields[++fields.len] = FIELD("Важные заметки", active2.fields["notes"], "notes")
 					if(!active2.fields["comments"] || !islist(active2.fields["comments"]))
 						active2.fields["comments"] = list()
 					security["comments"] = active2.fields["comments"]
@@ -254,13 +254,13 @@
 			if("del_all")
 				for(var/datum/data/record/R in data_core.security)
 					qdel(R)
-				set_temp("All security records deleted.")
+				set_temp("Все записи безопасности удалены.")
 			if("del_r")
 				if(active2)
-					set_temp("Security record deleted.")
+					set_temp("Запись безопасности удалена.")
 					qdel(active2)
 			if("del_r_2")
-				set_temp("All records for [active1.fields["name"]] deleted.")
+				set_temp("Все записи [active1.fields["name"]] удалены.")
 				if(active1)
 					for(var/datum/data/record/R in data_core.medical)
 						if((R.fields["name"] == active1.fields["name"] || R.fields["id"] == active1.fields["id"]))
@@ -271,7 +271,7 @@
 			if("d_rec")
 				var/datum/data/record/general_record = locate(params["d_rec"] || "")
 				if(!data_core.general.Find(general_record))
-					set_temp("Record not found.", "danger")
+					set_temp("Запись не найдена.", "danger")
 					return
 
 				var/datum/data/record/security_record
@@ -300,7 +300,7 @@
 					data_core.security += R
 					active2 = R
 					screen = SEC_DATA_RECORD
-					set_temp("Security record created.", "success")
+					set_temp("Запись безопасности создана.", "success")
 			if("del_c")
 				var/index = text2num(params["del_c"] || "")
 				if(!index || !istype(active2, /datum/data/record))
@@ -318,15 +318,15 @@
 					return
 
 				for(var/datum/data/record/R in data_core.general)
-					if(t1 == lowertext(R.fields["name"]) || t1 == lowertext(R.fields["id"]) || t1 == lowertext(R.fields["fingerprint"]))
-						active1 = R
+					if(t1 == lowertext(R.fields["name"]) || t1 == lowertext(R.fields["id"]) || t1 == lowertext(R.fields["b_dna"]))
+						active2 = R
 						break
-				if(!active1)
-					set_temp("Security record not found. You must enter the person's exact name, ID, or fingerprint.", "danger")
+				if(!active2)
+					set_temp("Запись безопасности не найдена. Вы должны ввести точное имя, ID или ДНК.", "danger")
 					return
 				for(var/datum/data/record/E in data_core.security)
-					if(E.fields["name"] == active1.fields["name"] && E.fields["id"] == active1.fields["id"])
-						active2 = E
+					if(E.fields["name"] == active2.fields["name"] && E.fields["id"] == active2.fields["id"])
+						active1 = E
 						break
 				screen = SEC_DATA_RECORD
 			if("print_p")
@@ -373,7 +373,7 @@
 					else
 						tgui_modal_input(src, id, question, arguments = arguments, value = arguments["value"])
 				if("add_c")
-					tgui_modal_input(src, id, "Please enter your message:")
+					tgui_modal_input(src, id, "Введите ваше сообщение:")
 				else
 					return FALSE
 		if(TGUI_MODAL_ANSWER)
@@ -406,7 +406,7 @@
 					if(!length(answer) || !istype(active2) || !length(authenticated))
 						return
 					active2.fields["comments"] += list(list(
-						header = "Made by [authenticated] ([rank]) at [worldtime2stationtime(world.time)]",
+						header = "Создано [authenticated] ([rank]) в [worldtime2stationtime(world.time)]",
 						text = answer
 					))
 				else
@@ -420,31 +420,31 @@
   */
 /obj/machinery/computer/secure_data/proc/print_finish()
 	var/obj/item/weapon/paper/P = new(loc)
-	P.info = "<center><b>Security Record</b></center><br>"
+	P.info = "<meta charset=\"utf-8\"><center><b>Общие данные</b></center><br>"
 	if(istype(active1, /datum/data/record) && data_core.general.Find(active1))
-		P.info += {"Name: [active1.fields["name"]] ID: [active1.fields["id"]]
-		<br>\nSex: [active1.fields["sex"]]
-		<br>\nAge: [active1.fields["age"]]
-		<br>\nFingerprint: [active1.fields["fingerprint"]]
-		<br>\nPhysical Status: [active1.fields["p_stat"]]
-		<br>\nMental Status: [active1.fields["m_stat"]]<br>"}
+		P.info += {"Ф.И: [active1.fields["name"]] ID: [active1.fields["id"]]
+		<br>\nПол: [active1.fields["sex"]]
+		<br>\nВозраст: [active1.fields["age"]]
+		<br>\nОтпечаток: [active1.fields["fingerprint"]]
+		<br>\nФиз. состояние: [active1.fields["p_stat"]]
+		<br>\nПсих. состояние: [active1.fields["m_stat"]]<br>"}
 	else
-		P.info += "<b>General Record Lost!</b><br>"
+		P.info += "<b>Общие записи утеряны!</b><br>"
 	if(istype(active2, /datum/data/record) && data_core.security.Find(active2))
-		P.info += {"<br>\n<center><b>Security Data</b></center>
-		<br>\nCriminal Status: [active2.fields["criminal"]]<br>\n
-		<br>\nMinor Crimes: [active2.fields["mi_crim"]]
-		<br>\nDetails: [active2.fields["mi_crim_d"]]<br>\n
-		<br>\nMajor Crimes: [active2.fields["ma_crim"]]
-		<br>\nDetails: [active2.fields["ma_crim_d"]]<br>\n
-		<br>\nImportant Notes:
+		P.info += {"<br>\n<center><b>Данные безопасности</b></center>
+		<br>\nСтатус: [active2.fields["criminal"]]<br>\n
+		<br>\nМелкие преступления: [active2.fields["mi_crim"]]
+		<br>\nДетали: [active2.fields["mi_crim_d"]]<br>\n
+		<br>\nСерьезные преступления: [active2.fields["ma_crim"]]
+		<br>\nДетали: [active2.fields["ma_crim_d"]]<br>\n
+		<br>\nВажные заметки:
 		<br>\n\t[active2.fields["notes"]]<br>\n
 		<br>\n
-		<center><b>Comments/Log</b></center><br>"}
+		<center><b>Коммент/Лог</b></center><br>"}
 		for(var/c in active2.fields["comments"])
 			P.info += "[c["header"]]<br>[c["text"]]<br>"
 	else
-		P.info += "<b>Security Record Lost!</b><br>"
+		P.info += "<b>Записи безопасности утеряны!</b><br>"
 	P.info += "</tt>"
 	P.name = "paper - 'Security Record: [active1.fields["name"]]'"
 	printing = FALSE

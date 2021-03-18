@@ -3,7 +3,7 @@ var/datum/antagonist/highlander/highlanders
 /datum/antagonist/highlander
 	role_text = "Highlander"
 	role_text_plural = "Highlanders"
-	welcome_text = "There can be only one."
+	welcome_text = "Остаться должен только один."
 	id = MODE_HIGHLANDER
 	flags = ANTAG_SUSPICIOUS | ANTAG_IMPLANT_IMMUNE //| ANTAG_RANDSPAWN | ANTAG_VOTABLE // Someday...
 

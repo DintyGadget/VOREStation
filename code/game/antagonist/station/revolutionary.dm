@@ -8,9 +8,9 @@ var/datum/antagonist/revolutionary/revs
 	bantype = "revolutionary"
 	feedback_tag = "rev_objective"
 	antag_indicator = "rev_head"
-	welcome_text = "Down with the capitalists! Down with the Bourgeoise!"
-	victory_text = "The heads of staff were relieved of their posts! The revolutionaries win!"
-	loss_text = "The heads of staff managed to stop the revolution!"
+	welcome_text = "Долой капиталистов! Долой буржуазию!"
+	victory_text = "Руководители отделов освобождены от занимаемых должностей! Революционеры побеждают!"
+	loss_text = "Руководителям отделов удалось остановить революцию!"
 	victory_feedback_tag = "win - heads killed"
 	loss_feedback_tag = "loss - rev heads killed"
 	flags = ANTAG_SUSPICIOUS | ANTAG_VOTABLE
@@ -25,7 +25,7 @@ var/datum/antagonist/revolutionary/revs
 	faction_role_text = "Revolutionary"
 	faction_descriptor = "Revolution"
 	faction_verb = /mob/living/proc/convert_to_rev
-	faction_welcome = "Help the cause overturn the ruling class. Do not harm your fellow freedom fighters."
+	faction_welcome = "Помогите делу свергнуть правящий класс. Не причиняйте вреда своим собратьям-борцам за свободу."
 	faction_indicator = "rev"
 	faction_invisible = 1
 
@@ -46,5 +46,5 @@ var/datum/antagonist/revolutionary/revs
 			continue
 		var/datum/objective/rev/rev_obj = new
 		rev_obj.target = player.mind
-		rev_obj.explanation_text = "Assassinate, capture or convert [player.real_name], the [player.mind.assigned_role]."
+		rev_obj.explanation_text = "Убить, захватить или обратить [player.real_name], [player.mind.assigned_role]."
 		global_objectives += rev_obj

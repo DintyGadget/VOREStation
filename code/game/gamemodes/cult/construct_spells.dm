@@ -34,7 +34,7 @@ proc/findNullRod(var/atom/target)
 
 /spell/aoe_turf/conjure/construct
 	name = "Artificer"
-	desc = "This spell conjures a construct which may be controlled by Shades"
+	desc = "Это заклинание вызывает конструкцию, которой могут управлять Тени."
 
 	school = "conjuration"
 	charge_max = 600
@@ -55,7 +55,7 @@ proc/findNullRod(var/atom/target)
 
 /spell/aoe_turf/conjure/floor
 	name = "Floor Construction"
-	desc = "This spell constructs a cult floor"
+	desc = "Это заклинание создает культовый пол"
 
 	charge_max = 20
 	spell_flags = Z2NOCAST | CONSTRUCT_CHECK
@@ -74,7 +74,7 @@ proc/findNullRod(var/atom/target)
 
 /spell/aoe_turf/conjure/wall
 	name = "Lesser Construction"
-	desc = "This spell constructs a cult wall"
+	desc = "Это заклинание возводит культовую стену"
 
 	charge_max = 100
 	spell_flags = Z2NOCAST | CONSTRUCT_CHECK
@@ -93,7 +93,7 @@ proc/findNullRod(var/atom/target)
 
 /spell/aoe_turf/conjure/wall/reinforced
 	name = "Greater Construction"
-	desc = "This spell constructs a reinforced metal wall"
+	desc = "Это заклинание создает усиленную металлическую стену."
 
 	charge_max = 300
 	spell_flags = Z2NOCAST
@@ -106,7 +106,7 @@ proc/findNullRod(var/atom/target)
 
 /spell/aoe_turf/conjure/soulstone
 	name = "Summon Soulstone"
-	desc = "This spell reaches into Nar-Sie's realm, summoning one of the legendary fragments across time and space"
+	desc = "Это заклинание проникает в царство Нар-Си, вызывая один из легендарных фрагментов во времени и пространстве."
 
 	charge_max = 3000
 	spell_flags = 0
@@ -121,7 +121,7 @@ proc/findNullRod(var/atom/target)
 
 /spell/aoe_turf/conjure/pylon
 	name = "Red Pylon"
-	desc = "This spell conjures a fragile crystal from Nar-Sie's realm. Makes for a convenient light source."
+	desc = "Это заклинание вызывает хрупкий кристалл из царства Нар-Си. Делает удобный источник света."
 
 	charge_max = 200
 	spell_flags = CONSTRUCT_CHECK
@@ -144,7 +144,7 @@ proc/findNullRod(var/atom/target)
 
 /spell/aoe_turf/conjure/door
 	name = "Stone Door"
-	desc = "This spell conjures a massive stone door."
+	desc = "Это заклинание вызывает массивную каменную дверь."
 
 	charge_max = 100
 	spell_flags = CONSTRUCT_CHECK
@@ -158,7 +158,7 @@ proc/findNullRod(var/atom/target)
 
 /spell/aoe_turf/conjure/grille
 	name = "Arcane Grille"
-	desc = "This spell conjures an airtight grille."
+	desc = "Это заклинание создает герметичную решетку."
 
 	charge_max = 100
 	spell_flags = CONSTRUCT_CHECK
@@ -172,7 +172,7 @@ proc/findNullRod(var/atom/target)
 
 /spell/aoe_turf/conjure/forcewall/lesser
 	name = "Shield"
-	desc = "Allows you to pull up a shield to protect yourself and allies from incoming threats"
+	desc = "Позволяет поднять щит, чтобы защитить себя и союзников от входящих угроз."
 
 	charge_max = 300
 	spell_flags = 0
@@ -186,7 +186,7 @@ proc/findNullRod(var/atom/target)
 
 //Code for the Juggernaut construct's forcefield, that seemed like a good place to put it.
 /obj/effect/forcefield/cult
-	desc = "That eerie looking obstacle seems to have been pulled from another dimension through sheer force"
+	desc = "Это жутко выглядящее препятствие, кажется, было вытащено из другого измерения чистой силой."
 	name = "Juggerwall"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "m_shield_cult"
@@ -199,7 +199,7 @@ proc/findNullRod(var/atom/target)
 
 /spell/aoe_turf/knock/harvester
 	name = "Force Doors"
-	desc = "Mortal portals are no match for your occult might."
+	desc = "Смертные порталы не сравнятся с вашей оккультной мощью."
 
 	spell_flags = CONSTRUCT_CHECK
 
@@ -236,7 +236,7 @@ proc/findNullRod(var/atom/target)
 
 /spell/targeted/ethereal_jaunt/shift
 	name = "Phase Shift"
-	desc = "This spell allows you to pass through walls"
+	desc = "Это заклинание позволяет проходить сквозь стены"
 
 	charge_max = 200
 	spell_flags = Z2NOCAST | INCLUDEUSER | CONSTRUCT_CHECK
@@ -304,7 +304,7 @@ proc/findNullRod(var/atom/target)
 
 /spell/targeted/fortify
 	name = "Fortify Shell"
-	desc = "Emit a field of energy around your shell to reduce incoming damage incredibly, while decreasing your mobility."
+	desc = "Излучайте энергетическое поле вокруг своего снаряда, чтобы невероятно уменьшить входящий урон, уменьшая при этом вашу подвижность."
 
 	range = -1
 	school = "evocation"
@@ -326,7 +326,7 @@ proc/findNullRod(var/atom/target)
 
 /spell/targeted/occult_repair_aura
 	name = "Repair Aura"
-	desc = "Emit a field of energy around your shell to repair nearby constructs at range."
+	desc = "Создайте поле энергии вокруг своей оболочки, чтобы отремонтировать близлежащие конструкции на расстоянии."
 
 	range = -1
 	school = "evocation"
@@ -348,7 +348,7 @@ proc/findNullRod(var/atom/target)
 
 /spell/targeted/ambush_mode
 	name = "Toggle Ambush"
-	desc = "Phase yourself mostly out of this reality, minimizing your combat ability, but allowing for employance of ambush tactics."
+	desc = "По большей части избегайте этой реальности, сводя к минимуму свои боевые способности, но позволяя использовать тактику засад."
 
 	range = -1
 	school = "evocation"
@@ -379,7 +379,7 @@ proc/findNullRod(var/atom/target)
 
 /spell/targeted/construct_advanced
 	name = "Base Construct Spell"
-	desc = "If you see this, please tell a developer!"
+	desc = "Если вы видите это, сообщите об этом разработчику!"
 
 	range = -1
 	school = "evocation"
@@ -401,14 +401,14 @@ proc/findNullRod(var/atom/target)
 
 /spell/targeted/construct_advanced/inversion_beam
 	name = "Inversion Beam"
-	desc = "Fire a searing beam of darkness at your foes."
+	desc = "Выстрелите в врагов палящим лучом тьмы."
 
 	hud_state = "const_beam"
 	spell_obj = /obj/item/weapon/spell/construct/projectile/inverted_beam
 
 /spell/targeted/construct_advanced/mend_acolyte
 	name = "Mend Acolyte"
-	desc = "Mend a target acolyte or construct over time."
+	desc = "Со временем вылечите целевого послушника или конструкцию."
 
 	charge_max = 100
 

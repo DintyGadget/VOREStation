@@ -80,7 +80,7 @@
 		M.loc = src.loc
 		for(var/mob/N in viewers(src, null))
 			if(N.client)
-				N.show_message(text("<font color='red'><B>[M] bursts out of [src]!</B></font>"), 2)
+				N.show_message(text("<font color='red'><B>[M] вылезает из [src]!</B></font>"), 2)
 	..()
 
 /mob/living/carbon/attack_hand(mob/M as mob)
@@ -91,7 +91,7 @@
 		if (H.hand)
 			temp = H.organs_by_name["l_hand"]
 		if(temp && !temp.is_usable())
-			to_chat(H, "<font color='red'>You can't use your [temp.name]</font>")
+			to_chat(H, "<font color='red'>Вы не можете использовать [temp.name]</font>")
 			return
 
 	return
@@ -108,21 +108,21 @@
 	var/weaken_dur = (rand(2,4)-severity)*species.emp_stun_mod //0-3 knockdown, on par with.. you get the idea
 	var/blind_dur = (rand(3,6)-severity)*species.emp_stun_mod //0-5 blind
 	if(species.emp_sensitivity) //receive warning message and basic effects
-		to_chat(src, "<span class='danger'><B>*BZZZT*</B></span>")
+		to_chat(src, "<span class='danger'><B>*БЗЗЗТ*</B></span>")
 		switch(severity)
 			if(1)
-				to_chat(src, "<span class='danger'>DANGER: Extreme EM flux detected!</span>")
+				to_chat(src, "<span class='danger'>ОПАСНОСТЬ: Обнаружен ЭМ поток экстремальной мощности!</span>")
 			if(2)
-				to_chat(src, "<span class='danger'>Danger: High EM flux detected!</span>")
+				to_chat(src, "<span class='danger'>Опасность: Обнаружен ЭМ поток высокой мощности!</span>")
 			if(3)
-				to_chat(src, "<span class='danger'>Warning: Moderate EM flux detected!</span>")
+				to_chat(src, "<span class='danger'>Внимание: Обнаружен ЭМ поток средней мощности!</span>")
 			if(4)
-				to_chat(src, "<span class='danger'>Warning: Minor EM flux detected!</span>")
+				to_chat(src, "<span class='danger'>Внимание: Обнаружен ЭМ поток слабой мощности!</span>")
 		if(prob(90-(10*severity))) //50-80% chance to fire an emote. most are harmless, but vomit might reduce your nutrition level which could suck (so the whole thing is padded out with extras)
 			src.emote(pick("twitch", "twitch_v", "choke", "pale", "blink", "blink_r", "shiver", "sneeze", "vomit", "gasp", "cough", "drool"))
 		//stun effects block, effects vary wildly
 		if(species.emp_sensitivity & EMP_PAIN)
-			to_chat(src, "<span class='danger'>A wave of intense pain washes over you.</span>")
+			to_chat(src, "<span class='danger'>Вас накрывает волна невыносимой боли.</span>")
 			src.adjustHalLoss(agony_str)
 		if(species.emp_sensitivity & EMP_BLIND)
 			if(blind_dur >= 1) //don't flash them unless they actually roll a positive blind duration
@@ -133,11 +133,11 @@
 			src.ear_deaf = max(src.ear_deaf,deafen_dur)
 		if(species.emp_sensitivity & EMP_CONFUSE)
 			if(confuse_dur >= 1)
-				to_chat(src, "<span class='danger'>Oh god, everything's spinning!</span>")
+				to_chat(src, "<span class='danger'>О боже, всё кружится!</span>")
 			Confuse(max(0,confuse_dur))
 		if(species.emp_sensitivity & EMP_WEAKEN)
 			if(weaken_dur >= 1)
-				to_chat(src, "<span class='danger'>Your limbs go slack!</span>")
+				to_chat(src, "<span class='danger'>Ваши конечности вянут!</span>")
 			Weaken(max(0,weaken_dur))
 		//physical damage block, deals (minor-4) 5-15, 10-20, 15-25, 20-30 (extreme-1) of *each* type
 		if(species.emp_sensitivity & EMP_BRUTE_DMG)
@@ -167,15 +167,15 @@
 	playsound(src, "sparks", 50, 1, -1)
 	if (shock_damage > 15)
 		src.visible_message(
-			"<span class='warning'>[src] was electrocuted[source ? " by the [source]" : ""]!</span>", \
-			"<span class='danger'>You feel a powerful shock course through your body!</span>", \
-			"<span class='warning'>You hear a heavy electrical crack.</span>" \
+			"<span class='warning'>[src] ударило током [source ? " [source]" : ""]!</span>", \
+			"<span class='danger'>Вы чувствуете мощный удар шоком по всему телу!</span>", \
+			"<span class='warning'>Вы слышите тяжелый электрический треск.</span>" \
 		)
 	else
 		src.visible_message(
-			"<span class='warning'>[src] was shocked[source ? " by the [source]" : ""].</span>", \
-			"<span class='warning'>You feel a shock course through your body.</span>", \
-			"<span class='warning'>You hear a zapping sound.</span>" \
+			"<span class='warning'>[src] шокировало [source ? " [source]" : ""].</span>", \
+			"<span class='warning'>Вы чувствуете, как шок проходит по всему телу.</span>", \
+			"<span class='warning'>Вы слышите какой-то треск.</span>" \
 		)
 
 	if(stun)
@@ -199,10 +199,10 @@
 	if (src.health >= config.health_threshold_crit)
 		if(src == M && istype(src, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = src
-			var/datum/gender/T = gender_datums[H.get_visible_gender()]
+			//var/datum/gender/T = gender_datums[H.get_visible_gender()]
 			src.visible_message( \
-				"<span class='notice'>[src] examines [T.himself].</span>", \
-				"<span class='notice'>You check yourself for injuries.</span>" \
+				"<span class='notice'>[src] проверяет себя.</span>", \
+				"<span class='notice'>Вы проверяете себя на наличие травм.</span>" \
 				)
 
 			for(var/obj/item/organ/external/org in H.organs)
@@ -218,60 +218,60 @@
 				*/
 				switch(brutedamage)
 					if(1 to 20)
-						status += "bruised"
+						status += "в синяках"
 					if(20 to 40)
-						status += "wounded"
+						status += "имеет ранение"
 					if(40 to INFINITY)
-						status += "mangled"
+						status += "искалечена"
 
 				switch(burndamage)
 					if(1 to 10)
-						status += "numb"
+						status += "онемела"
 					if(10 to 40)
-						status += "blistered"
+						status += "покрыта волдырями"
 					if(40 to INFINITY)
-						status += "peeling away"
+						status += "отслаивается"
 
 				if(org.is_stump())
-					status += "MISSING"
+					status += "ОТСУТСТВУЕТ"
 				if(org.status & ORGAN_MUTATED)
-					status += "weirdly shapen"
+					status += "имеет странную форму"
 				if(org.dislocated == 2)
-					status += "dislocated"
+					status += "вывихнута"
 				if(org.status & ORGAN_BROKEN)
-					status += "hurts when touched"
+					status += "болит при касании"
 				if(org.status & ORGAN_DEAD)
-					status += "is bruised and necrotic"
+					status += "покрыта синяками и омертвела"
 				if(!org.is_usable() || org.is_dislocated())
-					status += "dangling uselessly"
+					status += "бесполезно болтается"
 				if(status.len)
-					src.show_message("My [org.name] is <span class='warning'> [english_list(status)].</span>",1)
+					src.show_message("[org.name]:<span class='warning'> [english_list(status)].</span>",1)
 				else
-					src.show_message("My [org.name] is <span class='notice'> OK.</span>",1)
+					src.show_message("[org.name]:<span class='notice'> в норме.</span>",1)
 
 			if((SKELETON in H.mutations) && (!H.w_uniform) && (!H.wear_suit))
 				H.play_xylophone()
 		else if (on_fire)
 			playsound(src, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 			if (M.on_fire)
-				M.visible_message("<span class='warning'>[M] tries to pat out [src]'s flames, but to no avail!</span>",
-				"<span class='warning'>You try to pat out [src]'s flames, but to no avail! Put yourself out first!</span>")
+				M.visible_message("<span class='warning'>[M] пытается погасить пламя [src], но безрезультатно!</span>",
+				"<span class='warning'>Вы пытаетесь погасить пламя [src] но безрезультатно! Убирайтесь оттуда!</span>")
 			else
-				M.visible_message("<span class='warning'>[M] tries to pat out [src]'s flames!</span>",
-				"<span class='warning'>You try to pat out [src]'s flames! Hot!</span>")
+				M.visible_message("<span class='warning'>[M] пытается погасить пламя [src]!</span>",
+				"<span class='warning'>Вы пытаетесь погасить пламя [src]! Горячо!</span>")
 				if(do_mob(M, src, 15))
 					src.adjust_fire_stacks(-0.5)
 					if (prob(10) && (M.fire_stacks <= 0))
 						M.adjust_fire_stacks(1)
 					M.IgniteMob()
 					if (M.on_fire)
-						M.visible_message("<span class='danger'>The fire spreads from [src] to [M]!</span>",
-						"<span class='danger'>The fire spreads to you as well!</span>")
+						M.visible_message("<span class='danger'>Огонь распространяется от [src] до [M]!</span>",
+						"<span class='danger'>Огонь распространяется и на Вас!</span>")
 					else
 						src.adjust_fire_stacks(-0.5) //Less effective than stop, drop, and roll - also accounting for the fact that it takes half as long.
 						if (src.fire_stacks <= 0)
-							M.visible_message("<span class='warning'>[M] successfully pats out [src]'s flames.</span>",
-							"<span class='warning'>You successfully pat out [src]'s flames.</span>")
+							M.visible_message("<span class='warning'>[M] успешно гасит пламя [src].</span>",
+							"<span class='warning'>Вы успешно погасили пламя [src].</span>")
 							src.ExtinguishMob()
 							src.fire_stacks = 0
 		else
@@ -281,24 +281,24 @@
 
 			var/show_ssd
 			var/mob/living/carbon/human/H = src
-			var/datum/gender/T = gender_datums[H.get_visible_gender()] // make sure to cast to human before using get_gender() or get_visible_gender()!
+			//var/datum/gender/T = gender_datums[H.get_visible_gender()] // make sure to cast to human before using get_gender() or get_visible_gender()!
 			if(istype(H)) show_ssd = H.species.show_ssd
 			if(show_ssd && !client && !teleop)
-				M.visible_message("<span class='notice'>[M] shakes [src] trying to wake [T.him] up!</span>", \
-				"<span class='notice'>You shake [src], but [T.he] [T.does] not respond... Maybe [T.he] [T.has] S.S.D?</span>")
+				M.visible_message("<span class='notice'>[M] хватается и тянет вверх [src]</span>", \
+				"<span class='notice'>Вы хватаете и тянете [src] вверх, помогая встать с земли!</span>")
 			else if(lying || src.sleeping)
 				AdjustSleeping(-5)
 				if(src.sleeping == 0)
 					src.resting = 0
 				if(H) H.in_stasis = 0 //VOREStation Add - Just In Case
-				M.visible_message("<span class='notice'>[M] shakes [src] trying to wake [T.him] up!</span>", \
-									"<span class='notice'>You shake [src] trying to wake [T.him] up!</span>")
+				M.visible_message("<span class='notice'>[M] трясёт и пытается разбудить [src]!</span>", \
+									"<span class='notice'>Вы трясёте и пытаетесь разбудить [src]!</span>")
 			else
 				var/mob/living/carbon/human/hugger = M
-				var/datum/gender/TM = gender_datums[M.get_visible_gender()]
+				//var/datum/gender/TM = gender_datums[M.get_visible_gender()]
 				if(M.resting == 1) //Are they resting on the ground?
-					M.visible_message("<span class='notice'>[M] grabs onto [src] and pulls [TM.himself] up</span>", \
-							"<span class='notice'>You grip onto [src] and pull yourself up off the ground!</span>")
+					M.visible_message("<span class='notice'>[M] хватает [src] тянет вверх</span>", \
+							"<span class='notice'>Вы хватаете [src] помогая подняться на ноги!</span>")
 					if(M.fire_stacks >= (src.fire_stacks + 3)) //Fire checks.
 						src.adjust_fire_stacks(1)
 						M.adjust_fire_stacks(-1)
@@ -309,8 +309,8 @@
 				else if(istype(hugger))
 					hugger.species.hug(hugger,src)
 				else
-					M.visible_message("<span class='notice'>[M] hugs [src] to make [T.him] feel better!</span>", \
-								"<span class='notice'>You hug [src] to make [T.him] feel better!</span>")
+					M.visible_message("<span class='notice'>[M] обнимает [src]!</span>", \
+								"<span class='notice'>Вы обнимаете [src]!</span>")
 				if(M.fire_stacks >= (src.fire_stacks + 3))
 					src.adjust_fire_stacks(1)
 					M.adjust_fire_stacks(-1)
@@ -392,17 +392,17 @@
 			temp = rand(120, 160)
 			return num2text(method ? temp : temp + rand(-10, 10))
 		if(PULSE_THREADY)
-			return method ? ">250" : "extremely weak and fast, patient's artery feels like a thread"
+			return method ? ">250" : "крайне слабый и быстрый, артерия пациента ощущается как нить"
 //			output for machines^	^^^^^^^output for people^^^^^^^^^
 
 /mob/living/carbon/verb/mob_sleep()
-	set name = "Sleep"
+	set name = "Спать"
 	set category = "IC"
 
 	if(usr.sleeping)
-		to_chat(usr, "<font color='red'>You are already sleeping</font>")
+		to_chat(usr, "<font color='red'>Вы уже спите</font>")
 		return
-	if(alert(src,"You sure you want to sleep for a while?","Sleep","Yes","No") == "Yes")
+	if(alert(src,"Вы уверены, что хотите немного поспать?","Спать","Да","Нет") == "Да")
 		usr.AdjustSleeping(20)
 
 /mob/living/carbon/Bump(atom/A)
@@ -419,7 +419,7 @@
 	if(buckled)
 		return 0
 	stop_pulling()
-	to_chat(src, "<span class='warning'>You slipped on [slipped_on]!</span>")
+	to_chat(src, "<span class='warning'>Вы подскользнулись на [slipped_on]!</span>")
 	playsound(src, 'sound/misc/slip.ogg', 50, 1, -3)
 	Weaken(FLOOR(stun_duration/2, 1))
 	return 1

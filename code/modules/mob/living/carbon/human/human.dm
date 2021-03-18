@@ -1,7 +1,7 @@
 /mob/living/carbon/human
-	name = "unknown"
-	real_name = "unknown"
-	voice_name = "unknown"
+	name = "неизвестно"
+	real_name = "неизвестно"
+	voice_name = "неизвестно"
 	icon = 'icons/effects/effects.dmi'	//We have an ultra-complex update icons that overlays everything, don't load some stupid random male human
 	icon_state = "nothing"
 
@@ -63,9 +63,9 @@
 
 /mob/living/carbon/human/Stat()
 	..()
-	if(statpanel("Status"))
-		stat("Intent:", "[a_intent]")
-		stat("Move Mode:", "[m_intent]")
+	if(statpanel("Статус"))
+		stat("Намерение:", "[a_intent]")
+		stat("Режим передвижения:", "[m_intent]")
 		if(emergency_shuttle)
 			var/eta_status = emergency_shuttle.get_status_panel_eta()
 			if(eta_status)
@@ -75,26 +75,26 @@
 			if (!internal.air_contents)
 				qdel(internal)
 			else
-				stat("Internal Atmosphere Info", internal.name)
-				stat("Tank Pressure", internal.air_contents.return_pressure())
-				stat("Distribution Pressure", internal.distribute_pressure)
+				stat("Внутренная атмосфера", internal.name)
+				stat("Давление в баллоне", internal.air_contents.return_pressure())
+				stat("Исходящее давление", internal.distribute_pressure)
 
 		var/obj/item/organ/internal/xenos/plasmavessel/P = internal_organs_by_name[O_PLASMA] //Xenomorphs. Mech.
 		if(P)
-			stat(null, "Phoron Stored: [P.stored_plasma]/[P.max_plasma]")
+			stat(null, "Осталось форона: [P.stored_plasma]/[P.max_plasma]")
 
 
 		if(back && istype(back,/obj/item/weapon/rig))
 			var/obj/item/weapon/rig/suit = back
-			var/cell_status = "ERROR"
+			var/cell_status = "ОШИБКА"
 			if(suit.cell) cell_status = "[suit.cell.charge]/[suit.cell.maxcharge]"
-			stat(null, "Suit charge: [cell_status]")
+			stat(null, "Заряд костюма: [cell_status]")
 
 		if(mind)
 			if(mind.changeling)
-				stat("Chemical Storage", mind.changeling.chem_charges)
-				stat("Genetic Damage Time", mind.changeling.geneticdamage)
-				stat("Re-Adaptations", "[mind.changeling.readapts]/[mind.changeling.max_readapts]")
+				stat("Химическое хранилище", mind.changeling.chem_charges)
+				stat("Время генетического урона", mind.changeling.geneticdamage)
+				stat("Реадаптация", "[mind.changeling.readapts]/[mind.changeling.max_readapts]")
 	if(species)
 		species.Stat(src)
 
@@ -389,13 +389,13 @@
 					for (var/datum/data/record/R in data_core.security)
 						if (R.fields["id"] == E.fields["id"])
 							if(hasHUD(usr,"security"))
-								to_chat(usr, "<b>Name:</b> [R.fields["name"]]	<b>Criminal Status:</b> [R.fields["criminal"]]")
-								to_chat(usr, "<b>Minor Crimes:</b> [R.fields["mi_crim"]]")
-								to_chat(usr, "<b>Details:</b> [R.fields["mi_crim_d"]]")
-								to_chat(usr, "<b>Major Crimes:</b> [R.fields["ma_crim"]]")
-								to_chat(usr, "<b>Details:</b> [R.fields["ma_crim_d"]]")
-								to_chat(usr, "<b>Notes:</b> [R.fields["notes"]]")
-								to_chat(usr, "<a href='?src=\ref[src];secrecordComment=`'>\[View Comment Log\]</a>")
+								to_chat(usr, "<b>Ф.И:</b> [R.fields["name"]]	<b>Статус:</b> [R.fields["criminal"]]")
+								to_chat(usr, "<b>Мелкие нарушения:</b> [R.fields["mi_crim"]]")
+								to_chat(usr, "<b>Детали:</b> [R.fields["mi_crim_d"]]")
+								to_chat(usr, "<b>Серьезн. нарушения:</b> [R.fields["ma_crim"]]")
+								to_chat(usr, "<b>Детали:</b> [R.fields["ma_crim_d"]]")
+								to_chat(usr, "<b>Заметки:</b> [R.fields["notes"]]")
+								to_chat(usr, "<a href='?src=\ref[src];secrecordComment=`'>\[Посмотреть лог\]</a>")
 								read = 1
 
 			if(!read)
@@ -505,14 +505,14 @@
 					for (var/datum/data/record/R in data_core.medical)
 						if (R.fields["id"] == E.fields["id"])
 							if(hasHUD(usr,"medical"))
-								to_chat(usr, "<b>Name:</b> [R.fields["name"]]	<b>Blood Type:</b> [R.fields["b_type"]]")
-								to_chat(usr, "<b>DNA:</b> [R.fields["b_dna"]]")
-								to_chat(usr, "<b>Minor Disabilities:</b> [R.fields["mi_dis"]]")
-								to_chat(usr, "<b>Details:</b> [R.fields["mi_dis_d"]]")
-								to_chat(usr, "<b>Major Disabilities:</b> [R.fields["ma_dis"]]")
-								to_chat(usr, "<b>Details:</b> [R.fields["ma_dis_d"]]")
-								to_chat(usr, "<b>Notes:</b> [R.fields["notes"]]")
-								to_chat(usr, "<a href='?src=\ref[src];medrecordComment=`'>\[View Comment Log\]</a>")
+								to_chat(usr, "<b>Ф.И:</b> [R.fields["name"]]	<b>Группа крови:</b> [R.fields["b_type"]]")
+								to_chat(usr, "<b>ДНК:</b> [R.fields["b_dna"]]")
+								to_chat(usr, "<b>Незнач. инвалидность:</b> [R.fields["mi_dis"]]")
+								to_chat(usr, "<b>Детали:</b> [R.fields["mi_dis_d"]]")
+								to_chat(usr, "<b>Серьезн. инвалидность:</b> [R.fields["ma_dis"]]")
+								to_chat(usr, "<b>Детали:</b> [R.fields["ma_dis_d"]]")
+								to_chat(usr, "<b>Заметки:</b> [R.fields["notes"]]")
+								to_chat(usr, "<a href='?src=\ref[src];medrecordComment=`'>\[Посмотреть лог\]</a>")
 								read = 1
 
 			if(!read)
@@ -667,13 +667,13 @@
 /mob/living/carbon/human/IsAdvancedToolUser(var/silent)
 	// VOREstation start
 	if(feral)
-		to_chat(src, "<span class='warning'>Your primitive mind can't grasp the concept of that thing.</span>")
+		to_chat(src, "<span class='warning'>Ваш примитивный разум не способен понять такую концепцию.</span>")
 		return 0
 	// VOREstation end
 	if(species.has_fine_manipulation)
 		return 1
 	if(!silent)
-		to_chat(src, "<span class='warning'>You don't have the dexterity to use that!</span>")
+		to_chat(src, "<span class='warning'>Вы не настолько гибки, чтобы это использовать!</span>")
 	return 0
 
 /mob/living/carbon/human/abiotic(var/full_body = 0)
@@ -697,8 +697,8 @@
 
 /mob/living/carbon/human/proc/play_xylophone()
 	if(!src.xylophone)
-		var/datum/gender/T = gender_datums[get_visible_gender()]
-		visible_message("<font color='red'>\The [src] begins playing [T.his] ribcage like a xylophone. It's quite spooky.</font>","<font color='blue'>You begin to play a spooky refrain on your ribcage.</font>","<font color='red'>You hear a spooky xylophone melody.</font>")
+//		var/datum/gender/T = gender_datums[get_visible_gender()]
+		visible_message("<font color='red'>[src] начинает играть мелодию на своей грудной клетке как на ксилофоне. Жутковато.</font>","<font color='blue'>Вы начинаете играть жуткую мелодию на своей грудной клетке.</font>","<font color='red'>Вы слышите жуткую мелодию на ксилофоне.</font>")
 		var/song = pick('sound/effects/xylophone1.ogg','sound/effects/xylophone2.ogg','sound/effects/xylophone3.ogg')
 		playsound(src, song, 50, 1, -1)
 		xylophone = 1
@@ -717,8 +717,8 @@
 	return 1
 
 /mob/living/carbon/human/proc/morph()
-	set name = "Morph"
-	set category = "Superpower"
+	set name = "Превратиться"
+	set category = "Сверхсилы"
 
 	if(stat!=CONSCIOUS)
 		reset_view(0)
@@ -729,23 +729,23 @@
 		src.verbs -= /mob/living/carbon/human/proc/morph
 		return
 
-	var/new_facial = input("Please select facial hair color.", "Character Generation",rgb(r_facial,g_facial,b_facial)) as color
+	var/new_facial = input("Пожалуйста, выберите цвет волос на лице.", "Изменение Персонажа",rgb(r_facial,g_facial,b_facial)) as color
 	if(new_facial)
-		r_facial = hex2num(copytext(new_facial, 2, 4))
-		g_facial = hex2num(copytext(new_facial, 4, 6))
-		b_facial = hex2num(copytext(new_facial, 6, 8))
+		r_facial = hex2num(copytext_char(new_facial, 2, 4))
+		g_facial = hex2num(copytext_char(new_facial, 4, 6))
+		b_facial = hex2num(copytext_char(new_facial, 6, 8))
 
-	var/new_hair = input("Please select hair color.", "Character Generation",rgb(r_hair,g_hair,b_hair)) as color
+	var/new_hair = input("Пожалуйста, выберите цвет волос.", "Изменение Персонажа",rgb(r_hair,g_hair,b_hair)) as color
 	if(new_facial)
-		r_hair = hex2num(copytext(new_hair, 2, 4))
-		g_hair = hex2num(copytext(new_hair, 4, 6))
-		b_hair = hex2num(copytext(new_hair, 6, 8))
+		r_hair = hex2num(copytext_char(new_hair, 2, 4))
+		g_hair = hex2num(copytext_char(new_hair, 4, 6))
+		b_hair = hex2num(copytext_char(new_hair, 6, 8))
 
-	var/new_eyes = input("Please select eye color.", "Character Generation",rgb(r_eyes,g_eyes,b_eyes)) as color
+	var/new_eyes = input("Пожалуйста, выберите цвет глаз.", "Изменение Персонажа",rgb(r_eyes,g_eyes,b_eyes)) as color
 	if(new_eyes)
-		r_eyes = hex2num(copytext(new_eyes, 2, 4))
-		g_eyes = hex2num(copytext(new_eyes, 4, 6))
-		b_eyes = hex2num(copytext(new_eyes, 6, 8))
+		r_eyes = hex2num(copytext_char(new_eyes, 2, 4))
+		g_eyes = hex2num(copytext_char(new_eyes, 4, 6))
+		b_eyes = hex2num(copytext_char(new_eyes, 6, 8))
 		update_eyes()
 
 	// hair
@@ -758,7 +758,7 @@
 		hairs.Add(H.name) // add hair name to hairs
 		qdel(H) // delete the hair after it's all done
 
-	var/new_style = input("Please select hair style", "Character Generation",h_style)  as null|anything in hairs
+	var/new_style = input("Пожалуйста, выберите причёску.", "Изменение Персонажа",h_style)  as null|anything in hairs
 
 	// if new style selected (not cancel)
 	if (new_style)
@@ -773,12 +773,12 @@
 		fhairs.Add(H.name)
 		qdel(H)
 
-	new_style = input("Please select facial style", "Character Generation",f_style)  as null|anything in fhairs
+	new_style = input("Пожалуйста, выберите волосы на лице.", "Изменение Персонажа",f_style)  as null|anything in fhairs
 
 	if(new_style)
 		f_style = new_style
 
-	var/new_gender = alert(usr, "Please select gender.", "Character Generation", "Male", "Female", "Neutral")
+	var/new_gender = alert(usr, "Пожалуйста, выберите пол.", "Изменение Персонажа", "Мужской", "Женский", "Бесполый")
 	if (new_gender)
 		if(new_gender == "Male")
 			gender = MALE
@@ -788,12 +788,12 @@
 			gender = NEUTER
 	regenerate_icons()
 	check_dna()
-	var/datum/gender/T = gender_datums[get_visible_gender()]
-	visible_message("<font color='blue'>\The [src] morphs and changes [T.his] appearance!</font>", "<font color='blue'>You change your appearance!</font>", "<font color='red'>Oh, god!  What the hell was that?  It sounded like flesh getting squished and bone ground into a different shape!</font>")
+	//var/datum/gender/T = gender_datums[get_visible_gender()]
+	visible_message("<font color='blue'>\The [src] трансформируется и меняет внешний вид!</font>", "<font color='blue'>Вы меняете свою внешность!</font>", "<font color='red'>О Боже! Что, черт побери, это было? Это звучало так, будто плоть раздавливается, а кости измельчаются в другую форму!</font>")
 
 /mob/living/carbon/human/proc/remotesay()
-	set name = "Project mind"
-	set category = "Superpower"
+	set name = "Проецировать Разум"
+	set category = "Сверхсилы"
 
 	if(stat!=CONSCIOUS)
 		reset_view(0)
@@ -806,23 +806,23 @@
 	var/list/creatures = list()
 	for(var/mob/living/carbon/h in mob_list)
 		creatures += h
-	var/mob/target = input("Who do you want to project your mind to ?") as null|anything in creatures
+	var/mob/target = input("Кому вы хотите проецировать свой разум?") as null|anything in creatures
 	if (isnull(target))
 		return
 
-	var/say = sanitize(input("What do you wish to say"))
+	var/say = sanitize(input("Что Вы хотите сказать?"))
 	if(mRemotetalk in target.mutations)
-		target.show_message("<font color='blue'> You hear [src.real_name]'s voice: [say]</font>")
+		target.show_message("<font color='blue'>Вы слышите голос [src.real_name]: [say]</font>")
 	else
-		target.show_message("<font color='blue'> You hear a voice that seems to echo around the room: [say]</font>")
-	usr.show_message("<font color='blue'> You project your mind into [target.real_name]: [say]</font>")
+		target.show_message("<font color='blue'>Вы слышите в этой комнате голос: [say]</font>")
+	usr.show_message("<font color='blue'>Вы проецируете своей разум в [target.real_name]: [say]</font>")
 	log_say("(TPATH to [key_name(target)]) [say]",src)
 	for(var/mob/observer/dead/G in mob_list)
-		G.show_message("<i>Telepathic message from <b>[src]</b> to <b>[target]</b>: [say]</i>")
+		G.show_message("<i>Телепатическое сообщение от <b>[src]</b> для <b>[target]</b>: [say]</i>")
 
 /mob/living/carbon/human/proc/remoteobserve()
-	set name = "Remote View"
-	set category = "Superpower"
+	set name = "Взглянуть На Расстояние"
+	set category = "Сверхсилы"
 
 	if(stat!=CONSCIOUS)
 		remoteview_target = null
@@ -848,7 +848,7 @@
 			continue
 		creatures += h
 
-	var/mob/target = input ("Who do you want to project your mind to ?") as mob in creatures
+	var/mob/target = input ("Кому Вы хотите проецировать свой разум?") as mob in creatures
 
 	if (target)
 		remoteview_target = target
@@ -1015,12 +1015,12 @@
 			if(!istype(O,/obj/item/weapon/implant) && prob(5)) //Moving with things stuck in you could be bad.
 				// All kinds of embedded objects cause bleeding.
 				if(!can_feel_pain(organ.organ_tag))
-					to_chat(src, "<span class='warning'>You feel [O] moving inside your [organ.name].</span>")
+					to_chat(src, "<span class='warning'>Вы чувствуете, как внутри Вашей [organ.name] шевелится [O].</span>")
 				else
 					var/msg = pick( \
-						"<span class='warning'>A spike of pain jolts your [organ.name] as you bump [O] inside.</span>", \
-						"<span class='warning'>Your movement jostles [O] in your [organ.name] painfully.</span>", \
-						"<span class='warning'>Your movement jostles [O] in your [organ.name] painfully.</span>")
+						"<span class='warning'>Волна боли пронзает Вашу [organ.name], когда Вы задеваете [O] внутри.</span>", \
+						"<span class='warning'>Ваши движения болезненно шевелят [O] в Вашей [organ.name].</span>", \
+						"<span class='warning'>Ваши движения болезненно шевелят [O] в Вашей [organ.name].</span>")
 					custom_pain(msg, 40)
 
 				organ.take_damage(rand(1,3), 0, 0)
@@ -1029,37 +1029,37 @@
 
 /mob/living/carbon/human/verb/check_pulse()
 	set category = "Object"
-	set name = "Check pulse"
-	set desc = "Approximately count somebody's pulse. Requires you to stand still at least 6 seconds."
+	set name = "Проверить Пульс"
+	set desc = "Примерно измерить чей-то пульс. Для этого нужно стоять хотя бы 6 секунд."
 	set src in view(1)
 	var/self = 0
 
 	if(usr.stat || usr.restrained() || !isliving(usr)) return
 
-	var/datum/gender/TU = gender_datums[usr.get_visible_gender()]
+//	var/datum/gender/TU = gender_datums[usr.get_visible_gender()]
 	var/datum/gender/T = gender_datums[get_visible_gender()]
 
 	if(usr == src)
 		self = 1
 	if(!self)
-		usr.visible_message("<span class='notice'>[usr] kneels down, puts [TU.his] hand on [src]'s wrist and begins counting [T.his] pulse.</span>",\
-		"You begin counting [src]'s pulse")
+		usr.visible_message("<span class='notice'>[usr] наклоняется, кладёт свою руку на запястье [src] и начинает измерять [T.his] пульс.</span>",\
+		"Вы начинаете считать пульс [src].")
 	else
-		usr.visible_message("<span class='notice'>[usr] begins counting [T.his] pulse.</span>",\
-		"You begin counting your pulse.")
+		usr.visible_message("<span class='notice'>[usr] начинает измерять свой пульс.</span>",\
+		"Вы начинаете считать свой пульс.")
 
 	if(src.pulse)
-		to_chat(usr, "<span class='notice'>[self ? "You have a" : "[src] has a"] pulse! Counting...</span>")
+		to_chat(usr, "<span class='notice'>[self ? "У Вас есть" : "[src] имеет"] пульс! Измеряем...</span>")
 	else
-		to_chat(usr, "<span class='danger'>[src] has no pulse!</span>")	//it is REALLY UNLIKELY that a dead person would check his own pulse
+		to_chat(usr, "<span class='danger'>[src]не имеет пульса!</span>")	//it is REALLY UNLIKELY that a dead person would check his own pulse
 		return
 
-	to_chat(usr, "You must[self ? "" : " both"] remain still until counting is finished.")
+	to_chat(usr, "Вы [self ? "" : " оба"] должны быть неподвижны во время измерения пульса.")
 	if(do_mob(usr, src, 60))
-		var/message = "<span class='notice'>[self ? "Your" : "[src]'s"] pulse is [src.get_pulse(GETPULSE_HAND)].</span>"
+		var/message = "<span class='notice'>[self ? "Ваш" : "[src] имеет"] пульс - [src.get_pulse(GETPULSE_HAND)].</span>"
 		to_chat(usr,message)
 	else
-		to_chat(usr, "<span class='warning'>You failed to check the pulse. Try again.</span>")
+		to_chat(usr, "<span class='warning'>Вы не смогли измерить пульс. Попробуйте снова.</span>")
 
 /mob/living/carbon/human/proc/set_species(var/new_species, var/default_colour, var/regen_icons = TRUE, var/mob/living/carbon/human/example = null)	//VOREStation Edit - send an example
 
@@ -1078,7 +1078,7 @@
 
 	if(species)
 
-		if(species.name && species.name == new_species && species.name != "Custom Species") //VOREStation Edit
+		if(species.name && species.name == new_species)
 			return
 		if(species.language)
 			remove_language(species.language)
@@ -1099,8 +1099,8 @@
 	if(species.default_language)
 		add_language(species.default_language)
 
-	if(species.icon_scale_x != 1 || species.icon_scale_y != 1)
-		update_transform()
+	//if(species.icon_scale_x != 1 || species.icon_scale_y != 1)	//VOREStation Removal
+	//	update_transform()											//VOREStation Removal
 
 	if(example)						//VOREStation Edit begin
 		if(!(example == src))
@@ -1109,9 +1109,9 @@
 			b_skin = example.b_skin
 	else if(species.base_color)	//VOREStation Edit end
 		//Apply colour.
-		r_skin = hex2num(copytext(species.base_color,2,4))
-		g_skin = hex2num(copytext(species.base_color,4,6))
-		b_skin = hex2num(copytext(species.base_color,6,8))
+		r_skin = hex2num(copytext_char(species.base_color,2,4))
+		g_skin = hex2num(copytext_char(species.base_color,4,6))
+		b_skin = hex2num(copytext_char(species.base_color,6,8))
 	else
 		r_skin = 0
 		g_skin = 0
@@ -1171,8 +1171,8 @@
 
 /mob/living/carbon/human/proc/bloody_doodle()
 	set category = "IC"
-	set name = "Write in blood"
-	set desc = "Use blood on your hands to write a short message on the floor or a wall, murder mystery style."
+	set name = "Написать Кровью"
+	set desc = "Использовать кровь на своих руках, чтобы оставить сообщение на стене. Как в детективах."
 
 	if (src.stat)
 		return
@@ -1184,31 +1184,31 @@
 		verbs -= /mob/living/carbon/human/proc/bloody_doodle
 
 	if (src.gloves)
-		to_chat(src, "<span class='warning'>Your [src.gloves] are getting in the way.</span>")
+		to_chat(src, "<span class='warning'>Вам мешаются [ru_getcase(src.gloves, "ncase")] перчатки.</span>")
 		return
 
 	var/turf/simulated/T = src.loc
 	if (!istype(T)) //to prevent doodling out of mechs and lockers
-		to_chat(src, "<span class='warning'>You cannot reach the floor.</span>")
+		to_chat(src, "<span class='warning'>Вы не дотягиваетесь до пола.</span>")
 		return
 
-	var/direction = input(src,"Which way?","Tile selection") as anything in list("Here","North","South","East","West")
-	if (direction != "Here")
+	var/direction = input(src,"В какую сторону?","Выбор Ячейки") as anything in list("Здесь","North","South","East","West")
+	if (direction != "Здесь")
 		T = get_step(T,text2dir(direction))
 	if (!istype(T))
-		to_chat(src, "<span class='warning'>You cannot doodle there.</span>")
+		to_chat(src, "<span class='warning'>Вы не можете там писать.</span>")
 		return
 
 	var/num_doodles = 0
 	for (var/obj/effect/decal/cleanable/blood/writing/W in T)
 		num_doodles++
 	if (num_doodles > 4)
-		to_chat(src, "<span class='warning'>There is no space to write on!</span>")
+		to_chat(src, "<span class='warning'>Там негде писать!</span>")
 		return
 
 	var/max_length = bloody_hands * 30 //tweeter style
 
-	var/message = sanitize(input("Write a message. It cannot be longer than [max_length] characters.","Blood writing", ""))
+	var/message = sanitize(input("Напишите сообщение. Оно не должно быть больше [max_length] символов.","Написать Кровью", ""))
 
 	if (message)
 		var/used_blood_amount = round(length(message) / 30, 1)
@@ -1216,7 +1216,7 @@
 
 		if (length(message) > max_length)
 			message += "-"
-			to_chat(src, "<span class='warning'>You ran out of blood to write with!</span>")
+			to_chat(src, "<span class='warning'>У Вас кончилась кровь!</span>")
 
 		var/obj/effect/decal/cleanable/blood/writing/W = new(T)
 		W.basecolor = (hand_blood_color) ? hand_blood_color : "#A10808"
@@ -1237,16 +1237,16 @@
 	var/fail_msg
 	if(!affecting)
 		. = 0
-		fail_msg = "They are missing that limb."
+		fail_msg = "Этой конечности нет."
 	else if (affecting.robotic == ORGAN_ROBOT)
 		. = 0
-		fail_msg = "That limb is robotic."
+		fail_msg = "Эта конечность протезирована."
 	else if (affecting.robotic >= ORGAN_LIFELIKE)
 		. = 0
-		fail_msg = "Your needle refuses to penetrate more than a short distance..."
+		fail_msg = "Ваша игла не хочет проходить достаточно глубоко..."
 	else if (affecting.thick_skin && prob(70 - round(affecting.brute_dam + affecting.burn_dam / 2)))	// Allows transplanted limbs with thick skin to maintain their resistance.
 		. = 0
-		fail_msg = "Your needle fails to penetrate \the [affecting]'s thick hide..."
+		fail_msg = "Игра не может пройти через толстую шкуру [affecting]..."
 	else
 		switch(target_zone)
 			if(BP_HEAD)
@@ -1257,7 +1257,7 @@
 					. = 0
 	if(!. && error_msg && user)
 		if(!fail_msg)
-			fail_msg = "There is no exposed flesh or thin material [target_zone == BP_HEAD ? "on their head" : "on their body"] to inject into."
+			fail_msg = "Вы не видите открытой кожи на [target_zone == BP_HEAD ? "голове" : "теле"], куда можно было ьы сделать укол."
 		to_chat(user, "<span class='alert'>[fail_msg]</span>")
 
 /mob/living/carbon/human/print_flavor_text(var/shrink = 1)
@@ -1342,8 +1342,8 @@
 
 /mob/living/carbon/human/proc/relocate()
 	set category = "Object"
-	set name = "Relocate Joint"
-	set desc = "Pop a joint back into place. Extremely painful."
+	set name = "Вправить Сустав"
+	set desc = "Вправить сустав обратно на место. Очень больно."
 	set src in view(1)
 
 	if(!isliving(usr) || !usr.checkClickCooldown())
@@ -1352,11 +1352,11 @@
 	usr.setClickCooldown(20)
 
 	if(usr.stat > 0)
-		to_chat(usr, "You are unconcious and cannot do that!")
+		to_chat(usr, "Вы не в сознании и не можете этого сделать!")
 		return
 
 	if(usr.restrained())
-		to_chat(usr, "You are restrained and cannot do that!")
+		to_chat(usr, "Вы ограничены в передвижении и не можете этого сделать!")
 		return
 
 	var/mob/S = src
@@ -1370,15 +1370,15 @@
 		var/obj/item/organ/external/current_limb = organs_by_name[limb]
 		if(current_limb && current_limb.dislocated > 0 && !current_limb.is_parent_dislocated()) //if the parent is also dislocated you will have to relocate that first
 			limbs |= current_limb
-	var/obj/item/organ/external/current_limb = input(usr,"Which joint do you wish to relocate?") as null|anything in limbs
+	var/obj/item/organ/external/current_limb = input(usr,"Какой сустав Вы хотите вправить?") as null|anything in limbs
 
 	if(!current_limb)
 		return
 
 	if(self)
-		to_chat(src, "<span class='warning'>You brace yourself to relocate your [current_limb.joint]...</span>")
+		to_chat(src, "<span class='warning'>Вы подготавливаетесь вправлять [current_limb.joint]...</span>")
 	else
-		to_chat(U, "<span class='warning'>You begin to relocate [S]'s [current_limb.joint]...</span>")
+		to_chat(U, "<span class='warning'>Вы начинаете вправлять [current_limb.joint] [S]...</span>")
 
 	if(!do_after(U, 30))
 		return
@@ -1386,10 +1386,10 @@
 		return
 
 	if(self)
-		to_chat(src, "<span class='danger'>You pop your [current_limb.joint] back in!</span>")
+		to_chat(src, "<span class='danger'>Вы вправляете [current_limb.joint] обратно!</span>")
 	else
-		to_chat(U, "<span class='danger'>You pop [S]'s [current_limb.joint] back in!</span>")
-		to_chat(S, "<span class='danger'>[U] pops your [current_limb.joint] back in!</span>")
+		to_chat(U, "<span class='danger'>Вы вправляете [current_limb.joint] [S] обратно!</span>")
+		to_chat(S, "<span class='danger'>[U] вправляет Вашу [current_limb.joint] обратно!</span>")
 	current_limb.relocate()
 
 /mob/living/carbon/human/drop_from_inventory(var/obj/item/W, var/atom/Target = null)
@@ -1462,30 +1462,30 @@
 	return 0
 
 /mob/living/carbon/human/verb/toggle_underwear()
-	set name = "Toggle Underwear"
-	set desc = "Shows/hides selected parts of your underwear."
+	set name = "Переключить Нижнее Белье"
+	set desc = "Показывает/скрывает части Вашего нижнего белья."
 	set category = "Object"
 
 	if(stat) return
-	var/datum/category_group/underwear/UWC = input(usr, "Choose underwear:", "Show/hide underwear") as null|anything in global_underwear.categories
+	var/datum/category_group/underwear/UWC = input(usr, "Выберите нижнее белье:", "Показать/Скрыть Нижнее Белье") as null|anything in global_underwear.categories
 	if(!UWC) return
 	var/datum/category_item/underwear/UWI = all_underwear[UWC.name]
-	if(!UWI || UWI.name == "None")
-		to_chat(src, "<span class='notice'>You do not have [UWC.gender==PLURAL ? "[UWC.display_name]" : "a [UWC.display_name]"].</span>")
+	if(!UWI || UWI.name == "Нет")
+		to_chat(src, "<span class='notice'>На Вас нет [UWC.display_name]</span>")
 		return
 	hide_underwear[UWC.name] = !hide_underwear[UWC.name]
 	update_underwear(1)
-	to_chat(src, "<span class='notice'>You [hide_underwear[UWC.name] ? "take off" : "put on"] your [UWC.display_name].</span>")
+	to_chat(src, "<span class='notice'>Вы [hide_underwear[UWC.name] ? "снимаете" : "надеваете"] [UWC.display_name].</span>")
 	return
 
 /mob/living/carbon/human/verb/pull_punches()
-	set name = "Pull Punches"
-	set desc = "Try not to hurt them."
+	set name = "Отводить Удары"
+	set desc = "Попытаться не навредить цели."
 	set category = "IC"
 
 	if(stat) return
 	pulling_punches = !pulling_punches
-	to_chat(src, "<span class='notice'>You are now [pulling_punches ? "pulling your punches" : "not pulling your punches"].</span>")
+	to_chat(src, "<span class='notice'>Вы [pulling_punches ? "теперь отводите удары" : "больше не отводите удары"].</span>")
 	return
 
 /mob/living/carbon/human/should_have_organ(var/organ_check)
@@ -1590,7 +1590,7 @@
 			msg += "([criminal]) "
 
 	if(hasHUD(user,"medical"))
-		msg += "(Health: [round((health/getMaxHealth())*100)]%) "
+		msg += "(Здоровье: [round((health/getMaxHealth())*100)]%) "
 
 	msg += get_display_species()
 	return msg
@@ -1638,7 +1638,7 @@
 		var/obj/item/clothing/glasses/goggles = glasses
 		if(goggles.active && (goggles.vision_flags & (SEE_TURFS|SEE_OBJS)))
 			goggles.toggle_active(src)
-			to_chat(src, span("warning", "Your [goggles.name] have suddenly turned off!"))
+			to_chat(src, span("warning", "Ваши [goggles.name] внезапно отключаются!"))
 
 	// RIGs.
 	var/obj/item/weapon/rig/rig = get_rig()
@@ -1646,7 +1646,7 @@
 		var/obj/item/clothing/glasses/rig_goggles = rig.visor.vision.glasses
 		if(rig_goggles.vision_flags & (SEE_TURFS|SEE_OBJS))
 			rig.visor.deactivate()
-			to_chat(src, span("warning", "\The [rig]'s visor has shuddenly deactivated!"))
+			to_chat(src, span("warning", "Визор [rig] внезапно отключается!"))
 
 	..()
 

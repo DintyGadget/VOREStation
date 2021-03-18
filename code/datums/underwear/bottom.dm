@@ -1,9 +1,9 @@
 /datum/category_item/underwear/bottom/none
-	name = "None"
+	name = "Нет"
 	always_last = TRUE
 
 /datum/category_item/underwear/bottom/briefs
-	name = "Briefs"
+	name = "Плавки"
 	icon_state = "briefs"
 	has_color = TRUE
 
@@ -11,20 +11,20 @@
 	return gender != FEMALE
 
 /datum/category_item/underwear/bottom/boxers_loveheart
-	name = "Boxers, Loveheart"
+	name = "Боксеры, сердечко"
 	icon_state = "boxers_loveheart"
 
 /datum/category_item/underwear/bottom/boxers
-	name = "Boxers"
+	name = "Боксеры"
 	icon_state = "boxers"
 	has_color = TRUE
 
 /datum/category_item/underwear/bottom/boxers_green_and_blue
-	name = "Boxers, green & blue striped"
+	name = "Боксеры, сине-зеленые полосы"
 	icon_state = "boxers_green_and_blue"
 
 /datum/category_item/underwear/bottom/panties
-	name = "Panties"
+	name = "Женские трусики"
 	icon_state = "panties"
 	has_color = TRUE
 
@@ -32,39 +32,39 @@
 	return gender == FEMALE
 
 /datum/category_item/underwear/bottom/lacy_thong
-	name = "Lacy thong"
+	name = "Стринги на лямке"
 	icon_state = "lacy_thong"
 
 /datum/category_item/underwear/bottom/lacy_thong_alt
-	name = "Lacy thong, alt"
+	name = "Стринги на лямке, альт"
 	icon_state = "lacy_thong_alt"
 	has_color = TRUE
 
 /datum/category_item/underwear/bottom/panties_alt
-	name = "Panties, alt"
+	name = "Женские трусики, альт"
 	icon_state = "panties_alt"
 	has_color = TRUE
 
 /datum/category_item/underwear/bottom/compression_shorts
-	name = "Compression shorts"
+	name = "Обтягивающие шорты"
 	icon_state = "compression_shorts"
 	has_color = TRUE
 
 /datum/category_item/underwear/bottom/thong
-	name = "Thong"
+	name = "Стринги"
 	icon_state = "thong"
 	has_color = TRUE
 
 /datum/category_item/underwear/bottom/fishnet_lower
-	name = "Fishnets"
+	name = "В сеточку"
 	icon_state = "fishnet_lower"
 
 /datum/category_item/underwear/bottom/striped_panties
-	name = "Striped Panties"
+	name = "Полосатые трусики"
 	icon_state = "striped_panties"
 	has_color = TRUE
 
 /datum/category_item/underwear/bottom/longjon
-	name = "Long John Bottoms"
+	name = "Трико"
 	icon_state = "ljonb"
 	has_color = TRUE

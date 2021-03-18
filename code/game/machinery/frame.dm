@@ -301,7 +301,7 @@
 /obj/structure/frame/attackby(obj/item/P as obj, mob/user as mob)
 	if(P.is_wrench())
 		if(state == FRAME_PLACED && !anchored)
-			to_chat(user, "<span class='notice'>You start to wrench the frame into place.</span>")
+			to_chat(user, "<span class='notice'>Вы начинаете ставить раму на место.</span>")
 			playsound(src, P.usesound, 50, 1)
 			if(do_after(user, 20 * P.toolspeed))
 				anchored = TRUE
@@ -309,14 +309,14 @@
 					state = FRAME_FASTENED
 					check_components()
 					update_desc()
-					to_chat(user, "<span class='notice'>You wrench the frame into place and set the outer cover.</span>")
+					to_chat(user, "<span class='notice'>Вы вставляете рамку на место и устанавливаете внешнюю крышку.</span>")
 				else
-					to_chat(user, "<span class='notice'>You wrench the frame into place.</span>")
+					to_chat(user, "<span class='notice'>Вы вставляете раму на место.</span>")
 
 		else if(state == FRAME_PLACED && anchored)
 			playsound(src, P.usesound, 50, 1)
 			if(do_after(user, 20 * P.toolspeed))
-				to_chat(user, "<span class='notice'>You unfasten the frame.</span>")
+				to_chat(user, "<span class='notice'>Вы отстегиваете раму.</span>")
 				anchored = FALSE
 
 	else if(istype(P, /obj/item/weapon/weldingtool))

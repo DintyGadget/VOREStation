@@ -13,7 +13,7 @@
  */
 /obj/item/weapon/card
 	name = "card"
-	desc = "Does card things."
+	desc = "Занимается карточными делами."
 	icon = 'icons/obj/card.dmi'
 	w_class = ITEMSIZE_TINY
 	slot_flags = SLOT_EARS
@@ -25,7 +25,7 @@
 
 /obj/item/weapon/card/data
 	name = "data disk"
-	desc = "A disk of data."
+	desc = "Диск с данными."
 	icon_state = "data"
 	var/function = "storage"
 	var/data = "null"
@@ -35,7 +35,7 @@
 	pickup_sound = 'sound/items/pickup/disk.ogg'
 
 /obj/item/weapon/card/data/verb/label(t as text)
-	set name = "Label Disk"
+	set name = "Маркировка диска"
 	set category = "Object"
 	set src in usr
 
@@ -51,7 +51,7 @@
 	icon_state = "data"
 	item_state = "card-id"
 	level = 2
-	desc = "This card contains coordinates to the fabled Clown Planet. Handle with care."
+	desc = "На этой карте указаны координаты легендарной планеты Клоун. Обращайтесь осторожно."
 	function = "teleporter"
 	data = "Clown Land"
 
@@ -60,14 +60,14 @@
  */
 
 /obj/item/weapon/card/emag_broken
-	desc = "It's a card with a magnetic strip attached to some circuitry. It looks too busted to be used for anything but salvage."
+	desc = "Это карта с магнитной полосой, прикрепленной к какой-то схеме. Она выглядит слишком разрушенной, чтобы ее можно было использовать ни для чего, кроме спасения."
 	name = "broken cryptographic sequencer"
 	icon_state = "emag"
 	item_state = "card-id"
 	origin_tech = list(TECH_MAGNET = 2, TECH_ILLEGAL = 2)
 
 /obj/item/weapon/card/emag
-	desc = "It's a card with a magnetic strip attached to some circuitry."
+	desc = "Это карта с магнитной полосой, прикрепленной к какой-то схеме."
 	name = "cryptographic sequencer"
 	icon_state = "emag"
 	item_state = "card-id"

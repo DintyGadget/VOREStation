@@ -106,21 +106,21 @@
 	if(istype(A, /obj/item/ammo_magazine))
 		var/obj/item/ammo_magazine/AM = A
 		if(!(load_method & AM.mag_type) || caliber != AM.caliber || allowed_magazines && !is_type_in_list(A, allowed_magazines))
-			to_chat(user, "<span class='warning'>[AM] won't load into [src]!</span>")
+			to_chat(user, "<span class='warning'>[AM] не загружается в [src]!</span>")
 			return
 		switch(AM.mag_type)
 			if(MAGAZINE)
 				if(ammo_magazine)
-					to_chat(user, "<span class='warning'>[src] already has a magazine loaded.</span>") //already a magazine here
+					to_chat(user, "<span class='warning'>[src] уже загружает магазин.</span>") //already a magazine here
 					return
 				user.remove_from_mob(AM)
 				AM.loc = src
 				ammo_magazine = AM
-				user.visible_message("[user] inserts [AM] into [src].", "<span class='notice'>You insert [AM] into [src].</span>")
+				user.visible_message("[user] вставляет [AM] в [src].", "<span class='notice'>Вы вставляете [AM] в [src].</span>")
 				playsound(src, 'sound/weapons/flipblade.ogg', 50, 1)
 			if(SPEEDLOADER)
 				if(loaded.len >= max_shells)
-					to_chat(user, "<span class='warning'>[src] is full!</span>")
+					to_chat(user, "<span class='warning'>[src] полон!</span>")
 					return
 				var/count = 0
 				for(var/obj/item/ammo_casing/C in AM.stored_ammo)
@@ -132,7 +132,7 @@
 						AM.stored_ammo -= C //should probably go inside an ammo_magazine proc, but I guess less proc calls this way...
 						count++
 				if(count)
-					user.visible_message("[user] reloads [src].", "<span class='notice'>You load [count] round\s into [src].</span>")
+					user.visible_message("[user] перезаряжает [src].", "<span class='notice'>Вы загружаете [count] патрон/ов в [src].</span>")
 					playsound(src, 'sound/weapons/empty.ogg', 50, 1)
 		AM.update_icon()
 	else if(istype(A, /obj/item/ammo_casing))
@@ -140,13 +140,13 @@
 		if(!(load_method & SINGLE_CASING) || caliber != C.caliber)
 			return //incompatible
 		if(loaded.len >= max_shells)
-			to_chat(user, "<span class='warning'>[src] is full.</span>")
+			to_chat(user, "<span class='warning'>[src] полон.</span>")
 			return
 
 		user.remove_from_mob(C)
 		C.loc = src
 		loaded.Insert(1, C) //add to the head of the list
-		user.visible_message("[user] inserts \a [C] into [src].", "<span class='notice'>You insert \a [C] into [src].</span>")
+		user.visible_message("[user] вставляет [C] в [src].", "<span class='notice'>Вы вставляете [C] в [src].</span>")
 		playsound(src, 'sound/weapons/empty.ogg', 50, 1)
 
 	else if(istype(A, /obj/item/weapon/storage))
@@ -154,7 +154,7 @@
 		if(!(load_method & SINGLE_CASING))
 			return //incompatible
 
-		to_chat(user, "<span class='notice'>You start loading \the [src].</span>")
+		to_chat(user, "<span class='notice'>Вы начинаете загружать [src].</span>")
 		sleep(1 SECOND)
 		for(var/obj/item/ammo_casing/ammo in storage.contents)
 			if(caliber != ammo.caliber)
@@ -163,7 +163,7 @@
 			load_ammo(ammo, user)
 
 			if(loaded.len >= max_shells)
-				to_chat(user, "<span class='warning'>[src] is full.</span>")
+				to_chat(user, "<span class='warning'>[src] полон.</span>")
 				break
 			sleep(1 SECOND)
 
@@ -173,7 +173,7 @@
 /obj/item/weapon/gun/projectile/proc/unload_ammo(mob/user, var/allow_dump=1)
 	if(ammo_magazine)
 		user.put_in_hands(ammo_magazine)
-		user.visible_message("[user] removes [ammo_magazine] from [src].", "<span class='notice'>You remove [ammo_magazine] from [src].</span>")
+		user.visible_message("[user] удаляет [ammo_magazine] из [src].", "<span class='notice'>Вы удаляете [ammo_magazine] из [src].</span>")
 		playsound(src, 'sound/weapons/empty.ogg', 50, 1)
 		ammo_magazine.update_icon()
 		ammo_magazine = null
@@ -188,15 +188,15 @@
 					count++
 				loaded.Cut()
 			if(count)
-				user.visible_message("[user] unloads [src].", "<span class='notice'>You unload [count] round\s from [src].</span>")
+				user.visible_message("[user] разряжает [src].", "<span class='notice'>Вы разряжаете [count] патрон/ов из [src].</span>")
 		else if(load_method & SINGLE_CASING)
 			var/obj/item/ammo_casing/C = loaded[loaded.len]
 			loaded.len--
 			user.put_in_hands(C)
-			user.visible_message("[user] removes \a [C] from [src].", "<span class='notice'>You remove \a [C] from [src].</span>")
+			user.visible_message("[user] удаляет [C] из [src].", "<span class='notice'>Вы удаляете [C] из [src].</span>")
 		playsound(src, 'sound/weapons/empty.ogg', 50, 1)
 	else
-		to_chat(user, "<span class='warning'>[src] is empty.</span>")
+		to_chat(user, "<span class='warning'>[src] пуст.</span>")
 	update_icon()
 
 /obj/item/weapon/gun/projectile/attackby(var/obj/item/A as obj, mob/user as mob)
@@ -220,8 +220,8 @@
 	if(auto_eject && ammo_magazine && ammo_magazine.stored_ammo && !ammo_magazine.stored_ammo.len)
 		ammo_magazine.loc = get_turf(src.loc)
 		user.visible_message(
-			"[ammo_magazine] falls out and clatters on the floor!",
-			"<span class='notice'>[ammo_magazine] falls out and clatters on the floor!</span>"
+			"[ammo_magazine] вываливается и гремит по полу!",
+			"<span class='notice'>[ammo_magazine] вываливается и гремит по полу!</span>"
 			)
 		if(auto_eject_sound)
 			playsound(src, auto_eject_sound, 40, 1)
@@ -232,8 +232,8 @@
 /obj/item/weapon/gun/projectile/examine(mob/user)
 	. = ..()
 	if(ammo_magazine)
-		. += "It has \a [ammo_magazine] loaded."
-	. += "It has [getAmmo()] round\s remaining."
+		. += "В нем загружен [ammo_magazine]."
+	. += "Осталось [getAmmo()] патрон/ов."
 
 /obj/item/weapon/gun/projectile/proc/getAmmo()
 	var/bullets = 0

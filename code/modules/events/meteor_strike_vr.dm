@@ -11,7 +11,7 @@
 		kill()
 
 /datum/event/meteor_strike/announce()
-	command_announcement.Announce("A meteoroid has been detected entering the atmosphere on a trajectory that will terminate near the surface facilty. Brace for impact.", "NanoTrasen Orbital Monitoring")
+	command_announcement.Announce("Был обнаружен метеороид, входящий в атмосферу по траектории, которая закончится вблизи поверхности объекта. Приготовьтесь к удару.", "Орбитальный Мониторинг NanoTrasen ")
 
 /datum/event/meteor_strike/start()
 	new /obj/effect/meteor_falling(strike_target)
@@ -66,7 +66,7 @@
 					L.throw_at(get_step_rand(L),1,5)
 				L.Weaken(5)
 			if(L.client)
-				to_chat(L, "<span class='danger'>The ground lurches beneath you!</span>")
+				to_chat(L, "<span class='danger'>Земля шатается под вами!</span>")
 				shake_camera(L, 6, 1)
 				if(!L.ear_deaf)
 					L << 'sound/effects/explosionfar.ogg'

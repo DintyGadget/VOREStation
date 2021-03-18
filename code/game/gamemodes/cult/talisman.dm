@@ -9,43 +9,43 @@
 			var/delete = 1
 			// who the hell thought this was a good idea :(
 			switch(imbue)
-				if("newtome")
+				if("новыйфолиант")
 					call(/obj/effect/rune/proc/tomesummon)()
-				if("armor")
+				if("броня")
 					call(/obj/effect/rune/proc/armor)()
-				if("emp")
+				if("эми")
 					call(/obj/effect/rune/proc/emp)(usr.loc,3)
-				if("conceal")
+				if("скрыть")
 					call(/obj/effect/rune/proc/obscure)(2)
-				if("revealrunes")
+				if("раскрытьруны")
 					call(/obj/effect/rune/proc/revealrunes)(src)
-				if("ire", "ego", "nahlizet", "certum", "veri", "jatkaa", "balaq", "mgar", "karazet", "geeri")
+				if("гнев","эго","нахлизет","определенность","правда","джатка","мгар","балак", "каразет", "гиери")
 					call(/obj/effect/rune/proc/teleport)(imbue)
-				if("communicate")
+				if("связаться")
 					//If the user cancels the talisman this var will be set to 0
 					delete = call(/obj/effect/rune/proc/communicate)()
-				if("deafen")
+				if("оглушение")
 					call(/obj/effect/rune/proc/deafen)()
-				if("blind")
+				if("ослепление")
 					call(/obj/effect/rune/proc/blind)()
-				if("runestun")
-					to_chat(user, "<span class='warning'>To use this talisman, attack your target directly.</span>")
+				if("станруна")
+					to_chat(user, "<span class='warning'>Чтобы использовать этот талисман, атакуйте свою цель напрямую.</span>")
 					return
-				if("supply")
+				if("снабжать")
 					supply()
 			user.take_organ_damage(5, 0)
-			if(src && src.imbue!="supply" && src.imbue!="runestun")
+			if(src && src.imbue!="снабжать" && src.imbue!="станруна")
 				if(delete)
 					qdel(src)
 			return
 		else
-			to_chat(user, "You see strange symbols on the paper. Are they supposed to mean something?")
+			to_chat(user, "Вы видите на бумаге странные символы. Они должны что-то значить?")
 			return
 
 
 	attack(mob/living/carbon/T as mob, mob/living/user as mob)
 		if(iscultist(user))
-			if(imbue == "runestun")
+			if(imbue == "станруна")
 				user.take_organ_damage(5, 0)
 				call(/obj/effect/rune/proc/runestun)(T)
 				qdel(src)
@@ -60,8 +60,8 @@
 			qdel(src)
 			return
 
-		var/dat = "<B>There are [src.uses] bloody runes on the parchment.</B><BR>"
-		dat += "Please choose the chant to be imbued into the fabric of reality.<BR>"
+		var/dat = "<meta charset=\"utf-8\"><B>На пергаменте [src.uses] кровавые руны.</B><BR>"
+		dat += "Пожалуйста, выберите песнопение, которое будет проникнуто в ткань реальности.<BR>"
 		dat += "<HR>"
 		dat += "<A href='?src=\ref[src];rune=newtome'>N'ath reth sh'yro eth d'raggathnor!</A> - Allows you to summon a new arcane tome.<BR>"
 		dat += "<A href='?src=\ref[src];rune=teleport'>Sas'so c'arta forbici!</A> - Allows you to move to a rune with the same last word.<BR>"
@@ -84,26 +84,26 @@
 			switch(href_list["rune"])
 				if("newtome")
 					var/obj/item/weapon/paper/talisman/T = new /obj/item/weapon/paper/talisman(get_turf(usr))
-					T.imbue = "newtome"
+					T.imbue = "новыйфолиант"
 				if("teleport")
 					var/obj/item/weapon/paper/talisman/T = new /obj/item/weapon/paper/talisman(get_turf(usr))
-					T.imbue = "[pick("ire", "ego", "nahlizet", "certum", "veri", "jatkaa", "balaq", "mgar", "karazet", "geeri", "orkan", "allaq")]"
+					T.imbue = "[pick("гнев", "эго", "нахлизет", "определенность", "правда", "джатка", "балак", "мгар", "каразет", "гиери", "оркан", "аллак")]"
 					T.info = "[T.imbue]"
 				if("emp")
 					var/obj/item/weapon/paper/talisman/T = new /obj/item/weapon/paper/talisman(get_turf(usr))
-					T.imbue = "emp"
+					T.imbue = "эми"
 				if("conceal")
 					var/obj/item/weapon/paper/talisman/T = new /obj/item/weapon/paper/talisman(get_turf(usr))
-					T.imbue = "conceal"
+					T.imbue = "скрыть"
 				if("communicate")
 					var/obj/item/weapon/paper/talisman/T = new /obj/item/weapon/paper/talisman(get_turf(usr))
-					T.imbue = "communicate"
+					T.imbue = "связаться"
 				if("runestun")
 					var/obj/item/weapon/paper/talisman/T = new /obj/item/weapon/paper/talisman(get_turf(usr))
-					T.imbue = "runestun"
+					T.imbue = "станруна"
 				if("armor")
 					var/obj/item/weapon/paper/talisman/T = new /obj/item/weapon/paper/talisman(get_turf(usr))
-					T.imbue = "armor"
+					T.imbue = "броня"
 				if("soulstone")
 					new /obj/item/device/soulstone(get_turf(usr))
 				if("construct")
@@ -114,5 +114,5 @@
 
 
 /obj/item/weapon/paper/talisman/supply
-	imbue = "supply"
+	imbue = "снабжать"
 	uses = 5

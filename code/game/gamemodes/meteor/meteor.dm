@@ -2,8 +2,8 @@
 
 /datum/game_mode/meteor
 	name = "Meteor"
-	round_description = "The space station has been stuck in a major meteor shower."
-	extended_round_description = "The station is on an unavoidable collision course with an asteroid field. The station will be continuously slammed with meteors, venting hallways, rooms, and ultimately destroying a majority of the basic life functions of the entire structure. Coordinate with your fellow crew members to survive the inevitable destruction of the station and get back home in one piece!"
+	round_description = "Космическая станция застряла под сильным метеоритным дождем."
+	extended_round_description = "Станция движется по курсу неизбежного столкновения с полем астероидов. Станция будет постоянно обрушиваться метеоритами, разрушая коридоры, комнаты и, в конечном итоге, большинство основных жизненных функций всей конструкции. Координируйте свои действия с другими членами экипажа, чтобы пережить неизбежное разрушение станции и вернуться домой целым и невредимым!"
 	config_tag = "meteor"
 	required_players = 0
 	votable = 0

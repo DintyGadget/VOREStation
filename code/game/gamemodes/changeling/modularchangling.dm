@@ -22,7 +22,7 @@ var/list/datum/power/changeling/powerinstances = list()
 
 // Modularchangling, totally stolen from the new player panel.  YAYY
 /datum/changeling/proc/EvolutionMenu()//The new one
-	set name = "-Evolution Menu-"
+	set name = "-Меню эволюции-"
 	set category = "Changeling"
 	set desc = "Adapt yourself carefully."
 
@@ -33,7 +33,7 @@ var/list/datum/power/changeling/powerinstances = list()
 		for(var/P in powers)
 			powerinstances += new P()
 
-	var/dat = "<html><head><title>Changling Evolution Menu</title></head>"
+	var/dat = "<html><meta charset=\"utf-8\"><head><title>Меню эволюции подменыша</title></head>"
 
 	//javascript, the part that does most of the work~
 	dat += {"
@@ -98,7 +98,7 @@ var/list/datum/power/changeling/powerinstances = list()
 
 					var span = document.getElementById(id);
 
-					body = "<table><tr><td>";
+					body = "<table><meta charset=\"utf-8\"><tr><td>";
 
 					body += "</td><td align='center'>";
 
@@ -108,12 +108,12 @@ var/list/datum/power/changeling/powerinstances = list()
 
 					if(enhancedtext)
 					{
-						body += "<font size='2'><font color = 'blue'>Recursive Enhancement Effect: <b>"+enhancedtext+"</b></font></font><BR>"
+						body += "<font size='2'><font color = 'blue'>Рекурсивный эффект улучшения: <b>"+enhancedtext+"</b></font></font><BR>"
 					}
 
 					if(!ownsthis)
 					{
-						body += "<a href='?src=\ref[src];P="+power+"'>Evolve</a>"
+						body += "<a href='?src=\ref[src];P="+power+"'>Эволюция</a>"
 					}
 
 					body += "</td><td align='center'>";
@@ -223,19 +223,19 @@ var/list/datum/power/changeling/powerinstances = list()
 	//title + search bar
 	dat += {"
 
-		<table width='560' align='center' cellspacing='0' cellpadding='5' id='maintable'>
+		<meta charset=\"utf-8\"><table width='560' align='center' cellspacing='0' cellpadding='5' id='maintable'>
 			<tr id='title_tr'>
 				<td align='center'>
-					<font size='5'><b>Changling Evolution Menu</b></font><br>
-					Hover over a power to see more information<br>
-					Current evolution points left to evolve with: [geneticpoints]<br>
-					Absorb other changelings to acquire more evolution points
+					<font size='5'><b>Меню эволюции подменыша</b></font><br>
+					Наведите указатель мыши на кнопку, чтобы увидеть дополнительную информацию<br>
+					Текущие точки эволюции, оставшиеся для дальнейшего развития: [geneticpoints]<br>
+					Поглощайте других подменышей, чтобы получить больше очков эволюции
 					<p>
 				</td>
 			</tr>
 			<tr id='search_tr'>
 				<td align='center'>
-					<b>Search:</b> <input type='text' id='filter' value='' style='width:300px;'>
+					<b>Поиск:</b> <input type='text' id='filter' value='' style='width:300px;'>
 				</td>
 			</tr>
 	</table>
@@ -323,16 +323,16 @@ var/list/datum/power/changeling/powerinstances = list()
 
 
 	if(Thepower == null)
-		to_chat(M.current, "This is awkward.  Changeling power purchase failed, please report this bug to a coder!")
+		to_chat(M.current, "Это неудобно. Не удалось приобрести мощность подменыша, сообщите об этом кодировщику!")
 		return
 
 	if(Thepower in purchased_powers)
-		to_chat(M.current, "We have already evolved this ability!")
+		to_chat(M.current, "Мы уже развили эту способность!")
 		return
 
 
 	if(geneticpoints < Thepower.genomecost)
-		to_chat(M.current, "We cannot evolve this... yet.  We must acquire more DNA.")
+		to_chat(M.current, "Мы не можем развить это ... пока. Мы должны получить больше ДНК.")
 		return
 
 	geneticpoints -= Thepower.genomecost

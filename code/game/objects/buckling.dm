@@ -18,7 +18,7 @@
 
 	if(can_buckle && has_buckled_mobs())
 		if(buckled_mobs.len > 1)
-			var/unbuckled = input(user, "Who do you wish to unbuckle?","Unbuckle Who?") as null|mob in buckled_mobs
+			var/unbuckled = input(user, "Кого вы хотите расстегнуть?","Unbuckle Who?") as null|mob in buckled_mobs
 			if(user_unbuckle_mob(unbuckled, user))
 				return TRUE
 		else
@@ -112,12 +112,12 @@
 //Wrapper procs that handle sanity and user feedback
 /atom/movable/proc/user_buckle_mob(mob/living/M, mob/user, var/forced = FALSE, var/silent = FALSE)
 	if(!ticker)
-		to_chat(user, "<span class='warning'>You can't buckle anyone in before the game starts.</span>")
+		to_chat(user, "<span class='warning'>Вы не можете никого пристегнуть до начала игры.</span>")
 		return FALSE // Is this really needed?
 	if(!user.Adjacent(M) || user.restrained() || user.stat || istype(user, /mob/living/silicon/pai))
 		return FALSE
 	if(M in buckled_mobs)
-		to_chat(user, "<span class='warning'>\The [M] is already buckled to \the [src].</span>")
+		to_chat(user, "<span class='warning'>[M] уже пристегнут к [src].</span>")
 		return FALSE
 	if(!can_buckle_check(M, forced))
 		return FALSE
@@ -137,19 +137,19 @@
 		var/reveal_message = list("buckled_mob" = null, "buckled_to" = null) //VORE EDIT: This being a list and messages existing for the buckle target atom.
 		if(!silent)
 			if(M == user)
-				reveal_message["buckled_mob"] = "<span class='notice'>You come out of hiding and buckle yourself to [src].</span>" //VORE EDIT
-				reveal_message["buckled_to"] = "<span class='notice'>You come out of hiding as [M.name] buckles themselves to you.</span>" //VORE EDIT
+				reveal_message["buckled_mob"] = "<span class='notice'>Вы выходите из укрытия и пристегиваетесь к [src].</span>" //VORE EDIT
+				reveal_message["buckled_to"] = "<span class='notice'>Вы выходите из укрытия, когда [M.name] пристегивается к вам.</span>" //VORE EDIT
 				M.visible_message(\
-					"<span class='notice'>[M.name] buckles themselves to [src].</span>",\
-					"<span class='notice'>You buckle yourself to [src].</span>",\
-					"<span class='notice'>You hear metal clanking.</span>")
+					"<span class='notice'>[M.name] пристегивается к [src].</span>",\
+					"<span class='notice'>Вы пристегиваетесь к [src].</span>",\
+					"<span class='notice'>Вы слышите лязг металла.</span>")
 			else
-				reveal_message["buckled_mob"] = "<span class='notice'>You are revealed as you are buckled to [src].</span>" //VORE EDIT
-				reveal_message["buckled_to"] = "<span class='notice'>You are revealed as [M.name] is buckled to you.</span>" //VORE EDIT
+				reveal_message["buckled_mob"] = "<span class='notice'>Вы раскрыты, когда привязаны к [src].</span>" //VORE EDIT
+				reveal_message["buckled_to"] = "<span class='notice'>Вы раскрыты, поскольку [M.name] пристегнут к вам.</span>" //VORE EDIT
 				M.visible_message(\
-					"<span class='danger'>[M.name] is buckled to [src] by [user.name]!</span>",\
-					"<span class='danger'>You are buckled to [src] by [user.name]!</span>",\
-					"<span class='notice'>You hear metal clanking.</span>")
+					"<span class='danger'>[M.name] привязан к [src] [user.name]!</span>",\
+					"<span class='danger'>[user.name] привязывает вас к [src]!</span>",\
+					"<span class='notice'>Вы слышите лязг металла.</span>")
 
 		M.reveal(silent, reveal_message["buckled_mob"]) //Reveal people so they aren't buckled to chairs from behind. //VORE EDIT, list arg instead of simple message var for buckled mob
 		//Vore edit start
@@ -164,14 +164,14 @@
 	if(M)
 		if(M != user)
 			M.visible_message(\
-				"<span class='notice'>[M.name] was unbuckled by [user.name]!</span>",\
-				"<span class='notice'>You were unbuckled from [src] by [user.name].</span>",\
-				"<span class='notice'>You hear metal clanking.</span>")
+				"<span class='notice'>[M.name] отстегивает [user.name]!</span>",\
+				"<span class='notice'>[user.name] отстегивает вас от [src].</span>",\
+				"<span class='notice'>Вы слышите лязг металла.</span>")
 		else
 			M.visible_message(\
-				"<span class='notice'>[M.name] unbuckled themselves!</span>",\
-				"<span class='notice'>You unbuckle yourself from [src].</span>",\
-				"<span class='notice'>You hear metal clanking.</span>")
+				"<span class='notice'>[M.name] отстегнут!</span>",\
+				"<span class='notice'>Вы отстегиваете [src].</span>",\
+				"<span class='notice'>Вы слышите лязг металла.</span>")
 		add_fingerprint(user)
 	return M
 
@@ -199,7 +199,7 @@
 		return FALSE
 
 	if(has_buckled_mobs() && buckled_mobs.len >= max_buckled_mobs) //Handles trying to buckle yourself to the chair when someone is on it
-		to_chat(M, "<span class='notice'>\The [src] can't buckle anymore people.</span>")
+		to_chat(M, "<span class='notice'>[src] больше не может пристегивать людей.</span>")
 		return FALSE
 
 	return TRUE

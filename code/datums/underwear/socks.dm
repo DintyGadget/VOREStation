@@ -1,63 +1,63 @@
 /datum/category_item/underwear/socks/none
 	always_last = TRUE
-	name = "None"
+	name = "Нет"
 
 /datum/category_item/underwear/socks/normal
-	name = "Normal"
+	name = "Обычные"
 	icon_state = "socks_norm"
 	has_color = TRUE
 
 /datum/category_item/underwear/socks/short
-	name = "Short"
+	name = "Короткие"
 	icon_state = "socks_short"
 	has_color = TRUE
 
 /datum/category_item/underwear/socks/thigh
-	name = "Thigh"
+	name = "Бедра"
 	icon_state = "socks_thigh"
 	has_color = TRUE
 
 /datum/category_item/underwear/socks/knee
-	name = "Knee"
+	name = "Колени"
 	icon_state = "socks_knee"
 	has_color = TRUE
 
 /datum/category_item/underwear/socks/striped_knee
-	name = "Knee, striped"
+	name = "Колени, полосатые"
 	icon_state = "striped_knee"
 	has_color = TRUE
 
 /datum/category_item/underwear/socks/striped_thigh
-	name = "Thigh, striped"
+	name = "Бедра, полосатые"
 	icon_state = "striped_thigh"
 	has_color = TRUE
 
 /datum/category_item/underwear/socks/pantyhose
-	name = "Pantyhose"
+	name = "Колготки"
 	icon_state = "pantyhose"
 
 /datum/category_item/underwear/socks/thin_thigh
-	name = "Thigh, thin"
+	name = "Бедра, тонкие"
 	icon_state = "thin_thigh"
 	has_color = TRUE
 
 /datum/category_item/underwear/socks/thin_knee
-	name = "Knee, thin"
+	name = "Колени, тонкие"
 	icon_state = "thin_knee"
 	has_color = TRUE
 
 /datum/category_item/underwear/socks/rainbow_thigh
-	name = "Thigh, rainbow"
+	name = "Бедра, радуга"
 	icon_state = "rainbow_thigh"
 
 /datum/category_item/underwear/socks/rainbow_knee
-	name = "Knee, rainbow"
+	name = "Колени, радуга"
 	icon_state = "rainbow_knee"
 
 /datum/category_item/underwear/socks/fishnet
-	name = "Fishnet"
+	name = "В сеточку"
 	icon_state = "fishnet"
 
 /datum/category_item/underwear/socks/leggings
-	name = "Leggings"
+	name = "Леггинсы"
 	icon_state = "leggings"

@@ -44,10 +44,10 @@
 
 /datum/modifier/changeling/thermal_sight
 	name = "Thermal Adaptation"
-	desc = "Our eyes are capable of seeing into the infrared spectrum to accurately identify prey through walls."
+	desc = "Наши глаза способны видеть в инфракрасном спектре, чтобы точно идентифицировать добычу через стены."
 	vision_flags = SEE_MOBS
 
-	on_expired_text = "<span class='alien'>Your sight returns to what it once was.</span>"
+	on_expired_text = "<span class='alien'>Ваше зрение возвращается к тому, что было раньше.</span>"
 	stacks = MODIFIER_STACK_EXTEND
 
 /datum/modifier/changeling/thermal_sight/check_if_valid()

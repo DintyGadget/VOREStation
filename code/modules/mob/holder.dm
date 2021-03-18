@@ -106,16 +106,16 @@ var/list/holder_mob_icon_cache = list()
 	var/mob/M = loc
 	if(istype(M))
 		M.drop_from_inventory(src)
-		to_chat(M, "<span class='warning'>\The [held] wriggles out of your grip!</span>")
-		to_chat(held, "<span class='warning'>You wiggle out of [M]'s grip!</span>")
+		to_chat(M, "<span class='warning'>[held] выскользает из Вашей хватки!</span>")
+		to_chat(held, "<span class='warning'>Вы выскользаете из хватки [M]!</span>")
 	else if(istype(loc, /obj/item/clothing/accessory/holster))
 		var/obj/item/clothing/accessory/holster/holster = loc
 		if(holster.holstered == src)
-			holster.clear_holster()			
-		to_chat(held, "<span class='warning'>You extricate yourself from [holster].</span>")
+			holster.clear_holster()
+		to_chat(held, "<span class='warning'>Вы выползаете из [ru_getcase(holster, "gcase")].</span>")
 		held.forceMove(get_turf(held))
 	else if(isitem(loc))
-		to_chat(held, "<span class='warning'>You struggle free of [loc].</span>")
+		to_chat(held, "<span class='warning'>Вы выбираетесь из [loc].</span>")
 		held.forceMove(get_turf(held))
 
 //Mob specific holders.
@@ -143,7 +143,7 @@ var/list/holder_mob_icon_cache = list()
 	origin_tech = list(TECH_BIO = 5, TECH_PHORON = 2)
 
 /obj/item/weapon/holder/fish
-	attack_verb = list("fished", "disrespected", "smacked", "smackereled")
+	attack_verb = list("херакнул", "фиганул", "шлёпнул", "дал леща")
 	hitsound = 'sound/effects/slime_squish.ogg'
 	slot_flags = SLOT_HOLSTER
 	origin_tech = list(TECH_BIO = 3)
@@ -191,14 +191,14 @@ var/list/holder_mob_icon_cache = list()
 	grabber.put_in_hands(H)
 
 	if(self_grab)
-		to_chat(grabber, "<span class='notice'>\The [src] clambers onto you!</span>")
-		to_chat(src, "<span class='notice'>You climb up onto \the [grabber]!</span>")
+		to_chat(grabber, "<span class='notice'>[src] взбирается на Вас!</span>")
+		to_chat(src, "<span class='notice'>Вы забираетесь на [grabber]!</span>")
 		grabber.equip_to_slot_if_possible(H, slot_back, 0, 1)
 	else
-		to_chat(grabber, "<span class='notice'>You scoop up \the [src]!</span>")
-		to_chat(src, "<span class='notice'>\The [grabber] scoops you up!</span>")
+		to_chat(grabber, "<span class='notice'>Вы поднимаете [src] с пола!</span>")
+		to_chat(src, "<span class='notice'>[grabber] поднимает Вас с пола!</span>")
 
-	add_attack_logs(grabber, H.held_mob, "Scooped up", FALSE) // Not important enough to notify admins, but still helpful.
+	add_attack_logs(grabber, H.held_mob, "подобрал", FALSE) // Not important enough to notify admins, but still helpful.
 	H.sync(src)
 	return H
 

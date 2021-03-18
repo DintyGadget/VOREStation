@@ -7,7 +7,7 @@ var/datum/antagonist/wizard/wizards
 	role_text_plural = "Space Wizards"
 	bantype = "wizard"
 	landmark_id = "wizard"
-	welcome_text = "You will find a list of available spells in your spell book. Choose your magic arsenal carefully.<br>In your pockets you will find a teleport scroll. Use it as needed."
+	welcome_text = "Вы найдете список доступных заклинаний в своей книге заклинаний. Тщательно выбирайте свой магический арсенал. <br>В ваших карманах вы найдете свиток телепортации. Используйте его по мере необходимости."
 	flags = ANTAG_OVERRIDE_JOB | ANTAG_CLEAR_EQUIPMENT | ANTAG_CHOOSE_NAME | ANTAG_VOTABLE | ANTAG_SET_APPEARANCE
 	antaghud_indicator = "hudwizard"
 
@@ -66,7 +66,7 @@ var/datum/antagonist/wizard/wizards
 
 /datum/antagonist/wizard/update_antag_mob(var/datum/mind/wizard)
 	..()
-	wizard.store_memory("<B>Remember:</B> do not forget to prepare your spells.")
+	wizard.store_memory("<B>Помните:</B> не забудьте подготовить заклинания.")
 	wizard.current.real_name = "[pick(wizard_first)] [pick(wizard_second)]"
 	wizard.current.name = wizard.current.real_name
 
@@ -98,7 +98,7 @@ var/datum/antagonist/wizard/wizards
 		break
 	if(!survivor)
 		feedback_set_details("round_end_result","loss - wizard killed")
-		to_world("<span class='danger'><font size = 3>The [(current_antagonists.len>1)?"[role_text_plural] have":"[role_text] has"] been killed by the crew!</font></span>")
+		to_world("<span class='danger'><font size = 3>[(current_antagonists.len>1)?"[role_text_plural] был":"[role_text] был"] убит экипажем!</font></span>")
 
 //To batch-remove wizard spells. Linked to mind.dm.
 /mob/proc/spellremove()
@@ -115,18 +115,18 @@ obj/item/clothing
 /*Checks if the wizard is wearing the proper attire.
 Made a proc so this is not repeated 14 (or more) times.*/
 /mob/proc/wearing_wiz_garb()
-	to_chat(src, "Silly creature, you're not a human. Only humans can cast this spell.")
+	to_chat(src, "Глупое создание, ты не человек. Только люди могут накладывать это заклинание.")
 	return 0
 
 // Humans can wear clothes.
 /mob/living/carbon/human/wearing_wiz_garb()
 	if(!is_wiz_garb(src.wear_suit))
-		to_chat(src, "<span class='warning'>I don't feel strong enough without my robe.</span>")
+		to_chat(src, "<span class='warning'>Я не чувствую себя достаточно сильным без робы.</span>")
 		return 0
 	if(!is_wiz_garb(src.shoes))
-		to_chat(src, "<span class='warning'>I don't feel strong enough without my sandals.</span>")
+		to_chat(src, "<span class='warning'>Я не чувствую себя достаточно сильным без сандалий.</span>")
 		return 0
 	if(!is_wiz_garb(src.head))
-		to_chat(src, "<span class='warning'>I don't feel strong enough without my hat.</span>")
+		to_chat(src, "<span class='warning'>Я не чувствую себя достаточно сильным без шляпы.</span>")
 		return 0
 	return 1

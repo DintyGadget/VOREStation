@@ -1,8 +1,8 @@
 //Pilot
 
 /obj/item/clothing/head/pilot
-	name = "pilot helmet"
-	desc = "Standard pilot gear. Protects the head from impacts."
+	name = "Шлем пилота"
+	desc = "Стандартный авиационный шлем. Защищает голову от ударов."
 	icon_state = "pilot_helmet1"
 	item_icons = list(slot_head_str = 'icons/mob/pilot_helmet.dmi')
 	sprite_sheets = list(
@@ -154,12 +154,12 @@
 		animate(pilot_hud,alpha=0,time=3 SECONDS)
 
 /obj/item/clothing/head/pilot/verb/hud_colors()
-	set name = "Alter HUD color"
-	set desc = "Change the color of the piloting HUD."
+	set name = "Изменить Цвет HUD"
+	set desc = "Изменить цвет HUD пилотского шлема."
 	set category = "Object"
 	set src in usr
 
-	var/newcolor = input(usr,"Pick a color!","HUD Color") as null|color
+	var/newcolor = input(usr,"Выберите цвет!","Цвет HUD") as null|color
 	if(newcolor)
 		for(var/img in list("top_words","left_bar","right_bar","flyboxes"))
 			var/image/I = images[img]
@@ -186,16 +186,16 @@
 		user.client.images -= raw_images
 
 /obj/item/clothing/head/pilot/alt
-	name = "pilot helmet"
-	desc = "Standard pilot gear. Protects the head from impacts. This one has a retractable visor"
+	name = "Шлем пилота"
+	desc = "Стандартный авиационный шлем. Защищает голову от ударов. Этот обладает регулируемым визором."
 	icon_state = "pilot_helmet2"
-	action_button_name = "Toggle Visor"
+	action_button_name = "Переключить Визор"
 
 /obj/item/clothing/head/pilot/alt/attack_self(mob/user as mob)
 	if(src.icon_state == initial(icon_state))
 		src.icon_state = "[icon_state]up"
-		to_chat(user, "You raise the visor on the pilot helmet.")
+		to_chat(user, "Вы приподнимаете визор на своём шлеме.")
 	else
 		src.icon_state = initial(icon_state)
-		to_chat(user, "You lower the visor on the pilot helmet.")
+		to_chat(user, "Вы опускаете визор на своём шлеме.")
 	update_clothing_icon() //so our mob-overlays update

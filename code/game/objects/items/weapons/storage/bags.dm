@@ -30,8 +30,8 @@
 //          Trash bag
 // -----------------------------
 /obj/item/weapon/storage/bag/trash
-	name = "trash bag"
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!"
+	name = "Мусорный пакет"
+	desc = "Мешок из чёрного полимера рабочего стандарта. Пора вынести мусор!"
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "trashbag0"
 	item_state_slots = list(slot_r_hand_str = "trashbag", slot_l_hand_str = "trashbag")
@@ -59,8 +59,8 @@
 // -----------------------------
 
 /obj/item/weapon/storage/bag/plasticbag
-	name = "plastic bag"
-	desc = "It's a very flimsy, very noisy alternative to a bag."
+	name = "Пластиковый пакет"
+	desc = "Очень небольшая и шумная замена нормальному мусорному мешку."
 	icon = 'icons/obj/trash.dmi'
 	icon_state = "plasticbag"
 	drop_sound = 'sound/items/drop/wrapper.ogg'
@@ -79,8 +79,8 @@
  */
 
 /obj/item/weapon/storage/bag/ore
-	name = "mining satchel"
-	desc = "This little bugger can be used to store and transport ores."
+	name = "Шахтёрская сумка"
+	desc = "Она позволяет хранить и переносить минералы."
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "satchel"
 	slot_flags = SLOT_BELT | SLOT_POCKET
@@ -119,12 +119,12 @@
 		I.forceMove(src)
 		success = 1
 	if(success && !failure && !silent)
-		to_chat(user, "<span class='notice'>You put everything in [src].</span>")
+		to_chat(user, "<span class='notice'>Вы складываете всё в [ru_getcase(src, "acase")].</span>")
 	else if(success && (!silent || (silent && contents.len >= max_storage_space)))
-		to_chat(user, "<span class='notice'>You fill the [src].</span>")
+		to_chat(user, "<span class='notice'>Вы наполняете [ru_getcase(src, "acase")].</span>")
 	else if(!silent)
-		to_chat(user, "<span class='notice'>You fail to pick anything up with \the [src].</span>")
-	if(istype(user.pulling, /obj/structure/ore_box)) //Bit of a crappy way to do this, as it doubles spam for the user, but it works.
+		to_chat(user, "<span class='notice'>Вы не смогли ничего подобрать с помощью [ru_getcase(src, "gcase")].</span>")
+	if(istype(user.pulling, /obj/structure/ore_box/)) //Bit of a crappy way to do this, as it doubles spam for the user, but it works.
 		var/obj/structure/ore_box/O = user.pulling
 		O.attackby(src, user)
 
@@ -160,13 +160,13 @@
 		add_fingerprint(user)
 
 	if(!contents.len)
-		. += "It is empty."
+		. += "Внутри ничего нет."
 
 	else if(world.time > last_update + 10)
 		update_ore_count()
 		last_update = world.time
 
-		. += "<span class='notice'>It holds:</span>"
+		. += "<span class='notice'>Внутри:</span>"
 		for(var/ore in stored_ore)
 			. += "<span class='notice'>- [stored_ore[ore]] [ore]</span>"
 
@@ -191,7 +191,7 @@
 // -----------------------------
 
 /obj/item/weapon/storage/bag/plants
-	name = "plant bag"
+	name = "Ботаническая сумка"
 	icon = 'icons/obj/hydroponics_machines.dmi'
 	icon_state = "plantbag"
 	max_storage_space = ITEMSIZE_COST_NORMAL * 25
@@ -200,7 +200,7 @@
 	can_hold = list(/obj/item/weapon/reagent_containers/food/snacks/grown,/obj/item/seeds,/obj/item/weapon/grown)
 
 /obj/item/weapon/storage/bag/plants/large
-	name = "large plant bag"
+	name = "Большая ботаническая сумка"
 	w_class = ITEMSIZE_SMALL
 	max_storage_space = ITEMSIZE_COST_NORMAL * 45
 
@@ -211,10 +211,10 @@
 // However, making it a storage/bag allows us to reuse existing code in some places. -Sayu
 
 /obj/item/weapon/storage/bag/sheetsnatcher
-	name = "sheet snatcher"
+	name = "Листовой стакер"
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "sheetsnatcher"
-	desc = "A patented storage system designed for any kind of mineral sheet."
+	desc = "Запатентованная система хранения, предназначенная для листовых минералов."
 
 	var/capacity = 300; //the number of sheets it can carry.
 	w_class = ITEMSIZE_NORMAL
@@ -225,14 +225,14 @@
 /obj/item/weapon/storage/bag/sheetsnatcher/can_be_inserted(obj/item/W as obj, stop_messages = 0)
 	if(!istype(W,/obj/item/stack/material))
 		if(!stop_messages)
-			to_chat(usr, "The snatcher does not accept [W].")
+			to_chat(usr, "Стакер не принимает [ru_getcase(W, "acase")].")
 		return 0
 	var/current = 0
 	for(var/obj/item/stack/material/S in contents)
 		current += S.amount
 	if(capacity == current)//If it's full, you're done
 		if(!stop_messages)
-			to_chat(usr, "<span class='warning'>The snatcher is full.</span>")
+			to_chat(usr, "<span class='warning'>Стакер заполнен.</span>")
 		return 0
 	return 1
 
@@ -338,7 +338,7 @@
 // -----------------------------
 
 /obj/item/weapon/storage/bag/sheetsnatcher/borg
-	name = "sheet snatcher 9000"
+	name = "Листовой стакер 9000"
 	desc = ""
 	capacity = 500//Borgs get more because >specialization
 
@@ -346,10 +346,10 @@
 //    Food Bag (Service Hound)
 // -----------------------------
 /obj/item/weapon/storage/bag/dogborg
-	name = "dog bag"
+	name = "Собачья сумка"
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "foodbag"
-	desc = "A bag for storing things of all kinds."
+	desc = "Сумка для хранения всяких разных вещей."
 	max_storage_space = ITEMSIZE_COST_NORMAL * 25
 	max_w_class = ITEMSIZE_NORMAL
 	w_class = ITEMSIZE_SMALL
@@ -362,10 +362,10 @@
 // -----------------------------
 
 /obj/item/weapon/storage/bag/cash
-	name = "cash bag"
+	name = "Денежный мешок"
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "cashbag"
-	desc = "A bag for carrying lots of cash. It's got a big dollar sign printed on the front."
+	desc = "Мешок для хранения больших количеств денег. Спереди нарисован огромный знак доллара."
 	max_storage_space = ITEMSIZE_COST_NORMAL * 25
 	max_w_class = ITEMSIZE_NORMAL
 	w_class = ITEMSIZE_SMALL
@@ -375,10 +375,10 @@
 	//           Chemistry Bag
 	// -----------------------------
 /obj/item/weapon/storage/bag/chemistry
-	name = "chemistry bag"
+	name = "Химическая сумка"
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "chembag"
-	desc = "A bag for storing pills, patches, and bottles."
+	desc = "Сумка для хранения таблеток, пластырей и склянок."
 	max_storage_space = 200
 	w_class = ITEMSIZE_LARGE
 	slowdown = 1
@@ -388,10 +388,10 @@
 	//           Food Bag
 	// -----------------------------
 /obj/item/weapon/storage/bag/food
-	name = "food bag"
+	name = "Кулинарная сумка"
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "foodbag"
-	desc = "A bag for storing foods of all kinds."
+	desc = "Сумка для хранения всевозможной еды."
 	max_storage_space = ITEMSIZE_COST_NORMAL * 25
 	max_w_class = ITEMSIZE_NORMAL
 	w_class = ITEMSIZE_SMALL
@@ -401,10 +401,10 @@
 	//           Evidence Bag
 	// -----------------------------
 /obj/item/weapon/storage/bag/detective
-	name = "secure satchel"
+	name = "Детективная сумка"
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "detbag"
-	desc = "A bag for storing investigation things. You know, securely."
+	desc = "Сумка для хранения всяких детективных улик. Ну, безопасность и всё такое."
 	max_storage_space = ITEMSIZE_COST_NORMAL * 15
 	max_w_class = ITEMSIZE_NORMAL
 	w_class = ITEMSIZE_SMALL

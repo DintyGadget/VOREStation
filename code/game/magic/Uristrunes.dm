@@ -6,7 +6,7 @@ var/list/word_to_uristrune_table = null
 		word_to_uristrune_table = list()
 
 		var/bit = 1
-		var/list/words = list("ire", "ego", "nahlizet", "certum", "veri", "jatkaa", "mgar", "balaq", "karazet", "geeri")
+		var/list/words = list("гнев","эго","нахлизет","определенность","правда","джатка","мгар","балак", "каразет", "гиери")
 
 		while(length(words))
 			var/w = pick(words)
@@ -23,29 +23,29 @@ var/list/word_to_uristrune_table = null
 /proc/get_uristrune_cult(word1, word2, word3)
 	var/animated
 
-	if((word1 == cultwords["travel"] && word2 == cultwords["self"])						\
-	|| (word1 == cultwords["join"] && word2 == cultwords["blood"] && word3 == cultwords["self"])	\
-	|| (word1 == cultwords["hell"] && word2 == cultwords["join"] && word3 == cultwords["self"])	\
-	|| (word1 == cultwords["see"] && word2 == cultwords["blood"] && word3 == cultwords["hell"])	\
-	|| (word1 == cultwords["destroy"] && word2 == cultwords["see"] && word3 == cultwords["technology"])	\
-	|| (word1 == cultwords["travel"] && word2 == cultwords["blood"] && word3 == cultwords["self"])	\
-	|| (word1 == cultwords["see"] && word2 == cultwords["hell"] && word3 == cultwords["join"])		\
-	|| (word1 == cultwords["blood"] && word2 == cultwords["join"] && word3 == cultwords["hell"])	\
-	|| (word1 == cultwords["hide"] && word2 == cultwords["see"] && word3 == cultwords["blood"])	\
-	|| (word1 == cultwords["hell"] && word2 == cultwords["travel"] && word3 == cultwords["self"])	\
-	|| (word1 == cultwords["blood"] && word2 == cultwords["see"] && word3 == cultwords["travel"])	\
-	|| (word1 == cultwords["hell"] && word2 == cultwords["technology"] && word3 == cultwords["join"])	\
-	|| (word1 == cultwords["hell"] && word2 == cultwords["blood"] && word3 == cultwords["join"])	\
-	|| (word1 == cultwords["blood"] && word2 == cultwords["see"] && word3 == cultwords["hide"])	\
-	|| (word1 == cultwords["destroy"] && word2 == cultwords["travel"] && word3 == cultwords["self"])	\
-	|| (word1 == cultwords["travel"] && word2 == cultwords["technology"] && word3 == cultwords["other"])	\
-	|| (word1 == cultwords["join"] && word2 == cultwords["other"] && word3 == cultwords["self"])	\
-	|| (word1 == cultwords["hide"] && word2 == cultwords["other"] && word3 == cultwords["see"])	\
-	|| (word1 == cultwords["destroy"] && word2 == cultwords["see"] && word3 == cultwords["other"])	\
-	|| (word1 == cultwords["destroy"] && word2 == cultwords["see"] && word3 == cultwords["blood"])	\
-	|| (word1 == cultwords["self"] && word2 == cultwords["other"] && word3 == cultwords["technology"])	\
-	|| (word1 == cultwords["travel"] && word2 == cultwords["other"])						\
-	|| (word1 == cultwords["join"] && word2 == cultwords["hide"] && word3 == cultwords["technology"])	)
+	if((word1 == cultwords["путешествие"] && word2 == cultwords["я"])						\
+	|| (word1 == cultwords["присоединение"] && word2 == cultwords["кровь"] && word3 == cultwords["я"])	\
+	|| (word1 == cultwords["ад"] && word2 == cultwords["присоединение"] && word3 == cultwords["я"])	\
+	|| (word1 == cultwords["видимость"] && word2 == cultwords["кровь"] && word3 == cultwords["ад"])	\
+	|| (word1 == cultwords["разрушение"] && word2 == cultwords["видимость"] && word3 == cultwords["технологии"])	\
+	|| (word1 == cultwords["путешествие"] && word2 == cultwords["кровь"] && word3 == cultwords["я"])	\
+	|| (word1 == cultwords["видимость"] && word2 == cultwords["ад"] && word3 == cultwords["присоединение"])		\
+	|| (word1 == cultwords["кровь"] && word2 == cultwords["присоединение"] && word3 == cultwords["ад"])	\
+	|| (word1 == cultwords["скрытность"] && word2 == cultwords["видимость"] && word3 == cultwords["кровь"])	\
+	|| (word1 == cultwords["ад"] && word2 == cultwords["путешествие"] && word3 == cultwords["я"])	\
+	|| (word1 == cultwords["кровь"] && word2 == cultwords["видимость"] && word3 == cultwords["путешествие"])	\
+	|| (word1 == cultwords["ад"] && word2 == cultwords["технологии"] && word3 == cultwords["присоединение"])	\
+	|| (word1 == cultwords["ад"] && word2 == cultwords["кровь"] && word3 == cultwords["присоединение"])	\
+	|| (word1 == cultwords["кровь"] && word2 == cultwords["видимость"] && word3 == cultwords["скрытность"])	\
+	|| (word1 == cultwords["разрушение"] && word2 == cultwords["путешествие"] && word3 == cultwords["я"])	\
+	|| (word1 == cultwords["travel"] && word2 == cultwords["technology"] && word3 == cultwords["другое"])	\
+	|| (word1 == cultwords["присоединение"] && word2 == cultwords["другое"] && word3 == cultwords["я"])	\
+	|| (word1 == cultwords["скрытность"] && word2 == cultwords["другое"] && word3 == cultwords["видимость"])	\
+	|| (word1 == cultwords["разрушение"] && word2 == cultwords["видимость"] && word3 == cultwords["другое"])	\
+	|| (word1 == cultwords["разрушение"] && word2 == cultwords["видимость"] && word3 == cultwords["кровь"])	\
+	|| (word1 == cultwords["я"] && word2 == cultwords["другое"] && word3 == cultwords["технологии"])	\
+	|| (word1 == cultwords["путешествие"] && word2 == cultwords["другое"])						\
+	|| (word1 == cultwords["присоединение"] && word2 == cultwords["скрытность"] && word3 == cultwords["технологии"])	)
 		animated = 1
 	else
 		animated = 0

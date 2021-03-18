@@ -9,7 +9,7 @@
  */
 /obj/item/weapon/locator
 	name = "locator"
-	desc = "Used to track those with locater implants."
+	desc = "Используется для отслеживания тех, у кого есть имплантаты локатора."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "locator"
 	var/temp = null
@@ -27,17 +27,17 @@
 	user.set_machine(src)
 	var/dat
 	if (src.temp)
-		dat = "[src.temp]<BR><BR><A href='byond://?src=\ref[src];temp=1'>Clear</A>"
+		dat = "[src.temp]<BR><meta charset=\"utf-8\"><BR><A href='byond://?src=\ref[src];temp=1'>Очистить</A>"
 	else
 		dat = {"
-<B>Persistent Signal Locator</B><HR>
+<meta charset=\"utf-8\"><B>Локатор постоянного сигнала</B><HR>
 Frequency:
 <A href='byond://?src=\ref[src];freq=-10'>-</A>
 <A href='byond://?src=\ref[src];freq=-2'>-</A> [format_frequency(src.frequency)]
 <A href='byond://?src=\ref[src];freq=2'>+</A>
 <A href='byond://?src=\ref[src];freq=10'>+</A><BR>
 
-<A href='?src=\ref[src];refresh=1'>Refresh</A>"}
+<A href='?src=\ref[src];refresh=1'>Обновить</A>"}
 	user << browse(dat, "window=radio")
 	onclose(user, "radio")
 	return
@@ -48,16 +48,16 @@ Frequency:
 		return
 	var/turf/current_location = get_turf(usr)//What turf is the user on?
 	if(!current_location||current_location.z==2)//If turf was not found or they're on z level 2.
-		to_chat(usr, "The [src] is malfunctioning.")
+		to_chat(usr, "[src] неисправен.")
 		return
 	if ((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))))
 		usr.set_machine(src)
 		if (href_list["refresh"])
-			src.temp = "<B>Persistent Signal Locator</B><HR>"
+			src.temp = "<meta charset=\"utf-8\">Локатор постоянного сигнала<B>Локатор постоянного сигнала</B><HR>"
 			var/turf/sr = get_turf(src)
 
 			if (sr)
-				src.temp += "<B>Located Beacons:</B><BR>"
+				src.temp += "<B>Расположенные маяки:</B><BR>"
 
 				for(var/obj/item/device/radio/beacon/W in all_beacons)
 					if (W.frequency == src.frequency)
@@ -76,7 +76,7 @@ Frequency:
 										direct = "very weak"
 							src.temp += "[W.code]-[dir2text(get_dir(sr, tr))]-[direct]<BR>"
 
-				src.temp += "<B>Extraneous Signals:</B><BR>"
+				src.temp += "<B>Посторонние сигналы:</B><BR>"
 				for (var/obj/item/weapon/implant/tracking/W in all_tracking_implants)
 					if (!W.implanted || !(istype(W.loc,/obj/item/organ/external) || ismob(W.loc) || W.malfunction))
 						continue
@@ -118,7 +118,7 @@ Frequency:
  */
 /obj/item/weapon/hand_tele
 	name = "hand tele"
-	desc = "A portable item using blue-space technology."
+	desc = "Переносной предмет, использующий технологию блюспейса."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "hand_tele"
 	item_state = "electronic"
@@ -133,7 +133,7 @@ Frequency:
 /obj/item/weapon/hand_tele/attack_self(mob/user as mob)
 	var/turf/current_location = get_turf(user)//What turf is the user on?
 	if(!current_location || current_location.z in using_map.admin_levels || current_location.block_tele)//If turf was not found or they're on z level 2 or >7 which does not currently exist.
-		to_chat(user, "<span class='notice'>\The [src] is malfunctioning.</span>")
+		to_chat(user, "<span class='notice'>[src] неисправен.</span>")
 		return
 	var/list/L = list(  )
 	for(var/obj/machinery/teleport/hub/R in machines)
@@ -160,14 +160,14 @@ Frequency:
 		turfs += T
 	if(turfs.len)
 		L["None (Dangerous)"] = pick(turfs)
-	var/t1 = input(user, "Please select a teleporter to lock in on.", "Hand Teleporter") in L
+	var/t1 = input(user, "Пожалуйста, выберите телепорт, чтобы заблокировать его.", "Hand Teleporter") in L
 	if ((user.get_active_hand() != src || user.stat || user.restrained()))
 		return
 	var/count = 0	//num of portals from this teleport in world
 	for(var/obj/effect/portal/PO in all_portals)
 		if(PO.creator == src)	count++
 	if(count >= 3)
-		user.show_message("<span class='notice'>\The [src] is recharging!</span>")
+		user.show_message("<span class='notice'>[src] заряжается!</span>")
 		return
 	var/T = L[t1]
 	for(var/mob/O in hearers(user, null))

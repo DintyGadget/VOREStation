@@ -48,20 +48,20 @@
 
 /datum/surgery_step/robotics/unscrew_hatch/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("[user] starts to unscrew the maintenance hatch on [target]'s [affected.name] with \the [tool].", \
-	"You start to unscrew the maintenance hatch on [target]'s [affected.name] with \the [tool].")
+	user.visible_message("[user] начинает отвинчивать люк для техобслуживания на [affected.name] [target] с помощью [tool].", \
+	"Вы начинаете отвинчивать сервисный люк на [affected.name] [target] с помощью [tool].")
 	..()
 
 /datum/surgery_step/robotics/unscrew_hatch/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("<span class='notice'>[user] has opened the maintenance hatch on [target]'s [affected.name] with \the [tool].</span>", \
-	"<span class='notice'>You have opened the maintenance hatch on [target]'s [affected.name] with \the [tool].</span>",)
+	user.visible_message("<span class='notice'>[user] открывает люк для техобслуживания на [affected.name] [target] с помощью [tool].</span>", \
+	"<span class='notice'>Вы открыли люк техобслуживания на [affected.name] [target] с помощью [tool].</span>",)
 	affected.open = 1
 
 /datum/surgery_step/robotics/unscrew_hatch/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("<span class='warning'>[user]'s [tool.name] slips, failing to unscrew [target]'s [affected.name].</span>", \
-	"<span class='warning'>Your [tool] slips, failing to unscrew [target]'s [affected.name].</span>")
+	user.visible_message("<span class='warning'>Рука [user] с [tool.name] соскальзывает, не в состоянии открутить [affected.name] [target].</span>", \
+	"<span class='warning'>Ваш [tool] соскальзывает, не в состоянии открутить [affected.name] [target].</span>")
 
 ///////////////////////////////////////////////////////////////
 // Open Hatch Surgery
@@ -85,14 +85,14 @@
 
 /datum/surgery_step/robotics/open_hatch/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("[user] starts to pry open the maintenance hatch on [target]'s [affected.name] with \the [tool].",
-	"You start to pry open the maintenance hatch on [target]'s [affected.name] with \the [tool].")
+	user.visible_message("[user] начинает открывать люк техобслуживания на [affected.name] [target] с помощью [tool].",
+	"Вы начинаете открывать люк для техобслуживания на [affected.name] [target] с помощью [tool].")
 	..()
 
 /datum/surgery_step/robotics/open_hatch/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("<span class='notice'>[user] opens the maintenance hatch on [target]'s [affected.name] with \the [tool].</span>", \
-	 "<span class='notice'>You open the maintenance hatch on [target]'s [affected.name] with \the [tool].</span>")
+	user.visible_message("<span class='notice'>[user] открывает люк для техобслуживания на [affected.name] [target] с помощью [tool].</span>", \
+	 "<span class='notice'>Вы открываете люк техобслуживания на [affected.name] [target] с помощью [tool].</span>")
 	affected.open = 3
 
 /datum/surgery_step/robotics/open_hatch/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
@@ -197,11 +197,11 @@
 		if(istype(tool, /obj/item/stack/cable_coil))
 			var/obj/item/stack/cable_coil/C = tool
 			if(affected.burn_dam == 0)
-				to_chat(user, "<span class='notice'>There are no burnt wires here!</span>")
+				to_chat(user, "<span class='notice'>Здесь нет перегоревших проводов!</span>")
 				return SURGERY_FAILURE
 			else
 				if(!C.can_use(5))
-					to_chat(user, "<span class='danger'>You need at least five cable pieces to repair this part.</span>") //usage amount made more consistent with regular cable repair
+					to_chat(user, "<span class='danger'>Для ремонта этой детали вам понадобится не менее пяти частей кабеля.</span>") //usage amount made more consistent with regular cable repair
 					return SURGERY_FAILURE
 				else
 					C.use(5)
@@ -375,7 +375,7 @@
 		if(I && (I.status & ORGAN_CUT_AWAY) && (I.robotic >= ORGAN_ROBOT) && I.parent_organ == target_zone)
 			removable_organs |= organ
 
-	var/organ_to_replace = input(user, "Which organ do you want to reattach?") as null|anything in removable_organs
+	var/organ_to_replace = input(user, "Какой орган вы хотите прикрепить?") as null|anything in removable_organs
 	if(!organ_to_replace)
 		return 0
 
@@ -430,29 +430,29 @@
 	*/
 
 	if(!(affected.robotic >= ORGAN_ROBOT))
-		to_chat(user, "<span class='danger'>You cannot install a computer brain into a meat skull.</span>")
+		to_chat(user, "<span class='danger'>Вы не можете поместить компьютерный мозг в мясной череп.</span>")
 		return SURGERY_FAILURE
 
 	if(!target.should_have_organ("brain"))
-		to_chat(user, "<span class='danger'>You're pretty sure [target.species.name_plural] don't normally have a brain.</span>")
+		to_chat(user, "<span class='danger'>Вы почти уверены, что у [target.species.name_plural] обычно нет мозга.</span>")
 		return SURGERY_FAILURE
 
 	if(!isnull(target.internal_organs["brain"]))
-		to_chat(user, "<span class='danger'>Your subject already has a brain.</span>")
+		to_chat(user, "<span class='danger'>У вашего объекта уже есть мозг.</span>")
 		return SURGERY_FAILURE
 
 	return 1
 
 /datum/surgery_step/robotics/install_mmi/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("[user] starts installing \the [tool] into [target]'s [affected.name].", \
-	"You start installing \the [tool] into [target]'s [affected.name].")
+	user.visible_message("[user] начинает установку [tool] в [affected.name] [target].", \
+	"Вы начинаете установку [tool] в [affected.name] [target].")
 	..()
 
 /datum/surgery_step/robotics/install_mmi/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("<span class='notice'>[user] has installed \the [tool] into [target]'s [affected.name].</span>", \
-	"<span class='notice'>You have installed \the [tool] into [target]'s [affected.name].</span>")
+	user.visible_message("<span class='notice'>[user] устанавливает [tool] в [affected.name] [target].</span>", \
+	"<span class='notice'>Вы установили [tool] в [affected.name] [target].</span>")
 
 	var/obj/item/device/mmi/M = tool
 	var/obj/item/organ/internal/mmi_holder/holder = new(target, 1)
@@ -470,10 +470,10 @@
 		var/new_name = target.real_name
 		while(target.client)
 			if(!target) return
-			var/try_name = input(target,"Pick a name for your new form!", "New Name", target.name)
+			var/try_name = input(target,"Выберите имя для своей новой формы!", "New Name", target.name)
 			var/clean_name = sanitizeName(try_name, allow_numbers = TRUE)
 			if(clean_name)
-				var/okay = alert(target,"New name will be '[clean_name]', ok?", "Confirmation","Cancel","Ok")
+				var/okay = alert(target,"Новое имя будет '[clean_name]', хорошо?", "Подтверждение","Отмена","Ok")
 				if(okay == "Ok")
 					new_name = clean_name
 
@@ -482,8 +482,8 @@
 		target.real_name = target.name
 
 /datum/surgery_step/robotics/install_mmi/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	user.visible_message("<span class='warning'>[user]'s hand slips.</span>", \
-	"<span class='warning'>Your hand slips.</span>")
+	user.visible_message("<span class='warning'>Рука [user] соскальзывает.</span>", \
+	"<span class='warning'>Твоя рука соскальзывает.</span>")
 
 /*
  * Install a Diona Nymph into a Nymph Mech
@@ -511,31 +511,31 @@
 		return 0
 
 	if(!N.held_mob.client || N.held_mob.stat >= DEAD)
-		to_chat(user, "<span class='danger'>That nymph is not viable.</span>")
+		to_chat(user, "<span class='danger'>Эта нимфа нежизнеспособна.</span>")
 		return SURGERY_FAILURE
 
 	if(!(affected.robotic >= ORGAN_ROBOT))
-		to_chat(user, "<span class='danger'>You cannot install a nymph into a meat puppet.</span>")
+		to_chat(user, "<span class='danger'>Невозможно поместить нимфу в мясную марионетку.</span>")
 		return SURGERY_FAILURE
 
 	if(!(affected.model != "Skrellian Exoskeleton"))
-		to_chat(user, "<span class='dangerou'>You're fairly certain a nymph can't pilot a normal robot.</span>")
+		to_chat(user, "<span class='dangerou'>Вы совершенно уверены, что нимфа не может управлять обычным роботом.</span>")
 		return SURGERY_FAILURE
 
 	if(!target.should_have_organ("brain"))
-		to_chat(user, "<span class='danger'>You're pretty sure [target.species.name_plural] don't normally have a brain.</span>")
+		to_chat(user, "<span class='danger'>Вы почти уверены, что у [target.species.name_plural] обычно нет мозга.</span>")
 		return SURGERY_FAILURE
 
 	if(!isnull(target.internal_organs["brain"]))
-		to_chat(user, "<span class='danger'>Your subject already has a cephalon.</span>")
+		to_chat(user, "<span class='danger'>У вашего объекта уже есть цефалон.</span>")
 		return SURGERY_FAILURE
 
 	return 1
 
 /datum/surgery_step/robotics/install_nymph/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("[user] starts setting \the [tool] into [target]'s [affected.name].", \
-	"You start setting \the [tool] into [target]'s [affected.name].")
+	user.visible_message("[user] начинает настройку [tool] в [affected.name] [target].", \
+	"Вы начинаете настройку [tool] в [affected.name] [target].")
 	..()
 
 /datum/surgery_step/robotics/install_nymph/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
@@ -564,10 +564,10 @@
 		var/new_name = ""
 		while(!new_name)
 			if(!target) return
-			var/try_name = input(target,"Pick a name for your new form!", "New Name", target.name)
+			var/try_name = input(target,"Выберите имя для своей новой формы!", "New Name", target.name)
 			var/clean_name = sanitizeName(try_name, allow_numbers = TRUE)
 			if(clean_name)
-				var/okay = alert(target,"New name will be '[clean_name]', ok?", "Confirmation","Cancel","Ok")
+				var/okay = alert(target,"Новое имя будет '[clean_name]', хорошо?", "Confirmation","Отмена","Ok")
 				if(okay == "Ok")
 					new_name = clean_name
 
@@ -575,5 +575,5 @@
 		target.real_name = target.name
 
 /datum/surgery_step/robotics/install_nymph/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	user.visible_message("<span class='warning'>[user]'s hand slips.</span>", \
-	"<span class='warning'>Your hand slips.</span>")
+	user.visible_message("<span class='warning'>Рука [user] соскальзывает.</span>", \
+	"<span class='warning'>Твоя рука соскальзывает.</span>")

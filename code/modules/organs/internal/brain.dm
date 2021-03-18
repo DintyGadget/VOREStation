@@ -3,7 +3,7 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 /obj/item/organ/internal/brain
 	name = "brain"
 	health = 400 //They need to live awhile longer than other organs. Is this even used by organ code anymore?
-	desc = "A piece of juicy meat found in a person's head."
+	desc = "Кусок сочного мяса, найденный в голове человека."
 	organ_tag = "brain"
 	parent_organ = BP_HEAD
 	vital = 1
@@ -65,10 +65,10 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 	//Bacterial meningitis (more of a spine thing but 'brain infection' isn't a common thing)
 	if (. >= 1)
 		if(prob(1))
-			owner.custom_pain("Your neck aches, and feels very stiff!",0)
+			owner.custom_pain("Ваша шея болит, и вы чувствуете себя очень жестко!",0)
 	if (. >= 2)
 		if(prob(1))
-			owner.custom_pain("Your feel very dizzy for a moment!",0)
+			owner.custom_pain("У вас на мгновение закружится голова!",0)
 			owner.Confuse(2)
 
 /obj/item/organ/internal/brain/proc/replace_self_with(replace_path)
@@ -115,15 +115,15 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 
 	brainmob.languages = H.languages
 
-	to_chat(brainmob, "<span class='notice'>You feel slightly disoriented. That's normal when you're just \a [initial(src.name)].</span>")
+	to_chat(brainmob, "<span class='notice'>Вы чувствуете себя немного дезориентированным. Это нормально, если вы просто [initial(src.name)].</span>")
 	callHook("debrain", list(brainmob))
 
 /obj/item/organ/internal/brain/examine(mob/user) // -- TLE
 	. = ..()
 	if(brainmob && brainmob.client)//if thar be a brain inside... the brain.
-		. += "You can feel the small spark of life still left in this one."
+		. += "Вы можете почувствовать маленькую искорку жизни, оставшуюся в этом."
 	else
-		. += "This one seems particularly lifeless. Perhaps it will regain some of its luster later..."
+		. += "Этот кажется особенно безжизненным. Возможно, позже он снова обретет свой блеск..."
 
 /obj/item/organ/internal/brain/removed(var/mob/living/user)
 
@@ -161,7 +161,7 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 
 /obj/item/organ/internal/brain/pariah_brain
 	name = "brain remnants"
-	desc = "Did someone tread on this? It looks useless for cloning or cyborgification."
+	desc = "Кто-то наступил на это? Выглядит бесполезным для клонирования или киборгификации."
 	organ_tag = "brain"
 	parent_organ = BP_HEAD
 	icon = 'icons/mob/alien.dmi'
@@ -171,7 +171,7 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 
 /obj/item/organ/internal/brain/xeno
 	name = "thinkpan"
-	desc = "It looks kind of like an enormous wad of purple bubblegum."
+	desc = "Это похоже на огромный комок пурпурной жевательной резинки."
 	icon = 'icons/mob/alien.dmi'
 	icon_state = "chitin"
 	can_assist = FALSE
@@ -179,7 +179,7 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 /obj/item/organ/internal/brain/slime
 	icon = 'icons/obj/surgery_vr.dmi' // Vorestation edit
 	name = "slime core"
-	desc = "A complex, organic knot of jelly and crystalline particles."
+	desc = "Сложный органический узел из желе и кристаллических частиц."
 	icon_state = "core"
 	decays = FALSE
 	parent_organ = BP_TORSO
@@ -297,7 +297,7 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 
 /obj/item/organ/internal/brain/golem
 	name = "chem"
-	desc = "A tightly furled roll of paper, covered with indecipherable runes."
+	desc = "Плотно свернутый рулон бумаги, покрытый неразборчивыми рунами."
 	icon = 'icons/obj/wizard.dmi'
 	icon_state = "scroll"
 	can_assist = FALSE

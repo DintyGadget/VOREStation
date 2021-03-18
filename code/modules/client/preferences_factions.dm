@@ -15,43 +15,43 @@ var/global/list/seen_religions = list()
 
 // VOREStation Edits Start
 var/global/list/citizenship_choices = list(
-	"Earth",
-	"Mars",
-	"Sif",
-	"Binma",
-	"Moghes",
-	"Meralar",
-	"Qerr'balak",
-	"Virgo 3b Colony",
-	"Virgo 4 NT Compound",
-	"Venus",
-	"Tiamat",
-	"An-Tahk-Et"
+	"Земля",
+	"Марс",
+	"Сиф",
+	"Бинма",
+	"Могес",
+	"Мералар",
+	"Керр'Балак",
+	"Колония Вирго 3Б",
+	"Союз НТ Вирго 4",
+	"Венера",
+	"Тиамат",
+	"Ан-Так-Ет"
 	)
 
 var/global/list/home_system_choices = list(
-	"Virgo-Erigone",
-	"Sol",
-	"Proxima Centauri",
-	"Procyon",
-	"Vir",
-	"Nyx",
-	"Tau Ceti",
-	"Qerr'valis",
-	"Epsilon Ursae Minoris",
-	"Rarkajar"
+	"Дева-Эригон",
+	"Сол",
+	"Проксима Центавра",
+	"Процион",
+	"Вир",
+	"Никс",
+	"Тау Кита",
+	"Керр'Валис",
+	"Эпсилон Малой Медведицы",
+	"Раркаджар"
 	)
 
 
 var/global/list/faction_choices = list(
-	"Commonwealth of Sol-Procyon",
-	"United Fyrds",
-	"Elysian Colonies",
-	"Ares Confederation",
-	"Vey Med",
+	"Содружество Сол-Процион",
+	"Объединенные Фирды",
+  	"Колонии Элизия",
+ 	"Конфедерация Арес",
+	"Вей Мед",
 	"Einstein Engines",
-	"Free Trade Union",
-	"NanoTrasen",
+	"Вольный Торговый Союз",
+	"НаноТрасен",
 	"Ward-Takahashi GMB",
 	"Gilthari Exports",
 	"Grayson Manufactories Ltd.",
@@ -66,30 +66,30 @@ var/global/list/faction_choices = list(
 var/global/list/antag_faction_choices = list()	//Should be populated after brainstorming. Leaving as blank in case brainstorming does not occur.
 
 var/global/list/antag_visiblity_choices = list(
-	"Hidden",
-	"Shared",
-	"Known"
+	"Скрытый",
+	"Малоизвестный",
+	"Известный"
 	)
 
 var/global/list/religion_choices = list(
-	"Unitarianism",
-	"Neopaganism",
-	"Islam",
-	"Christianity",
-	"Judaism",
-	"Hinduism",
-	"Buddhism",
-	"Pleromanism",
-	"Spectralism",
-	"Phact Shintoism",
-	"Kishari Faith",
-	"Hauler Faith",
-	"Nock",
-	"Singulitarian Worship",
-	"Xilar Qall",
-	"Tajr-kii Rarkajar",
-	"Agnosticism",
-	"Deism",
-	"Neo-Moreauism",
-	"Orthodox Moreauism"
+	"Унитарианство",
+	"Неоязычество",
+	"Ислам",
+	"Христианство",
+	"Иудаизм",
+	"Индуизм",
+	"Буддизм",
+	"Плероманизм",
+	"Спектрализм",
+	"Синтоизм",
+	"Вера Кишари",
+	"Вера Работяг",
+	"Нок",
+	"Сингулярное Поклонение",
+	"Кзилар Калл",
+	"Раркаджарский Таджр-кий",
+	"Агностицизм",
+	"Деизм",
+	"Нео-Мороизм",
+	"Традиционный Мороизм"
 	)

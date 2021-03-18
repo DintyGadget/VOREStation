@@ -143,7 +143,7 @@
 		I.loc = get_turf(user) //just in case something was embedded that is not an item
 		if(istype(I))
 			user.put_in_hands(I)
-		user.visible_message("<span class='danger'>\The [user] rips \the [I] out of \the [src]!</span>")
+		user.visible_message("<span class='danger'>[user] вырывает [I] из [src]!</span>")
 		return //no eating the limb until everything's been removed
 	return ..()
 
@@ -153,18 +153,18 @@
 		for(var/obj/item/I in contents)
 			if(istype(I, /obj/item/organ))
 				continue
-			. += "<span class='danger'>There is \a [I] sticking out of it.</span>"
+			. += "<span class='danger'>Из него торчит [I].</span>"
 
 /obj/item/organ/external/attackby(obj/item/weapon/W as obj, mob/living/user as mob)
 	switch(stage)
 		if(0)
 			if(istype(W,/obj/item/weapon/surgical/scalpel))
-				user.visible_message("<span class='danger'><b>[user]</b> cuts [src] open with [W]!</span>")
+				user.visible_message("<span class='danger'><b>[user]</b> разрезает [src] с помощью [W]!</span>")
 				stage++
 				return
 		if(1)
 			if(istype(W,/obj/item/weapon/surgical/retractor))
-				user.visible_message("<span class='danger'><b>[user]</b> cracks [src] open like an egg with [W]!</span>")
+				user.visible_message("<span class='danger'><b>[user]</b> раскалывает [src] словно яйцо с помощью [W]!</span>")
 				stage++
 				return
 		if(2)
@@ -173,9 +173,9 @@
 					var/obj/item/removing = pick(contents)
 					removing.loc = get_turf(user.loc)
 					user.put_in_hands(removing)
-					user.visible_message("<span class='danger'><b>[user]</b> extracts [removing] from [src] with [W]!</span>")
+					user.visible_message("<span class='danger'><b>[user]</b> извлекает [removing] из [src] с помощью [W]!</span>")
 				else
-					user.visible_message("<span class='danger'><b>[user]</b> fishes around fruitlessly in [src] with [W].</span>")
+					user.visible_message("<span class='danger'><b>[user]</b> безуспешно копошится в [src] с помощью [W].</span>")
 				return
 	..()
 
@@ -374,7 +374,7 @@
 				droplimb(0, DROPLIMB_EDGE)
 			else if(spread_dam && owner && parent && (brute_overflow || burn_overflow) && (brute_overflow >= 5 || burn_overflow >= 5) && !permutation) //No infinite damage loops.
 				var/brute_third = brute_overflow * 0.33
-				var/burn_third = burn_overflow * 0.33	
+				var/burn_third = burn_overflow * 0.33
 				if(children && children.len)
 					var/brute_on_children = brute_third / children.len
 					var/burn_on_children = burn_third / children.len
@@ -425,11 +425,11 @@
 		else return 0
 
 	if(!damage_amount)
-		to_chat(user, "<span class='notice'>Nothing to fix!</span>")
+		to_chat(user, "<span class='notice'>Нечего чинить!</span>")
 		return 0
 
 	if(brute_dam + burn_dam >= min_broken_damage) //VOREStation Edit - Makes robotic limb damage scalable
-		to_chat(user, "<span class='danger'>The damage is far too severe to patch over externally.</span>")
+		to_chat(user, "<span class='danger'>Повреждения слишком серьезны, чтобы их можно было исправить внешне.</span>")
 		return 0
 
 	if(user == src.owner)
@@ -440,12 +440,12 @@
 			grasp = "r_hand"
 
 		if(grasp)
-			to_chat(user, "<span class='warning'>You can't reach your [src.name] while holding [tool] in your [owner.get_bodypart_name(grasp)].</span>")
+			to_chat(user, "<span class='warning'>Вы не можете дотянуться до своего [src.name] удерживая [tool] в [owner.get_bodypart_name(grasp)].</span>")
 			return 0
 
 	user.setClickCooldown(user.get_attack_speed(tool))
 	if(!do_mob(user, owner, 10))
-		to_chat(user, "<span class='warning'>You must stand still to do that.</span>")
+		to_chat(user, "<span class='warning'>Вы должны стоять на месте, чтобы сделать это.</span>")
 		return 0
 
 	switch(damage_type)
@@ -523,7 +523,7 @@ This function completely restores a damaged organ to perfect condition.
 	if((damage > 15) && (type != BURN) && (local_damage > 30) && prob(damage) && (robotic < ORGAN_ROBOT) && !(species.flags & NO_BLOOD))
 		var/datum/wound/internal_bleeding/I = new (min(damage - 15, 15))
 		wounds += I
-		owner.custom_pain("You feel something rip in your [name]!", 50)
+		owner.custom_pain("Вы чувствуете, как в [name] что-то рвется!", 50)
 
 //Burn damage can cause fluid loss due to blistering and cook-off
 
@@ -545,13 +545,13 @@ This function completely restores a damaged organ to perfect condition.
 				W.open_wound(damage)
 				if(prob(25))
 					if(robotic >= ORGAN_ROBOT)
-						owner.visible_message("<span class='danger'>The damage to [owner.name]'s [name] worsens.</span>",\
-						"<span class='danger'>The damage to your [name] worsens.</span>",\
-						"<span class='danger'>You hear the screech of abused metal.</span>")
+						owner.visible_message("<span class='danger'>Ущерб, нанесенный [owner.name], [name] ухудшается.</span>",\
+						"<span class='danger'>Повреждение [name] ухудшается.</span>",\
+						"<span class='danger'>Вы слышите скрежет поврежденного металла.</span>")
 					else
-						owner.visible_message("<span class='danger'>The wound on [owner.name]'s [name] widens with a nasty ripping noise.</span>",\
-						"<span class='danger'>The wound on your [name] widens with a nasty ripping noise.</span>",\
-						"<span class='danger'>You hear a nasty ripping noise, as if flesh is being torn apart.</span>")
+						owner.visible_message("<span class='danger'>Рана нанесенная [owner.name], [name] расширяется с неприятным рвущимся звуком.</span>",\
+						"<span class='danger'>Рана [name] расширяется с неприятным рвущимся звуком.</span>",\
+						"<span class='danger'>Вы слышите неприятный треск, как будто плоть разрывается на части.</span>")
 				return
 
 	//Creating wound
@@ -707,7 +707,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	if(. >= 3 && antibiotics < ANTIBIO_OD)	//INFECTION_LEVEL_THREE
 		if (!(status & ORGAN_DEAD))
 			status |= ORGAN_DEAD
-			to_chat(owner, "<span class='notice'>You can't feel your [name] anymore...</span>")
+			to_chat(owner, "<span class='notice'>Вы больше не чувствуете [name]...</span>")
 			owner.update_icons_body()
 			for (var/obj/item/organ/external/child in children)
 				child.germ_level += 110 //Burst of infection from a parent organ becoming necrotic
@@ -741,7 +741,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 			owner.vessel.remove_reagent("blood", wound_update_accuracy * W.damage/40) //line should possibly be moved to handle_blood, so all the bleeding stuff is in one place.
 			if(prob(1 * wound_update_accuracy))
-				owner.custom_pain("You feel a stabbing pain in your [name]!", 50)
+				owner.custom_pain("Вы чувствуете острую боль в [name]!", 50)
 
 		// slow healing
 		var/heal_amt = 0

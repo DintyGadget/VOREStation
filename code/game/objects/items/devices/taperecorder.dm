@@ -1,6 +1,6 @@
 /obj/item/device/taperecorder
-	name = "universal recorder"
-	desc = "A device that can record to cassette tapes, and play them. It automatically translates the content in playback."
+	name = "диктофон"
+	desc = "Прибор для записи на кассеты и их воспроизведения. Имеет встроенный автоматический переводчик."
 	icon_state = "taperecorder_empty"
 	item_state = "analyzer"
 	w_class = ITEMSIZE_SMALL
@@ -39,13 +39,13 @@
 /obj/item/device/taperecorder/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/device/tape))
 		if(mytape)
-			to_chat(user, "<span class='notice'>There's already a tape inside.</span>")
+			to_chat(user, "<span class='notice'>Внутри уже есть кассета.</span>")
 			return
 		if(!user.unEquip(I))
 			return
 		I.forceMove(src)
 		mytape = I
-		to_chat(user, "<span class='notice'>You insert [I] into [src].</span>")
+		to_chat(user, "<span class='notice'>Вы вставляете кассету в [src].</span>")
 		update_icon()
 		return
 	..()
@@ -66,21 +66,21 @@
 
 
 /obj/item/device/taperecorder/verb/eject()
-	set name = "Eject Tape"
+	set name = "Достать Кассету"
 	set category = "Object"
 
 	if(usr.incapacitated())
 		return
 	if(!mytape)
-		to_chat(usr, "<span class='notice'>There's no tape in \the [src].</span>")
+		to_chat(usr, "<span class='notice'>В диктофоне нет кассеты.</span>")
 		return
 	if(emagged)
-		to_chat(usr, "<span class='notice'>The tape seems to be stuck inside.</span>")
+		to_chat(usr, "<span class='notice'>В диктофоне заело кассету.</span>")
 		return
 
 	if(playing || recording)
 		stop()
-	to_chat(usr, "<span class='notice'>You remove [mytape] from [src].</span>")
+	to_chat(usr, "<span class='notice'>Вы достаёте [mytape] из диктофона.</span>")
 	usr.put_in_hands(mytape)
 	mytape = null
 	update_icon()
@@ -114,17 +114,17 @@
 	if(emagged == 0)
 		emagged = 1
 		recording = 0
-		to_chat(user, "<span class='warning'>PZZTTPFFFT</span>")
+		to_chat(user, "<span class='warning'>ПЗЗЗТФФППП</span>")
 		update_icon()
 		return 1
 	else
-		to_chat(user, "<span class='warning'>It is already emagged!</span>")
+		to_chat(user, "<span class='warning'>[src] уже емаггнут!</span>")
 
 /obj/item/device/taperecorder/proc/explode()
 	var/turf/T = get_turf(loc)
 	if(ismob(loc))
 		var/mob/M = loc
-		to_chat(M, "<span class='danger'>\The [src] explodes!</span>")
+		to_chat(M, "<span class='danger'>[src] взрывается!</span>")
 	if(T)
 		T.hotspot_expose(700,125)
 		explosion(T, -1, -1, 0, 4)
@@ -132,32 +132,32 @@
 	return
 
 /obj/item/device/taperecorder/verb/record()
-	set name = "Start Recording"
+	set name = "Начать Запись"
 	set category = "Object"
 
 	if(usr.incapacitated())
 		return
 	if(!mytape)
-		to_chat(usr, "<span class='notice'>There's no tape!</span>")
+		to_chat(usr, "<span class='notice'>Внутри нет кассеты!</span>")
 		return
 	if(mytape.ruined)
-		to_chat(usr, "<span class='warning'>The tape recorder makes a scratchy noise.</span>")
+		to_chat(usr, "<span class='warning'>Диктофон издает звук царапанья.</span>")
 		return
 	if(recording)
-		to_chat(usr, "<span class='notice'>You're already recording!</span>")
+		to_chat(usr, "<span class='notice'>Вы уже записываете!</span>")
 		return
 	if(playing)
-		to_chat(usr, "<span class='notice'>You can't record when playing!</span>")
+		to_chat(usr, "<span class='notice'>Вы не можете записывать и проигрывать одновременно!</span>")
 		return
 	if(emagged)
-		to_chat(usr, "<span class='warning'>The tape recorder makes a scratchy noise.</span>")
+		to_chat(usr, "<span class='warning'>Диктофон издает звук царапанья.</span>")
 		return
 	if(mytape.used_capacity < mytape.max_capacity)
-		to_chat(usr, "<span class='notice'>Recording started.</span>")
+		to_chat(usr, "<span class='notice'>Запись начата.</span>")
 		recording = 1
 		update_icon()
 
-		mytape.record_speech("Recording started.")
+		mytape.record_speech("Запись начата.")
 
 		//count seconds until full, or recording is stopped
 		while(mytape && recording && mytape.used_capacity < mytape.max_capacity)
@@ -166,28 +166,28 @@
 			if(mytape.used_capacity >= mytape.max_capacity)
 				if(ismob(loc))
 					var/mob/M = loc
-					to_chat(M, "<span class='notice'>The tape is full.</span>")
+					to_chat(M, "<span class='notice'>Кассета заполнена.</span>")
 				stop_recording()
 
 
 		update_icon()
 		return
 	else
-		to_chat(usr, "<span class='notice'>The tape is full.</span>")
+		to_chat(usr, "<span class='notice'>Кассета заполнена.</span>")
 
 
 /obj/item/device/taperecorder/proc/stop_recording()
 	//Sanity checks skipped, should not be called unless actually recording
 	recording = 0
 	update_icon()
-	mytape.record_speech("Recording stopped.")
+	mytape.record_speech("Запись остановлена.")
 	if(ismob(loc))
 		var/mob/M = loc
-		to_chat(M, "<span class='notice'>Recording stopped.</span>")
+		to_chat(M, "<span class='notice'>Запись остановлена.</span>")
 
 
 /obj/item/device/taperecorder/verb/stop()
-	set name = "Stop"
+	set name = "Остановить Запись"
 	set category = "Object"
 
 	if(usr.incapacitated())
@@ -198,56 +198,56 @@
 	else if(playing)
 		playing = 0
 		update_icon()
-		to_chat(usr, "<span class='notice'>Playback stopped.</span>")
+		to_chat(usr, "<span class='notice'>Воспроизведение остановлено.</span>")
 		return
 	else
-		to_chat(usr, "<span class='notice'>Stop what?</span>")
+		to_chat(usr, "<span class='notice'>Какую запись?</span>")
 
 
 /obj/item/device/taperecorder/verb/wipe_tape()
-	set name = "Wipe Tape"
+	set name = "Стереть Кассету"
 	set category = "Object"
 
 	if(usr.incapacitated())
 		return
 	if(emagged)
-		to_chat(usr, "<span class='warning'>The tape recorder makes a scratchy noise.</span>")
+		to_chat(usr, "<span class='warning'>Диктофон издает звук царапанья.</span>")
 		return
 	if(mytape.ruined)
-		to_chat(usr, "<span class='warning'>The tape recorder makes a scratchy noise.</span>")
+		to_chat(usr, "<span class='warning'>Диктофон издает звук царапанья.</span>")
 		return
 	if(recording || playing)
-		to_chat(usr, "<span class='notice'>You can't wipe the tape while playing or recording!</span>")
+		to_chat(usr, "<span class='notice'>Вы не можете стереть кассету во время записи или проигрывания!</span>")
 		return
 	else
 		if(mytape.storedinfo)	mytape.storedinfo.Cut()
 		if(mytape.timestamp)	mytape.timestamp.Cut()
 		mytape.used_capacity = 0
-		to_chat(usr, "<span class='notice'>You wipe the tape.</span>")
+		to_chat(usr, "<span class='notice'>YВы стираете содержимое кассеты.</span>")
 		return
 
 
 /obj/item/device/taperecorder/verb/playback_memory()
-	set name = "Playback Tape"
+	set name = "Воспроизвести Кассету"
 	set category = "Object"
 
 	if(usr.incapacitated())
 		return
 	if(!mytape)
-		to_chat(usr, "<span class='notice'>There's no tape!</span>")
+		to_chat(usr, "<span class='notice'>Внутри нет кассеты!</span>")
 		return
 	if(mytape.ruined)
-		to_chat(usr, "<span class='warning'>The tape recorder makes a scratchy noise.</span>")
+		to_chat(usr, "<span class='warning'>Диктофон издает звук царапанья.</span>")
 		return
 	if(recording)
-		to_chat(usr, "<span class='notice'>You can't playback when recording!</span>")
+		to_chat(usr, "<span class='notice'>Вы не можете записывать и проигрывать одновременно!</span>")
 		return
 	if(playing)
-		to_chat(usr, "<span class='notice'>You're already playing!</span>")
+		to_chat(usr, "<span class='notice'>Воспроизведение уже идёт!</span>")
 		return
 	playing = 1
 	update_icon()
-	to_chat(usr, "<span class='notice'>Playing started.</span>")
+	to_chat(usr, "<span class='notice'>Воспроизведение начато.</span>")
 	for(var/i=1 , i < mytape.max_capacity , i++)
 		if(!mytape || !playing)
 			break
@@ -257,14 +257,14 @@
 		var/turf/T = get_turf(src)
 		var/playedmessage = mytape.storedinfo[i]
 		if (findtextEx(playedmessage,"*",1,2)) //remove marker for action sounds
-			playedmessage = copytext(playedmessage,2)
-		T.audible_message("<font color=Maroon><B>Tape Recorder</B>: [playedmessage]</font>")
+			playedmessage = copytext_char(playedmessage,2)
+		T.audible_message("<font color=Maroon><B>Диктофон</B>: [playedmessage]</font>")
 
 		if(mytape.storedinfo.len < i+1)
 			playsleepseconds = 1
 			sleep(10)
 			T = get_turf(src)
-			T.audible_message("<font color=Maroon><B>Tape Recorder</B>: End of recording.</font>")
+			T.audible_message("<font color=Maroon><B>Диктофон</B>: Конец записи.</font>")
 			break
 		else
 			playsleepseconds = mytape.timestamp[i+1] - mytape.timestamp[i]
@@ -272,7 +272,7 @@
 		if(playsleepseconds > 14)
 			sleep(10)
 			T = get_turf(src)
-			T.audible_message("<font color=Maroon><B>Tape Recorder</B>: Skipping [playsleepseconds] seconds of silence</font>")
+			T.audible_message("<font color=Maroon><B>Диктофон</B>: Пропускаем [playsleepseconds] секунд молчания.</font>")
 			playsleepseconds = 1
 		sleep(10 * playsleepseconds)
 
@@ -282,55 +282,55 @@
 
 	if(emagged)
 		var/turf/T = get_turf(src)
-		T.audible_message("<font color=Maroon><B>Tape Recorder</B>: This tape recorder will self-destruct in... Five.</font>")
+		T.audible_message("<font color=Maroon><B>Диктофон</B>: Этот диктофон самоуничтожится через... Пять.</font>")
 		sleep(10)
 		T = get_turf(src)
-		T.audible_message("<font color=Maroon><B>Tape Recorder</B>: Four.</font>")
+		T.audible_message("<font color=Maroon><B>Диктофон</B>: Четыре.</font>")
 		sleep(10)
 		T = get_turf(src)
-		T.audible_message("<font color=Maroon><B>Tape Recorder</B>: Three.</font>")
+		T.audible_message("<font color=Maroon><B>Диктофон</B>: Три.</font>")
 		sleep(10)
 		T = get_turf(src)
-		T.audible_message("<font color=Maroon><B>Tape Recorder</B>: Two.</font>")
+		T.audible_message("<font color=Maroon><B>Диктофон</B>: Два.</font>")
 		sleep(10)
 		T = get_turf(src)
-		T.audible_message("<font color=Maroon><B>Tape Recorder</B>: One.</font>")
+		T.audible_message("<font color=Maroon><B>Диктофон</B>: Один.</font>")
 		sleep(10)
 		explode()
 
 
 /obj/item/device/taperecorder/verb/print_transcript()
-	set name = "Print Transcript"
+	set name = "Распечатать Транскрипт"
 	set category = "Object"
 
 	if(usr.incapacitated())
 		return
 	if(!mytape)
-		to_chat(usr, "<span class='notice'>There's no tape!</span>")
+		to_chat(usr, "<span class='notice'>Внутри нет кассеты!</span>")
 		return
 	if(mytape.ruined)
-		to_chat(usr, "<span class='warning'>The tape recorder makes a scratchy noise.</span>")
+		to_chat(usr, "<span class='warning'>Диктофон издает звук царапанья.</span>")
 		return
 	if(emagged)
-		to_chat(usr, "<span class='warning'>The tape recorder makes a scratchy noise.</span>")
+		to_chat(usr, "<span class='warning'>Диктофон издает звук царапанья.</span>")
 		return
 	if(!canprint)
-		to_chat(usr, "<span class='notice'>The recorder can't print that fast!</span>")
+		to_chat(usr, "<span class='notice'>Диктофон не может печатать так быстро!</span>")
 		return
 	if(recording || playing)
-		to_chat(usr, "<span class='notice'>You can't print the transcript while playing or recording!</span>")
+		to_chat(usr, "<span class='notice'>Вы не можете распечатать транскрипт во время записи или воспроизведения!</span>")
 		return
 
-	to_chat(usr, "<span class='notice'>Transcript printed.</span>")
+	to_chat(usr, "<span class='notice'>Транскрипт распечатан.</span>")
 	var/obj/item/weapon/paper/P = new /obj/item/weapon/paper(get_turf(src))
 	var/t1 = "<B>Transcript:</B><BR><BR>"
 	for(var/i=1,mytape.storedinfo.len >= i,i++)
 		var/printedmessage = mytape.storedinfo[i]
 		if (findtextEx(printedmessage,"*",1,2)) //replace action sounds
-			printedmessage = "\[[time2text(mytape.timestamp[i]*10,"mm:ss")]\] (Unrecognized sound)"
+			printedmessage = "\[[time2text(mytape.timestamp[i]*10,"mm:ss")]\] (Неузнаваемый звук)"
 		t1 += "[printedmessage]<BR>"
 	P.info = t1
-	P.name = "Transcript"
+	P.name = "Транскрипт"
 	canprint = 0
 	sleep(300)
 	canprint = 1
@@ -356,8 +356,8 @@
 
 
 /obj/item/device/tape
-	name = "tape"
-	desc = "A magnetic tape that can hold up to ten minutes of content."
+	name = "кассета"
+	desc = "Магнитная кассета, на которую возможно записать десять минут содержимого."
 	icon_state = "tape_white"
 	item_state = "analyzer"
 	w_class = ITEMSIZE_TINY
@@ -382,7 +382,7 @@
 
 /obj/item/device/tape/attack_self(mob/user)
 	if(!ruined)
-		to_chat(user, "<span class='notice'>You pull out all the tape!</span>")
+		to_chat(user, "<span class='notice'>Вы вытягиваете всю кассету!</span>")
 		ruin()
 
 
@@ -409,23 +409,23 @@
 
 /obj/item/device/tape/attackby(obj/item/I, mob/user, params)
 	if(ruined && I.is_screwdriver())
-		to_chat(user, "<span class='notice'>You start winding the tape back in...</span>")
+		to_chat(user, "<span class='notice'>Вы начинаете закручивать ленту кассеты обратно...</span>")
 		playsound(src, I.usesound, 50, 1)
 		if(do_after(user, 120 * I.toolspeed, target = src))
-			to_chat(user, "<span class='notice'>You wound the tape back in.</span>")
+			to_chat(user, "<span class='notice'>Вы закрутили ленту обратно в кассету.</span>")
 			fix()
 		return
 	else if(istype(I, /obj/item/weapon/pen))
 		if(loc == user && !user.incapacitated())
-			var/new_name = input(user, "What would you like to label the tape?", "Tape labeling") as null|text
+			var/new_name = input(user, "Как бы Вы хотели подписать кассету?", "Подпись кассеты") as null|text
 			if(isnull(new_name)) return
 			new_name = sanitizeSafe(new_name)
 			if(new_name)
-				name = "tape - '[new_name]'"
-				to_chat(user, "<span class='notice'>You label the tape '[new_name]'.</span>")
+				name = "кассета - '[new_name]'"
+				to_chat(user, "<span class='notice'>Вы подписываете кассету: '[new_name]'.</span>")
 			else
-				name = "tape"
-				to_chat(user, "<span class='notice'>You scratch off the label.</span>")
+				name = "кассета"
+				to_chat(user, "<span class='notice'>Вы зачеркиваете подпись на кассете.</span>")
 		return
 	..()
 

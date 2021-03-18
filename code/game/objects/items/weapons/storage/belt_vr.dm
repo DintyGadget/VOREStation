@@ -2,10 +2,10 @@
 	sprite_sheets = list(
 		SPECIES_TESHARI = 'icons/mob/species/seromi/belt.dmi',
 		SPECIES_WEREBEAST = 'icons/mob/species/werebeast/belt.dmi')
-		
+
 /obj/item/weapon/storage/belt/explorer
-	name = "explorer's belt"
-	desc = "A versatile belt with several pouches. It can hold a very wide variety of items, but less items overall than a dedicated belt. Still, it's useful for any explorer who wants to be prepared for anything they might find."
+	name = "Пояс искателя"
+	desc = "Универсальный пояс с несколькими сумочками. Может содержать в себе самые различные предметы, однако влезает в него меньше. Тем не менее, он окажется полезным для искателя, который хочет быть готов ко всему."
 	icon_state = "explorer_belt"
 	icon = 'icons/obj/clothing/belts_vr.dmi'
 	icon_override = 'icons/mob/belt_vr.dmi'
@@ -47,9 +47,9 @@
 		/obj/item/device/ano_scanner,
 		/obj/item/device/cataloguer
 		)
-		
+
 /obj/item/weapon/storage/belt/explorer/pathfinder
-	name = "pathfinder's belt"
-	desc = "A deluxe belt with many pouches. It can hold a very wide variety of items, but less items overall than a dedicated belt. Still, it's useful for any explorer who wants to be prepared for anything they might find."
+	name = "Пояс Первопроходца"
+	desc = "Роскошный пояс с кучей сумочек. Может содержать в себе самые различные предметы, однако влезает в него меньше. Тем не менее, он окажется полезным для искателя, который хочет быть готов ко всему."
 	storage_slots = 7	//two more, bringing it on par with normal belts
 	max_storage_space = ITEMSIZE_COST_NORMAL * 7

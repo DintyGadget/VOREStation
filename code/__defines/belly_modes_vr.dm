@@ -1,14 +1,14 @@
 // Normal digestion modes
-#define DM_HOLD									"Hold"
-#define DM_DIGEST								"Digest"
-#define DM_ABSORB								"Absorb"
-#define DM_UNABSORB								"Unabsorb"
-#define DM_DRAIN								"Drain"
-#define DM_SHRINK								"Shrink"
-#define DM_GROW									"Grow"
-#define DM_SIZE_STEAL							"Size Steal"
-#define DM_HEAL									"Heal"
-#define DM_EGG 									"Encase In Egg"
+#define DM_HOLD									"Удержание"
+#define DM_DIGEST								"Переваривание"
+#define DM_ABSORB								"Поглощение"
+#define DM_UNABSORB								"Не поглощать"
+#define DM_DRAIN								"Слив"
+#define DM_SHRINK								"Сокращение"
+#define DM_GROW									"Рост"
+#define DM_SIZE_STEAL							"Украсть размер "
+#define DM_HEAL									"Регенерация"
+#define DM_EGG 									"Заключить в яйцо"
 
 //#define DM_ITEMWEAK							"Digest (Item Friendly)"
 //#define DM_STRIPDIGEST						"Strip Digest (Items Only)"
@@ -22,9 +22,9 @@
 #define DM_FLAG_AFFECTWORN		0x10
 
 //Item related modes
-#define IM_HOLD									"Hold"
-#define IM_DIGEST_FOOD							"Digest (Food Only)"
-#define IM_DIGEST								"Digest"
+#define IM_HOLD									"Удержание"
+#define IM_DIGEST_FOOD							"Переваривание (Food Only)"
+#define IM_DIGEST								"Переваривание"
 
 //Stance for hostile mobs to be in while devouring someone.
 #define HOSTILE_STANCE_EATING	99

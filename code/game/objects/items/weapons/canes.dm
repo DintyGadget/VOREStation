@@ -1,6 +1,6 @@
 /obj/item/weapon/cane
-	name = "cane"
-	desc = "A cane used by a true gentleman."
+	name = "трость"
+	desc = "Трость самого настоящего джентльмена."
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "cane"
 	item_icons = list(
@@ -14,8 +14,8 @@
 	attack_verb = list("bludgeoned", "whacked", "disciplined", "thrashed")
 
 /obj/item/weapon/cane/crutch
-	name ="crutch"
-	desc = "A long stick with a crosspiece at the top, used to help with walking."
+	name ="костыль"
+	desc = "Длинная палка с перекрестием, оказывающая помощь при ходьбе."
 	icon_state = "crutch"
 	item_state = "crutch"
 
@@ -30,9 +30,8 @@
 	temp_blade.update_force()
 
 /obj/item/weapon/cane/concealed/attack_self(var/mob/user)
-	var/datum/gender/T = gender_datums[user.get_visible_gender()]
 	if(concealed_blade)
-		user.visible_message("<span class='warning'>[user] has unsheathed \a [concealed_blade] from [T.his] [src]!</span>", "You unsheathe \the [concealed_blade] from \the [src].")
+		user.visible_message("<span class='warning'>[user] расчехляет [concealed_blade] из своей трости!</span>", "Вы расчехляете из своей трости.")
 		// Calling drop/put in hands to properly call item drop/pickup procs
 		playsound(src, 'sound/weapons/holster/sheathout.ogg', 50, 1)
 		user.drop_from_inventory(src)
@@ -46,8 +45,7 @@
 
 /obj/item/weapon/cane/concealed/attackby(var/obj/item/weapon/material/butterfly/W, var/mob/user)
 	if(!src.concealed_blade && istype(W))
-		var/datum/gender/T = gender_datums[user.get_visible_gender()]
-		user.visible_message("<span class='warning'>[user] has sheathed \a [W] into [T.his] [src]!</span>", "You sheathe \the [W] into \the [src].")
+		user.visible_message("<span class='warning'>[user] складывает [W] в свою трость!</span>", "Вы складываете [W] в свою трость.")
 		playsound(src, 'sound/weapons/holster/sheathin.ogg', 50, 1)
 		user.drop_from_inventory(W)
 		W.loc = src
@@ -62,18 +60,18 @@
 		icon_state = initial(icon_state)
 		item_state = initial(icon_state)
 	else
-		name = "cane shaft"
+		name = "рукоятка трости"
 		icon_state = "nullrod"
 		item_state = "foldcane"
 
 /obj/item/weapon/cane/white
-	name = "white cane"
-	desc = "A white cane. They are commonly used by the blind or visually impaired as a mobility tool or as a courtesy to others."
+	name = "белая трость"
+	desc = "Белая трость. Обычно используется слепыми или слабовидящими для передвижения, или в качестве любезности по отношению к другим."
 	icon_state = "whitecane"
 
 /obj/item/weapon/cane/white/attack(mob/M as mob, mob/user as mob)
     if(user.a_intent == I_HELP)
-        user.visible_message("<span class='notice'>\The [user] has lightly tapped [M] on the ankle with their white cane!</span>")
+        user.visible_message("<span class='notice'> [user] легонько постукивает [M] по лодыжке белой тростью!</span>")
         return TRUE
     else
         . = ..()
@@ -82,8 +80,8 @@
 //Code for Telescopic White Cane writen by Gozulio
 
 /obj/item/weapon/cane/white/collapsible
-	name = "telescopic white cane"
-	desc = "A telescopic white cane. They are commonly used by the blind or visually impaired as a mobility tool or as a courtesy to others."
+	name = "складная белая трость"
+	desc = "Складная белая трость. Обычно используется слепыми или слабовидящими для передвижения, или в качестве любезности по отношению к другим."
 	icon_state = "whitecane1in"
 	item_icons = list(
 			slot_l_hand_str = 'icons/mob/items/lefthand_melee.dmi',
@@ -97,23 +95,23 @@
 /obj/item/weapon/cane/white/collapsible/attack_self(mob/user as mob)
 	on = !on
 	if(on)
-		user.visible_message("<span class='notice'>\The [user] extends the white cane.</span>",\
-				"<span class='warning'>You extend the white cane.</span>",\
-				"You hear an ominous click.")
+		user.visible_message("<span class='notice'>[user] раскладывает белую трость.</span>",\
+				"<span class='warning'>Вы раскладываете белую трость.</span>",\
+				"Вы слышите щелчок.")
 		icon_state = "whitecane1out"
 		item_state_slots = list(slot_r_hand_str = "whitecane", slot_l_hand_str = "whitecane")
 		w_class = ITEMSIZE_NORMAL
 		force = 5
-		attack_verb = list("smacked", "struck", "cracked", "beaten")
+		attack_verb = list("стукает", "ударяет", "наносит удар")
 	else
-		user.visible_message("<span class='notice'>\The [user] collapses the white cane.</span>",\
-		"<span class='notice'>You collapse the white cane.</span>",\
-		"You hear a click.")
+		user.visible_message("<span class='notice'>[user] складывает белую трость.</span>",\
+		"<span class='notice'>Вы складываете белую трость.</span>",\
+		"Вы слышите щелчок.")
 		icon_state = "whitecane1in"
 		item_state_slots = list(slot_r_hand_str = null, slot_l_hand_str = null)
 		w_class = ITEMSIZE_SMALL
 		force = 3
-		attack_verb = list("hit", "poked", "prodded")
+		attack_verb = list("ударяет", "тыкает", "колет")
 
 	if(istype(user,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user

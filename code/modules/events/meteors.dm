@@ -28,9 +28,9 @@
 	if(!victim)
 		switch(severity)
 			if(EVENT_LEVEL_MAJOR)
-				command_announcement.Announce("Meteors have been detected on collision course with \the [location_name()].", "Meteor Alert", new_sound = 'sound/AI/meteors.ogg')
+				command_announcement.Announce("Метеоры были обнаружены на курсе столкновения с [location_name()].", "Метеоритная Тревога", new_sound = 'sound/AI/meteors.ogg')
 			else
-				command_announcement.Announce("\The [location_name()] is now in a meteor shower.", "Meteor Alert")
+				command_announcement.Announce("[location_name()] теперь находится в полн метеоритного дождя.", "Метеоритная Тревога")
 
 /datum/event/meteor_wave/tick()
 	// Begin sending the alarm signals to shield diffusers so the field is already regenerated (if it exists) by the time actual meteors start flying around.
@@ -61,9 +61,9 @@
 	if(!victim)
 		switch(severity)
 			if(EVENT_LEVEL_MAJOR)
-				command_announcement.Announce("\The [location_name()] has cleared the meteor storm.", "Meteor Alert")
+				command_announcement.Announce("[location_name()] покидает метеоритное поле.", "Meteor Alert")
 			else
-				command_announcement.Announce("\The [location_name()] has cleared the meteor shower", "Meteor Alert")
+				command_announcement.Announce("[location_name()] покидает метеоритное поле.", "Meteor Alert")
 
 /datum/event/meteor_wave/proc/get_meteors()
 	switch(severity)
@@ -135,7 +135,7 @@
 		. = round(. * 0.5)
 	if(speed > SHIP_SPEED_FAST) //Sanic stahp
 		. *= 2
-	
+
 	//Smol ship evasion
 	if(victim.vessel_size < SHIP_SIZE_LARGE && speed < SHIP_SPEED_FAST)
 		var/skill_needed = SKILL_PROF

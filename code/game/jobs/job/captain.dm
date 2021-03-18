@@ -14,7 +14,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "company officials and Corporate Regulations"
+	supervisors = "должностными лицами компании NT и Корпоративными Правилами"
 	selection_color = "#2F2F7F"
 	req_admin_notify = 1
 	access = list() 			//See get_access()
@@ -26,9 +26,9 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	ideal_character_age = 70 // Old geezer captains ftw
 
 	outfit_type = /decl/hierarchy/outfit/job/captain
-	job_description = "The Site Manager manages the other Command Staff, and through them the rest of the station. Though they have access to everything, \
-						they do not understand everything, and are expected to delegate tasks to the appropriate crew member. The Site Manager is expected to \
-						have an understanding of Standard Operating Procedure, and is subject to it, and legal action, in the same way as every other crew member."
+	job_description = "Директор колонии управляет остальным командным составом, а через них и остальной частью объекта. Хотя у них есть доступ ко всему, \
+						они не все понимают и должны давать задачи соответствующему члену экипажа.  Ожидается, что Директор колонии будет иметь  \
+						представление о стандартной рабочей процедуре и будет подчиняться ей, а также судебным искам, так же как и любой другой член экипажа."
 	alt_titles = list("Overseer"= /datum/alt_title/overseer)
 
 /*
@@ -59,7 +59,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the Site Manager"
+	supervisors = "Директором Колонии"
 	selection_color = "#1D1D4F"
 	req_admin_notify = 1
 	minimal_player_age = 10
@@ -104,7 +104,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "command staff"
+	supervisors = "должностными лицами компании NT"
 	selection_color = "#1D1D4F"
 	minimal_player_age = 5
 	economic_modifier = 7
@@ -113,6 +113,6 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	minimal_access = list(access_heads, access_keycard_auth)
 
 	outfit_type = /decl/hierarchy/outfit/job/secretary
-	job_description = "A Command Secretary handles paperwork duty for the Heads of Staff, so they can better focus on managing their departments. \
-						They are not Heads of Staff, and have no real authority."
+	job_description = "Секретарь командования занимается оформлением документов для глав отделов, чтобы они могли лучше сосредоточиться на управлении своими отделами. \
+						Секретарь не является руководителем чего-либо и не имеет реальной власти."
 

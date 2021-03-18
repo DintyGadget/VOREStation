@@ -1,7 +1,7 @@
 /datum/game_mode/conflux
 	name = "Technomancers & Cult"
-	round_description = "A space wizard and a cult have invaded the station!"
-	extended_round_description = "Cultists and wizards spawn during this round."
+	round_description = "На станцию вторглись космический волшебник и культ!"
+	extended_round_description = "Во время этого раунда появляются сектанты и волшебники."
 	config_tag = "conflux"
 	required_players = 15
 	required_players_secret = 15

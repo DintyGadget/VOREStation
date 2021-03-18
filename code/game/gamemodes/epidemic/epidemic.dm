@@ -3,7 +3,7 @@
 	config_tag = "epidemic"
 	required_players = 1
 	required_players_secret = 15
-	round_description = "A deadly epidemic is spreading on the station. Find a cure as fast as possible, and keep your distance to anyone who speaks in a hoarse voice!"
+	round_description = "По станции распространяется смертельная эпидемия. Найдите лекарство как можно быстрее и держитесь подальше от всех, кто говорит хриплым голосом!"
 
 	var/cruiser_arrival
 	var/virus_name = ""
@@ -34,35 +34,35 @@
 /////////////////////////////////////////////////////////
 
 /datum/game_mode/epidemic/send_intercept()
-	var/intercepttext = "<FONT size = 3 color='red'><B>CONFIDENTIAL REPORT</B></FONT><HR>"
+	var/intercepttext = "<meta charset=\"utf-8\"><FONT size = 3 color='red'><B>КОНФИДЕНЦИАЛЬНЫЙ ОТЧЕТ</B></FONT><HR>"
 	virus_name = "X-[rand(1,99)]&trade;"
-	intercepttext += "<B>Warning: Pathogen [virus_name] has been detected on [station_name()].</B><BR><BR>"
-	intercepttext += "<B>Code violet quarantine of [station_name()] put under immediate effect.</B><BR>"
-	intercepttext += "<B>Class [rand(2,5)] cruiser has been dispatched. ETA: [round(cruiser_seconds() / 60)] minutes.</B><BR>"
-	intercepttext += "<BR><B><FONT size = 2 color='blue'>Instructions</FONT></B><BR>"
-	intercepttext += "<B>* ELIMINATE THREAT WITH EXTREME PREJUDICE. [virus_name] IS HIGHLY CONTAGIOUS. INFECTED CREW MEMBERS MUST BE QUARANTINED IMMEDIATELY.</B><BR>"
-	intercepttext += "<B>* [station_name()] is under QUARANTINE. Any vessels outbound from [station_name()] will be tracked down and destroyed.</B><BR>"
-	intercepttext += "<B>* The existence of [virus_name] is highly confidential. To prevent a panic, only high-ranking staff members are authorized to know of its existence. Crew members that illegally obtained knowledge of [virus_name] are to be neutralized.</B><BR>"
-	intercepttext += "<B>* A cure is to be researched immediately, but NanoTrasen intellectual property must be respected. To prevent knowledge of [virus_name] from falling into unauthorized hands, all medical staff that work with the pathogen must be enhanced with a NanoTrasen loyality implant.</B><BR>"
+	intercepttext += "<B>Внимание: Патоген [virus_name] обнаружен на [station_name()].</B><BR><BR>"
+	intercepttext += "<B>Код карантина на [station_name()] требуется объявить немедленно.</B><BR>"
+	intercepttext += "<B>Класс [rand(2,5)] крейсер отправлен. Время прибытия: [round(cruiser_seconds() / 60)] минут.</B><BR>"
+	intercepttext += "<BR><B><FONT size = 2 color='blue'>Инструкция</FONT></B><BR>"
+	intercepttext += "<B>* УСТРАНИТЕ УГРОЗУ С КРАЙНИМ ПРЕДУБЕЖДЕНИЕМ. [virus_name] ОЧЕНЬ ЗАРАЗЕН. ЗАРАЖЕННЫЕ ЧЛЕНЫ ЭКИПАЖА ДОЛЖНЫ БЫТЬ НЕМЕДЛЕННО ПОМЕЩЕНЫ В КАРАНТИН.</B><BR>"
+	intercepttext += "<B>* [station_name()] находится на КАРАНТИНЕ. Любые суда, вылетающие из [station_name ()], будут выслежены и уничтожены.</B><BR>"
+	intercepttext += "<B>* Существование [virus_name] строго конфиденциально. Чтобы предотвратить панику, только высокопоставленные сотрудники имеют право знать о ее существовании. Члены экипажа, незаконно получившие информацию о [virus_name], должны быть нейтрализованы.</B><BR>"
+	intercepttext += "<B>* Лекарство должно быть исследовано немедленно, но интеллектуальная собственность нанотразена должна уважаться. Чтобы знание [virus_name] не попало в чужие руки, весь медицинский персонал, работающий с патогеном, должен быть усилен имплантатом лояльности нанотразена.</B><BR>"
 
 
 	//New message handling won't hurt if someone enables epidemic
-	post_comm_message("Cent. Com. CONFIDENTIAL REPORT", intercepttext)
+	post_comm_message("Cent. Com. КОНФИДЕНЦИАЛЬНЫЙ ОТЧЕТ", intercepttext)
 
 	world << sound('sound/AI/commandreport.ogg')
 
 	// add an extra law to the AI to make sure it cooperates with the heads
-	var/extra_law = "Crew authorized to know of pathogen [virus_name]'s existence are: Heads of command. Do not allow unauthorized personnel to gain knowledge of [virus_name]. Aid authorized personnel in quarantining and neutrlizing the outbreak. This law overrides all other laws."
+	var/extra_law = "Экипаж, уполномоченный знать о существовании патогена [virus_name], - это: Руководители командования. Не позволяйте постороннему персоналу получить информацию о [virus_name]. Помощь уполномоченному персоналу в карантине и нейтрализации вспышки. Этот закон превосходит все остальные."
 	for(var/mob/living/silicon/ai/M in world)
 		M.add_ion_law(extra_law)
 		to_chat(M, "<span class='danger'>[extra_law]</span>")
 
 /datum/game_mode/epidemic/proc/announce_to_kill_crew()
-	var/intercepttext = "<FONT size = 3 color='red'><B>CONFIDENTIAL REPORT</B></FONT><HR>"
-	intercepttext += "<FONT size = 2;color='red'><B>PATHOGEN [virus_name] IS STILL PRESENT ON [station_name()]. IN COMPLIANCE WITH NANOTRASEN LAWS FOR INTERSTELLAR SAFETY, EMERGENCY SAFETY MEASURES HAVE BEEN AUTHORIZED. ALL INFECTED CREW MEMBERS ON [station_name()] ARE TO BE NEUTRALIZED AND DISPOSED OF IN A MANNER THAT WILL DESTROY ALL TRACES OF THE PATHOGEN. FAILURE TO COMPLY WILL RESULT IN IMMEDIATE DESTRUCTION OF [station_name].</B></FONT><BR>"
+	var/intercepttext = "<FONT size = 3 color='red'><B>КОНФИДЕНЦИАЛЬНЫЙ ОТЧЕТ</B></FONT><HR>"
+	intercepttext += "<FONT size = 2;color='red'><B>ПАТОГЕН [virus_name] ВСЕ ЕЩЕ ПРИСУТСТВУЕТ НА [station_name()]. В СООТВЕТСТВИИ С ЗАКОНАМИ НАНОТРАЗЕНА О МЕЖЗВЕЗДНОЙ БЕЗОПАСНОСТИ БЫЛИ САНКЦИОНИРОВАНЫ ЧРЕЗВЫЧАЙНЫЕ МЕРЫ БЕЗОПАСНОСТИ. ВСЕ ЗАРАЖЕННЫЕ ЧЛЕНЫ ЭКИПАЖА НА [station_name()] ОНИ ДОЛЖНЫ БЫТЬ НЕЙТРАЛИЗОВАНЫ И УТИЛИЗИРОВАНЫ ТАКИМ ОБРАЗОМ, ЧТОБЫ УНИЧТОЖИТЬ ВСЕ СЛЕДЫ ПАТОГЕНА. НЕСОБЛЮДЕНИЕ ЭТОГО ТРЕБОВАНИЯ ПРИВЕДЕТ К НЕМЕДЛЕННОМУ УНИЧТОЖЕНИЮ [station_name].</B></FONT><BR>"
 	intercepttext += "<B>CRUISER WILL ARRIVE IN [round(cruiser_seconds()/60)] MINUTES</B><BR>"
 
-	post_comm_message("Cent. Com. CONFIDENTIAL REPORT", intercepttext)
+	post_comm_message("Cent. Com. КОНФИДЕНЦИАЛЬНЫЙ ОТЧЕТ", intercepttext)
 	world << sound('sound/AI/commandreport.ogg')
 
 
@@ -78,8 +78,8 @@
 		crew += H
 
 	if(crew.len < 2)
-		to_world("<span class='danger'>There aren't enough players for this mode!</span>")
-		to_world("<span class='danger'>Rebooting world in 5 seconds.</span>")
+		to_world("<span class='danger'>Для этого режима не хватает игроков!</span>")
+		to_world("<span class='danger'>Перезагрузка мира за 5 секунд.</span>")
 
 		if(blackbox)
 			blackbox.save_all_data_to_sql()
@@ -123,7 +123,7 @@
 		announce_to_kill_crew()
 		stage = 2
 	else if(stage == 2 && cruiser_seconds() <= 60 * 5)
-		command_alert("Inbound cruiser detected on collision course. Scans indicate the ship to be armed and ready to fire. Estimated time of arrival: 5 minutes.", "[station_name()] Early Warning System")
+		command_alert("Приближающийся крейсер обнаружен на встречном курсе. Сканирование показало, что корабль вооружен и готов к стрельбе. Расчетное время прибытия: 5 минут.", "[station_name()] Early Warning System")
 		stage = 3
 	else if(stage == 3 && cruiser_seconds() <= 0)
 		crew_lose()
@@ -169,7 +169,7 @@
 	for(var/mob/M in world)
 		if(M.client)
 			M << 'sound/machines/Alarm.ogg'
-	to_world("<span class='notice'><b>Incoming missile detected.. Impact in 10..</b></span>")
+	to_world("<span class='notice'><b>Обнаружена приближающаяся ракета.. Удар в 10..</b></span>")
 	for (var/i=9 to 1 step -1)
 		sleep(10)
 		to_world("<span class='notice'><b>[i]..</b></span>")
@@ -190,9 +190,9 @@
 /datum/game_mode/epidemic/declare_completion()
 	if(finished == 1)
 		feedback_set_details("round_end_result","win - epidemic cured")
-		to_world("<font size = 3><span class='danger'> The virus outbreak was contained! The crew wins!</span></font>")
+		to_world("<font size = 3><span class='danger'> Вспышка вируса была локализована! Экипаж побеждает!</span></font>")
 	else if(finished == 2)
 		feedback_set_details("round_end_result","loss - rev heads killed")
-		to_world("<font size = 3><span class='danger'> The crew succumbed to the epidemic!</span></font>")
+		to_world("<font size = 3><span class='danger'> Экипаж погиб от эпидемии!</span></font>")
 	..()
 	return 1

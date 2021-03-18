@@ -198,7 +198,7 @@ var/list/organ_cache = list()
 /obj/item/organ/examine(mob/user)
 	. = ..()
 	if(status & ORGAN_DEAD)
-		. += "<span class='notice'>Decay appears to have set in.</span>"
+		. += "<span class='notice'>Похоже, наступил распад.</span>"
 
 //A little wonky: internal organs stop calling this (they return early in process) when dead, but external ones cause further damage when dead
 /obj/item/organ/proc/handle_germ_effects()
@@ -346,7 +346,7 @@ var/list/organ_cache = list()
 		if(owner && parent_organ && amount > 0)
 			var/obj/item/organ/external/parent = owner?.get_organ(parent_organ)
 			if(parent && !silent)
-				owner.custom_pain("Something inside your [parent.name] hurts a lot.", amount)
+				owner.custom_pain("Что-то внутри [parent.name] сильно болит.", amount)
 
 /obj/item/organ/proc/bruise()
 	damage = max(damage, min_bruised_damage)
@@ -441,7 +441,7 @@ var/list/organ_cache = list()
 	if(robotic >= ORGAN_ROBOT)
 		return
 
-	to_chat(user, "<span class='notice'>You take an experimental bite out of \the [src].</span>")
+	to_chat(user, "<span class='notice'>Вы откусываете экспериментальный кусок от [src].</span>")
 	var/datum/reagent/blood/B = locate(/datum/reagent/blood) in reagents.reagent_list
 	blood_splatter(src,B,1)
 
@@ -493,10 +493,10 @@ var/list/organ_cache = list()
 
 /obj/item/organ/proc/butcher(var/obj/item/O, var/mob/living/user, var/atom/newtarget)
 	if(robotic >= ORGAN_ROBOT)
-		user?.visible_message("<span class='notice'>[user] disassembles \the [src].</span>")
+		user?.visible_message("<span class='notice'>[user] разбирает [src].</span>")
 
 	else
-		user?.visible_message("<span class='notice'>[user] butchers \the [src].</span>")
+		user?.visible_message("<span class='notice'>[user] разделывает [src].</span>")
 
 	if(!newtarget)
 		newtarget = get_turf(src)

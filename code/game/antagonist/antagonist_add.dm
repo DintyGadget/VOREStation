@@ -31,9 +31,9 @@
 		player.current.verbs |= faction_verb
 
 	spawn(1 SECOND) //Added a delay so that this should pop up at the bottom and not the top of the text flood the new antag gets.
-		to_chat(player.current, "<span class='notice'>Once you decide on a goal to pursue, you can optionally display it to \
-			everyone at the end of the shift with the <b>Set Ambition</b> verb, located in the IC tab.  You can change this at any time, \
-			and it otherwise has no bearing on your round.</span>")
+		to_chat(player.current, "<span class='notice'>После того, как вы решили преследовать цель, вы можете при желании показать ее всем \
+			в конце смены с помощью кнопки <b>Set Ambition</b>, находящейся в панели IC.  Вы можете изменить это в любой момент, \
+			ибо это не повлияет на ваш раунд.</span>")
 	player.current.verbs |= /mob/living/proc/write_ambition
 
 	if(can_speak_aooc)
@@ -53,7 +53,7 @@
 	if(player.current && faction_verb)
 		player.current.verbs -= faction_verb
 	if(player in current_antagonists)
-		to_chat(player.current, "<span class='danger'><font size = 3>You are no longer a [role_text]!</font></span>")
+		to_chat(player.current, "<span class='danger'><font size = 3>Вы больше не [role_text]!</font></span>")
 		current_antagonists -= player
 		faction_members -= player
 		player.special_role = null

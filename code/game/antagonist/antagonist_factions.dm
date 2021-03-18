@@ -14,33 +14,33 @@
 		return
 
 	if(faction.is_antagonist(player))
-		to_chat(src, "<span class='warning'>\The [player.current] already serves the [faction.faction_descriptor].</span>")
+		to_chat(src, "<span class='warning'>[player.current] уже служит [faction.faction_descriptor].</span>")
 		return
 
 	if(player_is_antag(player))
-		to_chat(src, "<span class='warning'>\The [player.current]'s loyalties seem to be elsewhere...</span>")
+		to_chat(src, "<span class='warning'>Лояльность [player.current] кажется находится в другой точке итнереса...</span>")
 		return
 
 	if(!faction.can_become_antag(player))
-		to_chat(src, "<span class='warning'>\The [player.current] cannot be \a [faction.faction_role_text]!</span>")
+		to_chat(src, "<span class='warning'>[player.current] не может стать [faction.faction_role_text]!</span>")
 		return
 
 	if(world.time < player.rev_cooldown)
-		to_chat(src, "<span class='danger'>You must wait five seconds between attempts.</span>")
+		to_chat(src, "<span class='danger'>Вы должны подождать пять секунд между попытками.</span>")
 		return
 
-	to_chat(src, "<span class='danger'>You are attempting to convert \the [player.current]...</span>")
+	to_chat(src, "<span class='danger'>Вы пытаетесь обратить [player.current]...</span>")
 	log_admin("[src]([src.ckey]) attempted to convert [player.current].")
 	message_admins("<span class='danger'>[src]([src.ckey]) attempted to convert [player.current].</span>")
 
 	player.rev_cooldown = world.time+100
-	var/choice = alert(player.current,"Asked by [src]: Do you want to join the [faction.faction_descriptor]?","Join the [faction.faction_descriptor]?","No!","Yes!")
-	if(choice == "Yes!" && faction.add_antagonist_mind(player, 0, faction.faction_role_text, faction.faction_welcome))
-		to_chat(src, "<span class='notice'>\The [player.current] joins the [faction.faction_descriptor]!</span>")
+	var/choice = alert(player.current,"Спрашивает [src]: Хотите присоединиться к [faction.faction_descriptor]?","Присоединиться к [faction.faction_descriptor]?","Нет!","Да!")
+	if(choice == "Да!" && faction.add_antagonist_mind(player, 0, faction.faction_role_text, faction.faction_welcome))
+		to_chat(src, "<span class='notice'>[player.current] присоединяется к [faction.faction_descriptor]!</span>")
 		return
-	if(choice == "No!")
-		to_chat(player, "<span class='danger'>You reject this traitorous cause!</span>")
-	to_chat(src, "<span class='danger'>\The [player.current] does not support the [faction.faction_descriptor]!</span>")
+	if(choice == "Нет!")
+		to_chat(player, "<span class='danger'>Вы отвергаете это предательское дело!</span>")
+	to_chat(src, "<span class='danger'>[player.current] не хочет поддерживать [faction.faction_descriptor]!</span>")
 
 /mob/living/proc/convert_to_loyalist(mob/M as mob in oview(src))
 	set name = "Convert Recidivist"

@@ -72,12 +72,12 @@ datum/preferences
 	var/synth_markings = 1				//Enable/disable markings on synth parts. //VOREStation Edit - 1 by default
 
 		//Some faction information.
-	var/home_system = "Unset"           //System of birth.
-	var/citizenship = "None"            //Current home system.
-	var/faction = "None"                //General associated faction.
-	var/religion = "None"               //Religious association.
-	var/antag_faction = "None"			//Antag associated faction.
-	var/antag_vis = "Hidden"			//How visible antag association is to others.
+	var/home_system = "Нет"           //System of birth.
+	var/citizenship = "Нет"            //Current home system.
+	var/faction = "Нет"                //General associated faction.
+	var/religion = "Нет"               //Religious association.
+	var/antag_faction = "Нет"			//Antag associated faction.
+	var/antag_vis = "Скрыто"			//How visible antag association is to others.
 
 		//Mob preview
 	var/list/char_render_holders		//Should only be a key-value list of north/south/east/west = obj/screen.
@@ -128,9 +128,9 @@ datum/preferences
 	var/exploit_record = ""
 	var/disabilities = 0
 
-	var/economic_status = "Average"
+	var/economic_status = "Среднее"
 
-	var/uplinklocation = "PDA"
+	var/uplinklocation = "ПДА"
 
 	// OOC Metadata:
 	var/metadata = ""
@@ -207,26 +207,26 @@ datum/preferences
 	return CalculateSkillClass(points, age)
 
 /proc/CalculateSkillClass(points, age)
-	if(points <= 0) return "Unconfigured"
+	if(points <= 0) return "Нет настройки"
 	// skill classes describe how your character compares in total points
 	points -= min(round((age - 20) / 2.5), 4) // every 2.5 years after 20, one extra skillpoint
 	if(age > 30)
 		points -= round((age - 30) / 5) // every 5 years after 30, one extra skillpoint
 	switch(points)
 		if(-1000 to 3)
-			return "Terrifying"
+			return "Ужасно"
 		if(4 to 6)
-			return "Below Average"
+			return "Ниже cреднего"
 		if(7 to 10)
-			return "Average"
+			return "Средний"
 		if(11 to 14)
-			return "Above Average"
+			return "Выше cреднего"
 		if(15 to 18)
-			return "Exceptional"
+			return "Исключительный"
 		if(19 to 24)
-			return "Genius"
+			return "Гений"
 		if(24 to 1000)
-			return "God"
+			return "Бог"
 
 /datum/preferences/proc/ShowChoices(mob/user)
 	if(!user || !user.client)	return
@@ -243,15 +243,15 @@ datum/preferences
 	var/dat = "<html><body><center>"
 
 	if(path)
-		dat += "Slot - "
-		dat += "<a href='?src=\ref[src];load=1'>Load slot</a> - "
-		dat += "<a href='?src=\ref[src];save=1'>Save slot</a> - "
-		dat += "<a href='?src=\ref[src];reload=1'>Reload slot</a> - "
-		dat += "<a href='?src=\ref[src];resetslot=1'>Reset slot</a> - "
-		dat += "<a href='?src=\ref[src];copy=1'>Copy slot</a>"
+		dat += "Слоты - "
+		dat += "<a href='?src=\ref[src];load=1'>Загрузить слот</a> - "
+		dat += "<a href='?src=\ref[src];save=1'>Сохранить слот</a> - "
+		dat += "<a href='?src=\ref[src];reload=1'>Обновить слот</a> - "
+		dat += "<a href='?src=\ref[src];resetslot=1'>Сбросить слот</a> - "
+		dat += "<a href='?src=\ref[src];copy=1'>Копировать слот</a>"
 
 	else
-		dat += "Please create an account to save your preferences."
+		dat += "Пожалуйста, создайте учетную запись, чтобы сохранить Ваши настройки."
 
 	dat += "<br>"
 	dat += player_setup.header()
@@ -261,7 +261,7 @@ datum/preferences
 	dat += "</html></body>"
 	//user << browse(dat, "window=preferences;size=635x736")
 	winshow(user, "preferences_window", TRUE)
-	var/datum/browser/popup = new(user, "preferences_browser", "Character Setup", 800, 800)
+	var/datum/browser/popup = new(user, "preferences_browser", "Настройка Персонажа", 800, 800)
 	popup.set_content(dat)
 	popup.open(FALSE) // Skip registring onclose on the browser pane
 	onclose(user, "preferences_window", src) // We want to register on the window itself
@@ -314,7 +314,7 @@ datum/preferences
 		if(config.forumurl)
 			user << link(config.forumurl)
 		else
-			to_chat(user, "<span class='danger'>The forum URL is not set in the server configuration.</span>")
+			to_chat(user, "<span class='danger'>URL-адрес форума не задан в конфигурации сервера.</span>")
 			return
 	ShowChoices(usr)
 	return 1
@@ -341,9 +341,9 @@ datum/preferences
 		sanitize_preferences()
 		close_load_dialog(usr)
 	else if(href_list["resetslot"])
-		if("No" == alert("This will reset the current slot. Continue?", "Reset current slot?", "No", "Yes"))
+		if("Нет" == alert("Это приведет к сбросу текущего слота. Продолжить?", "Сбросить текущий слот?", "Нет", "Да"))
 			return 0
-		if("No" == alert("Are you completely sure that you want to reset this character slot?", "Reset current slot?", "No", "Yes"))
+		if("Нет" == alert("Вы полностью уверены, что хотите сбросить этот слот персонажа?", "Сбросить текущий слот?", "Нет", "Да"))
 			return 0
 		load_character(SAVE_RESET)
 		sanitize_preferences()
@@ -398,14 +398,14 @@ datum/preferences
 
 	var/savefile/S = new /savefile(path)
 	if(S)
-		dat += "<b>Select a character slot to load</b><hr>"
+		dat += "<b>Выберите слот для загрузки персонажа</b><hr>"
 		var/name
 		var/nickname //vorestation edit - This set appends nicknames to the save slot
 		for(var/i=1, i<= config.character_slots, i++)
 			S.cd = "/character[i]"
 			S["real_name"] >> name
 			S["nickname"] >> nickname //vorestation edit
-			if(!name)	name = "Character[i]"
+			if(!name)	name = "Персонаж[i]"
 			if(i==default_slot)
 				name = "<b>[name]</b>"
 			dat += "<a href='?src=\ref[src];changeslot=[i]'>[name][nickname ? " ([nickname])" : ""]</a><br>" //vorestation edit
@@ -413,7 +413,7 @@ datum/preferences
 	dat += "<hr>"
 	dat += "</center></tt>"
 	//user << browse(dat, "window=saves;size=300x390")
-	panel = new(user, "Character Slots", "Character Slots", 300, 390, src)
+	panel = new(user, "Слоты Персонажей", "Слоты Персонажей", 300, 390, src)
 	panel.set_content(dat)
 	panel.open()
 
@@ -427,19 +427,19 @@ datum/preferences
 
 	var/savefile/S = new /savefile(path)
 	if(S)
-		dat += "<b>Select a character slot to overwrite</b><br>"
-		dat += "<b>You will then need to save to confirm</b><hr>"
+		dat += "<b>Выберите слот персонажа для перезаписи.</b><br>"
+		dat += "<b>Затем Вам нужно будет сохраниться, чтобы подтвердить.</b><hr>"
 		var/name
 		for(var/i=1, i<= config.character_slots, i++)
 			S.cd = "/character[i]"
 			S["real_name"] >> name
-			if(!name)	name = "Character[i]"
+			if(!name)	name = "Персонаж[i]"
 			if(i==default_slot)
 				name = "<b>[name]</b>"
 			dat += "<a href='?src=\ref[src];overwrite=[i]'>[name]</a><br>"
 
 	dat += "<hr>"
 	dat += "</center></tt>"
-	panel = new(user, "Character Slots", "Character Slots", 300, 390, src)
+	panel = new(user, "Слоты Персонажей", "Слоты Персонажей", 300, 390, src)
 	panel.set_content(dat)
 	panel.open()

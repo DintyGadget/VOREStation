@@ -42,12 +42,12 @@ the artifact triggers the rage.
 
 /datum/modifier/berserk
 	name = "berserk"
-	desc = "You are filled with an overwhelming rage."
+	desc = "Вы охвачены непреодолимой яростью."
 	client_color = "#FF5555" // Make everything red!
 	mob_overlay_state = "berserk"
 
-	on_created_text = "<span class='critical'>You feel an intense and overwhelming rage overtake you as you go berserk!</span>"
-	on_expired_text = "<span class='notice'>The blaze of rage inside you has ran out.</span>"
+	on_created_text = "<span class='critical'>Вы чувствуете, как сильная и всепоглощающая ярость охватывает вас, когда вы сходите с ума!</span>"
+	on_expired_text = "<span class='notice'>Пламя ярости внутри вас угасло.</span>"
 	stacks = MODIFIER_STACK_EXTEND
 
 	// The good stuff.
@@ -72,8 +72,8 @@ the artifact triggers the rage.
 
 // For changelings.
 /datum/modifier/berserk/changeling
-	on_created_text = "<span class='critical'>We feel an intense and overwhelming rage overtake us as we go berserk!</span>"
-	on_expired_text = "<span class='notice'>The blaze of rage inside us has ran out.</span>"
+	on_created_text = "<span class='critical'>Мы чувствуем, как сильная и всепоглощающая ярость овладевает нами, когда мы сходим с ума!</span>"
+	on_expired_text = "<span class='notice'>Пламя гнева внутри нас угасло.</span>"
 
 // For changelings who bought the Recursive Enhancement evolution.
 /datum/modifier/berserk/changeling/recursive
@@ -84,7 +84,7 @@ the artifact triggers the rage.
 /datum/modifier/berserk/on_applied()
 	if(ishuman(holder)) // Most other mobs don't really use nutrition and can't get it back.
 		holder.adjust_nutrition(-nutrition_cost)
-	holder.visible_message("<span class='critical'>\The [holder] descends into an all consuming rage!</span>")
+	holder.visible_message("<span class='critical'>[holder] впадает в всепоглощающую ярость!</span>")
 
 	// End all stuns.
 	holder.SetParalysis(0)
@@ -105,7 +105,7 @@ the artifact triggers the rage.
 		holder.add_modifier(/datum/modifier/berserk_exhaustion, exhaustion_duration)
 
 		if(prob(last_shock_stage))
-			to_chat(holder, "<span class='warning'>You pass out from the pain you were suppressing.</span>")
+			to_chat(holder, "<span class='warning'>Вы теряете сознание от боли, которую подавляете.</span>")
 			holder.Paralyse(5)
 
 		if(ishuman(holder))
@@ -115,7 +115,7 @@ the artifact triggers the rage.
 /datum/modifier/berserk/can_apply(var/mob/living/L, var/suppress_failure = FALSE)
 	if(L.stat)
 		if(!suppress_failure)
-			to_chat(L, "<span class='warning'>You can't be unconscious or dead to berserk.</span>")
+			to_chat(L, "<span class='warning'>Вы должды быть в сознании или живым для перехода в берсерка.</span>")
 		return FALSE // It would be weird to see a dead body get angry all of a sudden.
 
 	if(!L.is_sentient())
@@ -123,7 +123,7 @@ the artifact triggers the rage.
 
 	if(L.has_modifier_of_type(/datum/modifier/berserk_exhaustion))
 		if(!suppress_failure)
-			to_chat(L, "<span class='warning'>You recently berserked, and cannot do so again while exhausted.</span>")
+			to_chat(L, "<span class='warning'>Вы недавно впали в состояние берсерка и не можете сделать это снова, когда истощены.</span>")
 		return FALSE // On cooldown.
 
 	if(L.isSynthetic())
@@ -132,13 +132,13 @@ the artifact triggers the rage.
 
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
-		if(H.species.name == "Diona")
-			to_chat(L, "<span class='warning'>You feel strange for a moment, but it passes.</span>")
+		if(H.species.name == "Диона")
+			to_chat(L, "<span class='warning'>На мгновение вы чувствуете себя странно, но это проходит.</span>")
 			return FALSE // Happy trees aren't affected by blood rages.
 
 	if(L.nutrition < nutrition_cost)
 		if(!suppress_failure)
-			to_chat(L, "<span class='warning'>You are too hungry to berserk.</span>")
+			to_chat(L, "<span class='warning'>Вы слишком голодны, чтобы взбеситься.</span>")
 		return FALSE // Too hungry to enrage.
 
 	return ..()
@@ -151,10 +151,10 @@ the artifact triggers the rage.
 // Applied when berserk expires. Acts as a downside as well as the cooldown for berserk.
 /datum/modifier/berserk_exhaustion
 	name = "exhaustion"
-	desc = "You recently exerted yourself extremely hard, and need a rest."
+	desc = "Вы недавно очень сильно напряглись и нуждаетесь в отдыхе."
 
-	on_created_text = "<span class='warning'>You feel extremely exhausted.</span>"
-	on_expired_text = "<span class='notice'>You feel less exhausted now.</span>"
+	on_created_text = "<span class='warning'>Вы чувствуете сильную усталость.</span>"
+	on_expired_text = "<span class='notice'>Теперь вы чувствуете себя менее измотанным.</span>"
 	stacks = MODIFIER_STACK_EXTEND
 
 	slowdown = 2
@@ -164,20 +164,20 @@ the artifact triggers the rage.
 	evasion = -30
 
 /datum/modifier/berserk_exhaustion/on_applied()
-	holder.visible_message("<span class='warning'>\The [holder] looks exhausted.</span>")
+	holder.visible_message("<span class='warning'>[holder] выглядит измученно.</span>")
 
 
 // Synth version with no benefits due to a loss of focus inside a metal shell, which can't be pushed harder just be being mad.
 // Fortunately there is no exhaustion or nutrition cost.
 /datum/modifier/berserk_synthetic
 	name = "recklessness"
-	desc = "You are filled with an overwhelming rage, however your metal shell prevents taking advantage of this."
+	desc = "Вы охвачены непреодолимой яростью, однако ваша металлическая оболочка не позволяет воспользоваться этим."
 	client_color = "#FF0000" // Make everything red!
 	mob_overlay_state = "berserk"
 
-	on_created_text = "<span class='danger'>You feel an intense and overwhelming rage overtake you as you go berserk! \
-	Unfortunately, your lifeless body cannot benefit from this. You feel reckless...</span>"
-	on_expired_text = "<span class='notice'>The blaze of rage inside your mind has ran out.</span>"
+	on_created_text = "<span class='danger'>Вы чувствуете, как сильная и всепоглощающая ярость охватывает вас, когда вы сходите с ума! \
+	К сожалению, ваше безжизненное тело не может извлечь из этого пользу. Вы чувствуете себя безрассудно ...</span>"
+	on_expired_text = "<span class='notice'>Пламя гнева внутри вашего разума угасло.</span>"
 	stacks = MODIFIER_STACK_EXTEND
 
 	// Just being mad isn't gonna overclock your body when you're a beepboop.
@@ -188,10 +188,10 @@ the artifact triggers the rage.
 // Speedy, but not hasted.
 /datum/modifier/sprinting
 	name = "sprinting"
-	desc = "You are filled with energy!"
+	desc = "Вы полны энергии!"
 
-	on_created_text = "<span class='warning'>You feel a surge of energy!</span>"
-	on_expired_text = "<span class='notice'>The energy high dies out.</span>"
+	on_created_text = "<span class='warning'>Вы чувствуете прилив энергии!</span>"
+	on_expired_text = "<span class='notice'>Энергетический максимум угасает.</span>"
 	stacks = MODIFIER_STACK_EXTEND
 
 	slowdown = -1
@@ -200,10 +200,10 @@ the artifact triggers the rage.
 // Speedy, but not berserked.
 /datum/modifier/melee_surge
 	name = "melee surge"
-	desc = "You are filled with energy!"
+	desc = "Вы полны энергии!"
 
-	on_created_text = "<span class='warning'>You feel a surge of energy!</span>"
-	on_expired_text = "<span class='notice'>The energy high dies out.</span>"
+	on_created_text = "<span class='warning'>Вы чувствуете прилив энергии!</span>"
+	on_expired_text = "<span class='notice'>Энергетический максимум угасает.</span>"
 	stacks = MODIFIER_STACK_ALLOWED
 
 	attack_speed_percent = 0.8
@@ -214,10 +214,10 @@ the artifact triggers the rage.
 // Surprisingly, more dangerous.
 /datum/modifier/grievous_wounds
 	name = "grievous wounds"
-	desc = "Your wounds are not easily mended."
+	desc = "Ваши раны нелегко залечить."
 
-	on_created_text = "<span class='critical'>Your wounds pain you greatly.</span>"
-	on_expired_text = "<span class='notice'>The pain lulls.</span>"
+	on_created_text = "<span class='critical'>Ваши раны причиняют вам сильную боль.</span>"
+	on_expired_text = "<span class='notice'>Боль утихает.</span>"
 
 	stacks = MODIFIER_STACK_EXTEND
 

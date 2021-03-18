@@ -13,7 +13,7 @@
 	return T.straight_table_check(direction)
 
 /obj/structure/table/verb/do_flip()
-	set name = "Flip table"
+	set name = "Перевернуть стол"
 	set desc = "Flips a non-reinforced table"
 	set category = "Object"
 	set src in oview(1)
@@ -22,10 +22,10 @@
 		return
 
 	if(flipped < 0 || !flip(get_cardinal_dir(usr,src)))
-		to_chat(usr, "<span class='notice'>It won't budge.</span>")
+		to_chat(usr, "<span class='notice'>Он не сдвинется с места.</span>")
 		return
 
-	usr.visible_message("<span class='warning'>[usr] flips \the [src]!</span>")
+	usr.visible_message("<span class='warning'>[usr] переворачивает [src]!</span>")
 
 	if(climbable)
 		structure_shaken()
@@ -56,7 +56,7 @@
 	return 1
 
 /obj/structure/table/proc/do_put()
-	set name = "Put table back"
+	set name = "Поставить стол обратно"
 	set desc = "Puts flipped table back"
 	set category = "Object"
 	set src in oview(1)
@@ -65,7 +65,7 @@
 		return
 
 	if (!unflipping_check())
-		to_chat(usr, "<span class='notice'>It won't budge.</span>")
+		to_chat(usr, "<span class='notice'>Он не сдвинется с места.</span>")
 		return
 	unflip()
 

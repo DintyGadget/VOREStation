@@ -28,7 +28,7 @@
 	priority_mode = TRUE
 	cancel_pending_floors()
 	update_ext_panel_icons()
-	control_panel_interior.audible_message("<span class='info'>This turbolift is responding to a priority call.  Please exit the lift when it stops and make way.</span>")
+	control_panel_interior.audible_message("<span class='info'>Турболифт отвечает на приоритетный вызов. Пожалуйста, выйдите из лифта, когда он остановится, и уступите дорогу.</span>")
 	spawn(time)
 		priority_mode = FALSE
 		update_ext_panel_icons()
@@ -118,7 +118,7 @@
 				return PROCESS_KILL
 		if(LIFT_WAITING_A)
 			var/area/turbolift/origin = locate(current_floor.area_ref)
-			control_panel_interior.visible_message("<b>The elevator</b> announces, \"[origin.lift_announce_str]\"")
+			control_panel_interior.visible_message("<b>The elevator</b> сообщает, \"[origin.lift_announce_str]\"")
 			next_process = world.time + floor_wait_delay
 			busy_state = LIFT_WAITING_B
 		if(LIFT_WAITING_B)
@@ -206,7 +206,7 @@
 		SSmachines.makepowernets()
 
 	current_floor = next_floor
-	control_panel_interior.visible_message("The elevator [moving_upwards ? "rises" : "descends"] smoothly.")
+	control_panel_interior.visible_message("Лифт плавно [moving_upwards ? "поднимается" : "опускается"].")
 
 	next_process = world.time + (next_floor.delay_time || move_delay)
 	return 1

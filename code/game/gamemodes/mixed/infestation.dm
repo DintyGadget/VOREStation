@@ -1,7 +1,7 @@
 /datum/game_mode/infestation
 	name = "Borers & Changelings"
-	round_description = "There's something in the walls!"
-	extended_round_description = "Two alien antagonists (Cortical Borers or Changelings) spawn during this round."
+	round_description = "В стенах что-то есть!"
+	extended_round_description = "В этом раунде появляются два инопланетных антагониста (Кортикальные Черви или Подменыши)."
 	config_tag = "infestation"
 	required_players = 15
 	required_enemies = 5

@@ -1,6 +1,6 @@
 /obj/item/clothing/head/helmet
-	name = "helmet"
-	desc = "Standard Security gear. Protects the head from impacts."
+	name = "Шлем"
+	desc = "Стандартный шлем службы безопасности. Защищает голову от ударов."
 	icon_state = "helmet"
 	valid_accessory_slots = (ACCESSORY_SLOT_HELM_C)
 	restricted_accessory_slots = (ACCESSORY_SLOT_HELM_C)
@@ -44,42 +44,42 @@
 	desc = "A helmet with 'PRIVATE SECURITY' printed on the back in cyan lettering."
 	icon_state = "helmet_pcrc"
 
-/obj/item/clothing/head/helmet/tac
-	name = "tactical helmet"
-	desc = "A tan helmet made from advanced ceramic. Comfortable and robust."
+//obj/item/clothing/head/helmet/tac
+	name = "Тактический шлем"
+	desc = "Защитный шлем из упрочнённой керамики. Удобный и прочный."
 	icon_state = "helmet_tac"
 	armor = list(melee = 50, bullet = 60, laser = 60, energy = 45, bomb = 30, bio = 0, rad = 0)
 	siemens_coefficient = 0.6
 
 /obj/item/clothing/head/helmet/merc
-	name = "combat helmet"
-	desc = "A heavily reinforced helmet painted with red markings. Feels like it could take a lot of punishment."
+	name = "Боевой шлем"
+	desc = "Сильно упрочнённый шлем с красными метками. Выглядит так, будто выдержит многое."
 	icon_state = "helmet_merc"
 	armor = list(melee = 70, bullet = 70, laser = 70, energy = 35, bomb = 30, bio = 0, rad = 0)
 	siemens_coefficient = 0.5
 
 /obj/item/clothing/head/helmet/riot
-	name = "riot helmet"
-	desc = "It's a helmet specifically designed to protect against close range attacks."
+	name = "Милицейский шлем"
+	desc = "Этот шлем предназначен для защиты от атак ближнего боя."
 	icon_state = "riot"
 	item_state_slots = list(slot_r_hand_str = "swat", slot_l_hand_str = "swat")
 	armor = list(melee = 80, bullet = 10, laser = 10, energy = 10, bomb = 0, bio = 0, rad = 0)
 	siemens_coefficient = 0.7
 	valid_accessory_slots = null
-	action_button_name = "Toggle Visor"
+	action_button_name = "Переключить Визор"
 
 /obj/item/clothing/head/helmet/riot/attack_self(mob/user as mob)
 	if(src.icon_state == initial(icon_state))
 		src.icon_state = "[icon_state]up"
-		to_chat(user, "You raise the visor on the riot helmet.")
+		to_chat(user, "Вы приподнимаете визор милицейского шлема.")
 	else
 		src.icon_state = initial(icon_state)
-		to_chat(user, "You lower the visor on the riot helmet.")
+		to_chat(user, "Вы опускаете визор милицейского шлема.")
 	update_clothing_icon()	//so our mob-overlays update
 
 /obj/item/clothing/head/helmet/laserproof
-	name = "ablative helmet"
-	desc = "It's a helmet specifically designed to protect against energy projectiles."
+	name = "Абляционный шлем"
+	desc = "Этот шлем предназначен для защиты от энергетических снарядов."
 	icon_state = "helmet_reflec"
 	item_state_slots = list(slot_r_hand_str = "helmet", slot_l_hand_str = "helmet")
 	armor = list(melee = 10, bullet = 10, laser = 80 ,energy = 50, bomb = 0, bio = 0, rad = 0)
@@ -87,8 +87,8 @@
 	valid_accessory_slots = null
 
 /obj/item/clothing/head/helmet/bulletproof
-	name = "bullet-resistant helmet"
-	desc = "It's a helmet specifically designed to protect against ballistic projectiles."
+	name = "Пуленепробиваемый шлем"
+	desc = "Этот шлем предназначен для защиты от баллистических снарядов"
 	icon_state = "helmet_bulletproof"
 	item_state_slots = list(slot_r_hand_str = "helmet", slot_l_hand_str = "helmet")
 	armor = list(melee = 10, bullet = 80, laser = 10 ,energy = 10, bomb = 0, bio = 0, rad = 0)
@@ -96,8 +96,8 @@
 	valid_accessory_slots = null
 
 /obj/item/clothing/head/helmet/combat
-	name = "combat helmet"
-	desc = "It's a general purpose combat helmet, designed to protect against typical dangers to your head."
+	name = "Боевой шлем"
+	desc = "Это военный шлем общего назначения, защищающий голову от самых распространённых угроз."
 	icon_state = "helmet_combat"
 	item_state_slots = list(slot_r_hand_str = "helmet", slot_l_hand_str = "helmet")
 	armor = list(melee = 50, bullet = 50, laser = 50 ,energy = 30, bomb = 30, bio = 0, rad = 0)
@@ -106,14 +106,14 @@
 	valid_accessory_slots = null
 
 /obj/item/clothing/head/helmet/flexitac
-	name = "tactical light helmet"
-	desc = "A tan helmet made from advanced ceramic with an integrated tactical flashlight."
+	name = "Лёгкий тактический шлем"
+	desc = "Защитный шлем из упрочнённой керамики со встроенным тактическим фонариком."
 	icon_state = "flexitac"
 	armor = list(melee = 40, bullet = 40, laser = 60, energy = 35, bomb = 30, bio = 0, rad = 0)
 	siemens_coefficient = 0.6
 	brightness_on = 6
 	light_overlay = "helmet_light_dual_green"
-	action_button_name = "Toggle Head-light"
+	action_button_name = "Переключить Фонарик"
 	min_cold_protection_temperature = T0C - 20
 	cold_protection = HEAD
 
@@ -127,8 +127,8 @@
 	armor = list(melee = 30, bullet = 20, laser = 20, energy = 20, bomb = 35, bio = 75, rad = 35)
 
 /obj/item/clothing/head/helmet/swat
-	name = "\improper SWAT helmet"
-	desc = "They're often used by highly trained SWAT Officers."
+	name = "Шлем СОБР"
+	desc = "Такие часто используются элитными офицерами СОБР."
 	icon_state = "swat"
 	armor = list(melee = 80, bullet = 60, laser = 50,energy = 25, bomb = 50, bio = 10, rad = 0)
 	flags_inv = HIDEEARS|HIDEEYES|BLOCKHEADHAIR
@@ -137,20 +137,20 @@
 	siemens_coefficient = 0.5
 
 /obj/item/clothing/head/helmet/alien
-	name = "alien helmet"
-	desc = "It's quite larger than your head, but it might still protect it."
+	name = "Инопланетный шлем"
+	desc = "Он гораздо больше Вашей головы, но все равно защитит."
 	icon_state = "alienhelmet"
 	siemens_coefficient = 0.4
 	armor = list(melee = 50, bullet = 50, laser = 50, energy = 50, bomb = 50, bio = 0, rad = 40)
 	valid_accessory_slots = null
 
 /obj/item/clothing/head/helmet/alien/tank
-	name = "alien warhelm"
+	name = "Военный инопланетный шлем"
 	armor = list(melee = 70, bullet = 70, laser = 70, energy = 70, bomb = 70, bio = 0, rad = 40)
 
 /obj/item/clothing/head/helmet/thunderdome
-	name = "\improper Thunderdome helmet"
-	desc = "<i>'Let the battle commence!'</i>"
+	name = "Шлем Громарены"
+	desc = "<i>'Да начнётся битва!'</i>"
 	icon_state = "thunderdome"
 	armor = list(melee = 80, bullet = 60, laser = 50,energy = 10, bomb = 25, bio = 10, rad = 0)
 	cold_protection = HEAD
@@ -158,7 +158,7 @@
 	siemens_coefficient = 1
 
 /obj/item/clothing/head/helmet/gladiator
-	name = "gladiator helmet"
+	name = "Шлем гладиатора"
 	desc = "Ave, Imperator, morituri te salutant."
 	icon_state = "gladiator"
 	item_state_slots = list(slot_r_hand_str = "vhelmet", slot_l_hand_str = "vhelmet")
@@ -167,8 +167,8 @@
 	valid_accessory_slots = null
 
 /obj/item/clothing/head/helmet/tactical
-	name = "tactical helmet"
-	desc = "An armored helmet capable of being fitted with a multitude of attachments."
+	name = "Тактический шлем"
+	desc = "Бронированный шлем, в который возможно поместить дополнительные примочки."
 	icon_state = "swathelm"
 	item_state_slots = list(slot_r_hand_str = "swat", slot_l_hand_str = "swat")
 	sprite_sheets = list(
@@ -182,8 +182,8 @@
 	valid_accessory_slots = null
 
 /obj/item/clothing/head/helmet/augment
-	name = "Augment Array"
-	desc = "A helmet with optical and cranial augments coupled to it."
+	name = "Модифицированный шлем"
+	desc = "Шлем, обладающий с оптическими и черепными модификациями."
 	icon_state = "v62"
 	item_state_slots = list(slot_r_hand_str = "head_m", slot_l_hand_str = "head_m")
 	armor = list(melee = 80, bullet = 60, laser = 50,energy = 25, bomb = 50, bio = 10, rad = 0)

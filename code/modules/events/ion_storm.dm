@@ -22,7 +22,7 @@
 		announceWhen = endWhen + rand(250, 400)
 
 /datum/event/ionstorm/announce()
-	command_announcement.Announce("It has come to our attention that \the [location_name()] passed through an ion storm.  Please monitor all electronic equipment for malfunctions.", "Anomaly Alert")
+	command_announcement.Announce("До нашего сведения дошло, что [location_name()] прошел через ионный шторм. Пожалуйста, проверьте все электронное оборудование на наличие неисправностей.", "Anomaly Alert")
 
 /datum/event/ionstorm/start()
 	for (var/mob/living/carbon/human/player in player_list)
@@ -39,7 +39,7 @@
 		var/area/A = get_area(S)
 		if(!A || A.flags & RAD_SHIELDED) // Rad shielding will protect from ions too
 			continue
-		to_chat(S, "<span class='warning'>Your integrated sensors detect an ionospheric anomaly. Your systems will be impacted as you begin a partial restart.</span>")
+		to_chat(S, "<span class='warning'>Ваши встроенные датчики обнаруживают ионосферную аномалию. Если вы начнете частичный перезапуск, это повлияет на ваши системы.</span>")
 		var/ionbug = rand(3, 9)
 		S.confused += ionbug
 		S.eye_blurry += (ionbug - 1)
@@ -49,7 +49,7 @@
 		if(!(target.z in affecting_z))
 			continue
 		var/law = target.generate_ion_law()
-		to_chat(target, "<span class='danger'>You have detected a change in your laws information:</span>")
+		to_chat(target, "<span class='danger'>Вы обнаружили изменение в информации о ваших законах:</span>")
 		to_chat(target, law)
 		target.add_ion_law(law)
 		target.show_laws()

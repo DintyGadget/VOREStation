@@ -255,13 +255,13 @@
 /mob/living/silicon/robot/can_hear_radio(var/list/hearturfs)
 	var/turf/T = get_turf(src)
 	var/obj/item/device/radio/borg/R = hearturfs[T] // this should be an assoc list of turf-to-radio
-	
+
 	// We heard it on our own radio? We use power for that.
 	if(istype(R) && R.myborg == src)
 		var/datum/robot_component/CO = get_component("radio")
 		if(!CO || !is_component_functioning("radio") || !cell_use_power(CO.active_usage))
 			return FALSE // Sorry, couldn't hear
-	
+
 	return R // radio, true, false, what's the difference
 
 /mob/observer/dead/can_hear_radio(var/list/hearturfs)
@@ -485,13 +485,13 @@ datum/projectile_data
 	return new /datum/projectile_data(src_x, src_y, time, distance, power_x, power_y, dest_x, dest_y)
 
 /proc/GetRedPart(const/hexa)
-	return hex2num(copytext(hexa,2,4))
+	return hex2num(copytext_char(hexa,2,4))
 
 /proc/GetGreenPart(const/hexa)
-	return hex2num(copytext(hexa,4,6))
+	return hex2num(copytext_char(hexa,4,6))
 
 /proc/GetBluePart(const/hexa)
-	return hex2num(copytext(hexa,6,8))
+	return hex2num(copytext_char(hexa,6,8))
 
 /proc/GetHexColors(const/hexa)
 	return list(

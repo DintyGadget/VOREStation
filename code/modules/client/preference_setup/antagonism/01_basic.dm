@@ -28,13 +28,13 @@ var/global/list/uplink_locations = list("PDA", "Headset", "None")
 	character.antag_vis = pref.antag_vis
 
 /datum/category_item/player_setup_item/antagonism/basic/content(var/mob/user)
-	. += "Faction: <a href='?src=\ref[src];antagfaction=1'>[pref.antag_faction]</a><br/>"
-	. += "Visibility: <a href='?src=\ref[src];antagvis=1'>[pref.antag_vis]</a><br/>"
-	. +="<b>Uplink Type : <a href='?src=\ref[src];antagtask=1'>[pref.uplinklocation]</a></b>"
+	. += "Фракция: <a href='?src=\ref[src];antagfaction=1'>[pref.antag_faction]</a><br/>"
+	. += "Видимость: <a href='?src=\ref[src];antagvis=1'>[pref.antag_vis]</a><br/>"
+	. +="<b>Канал связи : <a href='?src=\ref[src];antagtask=1'>[pref.uplinklocation]</a></b>"
 	. +="<br>"
-	. +="<b>Exploitable information:</b><br>"
+	. +="<b>Компромат:</b><br>"
 	if(jobban_isbanned(user, "Records"))
-		. += "<b>You are banned from using character records.</b><br>"
+		. += "<b>Вам запрещено использовать записи персонажей.</b><br>"
 	else
 		. +="<a href='?src=\ref[src];exploitable_record=1'>[TextPreview(pref.exploit_record,40)]</a><br>"
 
@@ -44,25 +44,25 @@ var/global/list/uplink_locations = list("PDA", "Headset", "None")
 		return TOPIC_REFRESH
 
 	if(href_list["exploitable_record"])
-		var/exploitmsg = sanitize(input(user,"Set exploitable information about you here.","Exploitable Information", html_decode(pref.exploit_record)) as message|null, MAX_RECORD_LENGTH, extra = 0)
+		var/exploitmsg = sanitize(input(user,"Напишите компромат на себя здесь.","Компромат", html_decode(pref.exploit_record)) as message|null, MAX_RECORD_LENGTH, extra = 0)
 		if(!isnull(exploitmsg) && !jobban_isbanned(user, "Records") && CanUseTopic(user))
 			pref.exploit_record = exploitmsg
 			return TOPIC_REFRESH
-			
+
 	if(href_list["antagfaction"])
-		var/choice = input(user, "Please choose an antagonistic faction to work for.", "Character Preference", pref.antag_faction) as null|anything in antag_faction_choices + list("None","Other")
+		var/choice = input(user, "Пожалуйста, выберите свою антагонистическую фракцию.", "Редактирование Персонажа", pref.antag_faction) as null|anything in antag_faction_choices + list("Нет","Другое")
 		if(!choice || !CanUseTopic(user))
 			return TOPIC_NOACTION
 		if(choice == "Other")
-			var/raw_choice = sanitize(input(user, "Please enter a faction.", "Character Preference")  as text|null, MAX_NAME_LEN)
+			var/raw_choice = sanitize(input(user, "Пожалуйста, введите название Вашей фракции.", "Редактирование Персонажа")  as text|null, MAX_NAME_LEN)
 			if(raw_choice)
 				pref.antag_faction = raw_choice
 		else
 			pref.antag_faction = choice
 		return TOPIC_REFRESH
-		
+
 	if(href_list["antagvis"])
-		var/choice = input(user, "Please choose an antagonistic visibility level.", "Character Preference", pref.antag_vis) as null|anything in antag_visiblity_choices
+		var/choice = input(user, "Пожалуйста, установите уровень своей видимости.", "Редактирование Персонажа", pref.antag_vis) as null|anything in antag_visiblity_choices
 		if(!choice || !CanUseTopic(user))
 			return TOPIC_NOACTION
 		else

@@ -18,30 +18,30 @@
 // HARDWARE DEFINITIONS
 /datum/malf_hardware/apu_gen
 	name = "APU Generator"
-	desc = "Auxiliary Power Unit that will keep you operational even without external power. Has to be manually activated. When APU is operational most abilities will be unavailable, and ability research will temporarily stop."
+	desc = "Вспомогательный блок питания, который позволит вам работать даже без внешнего питания. Активируется вручную. Когда APU работает, большинство способностей будут недоступны, и исследование способностей временно остановится."
 	driver = /datum/game_mode/malfunction/verb/ai_toggle_apu
 
 /datum/malf_hardware/apu_gen/get_examine_desc()
-	var/msg = "It seems to have some sort of power generator attached to its core."
+	var/msg = "Кажется, к его ядру прикреплен какой-то генератор энергии."
 	if(owner.hardware_integrity() < 50)
-		msg += "<span class='warning'> It seems to be too damaged to function properly.</span>"
+		msg += "<span class='warning'> Кажется, он слишком поврежден, чтобы работать должным образом.</span>"
 	else if(owner.APU_power)
-		msg += " The generator appears to be active."
+		msg += " Генератор активен."
 	return msg
 
 /datum/malf_hardware/dual_cpu
 	name = "Secondary Processor Unit"
-	desc = "Secondary coprocessor that increases amount of generated CPU power by 50%"
+	desc = "Вторичный сопроцессор, увеличивающий количество генерируемой мощности процессора на 50%"
 
 /datum/malf_hardware/dual_cpu/get_examine_desc()
-	return "It seems to have an additional CPU connected to its core."
+	return "Кажется, к его ядру подключен дополнительный процессор."
 
 /datum/malf_hardware/dual_ram
 	name = "Secondary Memory Bank"
-	desc = "Expanded memory cells which allow you to store double amount of CPU time."
+	desc = "Расширенные ячейки памяти, которые позволяют хранить вдвое больше процессорного времени."
 
 /datum/malf_hardware/dual_ram/get_examine_desc()
-	return "It seems to have additional memory blocks connected to it's core."
+	return "Кажется, к его ядру подключены дополнительные блоки памяти."
 
 /datum/malf_hardware/core_bomb
 	name = "Self-Destruct Explosives"

@@ -111,7 +111,7 @@
 		else if(species.name != "Human")
 			name_ender = ", <b><font color='[species.get_flesh_colour(src)]'>\a [species.get_examine_name()]!</font></b>[species.get_additional_examine_text(src)]"
 
-	var/list/msg = list("<span class='info'>*---------*","This is [bicon(src)] <EM>[src.name]</EM>[name_ender]")
+	var/list/msg = list("<meta charset=\"utf-8\"><span class='info'>*---------*","Это [bicon(src)] <EM>[src.name]</EM>[name_ender]")
 
 	//uniform
 	if(w_uniform && !(skip_gear & EXAMINE_SKIPJUMPSUIT) && w_uniform.show_examine)
@@ -233,20 +233,20 @@
 		else
 			msg += "[T.He] [T.has] [bicon(wear_mask)] \a [wear_mask] [descriptor]."
 
-	//eyes
+	//eyes --
 	if(glasses && !(skip_gear & EXAMINE_SKIPEYEWEAR) && glasses.show_examine)
 		if(glasses.blood_DNA)
-			msg += "<span class='warning'>[T.He] [T.has] [bicon(glasses)] [glasses.gender==PLURAL?"some":"a"] [(glasses.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [glasses] covering [T.his] eyes!</span>"
+			msg += "<span class='warning'>На [T.ru_g_gcase] глазах [bicon(glasses)] [(glasses.blood_color != SYNTH_BLOOD_COLOUR) ? "окровавлен" : "замаслен"][glasses.rugender == "male" ? "ный" : glasses.rugender == "female" ? "ная" : gloves.rugender == "plural" ? "ные" : "ное"] [glasses.ncase]!</span>"
 		else
-			msg += "[T.He] [T.has] [bicon(glasses)] \a [glasses] covering [T.his] eyes."
+			msg += "На [T.ru_g_gcase] глазах [bicon(glasses)] [glasses.ncase]"
 
-	//left ear
+	//left ear -
 	if(l_ear && !(skip_gear & EXAMINE_SKIPEARS) && l_ear.show_examine)
-		msg += "[T.He] [T.has] [bicon(l_ear)] \a [l_ear] on [T.his] left ear."
+		msg += "На [T.ru_g_gcase] левом ухе [bicon(l_ear)] [l_ear]."
 
-	//right ear
+	//right ear -
 	if(r_ear && !(skip_gear & EXAMINE_SKIPEARS) && r_ear.show_examine)
-		msg += "[T.He] [T.has] [bicon(r_ear)] \a [r_ear] on [T.his] right ear."
+		msg += "На [T.ru_g_gcase] правом ухе [bicon(r_ear)] [r_ear]."
 
 	//ID
 	if(wear_id && wear_id.show_examine)
@@ -265,11 +265,11 @@
 	//Jitters
 	if(is_jittery)
 		if(jitteriness >= 300)
-			msg += "<span class='warning'><B>[T.He] [T.is] convulsing violently!</B></span>"
+			msg += "<span class='warning'><B>Бьется в конвульсиях!</B></span>"
 		else if(jitteriness >= 200)
-			msg += "<span class='warning'>[T.He] [T.is] extremely jittery.</span>"
+			msg += "<span class='warning'>На нервах.</span>"
 		else if(jitteriness >= 100)
-			msg += "<span class='warning'>[T.He] [T.is] twitching ever so slightly.</span>"
+			msg += "<span class='warning'>Слегка дергается.</span>"
 
 	//splints
 	for(var/organ in BP_ALL)
@@ -278,7 +278,7 @@
 			msg += "<span class='warning'>[T.He] [T.has] \a [o.splinted] on [T.his] [o.name]!</span>"
 
 	if(suiciding)
-		msg += "<span class='warning'>[T.He] appears to have commited suicide... there is no hope of recovery.</span>"
+		msg += "<span class='warning'> похоже, кончает жизнь самоубийством ... надежды на выздоровление нет.</span>"
 
 	//VOREStation Add
 	var/list/vorestrings = list()
@@ -413,8 +413,8 @@
 			if(R.fields["name"] == perpname)
 				criminal = R.fields["criminal"]
 
-		msg += "<span class='deptradio'>Criminal status:</span> <a href='?src=\ref[src];criminal=1'>\[[criminal]\]</a>"
-		msg += "<span class='deptradio'>Security records:</span> <a href='?src=\ref[src];secrecord=`'>\[View\]</a>  <a href='?src=\ref[src];secrecordadd=`'>\[Add comment\]</a>"
+		msg += "<span class='deptradio'>Статус:</span> <a href='?src=\ref[src];criminal=1'>\[[criminal]\]</a>"
+		msg += "<span class='deptradio'>Записи СБ:</span> <a href='?src=\ref[src];secrecord=`'>\[Читать\]</a>  <a href='?src=\ref[src];secrecordadd=`'>\[Добавить заметку\]</a>"
 
 	if(hasHUD(user,"medical"))
 		var/perpname = name
@@ -432,8 +432,8 @@
 			if (R.fields["name"] == perpname)
 				medical = R.fields["p_stat"]
 
-		msg += "<span class='deptradio'>Physical status:</span> <a href='?src=\ref[src];medical=1'>\[[medical]\]</a>"
-		msg += "<span class='deptradio'>Medical records:</span> <a href='?src=\ref[src];medrecord=`'>\[View\]</a> <a href='?src=\ref[src];medrecordadd=`'>\[Add comment\]</a>"
+		msg += "<span class='deptradio'>Психика:</span> <a href='?src=\ref[src];medical=1'>\[[medical]\]</a>"
+		msg += "<span class='deptradio'>Медицинские записи:</span> <a href='?src=\ref[src];medrecord=`'>\[Читать\]</a> <a href='?src=\ref[src];medrecordadd=`'>\[Добавить заметку\]</a>"
 
 
 	var/flavor_text = print_flavor_text()
@@ -442,8 +442,8 @@
 
 	// VOREStation Start
 	if(ooc_notes)
-		msg += "<span class = 'deptradio'>OOC Notes:</span> <a href='?src=\ref[src];ooc_notes=1'>\[View\]</a>"
-	msg += "<span class='deptradio'><a href='?src=\ref[src];vore_prefs=1'>\[Mechanical Vore Preferences\]</a></span>"
+		msg += "<span class = 'deptradio'>Заметки OOC:</span> <a href='?src=\ref[src];ooc_notes=1'>\[View\]</a>"
+	msg += "<span class='deptradio'><a href='?src=\ref[src];vore_prefs=1'>\[Механические параметры Vore\]</a></span>"
 	// VOREStation End
 	msg += "*---------*</span>"
 	if(applying_pressure)

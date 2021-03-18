@@ -7,11 +7,11 @@
 /datum/language
 	var/name = "an unknown language"  // Fluff name of language if any.
 	var/desc = "A language."          // Short description for 'Check Languages'.
-	var/speech_verb = "says"          // 'says', 'hisses', 'farts'.
-	var/ask_verb = "asks"             // Used when sentence ends in a ?
-	var/exclaim_verb = "exclaims"     // Used when sentence ends in a !
+	var/speech_verb = "говорит"       // 'says', 'hisses', 'farts'.
+	var/ask_verb = "спрашивает"       // Used when sentence ends in a ?
+	var/exclaim_verb = "восклицает"   // Used when sentence ends in a !
 	var/whisper_verb                  // Optional. When not specified speech_verb + quietly/softly is used instead.
-	var/signlang_verb = list("signs", "gestures") // list of emotes that might be displayed if this language has NONVERBAL or SIGNLANG flags
+	var/signlang_verb = list("показывает", "жестикулирует") // list of emotes that might be displayed if this language has NONVERBAL or SIGNLANG flags
 	var/colour = "body"               // CSS style to use for strings in this language.
 	var/key = "x"                     // Character used to speak in language eg. :o for Unathi.
 	var/flags = 0                     // Various language flags.
@@ -161,7 +161,7 @@
 
 /datum/language/proc/can_speak_special(var/mob/speaker)
 	. = TRUE
-	if(name != "Noise")	// Audible Emotes
+	if(name != "Шум")	// Audible Emotes
 		if(ishuman(speaker))
 			var/mob/living/carbon/human/H = speaker
 			if(H.species.has_organ[O_VOICE] && !(flags & SIGNLANG) && !(flags & NONVERBAL)) // Does the species need a voicebox? Is the language even spoken?
@@ -205,7 +205,7 @@
 		log_debug("[src] attempted to speak a null language.")
 		return 0
 
-	if(speaking == GLOB.all_languages["Noise"])
+	if(speaking == GLOB.all_languages["Шум"])
 		return 1
 
 	if (only_species_language && speaking != GLOB.all_languages[species_language])
@@ -235,7 +235,7 @@
 //TBD
 /mob/proc/check_lang_data()
 	. = ""
-	
+
 	for(var/datum/language/L in languages)
 		if(!(L.flags & NONGLOBAL))
 			. += "<b>[L.name] ([get_language_prefix()][L.key])</b><br/>[L.desc]<br/><br/>"
@@ -244,29 +244,29 @@
 	. = ""
 
 	if(default_language)
-		. += "Current default language: [default_language] - <a href='byond://?src=\ref[src];default_lang=reset'>reset</a><br/><br/>"
+		. += "Текущий язык на умполчанию: [default_language] - <a href='byond://?src=\ref[src];default_lang=reset'>сброс</a><br/><br/>"
 
 	for(var/datum/language/L in languages)
 		if(!(L.flags & NONGLOBAL))
 			if(L == default_language)
-				. += "<b>[L.name] ([get_language_prefix()][L.key])</b> - default - <a href='byond://?src=\ref[src];default_lang=reset'>reset</a><br/>[L.desc]<br/><br/>"
+				. += "<b>[L.name] ([get_language_prefix()][L.key])</b> - по умолчанию - <a href='byond://?src=\ref[src];default_lang=reset'>сменить</a><br/>[L.desc]<br/><br/>"
 			else if (can_speak(L))
-				. += "<b>[L.name] ([get_language_prefix()][L.key])</b> - <a href='byond://?src=\ref[src];default_lang=\ref[L]'>set default</a><br/>[L.desc]<br/><br/>"
+				. += "<b>[L.name] ([get_language_prefix()][L.key])</b> - <a href='byond://?src=\ref[src];default_lang=\ref[L]'>сделать по умолчанию</a><br/>[L.desc]<br/><br/>"
 			else
-				. += "<b>[L.name] ([get_language_prefix()][L.key])</b> - cannot speak!<br/>[L.desc]<br/><br/>"
+				. += "<b>[L.name] ([get_language_prefix()][L.key])</b> - не знаете!k!<br/>[L.desc]<br/><br/>"
 
 /mob/verb/check_languages()
-	set name = "Check Known Languages"
+	set name = "Проверить Известные Языки"
 	set category = "IC"
 	set src = usr
 
-	var/datum/browser/popup = new(src, "checklanguage", "Known Languages", 420, 470)
+	var/datum/browser/popup = new(src, "checklanguage", "Известные Языки", 420, 470)
 	popup.set_content(check_lang_data())
 	popup.open()
 
 /mob/living/Topic(href, href_list)
 	if(href_list["default_lang"])
-		if(href_list["default_lang"] == "reset")
+		if(href_list["default_lang"] == "сброс")
 			if (species_language)
 				set_default_language(GLOB.all_languages[species_language])
 			else

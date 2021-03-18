@@ -64,15 +64,15 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 	var/decryptkey = "password"
 
 	//Spam filtering stuff
-	var/list/spamfilter = list("You have won", "your prize", "male enhancement", "shitcurity", \
-			"are happy to inform you", "account number", "enter your PIN")
+	var/list/spamfilter = list("Вы выиграли", "ваш приз", "мужское совершенствование", "shitcurity", \
+			"будем рады сообщить вам", "account number", "enter your PIN")
 			//Messages having theese tokens will be rejected by server. Case sensitive
 	var/spamfilter_limit = MESSAGE_SERVER_DEFAULT_SPAM_LIMIT	//Maximal amount of tokens
 
 /obj/machinery/message_server/New()
 	message_servers += src
 	decryptkey = GenerateKey()
-	send_pda_message("System Administrator", "system", "This is an automated message. The messaging system is functioning correctly.")
+	send_pda_message("System Administrator", "system", "Это автоматическое сообщение. Система обмена сообщениями функционирует правильно.")
 	..()
 	return
 
@@ -83,7 +83,7 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 
 /obj/machinery/message_server/examine(mob/user, distance, infix, suffix)
 	. = ..()
-	. += "It appears to be [active ? "online" : "offline"]."	
+	. += "It appears to be [active ? "online" : "offline"]."
 
 /obj/machinery/message_server/proc/GenerateKey()
 	//Feel free to move to Helpers.
@@ -113,7 +113,7 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 
 /obj/machinery/message_server/proc/send_rc_message(var/recipient = "",var/sender = "",var/message = "",var/stamp = "", var/id_auth = "", var/priority = 1)
 	rc_msgs += new/datum/data_rc_msg(recipient,sender,message,stamp,id_auth)
-	var/authmsg = "[message]\n"
+	var/authmsg = "<meta charset=\"UTF-8\">[message]\n"
 	if (id_auth)
 		authmsg += "([id_auth])\n"
 	if (stamp)
@@ -121,7 +121,7 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 	for (var/obj/machinery/requests_console/Console in allConsoles)
 		if (ckey(Console.department) == ckey(recipient))
 			if(Console.inoperable())
-				Console.message_log += list(list("Message lost due to console failure.","Please contact [station_name()] system adminsitrator or AI for technical assistance."))
+				Console.message_log += list(list("Сообщение потеряно из-за сбоя консоли.","Пожалуйста, свяжитесь с системным администратором [station_name()] или ИИ для получения технической помощи."))
 				continue
 			if(Console.newmessagepriority < priority)
 				Console.newmessagepriority = priority
@@ -130,19 +130,19 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 				if(2)
 					if(!Console.silent)
 						playsound(Console, 'sound/machines/twobeep.ogg', 50, 1)
-						Console.audible_message(text("[bicon(Console)] *The Requests Console beeps: 'PRIORITY Alert in [sender]'"),,5)
-					Console.message_log += list(list("High Priority message from [sender]", "[authmsg]"))
+						Console.audible_message(text("[bicon(Console)] *Консоль запросов попискивает: 'ПРИОРИТЕТНОЕ сообщение от [sender]'"),,5)
+					Console.message_log += list(list("Высокий приоритет от [sender]", "[authmsg]"))
 				else
 					if(!Console.silent)
 						playsound(Console, 'sound/machines/twobeep.ogg', 50, 1)
-						Console.audible_message(text("[bicon(Console)] *The Requests Console beeps: 'Message from [sender]'"),,4)
-					Console.message_log += list(list("Message from [sender]", "[authmsg]"))
+						Console.audible_message(text("[bicon(Console)] *Консоль запросов попискивает: 'Сообщение из [sender]'"),,4)
+					Console.message_log += list(list("Сообщение от [sender]", "[authmsg]"))
 			Console.set_light(2)
 
 
 /obj/machinery/message_server/attack_hand(user as mob)
 //	to_chat(user, "<font color='blue'>There seem to be some parts missing from this server. They should arrive on the station in a few days, give or take a few CentCom delays.</font>")
-	to_chat(user, "You toggle PDA message passing from [active ? "On" : "Off"] to [active ? "Off" : "On"]")
+	to_chat(user, "Вы переключаете передачу сообщений ПДА с [active ? "вкл" : "выкл"] на [active ? "выкл" : "вкл"]")
 	active = !active
 	update_icon()
 

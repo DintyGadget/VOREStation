@@ -24,7 +24,7 @@
 /obj/item/stack/medical/advanced/clotting
 	name = "liquid bandage kit"
 	singular_name = "liquid bandage kit"
-	desc = "A spray that stops bleeding using a patented chemical cocktail. Non-refillable. Only one use required per patient."
+	desc = "Спрей, останавливающий кровотечение, с использованием запатентованного химического коктейля. Одноразовый. На одного пациента требуется только одно использование."
 	icon_state = "clotkit"
 	heal_burn = 0
 	heal_brute = 2 // Only applies to non-humans, to give this some slight application on animals
@@ -50,7 +50,7 @@
 		if(affecting.open)
 			too_far_gone++
 			continue
-		
+
 		for(var/wnd in affecting.wounds)
 			var/datum/wound/W = wnd
 			// No need

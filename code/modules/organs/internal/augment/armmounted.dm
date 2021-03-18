@@ -38,7 +38,7 @@
 
 /obj/item/organ/internal/augment/armmounted/taser
 	name = "taser implant"
-	desc = "A large implant that fits into a subject's arm. It deploys a taser-emitting array by some painful means."
+	desc = "Большой имплант, который вставляется в руку пациента. Он разворачивает матрицу, излучающую электрошокер, каким-то болезненным способом."
 
 	icon_state = "augment_taser"
 

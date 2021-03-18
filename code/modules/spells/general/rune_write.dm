@@ -1,5 +1,5 @@
 /spell/rune_write
-	name = "Scribe a Rune"
+	name = "Начертить руну"
 	desc = "Let's you instantly manifest a working rune."
 
 	school = "evocation"
@@ -17,159 +17,159 @@
 	return list(user)
 
 /spell/rune_write/cast(null, mob/user = usr)
-	if(!cultwords["travel"])
+	if(!cultwords["путешествие"])
 		runerandom()
-	var/list/runes = list("Teleport", "Teleport Other", "Spawn a Tome", "Change Construct Type", "Convert", "EMP", "Drain Blood", "See Invisible", "Resurrect", "Hide Runes", "Reveal Runes", "Astral Journey", "Manifest a Ghost", "Imbue Talisman", "Sacrifice", "Wall", "Free Cultist", "Summon Cultist", "Deafen", "Blind", "BloodBoil", "Communicate", "Stun")
-	var/r = input(user, "Choose a rune to scribe", "Rune Scribing") in runes //not cancellable.
+	var/list/runes = list("Телепорт", "Телепорт другое", "Спавн фолианта", "Изменить тип конструкции", "Превращение", "ЭМИ", "Слить кровь", "Видеть невидимое", "Воскрешение", "Скрыть руны", "Раскрыть руны", "Астральное путешествие", "Manifest a Ghost", "Наполнить талисман", "Жертва", "Стена", "Освободить", "Призвать культиста", "Оглушение", "Ослепление", "Вскипание крови", "Связь", "Стан")
+	var/r = input(user, "Выберите руну для начертания", "Rune Scribing") in runes //not cancellable.
 	var/obj/effect/rune/R = new /obj/effect/rune(user.loc)
 	if(istype(user.loc,/turf))
 		var/area/A = get_area(user)
 		log_and_message_admins("created \an [r] rune at \the [A.name] - [user.loc.x]-[user.loc.y]-[user.loc.z].", user)
 		switch(r)
-			if("Teleport")
+			if("Телепорт")
 				if(cast_check(1))
 					var/beacon
 					if(user)
-						beacon = input(user, "Select the last rune", "Rune Scribing") in rnwords
-					R.word1=cultwords["travel"]
-					R.word2=cultwords["self"]
+						beacon = input(user, "Выберите последнюю руну", "Rune Scribing") in rnwords
+					R.word1=cultwords["путешествие"]
+					R.word2=cultwords["я"]
 					R.word3=beacon
 					R.check_icon()
-			if("Teleport Other")
+			if("Телепорт другое")
 				if(cast_check(1))
 					var/beacon
 					if(user)
-						beacon = input(user, "Select the last rune", "Rune Scribing") in rnwords
-					R.word1=cultwords["travel"]
-					R.word2=cultwords["other"]
+						beacon = input(user, "Выберите последнюю руну", "Rune Scribing") in rnwords
+					R.word1=cultwords["путешествие"]
+					R.word2=cultwords["другое"]
 					R.word3=beacon
 					R.check_icon()
-			if("Spawn a Tome")
+			if("Спавн фолианта")
 				if(cast_check(1))
-					R.word1=cultwords["see"]
-					R.word2=cultwords["blood"]
-					R.word3=cultwords["hell"]
+					R.word1=cultwords["видимость"]
+					R.word2=cultwords["кровь"]
+					R.word3=cultwords["ад"]
 					R.check_icon()
-			if("Change Construct Type")
+			if("Изменить тип конструкции")
 				if(cast_check(1))
-					R.word1=cultwords["hell"]
-					R.word2=cultwords["destroy"]
-					R.word3=cultwords["other"]
+					R.word1=cultwords["ад"]
+					R.word2=cultwords["разрушение"]
+					R.word3=cultwords["другое"]
 					R.check_icon()
-			if("Convert")
+			if("Превращение")
 				if(cast_check(1))
-					R.word1=cultwords["join"]
-					R.word2=cultwords["blood"]
-					R.word3=cultwords["self"]
+					R.word1=cultwords["присоединение"]
+					R.word2=cultwords["кровь"]
+					R.word3=cultwords["я"]
 					R.check_icon()
-			if("EMP")
+			if("ЭМИ")
 				if(cast_check(1))
-					R.word1=cultwords["destroy"]
-					R.word2=cultwords["see"]
-					R.word3=cultwords["technology"]
+					R.word1=cultwords["разрушение"]
+					R.word2=cultwords["видимость"]
+					R.word3=cultwords["технологии"]
 					R.check_icon()
-			if("Drain Blood")
+			if("Слить кровь")
 				if(cast_check(1))
-					R.word1=cultwords["travel"]
-					R.word2=cultwords["blood"]
-					R.word3=cultwords["self"]
+					R.word1=cultwords["путешествие"]
+					R.word2=cultwords["кровь"]
+					R.word3=cultwords["я"]
 					R.check_icon()
-			if("See Invisible")
+			if("Видеть невидимое")
 				if(cast_check(1))
-					R.word1=cultwords["see"]
-					R.word2=cultwords["hell"]
-					R.word3=cultwords["join"]
+					R.word1=cultwords["видимость"]
+					R.word2=cultwords["ад"]
+					R.word3=cultwords["присоединение"]
 					R.check_icon()
-			if("Resurrect")
+			if("Воскрешение")
 				if(cast_check(1))
-					R.word1=cultwords["blood"]
-					R.word2=cultwords["join"]
-					R.word3=cultwords["hell"]
+					R.word1=cultwords["кровь"]
+					R.word2=cultwords["присоединение"]
+					R.word3=cultwords["ад"]
 					R.check_icon()
-			if("Hide Runes")
+			if("Скрыть руны")
 				if(cast_check(1))
-					R.word1=cultwords["hide"]
-					R.word2=cultwords["see"]
-					R.word3=cultwords["blood"]
+					R.word1=cultwords["скрытность"]
+					R.word2=cultwords["видимость"]
+					R.word3=cultwords["кровь"]
 					R.check_icon()
-			if("Astral Journey")
+			if("Астральное путешествие")
 				if(cast_check(1))
-					R.word1=cultwords["hell"]
-					R.word2=cultwords["travel"]
-					R.word3=cultwords["self"]
+					R.word1=cultwords["ад"]
+					R.word2=cultwords["путешествие"]
+					R.word3=cultwords["я"]
 					R.check_icon()
 			if("Manifest a Ghost")
 				if(cast_check(1))
-					R.word1=cultwords["blood"]
-					R.word2=cultwords["see"]
-					R.word3=cultwords["travel"]
+					R.word1=cultwords["кровь"]
+					R.word2=cultwords["видимость"]
+					R.word3=cultwords["путешествие"]
 					R.check_icon()
-			if("Imbue Talisman")
+			if("Наполнить талисман")
 				if(cast_check(1))
-					R.word1=cultwords["hell"]
-					R.word2=cultwords["technology"]
-					R.word3=cultwords["join"]
+					R.word1=cultwords["ад"]
+					R.word2=cultwords["технологии"]
+					R.word3=cultwords["присоединение"]
 					R.check_icon()
-			if("Sacrifice")
+			if("Жертва")
 				if(cast_check(1))
-					R.word1=cultwords["hell"]
-					R.word2=cultwords["blood"]
-					R.word3=cultwords["join"]
+					R.word1=cultwords["ад"]
+					R.word2=cultwords["кровь"]
+					R.word3=cultwords["присоединение"]
 					R.check_icon()
-			if("Reveal Runes")
+			if("Раскрыть руны")
 				if(cast_check(1))
-					R.word1=cultwords["blood"]
-					R.word2=cultwords["see"]
-					R.word3=cultwords["hide"]
+					R.word1=cultwords["кровь"]
+					R.word2=cultwords["видимость"]
+					R.word3=cultwords["скрытность"]
 					R.check_icon()
-			if("Wall")
+			if("Стена")
 				if(cast_check(1))
-					R.word1=cultwords["destroy"]
-					R.word2=cultwords["travel"]
-					R.word3=cultwords["self"]
+					R.word1=cultwords["разрушение"]
+					R.word2=cultwords["путешествие"]
+					R.word3=cultwords["я"]
 					R.check_icon()
-			if("Freedom")
+			if("Освободить")
 				if(cast_check(1))
-					R.word1=cultwords["travel"]
-					R.word2=cultwords["technology"]
-					R.word3=cultwords["other"]
+					R.word1=cultwords["путешествие"]
+					R.word2=cultwords["технологии"]
+					R.word3=cultwords["другое"]
 					R.check_icon()
-			if("Cultsummon")
+			if("Призвать культиста")
 				if(cast_check(1))
-					R.word1=cultwords["join"]
-					R.word2=cultwords["other"]
-					R.word3=cultwords["self"]
+					R.word1=cultwords["присоединение"]
+					R.word2=cultwords["другое"]
+					R.word3=cultwords["я"]
 					R.check_icon()
-			if("Deafen")
+			if("Оглушение")
 				if(cast_check(1))
-					R.word1=cultwords["hide"]
-					R.word2=cultwords["other"]
-					R.word3=cultwords["see"]
+					R.word1=cultwords["скрытность"]
+					R.word2=cultwords["другое"]
+					R.word3=cultwords["видимость"]
 					R.check_icon()
-			if("Blind")
+			if("Ослепление")
 				if(cast_check(1))
-					R.word1=cultwords["destroy"]
-					R.word2=cultwords["see"]
-					R.word3=cultwords["other"]
+					R.word1=cultwords["разрушение"]
+					R.word2=cultwords["видимость"]
+					R.word3=cultwords["другое"]
 					R.check_icon()
-			if("BloodBoil")
+			if("Вскипание крови")
 				if(cast_check(1))
-					R.word1=cultwords["destroy"]
-					R.word2=cultwords["see"]
-					R.word3=cultwords["blood"]
+					R.word1=cultwords["разрушение"]
+					R.word2=cultwords["видимость"]
+					R.word3=cultwords["кроаь"]
 					R.check_icon()
-			if("Communicate")
+			if("Связь")
 				if(cast_check(1))
-					R.word1=cultwords["self"]
-					R.word2=cultwords["other"]
-					R.word3=cultwords["technology"]
+					R.word1=cultwords["я"]
+					R.word2=cultwords["другое"]
+					R.word3=cultwords["технологии"]
 					R.check_icon()
-			if("Stun")
+			if("Стан")
 				if(cast_check(1))
-					R.word1=cultwords["join"]
-					R.word2=cultwords["hide"]
-					R.word3=cultwords["technology"]
+					R.word1=cultwords["присоединение"]
+					R.word2=cultwords["скрытность"]
+					R.word3=cultwords["технологии"]
 					R.check_icon()
 	else
-		to_chat(user, "<span class='warning'> You do not have enough space to write a proper rune.</span>")
+		to_chat(user, "<span class='warning'> У вас недостаточно места, чтобы написать правильную руну.</span>")
 	return

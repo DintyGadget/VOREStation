@@ -8,10 +8,10 @@ var/datum/antagonist/loyalists/loyalists
 	bantype = "loyalist"
 	feedback_tag = "loyalist_objective"
 	antag_indicator = "loyal_head"
-	welcome_text = "You belong to the Company, body and soul. Preserve its interests against the conspirators amongst the crew."
+	welcome_text = "Вы принадлежите Компании душой и телом. Защищайте свои интересы от заговорщиков из команды экипажа."
 	antag_sound = 'sound/effects/antag_notice/general_goodie_alert.ogg'
-	victory_text = "The heads of staff remained at their posts! The loyalists win!"
-	loss_text = "The heads of staff did not stop the revolution!"
+	victory_text = "Руководители отделов остались на своих постах! Лоялисты побеждают!"
+	loss_text = "Руководители отделов не остановили революцию!"
 	victory_feedback_tag = "win - rev heads killed"
 	loss_feedback_tag = "loss - heads killed"
 	antaghud_indicator = "hudloyalist"
@@ -26,7 +26,7 @@ var/datum/antagonist/loyalists/loyalists
 	faction_role_text = "Loyalist"
 	faction_descriptor = "Company"
 	faction_verb = /mob/living/proc/convert_to_loyalist
-	faction_welcome = "Preserve NanoTrasen's interests against the traitorous recidivists amongst the crew. Protect the heads of staff with your life."
+	faction_welcome = "Защитите интересы NanoTrasen от предателей-рецидивистов среди членов экипажа. Защитите руководителей любой ценой."
 	faction_indicator = "loyal"
 	faction_invisible = 1
 	avoid_silicons = TRUE
@@ -44,5 +44,5 @@ var/datum/antagonist/loyalists/loyalists
 			continue
 		var/datum/objective/protect/loyal_obj = new
 		loyal_obj.target = player.mind
-		loyal_obj.explanation_text = "Protect [player.real_name], the [player.mind.assigned_role]."
+		loyal_obj.explanation_text = "Защитите [player.real_name], [player.mind.assigned_role]."
 		global_objectives += loyal_obj

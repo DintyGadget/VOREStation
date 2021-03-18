@@ -11,24 +11,24 @@
 	path = /obj/item/ammo_magazine/s357
 
 /datum/uplink_item/item/ammo/mc9mm_compact
-	name = "Compact Pistol Magazine (9mm)"
+	name = "Малый пистолетный магазин (9 мм)"
 	path = /obj/item/ammo_magazine/m9mm/compact
 
 /datum/uplink_item/item/ammo/mc9mm
-	name = "Pistol Magazine (9mm)"
+	name = "Пистолетный магазин (9 мм)"
 	path = /obj/item/ammo_magazine/m9mm
 
 /datum/uplink_item/item/ammo/mc9mm_large
-	name = "Large Capacity Pistol Magazine (9mm)"
+	name = "Большой пистолетный магазин (9 мм)"
 	path = /obj/item/ammo_magazine/m9mm/large
 	item_cost = 40
 
 /datum/uplink_item/item/ammo/c45m
-	name = "Pistol Magazine (.45)"
+	name = "Пистолетный магазин (.45)"
 	path = /obj/item/ammo_magazine/m45
 
 /datum/uplink_item/item/ammo/c45map
-	name = "Pistol Magazine (.45 AP)"
+	name = "Пистолетный магазин (.45 AP)"
 	path = /obj/item/ammo_magazine/m45/ap
 
 /datum/uplink_item/item/ammo/s45m
@@ -40,20 +40,20 @@
 	path = /obj/item/ammo_magazine/s45/ap
 
 /datum/uplink_item/item/ammo/tommymag
-	name = "Tommy Gun Magazine (.45)"
+	name = "Магазин Tommy Gun (.45)"
 	path = /obj/item/ammo_magazine/m45tommy
 
 /datum/uplink_item/item/ammo/tommymagap
-	name = "Tommy Gun Magazine (.45 AP)"
+	name = "Магазин Tommy Gun (.45 AP)"
 	path = /obj/item/ammo_magazine/m45tommy/ap
 
 /datum/uplink_item/item/ammo/tommydrum
-	name = "Tommy Gun Drum Magazine (.45)"
+	name = "Магазин Tommy Gun Drum (.45)"
 	path = /obj/item/ammo_magazine/m45tommydrum
 	item_cost = 40
 
 /datum/uplink_item/item/ammo/tommydrumap
-	name = "Tommy Gun Drum Magazine (.45 AP)"
+	name = "Магазин Tommy Gun Drum (.45 AP)"
 	path = /obj/item/ammo_magazine/m45tommydrum/ap
 
 /datum/uplink_item/item/ammo/darts

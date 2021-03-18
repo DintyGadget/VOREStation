@@ -23,22 +23,22 @@
 	)
 
 /obj/item/weapon/storage/box/explorerkeys
-	name = "box of volunteer headsets"
-	desc = "A box full of volunteer headsets, for issuing out to exploration volunteers."
+	name = "Коробка волонтёрских гарнитур"
+	desc = "Коробка, забитая доверху волонтёрскими гарнитурами, выдаваемыми желающим поучаствовать в экспедиции."
 	starts_with = list(/obj/item/device/radio/headset/volunteer = 7)
 
 /obj/item/weapon/storage/box/commandkeys
-	name = "box of command keys"
-	desc = "A box full of command keys, for command to give out as necessary."
+	name = "Коробка ключей Управления"
+	desc = "Коробка ключей шифрования Управления, которые при необходимости могут выдавать руководители."
 	starts_with = list(/obj/item/device/encryptionkey/headset_com = 7)
 
 /obj/item/weapon/storage/box/servicekeys
-	name = "box of service keys"
-	desc = "A box full of service keys, for the HoP to give out as necessary."
+	name = "Коробка ключей сервиса"
+	desc = "Коробка ключей шифрования сервиса, которые при необходимости может выдавать Глава персонала."
 	starts_with = list(/obj/item/device/encryptionkey/headset_service = 7)
 
 /obj/item/weapon/storage/box/survival/space
-	name = "boxed emergency suit and helmet"
+	name = "Коробка с аварийным скафандром"
 	icon_state = "survivaleng"
 	starts_with = list(
 		/obj/item/clothing/suit/space/emergency,

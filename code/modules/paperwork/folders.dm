@@ -1,6 +1,6 @@
 /obj/item/weapon/folder
 	name = "folder"
-	desc = "A folder."
+	desc = "Папка для бумаг."
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "folder"
 	w_class = ITEMSIZE_SMALL
@@ -9,51 +9,51 @@
 	pickup_sound = 'sound/items/pickup/paper.ogg'
 
 /obj/item/weapon/folder/blue
-	desc = "A blue folder."
+	desc = "Синяя папка."
 	icon_state = "folder_blue"
 
 /obj/item/weapon/folder/red
-	desc = "A red folder."
+	desc = "Красная папка."
 	icon_state = "folder_red"
 
 /obj/item/weapon/folder/yellow
-	desc = "A yellow folder."
+	desc = "Желтая папка."
 	icon_state = "folder_yellow"
 
 /obj/item/weapon/folder/white
-	desc = "A white folder."
+	desc = "Белая папка."
 	icon_state = "folder_white"
 
 /obj/item/weapon/folder/blue_captain
-	desc = "A blue folder with Site Manager markings."
+	desc = "Синяя папка с пометкой Директора Колонии."
 	icon_state = "folder_captain"
 
 /obj/item/weapon/folder/blue_hop
-	desc = "A blue folder with HoP markings."
+	desc = "Синяя папка с пометкой Главы Персонала."
 	icon_state = "folder_hop"
 
 /obj/item/weapon/folder/white_cmo
-	desc = "A white folder with CMO markings."
+	desc = "Белая папка с пометкой Главврача."
 	icon_state = "folder_cmo"
 
 /obj/item/weapon/folder/white_rd
-	desc = "A white folder with RD markings."
+	desc = "Белая папка с пометкой Директора Исследований."
 	icon_state = "folder_rd"
 
 /obj/item/weapon/folder/white_rd/New()
 	//add some memos
 	var/obj/item/weapon/paper/P = new()
-	P.name = "Memo RE: proper analysis procedure"
-	P.info = "<br>We keep test dummies in pens here for a reason"
+	P.name = "Заметка: правильная процедура анализа"
+	P.info = "<br>У нас не просто так здесь бумажки для примера."
 	src.contents += P
 	update_icon()
 
 /obj/item/weapon/folder/yellow_ce
-	desc = "A yellow folder with CE markings."
+	desc = "Желтая папка с пометкой Главного Инженера."
 	icon_state = "folder_ce"
 
 /obj/item/weapon/folder/red_hos
-	desc = "A red folder with HoS markings."
+	desc = "Красная папка с поменткой Главы Службы Безопасности."
 	icon_state = "folder_hos"
 
 /obj/item/weapon/folder/update_icon()
@@ -66,23 +66,23 @@
 	if(istype(W, /obj/item/weapon/paper) || istype(W, /obj/item/weapon/photo) || istype(W, /obj/item/weapon/paper_bundle))
 		user.drop_item()
 		W.loc = src
-		to_chat(user, "<span class='notice'>You put the [W] into \the [src].</span>")
+		to_chat(user, "<span class='notice'>Вы складываете [W] в папку.</span>")
 		update_icon()
 	else if(istype(W, /obj/item/weapon/pen))
-		var/n_name = sanitizeSafe(input(usr, "What would you like to label the folder?", "Folder Labelling", null)  as text, MAX_NAME_LEN)
+		var/n_name = sanitizeSafe(input(usr, "Как Вы хотите пометить эту папку?", "Пометка Папки", null)  as text, MAX_NAME_LEN)
 		if((loc == usr && usr.stat == 0))
-			name = "folder[(n_name ? text("- '[n_name]'") : null)]"
+			name = "папка[(n_name ? text("- '[n_name]'") : null)]"
 	return
 
 /obj/item/weapon/folder/attack_self(mob/user as mob)
-	var/dat = "<title>[name]</title>"
+	var/dat = "<meta charset=\"utf-8\"><title>[name]</title>"
 
 	for(var/obj/item/weapon/paper/P in src)
-		dat += "<A href='?src=\ref[src];remove=\ref[P]'>Remove</A> <A href='?src=\ref[src];rename=\ref[P]'>Rename</A> - <A href='?src=\ref[src];read=\ref[P]'>[P.name]</A><BR>"
+		dat += "<A href='?src=\ref[src];remove=\ref[P]'>Убрать</A> <A href='?src=\ref[src];rename=\ref[P]'>Переименовать</A> - <A href='?src=\ref[src];read=\ref[P]'>[P.name]</A><BR>"
 	for(var/obj/item/weapon/photo/Ph in src)
-		dat += "<A href='?src=\ref[src];remove=\ref[Ph]'>Remove</A> <A href='?src=\ref[src];rename=\ref[Ph]'>Rename</A> - <A href='?src=\ref[src];look=\ref[Ph]'>[Ph.name]</A><BR>"
+		dat += "<A href='?src=\ref[src];remove=\ref[Ph]'>Убрать</A> <A href='?src=\ref[src];rename=\ref[Ph]'>Переименовать</A> - <A href='?src=\ref[src];look=\ref[Ph]'>[Ph.name]</A><BR>"
 	for(var/obj/item/weapon/paper_bundle/Pb in src)
-		dat += "<A href='?src=\ref[src];remove=\ref[Pb]'>Remove</A> <A href='?src=\ref[src];rename=\ref[Pb]'>Rename</A> - <A href='?src=\ref[src];browse=\ref[Pb]'>[Pb.name]</A><BR>"
+		dat += "<A href='?src=\ref[src];remove=\ref[Pb]'>Убрать</A> <A href='?src=\ref[src];rename=\ref[Pb]'>Переименовать</A> - <A href='?src=\ref[src];browse=\ref[Pb]'>[Pb.name]</A><BR>"
 	user << browse(dat, "window=folder")
 	onclose(user, "folder")
 	add_fingerprint(usr)

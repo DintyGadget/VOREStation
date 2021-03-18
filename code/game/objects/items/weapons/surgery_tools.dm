@@ -9,8 +9,8 @@
  */
 
 /obj/item/weapon/surgical
-	name = "Surgical tool"
-	desc = "This shouldn't be here, ahelp it."
+	name = "Хирургический инструмент"
+	desc = "Вы по идее не должны этого видеть, напишите в админхелп."
 	icon = 'icons/obj/surgery.dmi'
 	w_class = ITEMSIZE_SMALL
 	drop_sound = 'sound/items/drop/weldingtool.ogg'
@@ -27,8 +27,8 @@
  */
 
 /obj/item/weapon/surgical/retractor
-	name = "retractor"
-	desc = "Retracts stuff."
+	name = "Расширитель"
+	desc = "Расширяет там всякое."
 	icon_state = "retractor"
 	matter = list(DEFAULT_WALL_MATERIAL = 10000, "glass" = 5000)
 	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
@@ -38,53 +38,53 @@
  * Hemostat
  */
 /obj/item/weapon/surgical/hemostat
-	name = "hemostat"
-	desc = "You think you have seen this before."
+	name = "Зажим"
+	desc = "Где-то Вы это уже видели."
 	icon_state = "hemostat"
 	matter = list(DEFAULT_WALL_MATERIAL = 5000, "glass" = 2500)
 	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
-	attack_verb = list("attacked", "pinched")
+	attack_verb = list("ударяет", "зажимает")
 	drop_sound = 'sound/items/drop/scrap.ogg'
 
 /*
  * Cautery
  */
 /obj/item/weapon/surgical/cautery
-	name = "cautery"
-	desc = "This stops bleeding."
+	name = "Каутер"
+	desc = "Позволяет остановить кровотечение."
 	icon_state = "cautery"
 	matter = list(DEFAULT_WALL_MATERIAL = 5000, "glass" = 2500)
 	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
-	attack_verb = list("burnt")
+	attack_verb = list("обжигает")
 	drop_sound = 'sound/items/drop/scrap.ogg'
 
 /*
  * Surgical Drill
  */
 /obj/item/weapon/surgical/surgicaldrill
-	name = "surgical drill"
-	desc = "You can drill using this item. You dig?"
+	name = "Хирургическая дрель"
+	desc = "Этим предметом можно сверлить. Ну не просто взглядом же."
 	icon_state = "drill"
 	hitsound = 'sound/weapons/circsawhit.ogg'
 	matter = list(DEFAULT_WALL_MATERIAL = 15000, "glass" = 10000)
 	force = 15.0
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
-	attack_verb = list("drilled")
+	attack_verb = list("сверлит")
 	drop_sound = 'sound/items/drop/accessory.ogg'
 
 	suicide_act(mob/user)
 		var/datum/gender/TU = gender_datums[user.get_visible_gender()]
-		to_chat(viewers(user),pick("<span class='danger'>\The [user] is pressing \the [src] to [TU.his] temple and activating it! It looks like [TU.hes] trying to commit suicide.</span>",
-		                       "<span class='danger'>\The [user] is pressing \the [src] to [TU.his] chest and activating it! It looks like [TU.hes] trying to commit suicide.</span>"))
+		to_chat(viewers(user),pick("<span class='danger'>[user] [ru_g_mob(user, "прижал")] [ru_getcase(src, "acase")] к своим вискам и нажимает на кнопку! Похоже, [TU.ru_g_ncase] [ru_g_mob(user, "пыта", "ется", "ется", "ется", "ются")] совершить самоубийство.</span>",
+		                       "<span class='danger'>[user] [ru_g_mob(user, "прижал")] [ru_getcase(src, "acase")] к своей груди и нажимает на кнопку! Похоже, [TU.ru_g_ncase] [ru_g_mob(user, "пыта", "ется", "ется", "ется", "ются")] совершить самоубийство.</span>"))
 		return (BRUTELOSS)
 
 /*
  * Scalpel
  */
 /obj/item/weapon/surgical/scalpel
-	name = "scalpel"
-	desc = "Cut, cut, and once more cut."
+	name = "Скальпель"
+	desc = "Режьте, режьте и ещё раз режьте."
 	icon_state = "scalpel"
 	force = 10.0
 	sharp = 1
@@ -96,48 +96,48 @@
 	throw_range = 5
 	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
 	matter = list(DEFAULT_WALL_MATERIAL = 10000, "glass" = 5000)
-	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	attack_verb = list("нападает", "режет", "зарезает", "разрубает", "ранит", "шинкует")
 	drop_sound = 'sound/items/drop/knife.ogg'
 
 	suicide_act(mob/user)
 		var/datum/gender/TU = gender_datums[user.get_visible_gender()]
-		to_chat(viewers(user),pick("<span class='danger'>\The [user] is slitting [TU.his] wrists with the [src.name]! It looks like [TU.hes] trying to commit suicide.</span>", \
-		                      "<span class='danger'>\The [user] is slitting [TU.his] throat with the [src.name]! It looks like [TU.hes] trying to commit suicide.</span>", \
-		                      "<span class='danger'>\The [user] is slitting [TU.his] stomach open with the [src.name]! It looks like [TU.hes] trying to commit seppuku.</span>"))
+		to_chat(viewers(user),pick("<span class='danger'>[user] [ru_g_mob(user, "перерезал")] свои запястья при помощи [ru_getcase(src, "gcase")]! Похоже, [TU.ru_g_ncase] [ru_g_mob(user, "пыта", "ется", "ется", "ется", "ются")] совершить самоубийство.</span>", \
+		                      "<span class='danger'>[user] [ru_g_mob(user, "перерезал")] себе глотку при помощи [ru_getcase(src, "gcase")]! Похоже, [TU.ru_g_ncase] [ru_g_mob(user, "пыта", "ется", "ется", "ется", "ются")] совершить самоубийство.</span>", \
+		                      "<span class='danger'>[user] [ru_g_mob(user, "вскрыл")] себе живот при помощи [ru_getcase(src, "gcase")]! Похоже, [TU.ru_g_ncase] [ru_g_mob(user, "пыта", "ется", "ется", "ется", "ются")] совершить сеппуку.</span>"))
 		return (BRUTELOSS)
 
 /*
  * Researchable Scalpels
  */
 /obj/item/weapon/surgical/scalpel/laser1
-	name = "laser scalpel"
-	desc = "A scalpel augmented with a directed laser, for more precise cutting without blood entering the field.  This one looks basic and could be improved."
+	name = "Лазерный скальпель"
+	desc = "Скальпель с направленным лазером для более точной резки без попадания крови. Этот скальпель на вид довольно простой и может быть улучшен."
 	icon_state = "scalpel_laser1_on"
 	damtype = "fire"
 
 /obj/item/weapon/surgical/scalpel/laser2
-	name = "laser scalpel"
-	desc = "A scalpel augmented with a directed laser, for more precise cutting without blood entering the field.  This one looks somewhat advanced."
+	name = "Лазерный скальпель"
+	desc = "Скальпель с направленным лазером для более точной резки без попадания крови. Этот скальпель выглядит более-менее продвинутым."
 	icon_state = "scalpel_laser2_on"
 	damtype = "fire"
 	force = 12.0
 
 /obj/item/weapon/surgical/scalpel/laser3
-	name = "laser scalpel"
-	desc = "A scalpel augmented with a directed laser, for more precise cutting without blood entering the field.  This one looks to be the pinnacle of precision energy cutlery!"
+	name = "Лазерный скальпель"
+	desc = "Скальпель с направленным лазером для более точной резки без попадания крови на поле. Этот скальпель выглядит как лучшее, чего смогла достичь индустрия высокоточной резки!"
 	icon_state = "scalpel_laser3_on"
 	damtype = "fire"
 	force = 15.0
 
 /obj/item/weapon/surgical/scalpel/manager
-	name = "incision management system"
-	desc = "A true extension of the surgeon's body, this marvel instantly and completely prepares an incision allowing for the immediate commencement of therapeutic steps."
+	name = "Инструмент высокоточных надрезов"
+	desc = "Самый лучший друг хирурга: это чудо науки моментально подготавливает надрез за него, позволяя пропустить некоторые шаги в операции."
 	icon_state = "scalpel_manager_on"
 	force = 7.5
 
 /obj/item/weapon/surgical/scalpel/ripper
-	name = "organ pincers"
-	desc = "A horrifying bladed tool with a large metal spike in its center. The tool is used for rapidly removing organs from hopefully willing patients."
+	name = "Щипцы для органов"
+	desc = "Ужасающий инструмент с лезвиями и большим металлическим шипом в центре. Инструмент используется для быстрого удаления органов у пациентов -- желательно, с их согласием."
 	icon_state = "organ_ripper"
 	item_state = "bone_setter"
 	force = 15.0
@@ -148,8 +148,8 @@
  * Circular Saw
  */
 /obj/item/weapon/surgical/circular_saw
-	name = "circular saw"
-	desc = "For heavy duty cutting."
+	name = "Циркулярная пила"
+	desc = "Для проведения операций тяжёлой резки."
 	icon_state = "saw3"
 	hitsound = 'sound/weapons/circsawhit.ogg'
 	drop_sound = 'sound/items/drop/accessory.ogg'
@@ -160,13 +160,13 @@
 	throw_range = 5
 	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
 	matter = list(DEFAULT_WALL_MATERIAL = 20000,"glass" = 10000)
-	attack_verb = list("attacked", "slashed", "sawed", "cut")
+	attack_verb = list("атакует", "разрубает", "пилит", "режет")
 	sharp = 1
 	edge = 1
 
 /obj/item/weapon/surgical/circular_saw/manager
-	name = "energetic bone diverter"
-	desc = "For heavy duty cutting (and sealing), with science!"
+	name = "Энергетический разделитель костей"
+	desc = "Для проведения операций тяжёлой резки (и запечатывания) силой науки!"
 	icon_state = "adv_saw"
 	item_state = "saw3"
 	hitsound = 'sound/weapons/emitter2.ogg'
@@ -174,21 +174,21 @@
 	w_class = ITEMSIZE_LARGE
 	origin_tech = list(TECH_BIO = 4, TECH_MATERIAL = 6, TECH_MAGNET = 6)
 	matter = list(DEFAULT_WALL_MATERIAL = 12500)
-	attack_verb = list("attacked", "slashed", "seared", "cut")
+	attack_verb = list("ударяет", "разрезает", "обжигает", "разрубает")
 	toolspeed = 0.75
 
 //misc, formerly from code/defines/weapons.dm
 /obj/item/weapon/surgical/bonegel
-	name = "bone gel"
-	desc = "For fixing bones."
+	name = "Костяной гель"
+	desc = "Для фиксации костей."
 	icon_state = "bone-gel"
 	force = 0
 	throwforce = 1.0
 	drop_sound = 'sound/items/drop/bottle.ogg'
 
 /obj/item/weapon/surgical/FixOVein
-	name = "FixOVein"
-	desc = "Like bone gel. For veins."
+	name = "Веночинитель"
+	desc = "Как костяной гель. Только для вен."
 	icon_state = "fixovein"
 	force = 0
 	throwforce = 1.0
@@ -197,25 +197,25 @@
 	drop_sound = 'sound/items/drop/accessory.ogg'
 
 /obj/item/weapon/surgical/bonesetter
-	name = "bone setter"
-	desc = "Put them in their place."
+	name = "Располагатель костей"
+	desc = "Вставляет их на место."
 	icon_state = "bone_setter"
 	force = 8.0
 	throwforce = 9.0
 	throw_speed = 3
 	throw_range = 5
-	attack_verb = list("attacked", "hit", "bludgeoned")
+	attack_verb = list("ударяет", "врезает", "стукает")
 	drop_sound = 'sound/items/drop/scrap.ogg'
 
 /obj/item/weapon/surgical/bone_clamp
-	name = "bone clamp"
-	desc = "The best way to get a bone fixed fast."
+	name = "Костяной зажим"
+	desc = "Самый надёжный способ исправить кость быстро."
 	icon_state = "bone_clamp"
 	force = 8
 	throwforce = 9
 	throw_speed = 3
 	throw_range = 5
-	attack_verb = list("attacked", "hit", "bludgeoned")
+	attack_verb = list("ударяет", "врезает", "стукает")
 
 // Cyborg Tools
 

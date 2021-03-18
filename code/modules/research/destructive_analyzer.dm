@@ -7,7 +7,7 @@ Note: Must be placed within 3 tiles of the R&D Console
 */
 
 /obj/machinery/r_n_d/destructive_analyzer
-	name = "destructive analyzer"
+	name = "деструктивный анализатор"
 	icon_state = "d_analyzer"
 	var/obj/item/weapon/loaded_item = null
 	var/decon_mod = 0
@@ -70,7 +70,7 @@ Note: Must be placed within 3 tiles of the R&D Console
 		loaded_item = O
 		user.drop_item()
 		O.loc = src
-		to_chat(user, "<span class='notice'>You add \the [O] to \the [src].</span>")
+		to_chat(user, "<span class='notice'>Вы добавляете [O] в [src].</span>")
 		flick("d_analyzer_la", src)
 		spawn(10)
 			update_icon()

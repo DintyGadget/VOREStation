@@ -10,8 +10,8 @@
  * Pens
  */
 /obj/item/weapon/pen
-	desc = "It's a normal black ink pen."
-	name = "pen"
+	desc = "Обыкновенная ручка с черными чернилами."
+	name = "ручка"
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "pen"
 	item_state = "pen"
@@ -30,30 +30,30 @@
 	if(!user.checkClickCooldown())
 		return
 	user.setClickCooldown(1 SECOND)
-	to_chat(user, "<span class='notice'>Click.</span>")
+	to_chat(user, "<span class='notice'>Щёлк.</span>")
 	playsound(src, 'sound/items/penclick.ogg', 50, 1)
 
 /obj/item/weapon/pen/blue
-	desc = "It's a normal blue ink pen."
+	desc = "Обыкновенная ручка с синими чернилами."
 	icon_state = "pen_blue"
 	colour = "blue"
 
 /obj/item/weapon/pen/red
-	desc = "It's a normal red ink pen."
+	desc = "Обыкновенная ручка с красными чернилами."
 	icon_state = "pen_red"
 	colour = "red"
 
 /obj/item/weapon/pen/fountain
-	desc = "A well made fountain pen."
+	desc = "Качественная перьевая ручка."
 	icon_state = "pen_fountain"
 
 /obj/item/weapon/pen/multi
-	desc = "It's a pen with multiple colors of ink!"
+	desc = "Ручка с несколькими цветами чернил!"
 	var/selectedColor = 1
 	var/colors = list("black","blue","red")
 
 /obj/item/weapon/pen/AltClick(mob/user)
-	to_chat(user, "<span class='notice'>Click.</span>")
+	to_chat(user, "<span class='notice'>Щёлк.</span>")
 	playsound(src, 'sound/items/penclick.ogg', 50, 1)
 	return
 
@@ -68,10 +68,10 @@
 	else
 		icon_state = "pen_[colour]"
 
-	to_chat(user, "<span class='notice'>Changed color to '[colour].'</span>")
+	to_chat(user, "<span class='notice'>Вы поменяли цвет чернил в ручке.</span>")
 
 /obj/item/weapon/pen/invisible
-	desc = "It's an invisble pen marker."
+	desc = "Ручка с прозрачными чернилами."
 	icon_state = "pen"
 	colour = "white"
 
@@ -106,10 +106,9 @@
  */
 
 /obj/item/weapon/pen/blade
-	desc = "It's a normal black ink pen."
-	description_antag = "This pen can be transformed into a dangerous melee and thrown assassination weapon with an Alt-Click.\
-	When active, it cannot be caught safely."
-	name = "pen"
+	desc = "Обыкновенная ручка с черными чернилами."
+	description_antag = "Альт+клик превращает эту ручку в смертоносное метательное оружие ближнего боя. Поймать его без вреда не возможно."
+	name = "ручка"
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "pen"
 	item_state = "pen"
@@ -140,7 +139,7 @@
 	else
 		activate(user)
 
-	to_chat(user, "<span class='notice'>You [active ? "de" : ""]activate \the [src]'s blade.</span>")
+	to_chat(user, "<span class='notice'>Вы [active ? "де" : ""]активируете лезвие в ручке.</span>")
 
 /obj/item/weapon/pen/blade/proc/activate(mob/living/user)
 	if(active)
@@ -158,10 +157,10 @@
 	catchable = FALSE
 
 	attack_verb |= list(\
-		"slashed",\
-		"cut",\
-		"shredded",\
-		"stabbed"\
+		"разрезает",\
+		"разрубает",\
+		"режет",\
+		"зарезает"\
 		)
 
 /obj/item/weapon/pen/blade/proc/deactivate(mob/living/user)
@@ -180,24 +179,24 @@
 	catchable = TRUE
 
 /obj/item/weapon/pen/blade/blue
-	desc = "It's a normal blue ink pen."
+	desc = "Обыкновенная ручка с синими чернилами."
 	icon_state = "pen_blue"
 	colour = "blue"
 
 /obj/item/weapon/pen/blade/red
-	desc = "It's a normal red ink pen."
+	desc = "Обыкновенная ручка с красными чернилами."
 	icon_state = "pen_red"
 	colour = "red"
 
 /obj/item/weapon/pen/blade/fountain
-	desc = "A well made fountain pen."
+	desc = "Качественная перьевая ручка."
 	icon_state = "pen_fountain"
 
 /*
  * Sleepy Pens
  */
 /obj/item/weapon/pen/reagent/sleepy
-	desc = "It's a black ink pen with a sharp point and a carefully engraved \"Waffle Co.\""
+	desc = "Черная ручка с острым стержнем и гравировкой \"Waffle Co.\"."
 	origin_tech = list(TECH_MATERIAL = 2, TECH_ILLEGAL = 5)
 
 /obj/item/weapon/pen/reagent/sleepy/New()
@@ -235,7 +234,7 @@
 	if(new_signature)
 		signature = new_signature
 	*/
-	signature = sanitize(input("Enter new signature. Leave blank for 'Anonymous'", "New Signature", signature))
+	signature = sanitize(input("Введите новую подпись. Оставьте поле пустым для анонимности.", "Новая подпись", signature))
 
 /obj/item/weapon/pen/proc/get_signature(var/mob/user)
 	return (user && user.real_name) ? user.real_name : "Anonymous"
@@ -244,33 +243,33 @@
 	return signature ? signature : "Anonymous"
 
 /obj/item/weapon/pen/chameleon/verb/set_colour()
-	set name = "Change Pen Colour"
+	set name = "Сменить Цвет Ручки"
 	set category = "Object"
 
-	var/list/possible_colours = list ("Yellow", "Green", "Pink", "Blue", "Orange", "Cyan", "Red", "Invisible", "Black")
-	var/selected_type = input("Pick new colour.", "Pen Colour", null, null) as null|anything in possible_colours
+	var/list/possible_colours = list ("Желтый", "Зеленый", "Розовый", "Синий", "Оранжевый", "Бирюзовый", "Красный", "Прозрачный", "Черный")
+	var/selected_type = input("Выберите новый цвет.", "Цвет Ручки", null, null) as null|anything in possible_colours
 
 	if(selected_type)
 		switch(selected_type)
-			if("Yellow")
+			if("Желтый")
 				colour = COLOR_YELLOW
-			if("Green")
+			if("Зеленый")
 				colour = COLOR_LIME
-			if("Pink")
+			if("Розовый")
 				colour = COLOR_PINK
-			if("Blue")
+			if("Синий")
 				colour = COLOR_BLUE
-			if("Orange")
+			if("Оранжевый")
 				colour = COLOR_ORANGE
-			if("Cyan")
+			if("Бирюзовый")
 				colour = COLOR_CYAN
-			if("Red")
+			if("Красный")
 				colour = COLOR_RED
-			if("Invisible")
+			if("Прозрачный")
 				colour = COLOR_WHITE
 			else
 				colour = COLOR_BLACK
-		to_chat(usr, "<span class='info'>You select the [lowertext(selected_type)] ink container.</span>")
+		to_chat(usr, "<span class='info'>Вы выбираете [lowertext(selected_type)] цвет ручки.</span>")
 
 
 /*
@@ -278,12 +277,12 @@
  */
 
 /obj/item/weapon/pen/crayon
-	name = "crayon"
-	desc = "A colourful crayon. Please refrain from eating it or putting it in your nose."
+	name = "восковой мелок"
+	desc = "Цветной мелок. Пожалуйста, не ешьте и не суйте его в нос."
 	icon = 'icons/obj/crayons.dmi'
 	icon_state = "crayonred"
 	w_class = ITEMSIZE_TINY
-	attack_verb = list("attacked", "coloured")
+	attack_verb = list("ударяет", "раскрашивает")
 	colour = "#FF0000" //RGB
 	var/shadeColour = "#220000" //RGB
 	var/uses = 30 //0 for unlimited uses
@@ -294,16 +293,16 @@
 
 /obj/item/weapon/pen/crayon/suicide_act(mob/user)
 	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
-	to_chat(viewers(user),"<font color='red'><b>[user] is jamming the [src.name] up [TU.his] nose and into [TU.his] brain. It looks like [TU.he] [TU.is] trying to commit suicide.</b></font>")
+	to_chat(viewers(user),"<font color='red'><b>[user] запихивает восковой мелок себе в нос и прямо к мозгу. Похоже, [TU.he] пытается покончить с собой.</b></font>")
 	return (BRUTELOSS|OXYLOSS)
 
 /obj/item/weapon/pen/crayon/New()
-	name = "[colourName] crayon"
+	name = "восковой мелок"
 
 /obj/item/weapon/pen/crayon/marker
-	name = "marker"
-	desc = "A chisel-tip permanent marker. Hopefully non-toxic."
+	name = "маркер"
+	desc = "Маркер с широким кончиком. Будем надеяться, что не токсичный."
 	icon_state = "markerred"
 
 /obj/item/weapon/pen/crayon/marker/New()
-	name = "[colourName] marker"
+	name = "[colourName] маркер"

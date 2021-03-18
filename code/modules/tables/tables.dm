@@ -93,11 +93,11 @@ var/list/table_icon_cache = list()
 	if(health < maxhealth)
 		switch(health / maxhealth)
 			if(0.0 to 0.5)
-				. += "<span class='warning'>It looks severely damaged!</span>"
+				. += "<span class='warning'>Выглядит сильно поврежденным!</span>"
 			if(0.25 to 0.5)
-				. += "<span class='warning'>It looks damaged!</span>"
+				. += "<span class='warning'>Выглядит поврежденным!</span>"
 			if(0.5 to 1.0)
-				. += "<span class='notice'>It has a few scrapes and dents.</span>"
+				. += "<span class='notice'>На нем есть несколько царапин и вмятин.</span>"
 
 /obj/structure/table/attackby(obj/item/weapon/W, mob/user)
 

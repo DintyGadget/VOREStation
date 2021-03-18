@@ -9,51 +9,51 @@ var/global/const
 	ID = "none" // ID of the skill, used in code
 	name = "None" // name of the skill
 	desc = "Placeholder skill" // detailed description of the skill
-	field = "Misc" // the field under which the skill will be listed
+	field = "Другое" // the field under which the skill will be listed
 	secondary = 0 // secondary skills only have two levels and cost significantly less
 
 var/global/list/SKILLS = null
-var/list/SKILL_ENGINEER = list("field" = "Engineering", "EVA" = SKILL_BASIC, "construction" = SKILL_ADEPT, "electrical" = SKILL_BASIC, "engines" = SKILL_ADEPT)
-var/list/SKILL_ORGAN_ROBOTICIST = list("field" = "Science", "devices" = SKILL_ADEPT, "electrical" = SKILL_BASIC, "computer" = SKILL_ADEPT, "anatomy" = SKILL_BASIC)
-var/list/SKILL_SECURITY_OFFICER = list("field" = "Security", "combat" = SKILL_BASIC, "weapons" = SKILL_ADEPT, "law" = SKILL_ADEPT, "forensics" = SKILL_BASIC)
-var/list/SKILL_CHEMIST = list("field" = "Science", "chemistry" = SKILL_ADEPT, "science" = SKILL_ADEPT, "medical" = SKILL_BASIC, "devices" = SKILL_BASIC)
-var/global/list/SKILL_PRE = list("Engineer" = SKILL_ENGINEER, "Roboticist" = SKILL_ORGAN_ROBOTICIST, "Security Officer" = SKILL_SECURITY_OFFICER, "Chemist" = SKILL_CHEMIST)
+var/list/SKILL_ENGINEER = list("field" = "Инженерное дело", "EVA" = SKILL_BASIC, "construction" = SKILL_ADEPT, "electrical" = SKILL_BASIC, "engines" = SKILL_ADEPT)
+var/list/SKILL_ORGAN_ROBOTICIST = list("field" = "Наука", "devices" = SKILL_ADEPT, "electrical" = SKILL_BASIC, "computer" = SKILL_ADEPT, "anatomy" = SKILL_BASIC)
+var/list/SKILL_SECURITY_OFFICER = list("field" = "Безопасность", "combat" = SKILL_BASIC, "weapons" = SKILL_ADEPT, "law" = SKILL_ADEPT, "forensics" = SKILL_BASIC)
+var/list/SKILL_CHEMIST = list("field" = "Наука", "chemistry" = SKILL_ADEPT, "science" = SKILL_ADEPT, "medical" = SKILL_BASIC, "devices" = SKILL_BASIC)
+var/global/list/SKILL_PRE = list("Инженер" = SKILL_ENGINEER, "Робототехник" = SKILL_ORGAN_ROBOTICIST, "Офицер безопасности" = SKILL_SECURITY_OFFICER, "Химик" = SKILL_CHEMIST)
 
 /datum/skill/management
 	ID = "management"
-	name = "Command"
-	desc = "Your ability to manage and commandeer other crew members."
+	name = "Командование"
+	desc = "Ваша способность распоряжаться и управлять другими членами экипажа."
 
 /datum/skill/combat
 	ID = "combat"
-	name = "Close Combat"
-	desc = "This skill describes your training in hand-to-hand combat or melee weapon usage. While expertise in this area is rare in the era of firearms, experts still exist among athletes."
-	field = "Security"
+	name = "Ближний бой"
+	desc = "Этот навык описывает Вашу подготовку в рукопашном бою и владение оружием ближнего боя. Хотя опыт в этой области редок в эпоху огнестрельного оружия, среди атлетов существуют и эксперты."
+	field = "Безопасность"
 
 /datum/skill/weapons
 	ID = "weapons"
-	name = "Weapons Expertise"
-	desc = "This skill describes your expertise with and knowledge of weapons. A low level in this skill implies knowledge of simple weapons, for example tazers and flashes. A high level in this skill implies knowledge of complex weapons, such as grenades, riot shields, pulse rifles or bombs. A low level in this skill is typical for security officers, a high level of this skill is typical for special agents and soldiers."
-	field = "Security"
+	name = "Дальний бой"
+	desc = "Этот навык описывает Ваше знания оружия и опыт в его использовании. Низкий уровень этого навыка подразумевает знание простого оружия, например, тазеров и вспышек. Высокий уровень в этом навыке подразумевает знание сложного оружия, такого как гранаты, щиты, боеприпасы или бомбы. Низкий уровень этого навыка типичен для офицеров безопасности, высокий уровень этого навыка типичен для специальных агентов и солдат."
+	field = "Безопасность"
 
 /datum/skill/EVA
 	ID = "EVA"
-	name = "Extra-vehicular activity"
-	desc = "This skill describes your skill and knowledge of space-suits and working in vacuum."
-	field = "Engineering"
+	name = "Внекорабельная деятельность"
+	desc = "Этот навык описывает Ваши навыки работы в открытом космосе, а также знания скафандров."
+	field = "Инженерное дело"
 	secondary = 1
 
 /datum/skill/forensics
 	ID = "forensics"
-	name = "Forensics"
-	desc = "Describes your skill at performing forensic examinations and identifying vital evidence. Does not cover analytical abilities, and as such isn't the only indicator for your investigation skill. Note that in order to perform autopsy, the surgery skill is also required."
-	field = "Security"
+	name = "Криминалистика"
+	desc = "Описывает Ваши навыки в проведении судебных экспертиз и выявлении жизненно важных доказательств. Не распространяется на аналитические способности, и, как таковой, не является единственным показателем Ваших навыков исследования. Обратите внимание, что для выполнения вскрытия также требуется навык хирургии."
+	field = "Безопасность"
 
 /datum/skill/construction
 	ID = "construction"
-	name = "Construction"
-	desc = "Your ability to construct various buildings, such as walls, floors, tables and so on. Note that constructing devices such as APCs additionally requires the Electronics skill. A low level of this skill is typical for janitors, a high level of this skill is typical for engineers."
-	field = "Engineering"
+	name = "Строительство"
+	desc = "Ваша способность конструировать стены, полы, столы и так далее. Обратите внимание, что для создания таких устройств, как APC, требуется навык электроники. Низкий уровень этого навыка характерен для уборщиков, высокий уровень этого навыка характерен для инженеров."
+	field = "Инженерное дело"
 
 /datum/skill/management
 	ID = "management"
@@ -62,93 +62,93 @@ var/global/list/SKILL_PRE = list("Engineer" = SKILL_ENGINEER, "Roboticist" = SKI
 
 /datum/skill/knowledge/law
 	ID = "law"
-	name = "Corporate Law"
-	desc = "Your knowledge of corporate law and procedures. This includes Corporate Regulations, as well as general station rulings and procedures. A low level in this skill is typical for security officers, a high level in this skill is typical for Site Managers."
-	field = "Security"
+	name = "Корпоративный Закон"
+	desc = "Ваше знание Корпоративного Закона и соответствующих процедур, а также других правил, установленных на данной станции. Низкий уровень этого навыка свойственнен офицерам службы безопасности, а высокий — Директорам Колонии."
+	field = "Безопасность"
 	secondary = 1
 
 /datum/skill/devices
 	ID = "devices"
-	name = "Complex Devices"
-	desc = "Describes the ability to assemble complex devices, such as computers, circuits, printers, robots or gas tank assemblies(bombs). Note that if a device requires electronics or programming, those skills are also required in addition to this skill."
-	field = "Science"
+	name = "Сложные устройства"
+	desc = "Описывает способность конструировать сложные механизмы, такие как компьютеры, микросхемы, принтеры, роботы и бомбы. Учтите, что если механизм требует электронику или программирование, для него потребуются соответствующие навыки."
+	field = "Наука"
 
 /datum/skill/electrical
 	ID = "electrical"
-	name = "Electrical Engineering"
-	desc = "This skill describes your knowledge of electronics and the underlying physics. A low level of this skill implies you know how to lay out wiring and configure powernets, a high level of this skill is required for working complex electronic devices such as circuits or bots."
-	field = "Engineering"
+	name = "Электротехника"
+	desc = "Этот навык описывает Ваше знание об электронике и связанной с ней физике. На низких уровнях этот навык открывает знание о том, как прокладывать проводку и настраивать электрические цепи, а на высоких - о том, как оперировать сложными электронными механизмами, таких как микросхемы или боты."
+	field = "Инженерное дело"
 
 /datum/skill/atmos
 	ID = "atmos"
-	name = "Atmospherics"
-	desc = "Describes your knowledge of piping, air distribution and gas dynamics."
-	field = "Engineering"
+	name = "Атмосфера"
+	desc = "Описывает Ваше знание о прокладывании труб, дистрибуции воздуха и динамике газов."
+	field = "Инженерное дело"
 
 /datum/skill/engines
 	ID = "engines"
-	name = "Engines"
-	desc = "Describes your knowledge of the various engine types common on space stations, such as the singularity or anti-matter engine."
-	field = "Engineering"
+	name = "Двигатели"
+	desc = "Описывает Ваше знание различных типов двигателей, распространенных на космических станциях, таких как двигатель Тесла или двигатель на основе суперматерии."
+	field = "Инженерное дело"
 	secondary = 1
 
 /datum/skill/computer
 	ID = "computer"
-	name = "Information Technology"
-	desc = "Describes your understanding of computers, software and communication. Not a requirement for using computers, but definitely helps. Used in telecommunications and programming of computers and AIs."
-	field = "Science"
+	name = "Компьютеры"
+	desc = "Описывает Ваше понимание компьютеров, программ и средств связи. Не требуется для использования компьютеров, но помогает. Используется для телекоммуникаций, программирования роботов и ИИ."
+	field = "Наука"
 
 /datum/skill/pilot
 	ID = "pilot"
-	name = "Heavy Machinery Operation"
-	desc = "Describes your experience and understanding of operating heavy machinery, which includes mechs and other large exosuits. Used in piloting mechs."
-	field = "Engineering"
+	name = "Пилотирование"
+	desc = "Описывает Ваши опыт и понимание в орудовании крупными машинами, таких как мехи или прочие крупные экзокостюмы. Используется в пилотировании мех."
+	field = "Инженерное дело"
 
 /datum/skill/medical
 	ID = "medical"
-	name = "Medicine"
-	desc = "Covers an understanding of the human body and medicine. At a low level, this skill gives a basic understanding of applying common types of medicine, and a rough understanding of medical devices like the health analyzer. At a high level, this skill grants exact knowledge of all the medicine available on the station, as well as the ability to use complex medical devices like the body scanner or mass spectrometer."
-	field = "Medical"
+	name = "Врачевание"
+	desc = "Сюда входит понимание человеческого тела и медицины. При низком уровне обученности этот навык открывает простейшее знание об оказании первой помощи и использовании медицинских приборов (например, анализатор здоровья). На высоком уровне, навык открывает точные знания обо всех доступных лекарствах, а также знание о сложных медицинских аппаратах (например, сканер тела или массовый спектрометр)."
+	field = "Медицина"
 
 /datum/skill/anatomy
 	ID = "anatomy"
-	name = "Anatomy"
-	desc = "Gives you a detailed insight of the human body. A high skill in this is required to perform surgery.This skill may also help in examining alien biology."
-	field = "Medical"
+	name = "Анатомия"
+	desc = "Открывает Вашему персонажу подробное знание человеческого тела. Высокий навык необходим для проведения хирургических операций. Этот навык также позволит лучше обследовать инопланетных существ."
+	field = "Медицина"
 
 /datum/skill/virology
 	ID = "virology"
-	name = "Virology"
-	desc = "This skill implies an understanding of microorganisms and their effects on humans."
-	field = "Medical"
+	name = "Вирусология"
+	desc = "Этот навык описывает понимание микроорганизмов и их воздействия на людей."
+	field = "Медицина"
 
 /datum/skill/genetics
 	ID = "genetics"
-	name = "Genetics"
-	desc = "Implies an understanding of how DNA works and the structure of the human DNA."
-	field = "Science"
+	name = "Генетика"
+	desc = "Описывает понимание принципов работы ДНК и структуры ДНК человека."
+	field = "Наука"
 
 /datum/skill/chemistry
 	ID = "chemistry"
-	name = "Chemistry"
-	desc = "Experience with mixing chemicals, and an understanding of what the effect will be. This doesn't cover an understanding of the effect of chemicals on the human body, as such the medical skill is also required for medical chemists."
-	field = "Science"
+	name = "Химия"
+	desc = "Опыт Вашего персонажа в проведении химических реакций, а также знание о получаемых продуктах. Сюда не входит знание о воздействии химикатов на тело, и поэтому фармацевтам также необходимо иметь навык врачевания."
+	field = "Наука"
 
 /datum/skill/botany
 	ID = "botany"
-	name = "Botany"
-	desc = "Describes how good a character is at growing and maintaining plants."
+	name = "Ботаника"
+	desc = "Описывает умение Вашего персонажа выращивать и содержать растения."
 
 /datum/skill/cooking
 	ID = "cooking"
-	name = "Cooking"
-	desc = "Describes a character's skill at preparing meals and other consumable goods. This includes mixing alcoholic beverages."
+	name = "Готовка"
+	desc = "Умение Вашего персонажа готовить еду и прочие употребляемые продукты. Сюда входит и смешивание алкогольных напитков."
 
 /datum/skill/science
 	ID = "science"
-	name = "Science"
-	desc = "Your experience and knowledge with scientific methods and processes."
-	field = "Science"
+	name = "Наука"
+	desc = "Знания и опыт Вашего персонажа в работе с методами научного исследования."
+	field = "Наука"
 
 /datum/attribute/var
 	ID = "none"
@@ -177,12 +177,12 @@ var/global/list/SKILL_PRE = list("Engineer" = SKILL_ENGINEER, "Roboticist" = SKI
 		setup_skills()
 
 	if(!M.skills || M.skills.len == 0)
-		to_chat(user, "There are no skills to display.")
+		to_chat(user, "Нет доступных навыков.")
 		return
 
-	var/HTML = "<body>"
-	HTML += "<b>Select your Skills</b><br>"
-	HTML += "Current skill level: <b>[M.GetSkillClass(M.used_skillpoints)]</b> ([M.used_skillpoints])<br>"
+	var/HTML = "<meta charset=\"utf-8\"><body>"
+	HTML += "<b>Настройте свои навыки в пределах разумного</b><br>"
+	HTML += "Текущий уровень навыков: <b>[M.GetSkillClass(M.used_skillpoints)]</b> ([M.used_skillpoints])<br>"
 	HTML += "<table>"
 	for(var/V in SKILLS)
 		HTML += "<tr><th colspan = 5><b>[V]</b>"
@@ -191,14 +191,14 @@ var/global/list/SKILL_PRE = list("Engineer" = SKILL_ENGINEER, "Roboticist" = SKI
 			var/level = M.skills[S.ID]
 			HTML += "<tr style='text-align:left;'>"
 			HTML += "<th>[S.name]</th>"
-			HTML += "<th><font color=[(level == SKILL_NONE) ? "red" : "black"]>\[Untrained\]</font></th>"
+			HTML += "<th><font color=[(level == SKILL_NONE) ? "red" : "black"]>\[Неопытный\]</font></th>"
 			// secondary skills don't have an amateur level
 			if(S.secondary)
 				HTML += "<th></th>"
 			else
-				HTML += "<th><font color=[(level == SKILL_BASIC) ? "red" : "black"]>\[Amateur\]</font></th>"
-			HTML += "<th><font color=[(level == SKILL_ADEPT) ? "red" : "black"]>\[Trained\]</font></th>"
-			HTML += "<th><font color=[(level == SKILL_EXPERT) ? "red" : "black"]>\[Professional\]</font></th>"
+				HTML += "<th><font color=[(level == SKILL_BASIC) ? "red" : "black"]>\[Любитель\]</font></th>"
+			HTML += "<th><font color=[(level == SKILL_ADEPT) ? "red" : "black"]>\[Обученный\]</font></th>"
+			HTML += "<th><font color=[(level == SKILL_EXPERT) ? "red" : "black"]>\[Профи\]</font></th>"
 			HTML += "</tr>"
 	HTML += "</table>"
 
@@ -208,6 +208,6 @@ var/global/list/SKILL_PRE = list("Engineer" = SKILL_ENGINEER, "Roboticist" = SKI
 
 /mob/living/carbon/human/verb/show_skills()
 	set category = "IC"
-	set name = "Show Own Skills"
+	set name = "Показать Собственные Навыки"
 
 	show_skill_window(src, src)

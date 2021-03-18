@@ -21,7 +21,7 @@ HALOGEN COUNTER	- Radcount on mobs
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 5
 	throw_range = 10
-	matter = list(DEFAULT_WALL_MATERIAL = 200, MAT_COPPER = 25)
+	matter = list(DEFAULT_WALL_MATERIAL = 200)
 	origin_tech = list(TECH_MAGNET = 1, TECH_BIO = 1)
 	var/mode = 1;
 	var/advscan = 0
@@ -42,31 +42,31 @@ HALOGEN COUNTER	- Radcount on mobs
 	scan_mob(M, user)
 
 /obj/item/device/healthanalyzer/proc/scan_mob(mob/living/M, mob/living/user)
-	var/dat = ""
+	var/dat = "<meta charset=\"utf-8\">"
 	if ((CLUMSY in user.mutations) && prob(50))
-		user.visible_message("<span class='warning'>\The [user] has analyzed the floor's vitals!</span>", "<span class='warning'>You try to analyze the floor's vitals!</span>")
-		dat += "Analyzing Results for the floor:<br>"
-		dat += "Overall Status: Healthy<br>"
-		dat += "\tDamage Specifics: 0-0-0-0<br>"
-		dat += "Key: Suffocation/Toxin/Burns/Brute<br>"
-		dat += "Body Temperature: ???"
+		user.visible_message("<span class='warning'>[user] проанализировал жизненно важные функции пола!</span>", "<span class='warning'>Вы пытаетесь проанализировать жизненно важные функции пола!</span>")
+		dat += "Анализ результатов для пола:<br>"
+		dat += "Общий статус: здоровый<br>"
+		dat += "\tОсобенности повреждений: 0-0-0-0<br>"
+		dat += "Ключевые слова: Удушение/Токсин/Ожоги/Повреждения<br>"
+		dat += "Температура тела: ???"
 		user.show_message("<span class='notice'>[dat]</span>", 1)
 		return
 	if (!(ishuman(user) || ticker) && ticker.mode.name != "monkey")
-		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
+		to_chat(user, "<span class='warning'>У вас не хватит на это сноровки!</span>")
 		return
 
 	flick("[icon_state]-scan", src)	//makes it so that it plays the scan animation on a succesful scan
-	user.visible_message("<span class='notice'>[user] has analyzed [M]'s vitals.</span>","<span class='notice'>You have analyzed [M]'s vitals.</span>")
+	user.visible_message("<span class='notice'>[user] анализирует жизненно важные функции [M].</span>","<span class='notice'>Вы проанализировали жизненно важные функции [M].</span>")
 
 	if (!ishuman(M) || M.isSynthetic())
 		//these sensors are designed for organic life
-		dat += "<span class='notice'>Analyzing Results for ERROR:\n\tOverall Status: ERROR<br>"
-		dat += "\tKey: <font color='cyan'>Suffocation</font>/<font color='green'>Toxin</font>/<font color='#FFA500'>Burns</font>/<font color='red'>Brute</font><br>"
-		dat += "\tDamage Specifics: <font color='cyan'>?</font> - <font color='green'>?</font> - <font color='#FFA500'>?</font> - <font color='red'>?</font><br>"
-		dat += "Body Temperature: [M.bodytemperature-T0C]&deg;C ([M.bodytemperature*1.8-459.67]&deg;F)</span><br>"
-		dat += "<span class='warning'>Warning: Blood Level ERROR: --% --cl.</span> <span class='notice'>Type: ERROR</span><br>"
-		dat += "<span class='notice'>Subject's pulse: <font color='red'>-- bpm.</font></span>"
+		dat += "<span class='notice'>Анализ результатов на наличие ОШИБКИ:\n\tОбщий статус: ОШИБКА<br>"
+		dat += "\tКлючи: <font color='cyan'>Удушение</font>/<font color='green'>Токсин</font>/<font color='#FFA500'>Ожоги</font>/<font color='red'>Повреждения</font><br>"
+		dat += "\tОсобенности повреждений: <font color='cyan'>?</font> - <font color='green'>?</font> - <font color='#FFA500'>?</font> - <font color='red'>?</font><br>"
+		dat += "Температура тела: [M.bodytemperature-T0C]&deg;C ([M.bodytemperature*1.8-459.67]&deg;F)</span><br>"
+		dat += "<span class='warning'>Предупреждение: ОШИБКА уровня крови: --% --cl.</span> <span class='notice'>Тип: ОШИБКА</span><br>"
+		dat += "<span class='notice'>Пульс субъекта: <font color='red'>-- bpm.</font></span>"
 		user.show_message(dat, 1)
 		return
 
@@ -77,24 +77,24 @@ HALOGEN COUNTER	- Radcount on mobs
 	var/BR = M.getBruteLoss() > 50 	? 	"<b>[M.getBruteLoss()]</b>" 	: M.getBruteLoss()
 	if(M.status_flags & FAKEDEATH)
 		OX = fake_oxy > 50 			? 	"<b>[fake_oxy]</b>" 			: fake_oxy
-		dat += "<span class='notice'>Analyzing Results for [M]:</span><br>"
-		dat += "<span class='notice'>Overall Status: dead</span><br>"
+		dat += "<span class='notice'>Анализ результатов для [M]:</span><br>"
+		dat += "<span class='notice'>Общий статус: мертв</span><br>"
 	else
-		dat += 	"<span class='notice'>Analyzing Results for [M]:\n\t Overall Status: [M.stat > 1 ? "dead" : "[round((M.health/M.getMaxHealth())*100) ]% healthy"]<br>"
-	dat += 		"\tKey: <font color='cyan'>Suffocation</font>/<font color='green'>Toxin</font>/<font color='#FFA500'>Burns</font>/<font color='red'>Brute</font><br>"
-	dat += 		"\tDamage Specifics: <font color='cyan'>[OX]</font> - <font color='green'>[TX]</font> - <font color='#FFA500'>[BU]</font> - <font color='red'>[BR]</font><br>"
-	dat +=		"Body Temperature: [M.bodytemperature-T0C]&deg;C ([M.bodytemperature*1.8-459.67]&deg;F)</span><br>"
+		dat += 	"<span class='notice'>Анализ результатов для [M]:\n\t Overall Status: [M.stat > 1 ? "мертв" : "на [round((M.health/M.getMaxHealth())*100) ]% здоров"]<br>"
+	dat += 		"\tКлючи: <font color='cyan'>Удушение</font>/<font color='green'>Токсин</font>/<font color='#FFA500'>Ожоги</font>/<font color='red'>Повреждения</font><br>"
+	dat += 		"\tОсобенности повреждений: <font color='cyan'>[OX]</font> - <font color='green'>[TX]</font> - <font color='#FFA500'>[BU]</font> - <font color='red'>[BR]</font><br>"
+	dat +=		"Температура тела: [M.bodytemperature-T0C]&deg;C ([M.bodytemperature*1.8-459.67]&deg;F)</span><br>"
 	//VOREStation edit/addition starts
 	if(M.timeofdeath && (M.stat == DEAD || (M.status_flags & FAKEDEATH)))
-		dat += 	"<span class='notice'>Time of Death: [worldtime2stationtime(M.timeofdeath)]</span><br>"
+		dat += 	"<span class='notice'>Время смерти: [worldtime2stationtime(M.timeofdeath)]</span><br>"
 		var/tdelta = round(world.time - M.timeofdeath)
 		if(tdelta < (DEFIB_TIME_LIMIT * 10))
-			dat += "<span class='notice'><b>Subject died [DisplayTimeText(tdelta)] ago - resuscitation may be possible!</b></span><br>"
+			dat += "<span class='notice'><b>Субъект умер [DisplayTimeText(tdelta)] назад - возможно, реанимация возможна!</b></span><br>"
 	//VOREStation edit/addition ends
 	if(istype(M, /mob/living/carbon/human) && mode == 1)
 		var/mob/living/carbon/human/H = M
 		var/list/damaged = H.get_damaged_organs(1,1)
-		dat += 	"<span class='notice'>Localized Damage, Brute/Burn:</span><br>"
+		dat += 	"<span class='notice'>Локальный урон, поврежд./ожог:</span><br>"
 		if(length(damaged)>0)
 			for(var/obj/item/organ/external/org in damaged)
 				if(org.robotic >= ORGAN_ROBOT)
@@ -104,29 +104,29 @@ HALOGEN COUNTER	- Radcount on mobs
 					dat += "[(org.status & ORGAN_BLEEDING)?"<span class='danger'>\[Bleeding\]</span>":""] - "
 					dat += "[(org.burn_dam > 0) ? "<font color='#FFA500'>[org.burn_dam]</font>" : 0]</span><br>"
 		else
-			dat += "<span class='notice'>    Limbs are OK.</span><br>"
+			dat += "<span class='notice'>    Конечности в порядке.</span><br>"
 
-	OX = M.getOxyLoss() > 50 ? 	 "<font color='cyan'><b>Severe oxygen deprivation detected</b></font>" 		: 	"Subject bloodstream oxygen level normal"
-	TX = M.getToxLoss() > 50 ? 	 "<font color='green'><b>Dangerous amount of toxins detected</b></font>" 	: 	"Subject bloodstream toxin level minimal"
-	BU = M.getFireLoss() > 50 ?  "<font color='#FFA500'><b>Severe burn damage detected</b></font>" 			:	"Subject burn injury status O.K"
-	BR = M.getBruteLoss() > 50 ? "<font color='red'><b>Severe anatomical damage detected</b></font>" 		: 	"Subject brute-force injury status O.K"
+	OX = M.getOxyLoss() > 50 ? 	 "<font color='cyan'><b>Обнаружена серьезная кислородная недостаточность</b></font>" 		: 	"Уровень кислорода в крови субъекта нормальный"
+	TX = M.getToxLoss() > 50 ? 	 "<font color='green'><b>Обнаружено опасное количество токсинов</b></font>" 	: 	"Уровень токсина в кровотоке субъекта минимальный"
+	BU = M.getFireLoss() > 50 ?  "<font color='#FFA500'><b>Обнаружены серьезные ожоги</b></font>" 			:	"Состояние объекта ожоговой травмы: ОК"
+	BR = M.getBruteLoss() > 50 ? "<font color='red'><b>Обнаружено серьезное анатомическое повреждение</b></font>" 		: 	"Статус повреждений обьекта: ОК"
 	if(M.status_flags & FAKEDEATH)
-		OX = fake_oxy > 50 ? 		"<span class='warning'>Severe oxygen deprivation detected</span>" 	: 	"Subject bloodstream oxygen level normal"
+		OX = fake_oxy > 50 ? 		"<span class='warning'>Обнаружена серьезная кислородная недостаточность</span>" 	: 	"Уровень кислорода в крови субъекта нормальный"
 	dat += "[OX] | [TX] | [BU] | [BR]<br>"
 	if(M.radiation)
 		if(advscan >= 2 && showadvscan == 1)
 			var/severity = ""
 			if(M.radiation >= 75)
-				severity = "Critical"
+				severity = "Критический"
 			else if(M.radiation >= 50)
-				severity = "Severe"
+				severity = "Тяжелая форма"
 			else if(M.radiation >= 25)
-				severity = "Moderate"
+				severity = "Умеренный"
 			else if(M.radiation >= 1)
-				severity = "Low"
-			dat += "<span class='warning'>[severity] levels of radiation detected. [(severity == "Critical") ? " Immediate treatment advised." : ""]</span><br>"
+				severity = "Незначительный"
+			dat += "<span class='warning'>[severity] уровень обнаруженного излучения. [(severity == "Критический") ? " Рекомендуется немедленное лечение." : ""]</span><br>"
 		else
-			dat += "<span class='warning'>Radiation detected.</span><br>"
+			dat += "<span class='warning'>Обнаружена радиация.</span><br>"
 	if(iscarbon(M))
 		var/mob/living/carbon/C = M
 		if(C.reagents.total_volume)
@@ -136,21 +136,21 @@ HALOGEN COUNTER	- Radcount on mobs
 			for(var/A in C.reagents.reagent_list)
 				var/datum/reagent/R = A
 				if(R.scannable)
-					reagentdata["[R.id]"] = "<span class='notice'>\t[round(C.reagents.get_reagent_amount(R.id), 1)]u [R.name][(R.overdose && R.volume > R.overdose) ? " - <span class='danger'>Overdose</span>" : ""]</span><br>"
+					reagentdata["[R.id]"] = "<span class='notice'>\t[round(C.reagents.get_reagent_amount(R.id), 1)]u [R.name][(R.overdose && R.volume > R.overdose) ? " - <span class='danger'>Передозировка</span>" : ""]</span><br>"
 				else
 					unknown++
-					unknownreagents["[R.id]"] = "<span class='notice'>\t[round(C.reagents.get_reagent_amount(R.id), 1)]u [R.name][(R.overdose && R.volume > R.overdose) ? " - <span class='danger'>Overdose</span>" : ""]</span><br>"
+					unknownreagents["[R.id]"] = "<span class='notice'>\t[round(C.reagents.get_reagent_amount(R.id), 1)]u [R.name][(R.overdose && R.volume > R.overdose) ? " - <span class='danger'>Передозировка</span>" : ""]</span><br>"
 			if(reagentdata.len)
-				dat += "<span class='notice'>Beneficial reagents detected in subject's blood:</span><br>"
+				dat += "<span class='notice'>Полезные реагенты, обнаруженные в крови субъекта:</span><br>"
 				for(var/d in reagentdata)
 					dat += reagentdata[d]
 			if(unknown)
 				if(advscan >= 3 && showadvscan == 1)
-					dat += "<span class='warning'>Warning: Non-medical reagent[(unknown>1)?"s":""] detected in subject's blood:</span><br>"
+					dat += "<span class='warning'>Предупреждение: немедицинский реагент [(unknown>1)?"s":""] обнаружен в крови субьекта:</span><br>"
 					for(var/d in unknownreagents)
 						dat += unknownreagents[d]
 				else
-					dat += "<span class='warning'>Warning: Unknown substance[(unknown>1)?"s":""] detected in subject's blood.</span><br>"
+					dat += "<span class='warning'>Предупреждение: Неизвестное вещество [(unknown>1)?"s":""] обнаружено в крови субьекта.</span><br>"
 		if(C.ingested && C.ingested.total_volume)
 			var/unknown = 0
 			var/stomachreagentdata[0]
@@ -158,23 +158,23 @@ HALOGEN COUNTER	- Radcount on mobs
 			for(var/B in C.ingested.reagent_list)
 				var/datum/reagent/R = B
 				if(R.scannable)
-					stomachreagentdata["[R.id]"] = "<span class='notice'>\t[round(C.ingested.get_reagent_amount(R.id), 1)]u [R.name][(R.overdose && R.volume > R.overdose) ? " - <span class='danger'>Overdose</span>" : ""]</span><br>"
+					stomachreagentdata["[R.id]"] = "<span class='notice'>\t[round(C.ingested.get_reagent_amount(R.id), 1)]u [R.name][(R.overdose && R.volume > R.overdose) ? " - <span class='danger'>Передозировка</span>" : ""]</span><br>"
 					if (advscan == 0 || showadvscan == 0)
-						dat += "<span class='notice'>[R.name] found in subject's stomach.</span><br>"
+						dat += "<span class='notice'>В желудке субьекта обнаружено [R.name].</span><br>"
 				else
 					++unknown
-					stomachunknownreagents["[R.id]"] = "<span class='notice'>\t[round(C.ingested.get_reagent_amount(R.id), 1)]u [R.name][(R.overdose && R.volume > R.overdose) ? " - <span class='danger'>Overdose</span>" : ""]</span><br>"
+					stomachunknownreagents["[R.id]"] = "<span class='notice'>\t[round(C.ingested.get_reagent_amount(R.id), 1)]u [R.name][(R.overdose && R.volume > R.overdose) ? " - <span class='danger'>Передозировка</span>" : ""]</span><br>"
 			if(advscan >= 1 && showadvscan == 1)
-				dat += "<span class='notice'>Beneficial reagents detected in subject's stomach:</span><br>"
+				dat += "<span class='notice'>Полезные реагенты, обнаруженные в желудке испытуемого:</span><br>"
 				for(var/d in stomachreagentdata)
 					dat += stomachreagentdata[d]
 			if(unknown)
 				if(advscan >= 3 && showadvscan == 1)
-					dat += "<span class='warning'>Warning: Non-medical reagent[(unknown > 1)?"s":""] found in subject's stomach:</span><br>"
+					dat += "<span class='warning'>Предупреждение: немедицинский реагент [(unknown > 1)?"s":""] обнаружен в желудке субьекта:</span><br>"
 					for(var/d in stomachunknownreagents)
 						dat += stomachunknownreagents[d]
 				else
-					dat += "<span class='warning'>Unknown substance[(unknown > 1)?"s":""] found in subject's stomach.</span><br>"
+					dat += "<span class='warning'>Неизвестное вещество [(unknown > 1)?"s":""] обнаружено в желудке субьекта.</span><br>"
 		if(C.touching && C.touching.total_volume)
 			var/unknown = 0
 			var/touchreagentdata[0]
@@ -182,56 +182,56 @@ HALOGEN COUNTER	- Radcount on mobs
 			for(var/B in C.touching.reagent_list)
 				var/datum/reagent/R = B
 				if(R.scannable)
-					touchreagentdata["[R.id]"] = "<span class='notice'>\t[round(C.touching.get_reagent_amount(R.id), 1)]u [R.name][(R.overdose && R.can_overdose_touch && R.volume > R.overdose) ? " - <span class='danger'>Overdose</span>" : ""]</span><br>"
+					touchreagentdata["[R.id]"] = "<span class='notice'>\t[round(C.touching.get_reagent_amount(R.id), 1)]u [R.name][(R.overdose && R.can_overdose_touch && R.volume > R.overdose) ? " - <span class='danger'>Передозировка</span>" : ""]</span><br>"
 					if (advscan == 0 || showadvscan == 0)
-						dat += "<span class='notice'>[R.name] found in subject's dermis.</span><br>"
+						dat += "<span class='notice'>В дерме субьекта обнаружено [R.name].</span><br>"
 				else
 					++unknown
-					touchunknownreagents["[R.id]"] = "<span class='notice'>\t[round(C.ingested.get_reagent_amount(R.id), 1)]u [R.name][(R.overdose && R.can_overdose_touch && R.volume > R.overdose) ? " - <span class='danger'>Overdose</span>" : ""]</span><br>"
+					touchunknownreagents["[R.id]"] = "<span class='notice'>\t[round(C.ingested.get_reagent_amount(R.id), 1)]u [R.name][(R.overdose && R.can_overdose_touch && R.volume > R.overdose) ? " - <span class='danger'>Передозировка</span>" : ""]</span><br>"
 			if(advscan >= 1 && showadvscan == 1)
-				dat += "<span class='notice'>Beneficial reagents detected in subject's dermis:</span><br>"
+				dat += "<span class='notice'>Полезные реагенты, обнаруженные в дерме субъекта:</span><br>"
 				for(var/d in touchreagentdata)
 					dat += touchreagentdata[d]
 			if(unknown)
 				if(advscan >= 3 && showadvscan == 1)
-					dat += "<span class='warning'>Warning: Non-medical reagent[(unknown > 1)?"s":""] found in subject's dermis:</span><br>"
+					dat += "<span class='warning'>Предупреждение: немедицинский реагент [(unknown > 1)?"s":""] обнаружен в дерме субьекта:</span><br>"
 					for(var/d in touchunknownreagents)
 						dat += touchunknownreagents[d]
 				else
-					dat += "<span class='warning'>Unknown substance[(unknown > 1)?"s":""] found in subject's dermis.</span><br>"
+					dat += "<span class='warning'>Неизвестное вещество [(unknown > 1)?"s":""] обнаружено в дерме субьекта.</span><br>"
 		if(C.virus2.len)
 			for (var/ID in C.virus2)
 				if (ID in virusDB)
 					var/datum/data/record/V = virusDB[ID]
-					dat += "<span class='warning'>Warning: Pathogen [V.fields["name"]] detected in subject's blood. Known antigen : [V.fields["antigen"]]</span><br>"
+					dat += "<span class='warning'>Предупреждение: Патоген [V.fields["name"]] обнаружен в крови субъекта. KИзвестный антиген: [V.fields["antigen"]]</span><br>"
 				else
-					dat += "<span class='warning'>Warning: Unknown pathogen detected in subject's blood.</span><br>"
+					dat += "<span class='warning'>Предупреждение: в крови субъекта обнаружен неизвестный патоген.</span><br>"
 	if (M.getCloneLoss())
-		dat += "<span class='warning'>Subject appears to have been imperfectly cloned.</span><br>"
+		dat += "<span class='warning'>Субъект был клонирован не полностью.</span><br>"
 //	if (M.reagents && M.reagents.get_reagent_amount("inaprovaline"))
 //		user.show_message("<span class='notice'>Bloodstream Analysis located [M.reagents:get_reagent_amount("inaprovaline")] units of rejuvenation chemicals.</span>")
 	if (M.has_brain_worms())
-		dat += "<span class='warning'>Subject suffering from aberrant brain activity. Recommend further scanning.</span><br>"
+		dat += "<span class='warning'>Субъект страдает аномальной мозговой активностью. Рекомендую дальнейшее сканирование.</span><br>"
 	else if (M.getBrainLoss() >= 60 || !M.has_brain())
-		dat += "<span class='warning'>Subject is brain dead.</span><br>"
+		dat += "<span class='warning'>У субъекта мертвый мозг.</span><br>"
 	else if (M.getBrainLoss() >= 25)
-		dat += "<span class='warning'>Severe brain damage detected. Subject likely to have a traumatic brain injury.</span><br>"
+		dat += "<span class='warning'>Обнаружено серьезное повреждение головного мозга. Субъект, вероятно, получит черепно-мозговую травму.</span><br>"
 	else if (M.getBrainLoss() >= 10)
-		dat += "<span class='warning'>Significant brain damage detected. Subject may have had a concussion.</span><br>"
+		dat += "<span class='warning'>Обнаружено значительное повреждение головного мозга. У субъекта могло быть сотрясение мозга.</span><br>"
 	else if (M.getBrainLoss() >= 1 && advscan >= 2 && showadvscan == 1)
-		dat += "<span class='warning'>Minor brain damage detected.</span><br>"
+		dat += "<span class='warning'>Обнаружено незначительное повреждение головного мозга.</span><br>"
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		for(var/obj/item/organ/internal/appendix/a in H.internal_organs)
 			var/severity = ""
 			if(a.inflamed > 3)
-				severity = "Severe"
+				severity = "Тяжелое"
 			else if(a.inflamed > 2)
-				severity = "Moderate"
+				severity = "Среднее"
 			else if(a.inflamed >= 1)
-				severity = "Mild"
+				severity = "Легкое"
 			if(severity)
-				dat += "<span class='warning'>[severity] inflammation detected in subject [a.name].</span><br>"
+				dat += "<span class='warning'>[severity] воспаление, обнаруженное у субъекта [a.name].</span><br>"
 		// Infections, fractures, and IB
 		var/basic_fracture = 0	// If it's a basic scanner
 		var/basic_ib = 0		// If it's a basic scanner
@@ -244,25 +244,25 @@ HALOGEN COUNTER	- Radcount on mobs
 			// Broken limbs
 			if(e.status & ORGAN_BROKEN)
 				if((e.name in list("l_arm", "r_arm", "l_leg", "r_leg", "head", "chest", "groin")) && (!e.splinted))
-					fracture_dat += "<span class='warning'>Unsecured fracture in subject [e.name]. Splinting recommended for transport.</span><br>"
+					fracture_dat += "<span class='warning'>Незащищенный перелом обнаружен в [e.name]. Шинирование рекомендуется при транспортировке.</span><br>"
 				else if(advscan >= 1 && showadvscan == 1)
 					fracture_dat += "<span class='warning'>Bone fractures detected in subject [e.name].</span><br>"
 				else
 					basic_fracture = 1
 			// Infections
 			if(e.has_infected_wound())
-				dat += "<span class='warning'>Infected wound detected in subject [e.name]. Disinfection recommended.</span><br>"
+				dat += "<span class='warning'>В [e.name]субъекта обнаружена инфицированная рана. Рекомендуется дезинфекция.</span><br>"
 			// IB
 			for(var/datum/wound/W in e.wounds)
 				if(W.internal)
 					if(advscan >= 1 && showadvscan == 1)
-						ib_dat += "<span class='warning'>Internal bleeding detected in subject [e.name].</span><br>"
+						ib_dat += "<span class='warning'>В [e.name] субъекта обнаружено внутреннее кровотечение.</span><br>"
 					else
 						basic_ib = 1
 		if(basic_fracture)
-			fracture_dat += "<span class='warning'>Bone fractures detected. Advanced scanner required for location.</span><br>"
+			fracture_dat += "<span class='warning'>Обнаружены переломы костей. Для определения местоположения требуется расширенный сканер.</span><br>"
 		if(basic_ib)
-			ib_dat += "<span class='warning'>Internal bleeding detected. Advanced scanner required for location.</span><br>"
+			ib_dat += "<span class='warning'>Обнаружено внутреннее кровотечение. Для определения местоположения требуется расширенный сканер.</span><br>"
 		dat += fracture_dat
 		dat += infection_dat
 		dat += ib_dat
@@ -273,14 +273,14 @@ HALOGEN COUNTER	- Radcount on mobs
 			var/blood_percent =  round((blood_volume / H.species.blood_volume)*100)
 			var/blood_type = H.dna.b_type
 			if(blood_volume <= H.species.blood_volume*H.species.blood_level_danger)
-				dat += "<span class='danger'><i>Warning: Blood Level CRITICAL: [blood_percent]% [blood_volume]cl. Type: [blood_type]</i></span><br>"
+				dat += "<span class='danger'><i>Предупреждение: уровень крови КРИТИЧЕСКИЙ: [blood_percent]% [blood_volume]cl. Тип: [blood_type]</i></span><br>"
 			else if(blood_volume <= H.species.blood_volume*H.species.blood_level_warning)
-				dat += "<span class='danger'><i>Warning: Blood Level VERY LOW: [blood_percent]% [blood_volume]cl. Type: [blood_type]</i></span><br>"
+				dat += "<span class='danger'><i>Предупреждение: уровень крови ОЧЕНЬ НИЗКИЙ: [blood_percent]% [blood_volume]cl. Тип: [blood_type]</i></span><br>"
 			else if(blood_volume <= H.species.blood_volume*H.species.blood_level_safe)
-				dat += "<span class='danger'>Warning: Blood Level LOW: [blood_percent]% [blood_volume]cl. Type: [blood_type]</span><br>"
+				dat += "<span class='danger'>Предупреждение: уровень крови НИЗКИЙ: [blood_percent]% [blood_volume]cl. Тип: [blood_type]</span><br>"
 			else
-				dat += "<span class='notice'>Blood Level Normal: [blood_percent]% [blood_volume]cl. Type: [blood_type]</span><br>"
-		dat += "<span class='notice'>Subject's pulse: <font color='[H.pulse == PULSE_THREADY || H.pulse == PULSE_NONE ? "red" : "blue"]'>[H.get_pulse(GETPULSE_TOOL)] bpm.</font></span>"
+				dat += "<span class='notice'>Уровень крови нормальный: [blood_percent]% [blood_volume]cl. Тип: [blood_type]</span><br>"
+		dat += "<span class='notice'>Пульс субъекта: <font color='[H.pulse == PULSE_THREADY || H.pulse == PULSE_NONE ? "red" : "blue"]'>[H.get_pulse(GETPULSE_TOOL)] bpm.</font></span>"
 	user.show_message(dat, 1)
 
 /obj/item/device/healthanalyzer/verb/toggle_mode()
@@ -290,45 +290,45 @@ HALOGEN COUNTER	- Radcount on mobs
 	mode = !mode
 	switch (mode)
 		if(1)
-			to_chat(usr, "The scanner now shows specific limb damage.")
+			to_chat(usr, "Сканер теперь показывает конкретное повреждение конечности.")
 		if(0)
-			to_chat(usr, "The scanner no longer shows limb damage.")
+			to_chat(usr, "Сканер больше не показывает повреждения конечностей.")
 
 /obj/item/device/healthanalyzer/proc/toggle_adv()
-	set name = "Toggle Advanced Scan"
+	set name = "Переключить расширенное сканирование"
 	set category = "Object"
 
 	showadvscan = !showadvscan
 	switch (showadvscan)
 		if(1)
-			to_chat(usr, "The scanner will now perform an advanced analysis.")
+			to_chat(usr, "Теперь сканер выполнит расширенный анализ.")
 		if(0)
-			to_chat(usr, "The scanner will now perform a basic analysis.")
+			to_chat(usr, "Теперь сканер выполнит базовый анализ.")
 
 /obj/item/device/healthanalyzer/improved //reports bone fractures, IB, quantity of beneficial reagents in stomach; also regular health analyzer stuff
 	name = "improved health analyzer"
-	desc = "A miracle of medical technology, this handheld scanner can produce an accurate and specific report of a patient's biosigns."
+	desc = "Чудо медицинской техники, этот портативный сканер может производить точный и конкретный отчет о биознаках пациента."
 	advscan = 1
 	origin_tech = list(TECH_MAGNET = 5, TECH_BIO = 6)
 	icon_state = "health1"
 
 /obj/item/device/healthanalyzer/advanced //reports all of the above, as well as radiation severity and minor brain damage
 	name = "advanced health analyzer"
-	desc = "An even more advanced handheld health scanner, complete with a full biosign monitor and on-board radiation and neurological analysis suites."
+	desc = "Еще более совершенный портативный сканер здоровья, укомплектованный полным монитором биознака и встроенными наборами радиационного и неврологического анализа."
 	advscan = 2
 	origin_tech = list(TECH_MAGNET = 6, TECH_BIO = 7)
 	icon_state = "health2"
 
 /obj/item/device/healthanalyzer/phasic //reports all of the above, as well as name and quantity of nonmed reagents in stomach
 	name = "phasic health analyzer"
-	desc = "Possibly the most advanced health analyzer to ever have existed, utilising bluespace technology to determine almost everything worth knowing about a patient."
+	desc = "Возможно, это самый продвинутый анализатор здоровья из когда-либо существовавших, использующий технологию bluespace для определения почти всего, что стоит знать о пациенте."
 	advscan = 3
 	origin_tech = list(TECH_MAGNET = 7, TECH_BIO = 8)
 	icon_state = "health3"
 
 /obj/item/device/analyzer
 	name = "analyzer"
-	desc = "A hand-held environmental scanner which reports current gas levels."
+	desc = "Портативный сканер окружающей среды, который сообщает текущие уровни газа."
 	icon_state = "atmos"
 	item_state = "analyzer"
 	w_class = ITEMSIZE_SMALL
@@ -352,7 +352,7 @@ HALOGEN COUNTER	- Radcount on mobs
 	if (user.stat)
 		return
 	if (!(ishuman(user) || ticker) && ticker.mode.name != "monkey")
-		to_chat(usr, "<span class='warning'>You don't have the dexterity to do this!</span>")
+		to_chat(usr, "<span class='warning'>У вас не хватит на это сноровки!</span>")
 		return
 
 	analyze_gases(src, user)
@@ -366,7 +366,7 @@ HALOGEN COUNTER	- Radcount on mobs
 
 /obj/item/device/mass_spectrometer
 	name = "mass spectrometer"
-	desc = "A hand-held mass spectrometer which identifies trace chemicals in a blood sample."
+	desc = "Переносной масс-спектрометр, который определяет следы химических веществ в образце крови."
 	icon_state = "spectrometer"
 	w_class = ITEMSIZE_SMALL
 	flags = OPENCONTAINER
@@ -397,19 +397,19 @@ HALOGEN COUNTER	- Radcount on mobs
 	if (user.stat)
 		return
 	if (!(ishuman(user) || ticker) && ticker.mode.name != "monkey")
-		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
+		to_chat(user, "<span class='warning'>У вас не хватит на это сноровки!</span>")
 		return
 	if(reagents.total_volume)
 		var/list/blood_traces = list()
 		for(var/datum/reagent/R in reagents.reagent_list)
 			if(R.id != "blood")
 				reagents.clear_reagents()
-				to_chat(user, "<span class='warning'>The sample was contaminated! Please insert another sample</span>")
+				to_chat(user, "<span class='warning'>Образец был загрязнен! Пожалуйста, вставьте другой образец</span>")
 				return
 			else
 				blood_traces = params2list(R.data["trace_chem"])
 				break
-		var/dat = "Trace Chemicals Found: "
+		var/dat = "<meta charset=\"utf-8\">Обнаружены следы химикатов: "
 		for(var/R in blood_traces)
 			if(details)
 				dat += "[R] ([blood_traces[R]] units) "
@@ -427,7 +427,7 @@ HALOGEN COUNTER	- Radcount on mobs
 
 /obj/item/device/reagent_scanner
 	name = "reagent scanner"
-	desc = "A hand-held reagent scanner which identifies chemical agents."
+	desc = "Ручной сканер реагентов, который определяет химические вещества."
 	icon_state = "spectrometer"
 	item_state = "analyzer"
 	w_class = ITEMSIZE_SMALL
@@ -458,11 +458,11 @@ HALOGEN COUNTER	- Radcount on mobs
 			for (var/datum/reagent/R in O.reagents.reagent_list)
 				dat += "\n \t " + span("notice", "[R][details ? ": [R.volume / one_percent]%" : ""]")
 		if(dat)
-			to_chat(user, span("notice", "Chemicals found: [dat]"))
+			to_chat(user, span("notice", "Найдено химикатов: [dat]"))
 		else
-			to_chat(user, span("notice", "No active chemical agents found in [O]."))
+			to_chat(user, span("notice", "Не обнаружены активные химические вещества в [O]."))
 	else
-		to_chat(user, span("notice", "No significant chemical agents found in [O]."))
+		to_chat(user, span("notice", "Не обнаружено значительных химических агентов в [O]."))
 
 	return
 
@@ -485,40 +485,40 @@ HALOGEN COUNTER	- Radcount on mobs
 
 /obj/item/device/slime_scanner/attack(mob/living/M as mob, mob/living/user as mob)
 	if(!istype(M, /mob/living/simple_mob/slime/xenobio))
-		to_chat(user, "<B>This device can only scan lab-grown slimes!</B>")
+		to_chat(user, "<B>Это устройство может сканировать только слизь, выращенную в лаборатории!</B>")
 		return
 	var/mob/living/simple_mob/slime/xenobio/S = M
-	user.show_message("Slime scan results:<br>[S.slime_color] [S.is_adult ? "adult" : "baby"] slime<br>Health: [S.health]<br>Mutation Probability: [S.mutation_chance]")
+	user.show_message("Результаты сканирования слизи:<br>[S.slime_color] [S.is_adult ? "взрослый" : "мелкий"] слайм<br>Здоровье: [S.health]<br>Вероятность мутации: [S.mutation_chance]")
 
 	var/list/mutations = list()
 	for(var/potential_color in S.slime_mutation)
 		var/mob/living/simple_mob/slime/xenobio/slime = potential_color
 		mutations.Add(initial(slime.slime_color))
-	user.show_message("Potental to mutate into [english_list(mutations)] colors.<br>Extract potential: [S.cores]<br>Nutrition: [S.nutrition]/[S.max_nutrition]")
+	user.show_message("Возможность мутировать в цвета [english_list(mutations)].<br>Потенциал экстракции: [S.cores]<br>Питание: [S.nutrition]/[S.max_nutrition]")
 
 	if (S.nutrition < S.get_starve_nutrition())
-		user.show_message("<span class='alert'>Warning: Subject is starving!</span>")
+		user.show_message("<span class='alert'>Предупреждение: субъект голодает!</span>")
 	else if (S.nutrition < S.get_hunger_nutrition())
-		user.show_message("<span class='warning'>Warning: Subject is hungry.</span>")
-	user.show_message("Electric change strength: [S.power_charge]")
+		user.show_message("<span class='warning'>Предупреждение: объект голоден.</span>")
+	user.show_message("Сила электрического изменения: [S.power_charge]")
 
 	if(S.has_AI())
 		var/datum/ai_holder/simple_mob/xenobio_slime/AI = S.ai_holder
 		if(AI.resentment)
-			user.show_message("<span class='warning'>Warning: Subject is harboring resentment.</span>")
+			user.show_message("<span class='warning'>Предупреждение: субъект затаил обиду.</span>")
 		if(AI.rabid)
-			user.show_message("<span class='danger'>Subject is enraged and extremely dangerous!</span>")
+			user.show_message("<span class='danger'>Субъект в ярости и чрезвычайно опасен!</span>")
 	if(S.harmless)
-		user.show_message("Subject has been pacified.")
+		user.show_message("Субъект успокоен.")
 	if(S.unity)
-		user.show_message("Subject is friendly to other slime colors.")
+		user.show_message("Субъект дружелюбен к другим цветам слизи.")
 
-	user.show_message("Growth progress: [S.amount_grown]/10")
+	user.show_message("Прогресс роста: [S.amount_grown]/10")
 
 /obj/item/device/halogen_counter
 	name = "halogen counter"
 	icon_state = "eftpos"
-	desc = "A hand-held halogen counter, used to detect the level of irradiation of living beings."
+	desc = "Переносной галогенный счетчик, используемый для определения уровня облучения живых существ."
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_MAGNET = 1, TECH_BIO = 2)
 	throwforce = 0
@@ -527,13 +527,13 @@ HALOGEN COUNTER	- Radcount on mobs
 
 /obj/item/device/halogen_counter/attack(mob/living/M as mob, mob/living/user as mob)
 	if(!iscarbon(M))
-		to_chat(user, "<span class='warning'>This device can only scan organic beings!</span>")
+		to_chat(user, "<span class='warning'>Это устройство может сканировать только органические существа!</span>")
 		return
-	user.visible_message("<span class='warning'>\The [user] has analyzed [M]'s radiation levels!</span>", "<span class='notice'>Analyzing Results for [M]:</span>")
+	user.visible_message("<span class='warning'>[user] анализирует уровень радиации [M]!</span>", "<span class='notice'>Анализ результатов для [M]:</span>")
 	if(M.radiation)
-		to_chat(user, "<span class='notice'>Radiation Level: [M.radiation]</span>")
+		to_chat(user, "<span class='notice'>Уровень радиации: [M.radiation]</span>")
 	else
-		to_chat(user, "<span class='notice'>No radiation detected.</span>")
+		to_chat(user, "<span class='notice'>Радиации не обнаружено.</span>")
 	return
 
 #undef DEFIB_TIME_LIMIT //VOREStation addition

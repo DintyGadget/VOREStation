@@ -1,9 +1,9 @@
 /datum/game_mode/infiltrator
 	name = "Team Traitor"
-	round_description = "There are a group of shadowy infiltrators onboard!  Be careful!"
-	extended_round_description = "A team of secretative people have played the long con, and managed to obtain entry to \
-	the facility.  What their goals are, who their employers are, and why the individuals would work for them is a mystery, \
-	but perhaps you will outwit them, or perhaps that is all part of their plan?"
+	round_description = "На борту группа тайных лазутчиков! Будь осторожны!"
+	extended_round_description = "Команда секретных людей разыграла долгую аферу и сумела получить доступ на объект. \
+	Каковы их цели, кто их работодатели и почему люди будут работать на них - загадка, \
+	но, возможно, вы их перехитрите, а может быть, это все часть их плана?"
 	config_tag = "infiltrator"
 	required_players = 2
 	required_players_secret = 5

@@ -1,6 +1,6 @@
 /obj/item/weapon/storage/wallet
-	name = "wallet"
-	desc = "It can hold a few small and personal things."
+	name = "кошелек"
+	desc = "В нём можно переносить некоторые маленькие и личные вещи."
 	storage_slots = 10
 	icon = 'icons/obj/wallet.dmi'
 	icon_state = "wallet-orange"
@@ -96,8 +96,8 @@
 		SC.update_icon()
 
 /obj/item/weapon/storage/wallet/poly
-	name = "polychromic wallet"
-	desc = "You can recolor it! Fancy! The future is NOW!"
+	name = "полихромный кошелек"
+	desc = "Его можно перекрасить! Красота! Будущее уже ЗДЕСЬ!"
 	icon_state = "wallet-white"
 
 /obj/item/weapon/storage/wallet/poly/New()
@@ -107,15 +107,15 @@
 	update_icon()
 
 /obj/item/weapon/storage/wallet/poly/proc/change_color()
-	set name = "Change Wallet Color"
+	set name = "Поменять Цвет Кошелька"
 	set category = "Object"
-	set desc = "Change the color of the wallet."
+	set desc = "Поменять цвет Вашего кошелька."
 	set src in usr
 
 	if(usr.stat || usr.restrained() || usr.incapacitated())
 		return
 
-	var/new_color = input(usr, "Pick a new color", "Wallet Color", color) as color|null
+	var/new_color = input(usr, "Выберите новый цвет.", "Цвет Кошелька", color) as color|null
 
 	if(new_color && (new_color != color))
 		color = new_color
@@ -131,7 +131,7 @@
 			update_icon()
 
 /obj/item/weapon/storage/wallet/womens
-	name = "women's wallet"
-	desc = "A stylish wallet typically used by women."
+	name = "женский кошелек"
+	desc = "Стильный женский кошелек."
 	icon_state = "girl_wallet"
 	item_state_slots = list(slot_r_hand_str = "wowallet", slot_l_hand_str = "wowallet")

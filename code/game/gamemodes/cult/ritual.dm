@@ -2,17 +2,17 @@
 
 var/cultwords = list()
 var/runedec = 0
-var/global/list/engwords = list("travel", "blood", "join", "hell", "destroy", "technology", "self", "see", "other", "hide")
-var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","mgar","balaq", "karazet", "geeri")
+var/global/list/engwords = list("путешествие", "кровь", "присоединение", "ад", "разрушение", "технологии", "я", "видимость", "другое", "скрытность")
+var/global/list/rnwords = list("гнев","эго","нахлизет","определенность","правда","джатка","мгар","балак", "каразет", "гиери")
 
 /client/proc/check_words() // -- Urist
 	set category = "Special Verbs"
-	set name = "Check Rune Words"
+	set name = "Проверить рунические слова"
 	set desc = "Check the rune-word meaning"
 	if(!cultwords["travel"])
 		runerandom()
 	for (var/word in engwords)
-		to_chat(usr, "[cultwords[word]] is [word]")
+		to_chat(usr, "[cultwords[word]] это [word]")
 
 /proc/runerandom() //randomizes word meaning
 	var/list/runewords=rnwords
@@ -21,7 +21,7 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 		runewords-=cultwords[word]
 
 /obj/effect/rune
-	desc = "A strange collection of symbols drawn in blood."
+	desc = "Странная коллекция символов, нарисованных кровью."
 	anchored = 1
 	icon = 'icons/obj/rune.dmi'
 	icon_state = "1"
@@ -86,16 +86,16 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 	examine(mob/user)
 		. = ..()
 		if(iscultist(user))
-			. += "This spell circle reads: <i>[word1] [word2] [word3]</i>."
+			. += "Этот круг заклинаний гласит: <i>[word1] [word2] [word3]</i>."
 
 
 	attackby(I as obj, user as mob)
 		if(istype(I, /obj/item/weapon/book/tome) && iscultist(user))
-			to_chat(user, "You retrace your steps, carefully undoing the lines of the rune.")
+			to_chat(user, "Вы возвращаетесь по своим следам, осторожно разглаживая линии руны.")
 			qdel(src)
 			return
 		else if(istype(I, /obj/item/weapon/nullrod))
-			to_chat(user, "<span class='notice'>You disrupt the vile magic with the deadening field of the null rod!</span>")
+			to_chat(user, "<span class='notice'>Вы разрушаете мерзкую магию мертвящим полем нулевого стержня!</span>")
 			qdel(src)
 			return
 		return
@@ -103,62 +103,62 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 
 	attack_hand(mob/living/user as mob)
 		if(!iscultist(user))
-			to_chat(user, "You can't mouth the arcane scratchings without fumbling over them.")
+			to_chat(user, "Вы не можете выговорить загадочные царапины, не перебирая их.")
 			return
 		if(user.is_muzzled())
-			to_chat(user, "You are unable to speak the words of the rune.")
+			to_chat(user, "Вы не можете произносить слова руны.")
 			return
 		if(!word1 || !word2 || !word3 || prob(user.getBrainLoss()))
 			return fizzle()
 //		if(!src.visibility)
 //			src.visibility=1
-		if(word1 == cultwords["travel"] && word2 == cultwords["self"])
+		if(word1 == cultwords["путешествие"] && word2 == cultwords["я"])
 			return teleport(src.word3)
-		if(word1 == cultwords["see"] && word2 == cultwords["blood"] && word3 == cultwords["hell"])
+		if(word1 == cultwords["видимость"] && word2 == cultwords["кровь"] && word3 == cultwords["ад"])
 			return tomesummon()
-		if(word1 == cultwords["hell"] && word2 == cultwords["destroy"] && word3 == cultwords["other"])
+		if(word1 == cultwords["ад"] && word2 == cultwords["разрушение"] && word3 == cultwords["другое"])
 			return armor()
-		if(word1 == cultwords["join"] && word2 == cultwords["blood"] && word3 == cultwords["self"])
+		if(word1 == cultwords["присоединение"] && word2 == cultwords["кровь"] && word3 == cultwords["я"])
 			return convert()
-		if(word1 == cultwords["hell"] && word2 == cultwords["join"] && word3 == cultwords["self"])
+		if(word1 == cultwords["ад"] && word2 == cultwords["присоединение"] && word3 == cultwords["я"])
 			return tearreality()
-		if(word1 == cultwords["destroy"] && word2 == cultwords["see"] && word3 == cultwords["technology"])
+		if(word1 == cultwords["разрушение"] && word2 == cultwords["видимость"] && word3 == cultwords["технологии"])
 			return emp(src.loc,5)
-		if(word1 == cultwords["travel"] && word2 == cultwords["blood"] && word3 == cultwords["self"])
+		if(word1 == cultwords["путешествие"] && word2 == cultwords["кровь"] && word3 == cultwords["я"])
 			return drain()
-		if(word1 == cultwords["see"] && word2 == cultwords["hell"] && word3 == cultwords["join"])
+		if(word1 == cultwords["видимость"] && word2 == cultwords["ад"] && word3 == cultwords["присоединение"])
 			return seer()
-		if(word1 == cultwords["blood"] && word2 == cultwords["join"] && word3 == cultwords["hell"])
+		if(word1 == cultwords["кровь"] && word2 == cultwords["присоединение"] && word3 == cultwords["ад"])
 			return raise()
-		if(word1 == cultwords["hide"] && word2 == cultwords["see"] && word3 == cultwords["blood"])
+		if(word1 == cultwords["скрытность"] && word2 == cultwords["видимость"] && word3 == cultwords["кровь"])
 			return obscure(4)
-		if(word1 == cultwords["hell"] && word2 == cultwords["travel"] && word3 == cultwords["self"])
+		if(word1 == cultwords["ад"] && word2 == cultwords["путешествие"] && word3 == cultwords["я"])
 			return ajourney()
-		if(word1 == cultwords["blood"] && word2 == cultwords["see"] && word3 == cultwords["travel"])
+		if(word1 == cultwords["кровь"] && word2 == cultwords["видимость"] && word3 == cultwords["путешествие"])
 			return manifest()
-		if(word1 == cultwords["hell"] && word2 == cultwords["technology"] && word3 == cultwords["join"])
+		if(word1 == cultwords["ад"] && word2 == cultwords["технологии"] && word3 == cultwords["присоединение"])
 			return talisman()
-		if(word1 == cultwords["hell"] && word2 == cultwords["blood"] && word3 == cultwords["join"])
+		if(word1 == cultwords["ад"] && word2 == cultwords["кровь"] && word3 == cultwords["присоединение"])
 			return sacrifice()
-		if(word1 == cultwords["blood"] && word2 == cultwords["see"] && word3 == cultwords["hide"])
+		if(word1 == cultwords["кровь"] && word2 == cultwords["видимость"] && word3 == cultwords["скрытность"])
 			return revealrunes(src)
-		if(word1 == cultwords["destroy"] && word2 == cultwords["travel"] && word3 == cultwords["self"])
+		if(word1 == cultwords["разрушение"] && word2 == cultwords["путешествие"] && word3 == cultwords["я"])
 			return wall()
-		if(word1 == cultwords["travel"] && word2 == cultwords["technology"] && word3 == cultwords["other"])
+		if(word1 == cultwords["путешествие"] && word2 == cultwords["технологии"] && word3 == cultwords["другое"])
 			return freedom()
-		if(word1 == cultwords["join"] && word2 == cultwords["other"] && word3 == cultwords["self"])
+		if(word1 == cultwords["присоединение"] && word2 == cultwords["другое"] && word3 == cultwords["я"])
 			return cultsummon()
-		if(word1 == cultwords["hide"] && word2 == cultwords["other"] && word3 == cultwords["see"])
+		if(word1 == cultwords["скрытность"] && word2 == cultwords["другое"] && word3 == cultwords["видимость"])
 			return deafen()
-		if(word1 == cultwords["destroy"] && word2 == cultwords["see"] && word3 == cultwords["other"])
+		if(word1 == cultwords["разрушение"] && word2 == cultwords["видимость"] && word3 == cultwords["другое"])
 			return blind()
-		if(word1 == cultwords["destroy"] && word2 == cultwords["see"] && word3 == cultwords["blood"])
+		if(word1 == cultwords["разрушение"] && word2 == cultwords["видимость"] && word3 == cultwords["кровь"])
 			return bloodboil()
-		if(word1 == cultwords["self"] && word2 == cultwords["other"] && word3 == cultwords["technology"])
+		if(word1 == cultwords["я"] && word2 == cultwords["другое"] && word3 == cultwords["технологии"])
 			return communicate()
-		if(word1 == cultwords["travel"] && word2 == cultwords["other"])
+		if(word1 == cultwords["путешествие"] && word2 == cultwords["другое"])
 			return itemport(src.word3)
-		if(word1 == cultwords["join"] && word2 == cultwords["hide"] && word3 == cultwords["technology"])
+		if(word1 == cultwords["присоединение"] && word2 == cultwords["скрытность"] && word3 == cultwords["технологии"])
 			return runestun()
 		else
 			return fizzle()
@@ -171,7 +171,7 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 			else
 				usr.whisper(pick("Hakkrutju gopoenjim.", "Nherasai pivroiashan.", "Firjji prhiv mazenhor.", "Tanah eh wakantahe.", "Obliyae na oraie.", "Miyf hon vnor'c.", "Wakabai hij fen juswix."))
 			for (var/mob/V in viewers(src))
-				V.show_message("<span class='warning'>The markings pulse with a small burst of light, then fall dark.</span>", 3, "<span class='warning'>You hear a faint fizzle.</span>", 2)
+				V.show_message("<span class='warning'>Маркировка пульсирует небольшой вспышкой света, затем темнеет.</span>", 3, "<span class='warning'>Вы слышите слабое шипение.</span>", 2)
 			return
 
 		check_icon()
@@ -191,9 +191,9 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 	w_class = ITEMSIZE_SMALL
 	unique = 1
 	var/tomedat = ""
-	var/list/words = list("ire" = "ire", "ego" = "ego", "nahlizet" = "nahlizet", "certum" = "certum", "veri" = "veri", "jatkaa" = "jatkaa", "balaq" = "balaq", "mgar" = "mgar", "karazet" = "karazet", "geeri" = "geeri")
+	var/list/words = list("гнев" = "гнев", "эго" = "эго", "нахлизет" = "нахлизет", "определенность" = "определенность", "правда" = "правда", "джатка" = "джатка", "балак" = "балак", "мгар" = "мгар", "каразет" = "каразет", "гиери" = "гиери")
 
-	tomedat = {"<html>
+	tomedat = {"<html><meta charset=\"utf-8\">
 				<head>
 				<style>
 				h1 {font-size: 25px; margin: 15px 0px 5px;}
@@ -204,94 +204,94 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 				</style>
 				</head>
 				<body>
-				<h1>The scriptures of Nar-Sie, The One Who Sees, The Geometer of Blood.</h1>
+				<h1>Священные Писания Нар-Си, Тот, Кто Видит, Геометр Крови.</h1>
 
-				<i>The book is written in an unknown dialect, there are lots of pictures of various complex geometric shapes. You find some notes in english that give you basic understanding of the many runes written in the book. The notes give you an understanding what the words for the runes should be. However, you do not know how to write all these words in this dialect.</i><br>
-				<i>Below is the summary of the runes.</i> <br>
+				<i>Книга написана на неизвестном диалекте, в ней много изображений различных сложных геометрических форм. Вы найдете несколько заметок на русском, которые дадут вам базовое представление о многих рунах, написанных в книге. Примечания дают вам понимание того, какими должны быть слова для рун. Однако вы не умеете писать все эти слова на этом диалекте.</i><br>
+				<i>Ниже приводится сводка рун.</i> <br>
 
-				<h2>Contents</h2>
+				<h2>СОДЕРЖАНИЕ</h2>
 				<p>
-				<b>Teleport self: </b>Travel Self (word)<br>
-				<b>Teleport other: </b>Travel Other (word)<br>
-				<b>Summon new tome: </b>See Blood Hell<br>
-				<b>Convert a person: </b>Join Blood Self<br>
-				<b>Summon Nar-Sie: </b>Hell Join Self<br>
-				<b>Disable technology: </b>Destroy See Technology<br>
-				<b>Drain blood: </b>Travel Blood Self<br>
-				<b>Raise dead: </b>Blood Join Hell<br>
+				<b>Телепорт себя: </b>Путешествие Я (слово)<br>
+				<b>Телепорт кого-то: </b>Путешествие Другое (слово)<br>
+				<b>Призвать новый фолиант: </b>Видимость Кровь Ад<br>
+				<b>Преобраз. персону: </b>Присоединение Кровь Я<br>
+				<b>Призвать Нар-Си: </b>Ад Присоединение Я<br>
+				<b>Отключить технологии: </b>Разрушение Видимость Технологии<br>
+				<b>Слить кровь: </b>Путешествие Кровь Я<br>
+				<b>Воскрешение мертвых: </b>Кровь Присоединение Ад<br>
 				<b>Hide runes: </b>Hide See Blood<br>
-				<b>Reveal hidden runes: </b>Blood See Hide<br>
-				<b>Leave your body: </b>Hell travel self<br>
-				<b>Ghost Manifest: </b>Blood See Travel<br>
-				<b>Imbue a talisman: </b>Hell Technology Join<br>
-				<b>Sacrifice: </b>Hell Blood Join<br>
-				<b>Create a wall: </b>Destroy Travel Self<br>
-				<b>Summon cultist: </b>Join Other Self<br>
-				<b>Free a cultist: </b>Travel technology other<br>
-				<b>Deafen: </b>Hide Other See<br>
-				<b>Blind: </b>Destroy See Other<br>
-				<b>Blood Boil: </b>Destroy See Blood<br>
-				<b>Communicate: </b>Self Other Technology<br>
-				<b>Stun: </b>Join Hide Technology<br>
-				<b>Summon Cultist Armor: </b>Hell Destroy Other<br>
-				<b>See Invisible: </b>See Hell Join<br>
+				<b>Раскрыть скрытые руны: </b>Кровь Видимость Скрытность<br>
+				<b>Покинуть тело: </b>Ад Путешествие Я<br>
+				<b>Ghost Manifest: </b>Кровь Видимость Путешествие<br>
+				<b>Наполнить талисман: </b>Ад Технологии Присоединение<br>
+				<b>Жертва: </b>Ад Кровь Присоединение<br>
+				<b>Создать стену: </b>Разрушение Путешествие Я<br>
+				<b>Призвать культиста: </b>Присоединение Другое Я<br>
+				<b>Освободить культиста: </b>Путешествие Технологии Другое<br>
+				<b>Оглушение: </b>Скрытность Другое Видимость<br>
+				<b>Слепота: </b>Разрушение Видимость Другое<br>
+				<b>Вскипание крови: </b>Разрушение Видимость Кровь<br>
+				<b>Связаться: </b>Я Другое Технологии<br>
+				<b>Стан: </b>Присоединение Скрытность Технологии<br>
+				<b>Призвать доспехи культиста: </b>Ад Разрушение Другое<br>
+				<b>Увидеть невидимое: </b>Видимость Ад Присоединение<br>
 				</p>
-				<h2>Rune Descriptions</h2>
-				<h3>Teleport self</h3>
-				Teleport rune is a special rune, as it only needs two words, with the third word being destination. Basically, when you have two runes with the same destination, invoking one will teleport you to the other one. If there are more than 2 runes, you will be teleported to a random one. Runes with different third words will create separate networks. You can imbue this rune into a talisman, giving you a great escape mechanism.<br>
-				<h3>Teleport other</h3>
-				Teleport other allows for teleportation for any movable object to another rune with the same third word. You need 3 cultists chanting the invocation for this rune to work.<br>
-				<h3>Summon new tome</h3>
-				Invoking this rune summons a new arcane tome.
-				<h3>Convert a person</h3>
-				This rune opens target's mind to the realm of Nar-Sie, which usually results in this person joining the cult. However, some people (mostly the ones who posess high authority) have strong enough will to stay true to their old ideals. <br>
-				<h3>Summon Nar-Sie</h3>
-				The ultimate rune. It summons the Avatar of Nar-Sie himself, tearing a huge hole in reality and consuming everything around it. Summoning it is the final goal of any cult.<br>
-				<h3>Disable Technology</h3>
-				Invoking this rune creates a strong electromagnetic pulse in a small radius, making it basically analogic to an EMP grenade. You can imbue this rune into a talisman, making it a decent defensive item.<br>
-				<h3>Drain Blood</h3>
-				This rune instantly heals you of some brute damage at the expense of a person placed on top of the rune. Whenever you invoke a drain rune, ALL drain runes on the station are activated, draining blood from anyone located on top of those runes. This includes yourself, though the blood you drain from yourself just comes back to you. This might help you identify this rune when studying words. One drain gives up to 25HP per each victim, but you can repeat it if you need more. Draining only works on living people, so you might need to recharge your "Battery" once its empty. Drinking too much blood at once might cause blood hunger.<br>
-				<h3>Raise Dead</h3>
-				This rune allows for the resurrection of any dead person. You will need a dead human body and a living human sacrifice. Make 2 raise dead runes. Put a living, awake human on top of one, and a dead body on the other one. When you invoke the rune, the life force of the living human will be transferred into the dead body, allowing a ghost standing on top of the dead body to enter it, instantly and fully healing it. Use other runes to ensure there is a ghost ready to be resurrected.<br>
-				<h3>Hide runes</h3>
-				This rune makes all nearby runes completely invisible. They are still there and will work if activated somehow, but you cannot invoke them directly if you do not see them.<br>
-				<h3>Reveal runes</h3>
-				This rune is made to reverse the process of hiding a rune. It reveals all hidden runes in a rather large area around it.
-				<h3>Leave your body</h3>
-				This rune gently rips your soul out of your body, leaving it intact. You can observe the surroundings as a ghost as well as communicate with other ghosts. Your body takes damage while you are there, so ensure your journey is not too long, or you might never come back.<br>
+				<h2>Описание рун</h2>
+				<h3>Телепорт себя</h3>
+				Руна телепортации - это особая руна, так как для нее нужно всего два слова, третье слово - пункт назначения. Обычно, когда у вас есть две руны с одним и тем же местом назначения, при вызове одной вы телепортируетесь к другой. Если рун больше 2, вы будете телепортированы к случайной. Руны с разными третьими словами будут создавать отдельные сети. Вы можете превратить эту руну в талисман, что даст вам отличный механизм побега.<br>
+				<h3>Телепорт другого</h3>
+				Телепорт другого - позволяет телепортировать любой подвижный объект к другой руне с тем же третьим словом. Чтобы эта руна сработала, вам нужно 3 культиста, произносящих заклинание.<br>
+				<h3>Призвать новый фолиант</h3>
+				Призыв этой руны вызывает новый тайный фолиант.
+				<h3>Преобразовать персону</h3>
+				Эта руна открывает разум цели в царство Нар-Си, что обычно приводит к тому, что этот человек присоединяется к культу. Однако некоторые люди (в основном те, кто обладает высоким авторитетом) обладают достаточно сильной волей, чтобы оставаться верными своим старым идеалам. <br>
+				<h3>Призвать Нар-Си</h3>
+				Конечная руна. Он вызывает самого Аватара Нар-Си, разрывая огромную дыру в реальности и поглощая все вокруг. Призвать его - конечная цель любого культа.<br>
+				<h3>Отключить технологии</h3>
+				Призыв этой руны создает сильный электромагнитный импульс в небольшом радиусе, что делает его в основном аналогом ЭМИ-гранаты. Вы можете превратить эту руну в талисман, сделав ее достойным защитным предметом.<br>
+				<h3>Слить кровь</h3>
+				Эта руна мгновенно исцеляет вас от некоторых грубых повреждений за счет персоны, помещенной поверх руны. Каждый раз, когда вы вызываете руну высасывания, активируются ВСЕ руны высасывания на станции, высасывая кровь из любого, кто находится поверх этих рун. Это включает и вас самих, хотя кровь, которую вы истекаете из себя, просто возвращается к вам. Это может помочь вам идентифицировать эту руну при изучении слов. Один слив дает до 25ХП на каждую жертву, но вы можете повторить его, если вам нужно больше. Осушение работает только с живыми людьми, поэтому вам может потребоваться подзарядить «Батарею», когда она разрядится. Употребление слишком большого количества крови за один раз может вызвать кровяной голод.<br>
+				<h3>Воскрешение мертвых</h3>
+				Эта руна позволяет воскресить любого мертвого человека. Вам понадобится мертвое человеческое тело и живое человеческое жертвоприношение. Сделайте 2 руны воскрешения мертвых. Положите живого бодрствующего человека на одно, а на другое - мертвое тело. Когда вы вызываете руну, жизненная сила живого человека переносится в мертвое тело, позволяя призраку, стоящему наверху мертвого тела, войти в него, мгновенно и полностью исцелив его. Используйте другие руны, чтобы убедиться, что призрак готов к воскрешению.<br>
+				<h3>Скрыть руны</h3>
+				Эта руна делает все близлежащие руны полностью невидимыми. Они все еще там и будут работать, если каким-то образом активировать их, но вы не можете вызывать их напрямую, если не видите их.<br>
+				<h3>Раскрыть руны</h3>
+				Эта руна предназначена для обращения вспять процесса сокрытия руны. Он показывает все скрытые руны на довольно большой площади вокруг него.
+				<h3>Покинуть тело</h3>
+				Эта руна мягко вырывает вашу душу из вашего тела, оставляя его нетронутым. Вы можете наблюдать за окружающей обстановкой как призрак, а также общаться с другими призраками. Пока вы там, ваше тело получает повреждения, поэтому убедитесь, что ваше путешествие не будет слишком долгим, иначе вы никогда не вернетесь.<br>
 				<h3>Manifest a ghost</h3>
-				Unlike the Raise Dead rune, this rune does not require any special preparations or vessels. Instead of using full lifeforce of a sacrifice, it will drain YOUR lifeforce. Stand on the rune and invoke it. If theres a ghost standing over the rune, it will materialise, and will live as long as you dont move off the rune or die. You can put a paper with a name on the rune to make the new body look like that person.<br>
-				<h3>Imbue a talisman</h3>
-				This rune allows you to imbue the magic of some runes into paper talismans. Create an imbue rune, then an appropriate rune beside it. Put an empty piece of paper on the imbue rune and invoke it. You will now have a one-use talisman with the power of the target rune. Using a talisman drains some health, so be careful with it. You can imbue a talisman with power of the following runes: summon tome, reveal, conceal, teleport, tisable technology, communicate, deafen, blind and stun.<br>
-				<h3>Sacrifice</h3>
-				Sacrifice rune allows you to sacrifice a living thing or a body to the Geometer of Blood. Monkeys and dead humans are the most basic sacrifices, they might or might not be enough to gain His favor. A living human is what a real sacrifice should be, however, you will need 3 people chanting the invocation to sacrifice a living person.
-				<h3>Create a wall</h3>
-				Invoking this rune solidifies the air above it, creating an an invisible wall. To remove the wall, simply invoke the rune again.
-				<h3>Summon cultist</h3>
-				This rune allows you to summon a fellow cultist to your location. The target cultist must be unhandcuffed ant not buckled to anything. You also need to have 3 people chanting at the rune to succesfully invoke it. Invoking it takes heavy strain on the bodies of all chanting cultists.<br>
-				<h3>Free a cultist</h3>
-				This rune unhandcuffs and unbuckles any cultist of your choice, no matter where he is. You need to have 3 people invoking the rune for it to work. Invoking it takes heavy strain on the bodies of all chanting cultists.<br>
-				<h3>Deafen</h3>
-				This rune temporarily deafens all non-cultists around you.<br>
-				<h3>Blind</h3>
-				This rune temporarily blinds all non-cultists around you. Very robust. Use together with the deafen rune to leave your enemies completely helpless.<br>
-				<h3>Blood boil</h3>
-				This rune boils the blood all non-cultists in visible range. The damage is enough to instantly critically hurt any person. You need 3 cultists invoking the rune for it to work. This rune is unreliable and may cause unpredicted effect when invoked. It also drains significant amount of your health when succesfully invoked.<br>
-				<h3>Communicate</h3>
-				Invoking this rune allows you to relay a message to all cultists on the station and nearby space objects.
-				<h3>Stun</h3>
-				Unlike other runes, this ons is supposed to be used in talisman form. When invoked directly, it simply releases some dark energy, briefly stunning everyone around. When imbued into a talisman, you can force all of its energy into one person, stunning him so hard he cant even speak. However, effect wears off rather fast.<br>
-				<h3>Equip Armor</h3>
-				When this rune is invoked, either from a rune or a talisman, it will equip the user with the armor of the followers of Nar-Sie. To use this rune to its fullest extent, make sure you are not wearing any form of headgear, armor, gloves or shoes, and make sure you are not holding anything in your hands.<br>
-				<h3>See Invisible</h3>
-				When invoked when standing on it, this rune allows the user to see the the world beyond as long as he does not move.<br>
+				В отличие от руны Воскрешение метрвых, эта руна не требует специальной подготовки или сосудов. Вместо того, чтобы использовать всю жизненную силу жертвы, она истощит ВАШУ жизненную силу. Встаньте на руну и призовите ее. Если над руной стоит призрак, он материализуется и будет жить до тех пор, пока вы не отойдете от руны и не умрете. Вы можете наклеить листок с именем на руну, чтобы новое тело выглядело как этот человек.<br>
+				<h3>Наполнить талисман</h3>
+				Эта руна позволяет вам наделить магию некоторых рун бумажными талисманами. Создайте руну наполнения, а затем соответствующую руну рядом с ней. Положите пустой лист бумаги на руну наполнения и призовите ее. Теперь у вас будет одноразовый талисман с силой целевой руны. Использование талисмана истощает здоровье, поэтому будьте осторожны с ним. Вы можете наделить талисман силой следующих рун: вызвать фолиант, раскрыть, скрыть, телепортировать, тизабельная технология, общаться, оглушить, ослепить и оглушить.<br>
+				<h3>Жертва</h3>
+				Руна жертвоприношения позволяет принести в жертву Геометру крови живое существо или тело. Обезьяны и мертвые люди - самые простые жертвы, их может хватить, а может и не хватить, чтобы снискать Его благосклонность. Живой человек - это то, чем должна быть настоящая жертва, однако для принесения в жертву живого человека вам понадобятся 3 человека, повторяющих призыв.
+				<h3>Создать стену</h3>
+				Призыв этой руны укрепляет воздух над собой, создавая невидимую стену. Чтобы убрать стену, просто снова вызовите руну.
+				<h3>Призвать культиста</h3>
+				Эта руна позволяет вам призвать другого культиста к себе. Целевой культист должен быть без наручников и ни к чему не пристегнут. Вам также нужно, чтобы 3 человека повторяли руну, чтобы успешно ее вызвать. Призыв к нему вызывает тяжелую нагрузку на тела всех воспевающих культистов.<br>
+				<h3>Освободить культиста</h3>
+				Эта руна снимает наручники и расстегивает любого культиста по вашему выбору, где бы он ни находился. Чтобы руна сработала, вам нужно, чтобы 3 человека вызывали ее. Призыв к нему вызывает тяжелую нагрузку на тела всех воспевающих культистов.<br>
+				<h3>Оглушение</h3>
+				Эта руна временно оглушает всех некультистов вокруг вас.<br>
+				<h3>Ослепление</h3>
+				Эта руна временно ослепляет всех некультистов вокруг вас. Очень прочный. Используйте вместе с оглушающей руной, чтобы оставить врагов совершенно беспомощными.<br>
+				<h3>Вскипание крови</h3>
+				Эта руна вскипает в крови всех некультистов в видимом диапазоне. Урон достаточно, чтобы мгновенно нанести критический вред любому человеку. Вам нужно 3 культиста, призывающих руну, чтобы это сработало. Эта руна ненадежна и может вызвать непредсказуемый эффект при использовании. Он также истощает значительное количество вашего здоровья при успешном вызове.<br>
+				<h3>Связаться</h3>
+				Вызов этой руны позволяет передать сообщение всем культистам на станции и близлежащих космических объектах.
+				<h3>Стан</h3>
+				В отличие от других рун, эта руна предназначена для использования в форме талисмана. При прямом вызове он просто высвобождает некоторую темную энергию, ненадолго оглушая всех вокруг. Находясь в талисмане, вы можете направить всю его энергию в одного человека, оглушая его так сильно, что он даже не может говорить. Однако эффект проходит довольно быстро.<br>
+				<h3>Броня культа</h3>
+				Когда эта руна вызывается из руны или талисмана, она снабжает пользователя доспехами последователей Нар-Си. Чтобы использовать эту руну в полной мере, убедитесь, что вы не носите никаких головных уборов, доспехов, перчаток или обуви, и убедитесь, что вы ничего не держите в руках.<br>
+				<h3>Видеть Невидимое</h3>
+				При вызове, стоя на ней, эта руна позволяет пользователю видеть мир за его пределами, пока он не двигается.<br>
 				</body>
 				</html>
 				"}
 
 	New()
 		..()
-		if(!cultwords["travel"])
+		if(!cultwords["путешествие"])
 			runerandom()
 		for(var/V in cultwords)
 			words[cultwords[V]] = V
@@ -311,8 +311,8 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 			return
 		M.take_organ_damage(0,rand(5,20)) //really lucky - 5 hits for a crit
 		for(var/mob/O in viewers(M, null))
-			O.show_message("<span class='warning'>\The [user] beats \the [M] with \the [src]!</span>", 1)
-		to_chat(M, "<span class='danger'>You feel searing heat inside!</span>")
+			O.show_message("<span class='warning'>[user] превосходит [M] с помощью [src]!</span>", 1)
+		to_chat(M, "<span class='danger'>Вы чувствуете жгучий жар внутри!</span>")
 
 
 	attack_self(mob/living/user as mob)
@@ -320,24 +320,24 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 		if(!usr.canmove || usr.stat || usr.restrained())
 			return
 
-		if(!cultwords["travel"])
+		if(!cultwords["путешествие"])
 			runerandom()
 		if(iscultist(user))
 			var/C = 0
 			for(var/obj/effect/rune/N in rune_list)
 				C++
 			if (!istype(user.loc,/turf))
-				to_chat(user, "<span class='warning'>You do not have enough space to write a proper rune.</span>")
+				to_chat(user, "<span class='warning'>У вас недостаточно места, чтобы написать правильную руну.</span>")
 				return
 
 			if (C>=26 + runedec + cult.current_antagonists.len) //including the useless rune at the secret room, shouldn't count against the limit of 25 runes - Urist
-				alert("The cloth of reality can't take that much of a strain. Remove some runes first!")
+				alert("Ткань реальности не выдерживает такой большой нагрузки. Сначала удалите несколько рун!")
 				return
 			else
-				switch(alert("You open the tome",,"Read it","Scribe a rune", "Cancel"))
-					if("Cancel")
+				switch(alert("Вы открываете фолиант",,"Прочитать","Начертать руну", "Отмена"))
+					if("Отмена")
 						return
-					if("Read it")
+					if("Прочитать")
 						if(usr.get_active_hand() != src)
 							return
 						user << browse("[tomedat]", "window=Arcane Tome")
@@ -346,30 +346,30 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 				return
 
 			var/list/dictionary = list (
-				"convert" = list("join","blood","self"),
-				"wall" = list("destroy","travel","self"),
-				"blood boil" = list("destroy","see","blood"),
-				"blood drain" = list("travel","blood","self"),
-				"raise dead" = list("blood","join","hell"),
-				"summon narsie" = list("hell","join","self"),
-				"communicate" = list("self","other","technology"),
-				"emp" = list("destroy","see","technology"),
-				"manifest" = list("blood","see","travel"),
-				"summon tome" = list("see","blood","hell"),
-				"see invisible" = list("see","hell","join"),
-				"hide" = list("hide","see","blood"),
-				"reveal" = list("blood","see","hide"),
-				"astral journey" = list("hell","travel","self"),
-				"imbue" = list("hell","technology","join"),
-				"sacrifice" = list("hell","blood","join"),
-				"summon cultist" = list("join","other","self"),
-				"free cultist" = list("travel","technology","other"),
-				"deafen" = list("hide","other","see"),
-				"blind" = list("destroy","see","other"),
-				"stun" = list("join","hide","technology"),
-				"armor" = list("hell","destroy","other"),
-				"teleport" = list("travel","self"),
-				"teleport other" = list("travel","other")
+				"превращение" = list("присоединение","кровь","я"),
+				"стена" = list("разрушение","путешествие","я"),
+				"вскипание крови" = list("разрушение","видимость","кровь"),
+				"слить кровь" = list("путешествие","кровь","я"),
+				"воскрешение мертвых" = list("кровь","присоединение","ад"),
+				"призвать нарси" = list("ад","присоединение","я"),
+				"связаться" = list("я","другое","технологии"),
+				"эми" = list("разрушение","видимость","технологии"),
+				"манифест" = list("кровь","видимость","путешествие"),
+				"призвать фолиант" = list("видимость","кровь","ад"),
+				"видеть невидимое" = list("видимость","ад","присоединение"),
+				"скрыть" = list("скрытность","видимость","кровь"),
+				"раскрыть" = list("кровь","видимость","скрытность"),
+				"астральное путешествие" = list("ад","путешествие","я"),
+				"насыщение" = list("ад","технологии","присоединение"),
+				"жертва" = list("ад","кровь","присоединение"),
+				"призвать культиста" = list("присоединение","другое","я"),
+				"освободить культиста" = list("путешествие","технологии","другое"),
+				"оглушение" = list("скрытность","другое","видимость"),
+				"ослепление" = list("разрушение","видимость","другое"),
+				"стан" = list("присоединение","скрытность","технологии"),
+				"броня" = list("ад","разрушение","другое"),
+				"телепорт" = list("путешествие","я"),
+				"телепорт другое" = list("путешествие","другое")
 			)
 
 			var/list/english = list()
@@ -388,23 +388,23 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 			var/chosen_rune = null
 
 			if(usr)
-				chosen_rune = input ("Choose a rune to scribe.") in scribewords
+				chosen_rune = input ("Выберите руну, которую хотите написать.") in scribewords
 				if (!chosen_rune)
 					return
 				if (chosen_rune == "none")
-					to_chat(user, "<span class='notice'>You decide against scribing a rune, perhaps you should take this time to study your notes.</span>")
+					to_chat(user, "<span class='notice'>Вы решаете не писать руну, возможно, вам стоит на этот раз изучить свои записи.</span>")
 					return
-				if (chosen_rune == "teleport")
-					dictionary[chosen_rune] += input ("Choose a destination word") in english
-				if (chosen_rune == "teleport other")
-					dictionary[chosen_rune] += input ("Choose a destination word") in english
+				if (chosen_rune == "телепорт")
+					dictionary[chosen_rune] += input ("Выберите слово назначения") in english
+				if (chosen_rune == "телепорт другое")
+					dictionary[chosen_rune] += input ("Выберите слово назначения") in english
 
 			if(usr.get_active_hand() != src)
 				return
 
 			for (var/mob/V in viewers(src))
-				V.show_message("<span class='danger'>\The [user] slices open a finger and begins to chant and paint symbols on the floor.</span>", 3, "<span class='danger'>You hear chanting.</span>", 2)
-			to_chat(user, "<span class='danger'>You slice open one of your fingers and begin drawing a rune on the floor whilst chanting the ritual that binds your life essence with the dark arcane energies flowing through the surrounding world.</span>")
+				V.show_message("<span class='danger'>[user] разрезает палец и начинает петь и рисовать символы на полу.</span>", 3, "<span class='danger'>Вы слышите пение.</span>", 2)
+			to_chat(user, "<span class='danger'>Вы разрезаете один из пальцев и начинаете рисовать руну на полу, одновременно повторяя ритуал, связывающий вашу жизненную сущность с темными тайными энергиями, текущими через окружающий мир.</span>")
 			user.take_overall_damage((rand(9)+1)/10) // 0.1 to 1.0 damage
 			if(do_after(user, 50))
 				var/area/A = get_area(user)
@@ -413,7 +413,7 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 					return
 				var/mob/living/carbon/human/H = user
 				var/obj/effect/rune/R = new /obj/effect/rune(user.loc)
-				to_chat(user, "<span class='notice'>You finish drawing the arcane markings of the Geometer.</span>")
+				to_chat(user, "<span class='notice'>Вы закончили рисовать загадочные отметки Геометра.</span>")
 				var/list/required = dictionary[chosen_rune]
 				R.word1 = english[required[1]]
 				R.word2 = english[required[2]]
@@ -423,15 +423,15 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 				R.blood_DNA[H.dna.unique_enzymes] = H.dna.b_type
 			return
 		else
-			to_chat(user, "The book seems full of illegible scribbles. Is this a joke?")
+			to_chat(user, "Книга кажется заполненной неразборчивыми каракулями. Это шутка?")
 			return
 
 	examine(mob/user)
 		. = ..()
 		if(!iscultist(user))
-			. += "An old, dusty tome with frayed edges and a sinister looking cover."
+			. += "Старый пыльный фолиант с потрепанными краями и зловещей обложкой."
 		else
-			. += "The scriptures of Nar-Sie, The One Who Sees, The Geometer of Blood. Contains the details of every ritual his followers could think of. Most of these are useless, though."
+			. += "Священные Писания Нар-Си, Тот, Кто Видит, Геометр Крови. Содержит подробности каждого ритуала, о котором могли подумать его последователи. Однако большинство из них бесполезны."
 
 /obj/item/weapon/book/tome/cultify()
 	return
@@ -442,14 +442,14 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 	attack_self(mob/user as mob)
 		if(src.cultistsonly && !iscultist(usr))
 			return
-		if(!cultwords["travel"])
+		if(!cultwords["путешествие"])
 			runerandom()
 		if(user)
 			var/r
 			if (!istype(user.loc,/turf))
-				to_chat(user, "<span class='notice'>You do not have enough space to write a proper rune.</span>")
-			var/list/runes = list("teleport", "itemport", "tome", "armor", "convert", "tear in reality", "emp", "drain", "seer", "raise", "obscure", "reveal", "astral journey", "manifest", "imbue talisman", "sacrifice", "wall", "freedom", "cultsummon", "deafen", "blind", "bloodboil", "communicate", "stun")
-			r = input("Choose a rune to scribe", "Rune Scribing") in runes //not cancellable.
+				to_chat(user, "<span class='notice'>У вас недостаточно места, чтобы написать правильную руну.</span>")
+			var/list/runes = list("телепорт", "предметпорт", "фолиант", "броня", "превращение", "слеза наяву", "эми", "слить", "провидец", "возвышение", "скрыть", "раскрыть", "астральное путешествие", "манифест", "наполнить талисман", "жертва", "стена", "свобода", "призывкультиста", "оглушение", "ослепление", "вскипание", "связаться", "стан")
+			r = input("Выберите руну для начертания", "Rune Scribing") in runes //not cancellable.
 			var/obj/effect/rune/R = new /obj/effect/rune
 			if(istype(user, /mob/living/carbon/human))
 				var/mob/living/carbon/human/H = user
@@ -458,155 +458,155 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 			var/area/A = get_area(user)
 			log_and_message_admins("created \an [r] rune at \the [A.name] - [user.loc.x]-[user.loc.y]-[user.loc.z].")
 			switch(r)
-				if("teleport")
-					var/list/words = list("ire", "ego", "nahlizet", "certum", "veri", "jatkaa", "balaq", "mgar", "karazet", "geeri")
+				if("телепорт")
+					var/list/words = list("гнев", "эго", "нахлизет", "определенность", "правда", "джатка", "мгар", "балак", "каразет", "гиери")
 					var/beacon
 					if(usr)
-						beacon = input("Select the last rune", "Rune Scribing") in words
-					R.word1=cultwords["travel"]
-					R.word2=cultwords["self"]
+						beacon = input("Выберите последнюю руну", "Rune Scribing") in words
+					R.word1=cultwords["путешествие"]
+					R.word2=cultwords["я"]
 					R.word3=beacon
 					R.loc = user.loc
 					R.check_icon()
-				if("itemport")
-					var/list/words = list("ire", "ego", "nahlizet", "certum", "veri", "jatkaa", "balaq", "mgar", "karazet", "geeri")
+				if("предметпорт")
+					var/list/words = list("гнев", "эго", "нахлизет", "определенность", "правда", "джатка", "мгар", "балак", "каразет", "гиери")
 					var/beacon
 					if(usr)
-						beacon = input("Select the last rune", "Rune Scribing") in words
-					R.word1=cultwords["travel"]
-					R.word2=cultwords["other"]
+						beacon = input("Выберите последнюю руну", "Rune Scribing") in words
+					R.word1=cultwords["путешествие"]
+					R.word2=cultwords["другое"]
 					R.word3=beacon
 					R.loc = user.loc
 					R.check_icon()
-				if("tome")
-					R.word1=cultwords["see"]
-					R.word2=cultwords["blood"]
-					R.word3=cultwords["hell"]
+				if("фолиант")
+					R.word1=cultwords["видимость"]
+					R.word2=cultwords["кровь"]
+					R.word3=cultwords["ад"]
 					R.loc = user.loc
 					R.check_icon()
-				if("armor")
-					R.word1=cultwords["hell"]
-					R.word2=cultwords["destroy"]
-					R.word3=cultwords["other"]
+				if("броня")
+					R.word1=cultwords["ад"]
+					R.word2=cultwords["разрушение"]
+					R.word3=cultwords["другое"]
 					R.loc = user.loc
 					R.check_icon()
-				if("convert")
-					R.word1=cultwords["join"]
-					R.word2=cultwords["blood"]
-					R.word3=cultwords["self"]
+				if("превращение")
+					R.word1=cultwords["присоединение"]
+					R.word2=cultwords["кровь"]
+					R.word3=cultwords["я"]
 					R.loc = user.loc
 					R.check_icon()
-				if("tear in reality")
-					R.word1=cultwords["hell"]
-					R.word2=cultwords["join"]
-					R.word3=cultwords["self"]
+				if("слеза наяву")
+					R.word1=cultwords["ад"]
+					R.word2=cultwords["присоединение"]
+					R.word3=cultwords["я"]
 					R.loc = user.loc
 					R.check_icon()
-				if("emp")
-					R.word1=cultwords["destroy"]
-					R.word2=cultwords["see"]
-					R.word3=cultwords["technology"]
+				if("эми")
+					R.word1=cultwords["разрушение"]
+					R.word2=cultwords["видимость"]
+					R.word3=cultwords["технологии"]
 					R.loc = user.loc
 					R.check_icon()
-				if("drain")
-					R.word1=cultwords["travel"]
-					R.word2=cultwords["blood"]
-					R.word3=cultwords["self"]
+				if("слить")
+					R.word1=cultwords["путешествие"]
+					R.word2=cultwords["кровь"]
+					R.word3=cultwords["я"]
 					R.loc = user.loc
 					R.check_icon()
-				if("seer")
-					R.word1=cultwords["see"]
-					R.word2=cultwords["hell"]
-					R.word3=cultwords["join"]
+				if("провидец")
+					R.word1=cultwords["видимость"]
+					R.word2=cultwords["ад"]
+					R.word3=cultwords["присоединение"]
 					R.loc = user.loc
 					R.check_icon()
-				if("raise")
-					R.word1=cultwords["blood"]
-					R.word2=cultwords["join"]
-					R.word3=cultwords["hell"]
+				if("возвышение")
+					R.word1=cultwords["кровь"]
+					R.word2=cultwords["присоединение"]
+					R.word3=cultwords["ад"]
 					R.loc = user.loc
 					R.check_icon()
-				if("obscure")
-					R.word1=cultwords["hide"]
-					R.word2=cultwords["see"]
-					R.word3=cultwords["blood"]
+				if("скрыть")
+					R.word1=cultwords["скрытность"]
+					R.word2=cultwords["видимость"]
+					R.word3=cultwords["кровь"]
 					R.loc = user.loc
 					R.check_icon()
-				if("astral journey")
-					R.word1=cultwords["hell"]
-					R.word2=cultwords["travel"]
-					R.word3=cultwords["self"]
+				if("астральное путешествие")
+					R.word1=cultwords["ад"]
+					R.word2=cultwords["присоединение"]
+					R.word3=cultwords["я"]
 					R.loc = user.loc
 					R.check_icon()
-				if("manifest")
-					R.word1=cultwords["blood"]
-					R.word2=cultwords["see"]
-					R.word3=cultwords["travel"]
+				if("манифесть")
+					R.word1=cultwords["кровь"]
+					R.word2=cultwords["видимость"]
+					R.word3=cultwords["путешествие"]
 					R.loc = user.loc
 					R.check_icon()
-				if("imbue talisman")
-					R.word1=cultwords["hell"]
-					R.word2=cultwords["technology"]
-					R.word3=cultwords["join"]
+				if("наполнить талисман")
+					R.word1=cultwords["ад"]
+					R.word2=cultwords["технологии"]
+					R.word3=cultwords["присоединение"]
 					R.loc = user.loc
 					R.check_icon()
-				if("sacrifice")
-					R.word1=cultwords["hell"]
-					R.word2=cultwords["blood"]
-					R.word3=cultwords["join"]
+				if("жертва")
+					R.word1=cultwords["ад"]
+					R.word2=cultwords["кровь"]
+					R.word3=cultwords["присоединение"]
 					R.loc = user.loc
 					R.check_icon()
-				if("reveal")
-					R.word1=cultwords["blood"]
-					R.word2=cultwords["see"]
-					R.word3=cultwords["hide"]
+				if("раскрыть")
+					R.word1=cultwords["кровь"]
+					R.word2=cultwords["видимость"]
+					R.word3=cultwords["скрыть"]
 					R.loc = user.loc
 					R.check_icon()
-				if("wall")
-					R.word1=cultwords["destroy"]
-					R.word2=cultwords["travel"]
-					R.word3=cultwords["self"]
+				if("стена")
+					R.word1=cultwords["разрушение"]
+					R.word2=cultwords["путешествие"]
+					R.word3=cultwords["я"]
 					R.loc = user.loc
 					R.check_icon()
-				if("freedom")
-					R.word1=cultwords["travel"]
-					R.word2=cultwords["technology"]
-					R.word3=cultwords["other"]
+				if("свобода")
+					R.word1=cultwords["путешествие"]
+					R.word2=cultwords["технологии"]
+					R.word3=cultwords["другое"]
 					R.loc = user.loc
 					R.check_icon()
-				if("cultsummon")
-					R.word1=cultwords["join"]
-					R.word2=cultwords["other"]
-					R.word3=cultwords["self"]
+				if("призывкультиста")
+					R.word1=cultwords["присоединение"]
+					R.word2=cultwords["другое"]
+					R.word3=cultwords["я"]
 					R.loc = user.loc
 					R.check_icon()
-				if("deafen")
-					R.word1=cultwords["hide"]
-					R.word2=cultwords["other"]
-					R.word3=cultwords["see"]
+				if("оглушение")
+					R.word1=cultwords["скрытность"]
+					R.word2=cultwords["другое"]
+					R.word3=cultwords["видимость"]
 					R.loc = user.loc
 					R.check_icon()
-				if("blind")
-					R.word1=cultwords["destroy"]
-					R.word2=cultwords["see"]
-					R.word3=cultwords["other"]
+				if("ослепление")
+					R.word1=cultwords["разрушение"]
+					R.word2=cultwords["видимость"]
+					R.word3=cultwords["другое"]
 					R.loc = user.loc
 					R.check_icon()
-				if("bloodboil")
-					R.word1=cultwords["destroy"]
-					R.word2=cultwords["see"]
-					R.word3=cultwords["blood"]
+				if("вскипание")
+					R.word1=cultwords["разрушение"]
+					R.word2=cultwords["видимость"]
+					R.word3=cultwords["кровь"]
 					R.loc = user.loc
 					R.check_icon()
-				if("communicate")
-					R.word1=cultwords["self"]
-					R.word2=cultwords["other"]
-					R.word3=cultwords["technology"]
+				if("связаться")
+					R.word1=cultwords["я"]
+					R.word2=cultwords["другое"]
+					R.word3=cultwords["технологии"]
 					R.loc = user.loc
 					R.check_icon()
-				if("stun")
-					R.word1=cultwords["join"]
-					R.word2=cultwords["hide"]
-					R.word3=cultwords["technology"]
+				if("стан")
+					R.word1=cultwords["присоединение"]
+					R.word2=cultwords["скрытность"]
+					R.word3=cultwords["технологии"]
 					R.loc = user.loc
 					R.check_icon()

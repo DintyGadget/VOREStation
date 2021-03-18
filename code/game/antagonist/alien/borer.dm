@@ -7,7 +7,7 @@ var/datum/antagonist/borer/borers
 	role_text_plural = "Cortical Borers"
 	mob_path = /mob/living/simple_mob/animal/borer
 	bantype = "Borer"
-	welcome_text = "Use your Infest power to crawl into the ear of a host and fuse with their brain. You can only take control temporarily, and at risk of hurting your host, so be clever and careful; your host is encouraged to help you however they can. Talk to your fellow borers with :x."
+	welcome_text = "Используйте свою заражающую силу, чтобы заползти в ухо хозяина и слиться с его мозгом. Вы можете взять контроль только временно и рискуете навредить своему хозяину, поэтому будьте умны и осторожны; ваш хозяин поощряется помогать вам, как только может. Поговорите со своими коллегами-мозговиками с помощью :x."
 	antag_indicator = "brainworm"
 	antaghud_indicator = "hudborer"
 
@@ -15,12 +15,12 @@ var/datum/antagonist/borer/borers
 
 	faction_role_text = "Borer Thrall"
 	faction_descriptor = "Unity"
-	faction_welcome = "You are now a thrall to a cortical borer. Please listen to what they have to say; they're in your head."
+	faction_welcome = "Теперь ты раб мозгового паразите. Пожалуйста, послушайте, что он скажет; ведь он у вас в голове."
 
 	initial_spawn_req = 3
 	initial_spawn_target = 5
 
-	spawn_announcement = "Unidentified lifesigns detected coming aboard the station. Secure any exterior access, including ducting and ventilation."
+	spawn_announcement = "На борту станции обнаружены неопознанные инопланетные существа. Обеспечьте безопасность всех узлов, включая воздуховоды и вентиляцию."
 	spawn_announcement_title = "Lifesign Alert"
 	spawn_announcement_sound = 'sound/AI/aliens.ogg'
 	spawn_announcement_delay = 5000

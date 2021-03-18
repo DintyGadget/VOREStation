@@ -3,7 +3,7 @@
 
 /datum/trait
 	var/name
-	var/desc = "Contact a developer if you see this trait."
+	var/desc = "Если вы заметили эту особенность, обратитесь к разработчику."
 
 	var/cost = 0			// 0 is neutral, negative cost means negative, positive cost means positive.
 	var/list/var_changes		// A list to apply to the custom species vars.

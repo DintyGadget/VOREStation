@@ -18,10 +18,10 @@ var/datum/antagonist/cultist/cult
 	role_type = BE_CULTIST
 	feedback_tag = "cult_objective"
 	antag_indicator = "cult"
-	welcome_text = "You have a talisman in your possession; one that will help you start the cult on this station. Use it well and remember - there are others."
+	welcome_text = "У вас есть талисман; тот, который поможет вам создать культ на этой станции. Используйте его эффективно и помните - вы не одиноки."
 	antag_sound = 'sound/effects/antag_notice/cult_alert.ogg'
-	victory_text = "The cult wins! It has succeeded in serving its dark masters!"
-	loss_text = "The staff managed to stop the cult!"
+	victory_text = "Культ побеждает! Ему удалось сослужить своим темным хозяевам!"
+	loss_text = "Персоналу удалось остановить культ!"
 	victory_feedback_tag = "win - cult win"
 	loss_feedback_tag = "loss - staff stopped the cult"
 	flags = ANTAG_SUSPICIOUS | ANTAG_RANDSPAWN | ANTAG_VOTABLE
@@ -33,8 +33,8 @@ var/datum/antagonist/cultist/cult
 
 	var/allow_narsie = 1
 	var/datum/mind/sacrifice_target
-	var/list/startwords = list("blood","join","self","hell")
-	var/list/allwords = list("travel","self","see","hell","blood","join","tech","destroy", "other", "hide")
+	var/list/startwords = list("кровь","присоединение","я","ад")
+	var/list/allwords = list("путешествие","я","видимость","ад","кровь","присоединение","технологии","разрушение", "другое", "скрытность")
 	var/list/sacrificed = list()
 	var/list/harvested = list()
 
@@ -94,25 +94,25 @@ var/datum/antagonist/cultist/cult
 			word = pick(allwords)
 
 	// Ensure runes are randomized.
-	if(!cultwords["travel"])
+	if(!cultwords["путешествие"])
 		runerandom()
 
-	var/wordexp = "[cultwords[word]] is [word]..."
-	to_chat(cult_mob, "<span class='warning'>You remember one thing from the dark teachings of your master... [wordexp]</span>")
-	cult_mob.mind.store_memory("You remember that <B>[wordexp]</B>", 0, 0)
+	var/wordexp = "[cultwords[word]] это [word]..."
+	to_chat(cult_mob, "<span class='warning'>Вы помните одну вещь из темных учений вашего учителя ... [wordexp]</span>")
+	cult_mob.mind.store_memory("Вы помните, что <B>[wordexp]</B>", 0, 0)
 
 /datum/antagonist/cultist/remove_antagonist(var/datum/mind/player, var/show_message, var/implanted)
 	if(!..())
 		return 0
-	to_chat(player.current, "<span class='danger'>An unfamiliar white light flashes through your mind, cleansing the taint of the dark-one and the memories of your time as his servant with it.</span>")
+	to_chat(player.current, "<span class='danger'>Незнакомый белый свет вспыхивает в вашем разуме, смывая заразы темного и воспоминания о вашем времени в качестве его слуги.</span>")
 	player.memory = ""
 	if(show_message)
-		player.current.visible_message("<FONT size = 3>[player.current] looks like they just reverted to their old faith!</FONT>")
+		player.current.visible_message("<FONT size = 3>[player.current] похоже, что он только что вернулся к своей старой вере!</FONT>")
 
 /datum/antagonist/cultist/add_antagonist(var/datum/mind/player)
 	. = ..()
 	if(.)
-		to_chat(player, "You catch a glimpse of the Realm of Nar-Sie, the Geometer of Blood. You now see how flimsy the world is, you see that it should be open to the knowledge of That Which Waits. Assist your new compatriots in their dark dealings. Their goals are yours, and yours are theirs. You serve the Dark One above all else. Bring It back.")
+		to_chat(player, "Вы мельком видите Царство Нар-Си, Геометра Крови. Теперь вы видите, насколько хрупок мир, вы видите, что он должен быть открыт для познания Того, Что ждет. Помогите своим новым соотечественникам в их мрачных делах. Их цели - ваши цели, а ваши цели - их цели. Вы служите Темному превыше всего.")
 		if(player.current && !istype(player.current, /mob/living/simple_mob/construct))
 			player.current.add_language(LANGUAGE_CULT)
 

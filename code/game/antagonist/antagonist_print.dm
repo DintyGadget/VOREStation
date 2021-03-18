@@ -3,12 +3,12 @@
 	if(!current_antagonists.len)
 		return FALSE
 
-	var/text = "<br><br><font size = 2><b>The [current_antagonists.len == 1 ? "[role_text] was" : "[role_text_plural] were"]:</b></font>"
+	var/text = "<br><meta charset=\"utf-8\"><br><font size = 2><b>The [current_antagonists.len == 1 ? "[role_text] was" : "[role_text_plural] were"]:</b></font>"
 	for(var/datum/mind/P in current_antagonists)
 		text += print_player_full(P)
 		text += get_special_objective_text(P)
 		if(P.ambitions)
-			text += "<br>Their goals for today were..."
+			text += "<br>Их цели на сегодня были ..."
 			text += "<br><span class='notice'>[P.ambitions]</span>"
 		if(!global_objectives.len && P.objectives && P.objectives.len)
 			var/failed
@@ -16,20 +16,20 @@
 			for(var/datum/objective/O in P.objectives)
 				text += print_objective(O, num)
 				if(O.check_completion())
-					text += "<font color='green'><B>Success!</B></font>"
+					text += "<font color='green'><B>Успех!</B></font>"
 					feedback_add_details(feedback_tag,"[O.type]|SUCCESS")
 				else
-					text += "<font color='red'>Fail.</font>"
+					text += "<font color='red'>Провал.</font>"
 					feedback_add_details(feedback_tag,"[O.type]|FAIL")
 					failed = TRUE
 				num++
 				if(failed)
-					text += "<br><font color='red'><B>The [role_text] has failed.</B></font>"
+					text += "<br><font color='red'><B>[role_text] терпит неудачу.</B></font>"
 				else
-					text += "<br><font color='green'><B>The [role_text] was successful!</B></font>"
+					text += "<br><font color='green'><B>[role_text] завершает с успехом!</B></font>"
 
 	if(global_objectives && global_objectives.len)
-		text += "<BR><FONT size = 2>Their objectives were:</FONT>"
+		text += "<BR><FONT size = 2>Их целями были:</FONT>"
 		var/num = 1
 		for(var/datum/objective/O in global_objectives)
 			text += print_objective(O, num, TRUE)
@@ -39,12 +39,12 @@
 	to_world(text)
 
 /datum/antagonist/proc/print_objective(var/datum/objective/O, var/num, var/append_success)
-	var/text = "<br><b>Objective [num]:</b> [O.explanation_text] "
+	var/text = "<br><meta charset=\"utf-8\"><b>Цель [num]:</b> [O.explanation_text] "
 	if(append_success)
 		if(O.check_completion())
-			text += "<font color='green'><B>Success!</B></font>"
+			text += "<font color='green'><B>Успех!</B></font>"
 		else
-			text += "<font color='red'>Fail.</font>"
+			text += "<font color='red'>Провал.</font>"
 	return text
 
 /datum/antagonist/proc/print_player_lite(var/datum/mind/ply)

@@ -1,13 +1,13 @@
 /obj/item/weapon/towel
-	name = "towel"
+	name = "полотенце"
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "towel"
 	slot_flags = SLOT_HEAD | SLOT_BELT | SLOT_OCLOTHING
 	force = 3.0
 	w_class = ITEMSIZE_NORMAL
-	attack_verb = list("whipped")
+	attack_verb = list("хлестает")
 	hitsound = 'sound/weapons/towelwhip.ogg'
-	desc = "A soft cotton towel."
+	desc = "Мягкое хлопковое полотенце."
 	drop_sound = 'sound/items/drop/cloth.ogg'
 	pickup_sound = 'sound/items/pickup/cloth.ogg'
 
@@ -22,7 +22,7 @@
 			sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/species/seromi/belt.dmi')
 
 /obj/item/weapon/towel/attack_self(mob/living/user as mob)
-	user.visible_message(text("<span class='notice'>[] uses [] to towel themselves off.</span>", user, src))
+	user.visible_message(text("<span class='notice'>[] вытирает себя при помощи полотенца.</span>", user))
 	playsound(src, 'sound/weapons/towelwipe.ogg', 25, 1)
 	if(user.fire_stacks > 0)
 		user.fire_stacks = (max(0, user.fire_stacks - 1.5))

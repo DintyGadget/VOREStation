@@ -11,11 +11,11 @@
 	//Viral Gastroenteritis
 	if (. >= 1)
 		if(prob(1))
-			owner.custom_pain("There's a twisting pain in your abdomen!",1)
+			owner.custom_pain("Ваш живот скручивает от боли!",1)
 			owner.vomit()
 	if (. >= 2)
 		if(prob(1))
-			owner.custom_pain("Your abdomen feels like it's tearing itself apart!",1)
+			owner.custom_pain("Ваш живот словно разрывается на части!",1)
 			owner.m_intent = "walk"
 			owner.hud_used.move_intent.icon_state = "walking"
 

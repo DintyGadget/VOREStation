@@ -73,7 +73,7 @@
 	name = "oxygen deprivation first aid kit"
 	desc = "A box full of oxygen goodies."
 	icon_state = "o2"
-	item_state_slots = list(slot_r_hand_str = "firstaid-o2", slot_l_hand_str = "firstaid-o2") 
+	item_state_slots = list(slot_r_hand_str = "firstaid-o2", slot_l_hand_str = "firstaid-o2")
 	starts_with = list(
 		/obj/item/weapon/reagent_containers/pill/dexalin,
 		/obj/item/weapon/reagent_containers/pill/dexalin,
@@ -156,14 +156,14 @@
 		)
 
 /obj/item/weapon/storage/firstaid/clotting
-	name = "clotting kit"
-	desc = "Contains chemicals to stop bleeding."
+	name = "набор для свертывания"
+	desc = "Содержит химические вещества, останавливающие кровотечение."
 	max_storage_space = ITEMSIZE_COST_SMALL * 7
 	starts_with = list(/obj/item/weapon/reagent_containers/hypospray/autoinjector/biginjector/clotting = 8)
 
 /obj/item/weapon/storage/firstaid/bonemed
-	name = "bone repair kit"
-	desc = "Contains chemicals to mend broken bones."
+	name = "комплект для ремонта костей"
+	desc = "Содержит химические вещества для лечения сломанных костей."
 	max_storage_space = ITEMSIZE_COST_SMALL * 7
 	starts_with = list(/obj/item/weapon/reagent_containers/hypospray/autoinjector/biginjector/bonemed = 8)
 
@@ -171,8 +171,8 @@
  * Pill Bottles
  */
 /obj/item/weapon/storage/pill_bottle
-	name = "pill bottle"
-	desc = "It's an airtight container for storing medication."
+	name = "баночка таблеток"
+	desc = "Это герметичный контейнер для хранения лекарств."
 	icon_state = "pill_canister"
 	icon = 'icons/obj/chemical.dmi'
 	drop_sound = 'sound/items/drop/pillbottle.ogg'
@@ -208,15 +208,15 @@
 
 /obj/item/weapon/storage/pill_bottle/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/weapon/pen) || istype(W, /obj/item/device/flashlight/pen))
-		var/tmp_label = sanitizeSafe(input(user, "Enter a label for [name]", "Label", label_text), MAX_NAME_LEN)
+		var/tmp_label = sanitizeSafe(input(user, "Введите название для [name]", "Label", label_text), MAX_NAME_LEN)
 		if(length(tmp_label) > 50)
-			to_chat(user, "<span class='notice'>The label can be at most 50 characters long.</span>")
+			to_chat(user, "<span class='notice'>Ярлык может содержать не более 50 символов.</span>")
 		else if(length(tmp_label) > 10)
-			to_chat(user, "<span class='notice'>You set the label.</span>")
+			to_chat(user, "<span class='notice'>Вы устанавливаете этикетку.</span>")
 			label_text = tmp_label
 			update_name_label()
 		else
-			to_chat(user, "<span class='notice'>You set the label to \"[tmp_label]\".</span>")
+			to_chat(user, "<span class='notice'>Вы устанавливаете этикетку \"[tmp_label]\".</span>")
 			label_text = tmp_label
 			update_name_label()
 	else
@@ -228,78 +228,78 @@
 		desc = base_desc
 		return
 	else if(length(label_text) > 10)
-		var/short_label_text = copytext(label_text, 1, 11)
+		var/short_label_text = copytext_char(label_text, 1, 11)
 		name = "[base_name] ([short_label_text]...)"
 	else
 		name = "[base_name] ([label_text])"
-	desc = "[base_desc] It is labeled \"[label_text]\"."
+	desc = "[base_desc] помечено как \"[label_text]\"."
 
 /obj/item/weapon/storage/pill_bottle/antitox
-	name = "pill bottle (Dylovene)"
-	desc = "Contains pills used to counter toxins."
+	name = "таблетки (Диловин)"
+	desc = "Содержит таблетки, используемые для борьбы с токсинами."
 	starts_with = list(/obj/item/weapon/reagent_containers/pill/antitox = 7)
 	wrapper_color = COLOR_GREEN
 
 /obj/item/weapon/storage/pill_bottle/bicaridine
-	name = "pill bottle (Bicaridine)"
-	desc = "Contains pills used to stabilize the severely injured."
+	name = "таблетки (Бикаридин)"
+	desc = "Содержит таблетки, используемые для стабилизации тяжелораненых."
 	starts_with = list(/obj/item/weapon/reagent_containers/pill/bicaridine = 7)
 	wrapper_color = COLOR_MAROON
 
 /obj/item/weapon/storage/pill_bottle/dexalin_plus
-	name = "pill bottle (Dexalin Plus)"
-	desc = "Contains pills used to treat extreme cases of oxygen deprivation."
+	name = "таблетки (Дексалин Плюс)"
+	desc = "Содержит таблетки, используемые для лечения крайних случаев кислородного голодания."
 	starts_with = list(/obj/item/weapon/reagent_containers/pill/dexalin_plus = 7)
 	wrapper_color = "#3366cc"
 
 /obj/item/weapon/storage/pill_bottle/dermaline
-	name = "pill bottle (Dermaline)"
-	desc = "Contains pills used to treat burn wounds."
+	name = "таблетки (Дермалин)"
+	desc = "Содержит таблетки, применяемые для лечения ожоговых ран."
 	starts_with = list(/obj/item/weapon/reagent_containers/pill/dermaline = 7)
 	wrapper_color = "#e8d131"
 
 /obj/item/weapon/storage/pill_bottle/dylovene
-	name = "pill bottle (Dylovene)"
-	desc = "Contains pills used to treat toxic substances in the blood."
+	name = "таблетки (Диловин)"
+	desc = "Содержит таблетки, используемые для лечения токсичных веществ в крови."
 	starts_with = list(/obj/item/weapon/reagent_containers/pill/dylovene = 7)
 	wrapper_color = COLOR_GREEN
 
 /obj/item/weapon/storage/pill_bottle/inaprovaline
-	name = "pill bottle (Inaprovaline)"
-	desc = "Contains pills used to stabilize patients."
+	name = "таблетки (Инапровалин)"
+	desc = "Содержит таблетки, используемые для стабилизации состояния пациентов."
 	starts_with = list(/obj/item/weapon/reagent_containers/pill/inaprovaline = 7)
 	wrapper_color = COLOR_PALE_BLUE_GRAY
 
 /obj/item/weapon/storage/pill_bottle/kelotane
-	name = "pill bottle (Kelotane)"
-	desc = "Contains pills used to treat burns."
+	name = "таблетки (Келотан)"
+	desc = "Содержит таблетки, применяемые для лечения ожогов."
 	starts_with = list(/obj/item/weapon/reagent_containers/pill/kelotane = 7)
 	wrapper_color = "#ec8b2f"
 
 /obj/item/weapon/storage/pill_bottle/spaceacillin
-	name = "pill bottle (Spaceacillin)"
-	desc = "A theta-lactam antibiotic. Effective against many diseases likely to be encountered in space."
+	name = "таблетки (Spaceacillin)"
+	desc = "Тета-лактамный антибиотик. Эффективен против многих болезней, которые могут встретиться в космосе."
 	starts_with = list(/obj/item/weapon/reagent_containers/pill/spaceacillin = 7)
 	wrapper_color = COLOR_PALE_GREEN_GRAY
 
 /obj/item/weapon/storage/pill_bottle/tramadol
-	name = "pill bottle (Tramadol)"
-	desc = "Contains pills used to relieve pain."
+	name = "таблетки (Трамадол)"
+	desc = "Содержит таблетки, применяемые для снятия боли."
 	starts_with = list(/obj/item/weapon/reagent_containers/pill/tramadol = 7)
 	wrapper_color = COLOR_PURPLE_GRAY
 
 /obj/item/weapon/storage/pill_bottle/citalopram
-	name = "pill bottle (Citalopram)"
-	desc = "Contains pills used to stabilize a patient's mood."
+	name = "таблетки (Циталопрам)"
+	desc = "Содержит таблетки для стабилизации настроения пациента."
 	starts_with = list(/obj/item/weapon/reagent_containers/pill/citalopram = 7)
 	wrapper_color = COLOR_GRAY
 
 /obj/item/weapon/storage/pill_bottle/carbon
-	name = "pill bottle (Carbon)"
-	desc = "Contains pills used to neutralise chemicals in the stomach."
+	name = "таблетки (Углерод)"
+	desc = "Содержит таблетки, которые нейтрализуют химические вещества в желудке."
 	starts_with = list(/obj/item/weapon/reagent_containers/pill/carbon = 7)
 
 /obj/item/weapon/storage/pill_bottle/iron
-	name = "pill bottle (Iron)"
-	desc = "Contains pills used to aid in blood regeneration."
+	name = "таблетки (Железо)"
+	desc = "Содержит таблетки, способствующие регенерации крови."
 	starts_with = list(/obj/item/weapon/reagent_containers/pill/iron = 7)

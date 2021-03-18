@@ -1,5 +1,5 @@
 /datum/power/changeling/absorb_dna
-	name = "Absorb DNA"
+	name = "Поглотить ДНК"
 	desc = "Permits us to syphon the DNA from a human. They become one with us, and we become stronger if they were of our kind."
 	ability_icon_state = "ling_absorb_dna"
 	genomecost = 0
@@ -9,64 +9,64 @@
 //Doesn't cost anything as it's the most basic ability.
 /mob/living/proc/changeling_absorb_dna()
 	set category = "Changeling"
-	set name = "Absorb DNA"
+	set name = "Поглотить ДНК"
 
 	var/datum/changeling/changeling = changeling_power(0,0,100)
 	if(!changeling)	return
 
 	var/obj/item/weapon/grab/G = src.get_active_hand()
 	if(!istype(G))
-		to_chat(src, "<span class='warning'>We must be grabbing a creature in our active hand to absorb them.</span>")
+		to_chat(src, "<span class='warning'>Мы должны схватить существо в активную руку, чтобы поглотить его.</span>")
 		return
 
 	var/mob/living/carbon/human/T = G.affecting
 	if(!istype(T) || T.isSynthetic())
-		to_chat(src, "<span class='warning'>\The [T] is not compatible with our biology.</span>")
+		to_chat(src, "<span class='warning'>[T] несовместим с нашей биологией.</span>")
 		return
 
 	if(T.species.flags & NO_SCAN)
-		to_chat(src, "<span class='warning'>We do not know how to parse this creature's DNA!</span>")
+		to_chat(src, "<span class='warning'>Мы не знаем, как анализировать ДНК этого существа!</span>")
 		return
 
 	if(HUSK in T.mutations) //Lings can always absorb other lings, unless someone beat them to it first.
 		if(!T.mind.changeling || T.mind.changeling && T.mind.changeling.geneticpoints < 0)
-			to_chat(src, "<span class='warning'>This creature's DNA is ruined beyond useability!</span>")
+			to_chat(src, "<span class='warning'>ДНК этого существа испорчена до невозможности!</span>")
 			return
 
 	if(G.state != GRAB_KILL)
-		to_chat(src, "<span class='warning'>We must have a tighter grip to absorb this creature.</span>")
+		to_chat(src, "<span class='warning'>Чтобы поглотить это существо, нужно крепче сжать его.</span>")
 		return
 
 	if(changeling.isabsorbing)
-		to_chat(src, "<span class='warning'>We are already absorbing!</span>")
+		to_chat(src, "<span class='warning'>Мы уже поглощаем!</span>")
 		return
 
 	changeling.isabsorbing = 1
 	for(var/stage = 1, stage<=3, stage++)
 		switch(stage)
 			if(1)
-				to_chat(src, "<span class='notice'>This creature is compatible. We must hold still...</span>")
+				to_chat(src, "<span class='notice'>Это существо совместимо. Мы должны стоять на месте...</span>")
 			if(2)
-				to_chat(src, "<span class='notice'>We extend a proboscis.</span>")
-				src.visible_message("<span class='warning'>[src] extends a proboscis!</span>")
+				to_chat(src, "<span class='notice'>Мы удлиняем хоботок.</span>")
+				src.visible_message("<span class='warning'>[src] вытягивает хоботок!</span>")
 			if(3)
-				to_chat(src, "<span class='notice'>We stab [T] with the proboscis.</span>")
-				src.visible_message("<span class='danger'>[src] stabs [T] with the proboscis!</span>")
-				to_chat(T, "<span class='danger'>You feel a sharp stabbing pain!</span>")
+				to_chat(src, "<span class='notice'>Мы наносим удар [T] хоботком.</span>")
+				src.visible_message("<span class='danger'>[src] наносит удар [T] хоботком!</span>")
+				to_chat(T, "<span class='danger'>Вы чувствуете резкую колющую боль!</span>")
 				add_attack_logs(src,T,"Absorbed (changeling)")
 				var/obj/item/organ/external/affecting = T.get_organ(src.zone_sel.selecting)
-				if(affecting.take_damage(39,0,1,0,"large organic needle"))
+				if(affecting.take_damage(39,0,1,0,"большая органическая игла"))
 					T:UpdateDamageIcon()
 
 		feedback_add_details("changeling_powers","A[stage]")
 		if(!do_mob(src, T, 150) || G.state != GRAB_KILL)
-			to_chat(src, "<span class='warning'>Our absorption of [T] has been interrupted!</span>")
+			to_chat(src, "<span class='warning'>Наше поглощение [T] было прервано!</span>")
 			changeling.isabsorbing = 0
 			return
 
-	to_chat(src, "<span class='notice'>We have absorbed [T]!</span>")
-	src.visible_message("<span class='danger'>[src] sucks the fluids from [T]!</span>")
-	to_chat(T, "<span class='danger'>You have been absorbed by the changeling!</span>")
+	to_chat(src, "<span class='notice'>Мы поглотили [T]!</span>")
+	src.visible_message("<span class='danger'>[src] высасывает [T] словно жидкость!</span>")
+	to_chat(T, "<span class='danger'>Вы были поглощены подменышем!</span>")
 	adjust_nutrition(T.nutrition)
 	changeling.chem_charges += 10
 	if(changeling.readapts <= 0)
@@ -75,7 +75,7 @@
 	if(changeling.readapts > changeling.max_readapts)
 		changeling.readapts = changeling.max_readapts
 
-	to_chat(src, "<span class='notice'>We can now re-adapt, reverting our evolution so that we may start anew, if needed.</span>")
+	to_chat(src, "<span class='notice'>Теперь мы можем заново адаптироваться, повернув нашу эволюцию вспять, чтобы при необходимости начать все заново.</span>")
 
 	var/datum/absorbed_dna/newDNA = new(T.real_name, T.dna, T.species.name, T.languages, T.identifying_gender, T.flavor_texts, T.modifiers)
 	absorbDNA(newDNA)
@@ -97,7 +97,7 @@
 				changeling.geneticpoints += 4
 				changeling.max_geneticpoints += 4
 
-		to_chat(src, "<span class='notice'>We absorbed another changeling, and we grow stronger.  Our genomes increase.</span>")
+		to_chat(src, "<span class='notice'>Мы поглотили еще одного подменыша и становимся сильнее. Наши геномы увеличиваются.</span>")
 
 		T.mind.changeling.chem_charges = 0
 		T.mind.changeling.geneticpoints = -1

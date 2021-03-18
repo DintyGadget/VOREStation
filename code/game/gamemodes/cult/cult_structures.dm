@@ -8,25 +8,25 @@
 
 /obj/structure/cult/talisman
 	name = "Altar"
-	desc = "A bloodstained altar dedicated to Nar-Sie."
+	desc = "Окровавленный алтарь, посвященный Нар-Си."
 	icon_state = "talismanaltar"
 
 
 /obj/structure/cult/forge
 	name = "Daemon forge"
-	desc = "A forge used in crafting the unholy weapons used by the armies of Nar-Sie."
+	desc = "Кузница, из которой изготавливали нечестивое оружие, используемое армиями Нар-Си."
 	icon_state = "forge"
 
 /obj/structure/cult/pylon
 	name = "Pylon"
-	desc = "A floating crystal that hums with an unearthly energy."
+	desc = "Парящий кристалл, гудящий от неземной энергии."
 	icon_state = "pylon"
 	var/isbroken = 0
 	light_range = 5
 	light_color = "#3e0000"
 	var/obj/item/wepon = null
 
-	var/shatter_message = "The pylon shatters!"
+	var/shatter_message = "Пилон разваливается!"
 	var/impact_sound = 'sound/effects/Glasshit.ogg'
 	var/shatter_sound = 'sound/effects/Glassbr3.ogg'
 
@@ -67,9 +67,9 @@
 	if(!isbroken)
 		if(prob(1+ damage * 5))
 			user.visible_message(
-				"<span class='danger'>[user] smashed \the [src]!</span>",
-				"<span class='warning'>You hit \the [src], and its crystal breaks apart!</span>",
-				"You hear a tinkle of crystal shards."
+				"<span class='danger'>[user] разбивает [src]!</span>",
+				"<span class='warning'>Вы попадаете в [src], и его кристалл разваливается на части!</span>",
+				"Вы слышите звон осколков кристаллов."
 				)
 			STOP_PROCESSING(SSobj, src)
 			user.do_attack_animation(src)
@@ -79,20 +79,20 @@
 			icon_state = "[initial(icon_state)]-broken"
 			set_light(0)
 		else
-			to_chat(user, "You hit \the [src]!")
+			to_chat(user, "Вы попали в [src]!")
 			playsound(src,impact_sound, 75, 1)
 	else
 		if(prob(damage * 2))
-			to_chat(user, "You pulverize what was left of \the [src]!")
+			to_chat(user, "Вы измельчаете то, что осталось от [src]!")
 			qdel(src)
 		else
-			to_chat(user, "You hit \the [src]!")
+			to_chat(user, "Вы попали в [src]!")
 		playsound(src,impact_sound, 75, 1)
 
 /obj/structure/cult/pylon/proc/repair(mob/user as mob)
 	if(isbroken)
 		START_PROCESSING(SSobj, src)
-		to_chat(user, "You repair \the [src].")
+		to_chat(user, "Вы исправляете [src].")
 		isbroken = 0
 		density = 1
 		icon_state = initial(icon_state)
@@ -109,7 +109,7 @@
 
 /obj/structure/cult/tome
 	name = "Desk"
-	desc = "A desk covered in arcane manuscripts and tomes in unknown languages. Looking at the text makes your skin crawl."
+	desc = "Стол, заваленный загадочными рукописями и фолиантами на неизвестных языках. Глядя на текст, у вас мурашки по коже."
 	icon_state = "tomealtar"
 
 //sprites for this no longer exist	-Pete
@@ -124,7 +124,7 @@
 
 /obj/effect/gateway
 	name = "gateway"
-	desc = "You're pretty sure that abyss is staring back."
+	desc = "Вы почти уверены, что бездна смотрит на вас."
 	icon = 'icons/obj/cult.dmi'
 	icon_state = "hole"
 	density = 1
@@ -170,4 +170,4 @@
 
 	var/mob/living/M = A
 
-	to_chat(M, "<span class='danger'>Walking into \the [src] is probably a bad idea, you think.</span>")
+	to_chat(M, "<span class='danger'>Вы думаете, что заходить в [src], вероятно, плохая идея.</span>")

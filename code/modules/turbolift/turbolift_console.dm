@@ -24,9 +24,9 @@
 /obj/structure/lift/proc/pressed(var/mob/user)
 	if(!istype(user, /mob/living/silicon))
 		if(user.a_intent == I_HURT)
-			user.visible_message("<span class='danger'>\The [user] hammers on the lift button!</span>")
+			user.visible_message("<span class='danger'>[user] бьет по кнопке лифта!</span>")
 		else
-			user.visible_message("<span class='notice'>\The [user] presses the lift button.</span>")
+			user.visible_message("<span class='notice'>[user] нажимает на кнопку лифта.</span>")
 
 
 /obj/structure/lift/New(var/newloc, var/datum/turbolift/_lift)
@@ -51,7 +51,7 @@
 // Button. No HTML interface, just calls the associated lift to its floor.
 /obj/structure/lift/button
 	name = "elevator button"
-	desc = "A call button for an elevator. Be sure to hit it three hundred times."
+	desc = "Кнопка вызова лифта. Обязательно нажмите на неё триста раз."
 	icon_state = "button"
 	var/light_up = FALSE
 	req_access = list(access_eva)
@@ -143,7 +143,7 @@
 /obj/structure/lift/panel/interact(var/mob/user)
 	if(!..())
 		return
-	
+
 	tgui_interact(user)
 
 /obj/structure/lift/panel/tgui_interact(mob/user, datum/tgui/ui)
@@ -170,7 +170,7 @@
 			"label" = floor.label,
 			"name" = floor.name,
 		)))
-	
+
 	return data
 
 /obj/structure/lift/panel/tgui_act(action, params)

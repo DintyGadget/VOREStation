@@ -3,7 +3,7 @@ var/global/mob/living/carbon/human/dummy/mannequin/sleevemate_mob
 //SleeveMate!
 /obj/item/device/sleevemate
 	name = "\improper SleeveMate 3700"
-	desc = "A hand-held sleeve management tool for performing one-time backups and managing mindstates."
+	desc = "Портативный инструмент для управления конвертами для выполнения одноразовых резервных копий и управления состояниями разума."
 	icon = 'icons/obj/device_alt.dmi'
 	icon_state = "sleevemate"
 	item_state = "healthanalyzer"
@@ -53,7 +53,7 @@ var/global/mob/living/carbon/human/dummy/mannequin/sleevemate_mob
 				choices += H
 	// Subtargets
 	if(choices.len > 1)
-		var/mob/living/new_M = input(user, "Ambiguous target. Please validate target:", "Target Validation", M) as null|anything in choices
+		var/mob/living/new_M = input(user, "Неоднозначная цель. Пожалуйста, подтвердите цель:", "Target Validation", M) as null|anything in choices
 		if(!new_M || !M.Adjacent(user))
 			return
 		M = new_M
@@ -61,81 +61,81 @@ var/global/mob/living/carbon/human/dummy/mannequin/sleevemate_mob
 	if(ishuman(M))
 		scan_mob(M, user)
 	else
-		to_chat(user,"<span class='warning'>Not a compatible subject to work with!</span>")
+		to_chat(user,"<span class='warning'>Несовместимый предмет для работы!</span>")
 
 /obj/item/device/sleevemate/attack_self(mob/living/user)
 	if(!stored_mind)
-		to_chat(user,"<span class='warning'>No stored mind in \the [src].</span>")
+		to_chat(user,"<span class='warning'>В [src] нет сохраненного разума..</span>")
 		return
 
-	var/choice = alert(user,"What would you like to do?","Stored: [stored_mind.name]","Delete","Backup","Cancel")
+	var/choice = alert(user,"Что вы хотите сделать?","Сохранено: [stored_mind.name]","Удалить","Резерв","Отмена")
 	if(!stored_mind || user.get_active_hand() != src)
 		return
 	switch(choice)
-		if("Delete")
-			to_chat(user,"<span class='notice'>Internal copy of [stored_mind.name] deleted.</span>")
+		if("Удалить")
+			to_chat(user,"<span class='notice'>Внутренняя копия [stored_mind.name] удалена.</span>")
 			clear_mind()
-		if("Backup")
-			to_chat(user,"<span class='notice'>Internal copy of [stored_mind.name] backed up to database.</span>")
+		if("Резерв")
+			to_chat(user,"<span class='notice'>Внутренняя копия [stored_mind.name] зарезервирована в базу данных.</span>")
 			SStranscore.m_backup(stored_mind,null,one_time = TRUE)
-		if("Cancel")
+		if("Отмена")
 			return
 
 /obj/item/device/sleevemate/proc/scan_mob(mob/living/carbon/human/H, mob/living/user)
-	var/output = ""
+	var/output = "<meta charset=\"utf-8\">"
 
-	output += "<br><br><span class='notice'><b>[src.name] Scan Results</b></span><br>"
+	output += "<br><br><span class='notice'><b>Результаты сканирования [src.name]</b></span><br>"
 
 	//Mind name
 	output += "<b>Sleeved Mind:</b> "
 	if(H.mind)
 		output += "[H.mind.name]<br>"
 	else
-		output += "<span class='warning'>Unknown/None</span><br>"
+		output += "<span class='warning'>Неизвестно/Нет</span><br>"
 
 	//Mind status
-	output += "<b>Mind Status:</b> "
+	output += "<b>Состояние разума:</b> "
 	if(H.client)
-		output += "Healthy<br>"
+		output += "Здоров<br>"
 	else
-		output += "Space Sleep Disorder<br>"
+		output += "Расстройство космического сна<br>"
 
 	//Body status
 	output += "<b>Sleeve Status:</b> "
 	switch(H.stat)
 		if(CONSCIOUS)
-			output += "Alive<br>"
+			output += "Жив<br>"
 		if(UNCONSCIOUS)
-			output += "Unconscious<br>"
+			output += "Без сознания<br>"
 		if(DEAD)
-			output += "<span class='warning'>Deceased</span><br>"
+			output += "<span class='warning'>СМЕРТЬ</span><br>"
 		else
-			output += "<span class='warning'>Unknown</span><br>"
+			output += "<span class='warning'>Неизвестно</span><br>"
 
 	//Mind/body comparison
 	output += "<b>Sleeve Pair:</b> "
 	if(!H.ckey)
-		output += "<span class='warning'>No mind in that body</span> [stored_mind != null ? "\[<a href='?src=\ref[src];target=\ref[H];mindupload=1'>Upload</a>\]" : null]<br>"
+		output += "<span class='warning'>В этом теле нет разума </span> [stored_mind != null ? "\[<a href='?src=\ref[src];target=\ref[H];mindupload=1'>Загрузить</a>\]" : null]<br>"
 	else if(H.mind && ckey(H.mind.key) != H.ckey)
-		output += "<span class='warning'>May not be correct body</span><br>"
+		output += "<span class='warning'>Может быть не правильное тело</span><br>"
 	else if(H.mind && ckey(H.mind.key) == H.ckey)
-		output += "Appears to be correct mind in body<br>"
+		output += "Кажется, что это правильный разум в теле<br>"
 	else
-		output += "Unable to perform comparison<br>"
+		output += "Невозможно провести сравнение<br>"
 
 	//Actions
-	output += "<br><b>-- Possible Actions --</b><br>"
-	output += "<b>Mind-Scan (One Time): </b>\[<a href='?src=\ref[src];target=\ref[H];mindscan=1'>Perform</a>\]<br>"
-	output += "<b>Body-Scan (One Time): </b>\[<a href='?src=\ref[src];target=\ref[H];bodyscan=1'>Perform</a>\]<br>"
+	output += "<br><b>-- Возможные действия --</b><br>"
+	output += "<b>Mind-Scan (один раз): </b>\[<a href='?src=\ref[src];target=\ref[H];mindscan=1'>Выполнить</a>\]<br>"
+	output += "<b>Body-Scan (один раз): </b>\[<a href='?src=\ref[src];target=\ref[H];bodyscan=1'>Выполнить</a>\]<br>"
 
 	//Saving a mind
 	output += "<b>Store Full Mind: </b>"
 	if(stored_mind)
-		output += "<span class='notice'>Already Stored</span> ([stored_mind.name])<br>"
+		output += "<span class='notice'>Уже сохранено</span> ([stored_mind.name])<br>"
 	else if(H.mind)
-		output += "\[<a href='?src=\ref[src];target=\ref[H];mindsteal=1'>Perform</a>\]<br>"
+		output += "\[<a href='?src=\ref[src];target=\ref[H];mindsteal=1'>Выполнить</a>\]<br>"
 	else
-		output += "<span class='warning'>Unable</span><br>"
+		output += "<span class='warning'>Невозможно</span><br>"
 
 	//Soulcatcher transfer
 	if(H.nif)
@@ -147,7 +147,7 @@ var/global/mob/living/carbon/human/dummy/mannequin/sleevemate_mob
 				output += "<i>[mind.name]: </i> [mind.transient == FALSE ? "\[<a href='?src=\ref[src];target=\ref[H];mindrelease=[mind.name]'>Load</a>\]" : "<span class='warning'>Incompatible</span>"]<br>"
 
 			if(stored_mind)
-				output += "<b>Store in Soulcatcher: </b>\[<a href='?src=\ref[src];target=\ref[H];mindput=1'>Perform</a>\]<br>"
+				output += "<b>Store in Soulcatcher: </b>\[<a href='?src=\ref[src];target=\ref[H];mindput=1'>Выполнить</a>\]<br>"
 
 	to_chat(user,output)
 
@@ -162,17 +162,17 @@ var/global/mob/living/carbon/human/dummy/mannequin/sleevemate_mob
 	var/target_ref = href_list["target"]
 	var/mob/living/target = locate(target_ref) in mob_list
 	if(!target)
-		to_chat(usr,"<span class='warning'>Unable to operate on that target.</span>")
+		to_chat(usr,"<span class='warning'>Невозможно воздействовать на эту цель.</span>")
 		return
 
 	if(!usr.Adjacent(target))
-		to_chat(usr,"<span class='warning'>You are too far from that target.</span>")
+		to_chat(usr,"<span class='warning'>Вы слишком далеко от этой цели.</span>")
 		return
 
 	//The actual options
 	if(href_list["mindscan"])
 		if(!target.mind || target.mind.name in prevent_respawns)
-			to_chat(usr,"<span class='warning'>Target seems totally braindead.</span>")
+			to_chat(usr,"<span class='warning'>Цель кажется полностью мертвой.</span>")
 			return
 
 		var/nif

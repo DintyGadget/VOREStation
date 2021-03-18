@@ -5,10 +5,10 @@
 // Gives rather nasty downsides for awhile, making them less robust.
 /datum/modifier/cloning_sickness
 	name = "cloning sickness"
-	desc = "You feel rather weak, having been cloned not so long ago."
+	desc = "Вы чувствуете себя слабоватым, будучи клонированным не так давно."
 
-	on_created_text = "<span class='warning'><font size='3'>You feel really weak.</font></span>"
-	on_expired_text = "<span class='notice'><font size='3'>You feel your strength returning to you.</font></span>"
+	on_created_text = "<span class='warning'><font size='3'>Вы чувствуете себя очень слабым.</font></span>"
+	on_expired_text = "<span class='notice'><font size='3'>Вы чувствуете, как ваша сила возвращается к вам.</font></span>"
 
 	max_health_percent = 0.6				// -40% max health.
 	incoming_damage_percent = 1.1			// 10% more incoming damage.
@@ -20,7 +20,7 @@
 // Tracks number of deaths, one modifier added per cloning
 /datum/modifier/cloned
 	name = "cloned"
-	desc = "You died and were cloned, and you can never forget that."
+	desc = "Вы умерли и были клонированы, и вы никогда не сможете этого забыть."
 
 	flags = MODIFIER_GENETIC			// So it gets copied if they die and get cloned again.
 	stacks = MODIFIER_STACK_ALLOWED		// Two deaths means two instances of this.
@@ -28,11 +28,11 @@
 // Prevents cloning, actual effect is on the cloning machine
 /datum/modifier/no_clone
 	name = "Cloning Incompatability"
-	desc = "For whatever reason, you cannot be cloned."
+	desc = "По какой-то причине вас нельзя клонировать."
 
 	//WIP, but these may never be seen anyway, so *shrug
-	on_created_text = "<span class='warning'>Life suddenly feels more precious.</span>"
-	on_expired_text = "<span class='notice'>Death is cheap again.</span>"
+	on_created_text = "<span class='warning'>Жизнь внезапно становится более драгоценной.</span>"
+	on_expired_text = "<span class='notice'>Смерть наступила снова, как дешева.</span>"
 
 	flags = MODIFIER_GENETIC
 
@@ -40,7 +40,7 @@
 // Prevents borging (specifically the MMI part), actual effect is on the MMI.
 /datum/modifier/no_borg
 	name = "Cybernetic Incompatability"
-	desc = "For whatever reason, your brain is incompatable with direct cybernetic interfaces, such as the MMI."
+	desc = "По какой-то причине ваш мозг несовместим с прямыми кибернетическими интерфейсами, такими как MMI."
 
 	flags = MODIFIER_GENETIC
 
@@ -50,10 +50,10 @@
 
 /datum/modifier/cloning_sickness/promethean
 	name = "reformation sickness"
-	desc = "Your core feels damaged, as you were reformed with the improper machinery."
+	desc = "Ваше ядро кажется повреждено, так как вы были преобразованы с использованием неподходящего оборудования."
 
-	on_created_text = "<span class='warning'><font size='3'>Your core aches.</font></span>"
-	on_expired_text = "<span class='notice'><font size='3'>You feel your core's strength returning to normal.</font></span>"
+	on_created_text = "<span class='warning'><font size='3'>Ваше ядро болит.</font></span>"
+	on_expired_text = "<span class='notice'><font size='3'>Вы чувствуете, как сила вашего ядра возвращается в норму.</font></span>"
 
 	incoming_damage_percent = 1 //Level the incoming damage from the parent modifier. They already take 200% burn.
 	incoming_brute_damage_percent = 1.5 //150% incoming brute damage. Decreases the effectiveness of their 0.75 modifier.
@@ -68,10 +68,10 @@
 
 /datum/modifier/franken_sickness
 	name = "surgically attached brain"
-	desc = "You feel weak, as your central nervous system is still recovering from being repaired."
+	desc = "Вы чувствуете слабость, поскольку ваша центральная нервная система все еще нормализуется после восстановления."
 
-	on_created_text = "<span class='warning'><font size='3'>You feel... off, and your head hurts.</font></span>"
-	on_expired_text = "<span class='notice'><font size='3'>You feel some strength returning to you.</font></span>"
+	on_created_text = "<span class='warning'><font size='3'>Вы чувствуете себя ... как не себя, и у вас болит голова.</font></span>"
+	on_expired_text = "<span class='notice'><font size='3'>Вы чувствуете, как к вам возвращается какая-то сила.</font></span>"
 
 	max_health_percent = 0.9				// -10% max health.
 	incoming_damage_percent = 1.1			// 10% more incoming damage.
@@ -105,10 +105,10 @@
 
 /datum/modifier/franken_recovery //When Franken_Sickness expires, this will be permanently applied in its place.
 	name = "neural recovery"
-	desc = "You feel out of touch, as your central nervous system is still recovering from being repaired."
+	desc = "Вы чувствуете себя не в своей тарелке, поскольку ваша центральная нервная система все еще нормализуется после восстановления."
 
-	on_created_text = "<span class='warning'><font size='3'>You feel... off. Everything is fuzzy.</font></span>"
-	on_expired_text = "<span class='notice'><font size='3'>You feel your senses returning to you.</font></span>"
+	on_created_text = "<span class='warning'><font size='3'>Вы чувствуете... Что все расплывается.</font></span>"
+	on_expired_text = "<span class='notice'><font size='3'>Вы чувствуете, как к вам возвращаются ваши чувства.</font></span>"
 
 	incoming_hal_damage_percent = 1.5		// 50% more halloss damage.
 	disable_duration_percent = 1.25			// Stuns last 25% longer.

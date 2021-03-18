@@ -8,7 +8,7 @@ var/datum/antagonist/raider/raiders
 	bantype = "raider"
 	antag_indicator = "mutineer"
 	landmark_id = "voxstart"
-	welcome_text = "Use :H to talk on your encrypted channel."
+	welcome_text = "Используйте :H, чтобы говорить по вашему зашифрованному каналу."
 	flags = ANTAG_OVERRIDE_JOB | ANTAG_CLEAR_EQUIPMENT | ANTAG_CHOOSE_NAME | ANTAG_VOTABLE | ANTAG_SET_APPEARANCE | ANTAG_HAS_LEADER
 	antaghud_indicator = "hudmutineer"
 
@@ -172,21 +172,21 @@ var/datum/antagonist/raider/raiders
 	if(antags_are_dead())
 		win_type = "Major"
 		win_group = "Crew"
-		win_msg += "<B>The Raiders have been wiped out!</B>"
+		win_msg += "<B>Рейдеры уничтожены!</B>"
 	else if(is_raider_crew_safe())
 		if(win_group == "Crew" && win_type == "Minor")
 			win_type = "Major"
 		win_group = "Crew"
-		win_msg += "<B>The Raiders have left someone behind!</B>"
+		win_msg += "<B>Рейдеры кого-то оставили!</B>"
 	else
 		if(win_group == "Raider")
 			if(win_type == "Minor")
 				win_type = "Major"
-			win_msg += "<B>The Raiders escaped the station!</B>"
+			win_msg += "<B>Рейдеры сбежали со станции!</B>"
 		else
-			win_msg += "<B>The Raiders were repelled!</B>"
+			win_msg += "<B>Рейдеры были отброшены!</B>"
 
-	to_world("<span class='danger'><font size = 3>[win_type] [win_group] victory!</font></span>")
+	to_world("<span class='danger'><font size = 3>[win_type] [win_group] побеждает!</font></span>")
 	to_world("[win_msg]")
 	feedback_set_details("round_end_result","heist - [win_type] [win_group]")
 
@@ -226,9 +226,9 @@ var/datum/antagonist/raider/raiders
 		player.equip_to_slot_or_del(new new_suit(player),slot_wear_suit)
 		equip_weapons(player)
 
-	var/obj/item/weapon/card/id/id = create_id("Visitor", player, equip = 0)
+	var/obj/item/weapon/card/id/id = create_id("Гость", player, equip = 0)
 	id.name = "[player.real_name]'s Passport"
-	id.assignment = "Visitor"
+	id.assignment = "Гость"
 	var/obj/item/weapon/storage/wallet/W = new(player)
 	W.handle_item_insertion(id)
 	player.equip_to_slot_or_del(W, slot_wear_id)

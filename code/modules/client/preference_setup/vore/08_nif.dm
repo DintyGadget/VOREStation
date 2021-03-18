@@ -24,11 +24,11 @@
 		pref.nif_path = text2path(pref.nif_path) 	//Try to convert it to a hard path.
 		if(!pref.nif_path)							//If we couldn't, kill it.
 			pref.nif_path = null					//Kill!
-			WARNING("Loaded a NIF but it was an invalid path, [pref.real_name]")
+			WARNING("Неправильный путь загруженного NIF, [pref.real_name]")
 
 	if(ispath(pref.nif_path) && isnull(pref.nif_durability))		//How'd you lose this?
 		pref.nif_durability = initial(pref.nif_path.durability)		//Well, have a new one, my bad.
-		WARNING("Loaded a NIF but with no durability, [pref.real_name]")
+		WARNING("Загружен NIF без прочности, [pref.real_name]")
 
 	if(!islist(pref.nif_savedata))
 		pref.nif_savedata = list()
@@ -44,9 +44,9 @@
 		pref.nif_durability = null
 		pref.nif_savedata = null
 		var/savefile/S = new /savefile(pref.path)
-		if(!S) WARNING ("Couldn't load NIF save savefile? [pref.real_name]")
+		if(!S) WARNING ("Не удается загрузить NIF без сохранения, [pref.real_name]")
 		S.cd = "/character[pref.default_slot]"
 		save_character(S)
 
 /datum/category_item/player_setup_item/vore/nif/content(var/mob/user)
-	. += "<b>NIF:</b> [ispath(pref.nif_path) ? "Present" : "None"]"
+	. += "<b>NIF:</b> [ispath(pref.nif_path) ? "Присутствует" : "Нет"]"

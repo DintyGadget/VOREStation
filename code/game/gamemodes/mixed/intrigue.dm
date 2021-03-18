@@ -1,7 +1,7 @@
 /datum/game_mode/intrigue
 	name = "Traitors & Ninja"
-	round_description = "Crewmembers are contacted by external elements while another infiltrates the colony."
-	extended_round_description = "Traitors and a ninja spawn during this round."
+	round_description = "С членами экипажа связываются внешние элементы, в то время как другой проникает в колонию."
+	extended_round_description = "В этом раунде появляются предатели и ниндзя."
 	config_tag = "intrigue"
 	required_players = 6
 	required_players_secret = 8

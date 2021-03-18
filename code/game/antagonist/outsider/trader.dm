@@ -5,15 +5,15 @@ var/datum/antagonist/trader/traders
 	role_type = BE_OPERATIVE
 	role_text = "Trader"
 	role_text_plural = "Traders"
-	welcome_text = "As a crewmember of the Beruang, you answer to your captain and international laws of space."
+	welcome_text = "Как член экипажа Беруанг, вы отвечаете своему капитану и международным космическим законам."
 	antag_sound = 'sound/effects/antag_notice/general_goodie_alert.ogg'
-	antag_text = "You are an <b>non-antagonist</b> visitor! Within the rules, \
-		try to provide interesting interaction for the crew. \
-		Try to make sure other players have <i>fun</i>! If you are confused or at a loss, always adminhelp, \
-		and before taking extreme actions, please try to also contact the administration! \
-		Think through your actions and make the roleplay immersive! <b>Please remember all \
-		rules apply to you.</b>"
-	leader_welcome_text = "As Captain of the Beruang, you have control over your crew and cargo. It may be worth briefly discussing a consistent shared backstory with your crew."
+	antag_text = "Вы <b>не антагонист</b>, а посетитель! В рамках правил, \
+		постарайтесь обеспечить интересное взаимодействие для экипажа. \
+		Постарайтесь, чтобы другие игроки тоже <i>развлекались от вашей игры</i>! Если вы запутались или растерялись, всегда обращайтесь за помощью к администратору, \
+		а прежде чем предпринимать крайние меры, попробуйте также связаться с администрацией! \
+		Продумайте свои действия и сделайте ролевую игру захватывающей! <b>Пожалуйста, помните, что все правила, \
+		так же применяются к вам</b>"
+	leader_welcome_text = "Как капитан Беруанга, вы контролируете свою команду и груз. Возможно, стоит вкратце обсудить общую предысторию с вашей командой."
 	landmark_id = "Trader"
 
 	id_type = /obj/item/weapon/card/id/external
@@ -38,8 +38,8 @@ var/datum/antagonist/trader/traders
 /datum/antagonist/trader/greet(var/datum/mind/player)
 	if(!..())
 		return
-	to_chat(player.current, "The Beruang is an independent cargo hauler, unless you decide otherwise. You're on your way to [station_name()].")
-	to_chat(player.current, "You may want to discuss a collective story with the rest of your crew. More members may be joining, so don't move out straight away!")
+	to_chat(player.current, "Беруанг является независимым грузовым перевозчиком, если вы не решите иначе. Вы на пути к [station_name()].")
+	to_chat(player.current, "Вы можете обсудить коллективную историю с остальной частью вашей команды. Возможно, присоединятся другие участники, так что не уходите сразу же!")
 
 /datum/antagonist/trader/equip(var/mob/living/carbon/human/player)
 	player.equip_to_slot_or_del(new /obj/item/clothing/under/rank/cargotech(src), slot_w_uniform)

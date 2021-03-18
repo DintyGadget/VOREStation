@@ -1,14 +1,14 @@
 /obj/item/weapon/storage/backpack/saddlebag
-	name = "Horse Saddlebags"
-	desc = "A saddle that holds items. Seems slightly bulky."
+	name = "Лошадиные седельные сумки"
+	desc = "Седло, на котором можно хранить вещи. Довольно крупное."
 	icon = 'icons/obj/clothing/backpack_vr.dmi'
 	icon_override = 'icons/mob/back_vr.dmi'
 	item_state = "saddlebag"
 	icon_state = "saddlebag"
 	max_storage_space = INVENTORY_DUFFLEBAG_SPACE //Saddlebags can hold more, like dufflebags
-	slowdown = 1 //And are slower, too...
+	slowdown = 1 //And are slower, too...Unless you're a macro, that is.
 	var/taurtype = /datum/sprite_accessory/tail/taur/horse //Acceptable taur type to be wearing this
-	var/no_message = "You aren't the appropriate taur type to wear this!"
+	var/no_message = "Ваша форма тела не соответствует этому седлу!"
 
 	mob_can_equip(var/mob/living/carbon/human/H, slot, disable_warning = 0)
 		if(..())
@@ -27,22 +27,27 @@
 */
 
 /obj/item/weapon/storage/backpack/saddlebag_common //Shared bag for other taurs with sturdy backs
-	name = "Taur Saddlebags"
-	desc = "A saddle that holds items. Seems slightly bulky."
+	name = "Тавровые седельные сумки"
+	desc = "Седло, на котором можно хранить вещи. Довольно крупное."
 	icon = 'icons/obj/clothing/backpack_vr.dmi'
 	icon_override = 'icons/mob/back_vr.dmi'
 	item_state = "saddlebag"
 	icon_state = "saddlebag"
 	var/icon_base = "saddlebag"
 	max_storage_space = INVENTORY_DUFFLEBAG_SPACE //Saddlebags can hold more, like dufflebags
-	slowdown = 1 //And are slower, too...
-	var/no_message = "You aren't the appropriate taur type to wear this!"
+	slowdown = 1 //And are slower, too...Unless you're a macro, that is.
+	var/no_message = "Ваша форма тела не соответствует этому седлу!"
 
 	mob_can_equip(var/mob/living/carbon/human/H, slot, disable_warning = 0)
 		if(..())
 			if(!istype(H))//Error, non HUMAN.
-				log_runtime("[H] was not a valid human!")
+				log_runtime("[H] не является подходящим человеком!")
 				return
+
+			if(H.size_multiplier >= RESIZE_BIG) //Are they a macro? If yes, they get no slowdown.
+				slowdown = 0
+			else
+				slowdown = initial(slowdown)
 
 			var/datum/sprite_accessory/tail/taur/TT = H.tail_style
 			item_state = "[icon_base]_[TT.icon_sprite_tag]"	//icon_sprite_tag is something like "deer"
@@ -51,8 +56,8 @@
 
 
 /obj/item/weapon/storage/backpack/saddlebag_common/robust //Shared bag for other taurs with sturdy backs
-	name = "Robust Saddlebags"
-	desc = "A saddle that holds items. Seems robust."
+	name = "Надёжные седельные сумки"
+	desc = "Седло, на котором можно хранить вещи. Довольно надёжное."
 	icon = 'icons/obj/clothing/backpack_vr.dmi'
 	icon_override = 'icons/mob/back_vr.dmi'
 	item_state = "robustsaddle"
@@ -60,8 +65,8 @@
 	icon_base = "robustsaddle"
 
 /obj/item/weapon/storage/backpack/saddlebag_common/vest //Shared bag for other taurs with sturdy backs
-	name = "Taur Duty Vest"
-	desc = "An armored vest with the armor modules replaced with various handy compartments with decent storage capacity. Useless for protection though. Holds less than a saddle."
+	name = "Тавровый боевой жилет"
+	desc = "Бронежилет, модули брони в котором были убраны в пользу ячеек для хранения некоторого количества предметов. Не предоставляет защиту. Вмещает меньше лошадиного седла."
 	icon = 'icons/obj/clothing/backpack_vr.dmi'
 	icon_override = 'icons/mob/back_vr.dmi'
 	item_state = "taurvest"
@@ -71,8 +76,8 @@
 	slowdown = 0
 
 /obj/item/weapon/storage/backpack/dufflebag/fluff //Black dufflebag without syndie buffs.
-	name = "plain black dufflebag"
-	desc = "A large dufflebag for holding extra tactical supplies."
+	name = "Простой чёрный вещмешок"
+	desc = "Крупный вещмешок для переноски дополнительных тактических припасов."
 	icon_state = "duffle_syndie"
 
 /obj/item/weapon/storage/backpack
@@ -84,56 +89,56 @@
 	max_storage_space = INVENTORY_DUFFLEBAG_SPACE
 
 /obj/item/weapon/storage/backpack/satchel/explorer
-	name = "explorer satchel"
-	desc = "A satchel for carrying a large number of supplies easily."
+	name = "Сумка искателя"
+	desc = "Сумка для удобного хранения множества припасов."
 	icon = 'icons/obj/clothing/backpack_vr.dmi'
 	icon_override = 'icons/mob/back_vr.dmi'
 	item_state = "satchel-explorer"
 	icon_state = "satchel-explorer"
 
 /obj/item/weapon/storage/backpack/explorer
-	name = "explorer backpack"
-	desc = "A backpack for carrying a large number of supplies easily."
+	name = "Рюкзак искателя"
+	desc = "Рюкзак для удобного хранения множества припасов."
 	icon = 'icons/obj/clothing/backpack_vr.dmi'
 	icon_override = 'icons/mob/back_vr.dmi'
 	item_state = "explorerpack"
 	icon_state = "explorerpack"
 
 /obj/item/weapon/storage/backpack/satchel/roboticist
-	name = "roboticist satchel"
-	desc = "A satchel for carrying a large number of spare parts easily."
+	name = "Сумка робототехника"
+	desc = "Сумка для удобного хранения множества запчастей."
 	icon = 'icons/obj/clothing/backpack_vr.dmi'
 	icon_override = 'icons/mob/back_vr.dmi'
 	item_state = "satchel-robo"
 	icon_state = "satchel-robo"
 
 /obj/item/weapon/storage/backpack/roboticist
-	name = "roboticist backpack"
-	desc = "A backpack for carrying a large number of spare parts easily."
+	name = "Рюкзак робототехника"
+	desc = "Рюкзак для удобного хранения множества запчастей."
 	icon = 'icons/obj/clothing/backpack_vr.dmi'
 	icon_override = 'icons/mob/back_vr.dmi'
 	item_state = "backpack-robo"
 	icon_state = "backpack-robo"
 
 /obj/item/weapon/storage/backpack/vietnam
-	name = "vietnam backpack"
-	desc = "There are tangos in the trees! We need napalm right now! Why is my gun jammed?"
+	name = "Вьетнамский рюкзак"
+	desc = "От него веет флешбеками."
 	icon = 'icons/obj/clothing/backpack_vr.dmi'
 	icon_override = 'icons/mob/back_vr.dmi'
 	item_state = "nambackpack"
 	icon_state = "nambackpack"
 
 /obj/item/weapon/storage/backpack/russian
-	name = "russian backpack"
-	desc = "Useful for carrying large quantities of vodka."
+	name = "Русский рюкзак"
+	desc = "Для удобной транспортировки водки в больших количествах."
 	icon = 'icons/obj/clothing/backpack_vr.dmi'
 	icon_override = 'icons/mob/back_vr.dmi'
 	item_state = "ru_rucksack"
 	icon_state = "ru_rucksack"
 
 /obj/item/weapon/storage/backpack/korean
-	name = "korean backpack"
-	desc = "Insert witty description here."
+	name = "Корейский рюкзак"
+	desc = "Вставить сюда остроумное описание."
 	icon = 'icons/obj/clothing/backpack_vr.dmi'
 	icon_override = 'icons/mob/back_vr.dmi'
 	item_state = "kr_rucksack"

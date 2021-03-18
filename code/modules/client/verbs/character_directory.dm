@@ -1,13 +1,13 @@
 GLOBAL_DATUM(character_directory, /datum/character_directory)
 
 /client/verb/show_character_directory()
-	set name = "Character Directory"
+	set name = "Директория Персонажей"
 	set category = "OOC"
-	set desc = "Shows a listing of all active characters, along with their associated OOC notes, flavor text, and more."
+	set desc = "Показать перечень всех активных персонажей, а также их ООС-заметки, описания и др."
 
 	// This is primarily to stop malicious users from trying to lag the server by spamming this verb
 	if(!usr.checkMoveCooldown())
-		to_chat(usr, "<span class='warning'>Don't spam character directory refresh.</span>")
+		to_chat(usr, "<span class='warning'>Не спамьте обновлением каталога персонажей.</span>")
 		return
 	usr.setMoveCooldown(10)
 
@@ -29,7 +29,7 @@ GLOBAL_DATUM(character_directory, /datum/character_directory)
 
 /datum/character_directory/tgui_data(mob/user, datum/tgui/ui, datum/tgui_state/state)
 	var/list/data = ..()
-	
+
 	data["personalVisibility"] = user?.client?.prefs?.show_in_directory
 	data["personalTag"] = user?.client?.prefs?.directory_tag || "Unset"
 	data["personalErpTag"] = user?.client?.prefs?.directory_erptag || "Unset"
@@ -44,7 +44,7 @@ GLOBAL_DATUM(character_directory, /datum/character_directory)
 		// Allow opt-out.
 		if(!C?.prefs?.show_in_directory)
 			continue
-		
+
 		// These are the three vars we're trying to find
 		// The approach differs based on the mob the client is controlling
 		var/name = null
@@ -82,7 +82,7 @@ GLOBAL_DATUM(character_directory, /datum/character_directory)
 		// But if we can't find the name, they must be using a non-compatible mob type currently.
 		if(!name)
 			continue
-		
+
 		directory_mobs.Add(list(list(
 			"name" = name,
 			"ooc_notes" = ooc_notes,

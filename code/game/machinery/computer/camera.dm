@@ -45,7 +45,7 @@
 
 /obj/machinery/computer/security/attack_ai(mob/user)
 	if(isAI(user))
-		to_chat(user, "<span class='notice'>You realise its kind of stupid to access a camera console when you have the entire camera network at your metaphorical fingertips</span>")
+		to_chat(user, "<span class='notice'>Вы понимаете, что это своего рода глупость - обращаться к консоли камеры, когда вся сеть камер находится в ваших метафорических кончиках пальцев.</span>")
 		return
 	attack_hand(user)
 
@@ -57,7 +57,7 @@
 //Camera control: arrow keys.
 /obj/machinery/computer/security/telescreen
 	name = "Telescreen"
-	desc = "Used for watching an empty arena."
+	desc = "Используется для просмотра пустой арены."
 	icon_state = "wallframe"
 	layer = ABOVE_WINDOW_LAYER
 	icon_keyboard = null
@@ -69,7 +69,7 @@
 
 /obj/machinery/computer/security/telescreen/entertainment
 	name = "entertainment monitor"
-	desc = "Damn, why do they never have anything interesting on these things?"
+	desc = "Блин, а почему у них никогда ничего интересного по этим вещам нет?"
 	icon = 'icons/obj/status_display.dmi'
 	icon_screen = "entertainment"
 	light_color = "#FFEEDB"

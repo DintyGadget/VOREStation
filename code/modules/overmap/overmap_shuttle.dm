@@ -31,8 +31,8 @@
 	if(!src.try_consume_fuel()) //insufficient fuel
 		for(var/area/A in shuttle_area)
 			for(var/mob/living/M in A)
-				M.show_message("<spawn class='warning'>You hear the shuttle engines sputter... perhaps it doesn't have enough fuel?", 1,
-				"<spawn class='warning'>The shuttle shakes but fails to take off.", 2)
+				M.show_message("<spawn class='warning'>Вы слышите шум двигателей шаттла ... может, топлива недостаточно?", 1,
+				"<spawn class='warning'>Шаттл трясется, но не взлетает.", 2)
 				return 0 //failure!
 	return 1 //sucess, continue with launch
 
@@ -78,7 +78,7 @@
 		var/list/waypoints = S.get_waypoints(name)
 		for(var/obj/effect/shuttle_landmark/LZ in waypoints)
 			if(LZ.is_valid(src))
-				res["[waypoints[LZ]] - [LZ.name]"] = LZ	
+				res["[waypoints[LZ]] - [LZ.name]"] = LZ
 	return res
 
 /datum/shuttle/autodock/overmap/get_location_name()
@@ -150,7 +150,7 @@
 
 /obj/structure/fuel_port/attack_hand(mob/user as mob)
 	if(!opened)
-		to_chat(user, "<spawn class='notice'>The door is secured tightly. You'll need a crowbar to open it.")
+		to_chat(user, "<spawn class='notice'>Дверь закрыта плотно. Вам понадобится лом, чтобы открыть его.")
 		return
 	else if(contents.len > 0)
 		user.put_in_hands(contents[1])

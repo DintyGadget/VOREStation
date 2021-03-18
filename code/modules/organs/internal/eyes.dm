@@ -33,13 +33,13 @@
 			color = H.species.blood_color
 
 /obj/item/organ/internal/eyes/proc/change_eye_color()
-	set name = "Change Eye Color"
+	set name = "Изменить цвет глаз"
 	set desc = "Changes your robotic eye color instantly."
 	set category = "IC"
 	set src in usr
 
 	var/current_color = rgb(eye_colour[1],eye_colour[2],eye_colour[3])
-	var/new_color = input("Pick a new color for your eyes.","Eye Color", current_color) as null|color
+	var/new_color = input("Выберите новый цвет для своих глаз.","Eye Color", current_color) as null|color
 	if(new_color && owner)
 		// input() supplies us with a hex color, which we can't use, so we convert it to rbg values.
 		var/list/new_color_rgb_list = hex2rgb(new_color)
@@ -75,7 +75,7 @@
 	var/oldbroken = is_broken()
 	..()
 	if(is_broken() && !oldbroken && owner && !owner.stat)
-		to_chat(owner, "<span class='danger'>You go blind!</span>")
+		to_chat(owner, "<span class='danger'>Вы ослепли!</span>")
 
 /obj/item/organ/internal/eyes/process() //Eye damage replaces the old eye_stat var.
 	..()
@@ -93,10 +93,10 @@
 	//Conjunctivitis
 	if (. >= 1)
 		if(prob(1))
-			owner.custom_pain("The corners of your eyes itch! It's quite frustrating.",0)
+			owner.custom_pain("Уголки глаз чешутся! Это довольно неприятно.",0)
 	if (. >= 2)
 		if(prob(1))
-			owner.custom_pain("Your eyes are watering, making it harder to see clearly for a moment.",1)
+			owner.custom_pain("Глаза слезятся, и на мгновение становится труднее видеть.",1)
 			owner.eye_blurry += 10
 
 /obj/item/organ/internal/eyes/proc/get_total_protection(var/flash_protection = FLASH_PROTECTION_NONE)

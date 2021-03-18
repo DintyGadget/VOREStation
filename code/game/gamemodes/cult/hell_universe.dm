@@ -8,7 +8,7 @@ In short:
 */
 /datum/universal_state/hell
 	name = "Hell Rising"
-	desc = "OH FUCK OH FUCK OH FUCK"
+	desc = "Ой ебать ой ебать ой ебать"
 
 	decay_rate = 5 // 5% chance of a turf decaying on lighting update/airflow (there's no actual tick for turfs)
 

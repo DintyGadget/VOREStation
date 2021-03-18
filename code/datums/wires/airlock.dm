@@ -32,14 +32,14 @@
 	var/obj/machinery/door/airlock/A = holder
 	var/haspower = A.arePowerSystemsOn() //If there's no power, then no lights will be on.
 
-	. += "The door bolts [A.locked ? "have fallen!" : "look up."]"
-	. += "The door bolt lights are [(A.lights && haspower) ? "on." : "off!"]"
-	. += "The test light is [haspower ? "on." : "off!"]"
-	. += "The backup power light is [A.backup_power_lost_until ? "off!" : "on."]"
-	. += "The 'AI control allowed' light is [(A.aiControlDisabled == 0 && !A.emagged && haspower) ? "on" : "off"]."
-	. += "The 'Check Wiring' light is [(A.safe == 0 && haspower) ? "on" : "off"]."
-	. += "The 'Check Timing Mechanism' light is [(A.normalspeed == 0 && haspower) ? "on" : "off"]."
-	. += "The IDScan light is [(A.aiDisabledIdScanner == 0 && haspower) ? "on" : "off."]"
+	. += "Дверные болты [A.locked ? "опущены!" : "подняты."]"
+	. += "Подсветка двери [(A.lights && haspower) ? "горит." : "не горит!"]"
+	. += "Контрольная лампа [haspower ? "горит." : "не горит!"]"
+	. += "Индикатор резерв. питания [A.backup_power_lost_until ? "не горит!" : "горит."]"
+	. += "Индикатор \"управление ИИ\" [(A.aiControlDisabled == 0 && !A.emagged && haspower) ? "горит" : "не горит"]."
+	. += "Индикатор \"проверки проводки\" [(A.safe == 0 && haspower) ? "горит" : "не горит"]."
+	. += "Индикатор \"механизма синхронизации\" [(A.normalspeed == 0 && haspower) ? "горит" : "не горит"]."
+	. += "Сканер ID [(A.aiDisabledIdScanner == 0 && haspower) ? "работает" : "не работает."]"
 
 /datum/wires/airlock/on_cut(wire, mend)
 	var/obj/machinery/door/airlock/A = holder

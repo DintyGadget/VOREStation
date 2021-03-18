@@ -7,7 +7,7 @@
 	icon = 'icons/obj/wizard.dmi'
 	icon_state = "soulstone"
 	item_state = "electronic"
-	desc = "A fragment of the legendary treasure known simply as the 'Soul Stone'. The shard still flickers with a fraction of the full artefacts power."
+	desc = "Фрагмент легендарного сокровища, известного просто как «Камень души». Осколок все еще мерцает на части полной мощности артефактов."
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_BELT
 	origin_tech = list(TECH_BLUESPACE = 4, TECH_MATERIAL = 4, TECH_ARCANE = 1)
@@ -25,14 +25,14 @@
 	if(istype(M, /mob/living/carbon/human/dummy))
 		return..()
 	if(jobban_isbanned(M, "cultist"))
-		to_chat(user, "<span class='warning'>This person's soul is too corrupt and cannot be captured!</span>")
+		to_chat(user, "<span class='warning'>Душа этого человека слишком испорчена и не может быть захвачена!</span>")
 		return..()
 
 	if(M.has_brain_worms()) //Borer stuff - RR
-		to_chat(user, "<span class='warning'>This being is corrupted by an alien intelligence and cannot be soul trapped.</span>")
+		to_chat(user, "<span class='warning'>Это существо испорчено инопланетным разумом и не может попасть в ловушку души.</span>")
 		return..()
 
-	add_attack_logs(user,M,"Soulstone'd with [src.name]")
+	add_attack_logs(user,M,"Камень души с [src.name]")
 	transfer_soul("VICTIM", M, user)
 	return
 
@@ -43,12 +43,12 @@
 	if (!in_range(src, user))
 		return
 	user.set_machine(src)
-	var/dat = "<TT><B>Soul Stone</B><BR>"
+	var/dat = "<meta charset=\"utf-8\"><TT><B>Камень души</B><BR>"
 	for(var/mob/living/simple_mob/construct/shade/A in src)
-		dat += "Captured Soul: [A.name]<br>"
-		dat += {"<A href='byond://?src=\ref[src];choice=Summon'>Summon Shade</A>"}
+		dat += "Захваченная душа: [A.name]<br>"
+		dat += {"<A href='byond://?src=\ref[src];choice=Summon'>Призвать тень</A>"}
 		dat += "<br>"
-		dat += {"<a href='byond://?src=\ref[src];choice=Close'> Close</a>"}
+		dat += {"<a href='byond://?src=\ref[src];choice=Close'> Закрыть</a>"}
 	user << browse(dat, "window=aicard")
 	onclose(user, "aicard")
 	return
@@ -76,7 +76,7 @@
 			for(var/mob/living/simple_mob/construct/shade/A in src)
 				A.status_flags &= ~GODMODE
 				A.canmove = 1
-				to_chat(A, "<b>You have been released from your prison, but you are still bound to [U.name]'s will. Help them suceed in their goals at all costs.</b>")
+				to_chat(A, "<b>Вас выпустили из тюрьмы, но вы по-прежнему связаны волей [U.name]. Помогите им добиться успеха любой ценой.</b>")
 				A.forceMove(U.loc)
 				A.cancel_camera()
 				src.icon_state = "soulstone"
@@ -87,14 +87,14 @@
 	name = "empty shell"
 	icon = 'icons/obj/wizard.dmi'
 	icon_state = "construct"
-	desc = "A wicked machine used by those skilled in magical arts. It is inactive."
+	desc = "Злая машина, используемая мастерами магии. Неактивна."
 
 /obj/structure/constructshell/cultify()
 	return
 
 /obj/structure/constructshell/cult
 	icon_state = "construct-cult"
-	desc = "This eerie contraption looks like it would come alive if supplied with a missing ingredient."
+	desc = "Это жуткое изобретение выглядит так, будто оно ожило бы, если бы в него не входил ингредиент."
 
 /obj/structure/constructshell/attackby(obj/item/O as obj, mob/user as mob)
 	if(istype(O, /obj/item/device/soulstone))
@@ -107,16 +107,16 @@
 	if(!istype(T))
 		return;
 	if(src.imprinted != "empty")
-		to_chat(U, "<span class='danger'>Capture failed!</span>: The soul stone has already been imprinted with [src.imprinted]'s mind!")
+		to_chat(U, "<span class='danger'>Захват не удался!</span>: Камень души уже отпечатан в разуме [src.imprinted]!")
 		return
 	if ((T.health + T.halloss) > config.health_threshold_crit && T.stat != DEAD)
-		to_chat(U, "<span class='danger'>Capture failed!</span>: Kill or maim the victim first!")
+		to_chat(U, "<span class='danger'>Захват не удался!</span>: Сначала убейте или покалечите жертву!")
 		return
 	if(T.client == null)
-		to_chat(U, "<span class='danger'>Capture failed!</span>: The soul has already fled it's mortal frame.")
+		to_chat(U, "<span class='danger'>Захват не удался!</span>: Душа уже покинула свой смертный каркас.")
 		return
 	if(src.contents.len)
-		to_chat(U, "<span class='danger'>Capture failed!</span>: The soul stone is full! Use or free an existing soul to make room.")
+		to_chat(U, "<span class='danger'>Захват не удался!</span>: Камень души полон! Используйте или освободите существующую душу, чтобы освободить место.")
 		return
 
 	for(var/obj/item/W in T)
@@ -136,8 +136,8 @@
 	S.forceMove(src) //put shade in stone
 	S.status_flags |= GODMODE //So they won't die inside the stone somehow
 	S.canmove = 0//Can't move out of the soul stone
-	S.name = "Shade of [T.real_name]"
-	S.real_name = "Shade of [T.real_name]"
+	S.name = "Тень [T.real_name]"
+	S.real_name = "Тень [T.real_name]"
 	S.icon = T.icon
 	S.icon_state = T.icon_state
 	S.overlays = T.overlays
@@ -149,10 +149,10 @@
 
 
 	src.icon_state = "soulstone2"
-	src.name = "Soul Stone: [S.real_name]"
-	to_chat(S, "Your soul has been captured! You are now bound to [U.name]'s will, help them suceed in their goals at all costs.")
-	to_chat(U, "<span class='notice'>Capture successful!</span> : [T.real_name]'s soul has been ripped from their body and stored within the soul stone.")
-	to_chat(U, "The soulstone has been imprinted with [S.real_name]'s mind, it will no longer react to other souls.")
+	src.name = "Камень души: [S.real_name]"
+	to_chat(S, "Ваша душа захвачена! Теперь вы связаны волей [U.name], помогите им добиться успеха любой ценой.")
+	to_chat(U, "<span class='notice'>Захват успешен!</span> : Душа [T.real_name] была вырвана из тела и сохранена в камне души.")
+	to_chat(U, "Камень души был отпечатан в разуме [S.real_name], он больше не будет реагировать на другие души.")
 	src.imprinted = "[S.name]"
 	qdel(T)
 
@@ -160,13 +160,13 @@
 	if(!istype(T))
 		return;
 	if (T.stat == DEAD)
-		to_chat(U, "<span class='danger'>Capture failed!</span>: The shade has already been banished!")
+		to_chat(U, "<span class='danger'>Захват не удался!</span>: Тень уже прогнали!")
 		return
 	if(src.contents.len)
-		to_chat(U, "<span class='danger'>Capture failed!</span>: The soul stone is full! Use or free an existing soul to make room.")
+		to_chat(U, "<span class='danger'>Захват не удался!</span>: Камень души полон! Используйте или освободите существующую душу, чтобы освободить место.")
 		return
 	if(T.name != src.imprinted)
-		to_chat(U, "<span class='danger'>Capture failed!</span>: The soul stone has already been imprinted with [src.imprinted]'s mind!")
+		to_chat(U, "<span class='danger'>Захват не удался!</span>: Камень души уже отпечатан в разуме [src.imprinted]!")
 		return
 
 	T.forceMove(src) //put shade in stone
@@ -175,15 +175,15 @@
 	T.health = T.getMaxHealth()
 	src.icon_state = "soulstone2"
 
-	to_chat(T, "Your soul has been recaptured by the soul stone, its arcane energies are reknitting your ethereal form")
-	to_chat(U, "<span class='notice'>Capture successful!</span> : [T.name]'s has been recaptured and stored within the soul stone.")
+	to_chat(T, "Ваша душа была захвачена камнем души, его тайные энергии воссоединяют вашу эфирную форму")
+	to_chat(U, "<span class='notice'>Захват успешен!</span> : [T.name] был захвачен и сохранен в камне души.")
 
 /obj/item/device/soulstone/proc/transfer_construct(var/obj/structure/constructshell/T,var/mob/U)
 	var/mob/living/simple_mob/construct/shade/A = locate() in src
 	if(!A)
-		to_chat(U, "<span class='danger'>Capture failed!</span>: The soul stone is empty! Go kill someone!")
+		to_chat(U, "<span class='danger'>Захват не удался!</span>: Камень души пуст! Убей кого-нибудь!")
 		return;
-	var/construct_class = input(U, "Please choose which type of construct you wish to create.") as null|anything in possible_constructs
+	var/construct_class = input(U, "Пожалуйста, выберите, какой тип конструкции вы хотите создать.") as null|anything in possible_constructs
 	switch(construct_class)
 		if("Juggernaut")
 			var/mob/living/simple_mob/construct/juggernaut/Z = new /mob/living/simple_mob/construct/juggernaut (get_turf(T.loc))
@@ -191,8 +191,8 @@
 			if(iscultist(U))
 				cult.add_antagonist(Z.mind)
 			qdel(T)
-			to_chat(Z, "<B>You are playing a Juggernaut. Though slow, you can withstand extreme punishment, and rip apart enemies and walls alike.</B>")
-			to_chat(Z, "<B>You are still bound to serve your creator, follow their orders and help them complete their goals at all costs.</B>")
+			to_chat(Z, "<B>Сейчас вы играете за Juggernaut. Несмотря на то, что вы медленный, вы можете выдержать жестокое наказание и разорвать врагов, и стены.</B>")
+			to_chat(Z, "<B>Вы по-прежнему обязаны служить своему создателю, выполнять его приказы и любой ценой помогать ему в достижении своих целей.</B>")
 			Z.cancel_camera()
 			qdel(src)
 		if("Wraith")
@@ -201,8 +201,8 @@
 			if(iscultist(U))
 				cult.add_antagonist(Z.mind)
 			qdel(T)
-			to_chat(Z, "<B>You are playing a Wraith. Though relatively fragile, you are fast, deadly, and even able to phase through walls.</B>")
-			to_chat(Z, "<B>You are still bound to serve your creator, follow their orders and help them complete their goals at all costs.</B>")
+			to_chat(Z, "<B>Сейчас вы играете за Wraith. Хотя вы относительно хрупки, вы быстры, смертоносны и даже способны проходить сквозь стены.</B>")
+			to_chat(Z, "<B>Вы по-прежнему обязаны служить своему создателю, выполнять его приказы и любой ценой помогать ему в достижении своих целей.</B>")
 			Z.cancel_camera()
 			qdel(src)
 		if("Artificer")
@@ -211,8 +211,8 @@
 			if(iscultist(U))
 				cult.add_antagonist(Z.mind)
 			qdel(T)
-			to_chat(Z, "<B>You are playing an Artificer. You are incredibly weak and fragile, but you are able to construct fortifications, repair allied constructs (by clicking on them), and even create new constructs</B>")
-			to_chat(Z, "<B>You are still bound to serve your creator, follow their orders and help them complete their goals at all costs.</B>")
+			to_chat(Z, "<B>Сейчас вы играете за Artificer. Вы невероятно слабы и хрупки, но вы можете строить укрепления, ремонтировать союзные конструкции (щелкая по ним) и даже создавать новые конструкции.</B>")
+			to_chat(Z, "<B>Вы по-прежнему обязаны служить своему создателю, выполнять его приказы и любой ценой помогать ему в достижении своих целей.</B>")
 			Z.cancel_camera()
 			qdel(src)
 		if("Harvester")
@@ -221,8 +221,8 @@
 			if(iscultist(U))
 				cult.add_antagonist(Z.mind)
 			qdel(T)
-			to_chat(Z, "<B>You are playing a Harvester. You are relatively weak, but your physical frailty is made up for by your ranged abilities.</B>")
-			to_chat(Z, "<B>You are still bound to serve your creator, follow their orders and help them complete their goals at all costs.</B>")
+			to_chat(Z, "<B>Сейчас вы играете за Harvester. Вы относительно слабы, но ваша физическая слабость компенсируется вашими способностями дальнего боя.</B>")
+			to_chat(Z, "<B>Вы по-прежнему обязаны служить своему создателю, выполнять его приказы и любой ценой помогать ему в достижении своих целей.</B>")
 			Z.cancel_camera()
 			qdel(src)
 		if("Behemoth")
@@ -231,8 +231,8 @@
 			if(iscultist(U))
 				cult.add_antagonist(Z.mind)
 			qdel(T)
-			to_chat(Z, "<B>You are playing a Behemoth. You are incredibly slow, though your slowness is made up for by the fact your shell is far larger than any of your bretheren. You are the Unstoppable Force, and Immovable Object.</B>")
-			to_chat(Z, "<B>You are still bound to serve your creator, follow their orders and help them complete their goals at all costs.</B>")
+			to_chat(Z, "<B>Сейчас вы играете за Behemoth. Вы невероятно медлительны, хотя ваша медлительность компенсируется тем, что ваша оболочка намного больше, чем у любого из ваших собратьев. Вы - неудержимая сила и неподвижный объект.</B>")
+			to_chat(Z, "<B>Вы по-прежнему обязаны служить своему создателю, выполнять его приказы и любой ценой помогать ему в достижении своих целей.</B>")
 			Z.cancel_camera()
 			qdel(src)
 

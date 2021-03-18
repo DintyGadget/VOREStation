@@ -31,8 +31,8 @@
 
 /datum/alt_title/construction_engi
 	title = "Construction Engineer"
-	title_blurb = "A Construction Engineer fulfills similar duties to other engineers, but usually occupies spare time with construction of extra facilities in dedicated areas or \
-					as additions to station layout."
+	title_blurb = "Инженер-конструктор имеет схожие обязанности с остальными инженерами, но обычно проводит свободное время за постройкой дополнительных комнат \
+					и ремонтом заброшенных мест."
 
 
 
@@ -46,4 +46,4 @@
 
 /datum/alt_title/disposals_tech
 	title = "Disposals Technician"
-	title_blurb = "A Disposals Technician is an Atmospheric Technician still and can fulfill all the same duties, although specializes more in disposals delivery system's operations and configurations."
+	title_blurb = "Заведующий по выбросам занимается тем же, что и атмосферный техник, однако специализируется на работе системы выбросов."
