@@ -25,7 +25,7 @@
 	var/static/list/field_edit_choices
 
 /obj/machinery/computer/secure_data/Initialize()
-	..()
+	. = ..()
 	field_edit_questions = list(
 		// General
 		"name" = "Введите новое Ф.И:",
@@ -57,19 +57,19 @@
 
 /obj/machinery/computer/secure_data/verb/eject_id()
 	set category = "Object"
-	set name = "Извлечь ID карту"
+	set name = "Eject ID Card"
 	set src in oview(1)
 
 	if(!usr || usr.stat || usr.lying)	return
 
 	if(scan)
-		to_chat(usr, "Вы удаляете [scan] bp [src].")
+		to_chat(usr, "Вы удаляете [scan] из [src].")
 		scan.loc = get_turf(src)
 		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
 			usr.put_in_hands(scan)
 		scan = null
 	else
-		to_chat(usr, "С консоли удалить нечего.")
+		to_chat(usr, "С консоли удалять нечего.")
 	return
 
 /obj/machinery/computer/secure_data/attackby(var/obj/item/O, var/mob/user)
@@ -288,7 +288,7 @@
 					var/datum/data/record/R = new /datum/data/record()
 					R.fields["name"] = active1.fields["name"]
 					R.fields["id"] = active1.fields["id"]
-					R.name = "Security Record #[R.fields["id"]]"
+					R.name = "Запись безопасности #[R.fields["id"]]"
 					R.fields["brain_type"]	= "Unknown"
 					R.fields["criminal"]	= "None"
 					R.fields["mi_crim"]		= "None"
@@ -318,15 +318,15 @@
 					return
 
 				for(var/datum/data/record/R in data_core.general)
-					if(t1 == lowertext(R.fields["name"]) || t1 == lowertext(R.fields["id"]) || t1 == lowertext(R.fields["b_dna"]))
-						active2 = R
+					if(t1 == lowertext(R.fields["name"]) || t1 == lowertext(R.fields["id"]) || t1 == lowertext(R.fields["fingerprint"]))
+						active1 = R
 						break
-				if(!active2)
-					set_temp("Запись безопасности не найдена. Вы должны ввести точное имя, ID или ДНК.", "danger")
+				if(!active1)
+					set_temp("Запись безопасности не найдена. Вы должны ввести точное имя, идентификатор или отпечаток пальца человека.", "danger")
 					return
 				for(var/datum/data/record/E in data_core.security)
-					if(E.fields["name"] == active2.fields["name"] && E.fields["id"] == active2.fields["id"])
-						active1 = E
+					if(E.fields["name"] == active1.fields["name"] && E.fields["id"] == active1.fields["id"])
+						active2 = E
 						break
 				screen = SEC_DATA_RECORD
 			if("print_p")
@@ -420,7 +420,7 @@
   */
 /obj/machinery/computer/secure_data/proc/print_finish()
 	var/obj/item/weapon/paper/P = new(loc)
-	P.info = "<meta charset=\"utf-8\"><center><b>Общие данные</b></center><br>"
+	P.info = "<meta charset=\"utf-8\"><center><b>Данные безопасности</b></center><br>"
 	if(istype(active1, /datum/data/record) && data_core.general.Find(active1))
 		P.info += {"Ф.И: [active1.fields["name"]] ID: [active1.fields["id"]]
 		<br>\nПол: [active1.fields["sex"]]
@@ -446,7 +446,7 @@
 	else
 		P.info += "<b>Записи безопасности утеряны!</b><br>"
 	P.info += "</tt>"
-	P.name = "paper - 'Security Record: [active1.fields["name"]]'"
+	P.name = "paper - 'Запись безопасности: [active1.fields["name"]]'"
 	printing = FALSE
 	SStgui.update_uis(src)
 

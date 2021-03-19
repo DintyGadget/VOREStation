@@ -6,7 +6,7 @@
 // Timeclock terminal machine itself
 //
 /obj/machinery/computer/timeclock
-	name = "timeclock terminal"
+	name = "Терминал отгулов"
 	icon = 'icons/obj/machines/timeclock_vr.dmi'
 	icon_state = "timeclock"
 	icon_keyboard = null
@@ -184,7 +184,7 @@
 		var/mob/living/carbon/human/H = usr
 		H.mind.assigned_role = card.rank
 		H.mind.role_alt_title = card.assignment
-		announce.autosay("[card.registered_name] has moved On-Duty as [card.assignment].", "Employee Oversight", channel, zlevels = using_map.get_map_levels(get_z(src)))
+		announce.autosay("[card.registered_name] выходит с отгула на должность [card.assignment].", "Мониторинг кадров", channel, zlevels = using_map.get_map_levels(get_z(src)))
 	return
 
 /obj/machinery/computer/timeclock/proc/makeOffDuty()
@@ -210,7 +210,7 @@
 		H.mind.assigned_role = ptojob.title
 		H.mind.role_alt_title = ptojob.title
 		foundjob.current_positions--
-		announce.autosay("[card.registered_name], [oldtitle], has moved Off-Duty.", "Employee Oversight", channel, zlevels = using_map.get_map_levels(get_z(src)))
+		announce.autosay("[card.registered_name], [oldtitle], выходит на отгул.", "Мониторинг кадров", channel, zlevels = using_map.get_map_levels(get_z(src)))
 	return
 
 /obj/machinery/computer/timeclock/proc/checkCardCooldown()
@@ -218,23 +218,23 @@
 		return FALSE
 	var/time_left = 10 MINUTES - (world.time - card.last_job_switch)
 	if(time_left > 0)
-		to_chat(usr, "You need to wait another [round((time_left/10)/60, 1)] minute\s before you can switch.")
+		to_chat(usr, "Нужно подождать ещё [round((time_left/10)/60, 1)] мин. перед тем, как менять должность.")
 		return FALSE
 	return TRUE
 
 /obj/machinery/computer/timeclock/proc/checkFace()
 	if(!card)
-		to_chat(usr, "<span class='notice'>No ID is inserted.</span>")
+		to_chat(usr, "<span class='notice'>Внутри нет карты.</span>")
 		return FALSE
 	var/mob/living/carbon/human/H = usr
 	if(!(istype(H)))
-		to_chat(usr, "<span class='warning'>Invalid user detected. Access denied.</span>")
+		to_chat(usr, "<span class='warning'>Недопустимый пользователь. В доступе отказано.</span>")
 		return FALSE
 	else if((H.wear_mask && (H.wear_mask.flags_inv & HIDEFACE)) || (H.head && (H.head.flags_inv & HIDEFACE)))	//Face hiding bad
-		to_chat(usr, "<span class='warning'>Facial recognition scan failed due to physical obstructions. Access denied.</span>")
+		to_chat(usr, "<span class='warning'>Распознавание лица невозможно в связи с физическим препятствием. В доступе отказано.</span>")
 		return FALSE
 	else if(H.get_face_name() == "Unknown" || !(H.real_name == card.registered_name))
-		to_chat(usr, "<span class='warning'>Facial recognition scan failed. Access denied.</span>")
+		to_chat(usr, "<span class='warning'>Распознавание лица невозможно. В доступе отказано.</span>")
 		return FALSE
 	else
 		return TRUE
@@ -250,7 +250,7 @@
 // Frame type for construction
 //
 /datum/frame/frame_types/timeclock_terminal
-	name = "Timeclock Terminal"
+	name = "Терминал отгулов"
 	frame_class = FRAME_CLASS_DISPLAY
 	frame_size = 2
 	frame_style = FRAME_STYLE_WALL

@@ -4,8 +4,8 @@
 
 // Supply requests console
 /obj/machinery/computer/supplycomp
-	name = "supply ordering console"
-	desc = "Request crates from here! Delivery not guaranteed."
+	name = "консоль заказа поставки"
+	desc = "Запросите предметы отсюда! Доставка не гарантируется."
 	icon_screen = "request"
 	circuit = /obj/item/weapon/circuitboard/supplycomp
 	var/authorization = 0
@@ -18,8 +18,8 @@
 
 // Supply control console
 /obj/machinery/computer/supplycomp/control
-	name = "supply control console"
-	desc = "Control the cargo shuttle's functions remotely."
+	name = "пульт управления заказами"
+	desc = "Управляйте функциями грузового шаттла удаленно."
 	icon_keyboard = "tech_key"
 	icon_screen = "supply"
 	light_color = "#b88b2e"

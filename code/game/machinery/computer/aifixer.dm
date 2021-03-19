@@ -6,7 +6,7 @@
 	icon_keyboard = "tech_key"
 	icon_screen = "ai-fixer"
 	light_color = LIGHT_COLOR_PINK
-	
+
 	active_power_usage = 1000
 
 	/// Variable containing transferred AI
@@ -24,7 +24,7 @@
 			return
 	if(istype(I, /obj/item/device/aicard))
 		if(stat & (NOPOWER|BROKEN))
-			to_chat(user, "<span class='warning'>This terminal isn't functioning right now.</span>")
+			to_chat(user, "<span class='warning'>Этот терминал сейчас не работает.</span>")
 			return
 		if(restoring)
 			to_chat(user, "<span class='danger'>Terminal is busy restoring [occupier] right now.</span>")
@@ -66,7 +66,7 @@
 	data["AI_present"] = FALSE
 	data["error"] = null
 	if(!occupier)
-		data["error"] = "Please transfer an AI unit."
+		data["error"] = "Перенесите блок ИИ."
 	else
 		data["AI_present"] = TRUE
 		data["name"] = occupier.name
@@ -85,10 +85,10 @@
 		return TRUE
 	if(!occupier)
 		restoring = FALSE
-	
+
 	if(action)
 		playsound(src, "terminal_type", 50, 1)
-	
+
 	switch(action)
 		if("PRG_beginReconstruction")
 			if(occupier?.health < 100)

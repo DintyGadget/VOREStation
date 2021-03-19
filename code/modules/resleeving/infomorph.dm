@@ -335,7 +335,7 @@ var/list/infomorph_emotions = list(
 	verbs -= /mob/living/silicon/infomorph/proc/choose_verbs
 
 /mob/living/silicon/infomorph/lay_down()
-	set name = "Rest"
+	set name = "Отдохнуть"
 	set category = "IC"
 
 	resting = !resting
@@ -476,7 +476,7 @@ var/global/list/default_infomorph_software = list()
 
 /mob/living/silicon/infomorph/tgui_data(mob/user, datum/tgui/ui, datum/tgui_state/state)
 	var/list/data = ..()
-	
+
 	// Software we have bought
 	var/list/bought_software = list()
 	// Software we have not bought

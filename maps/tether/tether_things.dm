@@ -113,7 +113,7 @@
 	planet = planet_virgo3b
 
 /obj/effect/step_trigger/lost_in_space
-	var/deathmessage = "You drift off into space, floating alone in the void until your life support runs out."
+	var/deathmessage = "Вы дрейфуете в пространстве, плавая в одиночестве в пустоте, пока ваша система жизнеобеспечения не иссякнет."
 
 /obj/effect/step_trigger/lost_in_space/Trigger(var/atom/movable/A) //replacement for shuttle dump zones because there's no empty space levels to dump to
 	if(ismob(A))
@@ -121,7 +121,7 @@
 	qdel(A)
 
 /obj/effect/step_trigger/lost_in_space/bluespace
-	deathmessage = "Everything goes blue as your component particles are scattered throughout the known and unknown universe."
+	deathmessage = "Все становится синим, когда ваши составляющие частицы рассеиваются по всей известной и неизвестной вселенной."
 	var/last_sound = 0
 
 /obj/effect/step_trigger/lost_in_space/bluespace/Trigger(A)
@@ -135,7 +135,7 @@
 		return ..()
 
 /obj/effect/step_trigger/lost_in_space/tram
-	deathmessage = "You fly down the tunnel of the tram at high speed for a few moments before impact kills you with sheer concussive force."
+	deathmessage = "Вы летите по туннелю трамвая на большой скорости в течение нескольких мгновений, прежде чем удар убивает вас с чистой ударной силой."
 
 
 // Invisible object that blocks z transfer to/from its turf and the turf above.
@@ -160,7 +160,7 @@
 // The tram's electrified maglev tracks
 /turf/simulated/floor/maglev
 	name = "maglev track"
-	desc = "Magnetic levitation tram tracks. Caution! Electrified!"
+	desc = "Трамвайные пути на магнитной подушке. Осторожно! Наэлектризовано!"
 	icon = 'icons/turf/flooring/maglevs.dmi'
 	icon_state = "maglevup"
 
@@ -196,7 +196,7 @@
 //Chemistry 'chemavator'
 /obj/machinery/smartfridge/chemistry/chemvator
 	name = "\improper Smart Chemavator - Upper"
-	desc = "A refrigerated storage unit for medicine and chemical storage. Now sporting a fancy system of pulleys to lift bottles up and down."
+	desc = "Холодильная установка для хранения лекарств и химикатов. Теперь у него необычная система шкивов для подъема и опускания бутылок."
 	var/obj/machinery/smartfridge/chemistry/chemvator/attached
 
 /obj/machinery/smartfridge/chemistry/chemvator/down/Destroy()
@@ -224,12 +224,12 @@
 	can_atmos_pass = ATMOS_PASS_NO
 	base_icon_state = "door_closed"
 	occupied_icon_state = "door_locked"
-	desc = "The tram station you might've came in from.  You could leave the base easily using this."
-	on_store_message = "has departed on the tram."
-	on_store_name = "Travel Oversight"
-	on_enter_occupant_message = "The tram arrives at the platform; you step inside and take a seat."
-	on_store_visible_message_1 = "'s speakers chime, anouncing a tram has arrived to take"
-	on_store_visible_message_2 = "to the colony"
+	desc = "Вокзал, с которого Вы, вероятно, и прибыли. На нём же можно и покинуть станцию."
+	on_store_message = "уезжает на трамt."
+	on_store_name = "Проходной контроль"
+	on_enter_occupant_message = "Состав подъезжает к платформе; Вы заходите внутрь и садитесь."
+	on_store_visible_message_1 = "содрогается со звоном, объявляющим о прибытии состава"
+	on_store_visible_message_2 = "возвращается в колонию"
 	time_till_despawn = 10 SECONDS
 	spawnpoint_type = /datum/spawnpoint/tram
 /obj/machinery/cryopod/robot/door/tram/process()
@@ -251,8 +251,8 @@
 
 	var/mob/living/carbon/human/user = AM
 
-	var/choice = alert("Do you want to depart via the tram? Your character will leave the round.","Departure","Yes","No")
-	if(user && Adjacent(user) && choice == "Yes")
+	var/choice = alert("Вы хотите уехать? Ваш персонаж выйдет из раунда.","Выезд","Да","Нет")
+	if(user && Adjacent(user) && choice == "Да")
 		var/mob/observer/dead/newghost = user.ghostize()
 		newghost.timeofdeath = world.time
 		despawn_occupant(user)
@@ -271,7 +271,7 @@ var/global/list/latejoin_tram   = list()
 
 /datum/spawnpoint/tram
 	display_name = "Tram Station"
-	msg = "has arrived on the tram"
+	msg = "прибывает на станцию"
 
 /datum/spawnpoint/tram/New()
 	..()
@@ -328,7 +328,7 @@ var/global/list/latejoin_tram   = list()
 //Airlock antitox vendor
 /obj/machinery/vending/wallmed_airlock
 	name = "Airlock NanoMed"
-	desc = "Wall-mounted Medical Equipment dispenser. This limited-use version dispenses antitoxins with mild painkillers for surface EVAs."
+	desc = "Настенный диспенсер для медицинского оборудования. Эта версия для ограниченного использования содержит антитоксины и легкие болеутоляющие средства для поверхностного этиленвинилацетата."
 	icon_state = "wallmed"
 	density = 0 //It is wall-mounted, and thus, not dense. --Superxpdude
 	products = list(/obj/item/weapon/reagent_containers/pill/airlock = 20)
@@ -341,7 +341,7 @@ var/global/list/latejoin_tram   = list()
 
 /obj/item/weapon/reagent_containers/pill/airlock
 	name = "\'Airlock\' Pill"
-	desc = "Neutralizes toxins and provides a mild analgesic effect."
+	desc = "Нейтрализует токсины и оказывает легкое обезболивающее."
 	icon_state = "pill2"
 
 /obj/item/weapon/reagent_containers/pill/airlock/New()
@@ -392,7 +392,7 @@ var/global/list/latejoin_tram   = list()
 //Camera monitors
 /obj/machinery/computer/security/xenobio
 	name = "xenobiology camera monitor"
-	desc = "Used to access the xenobiology cell cameras."
+	desc = "Используется для доступа к камерам ксенобиологических клеток."
 	icon_keyboard = "mining_key"
 	icon_screen = "mining"
 	network = list(NETWORK_XENOBIO)

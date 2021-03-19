@@ -32,30 +32,30 @@
 	. = ..()
 	field_edit_questions = list(
 		// General
-		"sex" = "Please select new sex:",
-		"age" = "Please input new age:",
-		"fingerprint" = "Please input new fingerprint hash:",
-		"p_stat" = "Please select new physical status:",
-		"m_stat" = "Please select new mental status:",
+		"sex" = "Введите новый пол:",
+		"age" = "Введие новый возраст:",
+		"fingerprint" = "Введите новый отпечаток:",
+		"p_stat" = "Введите новое физ. состояние:",
+		"m_stat" = "Введите новое псих. состояние:",
 		// Medical
-		"id_gender" = "Please select new gender identity:",
-		"blood_type" = "Please select new blood type:",
-		"b_dna" = "Please input new DNA:",
-		"mi_dis" = "Please input new minor disabilities:",
-		"mi_dis_d" = "Please summarize minor disabilities:",
-		"ma_dis" = "Please input new major disabilities:",
-		"ma_dis_d" = "Please summarize major disabilities:",
-		"alg" = "Please input new allergies:",
-		"alg_d" = "Please summarize allergies:",
-		"cdi" = "Please input new current diseases:",
-		"cdi_d" = "Please summarize current diseases:",
-		"notes" = "Please input new important notes:",
+		"id_gender" = "Введите новую половую индентичность:",
+		"blood_type" = "Введите новую группу крови:",
+		"b_dna" = "Введите новое ДНК:",
+		"mi_dis" = "Введите новые незначительные отклонения:",
+		"mi_dis_d" = "Кратко опишите незначительные отклонения:",
+		"ma_dis" = "Введите новые серьезные отклонения:",
+		"ma_dis_d" = "Кратко опишите серьезные отклонения:",
+		"alg" = "Введите новые аллергии:",
+		"alg_d" = "Кратко опишите аллергии:",
+		"cdi" = "Введите новые текущие заболевания:",
+		"cdi_d" = "Кратко опишите заболевания:",
+		"notes" = "Пожалуйста, введите новые важные примечания:",
 	)
 	field_edit_choices = list(
 		// General
 		"sex" = all_genders_text_list,
-		"p_stat" = list("*Deceased*", "*SSD*", "Active", "Physically Unfit", "Disabled"),
-		"m_stat" = list("*Insane*", "*Unstable*", "*Watch*", "Stable"),
+		"p_stat" = list("*Мертв*", "*SSD*", "Активен", "Физ. непригоден", "Отключено"),
+		"m_stat" = list("*Безумие*", "*Нестабильное*", "*Наблюдается*", "Стабильное"),
 		// Medical
 		"id_gender" = all_genders_text_list,
 		"blood_type" = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"),
@@ -68,26 +68,26 @@
 
 /obj/machinery/computer/med_data/verb/eject_id()
 	set category = "Object"
-	set name = "Eject ID Card"
+	set name = "Извлечь ID-карту"
 	set src in oview(1)
 
 	if(!usr || usr.stat || usr.lying)	return
 
 	if(scan)
-		to_chat(usr, "You remove \the [scan] from \the [src].")
+		to_chat(usr, "Вы удаляет [scan] из [src].")
 		scan.loc = get_turf(src)
 		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
 			usr.put_in_hands(scan)
 		scan = null
 	else
-		to_chat(usr, "There is nothing to remove from the console.")
+		to_chat(usr, "С консоли удалять нечего.")
 	return
 
 /obj/machinery/computer/med_data/attackby(var/obj/item/O, var/mob/user)
 	if(istype(O, /obj/item/weapon/card/id) && !scan && user.unEquip(O))
 		O.loc = src
 		scan = O
-		to_chat(user, "You insert \the [O].")
+		to_chat(user, "Вы вставляете [O].")
 		tgui_interact(user)
 	else
 		..()
@@ -134,13 +134,13 @@
 				if(istype(active1, /datum/data/record) && data_core.general.Find(active1))
 					var/list/fields = list()
 					general["fields"] = fields
-					fields[++fields.len] = FIELD("Name", active1.fields["name"], null)
+					fields[++fields.len] = FIELD("Ф.И", active1.fields["name"], null)
 					fields[++fields.len] = FIELD("ID", active1.fields["id"], null)
-					fields[++fields.len] = FIELD("Sex", active1.fields["sex"], "sex")
-					fields[++fields.len] = FIELD("Age", "[active1.fields["age"]]", "age")
-					fields[++fields.len] = FIELD("Fingerprint", active1.fields["fingerprint"], "fingerprint")
-					fields[++fields.len] = FIELD("Physical Status", active1.fields["p_stat"], "p_stat")
-					fields[++fields.len] = FIELD("Mental Status", active1.fields["m_stat"], "m_stat")
+					fields[++fields.len] = FIELD("Пол", active1.fields["sex"], "sex")
+					fields[++fields.len] = FIELD("Возраст", "[active1.fields["age"]]", "age")
+					fields[++fields.len] = FIELD("Отпечаток", active1.fields["fingerprint"], "fingerprint")
+					fields[++fields.len] = FIELD("Физ. состояние", active1.fields["p_stat"], "p_stat")
+					fields[++fields.len] = FIELD("Псих. состояние", active1.fields["m_stat"], "m_stat")
 					var/list/photos = list()
 					general["photos"] = photos
 					photos[++photos.len] = active1.fields["photo-south"]
@@ -155,11 +155,11 @@
 				if(istype(active2, /datum/data/record) && data_core.medical.Find(active2))
 					var/list/fields = list()
 					medical["fields"] = fields
-					fields[++fields.len] = MED_FIELD("Gender identity", active2.fields["id_gender"], "id_gender", TRUE)
-					fields[++fields.len] = MED_FIELD("Blood Type", active2.fields["b_type"], "blood_type", FALSE)
-					fields[++fields.len] = MED_FIELD("DNA", active2.fields["b_dna"], "b_dna", TRUE)
-					fields[++fields.len] = MED_FIELD("Brain Type", active2.fields["brain_type"], "brain_type", TRUE)
-					fields[++fields.len] = MED_FIELD("Important Notes", active2.fields["notes"], "notes", TRUE)
+					fields[++fields.len] = MED_FIELD("Половая идентичность", active2.fields["id_gender"], "id_gender", TRUE)
+					fields[++fields.len] = MED_FIELD("Группа крови", active2.fields["b_type"], "blood_type", FALSE)
+					fields[++fields.len] = MED_FIELD("ДНК", active2.fields["b_dna"], "b_dna", TRUE)
+					fields[++fields.len] = MED_FIELD("Тип мозга", active2.fields["brain_type"], "brain_type", TRUE)
+					fields[++fields.len] = MED_FIELD("Важные заметки", active2.fields["notes"], "notes", TRUE)
 					if(!active2.fields["comments"] || !islist(active2.fields["comments"]))
 						active2.fields["comments"] = list()
 					medical["comments"] = active2.fields["comments"]
@@ -272,15 +272,15 @@
 			if("del_all")
 				for(var/datum/data/record/R in data_core.medical)
 					qdel(R)
-				set_temp("All medical records deleted.")
+				set_temp("Все мед. записи удалены.")
 			if("del_r")
 				if(active2)
-					set_temp("Medical record deleted.")
+					set_temp("Мед. запись удалена.")
 					qdel(active2)
 			if("d_rec")
 				var/datum/data/record/general_record = locate(params["d_rec"] || "")
 				if(!data_core.general.Find(general_record))
-					set_temp("Record not found.", "danger")
+					set_temp("Записей не найдено.", "danger")
 					return
 
 				var/datum/data/record/medical_record
@@ -297,22 +297,22 @@
 					var/datum/data/record/R = new /datum/data/record()
 					R.fields["name"] = active1.fields["name"]
 					R.fields["id"] = active1.fields["id"]
-					R.name = "Medical Record #[R.fields["id"]]"
+					R.name = "Медицинские записи #[R.fields["id"]]"
 					R.fields["b_type"] = "Unknown"
 					R.fields["b_dna"] = "Unknown"
 					R.fields["mi_dis"] = "None"
-					R.fields["mi_dis_d"] = "No minor disabilities have been declared."
+					R.fields["mi_dis_d"] = "Нет данных о незначительных отклонениях."
 					R.fields["ma_dis"] = "None"
-					R.fields["ma_dis_d"] = "No major disabilities have been diagnosed."
+					R.fields["ma_dis_d"] = "Нет данных о серьезных отклонениях."
 					R.fields["alg"] = "None"
-					R.fields["alg_d"] = "No allergies have been detected in this patient."
+					R.fields["alg_d"] = "У этого пациента аллергии не выявлено."
 					R.fields["cdi"] = "None"
-					R.fields["cdi_d"] = "No diseases have been diagnosed at the moment."
+					R.fields["cdi_d"] = "На данный момент никаких заболеваний не диагностировано."
 					R.fields["notes"] = "No notes."
 					data_core.medical += R
 					active2 = R
 					screen = MED_DATA_RECORD
-					set_temp("Medical record created.", "success")
+					set_temp("Медицинские записи созданы.", "success")
 			if("del_c")
 				var/index = text2num(params["del_c"] || "")
 				if(!index || !istype(active2, /datum/data/record))
@@ -334,7 +334,7 @@
 						active2 = R
 						break
 				if(!active2)
-					set_temp("Medical record not found. You must enter the person's exact name, ID or DNA.", "danger")
+					set_temp("Медицинские данные не найдены. Вы должны ввести точное Ф.И, ID или ДНК.", "danger")
 					return
 				for(var/datum/data/record/E in data_core.general)
 					if(E.fields["name"] == active2.fields["name"] && E.fields["id"] == active2.fields["id"])
@@ -375,7 +375,7 @@
 					else
 						tgui_modal_input(src, id, question, arguments = arguments, value = arguments["value"])
 				if("add_c")
-					tgui_modal_input(src, id, "Please enter your message:")
+					tgui_modal_input(src, id, "Введите ваше сообщение:")
 				else
 					return FALSE
 		if(TGUI_MODAL_ANSWER)
@@ -414,39 +414,39 @@
   */
 /obj/machinery/computer/med_data/proc/print_finish()
 	var/obj/item/weapon/paper/P = new(loc)
-	P.info = "<center><b>Medical Record</b></center><br>"
+	P.info = "<meta charset=\"utf-8\"><center><b>Медицинские записи</b></center><br>"
 	if(istype(active1, /datum/data/record) && data_core.general.Find(active1))
-		P.info += {"Name: [active1.fields["name"]] ID: [active1.fields["id"]]
-		<br>\nSex: [active1.fields["sex"]]
-		<br>\nAge: [active1.fields["age"]]
-		<br>\nFingerprint: [active1.fields["fingerprint"]]
-		<br>\nPhysical Status: [active1.fields["p_stat"]]
-		<br>\nMental Status: [active1.fields["m_stat"]]<br>"}
+		P.info += {"Ф.И: [active1.fields["name"]] ID: [active1.fields["id"]]
+		<br>\nПол: [active1.fields["sex"]]
+		<br>\nВозраст: [active1.fields["age"]]
+		<br>\nОтпечаток: [active1.fields["fingerprint"]]
+		<br>\nФиз. состояние: [active1.fields["p_stat"]]
+		<br>\nПсих. состояние: [active1.fields["m_stat"]]<br>"}
 	else
-		P.info += "<b>General Record Lost!</b><br>"
+		P.info += "<b>Общие записи утеряны!</b><br>"
 	if(istype(active2, /datum/data/record) && data_core.medical.Find(active2))
-		P.info += {"<br>\n<center><b>Medical Data</b></center>
-		<br>\nGender Identity: [active2.fields["id_gender"]]
-		<br>\nBlood Type: [active2.fields["b_type"]]
-		<br>\nDNA: [active2.fields["b_dna"]]<br>\n
-		<br>\nMinor Disabilities: [active2.fields["mi_dis"]]
-		<br>\nDetails: [active2.fields["mi_dis_d"]]<br>\n
-		<br>\nMajor Disabilities: [active2.fields["ma_dis"]]
-		<br>\nDetails: [active2.fields["ma_dis_d"]]<br>\n
-		<br>\nAllergies: [active2.fields["alg"]]
-		<br>\nDetails: [active2.fields["alg_d"]]<br>\n
-		<br>\nCurrent Diseases: [active2.fields["cdi"]] (per disease info placed in log/comment section)
-		<br>\nDetails: [active2.fields["cdi_d"]]<br>\n
-		<br>\nImportant Notes:
+		P.info += {"<br>\n<center><b>Медицинские данные</b></center>
+		<br>\nПоловая идентичность: [active2.fields["id_gender"]]
+		<br>\nГруппа крови: [active2.fields["b_type"]]
+		<br>\nДНК: [active2.fields["b_dna"]]<br>\n
+		<br>\nНебольшие отклонения: [active2.fields["mi_dis"]]
+		<br>\nДетали: [active2.fields["mi_dis_d"]]<br>\n
+		<br>\nСерьезные отклонения: [active2.fields["ma_dis"]]
+		<br>\nДетали: [active2.fields["ma_dis_d"]]<br>\n
+		<br>\nАллергии: [active2.fields["alg"]]
+		<br>\nДетали: [active2.fields["alg_d"]]<br>\n
+		<br>\nТекущие заболевания: [active2.fields["cdi"]] (per disease info placed in log/comment section)
+		<br>\nДетали: [active2.fields["cdi_d"]]<br>\n
+		<br>\nВажные заметки:
 		<br>\n\t[active2.fields["notes"]]<br>\n
 		<br>\n
 		<center><b>Comments/Log</b></center><br>"}
 		for(var/c in active2.fields["comments"])
 			P.info += "[c["header"]]<br>[c["text"]]<br>"
 	else
-		P.info += "<b>Medical Record Lost!</b><br>"
+		P.info += "<b>Медицинские данные потеряны!</b><br>"
 	P.info += "</tt>"
-	P.name = "paper - 'Medical Record: [active1.fields["name"]]'"
+	P.name = "paper - 'Медицинская запись: [active1.fields["name"]]'"
 	printing = FALSE
 	SStgui.update_uis(src)
 
@@ -479,11 +479,11 @@
 				if(4)
 					R.fields["b_type"] = pick("A-", "B-", "AB-", "O-", "A+", "B+", "AB+", "O+")
 				if(5)
-					R.fields["p_stat"] = pick("*SSD*", "Active", "Physically Unfit", "Disabled")
+					R.fields["p_stat"] = pick("*SSD*", "Активен", "Физ. непригоден", "Отключено")
 					if(PDA_Manifest.len)
 						PDA_Manifest.Cut()
 				if(6)
-					R.fields["m_stat"] = pick("*Insane*", "*Unstable*", "*Watch*", "Stable")
+					R.fields["m_stat"] = pick("*Безумие*", "*Нестабильное*", "*Наблюдается*", "Стабильное")
 			continue
 
 		else if(prob(1))
@@ -495,7 +495,7 @@
 
 /obj/machinery/computer/med_data/laptop
 	name = "Medical Laptop"
-	desc = "A cheap laptop. It seems to have only the medical records program."
+	desc = "Дешевый ноутбук. Кажется, там только программа медицинских карт."
 	icon_state = "laptop"
 	icon_keyboard = "laptop_key"
 	icon_screen = "medlaptop"

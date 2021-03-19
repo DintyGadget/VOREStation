@@ -78,9 +78,9 @@
 	set hidden = 1
 	if ((src.health < 0 && src.health > (5-src.getMaxHealth()))) // Health below Zero but above 5-away-from-death, as before, but variable
 		src.death()
-		to_chat(src, "<font color='blue'>You have given up life and succumbed to death.</font>")
+		to_chat(src, "<font color='blue'>Вы оставили жизнь и умерли.</font>")
 	else
-		to_chat(src, "<font color='blue'>You are not injured enough to succumb to death!</font>")
+		to_chat(src, "<font color='blue'>Вы недостаточно ранены, чтобы умереть!</font>")
 
 /mob/living/proc/updatehealth()
 	if(status_flags & GODMODE)
@@ -670,7 +670,7 @@
 		resisting++
 		G.handle_resist()
 	if(resisting)
-		visible_message("<span class='danger'>[src] resists!</span>")
+		visible_message("<span class='danger'>[src] сопротивляется!</span>")
 
 /mob/living/proc/resist_fire()
 	return
@@ -679,11 +679,11 @@
 	return
 
 /mob/living/verb/lay_down()
-	set name = "Rest"
+	set name = "Отдохнуть"
 	set category = "IC"
 
 	resting = !resting
-	to_chat(src, "<span class='notice'>You are now [resting ? "resting" : "getting up"]</span>")
+	to_chat(src, "<span class='notice'>Теперь вы [resting ? "легли" : "встали"]</span>")
 	update_canmove()
 
 //called when the mob receives a bright flash
@@ -697,7 +697,7 @@
 
 /mob/living/proc/cannot_use_vents()
 	if(mob_size > MOB_SMALL)
-		return "You can't fit into that vent."
+		return "Вы не можете влезть в это отверстие."
 	return null
 
 /mob/living/proc/has_brain()
@@ -737,7 +737,7 @@
 					inertia_dir = 1
 				else if(y >= world.maxy -TRANSITIONEDGE)
 					inertia_dir = 2
-				to_chat(src, "<span class='warning'>Something you are carrying is preventing you from leaving.</span>")
+				to_chat(src, "<span class='warning'>Что-то, что вы несете, мешает вам уйти.</span>")
 				return
 
 	..()
@@ -761,14 +761,14 @@
 	if(!lastpuke)
 		lastpuke = 1
 		if(isSynthetic())
-			to_chat(src, "<span class='danger'>A sudden, dizzying wave of internal feedback rushes over you!</span>")
+			to_chat(src, "<span class='danger'>Внезапная, головокружительная волна внутренней обратной связи накатывает на вас!</span>")
 			src.Weaken(5)
 		else
 			if (nutrition <= 100)
-				to_chat(src, "<span class='danger'>You gag as you want to throw up, but there's nothing in your stomach!</span>")
+				to_chat(src, "<span class='danger'>Ты давишься, как хочешь, но в желудке ничего нет!</span>")
 				src.Weaken(10)
 			else
-				to_chat(src, "<span class='warning'>You feel nauseous...</span>")
+				to_chat(src, "<span class='warning'>Вас тошнит ...</span>")
 
 				if(ishuman(src))
 					var/mob/living/carbon/human/Hu = src
@@ -781,7 +781,7 @@
 				spawn()
 					if(!skip_wait)
 						sleep(150)	//15 seconds until second warning
-						to_chat(src, "<span class='warning'>You feel like you are about to throw up!</span>")
+						to_chat(src, "<span class='warning'>Вы чувствуете, что вас вот-вот вырвет!</span>")
 						sleep(100)	//and you have 10 more for mad dash to the bucket
 
 					//Damaged livers cause you to vomit blood.
@@ -794,7 +794,7 @@
 									blood_vomit = 1
 
 					Stun(5)
-					src.visible_message("<span class='warning'>[src] throws up!</span>","<span class='warning'>You throw up!</span>")
+					src.visible_message("<span class='warning'>[src] блюет!</span>","<span class='warning'>Вы блеванули!</span>")
 					playsound(src, 'sound/effects/splat.ogg', 50, 1)
 
 					var/turf/simulated/T = get_turf(src)	//TODO: Make add_blood_floor remove blood from human mobs
@@ -1026,7 +1026,7 @@
 		return
 
 	//actually throw it!
-	src.visible_message("<span class='warning'>[src] has thrown [item].</span>")
+	src.visible_message("<span class='warning'>[src] бросает [item].</span>")
 
 	if((isspace(src.loc)) || (src.lastarea?.has_gravity == 0))
 		src.inertia_dir = get_dir(target, src)

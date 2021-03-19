@@ -12,11 +12,11 @@ const ResearchConsoleViewResearch = (props, context) => {
   } = data;
 
   return (
-    <Section title="Current Research Levels" buttons={
+    <Section title="Текущие уровни исследований" buttons={
       <Button
         icon="print"
         onClick={() => act("print", { print: 1 })}>
-        Print This Page
+        Печать страницы
       </Button>
     }>
       <Table>
@@ -46,7 +46,7 @@ const PaginationTitle = (props, context) => {
 
   let page = data[target];
   if (typeof page === "number") {
-    return title + " - Page " + (page + 1);
+    return title + " - Страница " + (page + 1);
   }
 
   return title;
@@ -82,19 +82,19 @@ const ResearchConsoleViewDesigns = (props, context) => {
   } = data;
 
   return (
-    <Section title={<PaginationTitle title="Researched Technologies & Designs" target="design_page" />} buttons={
+    <Section title={<PaginationTitle title="Исследованные технологии и разработки" target="design_page" />} buttons={
       <Fragment>
         <Button
           icon="print"
           onClick={() => act("print", { print: 2 })}>
-          Print This Page
+          Печать страницы
         </Button>
         {<PaginationChevrons target={"design_page"} /> || null}
       </Fragment>
     }>
       <Input
         fluid
-        placeholder="Search for..."
+        placeholder="Искать среди..."
         value={data.search}
         onInput={(e, v) => act("search", { search: v })}
         mb={1} />
@@ -128,10 +128,10 @@ const TechDisk = (props, context) => {
 
   if (saveDialog) {
     return (
-      <Section title="Load Technology to Disk" buttons={
+      <Section title="Загрузить технологию на диск" buttons={
         <Button
           icon="arrow-left"
-          content="Back"
+          content="Назад"
           onClick={() => setSaveDialog(false)} />
       }>
         <LabeledList>
@@ -143,7 +143,7 @@ const TechDisk = (props, context) => {
                   setSaveDialog(false);
                   act("copy_tech", { copy_tech_ID: level.id });
                 }}>
-                Copy To Disk
+                Копировать на диск
               </Button>
             </LabeledList.Item>
           ))}
@@ -155,7 +155,7 @@ const TechDisk = (props, context) => {
   return (
     <Box>
       <LabeledList>
-        <LabeledList.Item label="Disk Contents">
+        <LabeledList.Item label="Содержимое диска">
           (Technology Data Disk)
         </LabeledList.Item>
       </LabeledList>
@@ -168,40 +168,40 @@ const TechDisk = (props, context) => {
             Level: {disk.level}
           </Box>
           <Box>
-            Description: {disk.desc}
+            Описание: {disk.desc}
           </Box>
           <Box mt={1}>
             <Button
               icon="save"
               onClick={() => act("updt_tech")}>
-              Upload to Database
+              Загрузить в базу данных
             </Button>
             <Button
               icon="trash"
               onClick={() => act("clear_tech")}>
-              Clear Disk
+              Очистить диск
             </Button>
             <Button
               icon="eject"
               onClick={() => act("eject_tech")}>
-              Eject Disk
+              Извлечь диск
             </Button>
           </Box>
         </Box>
       ) || (
         <Box>
           <Box>
-            This disk has no data stored on it.
+            На этом диске нет данных.
           </Box>
           <Button
             icon="save"
             onClick={() => setSaveDialog(true)}>
-            Load Tech To Disk
+            Загрузить технологию на диск
           </Button>
           <Button
             icon="eject"
             onClick={() => act("eject_tech")}>
-            Eject Disk
+            Извлечь диск
           </Button>
         </Box>
       )}
@@ -229,7 +229,7 @@ const DataDisk = (props, context) => {
   if (saveDialog) {
     return (
       <Section 
-        title={<PaginationTitle title="Load Design to Disk" target="design_page" />}
+        title={<PaginationTitle title="Загрузить исследования на диск" target="design_page" />}
         buttons={
           <Fragment>
             <Button
@@ -241,7 +241,7 @@ const DataDisk = (props, context) => {
         }>
         <Input
           fluid
-          placeholder="Search for..."
+          placeholder="Искать среди..."
           value={data.search}
           onInput={(e, v) => act("search", { search: v })}
           mb={1} />
@@ -303,17 +303,17 @@ const DataDisk = (props, context) => {
       ) || (
         <Box>
           <Box mb={0.5}>
-            This disk has no data stored on it.
+            На этом диске нет данных, хранящихся на нем.
           </Box>
           <Button
             icon="save"
             onClick={() => setSaveDialog(true)}>
-            Load Design To Disk
+            Загрузить дизайн на диск
           </Button>
           <Button
             icon="eject"
             onClick={() => act("eject_design")}>
-            Eject Disk
+            Извлечь диск
           </Button>
         </Box>
       )}
@@ -331,14 +331,14 @@ const ResearchConsoleDisk = (props, context) => {
 
   if (!d_disk.present && !t_disk.present) {
     return (
-      <Section title="Disk Operations">
-        No disk inserted.
+      <Section title="Дисковод">
+        Нету диска.
       </Section>
     );
   }
 
   return (
-    <Section title="Disk Operations">
+    <Section title="Дисковод">
       <TechDisk disk={t_disk} />
       <DataDisk disk={d_disk} />
     </Section>
@@ -354,8 +354,8 @@ const ResearchConsoleDestructiveAnalyzer = (props, context) => {
 
   if (!linked_destroy.present) {
     return (
-      <Section title="Destructive Analyzer">
-        No destructive analyzer found.
+      <Section title="Деструктивный анализатор">
+        Деструктивный анализатор не обнаружен.
       </Section>
     );
   }
@@ -366,22 +366,22 @@ const ResearchConsoleDestructiveAnalyzer = (props, context) => {
   } = linked_destroy;
 
   return (
-    <Section title="Destructive Analyzer">
+    <Section title="Деструктивный анализатор">
       {loaded_item && (
         <Box>
           <LabeledList>
-            <LabeledList.Item label="Name">
+            <LabeledList.Item label="Название">
               {loaded_item}
             </LabeledList.Item>
-            <LabeledList.Item label="Origin Tech">
+            <LabeledList.Item label="Исходник">
               <LabeledList>
                 {origin_tech.length && origin_tech.map(tech => (
                   <LabeledList.Item label={tech.name} key={tech.name}>
-                    {tech.level}&nbsp;&nbsp;{tech.current && "(Current: " + tech.current + ")"}
+                    {tech.level}&nbsp;&nbsp;{tech.current && "(Текущий: " + tech.current + ")"}
                   </LabeledList.Item>
                 )) || (
-                  <LabeledList.Item label="Error">
-                    No origin tech found.
+                  <LabeledList.Item label="Ошибка">
+                    Оригинальная происхождения не найдена.
                   </LabeledList.Item>
                 )}
               </LabeledList>
@@ -392,17 +392,17 @@ const ResearchConsoleDestructiveAnalyzer = (props, context) => {
             color="red"
             icon="eraser"
             onClick={() => act("deconstruct")}>
-            Deconstruct Item
+            Разобрать предмет
           </Button>
           <Button
             icon="eject"
             onClick={() => act("eject_item")}>
-            Eject Item
+            Извлечь предмет
           </Button>
         </Box>
       ) || (
         <Box>
-          No Item Loaded. Standing-by...
+          Предметов нет. Ожидание...
         </Box>
       )}
     </Section>
@@ -422,20 +422,20 @@ const ResearchConsoleBuildMenu = (props, context) => {
   if (!target) {
     return (
       <Box color="bad">
-        Error
+        Ошибка
       </Box>
     );
   }
 
   return (
     <Section
-      title={<PaginationTitle target="builder_page" title="Designs" />}
+      title={<PaginationTitle target="builder_page" title="Исследования" />}
       buttons={
         <PaginationChevrons target={"builder_page"} />
       }>
       <Input
         fluid
-        placeholder="Search for..."
+        placeholder="Искать среди..."
         value={data.search}
         onInput={(e, v) => act("search", { search: v })}
         mb={1} />
@@ -473,7 +473,7 @@ const ResearchConsoleBuildMenu = (props, context) => {
         </Fragment>
       )) : (
         <Box>
-          No items could be found matching the parameters (page or search).
+          Не найдено предметов, соответствующих параметрам (страница или поиск).
         </Box>
       )}
     </Section>
@@ -491,7 +491,7 @@ const ResearchConsoleConstructor = (props, context) => {
   let linked = null;
   let designs = null;
 
-  if (name === "Protolathe") {
+  if (name === "Протолат") {
     linked = data.info.linked_lathe;
     designs = data.lathe_designs;
   } else {
@@ -502,7 +502,7 @@ const ResearchConsoleConstructor = (props, context) => {
   if (!linked || !linked.present) {
     return (
       <Section title={name}>
-        No {name} found.
+        {name} не найдено.
       </Section>
     );
   }
@@ -527,14 +527,14 @@ const ResearchConsoleConstructor = (props, context) => {
         spin />
     ) || null}>
       <LabeledList>
-        <LabeledList.Item label="Materials">
+        <LabeledList.Item label="Материалы">
           <ProgressBar
             value={total_materials}
             maxValue={max_materials}>
             {total_materials} cm&sup3; / {max_materials} cm&sup3;
           </ProgressBar>
         </LabeledList.Item>
-        <LabeledList.Item label="Chemicals">
+        <LabeledList.Item label="Химикаты">
           <ProgressBar
             value={total_volume}
             maxValue={max_volume}>
@@ -547,7 +547,7 @@ const ResearchConsoleConstructor = (props, context) => {
           icon="wrench"
           selected={protoTab === 0}
           onClick={() => setProtoTab(0)}>
-          Build
+          Сборка
         </Tabs.Tab>
         <Tabs.Tab
           icon="layer-group"
@@ -555,27 +555,27 @@ const ResearchConsoleConstructor = (props, context) => {
           color={busy ? "average" : "transparent"}
           selected={protoTab === 1}
           onClick={() => setProtoTab(1)}>
-          Queue
+          Очередь
         </Tabs.Tab>
         <Tabs.Tab
           icon="cookie-bite"
           selected={protoTab === 2}
           onClick={() => setProtoTab(2)}>
-          Mat Storage
+          Материалы
         </Tabs.Tab>
         <Tabs.Tab
           icon="flask"
           selected={protoTab === 3}
           onClick={() => setProtoTab(3)}>
-          Chem Storage
+          Химикаты
         </Tabs.Tab>
       </Tabs>
       {protoTab === 0 && (
         <ResearchConsoleBuildMenu
           target={linked}
           designs={designs}
-          buildName={name === "Protolathe" ? "build" : "imprint"}
-          buildFiveName={name === "Protolathe" ? "buildfive" : null} />
+          buildName={name === "Протолат" ? "build" : "imprint"}
+          buildFiveName={name === "Протолат" ? "buildfive" : null} />
       ) || protoTab === 1 && (
         <LabeledList>
           {queue.length && queue.map(item => {
@@ -589,7 +589,7 @@ const ResearchConsoleConstructor = (props, context) => {
                         ml={1}
                         icon="trash"
                         onClick={() => act("removeP", { removeP: item.index })}>
-                        Remove
+                        Удалить
                       </Button>
                     </Box>
                   ) : (
@@ -603,13 +603,13 @@ const ResearchConsoleConstructor = (props, context) => {
                 <Button
                   icon="trash"
                   onClick={() => act("removeP", { removeP: item.index })}>
-                  Remove
+                  Удалить
                 </Button>
               </LabeledList.Item>
             );
           }) || (
             <Box m={1}>
-              Queue Empty.
+              Очередь пуста.
             </Box>
           )}
         </LabeledList>
@@ -658,12 +658,12 @@ const ResearchConsoleConstructor = (props, context) => {
                   ml={1}
                   icon="eject"
                   onClick={() => act("disposeP", { dispose: chem.id })}>
-                  Purge
+                  Очистить
                 </Button>
               </LabeledList.Item>
             )) || (
               <LabeledList.Item label="Empty">
-                No chems detected
+                Химикатов нет
               </LabeledList.Item>
             )}
           </LabeledList>
@@ -671,7 +671,7 @@ const ResearchConsoleConstructor = (props, context) => {
             mt={1}
             icon="trash"
             onClick={() => act("disposeallP")}>
-            Disposal All Chemicals In Storage
+            Утилизация всех хранящихся химикатов
           </Button>
         </Box>
       ) || (
@@ -696,19 +696,19 @@ const ResearchConsoleSettings = (props, context) => {
   const [settingsTab, setSettingsTab] = useSharedState(context, "settingsTab", 0);
 
   return (
-    <Section title="Settings">
+    <Section title="Настройки">
       <Tabs>
         <Tabs.Tab
           icon="cogs"
           onClick={() => setSettingsTab(0)}
           selected={settingsTab === 0}>
-          General
+          Общее
         </Tabs.Tab>
         <Tabs.Tab
           icon="link"
           onClick={() => setSettingsTab(1)}
           selected={settingsTab === 1}>
-          Device Linkages
+          Подключенные устройства
         </Tabs.Tab>
       </Tabs>
       {settingsTab === 0 && (
@@ -719,13 +719,13 @@ const ResearchConsoleSettings = (props, context) => {
                 fluid
                 icon="sync"
                 onClick={() => act("sync")}>
-                Sync Database with Network
+                Синхронизировать БД с сетью
               </Button>
               <Button
                 fluid
                 icon="unlink"
                 onClick={() => act("togglesync")}>
-                Disconnect from Research Network
+                Отключиться от сети R&D
               </Button>
             </Fragment>
           ) || (
@@ -733,21 +733,21 @@ const ResearchConsoleSettings = (props, context) => {
               fluid
               icon="link"
               onClick={() => act("togglesync")}>
-              Connect to Research Network
+              Подключиться к сети R&D
             </Button>
           )}
           <Button
             fluid
             icon="lock"
             onClick={() => act("lock")}>
-            Lock Console
+            Заблокировать консоль
           </Button>
           <Button
             fluid
             color="red"
             icon="trash"
             onClick={() => act("reset")}>
-            Reset R&D Database
+            Сбросить БД R&D
           </Button>
         </Box>
       ) || settingsTab === 1 && (
@@ -757,33 +757,33 @@ const ResearchConsoleSettings = (props, context) => {
             icon="sync"
             mb={1}
             onClick={() => act("find_device")}>
-            Re-sync with Nearby Devices
+            Повторная синхронизация с устройствами рядом
           </Button>
           <LabeledList>
             {linked_destroy.present && (
-              <LabeledList.Item label="Destructive Analyzer">
+              <LabeledList.Item label="Деструктивный анализатор">
                 <Button
                   icon="unlink"
                   onClick={() => act("disconnect", { disconnect: "destroy" })}>
-                  Disconnect
+                  Отключить
                 </Button>
               </LabeledList.Item>
             ) || null}
             {linked_lathe.present && (
-              <LabeledList.Item label="Protolathe">
+              <LabeledList.Item label="Протолат">
                 <Button
                   icon="unlink"
                   onClick={() => act("disconnect", { disconnect: "lathe" })}>
-                  Disconnect
+                  Отключить
                 </Button>
               </LabeledList.Item>
             ) || null}
             {linked_imprinter.present && (
-              <LabeledList.Item label="Circuit Imprinter">
+              <LabeledList.Item label="Принтер схем">
                 <Button
                   icon="unlink"
                   onClick={() => act("disconnect", { disconnect: "imprinter" })}>
-                  Disconnect
+                  Отключить
                 </Button>
               </LabeledList.Item>
             ) || null}
@@ -791,7 +791,7 @@ const ResearchConsoleSettings = (props, context) => {
         </Box>
       ) || (
         <Box>
-          Error
+          Ошибка
         </Box>
       )}
     </Section>
@@ -799,15 +799,15 @@ const ResearchConsoleSettings = (props, context) => {
 };
 
 const menus = [
-  { name: "Protolathe", icon: "wrench", template: <ResearchConsoleConstructor name="Protolathe" /> },
-  { name: "Circuit Imprinter",
+  { name: "Протолат", icon: "wrench", template: <ResearchConsoleConstructor name="Протолат" /> },
+  { name: "Принтер схем",
     icon: "digital-tachograph",
     template: <ResearchConsoleConstructor name="Circuit Imprinter" /> },
-  { name: "Destructive Analyzer", icon: "eraser", template: <ResearchConsoleDestructiveAnalyzer /> },
-  { name: "Settings", icon: "cog", template: <ResearchConsoleSettings /> },
-  { name: "Research List", icon: "flask", template: <ResearchConsoleViewResearch /> },
-  { name: "Design List", icon: "file", template: <ResearchConsoleViewDesigns /> },
-  { name: "Disk Operations", icon: "save", template: <ResearchConsoleDisk /> },
+  { name: "Деструктивный анализатор", icon: "eraser", template: <ResearchConsoleDestructiveAnalyzer /> },
+  { name: "Настройки", icon: "cog", template: <ResearchConsoleSettings /> },
+  { name: "Технологии", icon: "flask", template: <ResearchConsoleViewResearch /> },
+  { name: "Лист технологий", icon: "file", template: <ResearchConsoleViewDesigns /> },
+  { name: "Дисковод", icon: "save", template: <ResearchConsoleDisk /> },
 ];
 
 export const ResearchConsole = (props, context) => {
@@ -841,15 +841,15 @@ export const ResearchConsole = (props, context) => {
           ))}
         </Tabs>
         {busy_msg && (
-          <Section title="Processing...">
+          <Section title="Обработка ...">
             {busy_msg}
           </Section>
         ) || locked && (
-          <Section title="Console Locked">
+          <Section title="Консоль заблокирована">
             <Button
               onClick={() => act("lock")}
               icon="lock-open">
-              Unlock
+              Открыто
             </Button>
           </Section>
         ) || menus[menu].template}
