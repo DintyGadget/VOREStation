@@ -21,12 +21,12 @@ export const MiningUser = (props, context) => {
             style={{
               float: 'left',
             }}>
-            Logged in as {id.name}.<br />
-            You have {id.points.toLocaleString('en-US')} points.
+            Вошел в систему как {id.name}.<br />
+            У вас есть {id.points.toLocaleString('en-US')} очков.
           </Box>
           <Button
             icon="eject"
-            content="Eject ID"
+            content="Извлечь ID"
             style={{
               float: 'right',
             }}

@@ -21,11 +21,11 @@ export const LoginInfo = (_properties, context) => {
   return (
     <NoticeBox info>
       <Box display="inline-block" verticalAlign="middle">
-        Logged in as: {authenticated} ({rank})
+        Вход в систему как: {authenticated} ({rank})
       </Box>
       <Button
         icon="sign-out-alt"
-        content="Logout and Eject ID"
+        content="Выйти и забрать карту"
         color="good"
         float="right"
         onClick={() => act('logout')}

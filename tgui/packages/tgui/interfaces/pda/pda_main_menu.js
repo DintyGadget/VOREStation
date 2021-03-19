@@ -19,19 +19,19 @@ export const pda_main_menu = (props, context) => {
     <Fragment>
       <Box>
         <LabeledList>
-          <LabeledList.Item label="Owner" color="average"> 
+          <LabeledList.Item label="Владелец" color="average"> 
             {owner}, {ownjob}
           </LabeledList.Item>
           <LabeledList.Item label="ID">
             <Button
               icon="sync"
-              content="Update PDA Info"
+              content="Обновить инф. PDA"
               disabled={!idInserted}
               onClick={() => act("UpdateInfo")} />
           </LabeledList.Item>
         </LabeledList>
       </Box>
-      <Section level={2} title="Functions">
+      <Section level={2} title="Функции">
         <LabeledList>
           {categories.map(name => {
             let apps = data.apps[name];

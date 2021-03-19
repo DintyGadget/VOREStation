@@ -9,7 +9,7 @@ const damageTypes = [
     type: "oxyLoss",
   },
   {
-    label: "Toxin",
+    label: "Токсины",
     type: "toxLoss",
   },
   {
@@ -23,9 +23,9 @@ const damageTypes = [
 ];
 
 const statNames = [
-  ["good", "Conscious"],
-  ["average", "Unconscious"],
-  ["bad", "DEAD"],
+  ["good", "В сознании"],
+  ["average", "Без сознания"],
+  ["bad", "СМЕРТЬ"],
 ];
 
 export const Cryo = (props, context) => {
@@ -54,22 +54,22 @@ const CryoContent = (props, context) => {
   return (
     <Fragment>
       <Section
-        title="Occupant"
+        title="Ячейка"
         flexGrow="1"
         buttons={(
           <Button
             icon="user-slash"
             onClick={() => act('ejectOccupant')}
             disabled={!hasOccupant}>
-            Eject
+            Ивлечь
           </Button>
         )}>
         {hasOccupant ? (
           <LabeledList>
-            <LabeledList.Item label="Occupant">
-              {occupant.name || "Unknown"}
+            <LabeledList.Item label="Ячейка">
+              {occupant.name || "Неизвестно"}
             </LabeledList.Item>
-            <LabeledList.Item label="Health">
+            <LabeledList.Item label="Здоровье">
               <ProgressBar
                 min={occupant.health}
                 max={occupant.maxHealth}
@@ -80,11 +80,11 @@ const CryoContent = (props, context) => {
               </ProgressBar>
             </LabeledList.Item>
             <LabeledList.Item
-              label="Status"
+              label="Состояние"
               color={statNames[occupant.stat][0]}>
               {statNames[occupant.stat][1]}
             </LabeledList.Item>
-            <LabeledList.Item label="Temperature">
+            <LabeledList.Item label="Температура">
               <AnimatedNumber
                 value={Math.round(occupant.bodyTemperature)} />
               {' K'}
@@ -117,28 +117,28 @@ const CryoContent = (props, context) => {
         )}
       </Section>
       <Section
-        title="Cell"
+        title="Питание"
         buttons={(
           <Button
             icon="eject"
             onClick={() => act('ejectBeaker')}
             disabled={!isBeakerLoaded}>
-            Eject Beaker
+            Извлечь мензурку
           </Button>
         )}>
         <LabeledList>
-          <LabeledList.Item label="Power">
+          <LabeledList.Item label="Питание">
             <Button
               icon="power-off"
               onClick={() => act(isOperating ? 'switchOff' : 'switchOn')}
               selected={isOperating}>
-              {isOperating ? "On" : "Off"}
+              {isOperating ? "Вкл" : "Выкл"}
             </Button>
           </LabeledList.Item>
-          <LabeledList.Item label="Temperature" color={cellTemperatureStatus}>
+          <LabeledList.Item label="Температура" color={cellTemperatureStatus}>
             <AnimatedNumber value={cellTemperature} /> K
           </LabeledList.Item>
-          <LabeledList.Item label="Beaker">
+          <LabeledList.Item label="Мензурка">
             <CryoBeaker />
           </LabeledList.Item>
         </LabeledList>
@@ -170,14 +170,14 @@ const CryoBeaker = (props, context) => {
               value={beakerVolume}
               format={v => Math.round(v) + " units remaining"}
             />
-          ) : "Beaker is empty"}
+          ) : "Мензурка пуста"}
         </Box>
       </Fragment>
     );
   } else {
     return (
       <Box color="average">
-        No beaker loaded
+        Мензурка не загружена
       </Box>
     );
   }

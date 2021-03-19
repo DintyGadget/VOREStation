@@ -31,7 +31,7 @@ export const LoginScreen = (_properties, context) => {
     isRobot,
   } = data;
   return (
-    <FullscreenNotice title="Welcome">
+    <FullscreenNotice title="Добро пожаловать">
       <Box fontSize="1.5rem" bold>
         <Icon
           name="user-circle"
@@ -39,7 +39,7 @@ export const LoginScreen = (_properties, context) => {
           size={3}
           mr="1rem"
         />
-        Guest
+        Гость
       </Box>
       <Box color="label" my="1rem">
         ID:
@@ -53,7 +53,7 @@ export const LoginScreen = (_properties, context) => {
       <Button
         icon="sign-in-alt"
         disabled={!scan}
-        content="Login"
+        content="Войти"
         onClick={() => act('login', {
           login_type: 1,
         })}

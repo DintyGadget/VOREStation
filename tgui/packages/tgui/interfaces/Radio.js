@@ -45,7 +45,7 @@ export const Radio = (props, context) => {
       <Window.Content>
         <Section>
           <LabeledList>
-            <LabeledList.Item label="Frequency">
+            <LabeledList.Item label="Частота">
               <NumberInput
                 animated
                 unit="kHz"
@@ -64,7 +64,7 @@ export const Radio = (props, context) => {
                 </Box>
               )}
             </LabeledList.Item>
-            <LabeledList.Item label="Audio">
+            <LabeledList.Item label="Звук">
               <Button
                 textAlign="center"
                 width="37px"
@@ -93,14 +93,14 @@ export const Radio = (props, context) => {
                   <Button
                     icon={loudspeaker ? 'volume-up' : 'volume-mute'}
                     selected={loudspeaker}
-                    content="Loudspeaker"
+                    content="Динамик"
                     onClick={() => act('toggleLoudspeaker')} />
                 </Box>
               )}
             </LabeledList.Item>
           </LabeledList>
         </Section>
-        <Section title="Channels">
+        <Section title="Каналы">
           {(!chan_list || chan_list.length === 0) && (
             <Box inline color="bad">
               No channels detected.
@@ -125,13 +125,13 @@ export const Radio = (props, context) => {
                       icon={!channel.sec_channel_listen
                         ? 'check-square-o' : 'square-o'}
                       selected={!channel.sec_channel_listen}
-                      content={!channel.sec_channel_listen ? "On" : "Off"}
+                      content={!channel.sec_channel_listen ? "Вкл" : "Выкл"}
                       onClick={() => act('channel', {
                         channel: channel.chan,
                       })} />
                   ) : (
                     <Button
-                      content="Switch"
+                      content="Сменить"
                       selected={channel.chan === rawfreq}
                       onClick={() => act('specFreq', {
                         channel: channel.chan,

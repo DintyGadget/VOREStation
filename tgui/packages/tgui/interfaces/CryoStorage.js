@@ -45,10 +45,10 @@ export const CryoStorageCrew = (props, context) => {
   } = data;
 
   return (
-    <Section title="Stored Crew">
+    <Section title="Экипаж в хранилище">
       {crew.length && crew.map(c => <Box key={c} color="label">{c}</Box>) || (
         <Box color="good">
-          No crew currently stored.
+          В настоящее время капсулы пусты.
         </Box>
       )}
     </Section>
@@ -63,7 +63,7 @@ export const CryoStorageItems = (props, context) => {
   } = data;
 
   return (
-    <Section title="Stored Items" buttons={
+    <Section title="Хранимые предметы" buttons={
       <Button
         icon="hand-rock"
         onClick={() => act("allitems")}>

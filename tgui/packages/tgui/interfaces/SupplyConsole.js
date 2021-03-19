@@ -52,7 +52,7 @@ export const SupplyConsole = (props, context) => {
     <Window width={700} height={620}>
       <Window.Content>
         <ComplexModal maxWidth="100%" />
-        <Section title="Supply Records">
+        <Section title="Записи поставок">
           <SupplyConsoleShuttleStatus />
           <SupplyConsoleMenu />
         </Section>
@@ -85,14 +85,14 @@ const SupplyConsoleShuttleStatus = (props, context) => {
       shuttle_buttons = (
         <Button
           icon="ban"
-          content="Cancel Launch"
+          content="Отменить запуск"
           onClick={() => act("send_shuttle", { mode: "cancel_shuttle" })} />
       );
     } else if (shuttle.launch === 1 && shuttle.mode === 5) {
       shuttle_buttons = (
         <Button
           icon="rocket"
-          content="Send Shuttle"
+          content="Отправить шаттл"
           onClick={() => act("send_shuttle", { mode: "send_to_station" })} />
       );
     }
@@ -104,30 +104,30 @@ const SupplyConsoleShuttleStatus = (props, context) => {
   return (
     <Section>
       <LabeledList>
-        <LabeledList.Item label="Supply Points">
+        <LabeledList.Item label="Очки поставок">
           <AnimatedNumber value={supply_points} />
         </LabeledList.Item>
       </LabeledList>
-      <Section level={2} title="Supply Shuttle" mt={2}>
+      <Section level={2} title="Шаттл поставок" mt={2}>
         <LabeledList>
-          <LabeledList.Item label="Location" buttons={(
+          <LabeledList.Item label="Положение" buttons={(
             <Fragment>
               {shuttle_buttons}
               {showShuttleForce ? (
                 <Button
                   icon="exclamation-triangle"
-                  content="Force Launch"
+                  content="Принудительный запуск"
                   onClick={() => act("send_shuttle", { mode: "force_shuttle" })} />
               ) : null}
             </Fragment>
           )}>
             {shuttle.location}
           </LabeledList.Item>
-          <LabeledList.Item label="Engine">
+          <LabeledList.Item label="Двигатели">
             {shuttle.engine}
           </LabeledList.Item>
           {shuttle.mode === 4 ? (
-            <LabeledList.Item label="ETA">
+            <LabeledList.Item label="Время прибытия">
               {(shuttle.time > 1) ? formatTime(shuttle.time) : "LATE"}
             </LabeledList.Item>
           ) : null}
@@ -147,37 +147,37 @@ const SupplyConsoleMenu = (props, context) => {
   const [tabIndex, setTabIndex] = useLocalState(context, "tabIndex", 0);
 
   return (
-    <Section title="Menu">
+    <Section title="Меню">
       <Tabs>
         <Tabs.Tab
           icon="box"
           selected={tabIndex === 0}
           onClick={() => setTabIndex(0)}>
-          Request
+          Запрос
         </Tabs.Tab>
         <Tabs.Tab
           icon="check-circle-o"
           selected={tabIndex === 1}
           onClick={() => setTabIndex(1)}>
-          Accepted
+          Одобрено
         </Tabs.Tab>
         <Tabs.Tab
           icon="circle-o"
           selected={tabIndex === 2}
           onClick={() => setTabIndex(2)}>
-          Requests
+          Запросы
         </Tabs.Tab>
         <Tabs.Tab
           icon="book"
           selected={tabIndex === 3}
           onClick={() => setTabIndex(3)}>
-          Order history
+          История заказов
         </Tabs.Tab>
         <Tabs.Tab
           icon="book"
           selected={tabIndex === 4}
           onClick={() => setTabIndex(4)}>
-          Export history
+          История экспорта
         </Tabs.Tab>
       </Tabs>
       {tabIndex === 0 ? <SupplyConsoleMenuOrder /> : null}
@@ -214,7 +214,7 @@ const SupplyConsoleMenuOrder = (props, context) => {
     <Section level={2}>
       <Flex spacing={1}>
         <Flex.Item basis="25%">
-          <Section title="Categories" scrollable fill height="290px">
+          <Section title="Категории" scrollable fill height="290px">
             {categories.map(category => (
               <Button
                 key={category}
@@ -226,7 +226,7 @@ const SupplyConsoleMenuOrder = (props, context) => {
           </Section>
         </Flex.Item>
         <Flex.Item grow={1}>
-          <Section title="Contents" scrollable fill height="290px">
+          <Section title="Содержимое" scrollable fill height="290px">
             {viewingPacks.map(pack => (
               <Box key={pack.name}>
                 <Flex align="center" justify="flex-start" spacing={1}>
@@ -296,7 +296,7 @@ const SupplyConsoleMenuOrderList = (props, context) => {
   if (!displayedOrders.length) {
     return (
       <Section level={2}>
-        No orders found.
+        Заказов нет.
       </Section>
     );
   }
@@ -310,15 +310,15 @@ const SupplyConsoleMenuOrderList = (props, context) => {
           fluid
           color="red"
           icon="trash"
-          content="Clear all requests"
+          content="Удалить все запросы"
           onClick={() => act("clear_all_requests")} />
       ) : null}
       {displayedOrders.map((order, i) => (
-        <Section title={"Order " + (i + 1)} key={i} buttons={(mode === "All" && order_auth) ? (
+        <Section title={"Заказ " + (i + 1)} key={i} buttons={(mode === "All" && order_auth) ? (
           <Button
             color="red"
             icon="trash"
-            content="Delete Record"
+            content="Удалить запись"
             onClick={() => act("delete_order", { ref: order.ref })} />
         ) : null}>
           <LabeledList>
@@ -326,7 +326,7 @@ const SupplyConsoleMenuOrderList = (props, context) => {
               <LabeledList.Item label={field.field} buttons={order_auth ? (
                 <Button
                   icon="pen"
-                  content="Edit"
+                  content="Изм."
                   onClick={() => {
                     act("edit_order_value", { ref: order.ref, edit: field.field, default: field.entry });
                   }} />
@@ -344,12 +344,12 @@ const SupplyConsoleMenuOrderList = (props, context) => {
             <Fragment>
               <Button
                 icon="check"
-                content="Approve"
+                content="Одобрить"
                 disabled={order.cost > supply_points}
                 onClick={() => act("approve_order", { ref: order.ref })} />
               <Button
                 icon="times"
-                content="Deny"
+                content="Отказ"
                 onClick={() => act("deny_order", { ref: order.ref })} />
             </Fragment>
           ) : null}
@@ -383,7 +383,7 @@ const SupplyConsoleMenuHistoryExport = (props, context) => {
               <LabeledList.Item label={title.field} key={title.field} buttons={order_auth ? (
                 <Button
                   icon="pen"
-                  content="Edit"
+                  content="Изм."
                   onClick={() => act("export_edit", { ref: r.ref, edit: title.field, default: title.entry })} />
               ) : null}>
                 {title.entry}
@@ -398,7 +398,7 @@ const SupplyConsoleMenuHistoryExport = (props, context) => {
                 <Fragment>
                   <Button
                     icon="pen"
-                    content="Edit"
+                    content="Изм."
                     onClick={() => act("export_edit_field", {
                       ref: r.ref,
                       index: i + 1,
@@ -408,7 +408,7 @@ const SupplyConsoleMenuHistoryExport = (props, context) => {
                   <Button
                     icon="trash"
                     color="red"
-                    content="Delete"
+                    content="Удалить"
                     onClick={() => act("export_delete_field", {
                       ref: r.ref,
                       index: i + 1,
@@ -424,11 +424,11 @@ const SupplyConsoleMenuHistoryExport = (props, context) => {
               <Button
                 mt={1}
                 icon="plus"
-                content="Add Item To Record"
+                content="Добавить предмет"
                 onClick={() => act("export_add_field", { ref: r.ref })} />
               <Button
                 icon="trash"
-                content="Delete Record"
+                content="Удалить запись"
                 onClick={() => act("export_delete", { ref: r.ref })} />
             </Fragment>
           ) : null}

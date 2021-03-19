@@ -20,12 +20,12 @@ const RequestConsoleSettings = (props, context) => {
     silent,
   } = data;
   return (
-    <Section title="Settings">
+    <Section title="Настройки">
       <Button
         selected={!silent}
         icon={silent ? "volume-mute" : "volume-up"}
         onClick={() => act("toggleSilent")}>
-        Speaker {silent ? "OFF" : "ON"}
+        Динамик {silent ? "ВЫКЛ" : "ВКЛ"}
       </Button>
     </Section>
   );
@@ -38,7 +38,7 @@ const RequestConsoleSupplies = (props, context) => {
     supply_dept,
   } = data;
   return (
-    <Section title="Supplies">
+    <Section title="Запрос припасов из других отделов">
       <RequestConsoleSendMenu dept_list={supply_dept} department={department} />
     </Section>
   );
@@ -51,7 +51,7 @@ const RequestConsoleAssistance = (props, context) => {
     assist_dept,
   } = data;
   return (
-    <Section title="Request assistance from another department">
+    <Section title="Запрос помощи у другого отдела">
       <RequestConsoleSendMenu dept_list={assist_dept} department={department} />
     </Section>
   );
@@ -64,7 +64,7 @@ const RequestConsoleRelay = (props, context) => {
     info_dept,
   } = data;
   return (
-    <Section title="Report Anonymous Information">
+    <Section title="Сообщить Анонимную Информацию">
       <RequestConsoleSendMenu dept_list={info_dept} department={department} />
     </Section>
   );
@@ -84,12 +84,12 @@ const RequestConsoleSendMenu = (props, context) => {
             <Button
               icon="envelope-open-text"
               onClick={() => act("write", { write: dept, priority: 1 })}>
-              Message
+              Сообщение
             </Button>
             <Button
               icon="exclamation-triangle"
               onClick={() => act("write", { write: dept, priority: 2 })}>
-              High Priority
+              Высокий приоритет
             </Button>
           </Fragment>
         } />
@@ -103,13 +103,13 @@ const RequestConsoleSendPass = (props, context) => {
   return (
     <Section>
       <Box fontSize={2} color="good">
-        Message Sent Successfully
+        Сообщение успешно отправлено
       </Box>
       <Box>
         <Button
           icon="arrow-right"
           onClick={() => act("setScreen", { setScreen: RCS_MAINMENU })}>
-          Continue
+          Продолжить
         </Button>
       </Box>
     </Section>
@@ -121,13 +121,13 @@ const RequestConsoleSendFail = (props, context) => {
   return (
     <Section>
       <Box fontSize={1.5} bold color="bad">
-        An error occured. Message Not Sent.
+        Произошла ошибка. Сообщение не отправлено.
       </Box>
       <Box>
         <Button
           icon="arrow-right"
           onClick={() => act("setScreen", { setScreen: RCS_MAINMENU })}>
-          Continue
+          Продолжить
         </Button>
       </Box>
     </Section>
@@ -140,21 +140,21 @@ const RequestConsoleViewMessages = (props, context) => {
     message_log,
   } = data;
   return (
-    <Section title="Messages">
+    <Section title="Сообщения">
       {(message_log.length && message_log.map((msg, i) => (
         <LabeledList.Item label={decodeHtmlEntities(msg[0])} key={i}
           buttons={
             <Button
               icon="print"
               onClick={() => act("print", { print: i + 1 })}>
-              Print
+              Печать
             </Button>
           }>
           {decodeHtmlEntities(msg[1])}
         </LabeledList.Item>
       ))) || (
         <Box>
-          No messages.
+          Сообщений нет.
         </Box>
       )}
     </Section>
@@ -173,29 +173,29 @@ const RequestConsoleMessageAuth = (props, context) => {
   return (
     <Section title="Message Authentication">
       <LabeledList>
-        <LabeledList.Item label={"Message for " + recipient}>
+        <LabeledList.Item label={"Сообщение для " + recipient}>
           {message}
         </LabeledList.Item>
         <LabeledList.Item label="Priority">
-          {priority === 2 ? "High Priority" : (priority === 1 ? "Normal Priority" : "Unknown")}
+          {priority === 2 ? "Высокий приоритет" : (priority === 1 ? "Средний приоритет" : "Неизвестно")}
         </LabeledList.Item>
-        <LabeledList.Item label="Validated By" color={msgVerified ? "good" : "bad"}>
-          {decodeHtmlEntities(msgVerified) || "No Validation"}
+        <LabeledList.Item label="Подтверждено" color={msgVerified ? "good" : "bad"}>
+          {decodeHtmlEntities(msgVerified) || "Нет Подтверждения"}
         </LabeledList.Item>
-        <LabeledList.Item label="Stamped By" color={msgStamped ? "good" : "bad"}>
-          {decodeHtmlEntities(msgStamped) || "No Stamp"}
+        <LabeledList.Item label="Печать" color={msgStamped ? "good" : "bad"}>
+          {decodeHtmlEntities(msgStamped) || "Печати нет"}
         </LabeledList.Item>
       </LabeledList>
       <Button
         mt={1}
         icon="share"
         onClick={() => act("department", { department: recipient })}>
-        Send Message
+        Отправить
       </Button>
       <Button
         icon="undo"
         onClick={() => act("setScreen", { setScreen: RCS_MAINMENU })}>
-        Back
+        Назад
       </Button>
     </Section>
   );
@@ -221,38 +221,38 @@ const RequestConsoleAnnounce = (props, context) => {
     announceAuth,
   } = data;
   return (
-    <Section title="Send Station-Wide Announcement">
+    <Section title="Отправить Сообщение По Всей Станции">
       {announceAuth && (
         <Fragment>
           <Box bold color="good" mb={1}>
-            ID Verified. Authentication Accepted.
+            ID Подтвержден. Авторизация завершена.
           </Box>
-          <Section title="Message" mt={1} maxHeight="200px" scrollable buttons={
+          <Section title="Сообщение" mt={1} maxHeight="200px" scrollable buttons={
             <Button
               ml={1}
               icon="pen"
               onClick={() => act("writeAnnouncement")}>
-              Edit
+              Изм.
             </Button>
           }>
-            {message || "No Message"}
+            {message || "Нет сообщений"}
           </Section>
         </Fragment>
       ) || (
         <Box bold color="bad" mb={1}>
-          Swipe your ID card to authenticate yourself.
+          Проведите своей ID картой, чтобы подтвердить свою подлинность.
         </Box>
       )}
       <Button
         disabled={!message || !announceAuth}
         icon="share"
         onClick={() => act("sendAnnouncement")}>
-        Announce
+        Отправить
       </Button>
       <Button
         icon="undo"
         onClick={() => act("setScreen", { setScreen: RCS_MAINMENU })}>
-        Back
+        Назад
       </Button>
     </Section>
   );
@@ -287,32 +287,32 @@ export const RequestConsole = (props, context) => {
             selected={screen === RCS_VIEWMSGS}
             onClick={() => act("setScreen", { setScreen: RCS_VIEWMSGS })}
             icon="envelope-open-text">
-            Messages
+            Сообщения
           </Tabs.Tab>
           <Tabs.Tab
             selected={screen === RCS_RQASSIST}
             onClick={() => act("setScreen", { setScreen: RCS_RQASSIST })}
             icon="share-square">
-            Assistance
+            Помощь
           </Tabs.Tab>
           <Tabs.Tab
             selected={screen === RCS_RQSUPPLY}
             onClick={() => act("setScreen", { setScreen: RCS_RQSUPPLY })}
             icon="share-square">
-            Supplies
+            Припасы
           </Tabs.Tab>
           <Tabs.Tab
             selected={screen === RCS_SENDINFO}
             onClick={() => act("setScreen", { setScreen: RCS_SENDINFO })}
             icon="share-square-o">
-            Report
+            Доклад
           </Tabs.Tab>
           {announcementConsole && (
             <Tabs.Tab
               selected={screen === RCS_ANNOUNCE}
               onClick={() => act("setScreen", { setScreen: RCS_ANNOUNCE })}
               icon="volume-up">
-              Announce
+              Анонс
             </Tabs.Tab>
           ) || null}
           <Tabs.Tab
@@ -322,7 +322,7 @@ export const RequestConsole = (props, context) => {
         </Tabs>
         {newmessagepriority && (
           <Section
-            title={newmessagepriority > 1 ? "NEW PRIORITY MESSAGES" : "There are new messages!"}
+            title={newmessagepriority > 1 ? "НОВОЕ ПРИОРИТЕТНОЕ СООБЩЕНИЕ" : "Есть новые сообщения!"}
             color={newmessagepriority > 1 ? "bad" : "average"} bold={newmessagepriority > 1} />
         ) || null}
         <BodyElement />

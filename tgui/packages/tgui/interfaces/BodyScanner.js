@@ -5,41 +5,41 @@ import { AnimatedNumber, Box, Button, Flex, Icon, LabeledList, ProgressBar, Sect
 import { Window } from "../layouts";
 
 const stats = [
-  ['good', 'Alive'],
-  ['average', 'Unconscious'],
-  ['bad', 'DEAD'],
+  ['good', 'Жив'],
+  ['average', 'Без сознания'],
+  ['bad', 'СМЕРТЬ'],
 ];
 
 const abnormalities = [
-  ['hasBorer', 'bad', occupant => 'Large growth detected in frontal lobe,'
-    + ' possibly cancerous. Surgical removal is recommended.'],
-  ['hasVirus', 'bad', occupant => 'Viral pathogen detected in blood stream.'],
-  ['blind', 'average', occupant => 'Cataracts detected.'],
+  ['hasBorer', 'bad', occupant => 'Сильный рост обнаружен в лобной доле,'
+    + ' возможно, злокачественное. Рекомендуется хирургическое удаление.'],
+  ['hasVirus', 'bad', occupant => 'Вирусный патоген обнаружен в кровотоке.'],
+  ['blind', 'average', occupant => 'Обнаружена катаракта.'],
   ['colourblind', 'average', occupant => 
-    'Photoreceptor abnormalities detected.'],
-  ['nearsighted', 'average', occupant => 'Retinal misalignment detected.'],
+    'Обнаружены аномалии фоторецепторов.'],
+  ['nearsighted', 'average', occupant => 'Обнаружено смещение сетчатки.'],
   /* VOREStation Add */
   ['humanPrey', 'average', occupant => {
-    return 'Foreign Humanoid(s) detected: ' + occupant.humanPrey;
+    return 'Обнаружен чужеродный гуманоид(Ы): ' + occupant.humanPrey;
   }],
   ['livingPrey', 'average', occupant => {
-    return 'Foreign Creature(s) detected: ' + occupant.livingPrey;
+    return 'Обнаружено инородное существо(а): ' + occupant.livingPrey;
   }],
   ['objectPrey', 'average', occupant => {
-    return 'Foreign Object(s) detected: ' + occupant.objectPrey;
+    return 'Обнаружен посторонний(ние) предмет(ы): ' + occupant.objectPrey;
   }],
   /* VOREStation Add End */
 ];
 
 const damages = [
-  ['Respiratory', 'oxyLoss'],
-  ['Brain', 'brainLoss'],
-  ['Toxin', 'toxLoss'],
-  ['Radiation', 'radLoss'],
-  ['Brute', 'bruteLoss'],
-  ['Genetic', 'cloneLoss'],
-  ['Burn', 'fireLoss'],
-  ['Paralysis', 'paralysis'],
+  ['Дыхание', 'oxyLoss'],
+  ['Мозг', 'brainLoss'],
+  ['Токсины', 'toxLoss'],
+  ['Радиация', 'radLoss'],
+  ['Поврежд.', 'bruteLoss'],
+  ['Генетика', 'cloneLoss'],
+  ['Ожоги', 'fireLoss'],
+  ['Паралич', 'paralysis'],
 ];
 
 const damageRange = {
@@ -132,26 +132,26 @@ const BodyScannerMainOccupant = (props, context) => {
   } = data;
   return (
     <Section
-      title="Occupant"
+      title="Пациент"
       buttons={(
         <Fragment>
           <Button
             icon="user-slash"
             onClick={() => act('ejectify')}>
-            Eject
+            Извлечь
           </Button>
           <Button
             icon="print"
             onClick={() => act('print_p')}>
-            Print Report
+            Печать отчета
           </Button>
         </Fragment>
       )}>
       <LabeledList>
-        <LabeledList.Item label="Name">
+        <LabeledList.Item label="Ф.И">
           {occupant.name}
         </LabeledList.Item>
-        <LabeledList.Item label="Health">
+        <LabeledList.Item label="Здоровье">
           <ProgressBar
             min="0"
             max={occupant.maxHealth}
@@ -163,10 +163,10 @@ const BodyScannerMainOccupant = (props, context) => {
             }}
           />
         </LabeledList.Item>
-        <LabeledList.Item label="Status" color={stats[occupant.stat][0]}>
+        <LabeledList.Item label="Состояние" color={stats[occupant.stat][0]}>
           {stats[occupant.stat][1]}
         </LabeledList.Item>
-        <LabeledList.Item label="Temperature">
+        <LabeledList.Item label="Температура">
           <AnimatedNumber
             value={round(occupant.bodyTempC, 0)}
           />&deg;C,&nbsp;
@@ -174,7 +174,7 @@ const BodyScannerMainOccupant = (props, context) => {
             value={round(occupant.bodyTempF, 0)}
           />&deg;F
         </LabeledList.Item>
-        <LabeledList.Item label="Blood Volume">
+        <LabeledList.Item label="Уровень крови">
           <AnimatedNumber
             value={round(occupant.blood.volume, 0)}
           /> units&nbsp;(
@@ -183,7 +183,7 @@ const BodyScannerMainOccupant = (props, context) => {
           />%)
         </LabeledList.Item>
         {/* VOREStation Add */}
-        <LabeledList.Item label="Weight">
+        <LabeledList.Item label="Вес">
           {round(data.occupant.weight) + "lbs, "
             + round(data.occupant.weight/2.20463) + "kgs"}
         </LabeledList.Item>
@@ -200,7 +200,7 @@ const BodyScannerMainReagents = props => {
 
   return (
     <Fragment>
-      <Section title="Blood Reagents">
+      <Section title="Реагенты крови">
         {occupant.reagents ? (
           <Table>
             <Table.Row header>
@@ -208,25 +208,25 @@ const BodyScannerMainReagents = props => {
                 Reagent
               </Table.Cell>
               <Table.Cell textAlign="right">
-                Amount
+                Количество
               </Table.Cell>
             </Table.Row>
             {occupant.reagents.map(reagent => (
               <Table.Row key={reagent.name}>
                 <Table.Cell>{reagent.name}</Table.Cell>
                 <Table.Cell textAlign="right">
-                  {reagent.amount} Units {
+                  {reagent.amount} Юнитов {
                     reagent.overdose
-                      ? <Box color="bad">OVERDOSING</Box>
+                      ? <Box color="bad">ПЕРЕДОЗИРОВКА</Box>
                       : null
                   }
                 </Table.Cell>
               </Table.Row>
             ))}
           </Table>
-        ) : <Box color="good">No Blood Reagents Detected</Box>}
+        ) : <Box color="good">Реагенты в крови не обнаружены</Box>}
       </Section>
-      <Section title="Stomach Reagents">
+      <Section title="Реагенты в желудке">
         {occupant.ingested ? (
           <Table>
             <Table.Row header>
@@ -234,23 +234,23 @@ const BodyScannerMainReagents = props => {
                 Reagent
               </Table.Cell>
               <Table.Cell textAlign="right">
-                Amount
+                Количество
               </Table.Cell>
             </Table.Row>
             {occupant.ingested.map(reagent => (
               <Table.Row key={reagent.name}>
                 <Table.Cell>{reagent.name}</Table.Cell>
                 <Table.Cell textAlign="right">
-                  {reagent.amount} Units {
+                  {reagent.amount} Юнитов {
                     reagent.overdose
-                      ? <Box color="bad">OVERDOSING</Box>
+                      ? <Box color="bad">ПЕРЕДОЗИРОВКА</Box>
                       : null
                   }
                 </Table.Cell>
               </Table.Row>
             ))}
           </Table>
-        ) : <Box color="good">No Stomach Reagents Detected</Box>}
+        ) : <Box color="good">Реагенты в желудке не обнаружены</Box>}
       </Section>
     </Fragment>
   );
@@ -276,16 +276,16 @@ const BodyScannerMainAbnormalities = props => {
 
   if (!hasAbnormalities) {
     return (
-      <Section title="Abnormalities">
+      <Section title="Аномалии">
         <Box color="label">
-          No abnormalities found.
+          Отклонений не обнаружено.
         </Box>
       </Section>
     );
   }
 
   return (
-    <Section title="Abnormalities">
+    <Section title="Аномалии">
       {abnormalities.map((a, i) => {
         if (occupant[a[0]]) {
           return (
@@ -304,7 +304,7 @@ const BodyScannerMainDamage = props => {
     occupant,
   } = props;
   return (
-    <Section title="Damage">
+    <Section title="Урон">
       <Table>
         {mapTwoByTwo(damages, (d1, d2, i) => (
           <Fragment>
@@ -353,7 +353,7 @@ const BodyScannerMainDamageBar = props => {
 const BodyScannerMainOrgansExternal = props => {
   if (props.organs.length === 0) {
     return (
-      <Section title="External Organs">
+      <Section title="Внутренние органы">
         <Box color="label">
           N/A
         </Box>
@@ -362,17 +362,17 @@ const BodyScannerMainOrgansExternal = props => {
   }
 
   return (
-    <Section title="External Organs">
+    <Section title="Внешние органы">
       <Table>
         <Table.Row header>
           <Table.Cell>
-            Name
+            Название
           </Table.Cell>
           <Table.Cell textAlign="center">
-            Damage
+            Урон
           </Table.Cell>
           <Table.Cell textAlign="right">
-            Injuries
+            Травмы
           </Table.Cell>
         </Table.Row>
         {props.organs.map((o, i) => (
@@ -394,7 +394,7 @@ const BodyScannerMainOrgansExternal = props => {
                       {round(o.bruteLoss, 0)}&nbsp;
                       <Tooltip
                         position="top"
-                        content="Brute damage"
+                        content="Повреждения"
                       />
                     </Box>)}
                   {!!o.fireLoss && (
@@ -403,7 +403,7 @@ const BodyScannerMainOrgansExternal = props => {
                       {round(o.fireLoss, 0)}
                       <Tooltip
                         position="top"
-                        content="Burn damage"
+                        content="Ожоги"
                       />
                     </Box>)}
                 </Box>
@@ -419,27 +419,27 @@ const BodyScannerMainOrgansExternal = props => {
                 {reduceOrganStatus([
                   o.internalBleeding && "Internal bleeding",
                   !!o.status.bleeding && "External bleeding",
-                  o.lungRuptured && "Ruptured lung",
-                  o.destroyed && "Destroyed",
+                  o.lungRuptured && "Разорванное легкое",
+                  o.destroyed && "Разрушено",
                   !!o.status.broken && o.status.broken,
                   germStatus(o.germ_level),
-                  !!o.open && "Open incision",
+                  !!o.open && "Открытый разрез",
                 ])}
               </Box>
               <Box display="inline">
                 {reduceOrganStatus([
-                  !!o.status.splinted && "Splinted",
-                  !!o.status.robotic && "Robotic",
+                  !!o.status.splinted && "Шинированно",
+                  !!o.status.robotic && "Роботическое",
                   !!o.status.dead && (
                     <Box color="bad">
-                      DEAD
+                      СМЕРТЬ
                     </Box>
                   ),
                 ])}
                 {reduceOrganStatus(o.implants.map(
                   s => s.known
                     ? s.name
-                    : "Unknown object"
+                    : "Неизвестный объект"
                 ))}
               </Box>
             </Table.Cell>
@@ -453,7 +453,7 @@ const BodyScannerMainOrgansExternal = props => {
 const BodyScannerMainOrgansInternal = props => {
   if (props.organs.length === 0) {
     return (
-      <Section title="Internal Organs">
+      <Section title="Внутренние органы">
         <Box color="label">
           N/A
         </Box>
@@ -462,7 +462,7 @@ const BodyScannerMainOrgansInternal = props => {
   }
 
   return (
-    <Section title="Internal Organs">
+    <Section title="Внутренние органы">
       <Table>
         <Table.Row header>
           <Table.Cell>
@@ -504,7 +504,7 @@ const BodyScannerMainOrgansInternal = props => {
                   (o.robotic === 2) && "Assisted",
                   !!o.dead && (
                     <Box color="bad">
-                      DEAD
+                      СМЕРТЬ
                     </Box>
                   ),
                 ])}
@@ -527,7 +527,7 @@ const BodyScannerEmpty = () => {
             mb="0.5rem"
             size="5"
           /><br />
-          No occupant detected.
+          Пациент не обнаружен.
         </Flex.Item>
       </Flex>
     </Section>

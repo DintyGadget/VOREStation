@@ -13,22 +13,22 @@ export const TankDispenser = (props, context) => {
         <Section>
           <LabeledList>
             <LabeledList.Item
-              label="Phoron"
+              label="Форон"
               buttons={(
                 <Button
                   icon={data.plasma ? 'square' : 'square-o'}
-                  content="Dispense"
+                  content="Взять канистру"
                   disabled={!data.plasma}
                   onClick={() => act('plasma')} />
               )}>
               {data.plasma}
             </LabeledList.Item>
             <LabeledList.Item
-              label="Oxygen"
+              label="Кислород"
               buttons={(
                 <Button
                   icon={data.oxygen ? 'square' : 'square-o'}
-                  content="Dispense"
+                  content="Взять канистру"
                   disabled={!data.oxygen}
                   onClick={() => act('oxygen')} />
               )}>

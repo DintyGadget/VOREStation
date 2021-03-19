@@ -22,29 +22,29 @@ export const NoticeBoard = (props, context) => {
                   {notice.isphoto && (
                     <Button
                       icon="image"
-                      content="Look"
+                      content="Посмотреть"
                       onClick={() => act("look", { ref: notice.ref })} />
                   ) || notice.ispaper && (
                     <Fragment>
                       <Button
                         icon="sticky-note"
-                        content="Read"
+                        content="Читать"
                         onClick={() => act("read", { ref: notice.ref })} />
                       <Button
                         icon="pen"
-                        content="Write"
+                        content="Написать"
                         onClick={() => act("write", { ref: notice.ref })} />
                     </Fragment>
                   ) || "Unknown Entity"}
                   <Button
                     icon="minus-circle"
-                    content="Remove"
+                    content="Убрать"
                     onClick={() => act("remove", { ref: notice.ref })} />
                 </LabeledList.Item>
               ))}
             </LabeledList>
           ) : (
-            <Box color="average">No notices posted here.</Box>
+            <Box color="average">Объявлений нет.</Box>
           )}
         </Section>
       </Window.Content>

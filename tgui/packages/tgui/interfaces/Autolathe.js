@@ -55,10 +55,10 @@ export const Autolathe = (props, context) => {
   return (
     <Window width={550} height={700}>
       <Window.Content scrollable>
-        <Section title="Materials">
+        <Section title="Материалы">
           <Materials disableEject />
         </Section>
-        <Section title="Recipes" buttons={
+        <Section title="Рецепты" buttons={
           <Dropdown
             width="190px"
             options={categories}
@@ -67,7 +67,7 @@ export const Autolathe = (props, context) => {
         }>
           <Input
             fluid
-            placeholder="Search for..."
+            placeholder="Искать среди..."
             onInput={(e, v) => setSearchText(v)}
             mb={1} />
           {recipesToShow.map(recipe => (

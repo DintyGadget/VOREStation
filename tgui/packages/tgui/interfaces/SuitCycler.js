@@ -52,39 +52,39 @@ const SuitCyclerContent = (props, context) => {
     <Fragment>
 
       <Section
-        title="Storage"
+        title="Хранилище"
         buttons={(
           <Button
             icon="lock"
-            content="Lock"
+            content="Закр."
             onClick={() => act("lock")} />
         )}>
         {!!(occupied && safeties) && (
           <NoticeBox>
-            Biological entity detected in suit chamber. Please remove
-            before continuing with operation.
+            Биологическая сущность обнаружена в камере скафандра. Пожалуйста, снимите его,
+            прежде чем продолжить работу.
             <Button
               fluid
               icon="eject"
               color="red"
-              content="Eject Entity"
+              content="Извлечь"
               onClick={() => act("eject_guy")} />
           </NoticeBox>
         )}
         <LabeledList>
-          <LabeledList.Item label="Helmet">
+          <LabeledList.Item label="Шлем">
             <Button
               icon={helmet ? 'square' : 'square-o'}
-              content={helmet || 'Empty'}
+              content={helmet || 'Пусто'}
               disabled={!helmet}
               onClick={() => act('dispense', {
                 item: 'helmet',
               })} />
           </LabeledList.Item>
-          <LabeledList.Item label="Suit">
+          <LabeledList.Item label="Костюм">
             <Button
               icon={suit ? 'square' : 'square-o'}
-              content={suit || 'Empty'}
+              content={suit || 'Пусто'}
               disabled={!suit}
               onClick={() => act('dispense', {
                 item: 'suit',
@@ -101,9 +101,9 @@ const SuitCyclerContent = (props, context) => {
           ) : null}
         </LabeledList>
       </Section>
-      <Section title="Customization">
+      <Section title="Настройка">
         <LabeledList>
-          <LabeledList.Item label="Target Paintjob">
+          <LabeledList.Item label="Покрас">
             <Dropdown
               noscroll
               width="100%"
@@ -111,7 +111,7 @@ const SuitCyclerContent = (props, context) => {
               selected={departments[0]}
               onSelected={val => act("department", { department: val })} />
           </LabeledList.Item>
-          <LabeledList.Item label="Target Species">
+          <LabeledList.Item label="Раса">
             <Dropdown
               width="100%"
               maxHeight="160px"
@@ -123,12 +123,12 @@ const SuitCyclerContent = (props, context) => {
         <Button
           mt={1}
           fluid
-          content="Customize"
+          content="Перестроить"
           onClick={() => act("apply_paintjob")} />
       </Section>
-      <Section title="UV Decontamination">
+      <Section title="Рад. обеззараживание">
         <LabeledList>
-          <LabeledList.Item label="Radiation Level">
+          <LabeledList.Item label="Уровень рад.">
             <NumberInput
               width="50px"
               value={uv_level}
@@ -137,7 +137,7 @@ const SuitCyclerContent = (props, context) => {
               stepPixelSize={30}
               onChange={(e, val) => act("radlevel", { radlevel: val })} />
           </LabeledList.Item>
-          <LabeledList.Item label="Decontaminate">
+          <LabeledList.Item label="Обеззараживание">
             <Button
               fluid
               icon="recycle"
@@ -154,7 +154,7 @@ const SuitCyclerContent = (props, context) => {
 const SuitCyclerUV = (props, context) => {
   return (
     <NoticeBox>
-      Contents are currently being decontaminated. Please wait.
+      Содержимое в настоящее время обеззараживается. Пожалуйста подождите.
     </NoticeBox>
   );
 };
@@ -170,13 +170,13 @@ const SuitCyclerLocked = (props, context) => {
   return (
     <Section title="Locked" textAlign="center">
       <Box color="bad" bold>
-        The {model_text} suit cycler is currently locked. Please contact your
-        system administrator.
+        Циклер {model_text} костюма в настоящее время заблокирован.
+        Пожалуйста, свяжитесь с вашим системный администратор.
       </Box>
       <Box>
         <Button
           icon="unlock"
-          content="[Unlock]"
+          content="[Откр.]"
           disabled={!userHasAccess}
           onClick={() => act("lock")} />
       </Box>
@@ -187,7 +187,7 @@ const SuitCyclerLocked = (props, context) => {
 const SuitCyclerActive = (props, context) => {
   return (
     <NoticeBox>
-      Contents are currently being painted. Please wait.
+      Содержимое в настоящее время окрашивается. Пожалуйста подождите.
     </NoticeBox>
   );
 };

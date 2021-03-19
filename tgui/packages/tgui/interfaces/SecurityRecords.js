@@ -70,7 +70,7 @@ const SecurityRecordsList = (_properties, context) => {
     <Fragment>
       <Input
         fluid
-        placeholder="Search by Name, DNA, or ID"
+        placeholder="Поиск по Ф.И, ДНК, или ID"
         onChange={(_event, value) => act('search', { t1: value })}
       />
       <Box mt="0.5rem">
@@ -80,7 +80,7 @@ const SecurityRecordsList = (_properties, context) => {
             icon="user"
             mb="0.5rem"
             color={record.color}
-            content={record.id + ": " + record.name + " (Criminal Status: " + record.criminal + ")"}
+            content={record.id + ": " + record.name + " (Статус: " + record.criminal + ")"}
             onClick={() => act('d_rec', { d_rec: record.ref })}
           />
         ))}
@@ -95,18 +95,18 @@ const SecurityRecordsMaintenance = (_properties, context) => {
     <Fragment>
       <Button
         icon="download"
-        content="Backup to Disk"
+        content="Резервное копирование на диск"
         disabled
       /><br />
       <Button
         icon="upload"
-        content="Upload from Disk"
+        content="Загрузить с диска"
         my="0.5rem"
         disabled
       /> <br />
       <Button.Confirm
         icon="trash"
-        content="Delete All Security Records"
+        content="Удалить все записи без."
         onClick={() => act('del_all')}
       />
     </Fragment>
@@ -121,24 +121,24 @@ const SecurityRecordsView = (_properties, context) => {
   } = data;
   return (
     <Fragment>
-      <Section title="General Data" level={2} mt="-6px">
+      <Section title="Общие данные" level={2} mt="-6px">
         <SecurityRecordsViewGeneral />
       </Section>
-      <Section title="Security Data" level={2}>
+      <Section title="Данные безопасности" level={2}>
         <SecurityRecordsViewSecurity />
       </Section>
-      <Section title="Actions" level={2}>
+      <Section title="Действия" level={2}>
         <Button.Confirm
           icon="trash"
           disabled={!!security.empty}
-          content="Delete Security Record"
+          content="Удалить запись безопасности"
           color="bad"
           onClick={() => act('del_r')}
         />
         <Button.Confirm
           icon="trash"
           disabled={!!security.empty}
-          content="Delete Record (All)"
+          content="Удалить запись (все)"
           color="bad"
           onClick={() => act('del_r_2')}
         />        
@@ -146,13 +146,13 @@ const SecurityRecordsView = (_properties, context) => {
           icon={printing ? 'spinner' : 'print'}
           disabled={printing}
           iconSpin={!!printing}
-          content="Print Entry"
+          content="Печать страницы"
           ml="0.5rem"
           onClick={() => act('print_p')}
         /><br />
         <Button
           icon="arrow-left"
-          content="Back"
+          content="Назад"
           mt="0.5rem"
           onClick={() => act('screen', { screen: 2 })}
         />
@@ -169,7 +169,7 @@ const SecurityRecordsViewGeneral = (_properties, context) => {
   if (!general || !general.fields) {
     return (
       <Box color="bad">
-        General records lost!
+        Общие данные потеряны!
       </Box>
     );
   }
@@ -209,16 +209,16 @@ const SecurityRecordsViewGeneral = (_properties, context) => {
                   '-ms-interpolation-mode': 'nearest-neighbor',
                 }}
               /><br />
-              Photo #{i + 1}
+              Фото #{i + 1}
             </Box>
           ))
         )}
         <Box>
           <Button onClick={() => act("photo_front")}>
-            Update Front Photo
+            Обновить фронт фото
           </Button>
           <Button onClick={() => act("photo_side")}>
-            Update Side Photo
+            Обновить задн. фото
           </Button>
         </Box>
       </Box>
@@ -234,10 +234,10 @@ const SecurityRecordsViewSecurity = (_properties, context) => {
   if (!security || !security.fields) {
     return (
       <Box color="bad">
-        Security records lost!
+        Данные без. потеряны!
         <Button
           icon="pen"
-          content="New Record"
+          content="Новая запись"
           ml="0.5rem"
           onClick={() => act('new')}
         />
@@ -261,10 +261,10 @@ const SecurityRecordsViewSecurity = (_properties, context) => {
           </LabeledList.Item>
         ))}
       </LabeledList>
-      <Section title="Comments/Log" level={2}>
+      <Section title="Комментирование/Логирование" level={2}>
         {security.comments.length === 0 ? (
           <Box color="label">
-            No comments found.
+            Нет комментариев.
           </Box>
         )
           : security.comments.map((comment, i) => (
@@ -284,7 +284,7 @@ const SecurityRecordsViewSecurity = (_properties, context) => {
 
         <Button
           icon="comment"
-          content="Add Entry"
+          content="Добавить запись"
           color="good"
           mt="0.5rem"
           mb="0"
@@ -306,13 +306,13 @@ const SecurityRecordsNavigation = (_properties, context) => {
         selected={screen === 2}
         onClick={() => act('screen', { screen: 2 })}>
         <Icon name="list" />
-        List Records
+        Список экипажа
       </Tabs.Tab>
       <Tabs.Tab
         selected={screen === 3}
         onClick={() => act('screen', { screen: 3 })}>
         <Icon name="wrench" />
-        Record Maintenance
+        Ведение Документации
       </Tabs.Tab>
     </Tabs>
   );

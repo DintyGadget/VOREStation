@@ -12,11 +12,11 @@ export const AtmosAlertConsole = (props, context) => {
       height={300}
       resizable>
       <Window.Content scrollable>
-        <Section title="Alarms">
+        <Section title="Тревога">
           <ul>
             {priorityAlerts.length === 0 && (
               <li className="color-good">
-                No Priority Alerts
+                Нет приоритетных предупреждений
               </li>
             )}
             {priorityAlerts.map(alert => (
@@ -30,7 +30,7 @@ export const AtmosAlertConsole = (props, context) => {
             ))}
             {minorAlerts.length === 0 && (
               <li className="color-good">
-                No Minor Alerts
+                Нет второстепенных предупреждений
               </li>
             )}
             {minorAlerts.map(alert => (

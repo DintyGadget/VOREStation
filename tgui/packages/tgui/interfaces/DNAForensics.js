@@ -15,25 +15,25 @@ export const DNAForensics = (props, context) => {
   return (
     <Window width={540} height={326}>
       <Window.Content>
-        <Section title="Status" buttons={
+        <Section title="Состояние" buttons={
           <Fragment>
             <Button
               selected={scanning}
               disabled={!bloodsamp}
               icon="power-off"
               onClick={() => act("scanItem")}>
-              {scanning ? "Halt Scan" : "Begin Scan"}
+              {scanning ? "Остановить" : "Начать"}
             </Button>
             <Button
               disabled={!bloodsamp}
               icon="eject"
               onClick={() => act("ejectItem")}>
-              Eject Bloodsample
+              Извлечь образец крови
             </Button>
           </Fragment>
         }>
           <LabeledList>
-            <LabeledList.Item label="Scan Progress">
+            <LabeledList.Item label="Прогресс">
               <ProgressBar
                 ranges={{
                   good: [99, Infinity],
@@ -44,7 +44,7 @@ export const DNAForensics = (props, context) => {
             </LabeledList.Item>
           </LabeledList>
         </Section>
-        <Section title="Blood Sample">
+        <Section title="Образец крови">
           {bloodsamp && (
             <Box>
               {bloodsamp}
@@ -54,7 +54,7 @@ export const DNAForensics = (props, context) => {
             </Box>
           ) || (
             <Box color="bad">
-              No blood sample inserted.
+              Образец крови не вставлен.
             </Box>
           )}
         </Section>

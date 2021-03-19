@@ -84,7 +84,7 @@ const ActiveConversation = (props, context) => {
       <Button
         icon="comment"
         onClick={() => act("Message", { "target": active_conversation })}
-        content="Reply" />
+        content="Ответить" />
     </Section>
   );
 
@@ -111,14 +111,14 @@ const ActiveConversation = (props, context) => {
             <Box
               key={i}
               className={im.sent ? "ClassicMessage_Sent" : "ClassicMessage_Received"}>
-              {im.sent ? "You:" : "Them:"} {decodeHtmlEntities(im.message)}
+              {im.sent ? "Вы:" : "Соб.:"} {decodeHtmlEntities(im.message)}
             </Box>
           ))}
         </Section>
         <Button
           icon="comment"
           onClick={() => act("Message", { "target": active_conversation })}
-          content="Reply" />
+          content="Ответить" />
       </Section>
     );
   }
@@ -126,12 +126,12 @@ const ActiveConversation = (props, context) => {
   return (
     <Box>
       <LabeledList>
-        <LabeledList.Item label="Messenger Functions">
+        <LabeledList.Item label="Функции месседжера">
           <Button
             icon="trash"
             color="bad"
             onClick={() => act("Clear", { option: "Convo" })}>
-            Delete Conversations
+            Удалить разговор
           </Button>
         </LabeledList.Item>
       </LabeledList>
@@ -156,29 +156,29 @@ const MessengerList = (props, context) => {
   return (
     <Box>
       <LabeledList>
-        <LabeledList.Item label="Messenger Functions">
+        <LabeledList.Item label="Функции месседжера">
           <Button
             selected={!silent}
             icon={silent ? "volume-mute" : "volume-up"}
             onClick={() => act("Toggle Ringer")}>
-            Ringer: {silent ? "Off" : "On"}
+            Звук: {silent ? "Выкл" : "Вкл"}
           </Button>
           <Button
             color={toff ? "bad" : "green"}
             icon="power-off"
             onClick={() => act("Toggle Messenger")}>
-            Messenger: {toff ? "Off" : "On"}
+            Месседжер: {toff ? "Выкл" : "Вкл"}
           </Button>
           <Button
             icon="bell"
             onClick={() => act("Ringtone")}>
-            Set Ringtone
+            Рингтон
           </Button>
           <Button
             icon="trash"
             color="bad"
             onClick={() => act("Clear", { option: "All" })}>
-            Delete All Conversations
+            Удалить все разговоры
           </Button>
         </LabeledList.Item>
       </LabeledList>
@@ -186,23 +186,23 @@ const MessengerList = (props, context) => {
         <Box>
           {!!charges && (
             <Box>
-              {charges} charges left.
+              {charges} заряда осталось.
             </Box>
           )}
           {!convopdas.length && !pdas.length && (
             <Box>
-              No other PDAs located.
+              ПДА не обнаружено.
             </Box>
           ) || (
             <Box>
-              <PDAList title="Current Conversations" pdas={convopdas} msgAct="Select Conversation" />
-              <PDAList title="Other PDAs" pdas={pdas} msgAct="Message" />
+              <PDAList title="Текущие разговоры" pdas={convopdas} msgAct="Select Conversation" />
+              <PDAList title="Другие ПДА" pdas={pdas} msgAct="Message" />
             </Box>
           )}
         </Box>
       ) || (
         <Box color="bad" mt={2}>
-          Messenger Offline.
+          Месседжер выключен.
         </Box>
       )}
     </Box>

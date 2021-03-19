@@ -18,28 +18,28 @@ export const PortableBasicInfo = (props, context) => {
   return (
     <Fragment>
       <Section
-        title="Status"
+        title="Состояние"
         buttons={(
           <Button
             icon={on ? 'power-off' : 'times'}
-            content={on ? 'On' : 'Off'}
+            content={on ? 'Вкл' : 'Выкл'}
             selected={on}
             onClick={() => act('power')} />
         )}>
         <LabeledList>
-          <LabeledList.Item label="Pressure">
+          <LabeledList.Item label="Давление">
             <AnimatedNumber value={pressure} />
             {' kPa'}
           </LabeledList.Item>
           <LabeledList.Item
-            label="Port"
+            label="Порт"
             color={connected ? 'good' : 'average'}>
-            {connected ? 'Connected' : 'Not Connected'}
+            {connected ? 'Подключен' : 'Не подключен'}
           </LabeledList.Item>
-          <LabeledList.Item label="Load">
+          <LabeledList.Item label="Загруженность">
             {powerDraw} W
           </LabeledList.Item>
-          <LabeledList.Item label="Cell Charge">
+          <LabeledList.Item label="Заряд">
             <ProgressBar
               value={cellCharge}
               minValue={0}
@@ -55,21 +55,21 @@ export const PortableBasicInfo = (props, context) => {
         </LabeledList>
       </Section>
       <Section
-        title="Holding Tank"
+        title="Емкость"
         minHeight="82px"
         buttons={(
           <Button
             icon="eject"
-            content="Eject"
+            content="Извлечь"
             disabled={!holding}
             onClick={() => act('eject')} />
         )}>
         {holding ? (
           <LabeledList>
-            <LabeledList.Item label="Label">
+            <LabeledList.Item label="Этикетка">
               {holding.name}
             </LabeledList.Item>
-            <LabeledList.Item label="Pressure">
+            <LabeledList.Item label="Давление">
               <AnimatedNumber
                 value={holding.pressure} />
               {' kPa'}
@@ -77,7 +77,7 @@ export const PortableBasicInfo = (props, context) => {
           </LabeledList>
         ) : (
           <Box color="average">
-            No holding tank
+            Емкость не обнаружена
           </Box>
         )}
       </Section>

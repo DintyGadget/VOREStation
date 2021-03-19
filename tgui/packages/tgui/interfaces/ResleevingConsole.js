@@ -32,13 +32,13 @@ const viewMindRecordModalBodyOverride = (modal, context) => {
           onClick={() => act('modal_close')} />
       }>
       <LabeledList>
-        <LabeledList.Item label="Name">
+        <LabeledList.Item label="Имя">
           {realname}
         </LabeledList.Item>
-        <LabeledList.Item label="Status">
+        <LabeledList.Item label="Состояние">
           {obviously_dead}
         </LabeledList.Item>
-        <LabeledList.Item label="Actions">
+        <LabeledList.Item label="Действия">
           <Button
             disabled={!can_sleeve_active}
             icon="user-plus"
@@ -84,7 +84,7 @@ const viewBodyRecordModalBodyOverride = (modal, context) => {
       level={2}
       m="-1rem"
       pb="1rem"
-      title={"Body Record (" + realname + ")"}
+      title={"Биометрика (" + realname + ")"}
       buttons={
         <Button
           icon="times"
@@ -92,27 +92,27 @@ const viewBodyRecordModalBodyOverride = (modal, context) => {
           onClick={() => act('modal_close')} />
       }>
       <LabeledList>
-        <LabeledList.Item label="Name">
+        <LabeledList.Item label="Ф.И">
           {realname}
         </LabeledList.Item>
-        <LabeledList.Item label="Species">
+        <LabeledList.Item label="Расы">
           {species}
         </LabeledList.Item>
-        <LabeledList.Item label="Bio. Sex">
+        <LabeledList.Item label="Био. пол">
           {sex}
         </LabeledList.Item>
-        <LabeledList.Item label="Mind Compat">
+        <LabeledList.Item label="Совм. разума">
           {mind_compat}
         </LabeledList.Item>
-        <LabeledList.Item label="Synthetic">
-          {synthetic ? "Yes" : "No"}
+        <LabeledList.Item label="Синт">
+          {synthetic ? "Да" : "Нет"}
         </LabeledList.Item>
-        <LabeledList.Item label="OOC Notes">
+        <LabeledList.Item label="OOC Заметки">
           <Section style={{ 'word-break': 'break-all', 'height': '100px' }} scrollable>
             {oocnotes}
           </Section>
         </LabeledList.Item>
-        <LabeledList.Item label="Actions">
+        <LabeledList.Item label="Действия">
           <Button
             disabled={!can_grow_active}
             icon="user-plus"
@@ -178,7 +178,7 @@ const ResleevingConsoleNavigation = (props, context) => {
         onClick={() => act('menu', {
           num: MENU_MAIN,
         })}>
-        Main
+        Главная
       </Tabs.Tab>
       <Tabs.Tab
         selected={menu === MENU_BODY}
@@ -186,7 +186,7 @@ const ResleevingConsoleNavigation = (props, context) => {
         onClick={() => act('menu', {
           num: MENU_BODY,
         })}>
-        Body Records
+        Биометрика
       </Tabs.Tab>
       <Tabs.Tab
         selected={menu === MENU_MIND}
@@ -194,7 +194,7 @@ const ResleevingConsoleNavigation = (props, context) => {
         onClick={() => act('menu', {
           num: MENU_MIND,
         })}>
-        Mind Records
+        Записи сознания
       </Tabs.Tab>
     </Tabs>
   );
@@ -232,7 +232,7 @@ const ResleevingConsoleCoreDump = (props, context) => {
           <Icon size={12} color="bad" name="exclamation-triangle" />
         </Flex.Item>
         <Flex.Item grow={1} color="bad" mt={5}>
-          <h2>TransCore dump completed. Resleeving offline.</h2>
+          <h2>Дамп TransCore завершен. Выход в офлайн.</h2>
         </Flex.Item>
       </Flex>
     </Dimmer>
@@ -243,8 +243,8 @@ const ResleevingConsoleDiskPrep = (props, context) => {
   const { act } = useBackend(context);
   return (
     <Dimmer textAlign="center">
-      <Box color="bad"><h1>TRANSCORE DUMP</h1></Box>
-      <Box color="bad"><h2>!!WARNING!!</h2></Box>
+      <Box color="bad"><h1>ДАМП TRANSCORE</h1></Box>
+      <Box color="bad"><h2>!!ВНИМАНИЕ!!</h2></Box>
       <Box color="bad">
         This will transfer all minds to the dump disk,
         and the TransCore will be made unusable until post-shift
@@ -253,7 +253,7 @@ const ResleevingConsoleDiskPrep = (props, context) => {
       <Box mt={4}>
         <Button
           icon="eject"
-          content="Eject Disk"
+          content="Извлечь диск"
           color="good"
           onClick={() => act('ejectdisk')}
         />
@@ -262,8 +262,8 @@ const ResleevingConsoleDiskPrep = (props, context) => {
         <Button.Confirm
           icon="exclamation-triangle"
           confirmIcon="exclamation-triangle"
-          content="Core Dump"
-          confirmContent="Disable Transcore?"
+          content="Дамп ядра"
+          confirmContent="Отключить Transcore?"
           color="bad"
           onClick={() => act('coredump')}
         />
@@ -286,7 +286,7 @@ const ResleevingConsoleMain = (props, context) => {
   } = data;
   const isLocked = locked && !!occupant;
   return (
-    <Section title="Pods" level="2">
+    <Section title="Капсула" level="2">
       <ResleevingConsolePodGrowers />
       <ResleevingConsolePodSpods />
       <ResleevingConsolePodSleevers />
@@ -325,7 +325,7 @@ const ResleevingConsolePodGrowers = (props, context) => {
       } else if (pod.status === "mess") {
         podAction = (
           <Box bold color="bad" mt="0.5rem">
-            ERROR
+            ОШИБКА
           </Box>
         );
       } else {
@@ -333,7 +333,7 @@ const ResleevingConsolePodGrowers = (props, context) => {
           <Button
             selected={selected_pod === pod.pod}
             icon={selected_pod === pod.pod && "check"}
-            content="Select"
+            content="Выбрать"
             mt={(spods && spods.length) ? "2rem" : "0.5rem"}
             onClick={() => act('selectpod', {
               ref: pod.pod,
@@ -407,7 +407,7 @@ const ResleevingConsolePodSleevers = (props, context) => {
           <Button
             selected={selected_sleever === pod.sleever}
             icon={selected_sleever === pod.sleever && "check"}
-            content="Select"
+            content="Выбрать"
             mt={(spods && spods.length) ? "3rem" : "1.5rem"}
             onClick={() => act('selectsleever', {
               ref: pod.sleever,
@@ -531,7 +531,7 @@ const ResleevingConsoleRecords = (props, context) => {
             mb="0.5rem"
             size="5"
           /><br />
-          No records found.
+          Записей нет.
         </Flex.Item>
       </Flex>
     );
@@ -589,38 +589,38 @@ const ResleevingConsoleStatus = (props, context) => {
     disk,
   } = data;
   return (
-    <Section title="Status">
+    <Section title="Состояние">
       <LabeledList>
-        <LabeledList.Item label="Pods">
+        <LabeledList.Item label="Капсула">
           {pods && pods.length ? (
             <Box color="good">
-              {pods.length} connected
+              подключено: {pods.length}
             </Box>
           ) : (
             <Box color="bad">
-              None connected!
+              Не подключено!
             </Box>
           )}
         </LabeledList.Item>
         <LabeledList.Item label="SynthFabs">
           {spods && spods.length ? (
             <Box color="good">
-              {spods.length} connected
+              подключено: {spods.length}
             </Box>
           ) : (
             <Box color="bad">
-              None connected!
+              Не подключено!
             </Box>
           )}
         </LabeledList.Item>
         <LabeledList.Item label="Sleevers">
           {sleevers && sleevers.length ? (
             <Box color="good">
-              {sleevers.length} Connected
+              подключено: {sleevers.length}
             </Box>
           ) : (
             <Box color="bad">
-              None connected!
+              Не подключено!
             </Box>
           )}
         </LabeledList.Item>

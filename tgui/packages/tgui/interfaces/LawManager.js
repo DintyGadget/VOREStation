@@ -30,12 +30,12 @@ const LawManagerContent = (props, context) => {
         <Tabs.Tab
           selected={tabIndex === 0}
           onClick={() => setTabIndex(0)}>
-          Law Management
+          Менеджер
         </Tabs.Tab>
         <Tabs.Tab
           selected={tabIndex === 1}
           onClick={() => setTabIndex(1)}>
-          Law Sets
+          Установки
         </Tabs.Tab>
       </Tabs>
       {tabIndex === 0 && <LawManagerLaws /> || null}
@@ -74,17 +74,17 @@ const LawManagerLaws = (props, context) => {
   return (
     <Section>
       {has_ion_laws && (
-        <LawsTable laws={ion_laws} title={ion_law_nr + " Laws:"} mt={-2} />
+        <LawsTable laws={ion_laws} title={ion_law_nr + " Законы:"} mt={-2} />
       ) || null}
       {(has_zeroth_laws || has_inherent_laws) && (
-        <LawsTable laws={allLaws} title="Inherent Laws" mt={-2} />
+        <LawsTable laws={allLaws} title="Внутренние законы" mt={-2} />
       ) || null}
       {has_supplied_laws && (
-        <LawsTable laws={supplied_laws} title="Supplied Laws" mt={-2} />
+        <LawsTable laws={supplied_laws} title="Прилагаемые законы" mt={-2} />
       ) || null}
-      <Section level={2} title="Controls" mt={-2}>
+      <Section level={2} title="Управление" mt={-2}>
         <LabeledList>
-          <LabeledList.Item label="Statement Channel">
+          <LabeledList.Item label="Канал заявления">
             {channels.map(chan => (
               <Button
                 key={chan.channel}
@@ -93,7 +93,7 @@ const LawManagerLaws = (props, context) => {
                 onClick={() => act("law_channel", { law_channel: chan.channel })} />
             ))}
           </LabeledList.Item>
-          <LabeledList.Item label="State Laws">
+          <LabeledList.Item label="Зачитать законы">
             <Button
               icon="volume-up"
               onClick={() => act("state_laws")}>
@@ -101,7 +101,7 @@ const LawManagerLaws = (props, context) => {
             </Button>
           </LabeledList.Item>
           {isAI && (
-            <LabeledList.Item label="Law Notification">
+            <LabeledList.Item label="Уведомление о законе">
               <Button
                 icon="exclamation"
                 onClick={() => act("notify_laws")}>
@@ -112,17 +112,17 @@ const LawManagerLaws = (props, context) => {
         </LabeledList>
       </Section>
       {isMalf && (
-        <Section level={2} title="Add Laws" mt={-2}>
+        <Section level={2} title="Добавить закон" mt={-2}>
           <Table>
             <Table.Row header>
-              <Table.Cell collapsing>Type</Table.Cell>
-              <Table.Cell>Law</Table.Cell>
-              <Table.Cell collapsing>Index</Table.Cell>
-              <Table.Cell collapsing>Add</Table.Cell>
+              <Table.Cell collapsing>Тип</Table.Cell>
+              <Table.Cell>Закон</Table.Cell>
+              <Table.Cell collapsing>Индекс</Table.Cell>
+              <Table.Cell collapsing>Добавить</Table.Cell>
             </Table.Row>
             {isAdmin && !has_zeroth_laws && (
               <Table.Row>
-                <Table.Cell collapsing>Zero</Table.Cell>
+                <Table.Cell collapsing>Нуль</Table.Cell>
                 <Table.Cell>
                   <Input
                     value={zeroth_law}
@@ -138,7 +138,7 @@ const LawManagerLaws = (props, context) => {
               </Table.Row>
             ) || null}
             <Table.Row>
-              <Table.Cell collapsing>Ion</Table.Cell>
+              <Table.Cell collapsing>Ион</Table.Cell>
               <Table.Cell>
                 <Input
                   value={ion_law}
@@ -168,7 +168,7 @@ const LawManagerLaws = (props, context) => {
               </Table.Cell>
             </Table.Row>
             <Table.Row>
-              <Table.Cell>Supplied</Table.Cell>
+              <Table.Cell>Поддерж</Table.Cell>
               <Table.Cell>
                 <Input
                   value={supplied_law}
@@ -182,7 +182,7 @@ const LawManagerLaws = (props, context) => {
               </Table.Cell>
               <Table.Cell>
                 <Button icon="plus" onClick={() => act("add_supplied_law")}>
-                  Add
+                  Доб.
                 </Button>
               </Table.Cell>
             </Table.Row>
@@ -279,7 +279,7 @@ const LawManagerLawSets = (props, context) => {
   return (
     <Fragment>
       <NoticeBox>
-        Remember: Stating laws other than those currently loaded may be grounds for decommissioning! - NanoTrasen
+        Помните: установка других законов, может быть основанием для вывода из эксплуатации! - NanoTrasen
       </NoticeBox>
       {law_sets.length && law_sets.map(laws => (
         <Section key={laws.name} title={laws.name} buttons={
@@ -288,12 +288,12 @@ const LawManagerLawSets = (props, context) => {
               disabled={!isMalf}
               icon="sync"
               onClick={() => act("transfer_laws", { transfer_laws: laws.ref })}>
-              Load Laws
+              Загрузить
             </Button>
             <Button
               icon="volume-up"
               onClick={() => act("state_law_set", { state_law_set: laws.ref })}>
-              State Laws
+              Сказать
             </Button>
           </Fragment>
         }>
@@ -301,7 +301,7 @@ const LawManagerLawSets = (props, context) => {
             <LawsTable
               noButtons
               laws={laws.laws.ion_laws}
-              title={laws.laws.ion_law_nr + " Laws:"} />
+              title={laws.laws.ion_law_nr + " Законы:"} />
           ) || null}
           {(laws.laws.has_zeroth_laws || laws.laws.has_inherent_laws) && (
             <LawsTable

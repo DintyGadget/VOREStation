@@ -37,10 +37,10 @@ export const RCONContent = (props, context) => {
           <Icon name="power-off" /> SMESs
         </Tabs.Tab>
         <Tabs.Tab
-          key="Breakers"
+          key="Выключатели"
           selected={1 === tabIndex}
           onClick={() => setTabIndex(1)}>
-          <Icon name="bolt" /> Breakers
+          <Icon name="bolt" /> Выключатели
         </Tabs.Tab>
       </Tabs>
       <Box m={2}>
@@ -79,7 +79,7 @@ const RCONSmesList = (props, context) => {
             </Box>
             <LabeledList>
               <LabeledList.Item
-                label="Input"
+                label="Вход"
                 buttons={(
                   <Fragment>
                     <Button
@@ -97,7 +97,7 @@ const RCONSmesList = (props, context) => {
                 {smes.input_val} kW - {smes.input_set ? "ON" : "OFF"}
               </LabeledList.Item>
               <LabeledList.Item
-                label="Output"
+                label="Выход"
                 buttons={(
                   <Fragment>
                     <Button
@@ -114,7 +114,7 @@ const RCONSmesList = (props, context) => {
                 )}>
                 {smes.output_val} kW - {smes.output_set ? "ONLINE" : "OFFLINE"}
               </LabeledList.Item>
-              <LabeledList.Item label="Output Load">
+              <LabeledList.Item label="Выходная нагрузка">
                 {smes.output_load} kW
               </LabeledList.Item>
             </LabeledList>
@@ -146,7 +146,7 @@ const RCONBreakerList = (props, context) => {
             buttons={(
               <Button
                 icon="power-off"
-                content={breaker.enabled ? "Enabled" : "Disabled"}
+                content={breaker.enabled ? "Вкл" : "Выкл"}
                 selected={breaker.enabled}
                 color={breaker.enabled ? null : "bad"}
                 onClick={() => act("toggle_breaker", {
@@ -155,7 +155,7 @@ const RCONBreakerList = (props, context) => {
             )} />
         )) : (
           <LabeledList.Item color="bad">
-            No breakers detected.
+            Выключателей не обнаружено.
           </LabeledList.Item>
         )}
       </LabeledList>

@@ -46,15 +46,15 @@ export const IdentificationComputerContent = (props, context) => {
       <Tabs>
         {(!ntos || !!data.have_id_slot) && (
           <Tabs.Tab icon="home" selected={mode === 0} onClick={() => act("mode", { "mode_target": 0 })}>
-            Access Modification
+            Модификация Доступа
           </Tabs.Tab>
         )}
         <Tabs.Tab icon="home" selected={mode === 1} onClick={() => act("mode", { "mode_target": 1 })}>
-          Crew Manifest
+          Манифест экипажа
         </Tabs.Tab>
         {!ntos || !!data.have_printer && (
           <Tabs.Tab float="right" icon="print" onClick={() => act("print")} disabled={!mode && !has_modify} color="">
-            Print
+            Печать
           </Tabs.Tab>
         )}
       </Tabs>
@@ -65,8 +65,8 @@ export const IdentificationComputerContent = (props, context) => {
 
 export const IdentificationComputerPrinting = (props, context) => {
   return (
-    <Section title="Printing">
-      Please wait...
+    <Section title="Печать">
+      Пожалуйста подождите...
     </Section>
   );
 };
@@ -94,14 +94,14 @@ export const IdentificationComputerAccessModification = (props, context) => {
   } = data;
 
   return (
-    <Section title="Access Modification">
+    <Section title="Модификация Доступа">
       {!authenticated && (
         <Box italic mb={1}>
-          Please insert the IDs into the terminal to proceed.
+          Пожалуйста, вставьте ID карту в терминал, чтобы продолжить работу.
         </Box>
       )}
       <LabeledList>
-        <LabeledList.Item label="Target Identitity">
+        <LabeledList.Item label="Владелец карты">
           <Button
             icon="eject"
             fluid
@@ -109,7 +109,7 @@ export const IdentificationComputerAccessModification = (props, context) => {
             onClick={() => act("modify")} />
         </LabeledList.Item>
         {!ntos && (
-          <LabeledList.Item label="Authorized Identitity">
+          <LabeledList.Item label="Авторизатор">
             <Button
               icon="eject"
               fluid
@@ -120,33 +120,33 @@ export const IdentificationComputerAccessModification = (props, context) => {
       </LabeledList>
       {!!authenticated && !!has_modify && (
         <Fragment>
-          <Section title="Details" level={2}>
+          <Section title="Детали" level={2}>
             <LabeledList>
-              <LabeledList.Item label="Registered Name"> 
+              <LabeledList.Item label="Зарег. имя"> 
                 <Input
                   value={target_owner}
                   fluid
                   onInput={(e, val) => act("reg", { reg: val })} />
               </LabeledList.Item>
-              <LabeledList.Item label="Account Number"> 
+              <LabeledList.Item label="Номер аккаунта"> 
                 <Input
                   value={account_number}
                   fluid
                   onInput={(e, val) => act("account", { account: val })} />
               </LabeledList.Item>
-              <LabeledList.Item label="Dismissals"> 
+              <LabeledList.Item label="Увольнение"> 
                 <Button.Confirm
                   color="bad"
                   icon="exclamation-triangle"
                   confirmIcon="fire"
                   fluid
                   content={"Dismiss " + target_owner}
-                  confirmContent={"You are dismissing " + target_owner + ", confirm?"}
+                  confirmContent={"Вы увольняете " + target_owner + ", подтвердить?"}
                   onClick={() => act("terminate")} />
               </LabeledList.Item>
             </LabeledList>
           </Section>
-          <Section title="Assignment" level={2}>
+          <Section title="Присвоение" level={2}>
             <Table>
               {departments.map(dept => (
                 <Fragment key={dept.department_name}>

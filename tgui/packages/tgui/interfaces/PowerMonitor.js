@@ -41,7 +41,7 @@ export const PowerMonitorContent = (props, context) => {
   }
 
   let body = (
-    <Box color="bad">No sensors detected</Box>
+    <Box color="bad">Датчики не обнаружены</Box>
   );
 
   if (all_sensors) {
@@ -63,10 +63,10 @@ export const PowerMonitorContent = (props, context) => {
 
   return (
     <Section
-      title="No active sensor. Listing all."
+      title="Нет активного датчика."
       buttons={
         <Button
-          content="Scan For Sensors"
+          content="Поиск датчиков"
           icon="undo"
           onClick={() => act("refresh")} />
       }>
@@ -117,14 +117,14 @@ export const PowerMonitorFocus = (props, context) => {
         buttons={
           <Button
             icon="sign-out-alt"
-            content="Back To Main"
+            content="Назад в меню"
             onClick={() => act("clear")} />
         } />
       <Flex mx={-0.5} mb={1}>
         <Flex.Item mx={0.5} width="200px">
           <Section>
             <LabeledList>
-              <LabeledList.Item label="Supply">
+              <LabeledList.Item label="Пост.">
                 <ProgressBar
                   value={supply}
                   minValue={0}
@@ -133,7 +133,7 @@ export const PowerMonitorFocus = (props, context) => {
                   {toFixed(supply / 1000) + ' kW'}
                 </ProgressBar>
               </LabeledList.Item>
-              <LabeledList.Item label="Draw">
+              <LabeledList.Item label="Исп.">
                 <ProgressBar
                   value={demand}
                   minValue={0}
@@ -167,29 +167,29 @@ export const PowerMonitorFocus = (props, context) => {
       <Section>
         <Box mb={1}>
           <Box inline mr={2} color="label">
-            Sort by:
+            Сортировать по:
           </Box>
           <Button.Checkbox
             checked={sortByField === 'name'}
-            content="Name"
+            content="Название"
             onClick={() => setSortByField(
               sortByField !== 'name' && 'name'
             )} />
           <Button.Checkbox
             checked={sortByField === 'charge'}
-            content="Charge"
+            content="Заряд"
             onClick={() => setSortByField(
               sortByField !== 'charge' && 'charge'
             )} />
           <Button.Checkbox
             checked={sortByField === 'draw'}
-            content="Draw"
+            content="Исп."
             onClick={() => setSortByField(
               sortByField !== 'draw' && 'draw'
             )} />
           <Button.Checkbox
             checked={sortByField === 'problems'}
-            content="Problems"
+            content="Проблемы"
             onClick={() => setSortByField(
               sortByField !== 'problems' && 'problems'
             )} />
@@ -197,22 +197,22 @@ export const PowerMonitorFocus = (props, context) => {
         <Table>
           <Table.Row header>
             <Table.Cell>
-              Area
+              Зона
             </Table.Cell>
             <Table.Cell collapsing>
-              Charge
+              Заряд
             </Table.Cell>
             <Table.Cell textAlign="right">
-              Draw
+              Исп.
             </Table.Cell>
-            <Table.Cell collapsing title="Equipment">
-              Eqp
+            <Table.Cell collapsing title="Оборудование">
+              Обр
             </Table.Cell>
-            <Table.Cell collapsing title="Lighting">
-              Lgt
+            <Table.Cell collapsing title="Освещение">
+              Свт
             </Table.Cell>
-            <Table.Cell collapsing title="Environment">
-              Env
+            <Table.Cell collapsing title="Системы">
+              Сис
             </Table.Cell>
           </Table.Row>
           {areas.map((area, i) => (

@@ -5,16 +5,16 @@ import { Box, Button, Flex, Icon, LabeledList, ProgressBar, Section } from "../c
 import { Window } from "../layouts";
 
 const stats = [
-  ['good', 'Alive'],
-  ['average', 'Unconscious'],
-  ['bad', 'DEAD'],
+  ['good', 'Жив'],
+  ['average', 'Без сознания'],
+  ['bad', 'СМЕРТЬ'],
 ];
 
 const damages = [
-  ['Resp', 'oxyLoss'],
-  ['Toxin', 'toxLoss'],
-  ['Brute', 'bruteLoss'],
-  ['Burn', 'fireLoss'],
+  ['Дых.', 'oxyLoss'],
+  ['Токсины', 'toxLoss'],
+  ['Поврежд.', 'bruteLoss'],
+  ['Ожоги', 'fireLoss'],
 ];
 
 const damageRange = {
@@ -62,11 +62,11 @@ const SleeperMain = (props, context) => {
       <SleeperOccupant />
       <SleeperDamage />
       <SleeperDialysisPump
-        title="Dialysis"
+        title="Диализ"
         active={dialysis}
         actToDo="togglefilter" />
       <SleeperDialysisPump
-        title="Stomach Pump"
+        title="Желуд. Помпа"
         active={stomachpumping}
         actToDo="togglepump" />
       <SleeperChemicals />
@@ -83,7 +83,7 @@ const SleeperOccupant = (props, context) => {
   } = data;
   return (
     <Section
-      title="Occupant"
+      title="Пациент"
       buttons={(
         <Fragment>
           <Box color="label" display="inline">
@@ -92,13 +92,13 @@ const SleeperOccupant = (props, context) => {
           <Button
             icon={auto_eject_dead ? "toggle-on" : "toggle-off"}
             selected={auto_eject_dead}
-            content={auto_eject_dead ? 'On' : 'Off'}
+            content={auto_eject_dead ? 'Вкл' : 'Выкл'}
             onClick={() =>
               act('auto_eject_dead_' + (auto_eject_dead ? 'off' : 'on'))}
           />
           <Button
             icon="user-slash"
-            content="Eject"
+            content="Извлечь"
             onClick={() => act('ejectify')}
           />
           <Button
@@ -108,10 +108,10 @@ const SleeperOccupant = (props, context) => {
         </Fragment>
       )}>
       <LabeledList>
-        <LabeledList.Item label="Name">
+        <LabeledList.Item label="Ф.И">
           {occupant.name}
         </LabeledList.Item>
-        <LabeledList.Item label="Health">
+        <LabeledList.Item label="Здоровье">
           <ProgressBar
             min={0}
             max={occupant.maxHealth}
@@ -124,10 +124,10 @@ const SleeperOccupant = (props, context) => {
             {round(occupant.health, 0)}
           </ProgressBar>
         </LabeledList.Item>
-        <LabeledList.Item label="Status" color={stats[occupant.stat][0]}>
+        <LabeledList.Item label="Состояние" color={stats[occupant.stat][0]}>
           {stats[occupant.stat][1]}
         </LabeledList.Item>
-        <LabeledList.Item label="Temperature">
+        <LabeledList.Item label="Температура">
           <ProgressBar
             min="0"
             max={occupant.maxTemp}
@@ -139,7 +139,7 @@ const SleeperOccupant = (props, context) => {
         </LabeledList.Item>
         {!!occupant.hasBlood && (
           <Fragment>
-            <LabeledList.Item label="Blood Level">
+            <LabeledList.Item label="Уровень крови">
               <ProgressBar
                 min="0"
                 max={occupant.bloodMax}
@@ -152,7 +152,7 @@ const SleeperOccupant = (props, context) => {
                 {occupant.bloodPercent}%, {occupant.bloodLevel}cl
               </ProgressBar>
             </LabeledList.Item>
-            <LabeledList.Item label="Pulse" verticalAlign="middle">
+            <LabeledList.Item label="Пульс" verticalAlign="middle">
               {occupant.pulse} BPM
             </LabeledList.Item>
           </Fragment>
@@ -169,7 +169,7 @@ const SleeperDamage = (props, context) => {
   } = data;
   return (
     <Section
-      title="Damage">
+      title="Урон">
       <LabeledList>
         {damages.map((d, i) => (
           <LabeledList.Item key={i} label={d[0]}>
@@ -210,20 +210,20 @@ const SleeperDialysisPump = (props, context) => {
             disabled={!isBeakerLoaded || beakerFreeSpace <= 0}
             selected={canDialysis}
             icon={canDialysis ? "toggle-on" : "toggle-off"}
-            content={canDialysis ? "Active" : "Inactive"}
+            content={canDialysis ? "Активен" : "Не активен"}
             onClick={() => act(actToDo)}
           />
           <Button
             disabled={!isBeakerLoaded}
             icon="eject"
-            content="Eject"
+            content="Извлечь"
             onClick={() => act('removebeaker')}
           />
         </Fragment>
       }>
       {isBeakerLoaded ? (
         <LabeledList>
-          <LabeledList.Item label="Remaining Space">
+          <LabeledList.Item label="Оставшееся место">
             <ProgressBar
               min="0"
               max={beakerMaxSpace}
@@ -239,7 +239,7 @@ const SleeperDialysisPump = (props, context) => {
         </LabeledList>
       ) : (
         <Box color="label">
-          No beaker loaded.
+          Мензурка не вставлена.
         </Box>
       )}
     </Section>
@@ -255,7 +255,7 @@ const SleeperChemicals = (props, context) => {
     amounts,
   } = data;
   return (
-    <Section title="Chemicals" flexGrow="1">
+    <Section title="Химикаты" flexGrow="1">
       {chemicals.map((chem, i) => {
         let barColor = '';
         let odWarning;
@@ -264,7 +264,7 @@ const SleeperChemicals = (props, context) => {
           odWarning = (
             <Box color="bad">
               <Icon name="exclamation-circle" />&nbsp;
-              Overdosing!
+              Передозировка!
             </Box>
           );
         } else if (chem.od_warning) {
@@ -272,7 +272,7 @@ const SleeperChemicals = (props, context) => {
           odWarning = (
             <Box color="average">
               <Icon name="exclamation-triangle" />&nbsp;
-              Close to overdosing
+              Близо к передозировке
             </Box>
           );
         }
@@ -332,12 +332,12 @@ const SleeperEmpty = (props, context) => {
             mb="0.5rem"
             size="5"
           /><br />
-          No occupant detected.
+          Пациент не обнаружен.
           {isBeakerLoaded && (
             <Box>
               <Button
                 icon="eject"
-                content="Remove Beaker"
+                content="Извлечь мензурка"
                 onClick={() => act('removebeaker')}
               />
             </Box>

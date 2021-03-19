@@ -23,10 +23,10 @@ export const TimeClock = (props, context) => {
       <Window.Content scrollable>
         <Section title="OOC">
           <NoticeBox>
-            OOC Note: PTO acquired is account-wide and shared across all characters.
-            Info listed below is not IC information.
+            Примечание OOC: Оплачиваемое время отпуска зарабатывается аккаунтом и действует на каждого персонажа.
+            Информация ниже не является IC.
           </NoticeBox>
-          <Section level={2} title={"Time Off Balance for " + user_name}>
+          <Section level={2} title={"Доступное время отгула для: " + user_name}>
             <LabeledList>
               {Object.keys(department_hours).map(key => (
                 <LabeledList.Item
@@ -39,20 +39,20 @@ export const TimeClock = (props, context) => {
                         ? "average"
                         : "bad"
                   }>
-                  {toFixed(department_hours[key], 1)} {department_hours[key] === 1 ? "hour" : "hours"}
+                  {toFixed(department_hours[key], 1)} ч.
                 </LabeledList.Item>
               ))}
             </LabeledList>
           </Section>
         </Section>
-        <Section title="Employee Info">
+        <Section title="Информация о сотруднике">
           <LabeledList>
-            <LabeledList.Item label="Employee ID">
+            <LabeledList.Item label="ID сотрудника">
               <Button
                 fluid
                 icon="user"
                 onClick={() => act("id")}>
-                {card || "Insert ID"}
+                {card || "Вставить ID"}
               </Button>
             </LabeledList.Item>
             {!!job_datum && (
@@ -75,13 +75,13 @@ export const TimeClock = (props, context) => {
                     </Flex>
                   </Box>
                 </LabeledList.Item>
-                <LabeledList.Item label="Departments">
+                <LabeledList.Item label="Отделы">
                   {job_datum.departments}
                 </LabeledList.Item>
-                <LabeledList.Item label="Pay Scale">
+                <LabeledList.Item label="Размер зарплаты">
                   {job_datum.economic_modifier}
                 </LabeledList.Item>
-                <LabeledList.Item label="PTO Elegibility">
+                <LabeledList.Item label="Допуск оплачиваемых отгулов">
                   {job_datum.timeoff_factor > 0 && (
                     <Box>
                       Earns PTO - {job_datum.pto_department}
@@ -101,18 +101,18 @@ export const TimeClock = (props, context) => {
           </LabeledList>
         </Section>
         {!!(allow_change_job && job_datum && job_datum.timeoff_factor !== 0 && assignment !== "Dismissed") && (
-          <Section title="Employment Actions">
+          <Section title="Действия сотрудника">
             {job_datum.timeoff_factor > 0 && (
               department_hours[job_datum.pto_department] > 0 && (
                 <Button
                   fluid
                   icon="exclamation-triangle"
                   onClick={() => act("switch-to-offduty")}>
-                  Go Off-Duty
+                  Взять отгул
                 </Button>
               ) || (
                 <Box color="bad">
-                  Warning: You do not have enough accrued time off to go off-duty.
+                  Внимание: Вы отработали недостаточно времени, чтобы уйти на отгул.
                 </Box>
               )
             ) || (
@@ -132,7 +132,7 @@ export const TimeClock = (props, context) => {
                 ));
               }) || (
                 <Box color="bad">
-                  No Open Positions - See Head Of Personnel
+                  Отсутствуют доступные позиции - Свяжитесь с Главой персонала.
                 </Box>
               )
             )}

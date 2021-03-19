@@ -20,31 +20,31 @@ export const pda_security = (props, context) => {
 
     return (
       <Box>
-        <Section level={2} title="General Data">
+        <Section level={2} title="Общие данные">
           {general && (
             <LabeledList>
-              <LabeledList.Item label="Name">
+              <LabeledList.Item label="Ф.И">
                 {general.name}
               </LabeledList.Item>
-              <LabeledList.Item label="Sex">
+              <LabeledList.Item label="Пол">
                 {general.sex}
               </LabeledList.Item>
-              <LabeledList.Item label="Species">
+              <LabeledList.Item label="Раса">
                 {general.species}
               </LabeledList.Item>
-              <LabeledList.Item label="Age">
+              <LabeledList.Item label="Возраст">
                 {general.age}
               </LabeledList.Item>
-              <LabeledList.Item label="Rank">
+              <LabeledList.Item label="Должность">
                 {general.rank}
               </LabeledList.Item>
-              <LabeledList.Item label="Fingerprint">
+              <LabeledList.Item label="Отпечаток">
                 {general.fingerprint}
               </LabeledList.Item>
-              <LabeledList.Item label="Physical Status">
+              <LabeledList.Item label="физ. состояние">
                 {general.p_stat}
               </LabeledList.Item>
-              <LabeledList.Item label="Mental Status">
+              <LabeledList.Item label="Псих. состояние">
                 {general.m_stat}
               </LabeledList.Item>
             </LabeledList>
@@ -54,10 +54,10 @@ export const pda_security = (props, context) => {
             </Box>
           )}
         </Section>
-        <Section level={2} title="Security Data">
+        <Section level={2} title="Данные безопасности">
           {security && (
             <LabeledList>
-              <LabeledList.Item label="Criminal Status">
+              <LabeledList.Item label="Статус">
                 {security.criminal}
               </LabeledList.Item>
               <LabeledList.Item label="Minor Crimes">

@@ -46,7 +46,7 @@ const VendingRow = (props, context) => {
           icon={product.price ? "credit-card" : "download"}
           iconSpin={actively_vending === product.name}
           disabled={product.amount === 0}
-          content={product.price ? ('Buy (' + product.price + '₮)') : ('Vend')}
+          content={product.price ? ('Купить (' + product.price + '$)') : ('Получить')}
           onClick={() => act('vend', {
             'vend': product.key,
           })} />
@@ -92,14 +92,14 @@ export const VendingProducts = (props, context) => {
   return (
     <Fragment>
       {!!chargesMoney && (
-        <Section title="User">
+        <Section title="Пользователь">
           {user && (
             <Box>
-              Welcome, <b>{user.name}</b>,
+              Здравствуйте, <b>{user.name}</b>,
               {' '}
-              <b>{user.job || 'Unemployed'}</b>!
+              <b>{user.job || 'Безработный'}</b>!
               <br />
-              Your balance is <b>{userMoney}₮ Thalers</b>.
+              Ваш баланс составляет <b>{userMoney}$ долларов</b>.
             </Box>
           ) || (
             <Box color="light-grey">
@@ -108,7 +108,7 @@ export const VendingProducts = (props, context) => {
           )}
         </Section>
       )}
-      <Section title="Products">
+      <Section title="Продукция">
         <Table>
           {myproducts.map(product => (
             <VendingRow
@@ -123,7 +123,7 @@ export const VendingProducts = (props, context) => {
           buttons={(
             <Button
               icon="eject"
-              content="Eject Coin"
+              content="Извлечь монету"
               onClick={() => act('remove_coin')} />
           )} />
       )}
@@ -138,13 +138,13 @@ export const VendingMaintenance = (props, context) => {
   } = data;
 
   return (
-    <Section title="Maintenance Panel">
+    <Section title="Панель обслуживания">
       <Section
         title="Speaker"
         buttons={(
           <Button
             icon={speaker ? "volume-up" : "volume-off"}
-            content={speaker ? 'Enabled' : 'Disabled'}
+            content={speaker ? 'Вкл' : 'Выкл'}
             selected={speaker}
             onClick={() => act('togglevoice')} />
         )} />

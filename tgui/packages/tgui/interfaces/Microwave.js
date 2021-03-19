@@ -20,21 +20,21 @@ export const Microwave = (props, context) => {
         {broken && (
           <Section>
             <Box color="bad">
-              Bzzzzttttt!!
+              Бббзззттт!!
             </Box>
           </Section>
         ) || operating && (
           <Section>
             <Box color="good">
-              Microwaving in progress!<br />
-              Please wait...!
+              Микроволновка работает!<br />
+              Подождите...!
             </Box>
           </Section>
         ) || dirty && (
           <Section>
             <Box color="bad">
-              This microwave is dirty!<br />
-              Please clean it before use!
+              Микроволновка грязная!<br />
+              Очистите ее перед использованием!
             </Box>
           </Section>
         ) || items.length && (
@@ -43,12 +43,12 @@ export const Microwave = (props, context) => {
               <Button
                 icon="radiation"
                 onClick={() => act("cook")}>
-                Microwave
+                Разогреть
               </Button>
               <Button
                 icon="eject"
                 onClick={() => act("dispose")}>
-                Eject
+                Извлечь
               </Button>
             </Fragment>
           }>

@@ -63,23 +63,23 @@ const NewscasterMainMenu = (props, context) => {
 
   return (
     <Fragment>
-      <Section title="Main Menu">
+      <Section title="Главное меню">
         {wanted_issue && (
           <Button fluid icon="eye" onClick={() => setScreen(NEWSCASTER_SCREEN_VIEWWANTED)} color="bad">
             Read WANTED Issue
           </Button>
         )}
         <Button fluid icon="eye" onClick={() => setScreen(NEWSCASTER_SCREEN_VIEWLIST)}>
-          View Feed Channels
+          Просмотреть каналы новостей
         </Button>
         <Button fluid icon="plus" onClick={() => setScreen(NEWSCASTER_SCREEN_NEWCHANNEL)}>
-          Create Feed Channel
+          Создать канал новостей
         </Button>
         <Button fluid icon="plus" onClick={() => setScreen(NEWSCASTER_SCREEN_NEWSTORY)}>
-          Create Feed Message
+          Написать сообщение в канал
         </Button>
         <Button fluid icon="print" onClick={() => setScreen(NEWSCASTER_SCREEN_PRINT)}>
-          Print Newspaper
+          Напечатать газету
         </Button>
       </Section>
       {!!securityCaster && (
@@ -107,29 +107,29 @@ const NewscasterNewChannel = (props, context) => {
   } = props;
 
   return (
-    <Section title="Creating new Feed Channel" buttons={
+    <Section title="Создание нового канала новостей" buttons={
       <Button
         icon="undo"
         onClick={() => setScreen(NEWSCASTER_SCREEN_MAIN)}>
-        Back
+        Назад
       </Button>
     }>
       <LabeledList>
-        <LabeledList.Item label="Channel Name">
+        <LabeledList.Item label="Название">
           <Input
             fluid
             value={decodeHtmlEntities(channel_name)}
             onInput={(e, val) => act("set_channel_name", { val: val })} />
         </LabeledList.Item>
-        <LabeledList.Item label="Channel Author" color="good">
+        <LabeledList.Item label="Автор" color="good">
           {user}
         </LabeledList.Item>
-        <LabeledList.Item label="Accept Public Feeds">
+        <LabeledList.Item label="Публичный канал">
           <Button
             icon={c_locked ? "lock" : "lock-open"}
             selected={!c_locked}
             onClick={() => act("set_channel_lock")}>
-            {c_locked ? "No" : "Yes"}
+            {c_locked ? "Нет" : "Да"}
           </Button>
         </LabeledList.Item>
       </LabeledList>
@@ -138,14 +138,14 @@ const NewscasterNewChannel = (props, context) => {
         color="good"
         icon="plus"
         onClick={() => act("submit_new_channel")}>
-        Submit Channel
+        Создать канал
       </Button>
       <Button
         fluid
         color="bad"
         icon="undo"
         onClick={() => setScreen(NEWSCASTER_SCREEN_MAIN)}>
-        Cancel
+        Отмена
       </Button>
     </Section>
   );
@@ -163,11 +163,11 @@ const NewscasterViewList = (props, context) => {
   } = props;
 
   return (
-    <Section title="Station Feed Channels" buttons={
+    <Section title="Каналы новостей станции" buttons={
       <Button
         icon="undo"
         onClick={() => setScreen(NEWSCASTER_SCREEN_MAIN)}>
-        Back
+        Назад
       </Button>
     }>
       {channels.map(channel => (
@@ -202,29 +202,29 @@ const NewscasterNewStory = (props, context) => {
   } = props;
 
   return (
-    <Section title="Creating new Feed Message..." buttons={
+    <Section title="Написание новости..." buttons={
       <Button
         icon="undo"
         onClick={() => setScreen(NEWSCASTER_SCREEN_MAIN)}>
-        Back
+        Назад
       </Button>
     }>
       <LabeledList>
-        <LabeledList.Item label="Receiving Channel">
+        <LabeledList.Item label="Канал">
           <Button
             fluid
             onClick={() => act("set_channel_receiving")}>
-            {channel_name || "Unset"}
+            {channel_name || "Нету"}
           </Button>
         </LabeledList.Item>
-        <LabeledList.Item label="Message Author" color="good">
+        <LabeledList.Item label="Автор текст" color="good">
           {user}
         </LabeledList.Item>
-        <LabeledList.Item label="Message Body" verticalAlign="top">
+        <LabeledList.Item label="Текст" verticalAlign="top">
           <Flex>
             <Flex.Item grow={1}>
               <Section width="99%" inline>
-                {msg || "(no message yet)"}
+                {msg || "(пусто)"}
               </Section>
             </Flex.Item>
             <Flex.Item>
@@ -232,17 +232,17 @@ const NewscasterNewStory = (props, context) => {
                 verticalAlign="top"
                 onClick={() => act("set_new_message")}
                 icon="pen"
-                tooltip="Edit Message"
+                tooltip="Изменить"
                 tooltipPosition="left" />
             </Flex.Item>
           </Flex>
         </LabeledList.Item>
-        <LabeledList.Item label="Attach Photo">
+        <LabeledList.Item label="Фото">
           <Button
             fluid
             icon="image"
             onClick={() => act("set_attachment")}>
-            {photo_data ? "Photo Attached" : "No Photo"}
+            {photo_data ? "Фото прикреплено" : "Нет фото"}
           </Button>
         </LabeledList.Item>
       </LabeledList>
@@ -251,14 +251,14 @@ const NewscasterNewStory = (props, context) => {
         color="good"
         icon="plus"
         onClick={() => act("submit_new_message")}>
-        Submit Message
+        Отправить новость
       </Button>
       <Button
         fluid
         color="bad"
         icon="undo"
         onClick={() => setScreen(NEWSCASTER_SCREEN_MAIN)}>
-        Cancel
+        Отмена
       </Button>
     </Section>
   );
@@ -279,19 +279,19 @@ const NewscasterPrint = (props, context) => {
   } = props;
 
   return (
-    <Section title="Printing" buttons={
+    <Section title="Печать" buttons={
       <Button
         icon="undo"
         onClick={() => setScreen(NEWSCASTER_SCREEN_MAIN)}>
-        Back
+        Назад
       </Button>
     }>
       <Box color="label" mb={1}>
-        Newscaster currently serves a total of {total_num} Feed channels, {active_num} of which are active,
-        and a total of {message_num} Feed stories.
+        В настоящее время новостник обслуживает {total_num} канала новостей, из которых активны {active_num},
+        новостей в общей сложности {message_num}.
       </Box>
       <LabeledList>
-        <LabeledList.Item label="Liquid Paper remaining">
+        <LabeledList.Item label="Чернил осталось">
           {paper_remaining * 100} cm&sup3;
         </LabeledList.Item>
       </LabeledList>
@@ -334,7 +334,7 @@ const NewscasterNewWanted = (props, context) => {
       <Button
         icon="undo"
         onClick={() => setScreen(NEWSCASTER_SCREEN_MAIN)}>
-        Back
+        Назад
       </Button>
     }>
       <LabeledList>
@@ -412,7 +412,7 @@ const NewscasterViewWanted = (props, context) => {
         <Button
           icon="undo"
           onClick={() => setScreen(NEWSCASTER_SCREEN_MAIN)}>
-          Back
+          Назад
         </Button>
       }>
         There are no wanted issues currently outstanding.
@@ -425,12 +425,12 @@ const NewscasterViewWanted = (props, context) => {
       <Button
         icon="undo"
         onClick={() => setScreen(NEWSCASTER_SCREEN_MAIN)}>
-        Back
+        Назад
       </Button>
     }>
       <Box color="white">
         <LabeledList>
-          <LabeledList.Item label="Submitted by" color="good">
+          <LabeledList.Item label="Отправлено" color="good">
             {decodeHtmlEntities(wanted_issue.author)}
           </LabeledList.Item>
           <LabeledList.Divider />
@@ -464,11 +464,11 @@ const NewscasterViewSelected = (props, context) => {
 
   if (!viewing_channel) {
     return (
-      <Section title="Channel Not Found" buttons={
+      <Section title="Новостных каналов нет" buttons={
         <Button
           icon="undo"
           onClick={() => setScreen(NEWSCASTER_SCREEN_VIEWLIST)}>
-          Back
+          Назад
         </Button>
       }>
         The channel you were looking for no longer exists.
@@ -490,7 +490,7 @@ const NewscasterViewSelected = (props, context) => {
         <Button
           icon="undo"
           onClick={() => setScreen(NEWSCASTER_SCREEN_VIEWLIST)}>
-          Back
+          Назад
         </Button>
       </Fragment>
     }>

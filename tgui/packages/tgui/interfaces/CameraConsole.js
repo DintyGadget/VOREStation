@@ -121,13 +121,13 @@ export const CameraConsoleSearch = (props, context) => {
       <Input
         fluid
         mb={1}
-        placeholder="Search for a camera"
+        placeholder="Поиск по камерам"
         onInput={(e, value) => setSearchText(value)} />
       <Dropdown
         mb={1}
         width="177px"
         options={allNetworks}
-        placeholder="No Filter"
+        placeholder="Нет фильтра"
         onSelected={value => setNetworkFilter(value)} />
       <Section>
         {cameras.map(camera => (

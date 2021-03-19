@@ -25,18 +25,18 @@ export const Canister = (props, context) => {
       resizable>
       <Window.Content>
         <Section
-          title="Canister"
+          title="Канистра"
           buttons={(
             <Button
               icon="pencil-alt"
               disabled={!can_relabel}
-              content="Relabel"
+              content="Этикетка"
               onClick={() => act('relabel')} />
           )}>
           <LabeledControls>
             <LabeledControls.Item
               minWidth="66px"
-              label="Tank Pressure">
+              label="Давление в емкости">
               <AnimatedNumber
                 value={pressure}
                 format={value => {
@@ -46,7 +46,7 @@ export const Canister = (props, context) => {
                   return formatSiUnit(value * 1000, 1, 'Pa');
                 }} />
             </LabeledControls.Item>
-            <LabeledControls.Item label="Regulator">
+            <LabeledControls.Item label="Регулятор">
               <Box
                 position="relative"
                 left="-8px">
@@ -84,7 +84,7 @@ export const Canister = (props, context) => {
                   })} />
               </Box>
             </LabeledControls.Item>
-            <LabeledControls.Item label="Valve">
+            <LabeledControls.Item label="Кран">
               <Button
                 my={0.5}
                 width="50px"
@@ -93,12 +93,12 @@ export const Canister = (props, context) => {
                 color={valveOpen
                   ? (holding ? 'caution' : 'danger')
                   : null}
-                content={valveOpen ? 'Open' : 'Closed'}
+                content={valveOpen ? 'Открыт' : 'Закрыт'}
                 onClick={() => act('valve')} />
             </LabeledControls.Item>
             <LabeledControls.Item
               mr={1}
-              label="Port">
+              label="Порт">
               <Box position="relative">
                 <Icon
                   size={1.25}
@@ -106,35 +106,35 @@ export const Canister = (props, context) => {
                   color={connected? 'good' : 'bad'} />
                 <Tooltip
                   content={connected
-                    ? 'Connected'
-                    : 'Disconnected'}
+                    ? 'Подключен'
+                    : 'Отключен'}
                   position="top" />
               </Box>
             </LabeledControls.Item>
           </LabeledControls>
         </Section>
         <Section
-          title="Holding Tank"
+          title="Емкость"
           buttons={!!holding && (
             <Button
               icon="eject"
               color={valveOpen && 'danger'}
-              content="Eject"
+              content="Извлечь"
               onClick={() => act('eject')} />
           )}>
           {!!holding && (
             <LabeledList>
-              <LabeledList.Item label="Label">
+              <LabeledList.Item label="Этикетка">
                 {holding.name}
               </LabeledList.Item>
-              <LabeledList.Item label="Pressure">
+              <LabeledList.Item label="Давление">
                 <AnimatedNumber value={holding.pressure} /> kPa
               </LabeledList.Item>
             </LabeledList>
           )}
           {!holding && (
             <Box color="average">
-              No Holding Tank
+              Емкость не обнаружена
             </Box>
           )}
         </Section>

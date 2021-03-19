@@ -13,11 +13,11 @@ export const BeakerContents = props => {
     <Box>
       {!beakerLoaded && (
         <Box color="label">
-          No beaker loaded.
+          Стакан не загружен.
         </Box>
       ) || beakerContents.length === 0 && (
         <Box color="label">
-          Beaker is empty.
+          Стакан пуст.
         </Box>
       )}
       {beakerContents.map((chemical, i) => (

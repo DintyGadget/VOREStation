@@ -26,7 +26,7 @@ export const StationAlertConsoleContent = (props, context) => {
       <ul>
         {category.alarms.length === 0 && (
           <li className="color-good">
-            Systems Nominal
+            Системы в норме
           </li>
         )}
         {category.alarms.map(alarm => {
@@ -61,7 +61,7 @@ export const StationAlertConsoleContent = (props, context) => {
             <li key={alarm.name}>
               {alarm.name}
               {alarm.origin_lost
-                ? <Box color="bad">Alarm Origin Lost.</Box>
+                ? <Box color="bad">Источник сигнала тревоги утерян.</Box>
                 : ''}
               {footer}
             </li>

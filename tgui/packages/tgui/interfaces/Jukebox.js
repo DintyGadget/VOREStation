@@ -20,51 +20,51 @@ export const Jukebox = (props, context) => {
   return (
     <Window width={450} height={600} resizable>
       <Window.Content scrollable>
-        <Section title="Currently Playing">
+        <Section title="Сейчас играет">
           <LabeledList>
-            <LabeledList.Item label="Title">
+            <LabeledList.Item label="Название">
               {playing && current_track && (
                 <Box>
-                  {current_track.title} by {current_track.artist || "Unkown"}
+                  {current_track.title} by {current_track.artist || "Неизвест."}
                 </Box>
               ) || (
                 <Box>
-                  Stopped
+                  Остановлено
                 </Box>
               )}
             </LabeledList.Item>
-            <LabeledList.Item label="Controls">
+            <LabeledList.Item label="Управление">
               <Button
                 icon="play"
                 disabled={playing}
                 onClick={() => act("play")}>
-                Play
+                Пуск
               </Button>
               <Button
                 icon="stop"
                 disabled={!playing}
                 onClick={() => act("stop")}>
-                Stop
+                Стоп
               </Button>
             </LabeledList.Item>
-            <LabeledList.Item label="Loop Mode">
+            <LabeledList.Item label="Режим">
               <Button
                 icon="play"
                 onClick={() => act("loopmode", { loopmode: 1 })}
                 selected={loop_mode === 1}>
-                Next
+                След
               </Button>
               <Button
                 icon="random"
                 onClick={() => act("loopmode", { loopmode: 2 })}
                 selected={loop_mode === 2}>
-                Shuffle
+                Перемешать
               </Button>
               <Button
                 icon="redo"
                 onClick={() => act("loopmode", { loopmode: 3 })}
                 selected={loop_mode === 3}>
-                Repeat
+                Повтор
               </Button>
               <Button
                 icon="step-forward"
@@ -73,13 +73,13 @@ export const Jukebox = (props, context) => {
                 Once
               </Button>
             </LabeledList.Item>
-            <LabeledList.Item label="Progress">
+            <LabeledList.Item label="Прогресс">
               <ProgressBar
                 value={percent}
                 maxValue={1}
                 color="good" />
             </LabeledList.Item>
-            <LabeledList.Item label="Volume">
+            <LabeledList.Item label="Громкость">
               <Slider
                 minValue={0}
                 step={0.01}
@@ -95,7 +95,7 @@ export const Jukebox = (props, context) => {
             </LabeledList.Item>
           </LabeledList>
         </Section>
-        <Section title="Available Tracks">
+        <Section title="Доступные треки">
           {tracks.length && sortBy(a => a.title)(tracks).map(track => (
             <Button
               fluid
@@ -107,7 +107,7 @@ export const Jukebox = (props, context) => {
             </Button>
           )) || (
             <Box color="bad">
-              Error: No songs loaded.
+              ОШИБКА: Музыка не загружена.
             </Box>
           )}
         </Section>
