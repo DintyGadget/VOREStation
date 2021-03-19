@@ -46,11 +46,11 @@
 	if(colour != "#FFFFFF" && shadeColour != "#000000")
 		colour = "#FFFFFF"
 		shadeColour = "#000000"
-		to_chat(user, "You will now draw in white and black with this crayon.")
+		to_chat(user, "Теперь вы нарисуете этим мелком белый и черный цвета.")
 	else
 		colour = "#000000"
 		shadeColour = "#FFFFFF"
-		to_chat(user, "You will now draw in black and white with this crayon.")
+		to_chat(user, "Теперь вы будете рисовать этим мелком в черно-белом цвете.")
 	return
 
 /obj/item/weapon/pen/crayon/rainbow
@@ -61,8 +61,8 @@
 	uses = 0
 
 /obj/item/weapon/pen/crayon/rainbow/attack_self(mob/living/user as mob)
-	colour = input(user, "Please select the main colour.", "Crayon colour") as color
-	shadeColour = input(user, "Please select the shade colour.", "Crayon colour") as color
+	colour = input(user, "Пожалуйста, выберите основной цвет.", "Crayon colour") as color
+	shadeColour = input(user, "Пожалуйста, выберите оттенок цвета.", "Crayon colour") as color
 	return
 
 /obj/item/weapon/pen/crayon/afterattack(atom/target, mob/user as mob, proximity)

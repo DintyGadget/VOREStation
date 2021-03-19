@@ -2,7 +2,7 @@
 
 /obj/item/bodybag
 	name = "body bag"
-	desc = "A folded bag designed for the storage and transportation of cadavers."
+	desc = "Сложенная сумка, предназначенная для хранения и транспортировки трупов."
 	icon = 'icons/obj/closets/bodybag.dmi'
 	icon_state = "bodybag_folded"
 	w_class = ITEMSIZE_SMALL
@@ -15,7 +15,7 @@
 
 /obj/item/weapon/storage/box/bodybags
 	name = "body bags"
-	desc = "This box contains body bags."
+	desc = "В этой коробке находятся мешки для тел."
 	icon_state = "bodybags"
 	New()
 		..()
@@ -30,7 +30,7 @@
 
 /obj/structure/closet/body_bag
 	name = "body bag"
-	desc = "A plastic bag designed for the storage and transportation of cadavers."
+	desc = "Пластиковый пакет, предназначенный для хранения и транспортировки трупов."
 	icon = 'icons/obj/closets/bodybag.dmi'
 	closet_appearance = null
 	open_sound = 'sound/items/zip.ogg'
@@ -42,7 +42,7 @@
 
 /obj/structure/closet/body_bag/attackby(var/obj/item/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/weapon/pen))
-		var/t = input(user, "What would you like the label to be?", text("[]", src.name), null)  as text
+		var/t = input(user, "Каким должен быть лейбл?", text("[]", src.name), null)  as text
 		if (user.get_active_hand() != W)
 			return
 		if (!in_range(src, user) && src.loc != user)
@@ -57,7 +57,7 @@
 	//..() //Doesn't need to run the parent. Since when can fucking bodybags be welded shut? -Agouri
 		return
 	else if(W.is_wirecutter())
-		to_chat(user, "You cut the tag off the bodybag")
+		to_chat(user, "Вы отрезаете бирку от сумки")
 		src.name = "body bag"
 		src.overlays.Cut()
 		return
@@ -78,7 +78,7 @@
 		if(!ishuman(usr))	return 0
 		if(opened)	return 0
 		if(contents.len)	return 0
-		visible_message("[usr] folds up the [src.name]")
+		visible_message("[usr] сворачивает [src.name]")
 		var/folded = new item_path(get_turf(src))
 		spawn(0)
 			qdel(src)
@@ -116,8 +116,7 @@
 
 /obj/item/bodybag/cryobag
 	name = "stasis bag"
-	desc = "A non-reusable plastic bag designed to slow down bodily functions such as circulation and breathing, \
-	especially useful if short on time or in a hostile enviroment."
+	desc = "Одноразовый пластиковый пакет, предназначенный для замедления функций организма, таких как кровообращение и дыхание, особенно полезен, если мало времени или во враждебной среде."
 	icon = 'icons/obj/closets/cryobag.dmi'
 	icon_state = "bodybag_folded"
 	item_state = "bodybag_cryo_folded"
@@ -134,8 +133,7 @@
 
 /obj/structure/closet/body_bag/cryobag
 	name = "stasis bag"
-	desc = "A non-reusable plastic bag designed to slow down bodily functions such as circulation and breathing, \
-	especially useful if short on time or in a hostile enviroment."
+	desc = "Одноразовый пластиковый пакет, предназначенный для замедления функций организма, таких как кровообращение и дыхание, особенно полезен, если мало времени или во враждебной среде."
 	icon = 'icons/obj/closets/cryobag.dmi'
 	item_path = /obj/item/bodybag/cryobag
 	store_misc = 0
@@ -157,9 +155,9 @@
 
 /obj/structure/closet/body_bag/cryobag/attack_hand(mob/living/user)
 	if(used)
-		var/confirm = alert(user, "Are you sure you want to open \the [src]? \
-		\The [src] will expire upon opening it.", "Confirm Opening", "No", "Yes")
-		if(confirm == "Yes")
+		var/confirm = alert(user, "Вы уверены, что хотите открыть [src]? \
+		[src] истечет после его открытия.", "Confirm Opening", "Нет", "Да")
+		if(confirm == "Да")
 			..() // Will call `toggle()` and open the bag.
 	else
 		..()
@@ -226,9 +224,9 @@
 /obj/structure/closet/body_bag/cryobag/examine(mob/user)
 	. = ..()
 	if(Adjacent(user)) //The bag's rather thick and opaque from a distance.
-		. += "<span class='info'>You peer into \the [src].</span>"
+		. += "<span class='info'>Вы всматриваетесь в [src].</span>"
 		if(syringe)
-			. += "<span class='info'>It has a syringe added to it.</span>"
+			. += "<span class='info'>К нему добавлен шприц.</span>"
 		for(var/mob/living/L in contents)
 			. += L.examine(user)
 
@@ -243,10 +241,10 @@
 
 		else if(istype(W,/obj/item/weapon/reagent_containers/syringe))
 			if(syringe)
-				to_chat(user,"<span class='warning'>\The [src] already has an injector! Remove it first.</span>")
+				to_chat(user,"<span class='warning'>У [src] уже есть инжектор! Сначала удалите это.</span>")
 			else
 				var/obj/item/weapon/reagent_containers/syringe/syringe = W
-				to_chat(user,"<span class='info'>You insert \the [syringe] into \the [src], and it locks into place.</span>")
+				to_chat(user,"<span class='info'>Вы вставляете [syringe] в [src], и он фиксируется на месте.</span>")
 				user.unEquip(syringe)
 				src.syringe = syringe
 				syringe.loc = null
@@ -257,10 +255,10 @@
 		else if(W.is_screwdriver())
 			if(syringe)
 				if(used)
-					to_chat(user,"<span class='warning'>The injector cannot be removed now that the stasis bag has been used!</span>")
+					to_chat(user,"<span class='warning'>Инжектор не может быть удален после использования стазисного мешка!</span>")
 				else
 					syringe.forceMove(src.loc)
-					to_chat(user,"<span class='info'>You pry \the [syringe] out of \the [src].</span>")
+					to_chat(user,"<span class='info'>Вы вынимаете [syringe] из [src].</span>")
 					syringe = null
 
 		else
@@ -268,6 +266,6 @@
 
 /obj/item/usedcryobag
 	name = "used stasis bag"
-	desc = "Pretty useless now.."
+	desc = "Довольно бесполезно сейчас .."
 	icon_state = "bodybag_used"
 	icon = 'icons/obj/closets/cryobag.dmi'

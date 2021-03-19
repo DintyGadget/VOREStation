@@ -2,7 +2,7 @@
 
 /obj/item/frame/apc
 	name = "\improper APC frame"
-	desc = "Used for repairing or building APCs"
+	desc = "Используется для ремонта или сборки APC"
 	icon = 'icons/obj/apc_repair.dmi'
 	icon_state = "apc_frame"
 	refund_amt = 2
@@ -16,22 +16,22 @@
 	var/turf/loc = get_turf(user)
 	var/area/A = loc.loc
 	if (!istype(loc, /turf/simulated/floor))
-		to_chat(user, "<span class='warning'>APC cannot be placed on this spot.</span>")
+		to_chat(user, "<span class='warning'>APC нельзя ставить на это место.</span>")
 		return
 	if (A.requires_power == 0 || istype(A, /area/space))
-		to_chat(user, "<span class='warning'>APC cannot be placed in this area.</span>")
+		to_chat(user, "<span class='warning'>APC не может быть размещен в этой области.</span>")
 		return
 	if (A.get_apc())
-		to_chat(user, "<span class='warning'>This area already has an APC.</span>")
+		to_chat(user, "<span class='warning'>В этом районе уже есть APC.</span>")
 		return //only one APC per area
 	for(var/obj/machinery/power/terminal/T in loc)
 		if (T.master)
-			to_chat(user, "<span class='warning'>There is another network terminal here.</span>")
+			to_chat(user, "<span class='warning'>Здесь есть еще один сетевой терминал.</span>")
 			return
 		else
 			var/obj/item/stack/cable_coil/C = new /obj/item/stack/cable_coil(loc)
 			C.amount = 10
-			to_chat(user, "You cut the cables and disassemble the unused power terminal.")
+			to_chat(user, "Вы перерезаете кабели и разбираете неиспользуемую клемму питания.")
 			qdel(T)
 	new /obj/machinery/power/apc(loc, ndir, 1)
 	qdel(src)

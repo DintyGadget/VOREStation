@@ -1,9 +1,9 @@
 /obj/item/blueprints
 	name = "station blueprints"
-	desc = "Blueprints of the station. There is a \"Classified\" stamp and several coffee stains on it."
+	desc = "Чертежи станции. На ней марка \"секретно\" и несколько кофейных пятен."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "blueprints"
-	attack_verb = list("attacked", "bapped", "hit")
+	attack_verb = list("атакует", "ударяет", "бьет")
 	preserve_item = 1
 	var/const/AREA_ERRNONE = 0
 	var/const/AREA_STATION = 1
@@ -48,7 +48,7 @@
 
 /obj/item/blueprints/attack_self(mob/M as mob)
 	if (!istype(M,/mob/living/carbon/human))
-		to_chat(M, "This stack of blue paper means nothing to you.") //monkeys cannot into projecting
+		to_chat(M, "Эта стопка синей бумаги для вас ничего не значит.") //monkeys cannot into projecting
 		return
 	interact()
 	return
@@ -62,19 +62,19 @@
 	switch(href_list["action"])
 		if ("create_area")
 			if (!(get_area_type() & can_create_areas_in))
-				to_chat(usr, "<span class='danger'>You can't make a new area here.</span>")
+				to_chat(usr, "<span class='danger'>Вы не можете создать здесь новую область.</span>")
 				interact()
 				return
 			create_area()
 		if ("edit_area")
 			if (!(get_area_type() & can_rename_areas_in))
-				to_chat(usr, "<span class='danger'>You can't rename this area.</span>")
+				to_chat(usr, "<span class='danger'>Вы не можете переименовать эту область.</span>")
 				interact()
 				return
 			edit_area()
 		if ("expand_area")
 			if (!(get_area_type() & can_expand_areas_in))
-				to_chat(usr, "<span class='danger'>You can't expand this area.</span>")
+				to_chat(usr, "<span class='danger'>Вы не можете расширить эту область.</span>")
 				interact()
 				return
 			expand_area()

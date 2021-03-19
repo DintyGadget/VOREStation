@@ -6,7 +6,7 @@
 
 /obj/item/glass_jar
 	name = "glass jar"
-	desc = "A small empty jar."
+	desc = "Маленькая пустая баночка."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "jar"
 	w_class = ITEMSIZE_SMALL

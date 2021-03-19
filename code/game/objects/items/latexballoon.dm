@@ -1,6 +1,6 @@
 /obj/item/latexballon
 	name = "latex glove"
-	desc = "A latex glove, usually used as a balloon."
+	desc = "Латексная перчатка, обычно используемая как воздушный шар."
 	icon_state = "latexballon"
 	item_icons = list(
 			slot_l_hand_str = 'icons/mob/items/lefthand_gloves.dmi',

@@ -3,13 +3,13 @@
 //Illicit drugs~
 /obj/item/weapon/storage/pill_bottle/happy
 	name = "bottle of Happy pills"
-	desc = "Highly illegal drug. When you want to see the rainbow."
+	desc = "Совершенно нелегальный препарат. Когда хочешь увидеть радугу."
 	wrapper_color = COLOR_PINK
 	starts_with = list(/obj/item/weapon/reagent_containers/pill/happy = 7)
 
 /obj/item/weapon/storage/pill_bottle/zoom
 	name = "bottle of Zoom pills"
-	desc = "Highly illegal drug. Trade brain for speed."
+	desc = "Совершенно нелегальный препарат. Обменяйте мозг на скорость."
 	wrapper_color = COLOR_BLUE
 	starts_with = list(/obj/item/weapon/reagent_containers/pill/zoom = 7)
 
@@ -37,5 +37,5 @@
 	for(var/datum/reagent/R in reagents.reagent_list)
 		names += R.name
 
-	desc = "Contains [english_list(names)]."
+	desc = "Содержит [english_list(names)]."
 	update_icon()

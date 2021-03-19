@@ -1,6 +1,6 @@
 /obj/item/stolenpackage
 	name = "stolen package"
-	desc = "What's in the box?"
+	desc = "Что в коробке?"
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "deliverycrate5"
 	item_state = "table_parts"
@@ -85,12 +85,12 @@
 						/obj/random/contraband,
 						/obj/random/weapon/guarenteed)
 		new loot(usr.loc)
-		to_chat(user, "You unwrap the package.")
+		to_chat(user, "Вы разворачиваете пакет.")
 		qdel(src)
 
 /obj/item/weapon/storage/fancy/cigar/havana // Putting this here 'cuz fuck it. -Spades
 	name = "\improper Havana cigar case"
-	desc = "Save these for the fancy-pantses at the next CentCom black tie reception. You can't blow the smoke from such majestic stogies in just anyone's face."
+	desc = "Приберегите их для модных брюк на следующем приеме от Центкома. Вы не можете выпустить дым от таких величественных столов никому в лицо."
 	icon_state = "cigarcase"
 	icon = 'icons/obj/cigarettes.dmi'
 	w_class = ITEMSIZE_TINY
