@@ -7,26 +7,26 @@
 //Transform into a monkey.
 /mob/proc/changeling_lesser_form()
 	set category = "Changeling"
-	set name = "Lesser Form (1)"
+	set name = "Малая форма (1)"
 
 	var/datum/changeling/changeling = changeling_power(1,0,0)
 	if(!changeling)	return
 
 	if(src.has_brain_worms())
-		to_chat(src, "<span class='warning'>We cannot perform this ability at the present time!</span>")
+		to_chat(src, "<span class='warning'>В настоящее время мы не можем использовать эту способность!</span>")
 		return
 
 	var/mob/living/carbon/human/H = src
 
 	if(!istype(H) || !H.species.primitive_form)
-		to_chat(src, "<span class='warning'>We cannot perform this ability in this form!</span>")
+		to_chat(src, "<span class='warning'>Мы не можем использовать эту способность в этой форме!</span>")
 		return
 
 	changeling.chem_charges--
 	H.remove_changeling_powers()
-	H.visible_message("<span class='warning'>[H] transforms!</span>")
+	H.visible_message("<span class='warning'>[H] трансформируется!</span>")
 	changeling.geneticdamage = 30
-	to_chat(H, "<span class='warning'>Our genes cry out!</span>")
+	to_chat(H, "<span class='warning'>Наши гены кричат!</span>")
 	var/list/implants = list() //Try to preserve implants.
 	for(var/obj/item/weapon/implant/W in H)
 		implants += W
@@ -37,7 +37,7 @@
 //Transform into a human
 /mob/proc/changeling_lesser_transform()
 	set category = "Changeling"
-	set name = "Transform (1)"
+	set name = "Трансформация (1)"
 
 	var/datum/changeling/changeling = changeling_power(1,1,0)
 	if(!changeling)	return
@@ -46,7 +46,7 @@
 	for(var/datum/dna/DNA in changeling.absorbed_dna)
 		names += "[DNA.real_name]"
 
-	var/S = input("Select the target DNA: ", "Target DNA", null) as null|anything in names
+	var/S = input("Выберите целевую ДНК: ", "Target DNA", null) as null|anything in names
 	if(!S)	return
 
 	var/datum/dna/chosen_dna = changeling.GetDNA(S)
@@ -57,7 +57,7 @@
 
 	changeling.chem_charges--
 	C.remove_changeling_powers()
-	C.visible_message("<span class='warning'>[C] transforms!</span>")
+	C.visible_message("<span class='warning'>[C] трансформируется!</span>")
 	C.dna = chosen_dna.Clone()
 
 	var/list/implants = list()

@@ -2,8 +2,8 @@
 	name = "Delayed Toxic Sting"
 	desc = "We silently sting a biological, causing a significant amount of toxins after a few minutes, allowing us to not \
 	implicate ourselves."
-	helptext = "The toxin takes effect in about two minutes.  Multiple applications within the two minutes will not cause increased toxicity."
-	enhancedtext = "The toxic damage is doubled."
+	helptext = "Токсин начинает действовать примерно через две минуты. Многократное нанесение в течение двух минут не вызовет повышенной токсичности."
+	enhancedtext = "Токсический урон увеличивается вдвое."
 	ability_icon_state = "ling_sting_del_toxin"
 	genomecost = 1
 	verbpath = /mob/proc/changeling_delayed_toxic_sting
@@ -22,7 +22,7 @@
 
 /mob/proc/changeling_delayed_toxic_sting()
 	set category = "Changeling"
-	set name = "Delayed Toxic Sting (20)"
+	set name = "Отложенный ядовитый укус (20)"
 	set desc = "Injects the target with a toxin that will take effect after a few minutes."
 
 	var/mob/living/carbon/T = changeling_sting(20,/mob/proc/changeling_delayed_toxic_sting)
@@ -32,7 +32,7 @@
 	var/type_to_give = /datum/modifier/delayed_toxin_sting
 	if(src.mind.changeling.recursive_enhancement)
 		type_to_give = /datum/modifier/delayed_toxin_sting/strong
-		to_chat(src, "<span class='notice'>Our toxin will be extra potent, when it strikes.</span>")
+		to_chat(src, "<span class='notice'>Наш токсин будет очень мощным, когда он нанесет удар.</span>")
 
 	T.add_modifier(type_to_give, 2 MINUTES)
 

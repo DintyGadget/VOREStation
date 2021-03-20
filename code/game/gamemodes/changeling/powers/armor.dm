@@ -15,15 +15,15 @@
 
 /datum/power/changeling/armor
 	name = "Chitinous Spacearmor"
-	desc = "We turn our skin into tough chitin to protect us from damage and space exposure."
-	helptext = "To remove the armor, use the ability again."
+	desc = "Мы превращаем нашу кожу в прочный хитин, чтобы защитить себя от повреждений и воздействия космоса."
+	helptext = "Чтобы снять броню, используйте способность еще раз."
 	ability_icon_state = "ling_armor"
 	genomecost = 3
 	verbpath = /mob/proc/changeling_spacearmor
 
 /mob/proc/changeling_spacearmor()
 	set category = "Changeling"
-	set name = "Organic Spacearmor (20)"
+	set name = "Органическая космическая броня (20)"
 
 	if(changeling_generic_armor(/obj/item/clothing/suit/space/changeling/armored,/obj/item/clothing/head/helmet/space/changeling/armored,/obj/item/clothing/shoes/magboots/changeling/armored, 20))
 		return 1
@@ -34,7 +34,7 @@
 /obj/item/clothing/suit/space/changeling
 	name = "flesh mass"
 	icon_state = "lingspacesuit"
-	desc = "A huge, bulky mass of pressure and temperature-resistant organic tissue, evolved to facilitate space travel."
+	desc = "Огромная, громоздкая масса устойчивой к давлению и температуре органической ткани, созданной для облегчения космических путешествий."
 	flags = 0	//Not THICKMATERIAL because it's organic tissue, so if somebody tries to inject something into it,
 				//it still ends up in your blood. (also balance but muh fluff)
 	allowed = list(/obj/item/device/flashlight, /obj/item/weapon/tank/emergency/oxygen, /obj/item/weapon/tank/oxygen)
@@ -44,9 +44,9 @@
 /obj/item/clothing/suit/space/changeling/New()
 	..()
 	if(ismob(loc))
-		loc.visible_message("<span class='warning'>[loc.name]\'s flesh rapidly inflates, forming a bloated mass around their body!</span>",
-		"<span class='warning'>We inflate our flesh, creating a spaceproof suit!</span>",
-		"<span class='italics'>You hear organic matter ripping and tearing!</span>")
+		loc.visible_message("<span class='warning'>Плоть [loc.name] быстро раздувается, образуя вздутие вокруг их тела!</span>",
+		"<span class='warning'>Мы надуваем нашу плоть, создавая космический костюм!</span>",
+		"<span class='italics'>Вы слышите, как рвется органическое вещество!</span>")
 
 /obj/item/clothing/suit/space/changeling/dropped()
 	qdel(src)
@@ -54,7 +54,7 @@
 /obj/item/clothing/head/helmet/space/changeling
 	name = "flesh mass"
 	icon_state = "lingspacehelmet"
-	desc = "A covering of pressure and temperature-resistant organic tissue with a glass-like chitin front."
+	desc = "Покрытие из устойчивой к давлению и температуре органической ткани со стекловидной хитиновой лицевой стороной."
 	flags = BLOCKHAIR //Again, no THICKMATERIAL.
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 	body_parts_covered = HEAD|FACE|EYES
@@ -64,7 +64,7 @@
 	qdel(src)
 
 /obj/item/clothing/shoes/magboots/changeling
-	desc = "A suction cupped mass of flesh, shaped like a foot."
+	desc = "Чашечная масса из плоти в форме ступни."
 	name = "fleshy grippers"
 	icon_state = "lingspacesuit"
 	action_button_name = "Toggle Grippers"
@@ -81,13 +81,13 @@
 		magpulse = 0
 		set_slowdown()
 		force = 3
-		to_chat(user, "We release our grip on the floor.")
+		to_chat(user, "Освобождаем хватку от пола.")
 	else
 		item_flags |= NOSLIP
 		magpulse = 1
 		set_slowdown()
 		force = 5
-		to_chat(user, "We cling to the terrain below us.")
+		to_chat(user, "Мы цепляемся за местность под нами.")
 
 /obj/item/clothing/shoes/magboots/changeling/dropped()
 	..()
@@ -97,7 +97,7 @@
 
 /obj/item/clothing/suit/space/changeling/armored
 	name = "chitinous mass"
-	desc = "A tough, hard covering of black chitin."
+	desc = "Плотное, твердое покрытие из черного хитина."
 	icon_state = "lingarmor"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	armor = list(melee = 75, bullet = 60, laser = 60, energy = 60, bomb = 60, bio = 0, rad = 0) //It costs 3 points, so it should be very protective.
@@ -108,35 +108,34 @@
 /obj/item/clothing/suit/space/changeling/armored/New()
 	..()
 	if(ismob(loc))
-		loc.visible_message("<span class='warning'>[loc.name]\'s flesh turns black, quickly transforming into a hard, chitinous mass!</span>",
-		"<span class='warning'>We harden our flesh, creating a suit of armor!</span>",
-		"<span class='italics'>You hear organic matter ripping and tearing!</span>")
+		loc.visible_message("<span class='warning'>Плоть [loc.name] становится черной, быстро превращаясь в твердую хитиновую массу!</span>",
+		"<span class='warning'>Мы закаляем нашу плоть, создавая доспехи!</span>",
+		"<span class='italics'>Вы слышите, как рвется органическое вещество!</span>")
 
 /obj/item/clothing/head/helmet/space/changeling/armored
 	name = "chitinous mass"
-	desc = "A tough, hard covering of black chitin with transparent chitin in front."
+	desc = "Плотное, твердое покрытие из черного хитина с прозрачным хитином спереди."
 	icon_state = "lingarmorhelmet"
 	armor = list(melee = 75, bullet = 60, laser = 60,energy = 60, bomb = 60, bio = 0, rad = 0)
 	siemens_coefficient = 0.3
 	max_heat_protection_temperature = FIRE_HELMET_MAX_HEAT_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/shoes/magboots/changeling/armored
-	desc = "A tough, hard mass of chitin, with long talons for digging into terrain."
+	desc = "Твердая, твердая масса из хитина с длинными когтями для копания в местности."
 	name = "chitinous talons"
 	icon_state = "lingarmor"
 	action_button_name = "Toggle Talons"
 
 /obj/item/clothing/gloves/combat/changeling //Combined insulated/fireproof gloves
 	name = "chitinous gauntlets"
-	desc = "Very resilient gauntlets made out of black chitin.  It looks very durable, and can probably resist electrical shock in addition to the elements."
+	desc = "Очень прочные рукавицы из черного хитина. Он выглядит очень прочным и, вероятно, может противостоять электрическому удару в дополнение к элементам."
 	icon_state = "lingarmorgloves"
 	armor = list(melee = 75, bullet = 60, laser = 60,energy = 60, bomb = 60, bio = 0, rad = 0) //No idea if glove armor gets checked
 	siemens_coefficient = 0
 
 /obj/item/clothing/shoes/boots/combat/changeling //Noslips
 	name = "chitinous boots"
-	desc = "Footwear made out of a hard, black chitinous material.  The bottoms of these appear to have spikes that can protrude or extract itself into and out \
-	of the floor at will, granting the wearer stability."
+	desc = "Обувь из твердого хитинового материала черного цвета. На их дне, кажется, есть шипы, которые могут выступать или выдвигаться в пол и выходить из него по желанию, обеспечивая устойчивость владельца."
 	icon_state = "lingboots"
 	armor = list(melee = 75, bullet = 60, laser = 70,energy = 60, bomb = 60, bio = 0, rad = 0)
 	siemens_coefficient = 0.3

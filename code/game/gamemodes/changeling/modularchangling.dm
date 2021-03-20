@@ -22,7 +22,7 @@ var/list/datum/power/changeling/powerinstances = list()
 
 // Modularchangling, totally stolen from the new player panel.  YAYY
 /datum/changeling/proc/EvolutionMenu()//The new one
-	set name = "-Меню эволюции-"
+	set name = "-Evolution Menu-"
 	set category = "Changeling"
 	set desc = "Adapt yourself carefully."
 
@@ -33,31 +33,23 @@ var/list/datum/power/changeling/powerinstances = list()
 		for(var/P in powers)
 			powerinstances += new P()
 
-	var/dat = "<html><meta charset=\"utf-8\"><head><title>Меню эволюции подменыша</title></head>"
+	var/dat = "<html><meta charset=\"utf-8\"><head><title>Меню эволюции</title></head>"
 
 	//javascript, the part that does most of the work~
 	dat += {"
-
 		<head>
 			<script type='text/javascript'>
-
 				var locked_tabs = new Array();
-
 				function updateSearch(){
-
-
 					var filter_text = document.getElementById('filter');
 					var filter = filter_text.value.toLowerCase();
-
 					if(complete_list != null && complete_list != ""){
 						var mtbl = document.getElementById("maintable_data_archive");
 						mtbl.innerHTML = complete_list;
 					}
-
 					if(filter.value == ""){
 						return;
 					}else{
-
 						var maintable_data = document.getElementById('maintable_data');
 						var ltr = maintable_data.getElementsByTagName("tr");
 						for ( var i = 0; i < ltr.length; ++i )
@@ -83,76 +75,49 @@ var/list/datum/power/changeling/powerinstances = list()
 							}catch(err) {   }
 						}
 					}
-
 					var count = 0;
 					var index = -1;
 					var debug = document.getElementById("debug");
-
 					locked_tabs = new Array();
-
 				}
-
 				function expand(id,name,desc,helptext,enhancedtext,power,ownsthis){
-
 					clearAll();
-
 					var span = document.getElementById(id);
-
-					body = "<table><meta charset=\"utf-8\"><tr><td>";
-
+					body = "<table><tr><td>";
 					body += "</td><td align='center'>";
-
 					body += "<font size='2'><b>"+desc+"</b></font> <BR>"
-
 					body += "<font size='2'><font color = 'red'><b>"+helptext+"</b></font></font><BR>"
-
 					if(enhancedtext)
 					{
-						body += "<font size='2'><font color = 'blue'>Рекурсивный эффект улучшения: <b>"+enhancedtext+"</b></font></font><BR>"
+						body += "<font size='2'><font color = 'blue'>Recursive Enhancement Effect: <b>"+enhancedtext+"</b></font></font><BR>"
 					}
-
 					if(!ownsthis)
 					{
-						body += "<a href='?src=\ref[src];P="+power+"'>Эволюция</a>"
+						body += "<a href='?src=\ref[src];P="+power+"'>Evolve</a>"
 					}
-
 					body += "</td><td align='center'>";
-
 					body += "</td></tr></table>";
-
-
 					span.innerHTML = body
 				}
-
 				function clearAll(){
 					var spans = document.getElementsByTagName('span');
 					for(var i = 0; i < spans.length; i++){
 						var span = spans\[i\];
-
 						var id = span.getAttribute("id");
-
 						if(!(id.indexOf("item")==0))
 							continue;
-
 						var pass = 1;
-
 						for(var j = 0; j < locked_tabs.length; j++){
 							if(locked_tabs\[j\]==id){
 								pass = 0;
 								break;
 							}
 						}
-
 						if(pass != 1)
 							continue;
-
-
-
-
 						span.innerHTML = "";
 					}
 				}
-
 				function addToLocked(id,link_id,notice_span_id){
 					var link = document.getElementById(link_id);
 					var decision = link.getAttribute("name");
@@ -163,7 +128,6 @@ var/list/datum/power/changeling/powerinstances = list()
 						removeFromLocked(id,link_id,notice_span_id);
 						return;
 					}
-
 					var pass = 1;
 					for(var j = 0; j < locked_tabs.length; j++){
 						if(locked_tabs\[j\]==id){
@@ -180,11 +144,9 @@ var/list/datum/power/changeling/powerinstances = list()
 					//document.write("removeFromLocked('"+id+"','"+link_id+"','"+notice_span_id+"')");
 					//document.write("aa - "+link.getAttribute("onClick"));
 				}
-
 				function attempt(ab){
 					return ab;
 				}
-
 				function removeFromLocked(id,link_id,notice_span_id){
 					//document.write("a");
 					var index = 0;
@@ -204,17 +166,13 @@ var/list/datum/power/changeling/powerinstances = list()
 					//var link = document.getElementById(link_id);
 					//link.setAttribute("onClick","addToLocked('"+id+"','"+link_id+"','"+notice_span_id+"')");
 				}
-
 				function selectTextField(){
 					var filter_text = document.getElementById('filter');
 					filter_text.focus();
 					filter_text.select();
 				}
-
 			</script>
 		</head>
-
-
 	"}
 
 	//body tag start + onload and onkeypress (onkeyup) javascript event calls
@@ -222,24 +180,22 @@ var/list/datum/power/changeling/powerinstances = list()
 
 	//title + search bar
 	dat += {"
-
-		<meta charset=\"utf-8\"><table width='560' align='center' cellspacing='0' cellpadding='5' id='maintable'>
+		<table width='560' align='center' cellspacing='0' cellpadding='5' id='maintable'>
 			<tr id='title_tr'>
 				<td align='center'>
-					<font size='5'><b>Меню эволюции подменыша</b></font><br>
-					Наведите указатель мыши на кнопку, чтобы увидеть дополнительную информацию<br>
-					Текущие точки эволюции, оставшиеся для дальнейшего развития: [geneticpoints]<br>
-					Поглощайте других подменышей, чтобы получить больше очков эволюции
+					<font size='5'><b>Меню эволюции</b></font><br>
+					Hover over a power to see more information<br>
+					Current evolution points left to evolve with: [geneticpoints]<br>
+					Absorb other changelings to acquire more evolution points
 					<p>
 				</td>
 			</tr>
 			<tr id='search_tr'>
 				<td align='center'>
-					<b>Поиск:</b> <input type='text' id='filter' value='' style='width:300px;'>
+					<b>Search:</b> <input type='text' id='filter' value='' style='width:300px;'>
 				</td>
 			</tr>
 	</table>
-
 	"}
 
 	//player table header
@@ -261,19 +217,17 @@ var/list/datum/power/changeling/powerinstances = list()
 
 
 		dat += {"
-
-			<meta charset=\"utf-8\"><tr id='data[i]' name='[i]' onClick="addToLocked('item[i]','data[i]','notice_span[i]')">
+			<tr id='data[i]' name='[i]' onClick="addToLocked('item[i]','data[i]','notice_span[i]')">
 				<td align='center' bgcolor='[color]'>
 					<span id='notice_span[i]'></span>
 					<a id='link[i]'
 					onmouseover='expand("item[i]","[P.name]","[P.desc]","[P.helptext]","[P.enhancedtext]","[P]",[ownsthis])'
 					>
-					<span id='search[i]'><b>"Эволюция [P] - Цена: [ownsthis ? "Purchased" : P.genomecost]</b></span>
+					<span id='search[i]'><b>Evolve [P] - Cost: [ownsthis ? "Purchased" : P.genomecost]</b></span>
 					</a>
 					<br><span id='item[i]'></span>
 				</td>
 			</tr>
-
 		"}
 
 		i++
@@ -283,7 +237,6 @@ var/list/datum/power/changeling/powerinstances = list()
 	dat += {"
 		</table>
 		</span>
-
 		<script type='text/javascript'>
 			var maintable = document.getElementById("maintable_data_archive");
 			var complete_list = maintable.innerHTML;
@@ -323,7 +276,7 @@ var/list/datum/power/changeling/powerinstances = list()
 
 
 	if(Thepower == null)
-		to_chat(M.current, "Это неудобно. Не удалось приобрести мощность подменыша, сообщите об этом кодировщику!")
+		to_chat(M.current, "Это неудобно. Не удалось приобрести способность подменыша, сообщите об этом кодировщику!")
 		return
 
 	if(Thepower in purchased_powers)
@@ -357,4 +310,3 @@ var/list/datum/power/changeling/powerinstances = list()
 		call(M.current, Thepower.verbpath)()
 	else if(remake_verbs)
 		M.current.make_changeling()
-

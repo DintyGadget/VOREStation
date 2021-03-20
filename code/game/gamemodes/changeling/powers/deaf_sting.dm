@@ -1,6 +1,6 @@
 /datum/power/changeling/deaf_sting
 	name = "Deaf Sting"
-	desc = "We silently sting a human, completely deafening them for a short time."
+	desc = "Мы молча ужалили человека, полностью оглушив его на короткое время."
 	enhancedtext = "Deafness duration is extended."
 	ability_icon_state = "ling_sting_deafen"
 	genomecost = 1
@@ -10,7 +10,7 @@
 
 /mob/proc/changeling_deaf_sting()
 	set category = "Changeling"
-	set name = "Deaf sting (5)"
+	set name = "Оглушающий укус (5)"
 	set desc="Sting target:"
 
 	var/mob/living/carbon/T = changeling_sting(5,/mob/proc/changeling_deaf_sting)
@@ -19,8 +19,8 @@
 	var/duration = 300
 	if(src.mind.changeling.recursive_enhancement)
 		duration = duration + 100
-		to_chat(src, "<span class='notice'>They will be unable to hear for a little longer.</span>")
-	to_chat(T, "<span class='danger'>Your ears pop and begin ringing loudly!</span>")
+		to_chat(src, "<span class='notice'>Некоторое время они не смогут слышать.</span>")
+	to_chat(T, "<span class='danger'>У тебя в ушах хлопают и начинают громко звенеть!</span>")
 	T.sdisabilities |= DEAF
 	spawn(duration)	T.sdisabilities &= ~DEAF
 	feedback_add_details("changeling_powers","DS")

@@ -2,15 +2,15 @@
 
 /datum/power/changeling/augmented_eyesight
 	name = "Augmented Eyesight"
-	desc = "Creates heat receptors in our eyes and dramatically increases light sensing ability."
-	helptext = "Grants us thermal vision. It may be toggled on or off. We will become more vulnerable to flash-based devices while active."
+	desc = "Создает тепловые рецепторы в наших глазах и резко увеличивает светочувствительность."
+	helptext = "Дает нам тепловое зрение. Его можно включить или выключить. Пока мы активны, мы станем более уязвимыми для устройств на базе света."
 	ability_icon_state = "ling_augmented_eyesight"
 	genomecost = 2
 	verbpath = /mob/proc/changeling_augmented_eyesight
 
 /mob/proc/changeling_augmented_eyesight()
 	set category = "Changeling"
-	set name = "Augmented Eyesight (5)"
+	set name = "Расширенное зрение (5)"
 	set desc = "We evolve our eyes to sense the infrared."
 
 	var/datum/changeling/changeling = changeling_power(5,0,100,CONSCIOUS)
@@ -25,12 +25,12 @@
 
 	if(active)
 		src.mind.changeling.chem_charges -= 5
-		to_chat(C, "<span class='notice'>We feel a minute twitch in our eyes, and a hidden layer to the world is revealed.</span>")
+		to_chat(C, "<span class='notice'>Мы чувствуем, как наши глаза подергиваются, и миру открывается скрытый слой.</span>")
 		C.add_modifier(/datum/modifier/changeling/thermal_sight, 0, src)
 //		C.permanent_sight_flags |= SEE_MOBS
 //		C.dna.species.invis_sight = SEE_INVISIBLE_MINIMUM
 	else
-		to_chat(C, "<span class='notice'>Our vision dulls.</span>")
+		to_chat(C, "<span class='notice'>Наше видение тускнеет.</span>")
 		C.remove_modifiers_of_type(/datum/modifier/changeling/thermal_sight)
 //		C.permanent_sight_flags &= ~SEE_MOBS
 //		C.dna.species.invis_sight = initial(user.dna.species.invis_sight)

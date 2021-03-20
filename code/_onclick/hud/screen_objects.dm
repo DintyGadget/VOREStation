@@ -19,7 +19,7 @@
 /obj/screen/Destroy()
 	master = null
 	return ..()
-	
+
 /obj/screen/proc/component_click(obj/screen/component_button/component, params)
 	return
 
@@ -490,7 +490,7 @@
 				var/mob/living/silicon/ai/AI = usr
 				AI.view_core()
 
-		if("Show Camera List")
+		if("Показать список камер")
 			if(isAI(usr))
 				var/mob/living/silicon/ai/AI = usr
 				var/camera = input(AI) in AI.get_camera_list()
@@ -606,7 +606,7 @@
 		var/mob/living/carbon/C = hud.mymob
 		if(C.handcuffed)
 			overlays |= handcuff_overlay
-			
+
 // PIP stuff
 /obj/screen/component_button
 	var/obj/screen/parent
@@ -621,7 +621,7 @@
 
 // Character setup stuff
 /obj/screen/setup_preview
-	
+
 	var/datum/preferences/pref
 
 /obj/screen/setup_preview/Destroy()

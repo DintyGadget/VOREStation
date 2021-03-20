@@ -1,9 +1,7 @@
 /datum/power/changeling/bioelectrogenesis
 	name = "Bioelectrogenesis"
-	desc = "We reconfigure a large number of cells in our body to generate an electric charge.  \
-	On demand, we can attempt to recharge anything in our active hand, or we can touch someone with an electrified hand, shocking them."
-	helptext = "We can shock someone by grabbing them and using this ability, or using the ability with an empty hand and touching them.  \
-	Shocking someone costs ten chemicals per use."
+	desc = "Мы перенастраиваем большое количество клеток в нашем теле для генерации электрического заряда. По запросу мы можем попытаться перезарядить что-нибудь в своей активной руке или прикоснуться к кому-нибудь электрифицированной рукой, нанеся ему удар током."
+	helptext = "Мы можем шокировать кого-нибудь, схватив его и используя эту способность, или применив способность с пустой рукой и прикоснувшись к нему. Шокирование кого-либо стоит десять химикатов за одно использование."
 	enhancedtext = "Shocking biologicals without grabbing only requires five chemicals, and has more disabling power."
 	ability_icon_state = "ling_bioelectrogenesis"
 	genomecost = 2
@@ -12,7 +10,7 @@
 //Recharge whatever's in our hand, or shock people.
 /mob/living/carbon/human/proc/changeling_bioelectrogenesis()
 	set category = "Changeling"
-	set name = "Bioelectrogenesis (20 + 10/shock)"
+	set name = "Биоэлектрогенез (20 + 10/shock)"
 	set desc = "Recharges anything in your hand, or shocks people."
 
 	var/datum/changeling/changeling = changeling_power(20,0,100,CONSCIOUS)
@@ -25,7 +23,7 @@
 	if(held_item == null)
 		if(src.mind.changeling.recursive_enhancement)
 			if(changeling_generic_weapon(/obj/item/weapon/electric_hand/efficent,0))
-				to_chat(src, "<span class='notice'>We will shock others more efficently.</span>")
+				to_chat(src, "<span class='notice'>Мы будем шокировать других более эффективно.</span>")
 				return 1
 		else
 			if(changeling_generic_weapon(/obj/item/weapon/electric_hand,0))  //Chemical cost is handled in the equip proc.
@@ -50,11 +48,11 @@
 				add_attack_logs(src,G.affecting,"Changeling shocked")
 
 				if(siemens)
-					visible_message("<span class='warning'>Arcs of electricity strike [G.affecting]!</span>",
-					"<span class='warning'>Our hand channels raw electricity into [G.affecting].</span>",
-					"<span class='italics'>You hear sparks!</span>")
+					visible_message("<span class='warning'>Электрические дуги поражают [G.affecting]!</span>",
+					"<span class='warning'>Наша рука направляет необработанное электричество в [G.affecting].</span>",
+					"<span class='italics'>Вы слышите искры!</span>")
 				else
-					to_chat(src, "<span class='warning'>Our gloves block us from shocking \the [G.affecting].</span>")
+					to_chat(src, "<span class='warning'>Наши перчатки не дают нам шокировать [G.affecting].</span>")
 				src.mind.changeling.chem_charges -= 10
 				return 1
 
@@ -74,9 +72,9 @@
 
 			//Now for the actual recharging.
 			for(var/obj/item/weapon/cell/cell in L)
-				visible_message("<span class='warning'>Some sparks fall out from \the [src.name]\'s [held_item]!</span>",
-				"<span class='warning'>Our hand channels raw electricity into \the [held_item].</span>",
-				"<span class='italics'>You hear sparks!</span>")
+				visible_message("<span class='warning'>Несколько искр вылетают из [src.name] [held_item]!</span>",
+				"<span class='warning'>Наша рука направляет необработанное электричество в [held_item].</span>",
+				"<span class='italics'>Вы слышите искры!</span>")
 				var/i = 10
 				if(siemens)
 					while(i)
@@ -92,14 +90,14 @@
 						sleep(1 SECOND)
 					success = 1
 			if(success == 0) //If we couldn't do anything with the ability, don't deduct the chemicals.
-				to_chat(src, "<span class='warning'>We are unable to affect \the [held_item].</span>")
+				to_chat(src, "<span class='warning'>Мы не можем повлиять на [held_item].</span>")
 			else
 				src.mind.changeling.chem_charges -= 10
 			return success
 
 /obj/item/weapon/electric_hand
 	name = "electrified hand"
-	desc = "You could probably shock someone badly if you touched them, or recharge something."
+	desc = "Вы, вероятно, могли бы сильно шокировать кого-то, прикоснувшись к нему, или что-то перезарядить."
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "electric_hand"
 	show_examine = FALSE
@@ -115,9 +113,9 @@
 
 /obj/item/weapon/electric_hand/New()
 	if(ismob(loc))
-		visible_message("<span class='warning'>Electrical arcs form around [loc.name]\'s hand!</span>",
-		"<span class='warning'>We store a charge of electricity in our hand.</span>",
-		"<span class='italics'>You hear crackling electricity!</span>")
+		visible_message("<span class='warning'>Вокруг руки [loc.name] образуются электрические дуги!</span>",
+		"<span class='warning'>В нашей руке заряд электричества.</span>",
+		"<span class='italics'>Вы слышите потрескивание электричества!</span>")
 		var/T = get_turf(src)
 		new /obj/effect/effect/sparks(T)
 
@@ -143,7 +141,7 @@
 		var/mob/living/carbon/C = target
 
 		if(user.mind.changeling.chem_charges < shock_cost)
-			to_chat(src, "<span class='warning'>We require more chemicals to electrocute [C]!</span>")
+			to_chat(src, "<span class='warning'>Нам требуется больше химикатов для поражения электрическим током [C]!</span>")
 			return 0
 
 		C.electrocute_act(electrocute_amount * siemens,src,1.0,BP_TORSO)
@@ -152,11 +150,11 @@
 		add_attack_logs(user,C,"Shocked with [src]")
 
 		if(siemens)
-			visible_message("<span class='warning'>Arcs of electricity strike [C]!</span>",
-			"<span class='warning'>Our hand channels raw electricity into [C]</span>",
-			"<span class='italics'>You hear sparks!</span>")
+			visible_message("<span class='warning'>Удар электрическим током [C]!</span>",
+			"<span class='warning'>Наша рука направляет необработанное электричество в [C]</span>",
+			"<span class='italics'>Вы слышите искры!</span>")
 		else
-			to_chat(src, "<span class='warning'>Our gloves block us from shocking \the [C].</span>")
+			to_chat(src, "<span class='warning'>Наши перчатки не дают нам шокировать [C].</span>")
 		//qdel(src)  //Since we're no longer a one hit stun, we need to stick around.
 		user.mind.changeling.chem_charges -= shock_cost
 		return 1
