@@ -274,7 +274,7 @@ SUBSYSTEM_DEF(vote)
 		if(C.holder.rights & R_ADMIN|R_EVENT)
 			admin = TRUE
 
-	. = "<html><meta charset=\"UTF-8\"><head><title>Панель голосования</title></head><body>"
+	. = "<html><meta charset=\"UTF-8\" http-equiv=\"refresh\" content=\"1\"><head><title>Панель голосования</title></head><body>"
 	if(mode)
 		if(question)
 			. += "<h2>Голосование: '[question]'</h2>"

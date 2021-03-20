@@ -433,7 +433,7 @@
 				client.adminobs = 0
 
 /mob/verb/cancel_camera()
-	set name = "Cancel Camera View"
+	set name = "Отменить просмотр камеры"
 	set category = "OOC"
 	unset_machine()
 	reset_view(null)

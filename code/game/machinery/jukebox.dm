@@ -72,6 +72,8 @@
 		tracks.Cut()
 		secret_tracks.Cut()
 		for(var/datum/track/T in all_jukebox_tracks) //Load them
+			if(!T.jukebox)
+				continue
 			if(T.secret)
 				secret_tracks |= T
 			else

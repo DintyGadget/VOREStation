@@ -8,7 +8,7 @@
 		if (src.stat != CONSCIOUS)
 			src.cameraFollow = null
 			src.reset_view(null)
-			disconnect_shell("Disconnecting from remote shell due to local system failure.")
+			disconnect_shell("Отключение от удаленной оболочки из-за сбоя локальной системы.")
 
 		src.updatehealth()
 
@@ -36,7 +36,7 @@
 		malf_process()
 
 		if(APU_power && (hardware_integrity() < 50))
-			to_chat(src, "<span class='notice'><b>APU GENERATOR FAILURE! (System Damaged)</b></span>")
+			to_chat(src, "<span class='notice'><b>ОТКАЗ ГЕНЕРАТОРА APU! (Система повреждена)</b></span>")
 			stop_apu(1)
 
 		var/blind = 0
@@ -55,13 +55,13 @@
 			src.see_invisible = SEE_INVISIBLE_LIVING
 
 			if (aiRestorePowerRoutine==2)
-				to_chat(src, "Alert cancelled. Power has been restored without our assistance.")
+				to_chat(src, "Оповещение отменено. Электроэнергия восстановлена без нашей помощи.")
 				aiRestorePowerRoutine = 0
 				clear_fullscreen("blind")
 				updateicon()
 				return
 			else if (aiRestorePowerRoutine==3)
-				to_chat(src, "Alert cancelled. Power has been restored.")
+				to_chat(src, "Оповещение отменено. Электроэнергия восстановлена.")
 				aiRestorePowerRoutine = 0
 				clear_fullscreen("blind")
 				updateicon()
@@ -89,28 +89,28 @@
 
 					//Now to tell the AI why they're blind and dying slowly.
 
-					to_chat(src, "You've lost power!")
-					disconnect_shell(message = "Disconnected from remote shell due to depowered networking interface.")
+					to_chat(src, "Энергия закончилась!")
+					disconnect_shell(message = "Отключен от удаленной оболочки из-за отключенного сетевого интерфейса.")
 
 					spawn(20)
-						to_chat(src, "Backup battery online. Scanners, camera, and radio interface offline. Beginning fault-detection.")
+						to_chat(src, "Резервный аккумулятор онлайн. Сканеры, камера и радиоинтерфейс в автономном режиме. Начало поиска неисправностей.")
 						end_multicam()
 						sleep(50)
 						if (loc.power_equip)
 							if (!istype(T, /turf/space))
-								to_chat(src, "Alert cancelled. Power has been restored without our assistance.")
+								to_chat(src, "Оповещение отменено. Электроэнергия восстановлена без нашей помощи.")
 								aiRestorePowerRoutine = 0
 								clear_fullscreen("blind")
 								return
-						to_chat(src, "Fault confirmed: missing external power. Shutting down main control system to save power.")
+						to_chat(src, "Подтвержденная неисправность: отсутствует внешнее питание. Отключение основной системы управления для экономии энергии.")
 						sleep(20)
-						to_chat(src, "Emergency control system online. Verifying connection to power network.")
+						to_chat(src, "Система аварийного управления онлайн. Проверка подключения к электросети.")
 						sleep(50)
 						if (istype(T, /turf/space))
-							to_chat(src, "Unable to verify! No power connection detected!")
+							to_chat(src, "Невозможно проверить! Нет подключения к источнику питания!")
 							aiRestorePowerRoutine = 2
 							return
-						to_chat(src, "Connection verified. Searching for APC in power network.")
+						to_chat(src, "Подключение проверено. Ищем APC в электросети.")
 						sleep(50)
 						var/obj/machinery/power/apc/theAPC = null
 
@@ -122,35 +122,35 @@
 									break
 							if (!theAPC)
 								switch(PRP)
-									if (1) 
-										to_chat(src, "Unable to locate APC!")
-									else 
-										to_chat(src, "Lost connection with the APC!")
+									if (1)
+										to_chat(src, "Не удалось найти APC!")
+									else
+										to_chat(src, "Потеряна связь с APC!")
 								src:aiRestorePowerRoutine = 2
 								return
 							if (loc.power_equip)
 								if (!istype(T, /turf/space))
-									to_chat(src, "Alert cancelled. Power has been restored without our assistance.")
+									to_chat(src, "Оповещение отменено. Электроэнергия восстановлена без нашей помощи.")
 									aiRestorePowerRoutine = 0
 									clear_fullscreen("blind") //This, too, is a fix to issue 603
 									return
 							switch(PRP)
-								if (1) 
-									to_chat(src, "APC located. Optimizing route to APC to avoid needless power waste.")
-								if (2) 
-									to_chat(src, "Best route identified. Hacking offline APC power port.")
-								if (3) 
-									to_chat(src, "Power port upload access confirmed. Loading control program into APC power port software.")
+								if (1)
+									to_chat(src, "APC расположен. Оптимизация маршрута к APC, чтобы избежать ненужных потерь энергии.")
+								if (2)
+									to_chat(src, "Определен лучший маршрут. Взлом автономного порта питания APC.")
+								if (3)
+									to_chat(src, "Доступ к загрузке порта питания подтвержден. Загрузка программы управления в программное обеспечение порта питания APC.")
 								if (4)
-									to_chat(src, "Transfer complete. Forcing APC to execute program.")
+									to_chat(src, "Перевод завершен. Заставить APC выполнить программу.")
 									sleep(50)
-									to_chat(src, "Receiving control information from APC.")
+									to_chat(src, "Получение управляющей информации от APC.")
 									sleep(2)
 									theAPC.operating = 1
 									theAPC.equipment = 3
 									theAPC.update()
 									aiRestorePowerRoutine = 3
-									to_chat(src, "Here are your current laws:")
+									to_chat(src, "Вот ваши действующие законы:")
 									show_laws()
 									updateicon()
 							sleep(50)

@@ -2,37 +2,37 @@
 	. = ..()
 
 	if (src.stat == DEAD)
-		. += "<span class='deadsay'>It appears to be powered-down.</span>"
+		. += "<span class='deadsay'>Похоже, [src] отключен.</span>"
 	else
 		if (src.getBruteLoss())
 			if (src.getBruteLoss() < 30)
-				. += "<span class='warning'>It looks slightly dented.</span>"
+				. += "<span class='warning'>Выглядит слегка помято.</span>"
 			else
-				. += "<span class='warning'><B>It looks severely dented!</B></span>"
+				. += "<span class='warning'><B>Выглядит сильно помято!</B></span>"
 		if (src.getFireLoss())
 			if (src.getFireLoss() < 30)
-				. += "<span class='warning'>It looks slightly charred.</span>"
+				. += "<span class='warning'>Выглядит слегка обугленно.</span>"
 			else
-				. += "<span class='warning'><B>Its casing is melted and heat-warped!</B></span>"
+				. += "<span class='warning'><B>Корпус расплавлен и покороблен!</B></span>"
 		if (src.getOxyLoss() && (aiRestorePowerRoutine != 0 && !APU_power))
 			if (src.getOxyLoss() > 175)
-				. += "<span class='warning'><B>It seems to be running on backup power. Its display is blinking a \"BACKUP POWER CRITICAL\" warning.</B></span>"
+				. += "<span class='warning'><B>Кажется, [src] работает от резервного питания. На его дисплее мигает предупреждение \"РЕЗЕРВНОЕ ПИТАНИЕ - КРИТИЧЕСКОЕ\".</B></span>"
 			else if(src.getOxyLoss() > 100)
-				. += "<span class='warning'><B>It seems to be running on backup power. Its display is blinking a \"BACKUP POWER LOW\" warning.</B></span>"
+				. += "<span class='warning'><B>Кажется, [src] работает от резервного питания. На его дисплее мигает предупреждение \"РЕЗЕРВНОЕ ПИТАНИЕ - НИЗКОЕ\".</B></span>"
 			else
-				. += "<span class='warning'>It seems to be running on backup power.</span>"
+				. += "<span class='warning'>Кажется, [src] работает от резервного питания.</span>"
 
 		if (src.stat == UNCONSCIOUS)
-			. += "<span class='warning'>It is non-responsive and displaying the text: \"RUNTIME: Sensory Overload, stack 26/3\".</span>"
+			. += "<span class='warning'>Не отвечает и отображает текст: \"RUNTIME: Sensory Overload, stack 26/3\".</span>"
 
 		if(deployed_shell)
-			. += "The wireless networking light is blinking."
+			. += "Индикатор беспроводной сети мигает."
 
 	. += "*---------*"
-	
+
 	if(hardware && (hardware.owner == src))
 		. += hardware.get_examine_desc()
-	
+
 	user.showLaws(src)
 
 /mob/proc/showLaws(var/mob/living/silicon/S)

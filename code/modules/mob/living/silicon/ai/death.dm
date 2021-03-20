@@ -4,7 +4,7 @@
 		return
 
 	if(deployed_shell)
-		disconnect_shell("Disconnecting from remote shell due to critical system failure.")
+		disconnect_shell("Отключение от удаленной оболочки из-за критического сбоя системы.")
 	. = ..(gibbed)
 
 	if(src.eyeobj)
@@ -19,5 +19,5 @@
 			var/obj/item/device/aicard/card = loc
 			card.update_icon()
 
-	. = ..(gibbed,"gives one shrill beep before falling lifeless.")
+	. = ..(gibbed,"издает один пронзительный звуковой сигнал, прежде чем упасть замертво.")
 	density = 1

@@ -53,7 +53,7 @@
 	var/datum/media_manager/media = null
 
 /client/verb/change_volume()
-	set name = "Set Volume"
+	set name = "Громкость музыки"
 	set category = "OOC"
 	set desc = "Set jukebox volume"
 	set_new_volume(usr)

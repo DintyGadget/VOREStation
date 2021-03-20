@@ -156,13 +156,13 @@
 	set category = "pAI Commands"
 	set desc = "Kill yourself and become a ghost (You will receive a confirmation prompt)"
 	set name = "pAI Suicide"
-	var/answer = input("REALLY kill yourself? This action can't be undone.", "Suicide", "No") in list ("Yes", "No")
+	var/answer = input("ДЕЙСТВИТЕЛЬНО убить себя? Это действие нельзя отменить.", "Suicide", "No") in list ("Yes", "No")
 	if(answer == "Yes")
 		var/obj/item/device/paicard/card = loc
 		card.removePersonality()
 		var/turf/T = get_turf_or_move(card.loc)
 		for (var/mob/M in viewers(T))
-			M.show_message("<span class='notice'>[src] flashes a message across its screen, \"Wiping core files. Please acquire a new personality to continue using pAI device functions.\"</span>", 3, "<span class='notice'>[src] bleeps electronically.</span>", 2)
+			M.show_message("<span class='notice'>[src] мигает сообщением на экране: \"Очистка файлов ядра. Пожалуйста, приобретите новую личность, чтобы продолжать использовать функции устройства pAI\"</span>", 3, "<span class='notice'>[src] bleeps electronically.</span>", 2)
 		death(0)
 	else
 		to_chat(src, "Aborting suicide attempt.")

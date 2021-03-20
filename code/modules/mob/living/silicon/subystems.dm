@@ -50,7 +50,7 @@
 *	Alarm Monitor	*
 ********************/
 /mob/living/silicon/proc/subsystem_alarm_monitor()
-	set name = "Alarm Monitor"
+	set name = "Монитор тревог"
 	set category = "Subystems"
 
 	alarm_monitor.tgui_interact(usr)
@@ -60,7 +60,7 @@
 ********************/
 /mob/living/silicon/proc/subsystem_atmos_control()
 	set category = "Subystems"
-	set name = "Atmospherics Control"
+	set name = "Контроль атмосферы"
 
 	atmos_control.tgui_interact(usr)
 
@@ -69,7 +69,7 @@
 ********************/
 /mob/living/silicon/proc/subsystem_crew_manifest()
 	set category = "Subystems"
-	set name = "Crew Manifest"
+	set name = "Манифест экипажа"
 
 	crew_manifest.tgui_interact(usr)
 
@@ -86,7 +86,7 @@
 *	Law Manager	*
 ****************/
 /mob/living/silicon/proc/subsystem_law_manager()
-	set name = "Law Manager"
+	set name = "Меню Законов"
 	set category = "Subystems"
 
 	law_manager.tgui_interact(usr)
@@ -96,7 +96,7 @@
 ********************/
 /mob/living/silicon/proc/subsystem_power_monitor()
 	set category = "Subystems"
-	set name = "Power Monitor"
+	set name = "Монитор питания"
 
 	power_monitor.tgui_interact(usr)
 

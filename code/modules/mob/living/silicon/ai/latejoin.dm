@@ -11,22 +11,22 @@ var/global/list/empty_playable_ai_cores = list()
 	return 1
 
 /mob/living/silicon/ai/verb/store_core()
-	set name = "Store Core"
+	set name = "Освободить ядро ИИ"
 	set category = "OOC"
-	set desc = "Enter intelligence storage. This is functionally equivalent to cryo or robotic storage, freeing up your job slot."
+	set desc = "Войдите в хранилище ИИ. Это функционально эквивалентно крио или роботизированному хранилищу, освобождая место для работы."
 
 	if(ticker && ticker.mode && ticker.mode.name == "AI malfunction")
-		to_chat(usr, "<span class='danger'>You cannot use this verb in malfunction. If you need to leave, please adminhelp.</span>")
+		to_chat(usr, "<span class='danger'>Вы не можете использовать этот глагол являясь антагонистом. Если вам нужно уйти, пожалуйста, напишите adminhelp.</span>")
 		return
 
 	// Guard against misclicks, this isn't the sort of thing we want happening accidentally
-	if(alert("WARNING: This will immediately empty your core and ghost you, removing your character from the round permanently (similar to cryo and robotic storage). Are you entirely sure you want to do this?",
-					"Store Core", "No", "No", "Yes") != "Yes")
+	if(alert("ВНИМАНИЕ: это действие немедленно опустошит ваше ядро и призрак, навсегда удалив вашего персонажа из раунда (аналогично крио и роботизированному хранилищу). Вы полностью уверены, что хотите это сделать?",
+					"Store Core", "Нет", "Нет", "Да") != "Да")
 		return
 
 	// We warned you.
 	empty_playable_ai_cores += new /obj/structure/AIcore/deactivated(loc)
-	global_announcer.autosay("[src] has been moved to intelligence storage.", "Artificial Intelligence Oversight")
+	global_announcer.autosay("[src] перемещен в хранилище ИИ.", "Artificial Intelligence Oversight")
 
 	//Handle job slot/tater cleanup.
 	set_respawn_timer()

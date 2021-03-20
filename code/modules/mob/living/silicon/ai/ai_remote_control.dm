@@ -8,19 +8,19 @@
 
 /mob/living/silicon/ai/proc/deploy_to_shell(var/mob/living/silicon/robot/target)
 	if(!config.allow_ai_shells)
-		to_chat(src, span("warning", "AI Shells are not allowed on this server. You shouldn't have this verb because of it, so consider making a bug report."))
+		to_chat(src, span("warning", "На этом сервере нельзя использовать оболочки AI. Из-за этого у вас не должно быть этого глагола, поэтому подумайте о том, чтобы написать отчет об ошибке."))
 		return
 
 	if(incapacitated())
-		to_chat(src, span("warning", "You are incapacitated!"))
+		to_chat(src, span("warning", "Вы недееспособны!"))
 		return
 
 	if(lacks_power())
-		to_chat(src, span("warning", "Your core lacks power, wireless is disabled."))
+		to_chat(src, span("warning", "У вашего ядра не хватает мощности, беспроводная связь отключена."))
 		return
 
 	if(control_disabled)
-		to_chat(src, span("warning", "Wireless networking module is offline."))
+		to_chat(src, span("warning", "Модуль беспроводной сети отключен."))
 		return
 
 	var/list/possible = list()
@@ -31,16 +31,16 @@
 			possible += R
 
 	if(!LAZYLEN(possible))
-		to_chat(src, span("warning", "No usable AI shell beacons detected."))
+		to_chat(src, span("warning", "Не обнаружено пригодных для использования маяков оболочки ИИ."))
 
 	if(!target || !(target in possible)) //If the AI is looking for a new shell, or its pre-selected shell is no longer valid
-		target = input(src, "Which body to control?") as null|anything in possible
+		target = input(src, "Какое тело контролировать?") as null|anything in possible
 
 	if(!target || target.stat == DEAD || target.deployed || !(!target.connected_ai || (target.connected_ai == src) ) )
 		if(target)
-			to_chat(src, span("warning", "It is no longer possible to deploy to \the [target]."))
+			to_chat(src, span("warning", "Развертывание на [target] больше невозможно."))
 		else
-			to_chat(src, span("notice", "Deployment aborted."))
+			to_chat(src, span("notice", "Развертывание прервано."))
 		return
 
 	else if(mind)
@@ -53,10 +53,10 @@
 
 /mob/living/silicon/ai/proc/deploy_to_shell_act()
 	set category = "AI Commands"
-	set name = "Deploy to Shell"
+	set name = "Вселиться в оболочку"
 	deploy_to_shell() // This is so the AI is not prompted with a list of all mobs when using the 'real' proc.
 
-/mob/living/silicon/ai/proc/disconnect_shell(message = "Your remote connection has been reset!")
+/mob/living/silicon/ai/proc/disconnect_shell(message = "Ваше удаленное соединение было сброшено!")
 	if(deployed_shell) // Forcibly call back AI in event of things such as damage, EMP or power loss.
 		message = span("danger", message)
 		deployed_shell.undeploy(message)

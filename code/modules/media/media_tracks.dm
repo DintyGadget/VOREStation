@@ -10,19 +10,21 @@
 	var/duration	// Song length in deciseconds
 	var/secret		// Show up in regular playlist or secret playlist?
 	var/lobby		// Be one of the choices for lobby music?
+	var/jukebox		// Does it even show up in the jukebox?
 
-/datum/track/New(var/url, var/title, var/duration, var/artist = "", var/secret = 0, var/lobby = 0)
+/datum/track/New(var/url, var/title, var/duration, var/artist = "", var/secret = 0, var/lobby = 0, var/jukebox = 0)
 	src.url = url
 	src.title = title
 	src.artist = artist
 	src.duration = duration
 	src.secret = secret
 	src.lobby = lobby
+	src.jukebox = jukebox
 
 /datum/track/proc/display()
 	var str = "\"[title]\""
 	if(artist)
-		str += " by [artist]"
+		str += " [artist]"
 	return str
 
 /datum/track/proc/toTguiList()
@@ -35,7 +37,7 @@ var/global/list/all_lobby_tracks = list()
 
 // Read the jukebox configuration file on system startup.
 /hook/startup/proc/load_jukebox_tracks()
-	var/jukebox_track_file = "config/jukebox.json"
+	var/jukebox_track_file = "code/game/machinery/jukebox.json"
 	if(!fexists(jukebox_track_file))
 		warning("File not found: [jukebox_track_file]")
 		return 1
@@ -57,6 +59,7 @@ var/global/list/all_lobby_tracks = list()
 			T.artist = entry["artist"]
 		T.secret = entry["secret"] ? 1 : 0
 		T.lobby = entry["lobby"] ? 1 : 0
+		T.jukebox = entry["jukebox"] ? 1 : 0
 		all_jukebox_tracks += T
 		if(T.lobby)
 			all_lobby_tracks += T

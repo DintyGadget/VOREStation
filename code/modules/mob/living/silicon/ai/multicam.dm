@@ -120,7 +120,7 @@
 /obj/screen/movable/pic_in_pic/ai/proc/set_ai(mob/living/silicon/ai/new_ai)
 	if(!aiEye && !QDELETED(src))
 		if(new_ai)
-			to_chat(new_ai, "<span class='danger'><h2>You've run into a unfixable bug with AI eye code. \
+			to_chat(new_ai, "<span class='danger'><h2>Вы столкнулись с неустранимой ошибкой в коде глаз ИИ. \
 In order to create a new multicam, you will have to select a different camera first before trying to add one, or ask an admin to fix you. \
 Whatever you did that made the last camera window disappear-- don't do that again.</h2></span>")
 		qdel(src)
@@ -253,25 +253,25 @@ GLOBAL_DATUM(ai_camera_room_landmark, /obj/effect/landmark/ai_multicam_room)
 /mob/living/silicon/ai/proc/drop_new_multicam(silent = FALSE)
 	if(!multicam_allowed)
 		if(!silent)
-			to_chat(src, "<span class='warning'>This action is currently disabled. Contact an administrator to enable this feature.</span>")
+			to_chat(src, "<span class='warning'>Это действие в настоящее время отключено. Обратитесь к администратору, чтобы включить эту функцию.</span>")
 		return
 	if(!eyeobj)
 		return
 	if(multicam_screens.len >= max_multicams)
 		if(!silent)
-			to_chat(src, "<span class='warning'>Cannot place more than [max_multicams] multicamera windows.</span>")
+			to_chat(src, "<span class='warning'>Невозможно разместить больше, чем [max_multicams] окон многокамерной передачи.</span>")
 		return
 	var/obj/screen/movable/pic_in_pic/ai/C = new /obj/screen/movable/pic_in_pic/ai()
 	C.set_view_size(3, 3, FALSE)
 	C.set_view_center(get_turf(eyeobj))
 	C.set_ai(src)
 	if(!silent)
-		to_chat(src, "<span class='notice'>Added new multicamera window.</span>")
+		to_chat(src, "<span class='notice'>Добавлено новое окно мультикамеры.</span>")
 	return C
 
 /mob/living/silicon/ai/proc/toggle_multicam()
 	if(!multicam_allowed)
-		to_chat(src, "<span class='warning'>This action is currently disabled. Contact an administrator to enable this feature.</span>")
+		to_chat(src, "<span class='warning'>Это действие в настоящее время отключено. Обратитесь к администратору, чтобы включить эту функцию.</span>")
 		return
 	if(multicam_on)
 		end_multicam()
@@ -282,7 +282,7 @@ GLOBAL_DATUM(ai_camera_room_landmark, /obj/effect/landmark/ai_multicam_room)
 	if(multicam_on || aiRestorePowerRoutine || !isturf(loc))
 		return
 	if(!GLOB.ai_camera_room_landmark)
-		to_chat(src, "<span class='warning'>This function is not available at this time.</span>")
+		to_chat(src, "<span class='warning'>В настоящее время эта функция недоступна.</span>")
 		return
 	multicam_on = TRUE
 	refresh_multicam()

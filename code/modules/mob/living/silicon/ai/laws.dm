@@ -1,6 +1,6 @@
 /mob/living/silicon/ai/proc/show_laws_verb()
 	set category = "AI Commands"
-	set name = "Show Laws"
+	set name = "Показать права"
 	src.show_laws()
 
 /mob/living/silicon/ai/show_laws(var/everyone = 0)
@@ -10,7 +10,7 @@
 		who = world
 	else
 		who = src
-		to_chat(who, "<b>Obey these laws:</b>")
+		to_chat(who, "<b>Соблюдайте эти законы:</b>")
 
 	src.laws_sanity_check()
 	src.laws.show_laws(who)
@@ -23,5 +23,5 @@
 
 /mob/living/silicon/ai/proc/ai_checklaws()
 	set category = "AI Commands"
-	set name = "State Laws"
+	set name = "Доложить законы"
 	subsystem_law_manager()

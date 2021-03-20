@@ -1,0 +1,39 @@
+## DELETE ALL LINES WITH #S AROUND THEM AND SAVE FILE AS jukebox.json WHEN FINISHED                    ##
+##                                                                                                     ##
+## "duration" is measured in deciseconds. Formula for conversion below:                                ##
+##												       ##
+## (60 * Minutes Value) + Seconds Value = Seconds. (Seconds * 10) = Deciseconds.                       ##
+##												       ##
+## As of now, Hacked/Secret tracks don't function properly, and will always display regardless of if   ##
+## the jukebox has been hacked or not. So these should not *yet* be added.                             ##
+## 												       ##
+## To add emag tracks: set both "emag" AND "jukebox" to true.                                          ##
+[
+{
+"url": "http://ponywave.servegame.com:256/menu.wav",
+"title": "Embrace the Abyss",
+"artist": "Jussi Elsilä",
+"duration": 2530,
+"secret": false,
+"lobby": true,
+"jukebox": false
+},
+{
+"url": "http://ponywave.servegame.com:256/1.wav",
+"title": "Chippin' In",
+"duration": 2110,
+"artist": "Samurai",
+"secret": false,
+"lobby": false,
+"jukebox": true
+},
+{
+"url": "http://ponywave.servegame.com:256/2.wav",
+"title": "Resist and Disorder",
+"duration": 2760,
+"artist": "Samurai",
+"secret": false,
+"lobby": false,
+"jukebox": true
+}
+]

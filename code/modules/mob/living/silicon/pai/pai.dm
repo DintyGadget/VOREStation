@@ -218,7 +218,7 @@
 
 /mob/living/silicon/pai/cancel_camera()
 	set category = "pAI Commands"
-	set name = "Cancel Camera View"
+	set name = "Отменить просмотр камеры"
 	src.reset_view(null)
 	src.unset_machine()
 	src.cameraFollow = null
