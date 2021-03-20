@@ -12,7 +12,7 @@
 	var/throwpass = 0
 	var/germ_level = GERM_LEVEL_AMBIENT // The higher the germ level, the more germ on the atom.
 	var/simulated = 1 //filter for actions - used by lighting overlays
-	var/atom_say_verb = "says"
+	var/atom_say_verb = "говорит"
 	var/bubble_icon = "normal" ///what icon the atom uses for speechbubbles
 	var/fluorescent // Shows up under a UV light.
 
@@ -326,7 +326,7 @@
 		//Now, deal with gloves.
 		if (H.gloves && H.gloves != src)
 			if(fingerprintslast != H.key)
-				fingerprintshidden += "[time_stamp()]: [key_name(H)] (Wearing [H.gloves])"
+				fingerprintshidden += "[time_stamp()]: [key_name(H)] (Носит [H.gloves])"
 				fingerprintslast = H.key
 			H.gloves.add_fingerprint(M)
 

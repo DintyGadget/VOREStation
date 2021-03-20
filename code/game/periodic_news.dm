@@ -18,18 +18,18 @@
 
 		paycuts_suspicion
 			round_time = 60*10
-			message = {"Reports have leaked that NanoTrasen is planning to put paycuts into
-						effect on many of its Research Stations in Tau Ceti. Apparently these research
-						stations haven't been able to yield the expected revenue, and thus adjustments
-						have to be made."}
-			author = "Unauthorized"
+			message = {"Просочились сообщения о том, что NanoTrasen планирует сократить
+						выплаты на многих своих исследовательских станциях в Тау Кита
+						Очевидно, эти исследовательские станции не смогли принести ожидаемый доход,
+						и поэтому необходимо внести коррективы."}
+			author = "Неавторизованный"
 
 		paycuts_confirmation
 			round_time = 60*40
-			message = {"Earlier rumours about paycuts on Research Stations in the Tau Ceti system have
-						been confirmed. Shockingly, however, the cuts will only affect lower tier
-						personnel. Heads of Staff will, according to our sources, not be affected."}
-			author = "Unauthorized"
+			message = {"Предыдущие слухи о сокращении заработной платы на исследовательских станциях в системе Тау Кита подтвердились.
+						Однако шокирует то, что сокращения коснутся только персонала низшего звена.
+						Руководители штабов, по нашим данным, не пострадают."}
+			author = "Неавторизованный"
 
 		human_experiments
 			round_time = 60*90
@@ -40,7 +40,7 @@
 			 			to the slimes to see what happens\". Allegedly, these test subjects were neither
 			 			humanified monkeys nor volunteers, but rather unqualified staff that were forced into
 			 			the experiments, and reported to have died in a \"work accident\" by NanoTrasen."}
-			author = "Unauthorized"
+			author = "Неавторизованный"
 
 	bluespace_research
 
@@ -58,24 +58,20 @@
 		cheesy_honkers
 			author = "Assistant Editor Carl Ritz"
 			channel_name = "The Gibson Gazette"
-			message = {"Do cheesy honkers increase risk of having a miscarriage? Several health administrations
-						say so!"}
+			message = {"Повышают ли глупые гудки риск выкидыша? Так утверждают несколько управлени
+						здравоохранения!"}
 			round_time = 60 * 15
 
 		net_block
 			author = "Assistant Editor Carl Ritz"
 			channel_name = "The Gibson Gazette"
-			message = {"Several corporations banding together to block access to 'wetskrell.nt', site administrators
-			claiming violation of net laws."}
+			message = {"Несколько корпораций объединились, чтобы заблокировать доступ к wetskrell.nt, администраторы сайта заявляют о нарушении сетевых законов."}
 			round_time = 60 * 50
 
 		found_ssd
 			author = "Doctor Eric Hanfield"
 
-			message = {"Several people have been found unconscious at their terminals. It is thought that it was due
-						to a lack of sleep or of simply migraines from staring at the screen too long. Camera footage
-						reveals that many of them were playing games instead of working and their pay has been docked
-						accordingly."}
+			message = {"Несколько человек были найдены без сознания у своих терминалов. Считается, что это было из-за недостатка сна или просто мигрени из-за слишком долгого взгляда на экран. На видеозаписи видно, что многие из них играли в игры, вместо того чтобы работать, и их зарплата была соответственно закреплена."}
 			round_time = 60 * 90
 
 	lotus_tree

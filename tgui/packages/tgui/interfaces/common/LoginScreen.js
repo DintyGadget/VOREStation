@@ -61,7 +61,7 @@ export const LoginScreen = (_properties, context) => {
       {!!isAI && (
         <Button
           icon="sign-in-alt"
-          content="Login as AI"
+          content="Войти как ИИ"
           onClick={() => act('login', {
             login_type: 2,
           })}
@@ -70,7 +70,7 @@ export const LoginScreen = (_properties, context) => {
       {!!isRobot && (
         <Button
           icon="sign-in-alt"
-          content="Login as Cyborg"
+          content="Войти как Киборг"
           onClick={() => act('login', {
             login_type: 3,
           })}

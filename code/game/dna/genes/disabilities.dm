@@ -54,7 +54,7 @@
 // Note: Doesn't seem to do squat, at the moment.
 /datum/dna/gene/disability/hallucinate
 	name="Hallucinate"
-	activation_message="Your mind says 'Hello'."
+	activation_message="Ваш разум говорит «Привет»."
 	mutation=mHallucination
 
 	New()
@@ -62,7 +62,7 @@
 
 /datum/dna/gene/disability/epilepsy
 	name="Epilepsy"
-	activation_message="You get a headache."
+	activation_message="У вас болит голова."
 	disability=EPILEPSY
 
 	New()
@@ -70,7 +70,7 @@
 
 /datum/dna/gene/disability/cough
 	name="Coughing"
-	activation_message="You start coughing."
+	activation_message="Вы начинаете кашлять."
 	disability=COUGHING
 
 	New()
@@ -78,7 +78,7 @@
 
 /datum/dna/gene/disability/clumsy
 	name="Clumsiness"
-	activation_message="You feel lightheaded."
+	activation_message="Вы чувствуете головокружение."
 	mutation=CLUMSY
 
 	New()
@@ -86,7 +86,7 @@
 
 /datum/dna/gene/disability/tourettes
 	name="Tourettes"
-	activation_message="You twitch."
+	activation_message="Вы дергаетесь."
 	disability=TOURETTES
 
 	New()
@@ -94,7 +94,7 @@
 
 /datum/dna/gene/disability/nervousness
 	name="Nervousness"
-	activation_message="You feel nervous."
+	activation_message="Вы нервничаете."
 	disability=NERVOUS
 
 	New()
@@ -102,7 +102,7 @@
 
 /datum/dna/gene/disability/blindness
 	name="Blindness"
-	activation_message="You can't seem to see anything."
+	activation_message="Вы ничего не видите."
 	sdisability=BLIND
 
 	New()
@@ -110,7 +110,7 @@
 
 /datum/dna/gene/disability/deaf
 	name="Deafness"
-	activation_message="It's kinda quiet."
+	activation_message="Вокруг вроде как тихо."
 	sdisability=DEAF
 
 	New()
@@ -122,7 +122,7 @@
 
 /datum/dna/gene/disability/nearsighted
 	name="Nearsightedness"
-	activation_message="Your eyes feel weird..."
+	activation_message="Ваши глаза кажутся странными ..."
 	disability=NEARSIGHTED
 
 	New()

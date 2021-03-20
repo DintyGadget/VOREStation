@@ -1,6 +1,6 @@
 /datum/power/changeling/space_suit
 	name = "Organic Space Suit"
-	desc = "We grow an organic suit to protect ourselves from space exposure."
+	desc = "Мы выращиваем органический костюм, чтобы защитить себя от воздействия космоса."
 	helptext = "To remove the suit, use the ability again."
 	ability_icon_state = "ling_space_suit"
 	genomecost = 1

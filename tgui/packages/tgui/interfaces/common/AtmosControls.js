@@ -28,27 +28,27 @@ export const Vent = (props, context) => {
         <Button
           icon={power ? 'power-off' : 'times'}
           selected={power}
-          content={power ? 'On' : 'Off'}
+          content={power ? 'Вкл' : 'Выкл'}
           onClick={() => act('power', {
             id_tag,
             val: Number(!power),
           })} />
       )}>
       <LabeledList>
-        <LabeledList.Item label="Mode">
+        <LabeledList.Item label="Режим">
           <Button
             icon="sign-in-alt"
-            content={direction !== "siphon" ? 'Pressurizing' : 'Siphoning'}
+            content={direction !== "siphon" ? 'Повыш. давления' : 'Сифонирование'}
             color={direction === "siphon" && 'danger'}
             onClick={() => act('direction', {
               id_tag,
               val: Number(direction === "siphon"),
             })} />
         </LabeledList.Item>
-        <LabeledList.Item label="Pressure Regulator">
+        <LabeledList.Item label="Регулятор давления">
           <Button
             icon="sign-in-alt"
-            content="Internal"
+            content="Внутреннее"
             selected={incheck}
             onClick={() => act('incheck', {
               id_tag,
@@ -56,7 +56,7 @@ export const Vent = (props, context) => {
             })} />
           <Button
             icon="sign-out-alt"
-            content="External"
+            content="Внешнее"
             selected={excheck}
             onClick={() => act('excheck', {
               id_tag,
@@ -64,7 +64,7 @@ export const Vent = (props, context) => {
             })} />
         </LabeledList.Item>
         {!!incheck && (
-          <LabeledList.Item label="Internal Target">
+          <LabeledList.Item label="Внутренняя цель">
             <NumberInput
               value={Math.round(internal)}
               unit="kPa"
@@ -79,14 +79,14 @@ export const Vent = (props, context) => {
             <Button
               icon="undo"
               disabled={intdefault}
-              content="Reset"
+              content="Сброс"
               onClick={() => act('reset_internal_pressure', {
                 id_tag,
               })} />
           </LabeledList.Item>
         )}
         {!!excheck && (
-          <LabeledList.Item label="External Target">
+          <LabeledList.Item label="Внешняя цель">
             <NumberInput
               value={Math.round(external)}
               unit="kPa"
@@ -101,7 +101,7 @@ export const Vent = (props, context) => {
             <Button
               icon="undo"
               disabled={extdefault}
-              content="Reset"
+              content="Сброс"
               onClick={() => act('reset_external_pressure', {
                 id_tag,
               })} />
@@ -131,7 +131,7 @@ export const Scrubber = (props, context) => {
       buttons={(
         <Button
           icon={power ? 'power-off' : 'times'}
-          content={power ? 'On' : 'Off'}
+          content={power ? 'Вкл' : 'Выкл'}
           selected={power}
           onClick={() => act('power', {
             id_tag,
@@ -139,17 +139,17 @@ export const Scrubber = (props, context) => {
           })} />
       )}>
       <LabeledList>
-        <LabeledList.Item label="Mode">
+        <LabeledList.Item label="Режим">
           <Button
             icon={scrubbing ? 'filter' : 'sign-in-alt'}
             color={scrubbing || 'danger'}
-            content={scrubbing ? 'Scrubbing' : 'Siphoning'}
+            content={scrubbing ? 'Очистка' : 'Сифонирование'}
             onClick={() => act('scrubbing', {
               id_tag,
               val: Number(!scrubbing),
             })} />
         </LabeledList.Item>
-        <LabeledList.Item label="Filters">
+        <LabeledList.Item label="Фильтры">
           {scrubbing
             && filters.map(filter => (
               <Button key={filter.name}
@@ -162,7 +162,7 @@ export const Scrubber = (props, context) => {
                   val: !filter.val,
                 })} />
             ))
-            || 'N/A'}
+            || 'Н/Д'}
         </LabeledList.Item>
       </LabeledList>
     </Section>

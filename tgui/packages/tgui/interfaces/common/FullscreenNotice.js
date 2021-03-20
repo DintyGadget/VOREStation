@@ -6,7 +6,7 @@ import { Flex, Section } from '../../components';
 export const FullscreenNotice = (props, context) => {
   const {
     children,
-    title = 'Welcome',
+    title = 'Приветствую',
   } = props;
   return (
     <Section title={title} height="100%" stretchContents>

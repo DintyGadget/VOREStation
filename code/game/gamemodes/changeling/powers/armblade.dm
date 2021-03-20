@@ -1,6 +1,6 @@
 /datum/power/changeling/arm_blade
-	name = "Рука-лезвие"
-	desc = "We reform one of our arms into a deadly blade."
+	name = "Arm Blade"
+	desc = "Мы превращаем одну из наших рук в смертоносный клинок."
 	helptext = "Мы можем убрать наш нарукавный клинок, уронив его. Он может отклонять снаряды."
 	enhancedtext = "Лезвие будет иметь бронепробиваемость."
 	ability_icon_state = "ling_armblade"
@@ -24,8 +24,8 @@
 
 //Claws
 /datum/power/changeling/claw
-	name = "Коготь"
-	desc = "We reform one of our arms into a deadly claw."
+	name = "Claw"
+	desc = "Мы превращаем одну из наших рук в смертоносную клешню."
 	helptext = "Мы можем убрать коготь, уронив его."
 	enhancedtext = "Коготь будет пробивать броню."
 	ability_icon_state = "ling_claw"
@@ -48,7 +48,7 @@
 		return 0
 
 /obj/item/weapon/melee/changeling
-	name = "рука оружие"
+	name = "arm weapon"
 	desc = "Гротескное оружие, сделанное из костей и плоти, пронзающее людей, как горячий нож сквозь масло."
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "arm_blade"
@@ -133,7 +133,7 @@
 	return 1
 
 /obj/item/weapon/melee/changeling/arm_blade
-	name = "рука нож"
+	name = "arm blade"
 	desc = "Гротескный клинок, сделанный из костей и плоти, пронзающий людей, как горячий нож сквозь масло."
 	icon_state = "arm_blade"
 	force = 40
@@ -146,14 +146,14 @@
 	projectile_parry_chance = 25
 
 /obj/item/weapon/melee/changeling/arm_blade/greater
-	name = "рука меч"
+	name = "arm greatblade"
 	desc = "Гротескный клинок, сделанный из костей и плоти, пронзающий людей и доспехи, как горячий нож сквозь масло."
 	armor_penetration = 30
 	defend_chance = 70
 	projectile_parry_chance = 35
 
 /obj/item/weapon/melee/changeling/claw
-	name = "рука коготь"
+	name = "hand claw"
 	desc = "Гротескный коготь, сделанный из костей и плоти, рассекает людей, как горячий нож через масло."
 	icon_state = "ling_claw"
 	force = 15
@@ -164,7 +164,7 @@
 	projectile_parry_chance = 15
 
 /obj/item/weapon/melee/changeling/claw/greater
-	name = "рука лезвие"
+	name = "hand greatclaw"
 	force = 20
 	armor_penetration = 20
 	pry = 1

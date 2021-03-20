@@ -4,7 +4,7 @@
 
 /datum/dna/gene/basic/nobreath
 	name="No Breathing"
-	activation_messages=list("You feel no need to breathe.")
+	activation_messages=list("Вам не нужно дышать.")
 	mutation=mNobreath
 
 	New()
@@ -12,7 +12,7 @@
 
 /datum/dna/gene/basic/remoteview
 	name="Remote Viewing"
-	activation_messages=list("Your mind expands.")
+	activation_messages=list("Ваш ум расширяется.")
 	mutation=mRemote
 
 	New()
@@ -24,7 +24,7 @@
 
 /datum/dna/gene/basic/regenerate
 	name="Regenerate"
-	activation_messages=list("You feel better.")
+	activation_messages=list("Вы чувствуете себя лучше.")
 	mutation=mRegen
 
 	New()
@@ -32,7 +32,7 @@
 
 /datum/dna/gene/basic/increaserun
 	name="Super Speed"
-	activation_messages=list("Your leg muscles pulsate.")
+	activation_messages=list("Мышцы ваших ног пульсируют.")
 	mutation=mRun
 
 	New()

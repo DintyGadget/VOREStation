@@ -14,9 +14,9 @@ export const pda_janitor = (props, context) => {
   return (
     <Box>
       <LabeledList>
-        <LabeledList.Item label="Current Location">
+        <LabeledList.Item label="Текущее положение">
           {janitor.user_loc.x === 0 && (
-            <Box color="bad">Unknown</Box>
+            <Box color="bad">Неизвестно</Box>
           ) || (
             <Box>
               {janitor.user_loc.x} / {janitor.user_loc.y}
@@ -24,33 +24,33 @@ export const pda_janitor = (props, context) => {
           )}
         </LabeledList.Item>
       </LabeledList>
-      <Section level={2} title="Mop Locations">
+      <Section level={2} title="Положение швабры">
         {janitor.mops && (
           <ul>
             {janitor.mops.map((mop, i) => (
               <li key={i}>
-                {mop.x} / {mop.y} - {mop.dir} - Status: {mop.status}
+                {mop.x} / {mop.y} - {mop.dir} - Статус: {mop.status}
               </li>
             ))}
           </ul>
         ) || (
           <Box color="bad">
-            No mops detected nearby.
+            Швабры поблизости не обнаружены.
           </Box>
         )}
       </Section>
-      <Section level={2} title="Mop Bucket Locations">
+      <Section level={2} title="Положение ведер">
         {janitor.buckets && (
           <ul>
             {janitor.buckets.map((bucket, i) => (
               <li key={i}>
-                {bucket.x} / {bucket.y} - {bucket.dir} - Capacity: {bucket.volume}/{bucket.max_volume}
+                {bucket.x} / {bucket.y} - {bucket.dir} - Емкость: {bucket.volume}/{bucket.max_volume}
               </li>
             ))}
           </ul>
         ) || (
           <Box color="bad">
-            No buckets detected nearby.
+            Ведер поблизости не обнаружено.
           </Box>
         )}
       </Section>

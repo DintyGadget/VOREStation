@@ -1,6 +1,6 @@
 /datum/power/changeling/absorb_dna
-	name = "Поглотить ДНК"
-	desc = "Permits us to syphon the DNA from a human. They become one with us, and we become stronger if they were of our kind."
+	name = "Absorb DNA"
+	desc = "Позволяет нам откачивать ДНК человека. Они становятся единым целым с нами, и мы становимся сильнее, если бы они были из нас."
 	ability_icon_state = "ling_absorb_dna"
 	genomecost = 0
 	verbpath = /mob/living/proc/changeling_absorb_dna

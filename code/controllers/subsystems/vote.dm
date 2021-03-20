@@ -83,9 +83,9 @@ SUBSYSTEM_DEF(vote)
 		var/non_voters = (GLOB.clients.len - total_votes)
 		if(non_voters > 0)
 			if(mode == VOTE_RESTART)
-				choices["Continue Playing"] += non_voters
-				if(choices["Continue Playing"] >= greatest_votes)
-					greatest_votes = choices["Continue Playing"]
+				choices["Продолжить играть"] += non_voters
+				if(choices["Продолжить играть"] >= greatest_votes)
+					greatest_votes = choices["Продолжить играть"]
 			else if(mode == VOTE_GAMEMODE)
 				if(master_mode in choices)
 					choices[master_mode] += non_voters
@@ -104,9 +104,9 @@ SUBSYSTEM_DEF(vote)
 						factor = 1.2
 					else
 						factor = 1.4
-				choices["Initiate Crew Transfer"] = round(choices["Initiate Crew Transfer"] * factor)
+				choices["Эвакуация"] = round(choices["Эвакуация"] * factor)
 				to_world("<font color='purple'>Crew Transfer Factor: [factor]</font>")
-				greatest_votes = max(choices["Initiate Crew Transfer"], choices["Extend the Shift"]) //VOREStation Edit
+				greatest_votes = max(choices["Эвакуация"], choices["Продлить смену"]) //VOREStation Edit
 
 	. = list() // Get all options with that many votes and return them in a list
 	if(greatest_votes)
@@ -120,7 +120,7 @@ SUBSYSTEM_DEF(vote)
 	if(winners.len > 0)
 		if(winners.len > 1)
 			if(mode != VOTE_GAMEMODE || ticker.hide_mode == 0) // Here we are making sure we don't announce potential game modes
-				text = "<b>Vote Tied Between:</b>\n"
+				text = "<b>Голосование связано между собой:</b>\n"
 				for(var/option in winners)
 					text += "\t[option]\n"
 		. = pick(winners)
@@ -146,7 +146,7 @@ SUBSYSTEM_DEF(vote)
 	if(.)
 		switch(mode)
 			if(VOTE_RESTART)
-				if(. == "Restart Round")
+				if(. == "Рестарт")
 					restart = 1
 			if(VOTE_GAMEMODE)
 				if(master_mode != .)
@@ -156,10 +156,10 @@ SUBSYSTEM_DEF(vote)
 					else
 						master_mode = .
 			if(VOTE_CREW_TRANSFER)
-				if(. == "Initiate Crew Transfer")
+				if(. == "Эвакуация")
 					init_shift_change(null, 1)
 			if(VOTE_ADD_ANTAGONIST)
-				if(isnull(.) || . == "None")
+				if(isnull(.) || . == "Нет")
 					antag_add_failed = 1
 				else
 					additional_antag_types |= antag_names_to_ids[.]
@@ -201,7 +201,7 @@ SUBSYSTEM_DEF(vote)
 
 		switch(vote_type)
 			if(VOTE_RESTART)
-				choices.Add("Restart Round", "Continue Playing")
+				choices.Add("Рестарт", "Продолжить играть")
 			if(VOTE_GAMEMODE)
 				if(ticker.current_state >= GAME_STATE_SETTING_UP)
 					return 0
@@ -222,7 +222,7 @@ SUBSYSTEM_DEF(vote)
 						to_chat(initiator_key, "The crew transfer button has been disabled!")
 						return 0
 				question = "Ваш ПДА подает звуковой сигнал с сообщением из Центра. Вы хотели бы получить дополнительный час, чтобы закончить текущие проекты?" //VOREStation Edit
-				choices.Add("Иниц. эвак. экипажа", "Продлить смену")  //VOREStation Edit
+				choices.Add("Эвакуация", "Продлить смену")  //VOREStation Edit
 			if(VOTE_ADD_ANTAGONIST)
 				if(!config.allow_extra_antags || ticker.current_state >= GAME_STATE_SETTING_UP)
 					return 0
@@ -230,7 +230,7 @@ SUBSYSTEM_DEF(vote)
 					var/datum/antagonist/antag = all_antag_types[antag_type]
 					if(!(antag.id in additional_antag_types) && antag.is_votable())
 						choices.Add(antag.role_text)
-				choices.Add("None")
+				choices.Add("Нет")
 			if(VOTE_CUSTOM)
 				question = sanitizeSafe(input(usr, "За что голосуем?") as text|null)
 				if(!question)

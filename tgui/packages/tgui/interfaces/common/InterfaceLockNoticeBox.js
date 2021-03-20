@@ -25,7 +25,7 @@ export const InterfaceLockNoticeBox = (props, context) => {
     onLockStatusChange = () => act('lock'),
     accessText = 'an ID card',
     deny = false,
-    denialMessage = 'Error.',
+    denialMessage = 'Ошибка.',
   } = props;
   if (deny) {
     return denialMessage;
@@ -44,7 +44,7 @@ export const InterfaceLockNoticeBox = (props, context) => {
               m="0"
               color={normallyLocked ? 'red' : 'green'}
               icon={normallyLocked ? 'lock' : 'unlock'}
-              content={normallyLocked ? 'Locked' : 'Unlocked'}
+              content={normallyLocked ? 'Заблокирова' : 'Разблокировать'}
               onClick={() => {
                 if (onLockStatusChange) {
                   onLockStatusChange(!locked);
@@ -58,8 +58,8 @@ export const InterfaceLockNoticeBox = (props, context) => {
   // For everyone else
   return (
     <NoticeBox>
-      Swipe {accessText}{' '}
-      to {locked ? 'unlock' : 'lock'} this interface.
+      Проведите {accessText}{' '}
+      чтобы {locked ? 'unlock' : 'lock'} этот интерфейс.
     </NoticeBox>
   );
 };

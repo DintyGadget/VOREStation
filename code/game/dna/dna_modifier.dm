@@ -105,7 +105,7 @@
 /obj/machinery/dna_scannernew/verb/eject()
 	set src in oview(1)
 	set category = "Object"
-	set name = "Eject DNA Scanner"
+	set name = "Извлечь сканер ДНК"
 
 	if(usr.stat != 0)
 		return
@@ -157,7 +157,7 @@
 /obj/machinery/dna_scannernew/attackby(var/obj/item/weapon/item as obj, var/mob/user as mob)
 	if(istype(item, /obj/item/weapon/reagent_containers/glass))
 		if(beaker)
-			to_chat(user, "<span class='warning'>A beaker is already loaded into the machine.</span>")
+			to_chat(user, "<span class='warning'>Стакан уже загружен в машину.</span>")
 			return
 
 		beaker = item
