@@ -4,9 +4,9 @@
 ////////////////////////////
 
 /datum/reagent/macrocillin
-	name = "Macrocillin"
+	name = "Макроциллин"
 	id = "macrocillin"
-	description = "Glowing yellow liquid."
+	description = "Светящаяся желтая жидкость."
 	reagent_state = LIQUID
 	color = "#FFFF00" // rgb: 255, 255, 0
 	metabolism = 0.01
@@ -18,9 +18,9 @@
 	return
 
 /datum/reagent/microcillin
-	name = "Microcillin"
+	name = "Микроциллин"
 	id = "microcillin"
-	description = "Murky purple liquid."
+	description = "Мутно-пурпурная жидкость."
 	reagent_state = LIQUID
 	color = "#800080"
 	metabolism = 0.01
@@ -33,9 +33,9 @@
 
 
 /datum/reagent/normalcillin
-	name = "Normalcillin"
+	name = "Нормалциллин"
 	id = "normalcillin"
-	description = "Translucent cyan liquid."
+	description = "Полупрозрачная голубая жидкость."
 	reagent_state = LIQUID
 	color = "#00FFFF"
 	metabolism = 0.01 //One unit will be just enough to bring someone from 200% to 100%
@@ -50,9 +50,9 @@
 
 
 /datum/reagent/sizeoxadone
-	name = "Sizeoxadone"
+	name = "Сизоксадон"
 	id = "sizeoxadone"
-	description = "A volatile liquid used as a precursor to size-altering chemicals. Causes dizziness if taken unprocessed."
+	description = "Летучая жидкость, используемая в качестве предшественника химикатов, изменяющих размер. При приеме в необработанном виде вызывает головокружение."
 	reagent_state = LIQUID
 	color = "#1E90FF"
 	overdose = REAGENTS_OVERDOSE
@@ -67,9 +67,9 @@
 ////////////////////////// Anti-Noms Drugs //////////////////////////
 
 /datum/reagent/ickypak
-	name = "Ickypak"
+	name = "Икипак"
 	id = "ickypak"
-	description = "A foul-smelling green liquid, for inducing muscle contractions to expel accidentally ingested things."
+	description = "Зловонная зеленая жидкость, вызывающая сокращение мышц, чтобы изгнать случайно проглоченные предметы."
 	reagent_state = LIQUID
 	color = "#0E900E"
 	overdose = REAGENTS_OVERDOSE
@@ -90,9 +90,9 @@
 				B.release_specific_contents(A)
 
 /datum/reagent/unsorbitol
-	name = "Unsorbitol"
+	name = "Унсорбитол"
 	id = "unsorbitol"
-	description = "A frothy pink liquid, for causing cellular-level hetrogenous structure separation."
+	description = "Пенистая розовая жидкость, вызывающая разделение гетерогенной структуры на клеточном уровне."
 	reagent_state = LIQUID
 	color = "#EF77E5"
 	overdose = REAGENTS_OVERDOSE
@@ -117,14 +117,14 @@
 			else if(prob(1))
 				playsound(M, 'sound/vore/schlorp.ogg', 50, 1)
 				P.absorbed = 0
-				M.visible_message("<font color='green'><b>Something spills into [M]'s [lowertext(B.name)]!</b></font>")
+				M.visible_message("<font color='green'><b>Что-то попадает в [M] [lowertext(B.name)]!</b></font>")
 
 //Special toxins for solargrubs
 
 /datum/reagent/grubshock
-	name = "200 V" //in other words a painful shock
+	name = "200 В" //in other words a painful shock
 	id = "shockchem"
-	description = "A liquid that quickly dissapates to deliver a painful shock."
+	description = "Жидкость, которая быстро испаряется, вызывая болезненный шок."
 	reagent_state = LIQUID
 	color = "#E4EC2F"
 	metabolism = 2.50

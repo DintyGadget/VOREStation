@@ -38,18 +38,18 @@ const PlantAnalyzerContent = (props, context) => {
   if (no_seed) {
     return (
       <Section title="Analyzer Unused">
-        You should go scan a plant! There is no data currently loaded.
+        Вам следует просканировать растение! В настоящее время нет загруженных данных.
       </Section>
     );
   }
 
   return (
-    <Section title="Plant Information" buttons={
+    <Section title="Информация о растении" buttons={
       <Fragment>
         <Button
           icon="print"
           onClick={() => act("print")}>
-          Print Report
+          Печать
         </Button>
         <Button
           icon="window-close"
@@ -58,22 +58,22 @@ const PlantAnalyzerContent = (props, context) => {
       </Fragment>
     }>
       <LabeledList>
-        <LabeledList.Item label="Plant Name">
+        <LabeledList.Item label="Название">
           {seed.name}#{seed.uid}
         </LabeledList.Item>
-        <LabeledList.Item label="Endurance">
+        <LabeledList.Item label="Выносливость">
           {seed.endurance}
         </LabeledList.Item>
-        <LabeledList.Item label="Yield">
+        <LabeledList.Item label="Урожай">
           {seed.yield}
         </LabeledList.Item>
-        <LabeledList.Item label="Maturation Time">
+        <LabeledList.Item label="Время созревания">
           {seed.maturation_time}
         </LabeledList.Item>
-        <LabeledList.Item label="Production Time">
+        <LabeledList.Item label="Сроки изготовления">
           {seed.production_time}
         </LabeledList.Item>
-        <LabeledList.Item label="Potency">
+        <LabeledList.Item label="Потенция">
           {seed.potency}
         </LabeledList.Item>
       </LabeledList>
@@ -88,7 +88,7 @@ const PlantAnalyzerContent = (props, context) => {
           </LabeledList>
         </Section>
       ) || null}
-      <Section level={2} title="Other Data">
+      <Section level={2} title="Другие данные">
         {seed.trait_info.map(trait => (
           <Box color="label" key={trait} mb={0.4}>{trait}</Box>
         ))}

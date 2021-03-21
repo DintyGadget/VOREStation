@@ -1,9 +1,9 @@
 /* Food */
 
 /datum/reagent/nutriment
-	name = "Nutriment"
+	name = "Питание"
 	id = "nutriment"
-	description = "All the vitamins, minerals, and carbohydrates the body needs in pure form."
+	description = "Все витамины, минералы и углеводы нужны организму в чистом виде."
 	taste_mult = 4
 	reagent_state = SOLID
 	metabolism = REM * 4
@@ -83,7 +83,7 @@
 	//We'll assume that the batter isnt going to be regurgitated and eaten by someone else. Only show this once
 	if(data["cooked"] != 1)
 		if (!messaged)
-			to_chat(M, "<span class='warning'>Ugh, this raw [name] tastes disgusting.</span>")
+			to_chat(M, "<span class='warning'>Фу, это сырое [name] отвратительно на вкус.</span>")
 			nutriment_factor *= 0.5
 			messaged = 1
 
@@ -116,7 +116,7 @@
 	data["cooked"] = newdata["cooked"]
 
 /datum/reagent/nutriment/coating/batter
-	name = "batter mix"
+	name = "смесь для теста"
 	cooked_name = "batter"
 	id = "batter"
 	color = "#f5f4e9"
@@ -127,7 +127,7 @@
 	allergen_type = GRAINS | EGGS //Made with flour(grain), and eggs(eggs)
 
 /datum/reagent/nutriment/coating/beerbatter
-	name = "beer batter mix"
+	name = "смесь для пивного теста"
 	cooked_name = "beer batter"
 	id = "beerbatter"
 	color = "#f5f4e9"
@@ -145,9 +145,9 @@
 //Fats
 //=========================
 /datum/reagent/nutriment/triglyceride
-	name = "triglyceride"
+	name = "триглицериды"
 	id = "triglyceride"
-	description = "More commonly known as fat, the third macronutrient, with over double the energy content of carbs and protein"
+	description = "Более известный как жир, третий макроэлемент, с более чем двукратным содержанием энергии углеводов и белка"
 
 	reagent_state = SOLID
 	taste_description = "greasiness"
@@ -157,9 +157,9 @@
 
 /datum/reagent/nutriment/triglyceride/oil
 	//Having this base class incase we want to add more variants of oil
-	name = "Oil"
+	name = "Масло"
 	id = "oil"
-	description = "Oils are liquid fats."
+	description = "Масла-это жидкие жиры."
 	reagent_state = LIQUID
 	taste_description = "oil"
 	color = "#c79705"
@@ -231,20 +231,20 @@
 		M.take_organ_damage(0, removed * 1.5 * dfactor)
 		data["temperature"] -= (6 * removed) / (1 + volume*0.1)//Cools off as it burns you
 		if (lastburnmessage+100 < world.time	)
-			to_chat(M, "<span class='danger'>Searing hot oil burns you, wash it off quick!</span>")
+			to_chat(M, "<span class='danger'>Обжигающе горячее масло обжигает вас, быстро смывайте его!</span>")
 			lastburnmessage = world.time
 
 /datum/reagent/nutriment/triglyceride/oil/corn
-	name = "Corn Oil"
+	name = "Кукурузное Масло"
 	id = "cornoil"
-	description = "An oil derived from various types of corn."
+	description = "Масло, получаемое из различных видов кукурузы."
 	reagent_state = LIQUID
 	allergen_type = VEGETABLE //Corn is a vegetable
 
 /datum/reagent/nutriment/triglyceride/oil/peanut
-	name = "Peanut Oil"
+	name = "Арахисовое масло"
 	id = "peanutoil"
-	description = "An oil derived from various types of nuts."
+	description = "Масло, получаемое из различных видов орехов."
 	taste_description = "nuts"
 	taste_mult = 0.3
 	nutriment_factor = 15
@@ -254,17 +254,17 @@
 // Aurora Cooking Port Insertion End
 
 /datum/reagent/nutriment/glucose
-	name = "Glucose"
+	name = "Глюкоза"
 	id = "glucose"
-	taste_description = "sweetness"
+	taste_description = "сладость"
 	color = "#FFFFFF"
 
 	injectable = 1
 
 /datum/reagent/nutriment/protein // Bad for Skrell!
-	name = "animal protein"
+	name = "животный белок"
 	id = "protein"
-	taste_description = "some sort of meat"
+	taste_description = "какое - то мясо"
 	color = "#440000"
 	allergen_type = MEAT //"Animal protein" implies it comes from animals, therefore meat.
 
@@ -282,24 +282,24 @@
 			..()
 
 /datum/reagent/nutriment/protein/tofu
-	name = "tofu protein"
+	name = "белок тофу"
 	id = "tofu"
 	color = "#fdffa8"
-	taste_description = "tofu"
+	taste_description = "тофу"
 	allergen_type = BEANS //Made from soy beans
 
 /datum/reagent/nutriment/protein/seafood
-	name = "seafood protein"
+	name = "белок морепродуктов"
 	id = "seafood"
 	color = "#f5f4e9"
-	taste_description = "fish"
+	taste_description = "рыба"
 	allergen_type = FISH //I suppose the fish allergy likely refers to seafood in general.
 
 /datum/reagent/nutriment/protein/cheese
-	name = "cheese"
+	name = "сыр"
 	id = "cheese"
 	color = "#EDB91F"
-	taste_description = "cheese"
+	taste_description = "сыр"
 	allergen_type = DAIRY //Cheese is made from dairy
 
 /datum/reagent/nutriment/protein/egg
@@ -310,16 +310,16 @@
 	allergen_type = EGGS //Eggs contain egg
 
 /datum/reagent/nutriment/protein/murk
-	name = "murkfin protein"
+	name = "белок мурфина"
 	id = "murk_protein"
-	taste_description = "mud"
+	taste_description = "грязь"
 	color = "#664330"
 	allergen_type = FISH //Murkfin is fish
 
 /datum/reagent/nutriment/honey
-	name = "Honey"
+	name = "Мед"
 	id = "honey"
-	description = "A golden yellow syrup, loaded with sugary sweetness."
+	description = "Золотисто-желтый сироп, наполненный сладкой сладостью."
 	taste_description = "sweetness"
 	nutriment_factor = 10
 	color = "#FFFF00"
@@ -346,27 +346,27 @@
 			M.drowsyness = max(M.drowsyness, 60)
 
 /datum/reagent/nutriment/mayo
-	name = "mayonnaise"
+	name = "майонез"
 	id = "mayo"
-	description = "A thick, bitter sauce."
-	taste_description = "unmistakably mayonnaise"
+	description = "Густой масляный соус."
+	taste_description = "безошибочно майонез"
 	nutriment_factor = 10
 	color = "#FFFFFF"
 	allergen_type = EGGS	//Mayo is made from eggs
 
 /datum/reagent/nutriment/yeast
-	name = "Yeast"
+	name = "Дрожжи"
 	id = "yeast"
-	description = "For making bread rise!"
-	taste_description = "yeast"
+	description = "За то, чтобы хлеб поднимался!"
+	taste_description = "дрожжи"
 	nutriment_factor = 1
 	color = "#D3AF70"
 
 /datum/reagent/nutriment/flour
-	name = "Flour"
+	name = "Мука"
 	id = "flour"
-	description = "This is what you rub all over yourself to pretend to be a ghost."
-	taste_description = "chalky wheat"
+	description = "Это то, что вы натираете на себя, чтобы притвориться призраком."
+	taste_description = "меловая пшеница"
 	reagent_state = SOLID
 	nutriment_factor = 1
 	color = "#FFFFFF"
@@ -377,75 +377,75 @@
 		new /obj/effect/decal/cleanable/flour(T)
 
 /datum/reagent/nutriment/coffee
-	name = "Coffee Powder"
+	name = "Кофейный Порошок"
 	id = "coffeepowder"
-	description = "A bitter powder made by grinding coffee beans."
-	taste_description = "bitterness"
+	description = "Горький порошок, полученный путем измельчения кофейных зерен."
+	taste_description = "горечь"
 	taste_mult = 1.3
 	nutriment_factor = 1
 	color = "#482000"
 	allergen_type = COFFEE //Again, coffee contains coffee
 
 /datum/reagent/nutriment/tea
-	name = "Tea Powder"
+	name = "Чайный порошок"
 	id = "teapowder"
-	description = "A dark, tart powder made from black tea leaves."
-	taste_description = "tartness"
+	description = "Темный терпкий порошок из листьев черного чая."
+	taste_description = "терпкость"
 	taste_mult = 1.3
 	nutriment_factor = 1
 	color = "#101000"
 
 /datum/reagent/nutriment/coco
-	name = "Coco Powder"
+	name = "Какао-порошок"
 	id = "coco"
-	description = "A fatty, bitter paste made from coco beans."
-	taste_description = "bitterness"
+	description = "Жирная, горькая паста из какао-бобов."
+	taste_description = "горечь"
 	taste_mult = 1.3
 	reagent_state = SOLID
 	nutriment_factor = 5
 	color = "#302000"
 
 /datum/reagent/nutriment/instantjuice
-	name = "Juice Powder"
+	name = "Порошок сока"
 	id = "instantjuice"
-	description = "Dehydrated, powdered juice of some kind."
+	description = "Обезвоженный, какой-то порошкообразный сок."
 	taste_mult = 1.3
 	nutriment_factor = 1
 	allergen_type = FRUIT //I suppose it's implied here that the juice is from dehydrated fruit.
 
 /datum/reagent/nutriment/instantjuice/grape
-	name = "Grape Juice Powder"
+	name = "Порошок Виноградного сока"
 	id = "instantgrape"
-	description = "Dehydrated, powdered grape juice."
-	taste_description = "dry grapes"
+	description = "Обезвоженный, измельченный виноградный сок."
+	taste_description = "сухой виноград"
 	color = "#863333"
 
 /datum/reagent/nutriment/instantjuice/orange
-	name = "Orange Juice Powder"
+	name = "Порошок апельсинового сока"
 	id = "instantorange"
-	description = "Dehydrated, powdered orange juice."
-	taste_description = "dry oranges"
+	description = "Обезвоженный измельченный апельсиновый сок."
+	taste_description = "сухой апельсин"
 	color = "#e78108"
 
 /datum/reagent/nutriment/instantjuice/watermelon
-	name = "Watermelon Juice Powder"
+	name = "Порошок арбузного сока"
 	id = "instantwatermelon"
-	description = "Dehydrated, powdered watermelon juice."
-	taste_description = "dry sweet watermelon"
+	description = "Обезвоженный измельченный арбузный сок."
+	taste_description = "сухой сладкий арбуз"
 	color = "#b83333"
 
 /datum/reagent/nutriment/instantjuice/apple
-	name = "Apple Juice Powder"
+	name = "Порошок яблочного сока"
 	id = "instantapple"
-	description = "Dehydrated, powdered apple juice."
-	taste_description = "dry sweet apples"
+	description = "Обезвоженный измельченный яблочный сок."
+	taste_description = "сухое сладкое яблоко"
 	color = "#c07c40"
 
 /datum/reagent/nutriment/soysauce
-	name = "Soy Sauce"
+	name = "Соевый соус"
 	id = "soysauce"
-	description = "A salty sauce made from the soy plant."
-	taste_description = "umami"
+	description = "Соленый соус из соевого растения."
+	taste_description = "умами"
 	taste_mult = 1.1
 	reagent_state = LIQUID
 	nutriment_factor = 2
@@ -454,39 +454,39 @@
 
 
 /datum/reagent/nutriment/ketchup
-	name = "Ketchup"
+	name = "Кетчуп"
 	id = "ketchup"
-	description = "Ketchup, catsup, whatever. It's tomato paste."
-	taste_description = "ketchup"
+	description = "Кетчуп, паста, что угодно. Это все еще томаты."
+	taste_description = "кетчуп"
 	reagent_state = LIQUID
 	nutriment_factor = 5
 	color = "#731008"
 	allergen_type = FRUIT 	//Tomatoes are a fruit.
 
 /datum/reagent/nutriment/barbecue
-	name = "Barbeque Sauce"
+	name = "Соус барбекю"
 	id = "barbecue"
-	description = "Barbecue sauce for barbecues and long shifts."
-	taste_description = "barbeque"
+	description = "Соус барбекю для барбекю и длительных смен."
+	taste_description = "барбек"
 	reagent_state = LIQUID
 	nutriment_factor = 5
 	color = "#4F330F"
 
 /datum/reagent/nutriment/rice
-	name = "Rice"
+	name = "Рис"
 	id = "rice"
-	description = "Enjoy the great taste of nothing."
-	taste_description = "rice"
+	description = "Наслаждайтесь прекрасным вкусом ничего."
+	taste_description = "рис"
 	taste_mult = 0.4
 	reagent_state = SOLID
 	nutriment_factor = 1
 	color = "#FFFFFF"
 
 /datum/reagent/nutriment/cherryjelly
-	name = "Cherry Jelly"
+	name = "Вишневое желе"
 	id = "cherryjelly"
-	description = "Totally the best. Only to be spread on foods with excellent lateral symmetry."
-	taste_description = "cherry"
+	description = "Абсолютно лучшее. Только для распределения на продуктах с превосходной боковой симметрией."
+	taste_description = "вишня"
 	taste_mult = 1.3
 	reagent_state = LIQUID
 	nutriment_factor = 1
@@ -494,9 +494,9 @@
 	allergen_type = FRUIT //Cherries are fruits
 
 /datum/reagent/nutriment/peanutbutter
-	name = "Peanut Butter"
+	name = "Арахисовое масло"
 	id = "peanutbutter"
-	description = "A butter derived from various types of nuts."
+	description = "Масло, полученное из различных видов орехов."
 	taste_description = "peanuts"
 	taste_mult = 0.5
 	reagent_state = LIQUID
@@ -505,28 +505,28 @@
 	allergen_type = SEEDS //Peanuts(seeds)
 
 /datum/reagent/nutriment/vanilla
-	name = "Vanilla Extract"
+	name = "Экстракт ванили"
 	id = "vanilla"
-	description = "Vanilla extract. Tastes suspiciously like boring ice-cream."
-	taste_description = "vanilla"
+	description = "Экстракт ванили. На вкус подозрительно похоже на скучное мороженое."
+	taste_description = "ваниль"
 	taste_mult = 5
 	reagent_state = LIQUID
 	nutriment_factor = 2
 	color = "#0F0A00"
 
 /datum/reagent/nutriment/durian
-	name = "Durian Paste"
+	name = "Дуриановая паста"
 	id = "durianpaste"
-	description = "A strangely sweet and savory paste."
-	taste_description = "sweet and savory"
+	description = "Странно сладкая и пикантная паста."
+	taste_description = "сладкий и соленый"
 	color = "#757631"
 
 	glass_name = "durian paste"
-	glass_desc = "Durian paste. It smells horrific."
+	glass_desc = "Дуриановая паста. Пахнет ужасно."
 
 /datum/reagent/nutriment/durian/touch_mob(var/mob/M, var/amount)
 	if(iscarbon(M) && !M.isSynthetic())
-		var/message = pick("Oh god, it smells disgusting here.", "What is that stench?", "That's an awful odor.")
+		var/message = pick("О боже, здесь отвратительно пахнет.", "Что это за вонь?", "Ужасный запах.")
 		to_chat(M, "<span class='alien'>[message]</span>")
 		if(prob(CLAMP(amount, 5, 90)))
 			var/mob/living/L = M
@@ -540,10 +540,10 @@
 	return ..()
 
 /datum/reagent/nutriment/virus_food
-	name = "Virus Food"
+	name = "Вирусная еда"
 	id = "virusfood"
-	description = "A mixture of water, milk, and oxygen. Virus cells can use this mixture to reproduce."
-	taste_description = "vomit"
+	description = "Смесь воды, молока и кислорода. Вирусные клетки могут использовать эту смесь для размножения."
+	taste_description = "рвота"
 	taste_mult = 2
 	reagent_state = LIQUID
 	nutriment_factor = 2
@@ -551,18 +551,18 @@
 	allergen_type = DAIRY	//incase anyone is dumb enough to drink it - it does contain milk!
 
 /datum/reagent/nutriment/sprinkles
-	name = "Sprinkles"
+	name = "Посыпка"
 	id = "sprinkles"
-	description = "Multi-colored little bits of sugar, commonly found on donuts. Loved by cops."
-	taste_description = "sugar"
+	description = "Разноцветные кусочки сахара, которые обычно можно найти на пончиках. Любят копы."
+	taste_description = "сахар"
 	nutriment_factor = 1
 	color = "#FF00FF"
 
 /datum/reagent/nutriment/mint
-	name = "Mint"
+	name = "Мята"
 	id = "mint"
-	description = "Also known as Mentha."
-	taste_description = "mint"
+	description = "Также известен как Мента."
+	taste_description = "мята"
 	reagent_state = LIQUID
 	color = "#CF3600"
 
@@ -4111,10 +4111,10 @@
 	glass_desc = "A glass of schusskonig digestif. Good for shooting or mixing."
 
 /datum/reagent/ethanol/fusionnaire
-	name = "Fusionnaire"
+	name = "Веретенник"
 	id = "fusionnaire"
-	description = "A drink for the brave."
-	taste_description = "a painfully alcoholic lemon soda with an undertone of mint"
+	description = "Выпивка для храбрых."
+	taste_description = "мучительно алкогольная лимонная сода с оттенком мяты"
 	color = "#6BB486"
 	strength = 9
 
@@ -4126,7 +4126,7 @@
 /datum/reagent/ethanol/deathbell
 	name = "Deathbell"
 	id = "deathbell"
-	description = "A successful experiment to make the most alcoholic thing possible."
+	description = "Удачный эксперимент, чтобы сделать самую алкогольную вещь возможной."
 	taste_description = "your brains smashed out by a smooth brick of hard, ice cold alcohol"
 	color = "#9f6aff"
 	taste_mult = 5
@@ -4148,10 +4148,10 @@
 		M.slurring = max(M.slurring, 30)
 
 /datum/reagent/nutriment/magicdust
-	name = "Magic Dust"
+	name = "Волшебная пыль"
 	id = "magicdust"
-	description = "A dust harvested from gnomes, aptly named by pre-industrial civilizations."
-	taste_description = "something tingly"
+	description = "Пыль, собранная с гномов, метко названная доиндустриальными цивилизациями."
+	taste_description = "покалывает"
 	taste_mult = 2
 	reagent_state = LIQUID
 	nutriment_factor = 40 //very filling

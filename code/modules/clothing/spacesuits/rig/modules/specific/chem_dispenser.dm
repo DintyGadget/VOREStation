@@ -1,6 +1,6 @@
 /obj/item/rig_module/chem_dispenser
-	name = "mounted chemical dispenser"
-	desc = "A complex web of tubing and needles suitable for hardsuit use."
+	name = "навесной дозатор химикатов"
+	desc = "Сложная сеть из трубок и игл, подходящая для использования в тяжелых костюмах."
 	icon_state = "injector"
 	usable = 1
 	selectable = 0
@@ -9,8 +9,8 @@
 
 	engage_string = "Inject"
 
-	interface_name = "integrated chemical dispenser"
-	interface_desc = "Dispenses loaded chemicals directly into the wearer's bloodstream."
+	interface_name = "интегрированный дозатор химикатов"
+	interface_desc = "Распределяет загруженные химические вещества непосредственно в кровоток пользователя."
 
 	charges = list(
 		list("tricordrazine", "tricordrazine", 0, 80),
@@ -26,7 +26,7 @@
 	var/max_reagent_volume = 80 //Used when refilling.
 
 /obj/item/rig_module/chem_dispenser/ninja
-	interface_desc = "Dispenses loaded chemicals directly into the wearer's bloodstream. This variant is made to be extremely light and flexible."
+	interface_desc = "Распределяет загруженные химические вещества непосредственно в кровоток пользователя. Этот вариант сделан очень легким и универсальным."
 
 	//Want more? Go refill. Gives the ninja another reason to have to show their face.
 	charges = list(
@@ -49,7 +49,7 @@
 		return 0
 
 	if(!input_item.reagents || !input_item.reagents.total_volume)
-		to_chat(user, "\The [input_item] is empty.")
+		to_chat(user, "[input_item] пуст.")
 		return 0
 
 	// Magical chemical filtration system, do not question it.
@@ -71,9 +71,9 @@
 				break
 
 	if(total_transferred)
-		to_chat(user, "<font color='blue'>You transfer [total_transferred] units into the suit reservoir.</font>")
+		to_chat(user, "<font color='blue'>Вы переносите [total_transferred] единиц в резервуар костюма.</font>")
 	else
-		to_chat(user, "<span class='danger'>None of the reagents seem suitable.</span>")
+		to_chat(user, "<span class='danger'>Ни один из реагентов не кажется подходящим.</span>")
 	return 1
 
 /obj/item/rig_module/chem_dispenser/engage(atom/target)
@@ -84,7 +84,7 @@
 	var/mob/living/carbon/human/H = holder.wearer
 
 	if(!charge_selected)
-		to_chat(H, "<span class='danger'>You have not selected a chemical type.</span>")
+		to_chat(H, "<span class='danger'>Вы не выбрали тип химикатов.</span>")
 		return 0
 
 	var/datum/rig_charge/charge = charges[charge_selected]
@@ -94,7 +94,7 @@
 
 	var/chems_to_use = 10
 	if(charge.charges <= 0)
-		to_chat(H, "<span class='danger'>Insufficient chems!</span>")
+		to_chat(H, "<span class='danger'>Недостаточно химии!</span>")
 		return 0
 	else if(charge.charges < chems_to_use)
 		chems_to_use = charge.charges

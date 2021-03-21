@@ -15,7 +15,7 @@
 	log_admin(logstr)
 
 /client/proc/view_chemical_reaction_logs()
-	set name = "Show Chemical Reactions"
+	set name = "Показать химические реакции"
 	set category = "Admin"
 
 	if(!check_rights(R_ADMIN|R_MOD))

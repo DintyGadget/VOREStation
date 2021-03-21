@@ -24,17 +24,17 @@ export const OvermapEnginesContent = (props, context) => {
   } = data;
   return (
     <Fragment>
-      <Section title="Status">
+      <Section title="Состояние">
         <LabeledList>
-          <LabeledList.Item label="Engines">
+          <LabeledList.Item label="Двигатели">
             <Button
               icon="power-off"
               selected={global_state}
               onClick={() => act("global_toggle")}>
-              {global_state ? "Shut All Engines Down" : "Start All Engines"}
+              {global_state ? "Отключить все" : "Запустить все"}
             </Button>
           </LabeledList.Item>
-          <LabeledList.Item label="Volume Limit">
+          <LabeledList.Item label="Мощность">
             <Button
               onClick={() => act("global_limit", { global_limit: -0.1 })}
               icon="minus" />
@@ -45,20 +45,20 @@ export const OvermapEnginesContent = (props, context) => {
               onClick={() => act("global_limit", { global_limit: 0.1 })}
               icon="plus" />
           </LabeledList.Item>
-          <LabeledList.Item label="Total Thrust">
+          <LabeledList.Item label="Общая тяга">
             <AnimatedNumber value={total_thrust} />
           </LabeledList.Item>
         </LabeledList>
       </Section>
-      <Section title="Engines" height="340px" style={{ "overflow-y": "auto" }}>
+      <Section title="Двигатели" height="340px" style={{ "overflow-y": "auto" }}>
         {engines_info.map((engine, i) => (
           <Flex spacing={1} mt={i !== 0 && -1} key={i}>
             <Flex.Item basis="80%">
               <Collapsible title={(
                 <Box inline>
-                  Engine #{i + 1} |
-                  Thrust: <AnimatedNumber value={engine.eng_thrust} /> |
-                  Limit: <AnimatedNumber value={engine.eng_thrust_limiter} format={val => val + "%"} />
+                  Двигатель #{i + 1} |
+                  Тяга: <AnimatedNumber value={engine.eng_thrust} /> |
+                  Лимит: <AnimatedNumber value={engine.eng_thrust_limiter} format={val => val + "%"} />
                 </Box>
                 // "Engine " + (i + 1)
                 //   + " | Thrust: " + engine.eng_thrust
@@ -66,12 +66,12 @@ export const OvermapEnginesContent = (props, context) => {
               )}>
                 <Section width="127%">
                   <LabeledList>
-                    <LabeledList.Item label="Type">
+                    <LabeledList.Item label="Тип">
                       {engine.eng_type}
                     </LabeledList.Item>
-                    <LabeledList.Item label="Status">
+                    <LabeledList.Item label="Состояние">
                       <Box color={engine.eng_on ? (engine.eng_on === 1 ? "good" : "average") : "bad"}>
-                        {engine.eng_on ? (engine.eng_on === 1 ? "Online" : "Booting") : "Offline"}
+                        {engine.eng_on ? (engine.eng_on === 1 ? "Онлайн" : "Запуск") : "Оффлайн"}
                       </Box>
                       {engine.eng_status.map(status => {
                         if (Array.isArray(status)) {
@@ -81,10 +81,10 @@ export const OvermapEnginesContent = (props, context) => {
                         }
                       })}
                     </LabeledList.Item>
-                    <LabeledList.Item label="Current Thrust">
+                    <LabeledList.Item label="Текущая тяга">
                       {engine.eng_thrust}
                     </LabeledList.Item>
-                    <LabeledList.Item label="Volume Limit">
+                    <LabeledList.Item label="Мощность">
                       <Button
                         onClick={() => act("limit", { limit: -0.1, engine: engine.eng_reference })}
                         icon="minus" />
@@ -107,7 +107,7 @@ export const OvermapEnginesContent = (props, context) => {
                 selected={engine.eng_on === 1}
                 icon="power-off"
                 onClick={() => act("toggle_engine", { engine: engine.eng_reference })}>
-                {engine.eng_on ? (engine.eng_on === 1 ? "Shutoff" : "Booting") : "Startup"}
+                {engine.eng_on ? (engine.eng_on === 1 ? "Остановка" : "Зажигание") : "Запуск"}
               </Button>
             </Flex.Item>
           </Flex>

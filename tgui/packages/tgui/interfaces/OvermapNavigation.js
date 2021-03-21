@@ -26,27 +26,27 @@ export const OvermapNavigationContent = (props, context) => {
   } = data;
   return (
     <Fragment>
-      <Section title="Current Location" buttons={
+      <Section title="Местоположение" buttons={
         <Button
           icon="eye"
           selected={viewing}
           onClick={() => act("viewing")}>
-          Map View
+          Смотреть карту
         </Button>
       }>
         <LabeledList>
-          <LabeledList.Item label="Current Location">
+          <LabeledList.Item label="Текущее положение">
             {sector}
           </LabeledList.Item>
-          <LabeledList.Item label="Coordiantes">
+          <LabeledList.Item label="Координаты">
             {s_x} : {s_y}
           </LabeledList.Item>
-          <LabeledList.Item label="Additional Information">
+          <LabeledList.Item label="Доп. информация">
             {sector_info}
           </LabeledList.Item>
         </LabeledList>
       </Section>
-      <Section title="Flight Data">
+      <Section title="Данные полета">
         <OvermapFlightData disableLimiterControls />
       </Section>
     </Fragment>

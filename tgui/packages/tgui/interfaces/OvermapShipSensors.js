@@ -30,34 +30,34 @@ export const OvermapShipSensorsContent = (props, context) => {
 
   return (
     <Fragment>
-      <Section title="Status" buttons={(
+      <Section title="Состояние" buttons={(
         <Fragment>
           <Button
             icon="eye"
             selected={viewing}
             onClick={() => act("viewing")}>
-            Map View
+            Смотреть карту
           </Button>
           <Button
             icon="power-off"
             selected={on}
             onClick={() => act("toggle_sensor")}>
-            {on ? "Sensors Enabled" : "Sensors Disabled"}
+            {on ? "Сенсоры вкл" : "Сенсоры выкл"}
           </Button>
         </Fragment>
       )}>
         <LabeledList>
-          <LabeledList.Item label="Status">
+          <LabeledList.Item label="Состояние">
             {status}
           </LabeledList.Item>
-          <LabeledList.Item label="Range">
+          <LabeledList.Item label="Диапазон">
             <Button
               icon="signal"
               onClick={() => act("range")}>
               {range}
             </Button>
           </LabeledList.Item>
-          <LabeledList.Item label="Integrity">
+          <LabeledList.Item label="Целостность">
             <ProgressBar
               ranges={{
                 good: [max_health * 0.75, Infinity],
@@ -69,7 +69,7 @@ export const OvermapShipSensorsContent = (props, context) => {
               {health} / {max_health}
             </ProgressBar>
           </LabeledList.Item>
-          <LabeledList.Item label="Temperature">
+          <LabeledList.Item label="Температура">
             <ProgressBar
               ranges={{
                 bad: [critical_heat * 0.75, Infinity],
@@ -79,17 +79,17 @@ export const OvermapShipSensorsContent = (props, context) => {
               value={heat}
               maxValue={critical_heat}>
               {heat < critical_heat * 0.5 && (
-                <Box>Temperature low.</Box>
+                <Box>Температура низкая.</Box>
               ) || heat < critical_heat * 0.75 && (
-                <Box>Sensor temperature high!</Box>
+                <Box>Температура сенсоров высокая!</Box>
               ) || (
-                <Box>TEMPERATURE CRITICAL: Disable or reduce power immediately!</Box>
+                <Box>КРИТИЧЕСКАЯ ТЕМПЕРАТУРА: немедленно уменьшите мощность!</Box>
               )}
             </ProgressBar>
           </LabeledList.Item>
         </LabeledList>
       </Section>
-      <Section title="Contacts">
+      <Section title="Связь">
         {contacts.length && contacts.map(alien => (
           <Button
             key={alien.ref}
@@ -106,11 +106,11 @@ export const OvermapShipSensorsContent = (props, context) => {
         )}
       </Section>
       {data.status === "MISSING" && (
-        <Section title="Error">
+        <Section title="Ошибка">
           <Button
             icon="wifi"
             onClick={() => act("link")}>
-            Link up with sensor suite?
+            Подключиться к комплекту датчиков?
           </Button>
         </Section>
       ) || null}

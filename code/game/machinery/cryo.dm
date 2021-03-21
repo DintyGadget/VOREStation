@@ -90,7 +90,7 @@
 		return
 
 	if(panel_open)
-		to_chat(usr, "<span class='boldnotice'>Close the maintenance panel first.</span>")
+		to_chat(usr, "<span class='boldnotice'>Сначала закройте панель технического обслуживания.</span>")
 		return
 
 	tgui_interact(user)
@@ -168,7 +168,7 @@
 /obj/machinery/atmospherics/unary/cryo_cell/attackby(var/obj/item/weapon/G as obj, var/mob/user as mob)
 	if(istype(G, /obj/item/weapon/reagent_containers/glass))
 		if(beaker)
-			to_chat(user, "<span class='warning'>A beaker is already loaded into the machine.</span>")
+			to_chat(user, "<span class='warning'>Мензурка уже загружена в машину.</span>")
 			return
 
 		beaker =  G
@@ -189,7 +189,7 @@
 		var/mob/M = grab.affecting
 		qdel(grab)
 		put_mob(M)
-			
+
 	return
 
 /obj/machinery/atmospherics/unary/cryo_cell/MouseDrop_T(var/mob/target, var/mob/user) //Allows borgs to put people into cryo without external assistance

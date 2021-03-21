@@ -2,18 +2,18 @@
 	nutriment_factor = 10
 
 /datum/reagent/toxin/meatcolony
-	name = "A colony of meat cells"
+	name = "Колония мясных клеток"
 	id = "meatcolony"
-	description = "Specialised cells designed to produce a large amount of meat once activated, whilst manufacturers have managed to stop these cells from taking over the body when ingested, it's still poisonous."
+	description = "Специализированные клетки, предназначенные для производства большого количества мяса после активации, в то время как производители сумели остановить эти клетки от захвата тела при попадании в организм, он все еще ядовит."
 	taste_description = "a fibrous mess"
 	reagent_state = LIQUID
 	color = "#ff2424"
 	strength = 10
 
 /datum/reagent/toxin/plantcolony
-	name = "A colony of plant cells"
+	name = "Колония растительных клеток"
 	id = "plantcolony"
-	description = "Specialised cells designed to produce a large amount of nutriment once activated, whilst manufacturers have managed to stop these cells from taking over the body when ingested, it's still poisonous."
+	description = "Специализированные клетки, предназначенные для производства большого количества пищи после активации, в то время как производителям удалось остановить эти клетки от захвата тела при попадании внутрь, они все еще ядовиты."
 	taste_description = "a fibrous mess"
 	reagent_state = LIQUID
 	color = "#7ce01f"
