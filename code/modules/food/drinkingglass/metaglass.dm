@@ -1,6 +1,6 @@
 /obj/item/weapon/reagent_containers/food/drinks/metaglass
 	name = "metamorphic glass"
-	desc = "This glass changes shape and form depending on the drink inside... fancy!"
+	desc = "Этот бокал меняет форму в зависимости от напитка внутри ... фантастика!"
 	icon_state = "glass_empty"
 	amount_per_transfer_from_this = 5
 	volume = 30
@@ -11,7 +11,7 @@
 
 /obj/item/weapon/reagent_containers/food/drinks/metaglass/metapint
 	name = "metamorphic pint glass"
-	desc = "This glass changes shape and form depending on the drink inside... fancy!"
+	desc = "Этот бокал меняет форму в зависимости от напитка внутри ... фантастика!"
 	icon_state = "pglass_empty"
 	volume = 60
 
@@ -23,7 +23,7 @@
 			icon = R.glass_icon_file
 		else
 			icon = initial(icon)
-		
+
 		if(R.glass_icon_state)
 			icon_state = R.glass_icon_state
 		else
@@ -32,12 +32,12 @@
 		if(R.glass_name)
 			name = R.glass_name
 		else
-			name = "Glass of.. what?"
+			name = "Стакан... чего?"
 
 		if(R.glass_desc)
 			desc = R.glass_desc
 		else
-			desc = "You can't really tell what this is."
+			desc = "Вы не можете точно сказать, что это такое."
 
 		if(R.glass_center_of_mass)
 			center_of_mass = R.glass_center_of_mass
@@ -52,12 +52,12 @@
 		if(type == /obj/item/weapon/reagent_containers/food/drinks/metaglass/metapint)
 			icon_state = "pglass_empty"
 			name = "metamorphic pint glass"
-			desc = "This glass changes shape and form depending on the drink inside... fancy!"
+			desc = "Этот бокал меняет форму в зависимости от напитка внутри ... фантастика!"
 			center_of_mass = list("x"=16, "y"=10)
 		else
 			icon_state = "glass_empty"
 			name = "metamorphic glass"
-			desc = "This glass changes shape and form depending on the drink inside... fancy!"
+			desc = "Этот бокал меняет форму в зависимости от напитка внутри ... фантастика!"
 			center_of_mass = list("x"=16, "y"=10)
 			return
 

@@ -1,6 +1,6 @@
 /datum/gear/ball
-	display_name = "tennis ball selection"
-	description = "Choose from a num- BALL!"
+	display_name = "Теннисный мячик (выбор)"
+	description = "Апорт!"
 	path = /obj/item/toy/tennis
 
 /datum/gear/ball/New()

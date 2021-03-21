@@ -1,7 +1,7 @@
 /obj/item/weapon/reagent_containers/food/drinks/glass2/fitnessflask
 	name = "fitness shaker"
 	base_name = "shaker"
-	desc = "Big enough to contain enough protein to get perfectly swole. Don't mind the bits."
+	desc = "Достаточно большой, чтобы содержать достаточно белка, чтобы стать идеально набухшим. Не обращайте внимания на кусочки."
 	icon_state = "fitness-cup_black"
 	base_icon = "fitness-cup"
 	volume = 100

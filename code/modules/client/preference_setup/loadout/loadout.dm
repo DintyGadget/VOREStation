@@ -20,13 +20,13 @@ var/list/gear_datums = list()
 		var/use_category = initial(G.sort_category)
 
 		if(!use_name)
-			error("Loadout - Missing display name: [G]")
+			error("Предметы - Отсутствует отображаемое имя: [G]")
 			continue
 		if(isnull(initial(G.cost)))
-			error("Loadout - Missing cost: [G]")
+			error("Предметы - Отсутствует стоимость: [G]")
 			continue
 		if(!initial(G.path))
-			error("Loadout - Missing path definition: [G]")
+			error("Предметы - Отсутствует путь: [G]")
 			continue
 
 		if(!loadout_categories[use_category])
@@ -44,7 +44,7 @@ var/list/gear_datums = list()
 /datum/category_item/player_setup_item/loadout
 	name = "Loadout"
 	sort_order = 1
-	var/current_tab = "General"
+	var/current_tab = "Общее"
 
 /datum/category_item/player_setup_item/loadout/load_character(var/savefile/S)
 	from_file(S["gear_list"], pref.gear_list)
@@ -92,16 +92,16 @@ var/list/gear_datums = list()
 	var/total_cost = 0
 	for(var/gear_name in pref.gear)
 		if(!gear_datums[gear_name])
-			to_chat(preference_mob, "<span class='warning'>You cannot have more than one of the \the [gear_name]</span>")
+			to_chat(preference_mob, "<span class='warning'>Нельзя иметь больше одного [gear_name].</span>")
 			pref.gear -= gear_name
 		else if(!(gear_name in valid_gear_choices()))
-			to_chat(preference_mob, "<span class='warning'>You cannot take \the [gear_name] as you are not whitelisted for the species or item.</span>")		//Vorestation Edit
+			to_chat(preference_mob, "<span class='warning'>Для выбора [gear_name] нужно быть в вайтлисте расы или предмета.</span>")		//Vorestation Edit
 			pref.gear -= gear_name
 		else
 			var/datum/gear/G = gear_datums[gear_name]
 			if(total_cost + G.cost > MAX_GEAR_COST)
 				pref.gear -= gear_name
-				to_chat(preference_mob, "<span class='warning'>You cannot afford to take \the [gear_name]</span>")
+				to_chat(preference_mob, "<span class='warning'>Не хватает очков для [gear_name]!</span>")
 			else
 				total_cost += G.cost
 
@@ -251,7 +251,7 @@ var/list/gear_datums = list()
 	var/slot               //Slot to equip to.
 	var/list/allowed_roles //Roles that can spawn with this item.
 	var/whitelisted        //Term to check the whitelist for..
-	var/sort_category = "General"
+	var/sort_category = "Общее"
 	var/list/gear_tweaks = list() //List of datums which will alter the item after it has been spawned.
 	var/exploitable = 0		//Does it go on the exploitable information list?
 	var/type_category = null

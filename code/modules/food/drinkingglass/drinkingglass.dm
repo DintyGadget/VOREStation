@@ -32,17 +32,17 @@
 
 	for(var/I in extras)
 		if(istype(I, /obj/item/weapon/glass_extra))
-			. += "There is \a [I] in \the [src]."
+			. += "В [I] есть [src]."
 		else if(istype(I, /obj/item/weapon/reagent_containers/food/snacks/fruit_slice))
-			. += "There is \a [I] on the rim."
+			. += "На ободе есть [I]."
 		else
-			. += "There is \a [I] somewhere on the glass. Somehow."
+			. += "Где-то на стекле есть [I]. Вроде."
 
 	if(has_ice())
-		. += "There is some ice floating in the drink."
+		. += "В напитке плавает лед."
 
 	if(has_fizz())
-		. += "It is fizzing slightly."
+		. += "Он слегка шипит."
 
 /obj/item/weapon/reagent_containers/food/drinks/glass2/proc/has_ice()
 	if(reagents.reagent_list.len > 0)
@@ -154,7 +154,7 @@
 		if(standard_splash_mob(user, target))
 			return 1
 		if(reagents && reagents.total_volume) //They are on harm intent, aka wanting to spill it.
-			to_chat(user, "<span class='notice'>You splash the solution onto [target].</span>")
+			to_chat(user, "<span class='notice'>Вы брызгаете раствором на [target].</span>")
 			reagents.splash(target, reagents.total_volume)
 			return 1
 	..()

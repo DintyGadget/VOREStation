@@ -1,7 +1,7 @@
 //Food items that are eaten normally and don't leave anything behind.
 /obj/item/weapon/reagent_containers/food/snacks
 	name = "snack"
-	desc = "yummy"
+	desc = "вкусняшка"
 	icon = 'icons/obj/food.dmi'
 	icon_state = null
 	var/bitesize = 1
@@ -34,7 +34,7 @@
 	if(!usr)
 		usr = M
 	if(!reagents.total_volume)
-		M.visible_message("<span class='notice'>[M] finishes eating \the [src].</span>","<span class='notice'>You finish eating \the [src].</span>")
+		M.visible_message("<span class='notice'>[M] заканчивает есть [src].</span>","<span class='notice'>Вы заканчиваете есть [src].</span>")
 		usr.drop_from_inventory(src)	//so icons update :[
 
 		if(trash)
@@ -51,7 +51,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/attack(mob/living/M as mob, mob/user as mob, def_zone)
 	if(reagents && !reagents.total_volume)
-		to_chat(user, "<span class='danger'>None of [src] left!</span>")
+		to_chat(user, "<span class='danger'>[src] не осталось!</span>")
 		user.drop_from_inventory(src)
 		qdel(src)
 		return 0
@@ -64,7 +64,7 @@
 			if(istype(M,/mob/living/carbon/human))
 				var/mob/living/carbon/human/H = M
 				if(!H.check_has_mouth())
-					to_chat(user, "Where do you intend to put \the [src]? You don't have a mouth!")
+					to_chat(user, "Куда вы собираетесь поместить [src]? У вас нет рта!")
 					return
 				var/obj/item/blocked = null
 				if(survivalfood)
@@ -72,31 +72,31 @@
 				else
 					blocked = H.check_mouth_coverage()
 				if(blocked)
-					to_chat(user, "<span class='warning'>\The [blocked] is in the way!</span>")
+					to_chat(user, "<span class='warning'>[blocked] мешает!</span>")
 					return
 
 			user.setClickCooldown(user.get_attack_speed(src)) //puts a limit on how fast people can eat/drink things
 			//VOREStation Edit Begin
 			if (fullness <= 50)
-				to_chat(M, "<span class='danger'>You hungrily chew out a piece of [src] and gobble it!</span>")
+				to_chat(M, "<span class='danger'>Вы с жадностью кладете в рот кусок [src] и проглатываете его!</span>")
 			if (fullness > 50 && fullness <= 150)
-				to_chat(M, "<span class='notice'>You hungrily begin to eat [src].</span>")
+				to_chat(M, "<span class='notice'>Вы с жадностью начинаете есть [src].</span>")
 			if (fullness > 150 && fullness <= 350)
-				to_chat(M, "<span class='notice'>You take a bite of [src].</span>")
+				to_chat(M, "<span class='notice'>Вы откусываете [src].</span>")
 			if (fullness > 350 && fullness <= 550)
-				to_chat(M, "<span class='notice'>You unwillingly chew a bit of [src].</span>")
+				to_chat(M, "<span class='notice'>Вы неохотно жуете кусок [src].</span>")
 			if (fullness > 550 && fullness <= 650)
-				to_chat(M, "<span class='notice'>You swallow some more of the [src], causing your belly to swell out a little.</span>")
+				to_chat(M, "<span class='notice'>Вы проглатываете еще немного [src], в результате чего ваш живот немного вздувается.</span>")
 			if (fullness > 650 && fullness <= 1000)
-				to_chat(M, "<span class='notice'>You stuff yourself with the [src]. Your stomach feels very heavy.</span>")
+				to_chat(M, "<span class='notice'>Вы набиваете живот [src]. Ваш желудок кажется очень тяжелым.</span>")
 			if (fullness > 1000 && fullness <= 3000)
-				to_chat(M, "<span class='notice'>You gluttonously swallow down the hunk of [src]. You're so gorged, it's hard to stand.</span>")
+				to_chat(M, "<span class='notice'>Вы жадно проглатываете кусок [src]. Вы так наелись, что стоять тяжело.</span>")
 			if (fullness > 3000 && fullness <= 5500)
-				to_chat(M, "<span class='danger'>You force the piece of [src] down your throat. You can feel your stomach getting firm as it reaches its limits.</span>")
+				to_chat(M, "<span class='danger'>Вы проталкиваете кусок [src] себе в глотку. Вы можете почувствовать, как ваш живот становится твердым, когда он достигает своего предела.</span>")
 			if (fullness > 5500 && fullness <= 6000)
-				to_chat(M, "<span class='danger'>You barely glug down the bite of [src], causing undigested food to force into your intestines. You can't take much more of this!</span>")
+				to_chat(M, "<span class='danger'>Вы едва проглатываете кусок [src], в результате чего непереваренная пища попадает в ваш кишечник. Вы не можете больше этого вынести!</span>")
 			if (fullness > 6000) // There has to be a limit eventually.
-				to_chat(M, "<span class='danger'>Your stomach blorts and aches, prompting you to stop. You literally cannot force any more of [src] to go down your throat.</span>")
+				to_chat(M, "<span class='danger'>У вас вздувается и болит живот, что побуждает вас остановиться. Вы буквально не можете заставить больше [src] попасть вам в глотку.</span>")
 				return 0
 			//VOREStation Edit End
 
@@ -107,7 +107,7 @@
 			if(istype(M,/mob/living/carbon/human))
 				var/mob/living/carbon/human/H = M
 				if(!H.check_has_mouth())
-					to_chat(user, "Where do you intend to put \the [src]? \The [H] doesn't have a mouth!")
+					to_chat(user, "Куда вы собираетесь поместить [src]? У [H] нет рта!")
 					return
 				var/obj/item/blocked = null
 				var/unconcious = FALSE
@@ -119,14 +119,14 @@
 						blocked = H.check_mouth_coverage()
 
 				if(unconcious)
-					to_chat(user, "<span class='warning'>You can't feed [H] through \the [blocked] while they are unconcious!</span>")
+					to_chat(user, "<span class='warning'>Вы не можете кормить [H] через [blocked], пока они без сознания!</span>")
 					return
 
 				if(blocked)
-					to_chat(user, "<span class='warning'>\The [blocked] is in the way!</span>")
+					to_chat(user, "<span class='warning'>[blocked] мешает!</span>")
 					return
 
-				user.visible_message("<span class='danger'>[user] attempts to feed [M] [src].</span>")
+				user.visible_message("<span class='danger'>[user] пытается накормить [M] [src].</span>")
 
 				user.setClickCooldown(user.get_attack_speed(src))
 				if(!do_mob(user, M)) return
@@ -134,10 +134,10 @@
 				//Do we really care about this
 				add_attack_logs(user,M,"Fed with [src.name] containing [reagentlist(src)]", admin_notify = FALSE)
 
-				user.visible_message("<span class='danger'>[user] feeds [M] [src].</span>")
+				user.visible_message("<span class='danger'>[user] кормит [M] [src].</span>")
 
 			else
-				to_chat(user, "This creature does not seem to have a mouth!")
+				to_chat(user, "Кажется, у этого существа нет рта!")
 				return
 
 		if(reagents)								//Handle ingestion of the reagent.
@@ -157,15 +157,15 @@
 	. = ..()
 	if(Adjacent(user))
 		if(coating)
-			. += "<span class='notice'>It's coated in [coating.name]!</span>"
+			. += "<span class='notice'>Он покрыт [coating.name]!</span>"
 		if(bitecount==0)
 			return .
 		else if (bitecount==1)
-			. += "<span class='notice'>It was bitten by someone!</span>"
+			. += "<span class='notice'>Его кто-то укусил!</span>"
 		else if (bitecount<=3)
-			. += "<span class='notice'>It was bitten [bitecount] times!</span>"
+			. += "<span class='notice'>Его кусали [bitecount] раз!</span>"
 		else
-			. += "<span class='notice'>It was bitten multiple times!</span>"
+			. += "<span class='notice'>Его кусали несколько раз!</span>"
 
 /obj/item/weapon/reagent_containers/food/snacks/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/weapon/storage))
@@ -180,12 +180,12 @@
 				U.create_reagents(5)
 
 			if (U.reagents.total_volume > 0)
-				to_chat(user, "<font color='red'>You already have something on your [U].</font>")
+				to_chat(user, "<font color='red'>У вас уже есть что-то в вашем [U].</font>")
 				return
 
 			user.visible_message( \
-				"[user] scoops up some [src] with \the [U]!", \
-				"<font color='blue'>You scoop up some [src] with \the [U]!</font>" \
+				"[user] набирает [src] с помощью [U]!", \
+				"<font color='blue'>Вы набираете [src] с помощью [U]!</font>" \
 			)
 
 			src.bitecount++
@@ -210,7 +210,7 @@
 			if (W.w_class >= src.w_class || is_robot_module(W))
 				return
 
-			to_chat(user, "<span class='warning'>You slip \the [W] inside \the [src].</span>")
+			to_chat(user, "<span class='warning'>Вы вставляете [W] внутрь [src].</span>")
 			user.drop_from_inventory(W, src)
 			add_fingerprint(user)
 			contents += W
@@ -218,15 +218,15 @@
 
 		if (has_edge(W))
 			if (!can_slice_here)
-				to_chat(user, "<span class='warning'>You cannot slice \the [src] here! You need a table or at least a tray to do it.</span>")
+				to_chat(user, "<span class='warning'>Здесь нельзя нарезать [src]! Для этого вам понадобится стол или хотя бы поднос.</span>")
 				return
 
 			var/slices_lost = 0
 			if (W.w_class > 3)
-				user.visible_message("<span class='notice'>\The [user] crudely slices \the [src] with [W]!</span>", "<span class='notice'>You crudely slice \the [src] with your [W]!</span>")
+				user.visible_message("<span class='notice'>[user] грубо нарезает [src] с помощью [W]!</span>", "<span class='notice'>Вы грубо нарезаете [src] своим [W]!</span>")
 				slices_lost = rand(1,min(1,round(slices_num/2)))
 			else
-				user.visible_message("<span class='notice'>\The [user] slices \the [src]!</span>", "<span class='notice'>You slice \the [src]!</span>")
+				user.visible_message("<span class='notice'>[user] разрезает [src]!</span>", "<span class='notice'>Вы разрезаете [src]!</span>")
 
 			var/reagents_per_slice = reagents.total_volume/slices_num
 			for(var/i=1 to (slices_num-slices_lost))
@@ -250,13 +250,13 @@
 /obj/item/weapon/reagent_containers/food/snacks/attack_generic(var/mob/living/user)
 	if(!isanimal(user) && !isalien(user))
 		return
-	user.visible_message("<b>[user]</b> nibbles away at \the [src].","You nibble away at \the [src].")
+	user.visible_message("<b>[user]</b> грызет [src].","Вы грызете [src].")
 	bitecount++
 	if(reagents)
 		reagents.trans_to_mob(user, bitesize, CHEM_INGEST)
 	spawn(5)
 		if(!src && !user.client)
-			user.custom_emote(1,"[pick("burps", "cries for more", "burps twice", "looks at the area where the food was")]")
+			user.custom_emote(1,"[pick("отрыгивает", "плачет о большем, "дважды рыгает", "смотрит на место, где была еда")]")
 			qdel(src)
 	On_Consume(user)
 
@@ -292,7 +292,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/aesirsalad
 	name = "Aesir salad"
-	desc = "Probably too incredible for mortal men to fully enjoy."
+	desc = "Вероятно, это слишком невероятно, чтобы смертные люди могли в полной мере насладиться этим."
 	icon_state = "aesirsalad"
 	trash = /obj/item/trash/snack_bowl
 	filling_color = "#468C00"
@@ -308,8 +308,8 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/candy
 	name = "\improper Grandma Ellen's Hard Candy"
-	desc = "Now without nuts!"
-	description_fluff = "Hard candies were banned from many early human colony ships due to the tendency for brittle, sticky chunks to find their way inside vital equipment in zero-G conditions. This only made them all the more popular to new arrivees, and the Grandma Ellen's brand was Tau Ceti's answer to that demand."
+	desc = "Теперь без орехов!"
+	description_fluff = "Леденцы были запрещены на многих ранних кораблях человеческих колоний из-за склонности к хрупким, липким кускам, чтобы найти свой путь внутри жизненно важного оборудования в условиях нулевой гравитации. Это только делало их еще более популярными среди новоприбывших, и бренд бабушки Эллен был ответом Тау Кита на этот спрос."
 	icon = 'icons/obj/food_snacks.dmi'
 	icon_state = "candy"
 	trash = /obj/item/trash/candy
@@ -326,8 +326,8 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/candy/proteinbar
 	name = "\improper SwoleMAX protein bar"
-	desc = "Guaranteed to get you feeling perfectly overconfident."
-	description_fluff = "NanoMed's SwoleMAX boasts the highest density of protein mush per square inch among leading protein bar brands. While formulated for strength training, this high nutrient density in a mostly-solid form makes SwoleMAX a popular alternative for spacers looking to mix up their usual diet of pastes and gooes."
+	desc = "Гарантированно заставит вас чувствовать себя совершенно самоуверенным."
+	description_fluff = "Nanomeds SwoleMAX может похвастаться самой высокой плотностью белковой каши на квадратный дюйм среди ведущих брендов протеиновых батончиков. Будучи разработанным для силовых тренировок, эта высокая плотность питательных веществ в основном в твердой форме делает SwoleMAX популярной альтернативой для спейсеров, желающих смешать свою обычную диету из паст и гелей."
 	icon = 'icons/obj/food_snacks.dmi'
 	icon_state = "proteinbar"
 	trash = /obj/item/trash/candy/proteinbar
@@ -342,8 +342,8 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/candy/gummy
 	name = "\improper AlliCo Gummies"
-	desc = "Somehow, there's never enough cola bottles."
-	description_fluff = "AlliCo's grab-bags of gummy candies come in over a thousand novelty shapes and dozens of flavours. Shoes, astronauts, bunny rabbits and singularities all make an appearance."
+	desc = "Почему-то всегда не хватает бутылок колы."
+	description_fluff = "Сумки Галлико с липкими конфетами выпускаются более чем в тысяче новых форм и десятках вкусов. Появляются ботинки, астронавты, кролики и сингулярности."
 	icon = 'icons/obj/food_snacks.dmi'
 	icon_state = "candy_gums"
 	trash = /obj/item/trash/candy/gums
@@ -357,7 +357,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/candy/donor
 	name = "Donor Candy"
-	desc = "A little treat for blood donors."
+	desc = "Небольшое угощение для доноров крови."
 	trash = /obj/item/trash/candy
 	nutriment_amt = 9
 	nutriment_desc = list("candy" = 10)
@@ -369,8 +369,8 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/candy_corn
 	name = "candy corn"
-	desc = "It's a handful of candy corn. Cannot be stored in a detective's hat, alas."
-	description_fluff = "Nobody knows why Nanotrasen keeps making these waxy pieces of sugar and bone glue, but a handful of people swear by them. Purportedly popular with Skrell children, dubiously enough."
+	desc = "Это горсть кукурузных конфет. Увы, её нельзя хранить в шляпе детектива."
+	description_fluff = "Никто не знает, почему NanoTrasen продолжает делать эти восковые кусочки сахара и костного клея, но горстка людей клянутся ими. Весьма сомнительно, что он пользовался популярностью у детей Скреллов."
 	icon_state = "candy_corn"
 	filling_color = "#FFFCB0"
 	center_of_mass = list("x"=14, "y"=10)
@@ -384,8 +384,8 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/chips
 	name = "\improper What-The-Crisps"
-	desc = "Commander Riker's What-The-Crisps, lightly salted."
-	description_fluff = "What-The-Crisps' retro-styled starship commander has been a marketing staple for almost 200 years. Actual potatos haven't been used in potato chips for centuries. They're mostly a denatured nutrient slurry pressed into a chip-shaped mold and salted. Still tastes the same."
+	desc = "Чипсы коммандера Райкера, слегка подсоленные."
+	description_fluff = "Ретро-стилизованный командир звездолета What-The-Crips уже почти 200 лет является основным продуктом маркетинга. Настоящий картофель не использовался в картофельных чипсах веками. Они в основном представляют собой денатурированную питательную суспензию, спрессованную в форму в форме стружки и засоленную. Вкус все тот же."
 	icon = 'icons/obj/food_snacks.dmi'
 	icon_state = "chips"
 	trash = /obj/item/trash/chips
@@ -400,8 +400,8 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/chips/bbq
 	name = "\improper Legendary BBQ Chips"
-	desc = "You know I can't grab your ghost chips!"
-	description_fluff = "A local brand, Legendary Chips have proudly sponsored Vir's anti-drink-piloting campaign since 2558."
+	desc = "Ты же знаешь, что я не могу забрать твои призрачные фишки!"
+	description_fluff = "Местный бренд Legendary Chips с гордостью спонсирует кампанию по борьбе с вирусными напитками с 2558 года."
 	icon = 'icons/obj/food_snacks.dmi'
 	icon_state = "chips_bbq"
 	trash = /obj/item/trash/chips/bbq
@@ -427,8 +427,8 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/cookiesnack
 	name = "Carps Ahoy! miniature cookies"
-	desc = "Now 100% carpotoxin free!"
-	description_fluff = "Carps Ahoy! cookies are required to sell under the 'Cap'n Choco' name in certain markets, out of concerns that children will become desensitized to the very real dangers of Space Carp."
+	desc = "Теперь 100% карпотоксин свободен!"
+	description_fluff = "Карпы, Эй! печенье должно продаваться под названием \"Cap'n Choco\" на некоторых рынках из-за опасений, что дети станут менее чувствительными к очень реальным опасностям космического Карпа."
 	icon = 'icons/obj/food_snacks.dmi'
 	icon_state = "cookiesnack"
 	trash = /obj/item/trash/cookiesnack
@@ -442,8 +442,8 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/fruitbar
 	name = "\improper ChewMAX fruit bar"
-	desc = "Guaranteed to get you feeling comfortably superior."
-	description_fluff = "NanoMed's ChewMAX is the low-carb alternative to the SwoleMAX range! Want short-term energy but not really interested in sustaining it? Hate fat but don't entirely understand nutrition? Just really like fruit? ChewMAX is for you!"
+	desc = "Гарантированно заставит вас чувствовать себя комфортно превосходящим."
+	description_fluff = "Nanomeds Crewmax-это низкоуглеводная альтернатива линейке SwoleMAX! Хотите краткосрочную энергию, но не заинтересованы в ее поддержании? Ненавидите жир, но не совсем понимаете питание? Просто очень любишь фрукты? Crewmax - это для вас!"
 	icon = 'icons/obj/food_snacks.dmi'
 	icon_state = "fruitbar"
 	trash = /obj/item/trash/candy/fruitbar
@@ -458,7 +458,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/chocolatebar
 	name = "Chocolate Bar"
-	desc = "Such sweet, fattening food."
+	desc = "Такая сладкая, жирная пища."
 	icon_state = "chocolatebar"
 	filling_color = "#7D5F46"
 	center_of_mass = list("x"=15, "y"=15)
@@ -473,7 +473,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/chocolatepiece
 	name = "chocolate piece"
-	desc = "A luscious milk chocolate piece filled with gooey caramel."
+	desc = "Сочный кусочек молочного шоколада, наполненный липкой карамелью."
 	icon_state =  "chocolatepiece"
 	filling_color = "#7D5F46"
 	center_of_mass = list("x"=15, "y"=15)
@@ -483,7 +483,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/chocolatepiece/white
 	name = "white chocolate piece"
-	desc = "A creamy white chocolate piece drizzled in milk chocolate."
+	desc = "Кусочек сливочно-белого шоколада, посыпанный молочным шоколадом."
 	icon_state = "chocolatepiece_white"
 	filling_color = "#E2DAD3"
 	nutriment_desc = list("white chocolate" = 3, "creaminess" = 1)

@@ -186,7 +186,7 @@
 		return 0
 
 	if(!ticker)
-		to_chat(src, "You cannot attack people before the game has started.")
+		to_chat(src, "Вы не можете атаковать людей до начала игры.")
 		return 0
 
 	if(stat)
@@ -285,7 +285,7 @@
 	if(T && user.TurfAdjacent(T))
 		user.ToggleTurfTab(T)
 	return 1
-	
+
 /mob/proc/ToggleTurfTab(var/turf/T)
 	if(listed_turf == T)
 		listed_turf = null
@@ -334,7 +334,7 @@
 		nutrition = max(nutrition - rand(1,5),0)
 		handle_regular_hud_updates()
 	else
-		to_chat(src, "<span class='warning'>You're out of energy!  You need food!</span>")
+		to_chat(src, "<span class='warning'>У вас закончилась энергия! Вам нужна еда!</span>")
 
 // Simple helper to face what you clicked on, in case it should be needed in more than one place
 /mob/proc/face_atom(var/atom/A)

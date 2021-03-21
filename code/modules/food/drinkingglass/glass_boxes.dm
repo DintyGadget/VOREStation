@@ -1,6 +1,6 @@
 /obj/item/weapon/storage/box/mixedglasses
-	name = "glassware box"
-	desc = "A box of assorted glassware"
+	name = "ящик для посуды"
+	desc = "Ящик разной посуды"
 	can_hold = list(/obj/item/weapon/reagent_containers/food/drinks/glass2)
 	New()
 		..()
@@ -16,7 +16,7 @@
 		new /obj/item/weapon/reagent_containers/food/drinks/metaglass/metapint(src)
 
 /obj/item/weapon/storage/box/glasses
-	name = "box of glasses"
+	name = "ящик для посуды"
 	var/glass_type = /obj/item/weapon/reagent_containers/food/drinks/glass2
 	can_hold = list(/obj/item/weapon/reagent_containers/food/drinks/glass2)
 	New()

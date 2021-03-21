@@ -189,11 +189,11 @@
 
 	if (disabilities & EPILEPSY)
 		if ((prob(1) && paralysis < 1))
-			to_chat(src, "<font color='red'>You have a seizure!</font>")
+			to_chat(src, "<font color='red'>У вас припадок!</font>")
 			for(var/mob/O in viewers(src, null))
 				if(O == src)
 					continue
-				O.show_message(text("<span class='danger'>[src] starts having a seizure!</span>"), 1)
+				O.show_message(text("<span class='danger'>У [src] начинается припадок!</span>"), 1)
 			Paralyse(10)
 			make_jittery(1000)
 	if (disabilities & COUGHING)
@@ -210,7 +210,7 @@
 					if(1)
 						emote("twitch")
 					if(2 to 3)
-						say("[prob(50) ? ";" : ""][pick("SHIT", "PISS", "FUCK", "CUNT", "COCKSUCKER", "MOTHERFUCKER", "TITS")]")
+						say("[prob(50) ? ";" : ""][pick("ДЕРЬМО", "МОЧА", "БЛЯДЬ", "ШЛЮХА", "ХУЕСОС", "УЕБИЩЕ", "СИСЬКИ")]")
 				make_jittery(100)
 				return
 	if (disabilities & NERVOUS)
@@ -220,22 +220,22 @@
 	var/rn = rand(0, 200)
 	if(getBrainLoss() >= 5)
 		if(0 <= rn && rn <= 3)
-			custom_pain("Your head feels numb and painful.", 10)
+			custom_pain("Вы чувствуете ощущение онемения и боли в голове.", 10)
 	if(getBrainLoss() >= 15)
 		if(4 <= rn && rn <= 6) if(eye_blurry <= 0)
-			to_chat(src, "<span class='warning'>It becomes hard to see for some reason.</span>")
+			to_chat(src, "<span class='warning'>По какой-то причине это становится трудно увидеть.</span>")
 			eye_blurry = 10
 	if(getBrainLoss() >= 35)
 		if(7 <= rn && rn <= 9) if(get_active_hand())
-			to_chat(src, "<span class='danger'>Your hand won't respond properly, you drop what you're holding!</span>")
+			to_chat(src, "<span class='danger'>Ваша рука не реагирует должным образом, вы роняете то, что держите!</span>")
 			drop_item()
 	if(getBrainLoss() >= 45)
 		if(10 <= rn && rn <= 12)
 			if(prob(50))
-				to_chat(src, "<span class='danger'>You suddenly black out!</span>")
+				to_chat(src, "<span class='danger'>Вы вдруг отключились!</span>")
 				Paralyse(10)
 			else if(!lying)
-				to_chat(src, "<span class='danger'>Your legs won't respond properly, you fall down!</span>")
+				to_chat(src, "<span class='danger'>Ваши ноги не реагируют должным образом, вы падаете!</span>")
 				Weaken(10)
 
 
@@ -300,13 +300,13 @@
 			if(!isSynthetic())
 				if(prob(5) && prob(100 * RADIATION_SPEED_COEFFICIENT))
 					radiation -= 5 * RADIATION_SPEED_COEFFICIENT
-					to_chat(src, "<span class='warning'>You feel weak.</span>")
+					to_chat(src, "<span class='warning'>Вы чувствуете слабость.</span>")
 					Weaken(3)
 					if(!lying)
 						emote("collapse")
 				if(prob(5) && prob(100 * RADIATION_SPEED_COEFFICIENT) && species.get_bodytype() == SPECIES_HUMAN) //apes go bald
 					if((h_style != "Bald" || f_style != "Shaved" ))
-						to_chat(src, "<span class='warning'>Your hair falls out.</span>")
+						to_chat(src, "<span class='warning'>Ваши волосы выпадают.</span>")
 						h_style = "Bald"
 						f_style = "Shaved"
 						update_hair()
@@ -318,7 +318,7 @@
 				if(prob(5))
 					take_overall_damage(0, 5 * RADIATION_SPEED_COEFFICIENT, used_weapon = "Radiation Burns")
 				if(prob(1))
-					to_chat(src, "<span class='warning'>You feel strange!</span>")
+					to_chat(src, "<span class='warning'>Вы чувствуете себя странно!</span>")
 					adjustCloneLoss(5 * RADIATION_SPEED_COEFFICIENT)
 					emote("gasp")
 
@@ -503,16 +503,16 @@
 		// Too much exhaled gas in the air
 		if(exhaled_pp > safe_exhaled_max)
 			if (prob(15))
-				var/word = pick("extremely dizzy","short of breath","faint","confused")
-				to_chat(src, "<span class='danger'>You feel [word].</span>")
+				var/word = pick("сильное головокружение","одышку","слабость","конфуз")
+				to_chat(src, "<span class='danger'>Вы чувствуете [word].</span>")
 
 			adjustOxyLoss(HUMAN_MAX_OXYLOSS)
 			failed_exhale = 1
 
 		else if(exhaled_pp > safe_exhaled_max * 0.7)
 			if (!prob(1))
-				var/word = pick("dizzy","short of breath","faint","momentarily confused")
-				to_chat(src, "<span class='warning'>You feel [word].</span>")
+				var/word = pick("головокружение","одышку","слабость","мгновенный конфуз")
+				to_chat(src, "<span class='warning'>Вы чувствуете [word].</span>")
 
 			//scale linearly from 0 to 1 between safe_exhaled_max and safe_exhaled_max*0.7
 			var/ratio = 1.0 - (safe_exhaled_max - exhaled_pp)/(safe_exhaled_max*0.3)
@@ -524,8 +524,8 @@
 
 		else if(exhaled_pp > safe_exhaled_max * 0.6)
 			if(prob(0.3))
-				var/word = pick("a little dizzy","short of breath")
-				to_chat(src, "<span class='warning'>You feel [word].</span>")
+				var/word = pick("легкое головокружение","одышку")
+				to_chat(src, "<span class='warning'>Вы чувствуете [word].</span>")
 
 	// Too much poison in the air.
 	if(toxins_pp > safe_toxins_max)
@@ -570,10 +570,10 @@
 
 		if(breath.temperature <= species.breath_cold_level_1)
 			if(prob(20))
-				to_chat(src, "<span class='danger'>You feel your face freezing and icicles forming in your lungs!</span>")
+				to_chat(src, "<span class='danger'>Вы чувствуете, как ваше лицо замерзает, а в легких образуются сосульки!</span>")
 		else if(breath.temperature >= species.breath_heat_level_1)
 			if(prob(20))
-				to_chat(src, "<span class='danger'>You feel your face burning and a searing heat in your lungs!</span>")
+				to_chat(src, "<span class='danger'>Вы чувствуете, как горит ваше лицо и обжигающий жар в ваших легких!</span>")
 
 		if(breath.temperature >= species.breath_heat_level_1)
 			if(breath.temperature < species.breath_heat_level_2)
@@ -1028,8 +1028,8 @@
 				adjustBrainLoss(brainOxPercent * oxyloss)
 
 		if(halloss >= species.total_health)
-			to_chat(src, "<span class='notice'>You're in too much pain to keep going...</span>")
-			src.visible_message("<B>[src]</B> slumps to the ground, too weak to continue fighting.")
+			to_chat(src, "<span class='notice'>Вам слишком больно, чтобы продолжать ...</span>")
+			src.visible_message("<B>[src]</B> падает на землю, сил слишком мало, чтобы продолжать сражаться.")
 			Paralyse(10)
 			setHalLoss(species.total_health - 1)
 
@@ -1460,7 +1460,7 @@
 		if (getToxLoss() >= 30 && isSynthetic())
 			if(!confused)
 				if(prob(5))
-					to_chat(src, "<span class='danger'>You lose directional control!</span>")
+					to_chat(src, "<span class='danger'>Вы теряете управляемость!</span>")
 					Confuse(10)
 		if (getToxLoss() >= 45 && !isSynthetic())
 			spawn vomit()
@@ -1554,37 +1554,37 @@
 		return 0
 
 	if(shock_stage == 10)
-		custom_pain("[pick("It hurts so much", "You really need some painkillers", "Dear god, the pain")]!", 40)
+		custom_pain("[pick("Это так больно", "Вам действительно нужны обезболивающие", "Боже мой, как больно")]!", 40)
 
 	if(shock_stage >= 30)
 		if(shock_stage == 30 && !isbelly(loc)) //VOREStation Edit
-			emote("me",1,"is having trouble keeping their eyes open.")
+			emote("me",1,"не может держать глаза открытыми.")
 		eye_blurry = max(2, eye_blurry)
 		stuttering = max(stuttering, 5)
 
 	if(shock_stage == 40)
-		to_chat(src, "<span class='danger'>[pick("The pain is excruciating", "Please&#44; just end the pain", "Your whole body is going numb")]!</span>")
+		to_chat(src, "<span class='danger'>[pick("Боль мучительна", "Пожалуйста&#44; пусть это просто кончится", "Все ваше тело немеет")]!</span>")
 
 	if (shock_stage >= 60)
 		if(shock_stage == 60 && !isbelly(loc)) //VOREStation Edit
-			emote("me",1,"'s body becomes limp.")
+			emote("me",1," чувствует как все тело становится вялым.")
 		if (prob(2))
-			to_chat(src, "<span class='danger'>[pick("The pain is excruciating", "Please&#44; just end the pain", "Your whole body is going numb")]!</span>")
+			to_chat(src, "<span class='danger'>[pick("Боль мучительна", "Пожалуйста&#44; пусть это просто кончится", "Все ваше тело немеет")]!</span>")
 			Weaken(20)
 
 	if(shock_stage >= 80)
 		if (prob(5))
-			to_chat(src, "<span class='danger'>[pick("The pain is excruciating", "Please&#44; just end the pain", "Your whole body is going numb")]!</span>")
+			to_chat(src, "<span class='danger'>[pick("Боль мучительна", "Пожалуйста&#44; пусть это просто кончится", "Все ваше тело немеет")]!</span>")
 			Weaken(20)
 
 	if(shock_stage >= 120)
 		if (prob(2))
-			to_chat(src, "<span class='danger'>[pick("You black out", "You feel like you could die any moment now", "You are about to lose consciousness")]!</span>")
+			to_chat(src, "<span class='danger'>[pick("Вы теряете сознание", "Вы чувствуете, что можете умереть в любой момент", "Вы собираетесь потерять сознание")]!</span>")
 			Paralyse(5)
 
 	if(shock_stage == 150)
 		if(!isbelly(loc)) //VOREStation Edit
-			emote("me",1,"can no longer stand, collapsing!")
+			emote("me",1,"больше не может стоять, и падает на пол!")
 		Weaken(20)
 
 	if(shock_stage >= 150)

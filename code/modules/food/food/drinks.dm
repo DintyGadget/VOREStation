@@ -27,7 +27,7 @@
 	if(!usr)
 		usr = M
 	if(!reagents.total_volume)
-		M.visible_message("<span class='notice'>[M] finishes drinking \the [src].</span>","<span class='notice'>You finish drinking \the [src].</span>")
+		M.visible_message("<span class='notice'>[M] заканчивает пить [src].</span>","<span class='notice'>Вы заканчиваете пить [src].</span>")
 		if(trash)
 			usr.drop_from_inventory(src)	//so icons update :[
 			if(ispath(trash,/obj/item))
@@ -45,7 +45,7 @@
 /obj/item/weapon/reagent_containers/food/drinks/proc/open(mob/user)
 	playsound(src,"canopen", rand(10,50), 1)
 	GLOB.cans_opened_roundstat++
-	to_chat(user, "<span class='notice'>You open [src] with an audible pop!</span>")
+	to_chat(user, "<span class='notice'>Вы открываете [src] с громким хлопком!</span>")
 	flags |= OPENCONTAINER
 
 /obj/item/weapon/reagent_containers/food/drinks/attack(mob/M as mob, mob/user as mob, def_zone)
@@ -68,25 +68,25 @@
 
 /obj/item/weapon/reagent_containers/food/drinks/standard_feed_mob(var/mob/user, var/mob/target)
 	if(!is_open_container())
-		to_chat(user, "<span class='notice'>You need to open [src]!</span>")
+		to_chat(user, "<span class='notice'>Вам нужно открыть [src]!</span>")
 		return 1
 	On_Consume(target,user)
 	return ..()
 
 /obj/item/weapon/reagent_containers/food/drinks/standard_dispenser_refill(var/mob/user, var/obj/structure/reagent_dispensers/target)
 	if(!is_open_container())
-		to_chat(user, "<span class='notice'>You need to open [src]!</span>")
+		to_chat(user, "<span class='notice'>Вам нужно открыть [src]!</span>")
 		return 1
 	return ..()
 
 /obj/item/weapon/reagent_containers/food/drinks/standard_pour_into(var/mob/user, var/atom/target)
 	if(!is_open_container())
-		to_chat(user, "<span class='notice'>You need to open [src]!</span>")
+		to_chat(user, "<span class='notice'>Вам нужно открыть [src]!</span>")
 		return 1
 	return ..()
 
 /obj/item/weapon/reagent_containers/food/drinks/self_feed_message(var/mob/user)
-	to_chat(user, "<span class='notice'>You swallow a gulp from \the [src].</span>")
+	to_chat(user, "<span class='notice'>Вы делаете глоток из [src].</span>")
 
 /obj/item/weapon/reagent_containers/food/drinks/feed_sound(var/mob/user)
 	playsound(src, 'sound/items/drink.ogg', rand(10, 50), 1)
@@ -95,15 +95,15 @@
 	. = ..()
 	if(Adjacent(user))
 		if(!reagents?.total_volume)
-			. += "<span class='notice'>It is empty!</span>"
+			. += "<span class='notice'>Она пуста!</span>"
 		else if (reagents.total_volume <= volume * 0.25)
-			. += "<span class='notice'>It is almost empty!</span>"
+			. += "<span class='notice'>Она почти пуста!</span>"
 		else if (reagents.total_volume <= volume * 0.66)
-			. += "<span class='notice'>It is half full!</span>"
+			. += "<span class='notice'>Она наполовину полна!</span>"
 		else if (reagents.total_volume <= volume * 0.90)
-			. += "<span class='notice'>It is almost full!</span>"
+			. += "<span class='notice'>Она почти полна!</span>"
 		else
-			. += "<span class='notice'>It is full!</span>"
+			. += "<span class='notice'>Она полна!</span>"
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -111,8 +111,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 /obj/item/weapon/reagent_containers/food/drinks/golden_cup
-	desc = "A golden cup"
-	name = "golden cup"
+	desc = "Золотая чаша"
+	name = "золотая чашка"
 	icon_state = "golden_cup"
 	item_state = "" //nope :(
 	w_class = ITEMSIZE_LARGE
@@ -132,9 +132,9 @@
 //	Formatting is the same as food.
 
 /obj/item/weapon/reagent_containers/food/drinks/milk
-	name = "milk carton"
-	desc = "It's milk. White and nutritious goodness!"
-	description_fluff = "A product of NanoPastures. Who would have thought that cows would thrive in zero-G?"
+	name = "пакет молока"
+	desc = "Это молоко. Белое и питательное добро!"
+	description_fluff = "Продукт Нано-пастбищ. Кто бы мог подумать, что коровы будут жить в невесомости?"
 	icon_state = "milk"
 	item_state = "carton"
 	center_of_mass = list("x"=16, "y"=9)
@@ -146,9 +146,9 @@
 	reagents.add_reagent("milk", 50)
 
 /obj/item/weapon/reagent_containers/food/drinks/soymilk
-	name = "soymilk carton"
-	desc = "It's soy milk. White and nutritious goodness!"
-	description_fluff = "A product of NanoPastures. For those skeptical that cows can thrive in zero-G."
+	name = "пакет соевого молока"
+	desc = "Это соевое молоко. Белое и питательное добро!"
+	description_fluff = "Продукт Нано-пастбищ. Для тех, кто скептически относится к тому, что коровы могут жить в невесомости."
 	icon_state = "soymilk"
 	item_state = "carton"
 	center_of_mass = list("x"=16, "y"=9)
@@ -160,9 +160,9 @@
 	reagents.add_reagent("soymilk", 50)
 
 /obj/item/weapon/reagent_containers/food/drinks/smallmilk
-	name = "small milk carton"
-	desc = "It's milk. White and nutritious goodness!"
-	description_fluff = "A product of NanoPastures. Who would have thought that cows would thrive in zero-G?"
+	name = "маленький пакет молока"
+	desc = "Это молоко. Белое и питательное добро!"
+	description_fluff = "Продукт Нано-пастбищ. Кто бы мог подумать, что коровы будут жить в невесомости?"
 	volume = 30
 	icon_state = "mini-milk"
 	item_state = "carton"
@@ -175,9 +175,9 @@
 	reagents.add_reagent("milk", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/smallchocmilk
-	name = "small chocolate milk carton"
-	desc = "It's milk! This one is in delicious chocolate flavour."
-	description_fluff = "A product of NanoPastures. Who would have thought that cows would thrive in zero-G?"
+	name = "маленькая коробка шоколадного молока"
+	desc = "Это молоко! Этот с восхитительным шоколадным вкусом."
+	description_fluff = "Продукт Нано-пастбищ. Кто бы мог подумать, что коровы будут жить в невесомости?"
 	volume = 30
 	icon_state = "mini-milk_choco"
 	item_state = "carton"
@@ -190,9 +190,9 @@
 	reagents.add_reagent("chocolate_milk", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/coffee
-	name = "\improper Robust Coffee"
-	desc = "Careful, the beverage you're about to enjoy is extremely hot."
-	description_fluff = "Fresh coffee is almost unheard of outside of planets and stations where it is grown. Robust Coffee proudly advertises the six separate times it is freeze-dried during the production process of every cup of instant."
+	name = "крепкий кофе"
+	desc = "Осторожно, напиток, которым вы собираетесь насладиться, очень горячий."
+	description_fluff = "Свежий кофе почти не встречается за пределами планет и станций, где его выращивают. Крепкий кофе с гордостью рекламирует шесть отдельных раз, когда он подвергается сублимационной сушке в процессе производства каждой чашки растворимого кофе."
 	icon_state = "coffee"
 	trash = /obj/item/trash/coffee
 	center_of_mass = list("x"=15, "y"=10)
@@ -204,9 +204,9 @@
 	reagents.add_reagent("coffee", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/tea
-	name = "cup of Duke Purple tea"
-	desc = "An insult to Duke Purple is an insult to the Space Queen! Any proper gentleman will fight you, if you sully this tea."
-	description_fluff = "Duke Purple is NanoPasture's proprietary strain of black tea, noted for its strong but otherwise completely non-distinctive flavour."
+	name = "чашка чая Duke Purple"
+	desc = "Оскорбление герцога Пурпурного-это оскорбление Космической королевы! Любой порядочный джентльмен будет драться с вами, если вы запачкаете этот чай."
+	description_fluff = "Duke Purple-это фирменный сорт черного чая Нано-пастбищ, известный своим сильным, но в остальном совершенно не отличительным вкусом."
 	icon_state = "chai_vended"
 	item_state = "coffee"
 	trash = /obj/item/trash/coffee
@@ -219,8 +219,8 @@
 	reagents.add_reagent("tea", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/ice
-	name = "cup of ice"
-	desc = "Careful, cold ice, do not chew."
+	name = "чашка льда"
+	desc = "Осторожно, холодный лед, не жуйте."
 	icon_state = "coffee"
 	center_of_mass = list("x"=15, "y"=10)
 /obj/item/weapon/reagent_containers/food/drinks/ice/Initialize()
@@ -228,9 +228,9 @@
 	reagents.add_reagent("ice", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/h_chocolate
-	name = "cup of Counselor's Choice hot cocoa"
-	desc = "Who needs character traits when you can enjoy a hot mug of cocoa?"
-	description_fluff = "Counselor's Choice brand hot cocoa is made with a blend of hot water and non-dairy milk powder substitute, in a compromise destined to annoy all parties."
+	name = "чашка горячего какао Counselor's Choice"
+	desc = "Кому нужны черты характера, когда можно насладиться горячей кружкой какао?"
+	description_fluff = "Горячее какао марки Advisor's Choice производится из смеси горячей воды и немолочного заменителя сухого молока, что является компромиссом, предназначенным для раздражения всех сторон."
 	icon_state = "coffee"
 	item_state = "coffee"
 	trash = /obj/item/trash/coffee
@@ -243,9 +243,9 @@
 	reagents.add_reagent("hot_coco", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/greentea
-	name = "cup of green tea"
-	desc = "Exceptionally traditional, delightfully subtle."
-	description_fluff = "Tea remains an important tradition in many cultures originating on Earth. Among these, green tea is probably the most traditional of the bunch... Though the vending machines of the modern era hardly do it justice."
+	name = "чашка зеленого чая"
+	desc = "Исключительно традиционное, восхитительно утонченное."
+	description_fluff = "Чай остается важной традицией во многих культурах, зародившихся на Земле. Среди них зеленый чай, пожалуй, самый традиционный из всех... Через торговые автоматы современной эпохи вряд ли можно отдать ему должное."
 	icon_state = "greentea_vended"
 	item_state = "coffee"
 	trash = /obj/item/trash/coffee
@@ -258,9 +258,9 @@
 	reagents.add_reagent("greentea", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/chaitea
-	name = "cup of chai tea"
-	desc = "The name is redundant but the flavor is delicious!"
-	description_fluff = "Chai Tea - tea blended with a spice mix of cinnamon and cloves - borders on a national drink on Kishar."
+	name = "чашка чаи чая"
+	desc = "Название излишне, но вкус восхитительный!"
+	description_fluff = "Чаи чай - чай, смешанный с пряной смесью корицы и гвоздики - граничит с национальным напитком на Кишаре."
 	icon_state = "chai_vended"
 	item_state = "coffee"
 	trash = /obj/item/trash/coffee
@@ -273,8 +273,8 @@
 	reagents.add_reagent("chaitea", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/decaf
-	name = "cup of decaf coffee"
-	desc = "Coffee with all the wake-up sucked out."
+	name = "чашка кофе без кофеина"
+	desc = "Кофе с высосанным пробуждением."
 	description_fluff = "A trial run on two NanoTrasen stations in 2481 attempted to replace all vending machine coffee with decaf in order to combat an epidemic of caffeine addiction. After two days, three major industrial accidents and a death, the initiative was cancelled. Decaf is now thankfully optional."
 	icon_state = "coffee"
 	item_state = "coffee"
@@ -288,9 +288,9 @@
 	reagents.add_reagent("decaf", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/dry_ramen
-	name = "Cup Ramen"
-	desc = "Just add 10ml water, self heats! A taste that reminds you of your school years."
-	description_fluff = "Konohagakure Brand Ramen has been an instant meal staple for centuries. Cheap, quick and available in over two hundred varieties - though most taste like artifical chicken."
+	name = "Чашка Рамена"
+	desc = "Просто добавьте 10 мл воды, самонагревается! Вкус, напоминающий о школьных годах."
+	description_fluff = "Бренд Konohagakure Ramen был одним из основных продуктов быстрого приготовления на протяжении веков. Дешево, быстро и доступно более двухсот сортов, хотя большинство из них по вкусу напоминает искусственную курицу."
 	icon_state = "ramen"
 	trash = /obj/item/trash/ramen
 	center_of_mass = list("x"=16, "y"=11)
@@ -302,8 +302,8 @@
 	reagents.add_reagent("dry_ramen", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/sillycup
-	name = "paper cup"
-	desc = "A paper water cup."
+	name = "бумажный стакан"
+	desc = "Бумажный стаканчик для воды."
 	icon_state = "water_cup_e"
 	possible_transfer_amounts = null
 	volume = 10
@@ -327,7 +327,7 @@
 			var/obj/structure/reagent_dispensers/water_cooler/W = over_object
 			if(W.cupholder && W.cups < 10)
 				W.cups++
-				to_chat(usr, "<span class='notice'>You put the [src] in the cup dispenser.</span>")
+				to_chat(usr, "<span class='notice'>Вы кладете [src] в дозатор стаканов.</span>")
 				qdel(src)
 				W.update_icon()
 	else
@@ -339,8 +339,8 @@
 //	icon states.
 
 /obj/item/weapon/reagent_containers/food/drinks/shaker
-	name = "shaker"
-	desc = "A metal shaker to mix drinks in."
+	name = "шейкер"
+	desc = "Металлический шейкер для смешивания напитков."
 	icon_state = "shaker"
 	amount_per_transfer_from_this = 10
 	volume = 120
@@ -350,8 +350,8 @@
 	..()
 
 /obj/item/weapon/reagent_containers/food/drinks/teapot
-	name = "teapot"
-	desc = "An elegant teapot. It simply oozes class."
+	name = "чайник"
+	desc = "Элегантный чайник. Он просто источает класс."
 	icon_state = "teapot"
 	item_state = "teapot"
 	amount_per_transfer_from_this = 10
@@ -362,8 +362,8 @@
 	..()
 
 /obj/item/weapon/reagent_containers/food/drinks/flask
-	name = "\improper Site Manager's flask"
-	desc = "A metal flask belonging to the Site Manager"
+	name = "фляжка Директора Колонии"
+	desc = "Металлическая фляга, принадлежащая Директору колонии."
 	icon_state = "flask"
 	volume = 60
 	center_of_mass = list("x"=17, "y"=7)
@@ -372,39 +372,39 @@
 	..()
 
 /obj/item/weapon/reagent_containers/food/drinks/flask/shiny
-	name = "shiny flask"
-	desc = "A shiny metal flask. It appears to have a Greek symbol inscribed on it."
+	name = "блестящая фляжка"
+	desc = "Блестящая металлическая фляга. Похоже, на нем написан греческий символ."
 	icon_state = "shinyflask"
 
 /obj/item/weapon/reagent_containers/food/drinks/flask/lithium
-	name = "lithium flask"
-	desc = "A flask with a Lithium Atom symbol on it."
+	name = "литиевая фляжка"
+	desc = "Фляжка с символом атома лития на ней."
 	icon_state = "lithiumflask"
 
 /obj/item/weapon/reagent_containers/food/drinks/flask/detflask
-	name = "\improper Detective's flask"
-	desc = "A metal flask with a leather band and golden badge belonging to the detective."
+	name = "фляжка Детектива"
+	desc = "Металлическая фляга с кожаным ремешком и золотым значком, принадлежащая детективу."
 	icon_state = "detflask"
 	volume = 60
 	center_of_mass = list("x"=17, "y"=8)
 
 /obj/item/weapon/reagent_containers/food/drinks/flask/barflask
-	name = "flask"
-	desc = "For those who can't be bothered to hang out at the bar to drink."
+	name = "фляжка"
+	desc = "Для тех, кто не хочет тусоваться в баре, чтобы выпить."
 	icon_state = "barflask"
 	volume = 60
 	center_of_mass = list("x"=17, "y"=7)
 
 /obj/item/weapon/reagent_containers/food/drinks/flask/vacuumflask
-	name = "vacuum flask"
-	desc = "Keeping your drinks at the perfect temperature since 1892."
+	name = "термос"
+	desc = "Хранение напитков при идеальной температуре с 1892 года."
 	icon_state = "vacuumflask"
 	volume = 60
 	center_of_mass = list("x"=15, "y"=4)
 
 /obj/item/weapon/reagent_containers/food/drinks/britcup
-	name = "cup"
-	desc = "A cup with the British flag emblazoned on it."
+	name = "чашка"
+	desc = "Чашка с изображением британского флага."
 	icon_state = "britcup"
 	volume = 30
 	center_of_mass = list("x"=15, "y"=13)

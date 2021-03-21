@@ -444,7 +444,7 @@
 		// AIize the character, but don't move them yet
 		character = character.AIize(move = FALSE) // Dupe of code in /datum/controller/subsystem/ticker/proc/create_characters() for non-latespawn, unify?
 
-		AnnounceCyborg(character, rank, "has been transferred to the empty core in \the [character.loc.loc]")
+		AnnounceCyborg(character, rank, "перенесено в пустое ядро в [character.loc.loc]")
 		ticker.mode.latespawn(character)
 
 		qdel(C) //Deletes empty core (really?)
@@ -478,14 +478,14 @@
 		if(character.mind.role_alt_title)
 			rank = character.mind.role_alt_title
 		// can't use their name here, since cyborg namepicking is done post-spawn, so we'll just say "A new Cyborg has arrived"/"A new Android has arrived"/etc.
-		global_announcer.autosay("A new[rank ? " [rank]" : " visitor" ] [join_message ? join_message : "has arrived on the station"].", "Arrivals Announcement Computer", channel, zlevels)
+		global_announcer.autosay("Новый [rank ? " [rank]" : " посетитель" ] [join_message ? join_message : "прибывает на станцию"].", "Компьютер объявления прибытия", channel, zlevels)
 
 /mob/new_player/proc/LateChoices()
 	var/name = client.prefs.be_random_name ? "friend" : client.prefs.real_name
 
 	var/dat = "<html><meta charset=\"utf-8\"><body><center>"
-	dat += "<b>Welcome, [name].<br></b>"
-	dat += "Round Duration: [roundduration2text()]<br>"
+	dat += "<b>Здраствуйте, [name].<br></b>"
+	dat += "Раунд длится: [roundduration2text()]<br>"
 
 	if(emergency_shuttle) //In case NanoTrasen decides reposess CentCom's shuttles.
 		if(emergency_shuttle.going_to_centcom()) //Shuttle is going to CentCom, not recalled

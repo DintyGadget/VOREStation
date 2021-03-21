@@ -56,7 +56,7 @@
 /datum/category_item/player_setup_item/skills/OnTopic(href, href_list, user)
 	if(href_list["skillinfo"])
 		var/datum/skill/S = locate(href_list["skillinfo"])
-		var/HTML = "<b>[S.name]</b><br>[S.desc]"
+		var/HTML = "<meta charset=\"utf-8\"><b>[S.name]</b><br>[S.desc]"
 		user << browse(HTML, "window=\ref[user]skillinfo")
 		return TOPIC_HANDLED
 

@@ -1,6 +1,6 @@
 
 /datum/gear/pipe
-	display_name = "pipe"
+	display_name = "Трубка курительная"
 	path = /obj/item/clothing/mask/smokable/pipe
 
 /datum/gear/pipe/New()
@@ -12,15 +12,15 @@
 	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(pipes))
 
 /datum/gear/matchbook
-	display_name = "matchbook"
+	display_name = "Коробок спичек"
 	path = /obj/item/weapon/storage/box/matches
 
 /datum/gear/lighter
-	display_name = "cheap lighter"
+	display_name = "Зажигалка, дешёвая"
 	path = /obj/item/weapon/flame/lighter
 
 /datum/gear/lighter/zippo
-	display_name = "Zippo selection"
+	display_name = "Зажигалка, зиппо (выбор)"
 	path = /obj/item/weapon/flame/lighter/zippo
 
 /datum/gear/lighter/zippo/New()
@@ -34,15 +34,15 @@
 	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(zippos))
 
 /datum/gear/ashtray
-	display_name = "ashtray, plastic"
+	display_name = "Пепельница, пластик"
 	path = /obj/item/weapon/material/ashtray/plastic
 
 /datum/gear/cigar
-	display_name = "cigar"
+	display_name = "Сигара"
 	path = /obj/item/clothing/mask/smokable/cigarette/cigar
 
 /datum/gear/cigarettes
-	display_name = "cigarette selection"
+	display_name = "Сигареты (выбор)"
 	path = /obj/item/weapon/storage/fancy/cigarettes
 
 /datum/gear/cigarettes/New()

@@ -161,8 +161,8 @@
 		emagged = 1
 		safety_disabled = 1
 		update_projections()
-		to_chat(user, "<span class='notice'>You vastly increase projector power and override the safety and security protocols.</span>")
-		to_chat(user, "Warning.  Automatic shutoff and derezing protocols have been corrupted.  Please call [using_map.company_name] maintenance and do not use the simulator.")
+		to_chat(user, "<span class='notice'>Вы значительно увеличиваете мощность проектора и отменяете протоколы безопасности.</span>")
+		to_chat(user, "Предупреждение. Протоколы автоматического отключения и удаления резины повреждены. Пожалуйста, позвоните в службу поддержки [using_map.company_name] и не используйте симулятор.")
 		log_game("[key_name(usr)] emagged the Holodeck Control Computer")
 		return 1
 	return
@@ -226,7 +226,7 @@
 			active = 0
 			update_use_power(USE_POWER_IDLE)
 			for(var/mob/M in range(10,src))
-				M.show_message("The holodeck overloads!")
+				M.show_message("Голодека перегружается!")
 
 
 			for(var/turf/T in linkedholodeck)

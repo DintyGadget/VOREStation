@@ -2,7 +2,7 @@
 	name = "half-pint glass"
 	base_name = "glass"
 	base_icon = "square"
-	desc = "Your standard drinking glass."
+	desc = "Стандартный стакан для питья."
 	filling_states = list(20, 40, 60, 80, 100)
 	volume = 30
 	possible_transfer_amounts = list(5,10,15,30)

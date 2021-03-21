@@ -18,7 +18,7 @@ proc/populate_ghost_traps()
 	var/object = "positronic brain"
 	var/list/ban_checks = list("AI","Cyborg")
 	var/pref_check = BE_AI
-	var/ghost_trap_message = "They are occupying a positronic brain now."
+	var/ghost_trap_message = "Сейчас они занимают позитронный мозг."
 	var/ghost_trap_role = "Positronic Brain"
 
 // Check for bans, proper atom types, etc.
@@ -26,12 +26,12 @@ proc/populate_ghost_traps()
 	if(!istype(candidate) || !candidate.client || !candidate.ckey)
 		return 0
 	if(!candidate.MayRespawn())
-		to_chat(candidate, "You have made use of the AntagHUD and hence cannot enter play as \a [object].")
+		to_chat(candidate, "Вы использовали AntagHUD и, следовательно, не можете войти в игру как [object].")
 		return 0
 	if(islist(ban_checks))
 		for(var/bantype in ban_checks)
 			if(jobban_isbanned(candidate, "[bantype]"))
-				to_chat(candidate, "You are banned from one or more required roles and hence cannot enter play as \a [object].")
+				to_chat(candidate, "Вам запрещена одна или несколько обязательных ролей, и поэтому вы не можете войти в игру в качестве [object].")
 				return 0
 	return 1
 
@@ -49,7 +49,7 @@ proc/populate_ghost_traps()
 		if(pref_check && !(O.client.prefs.be_special & pref_check))
 			continue
 		if(O.client)
-			to_chat(O, "[request_string]<a href='?src=\ref[src];candidate=\ref[O];target=\ref[target]'>Click here</a> if you wish to play as this option.")
+			to_chat(O, "[request_string]<a href='?src=\ref[src];candidate=\ref[O];target=\ref[target]'>Нажмите</a> чтобы выбрать эфу опцию.")
 
 // Handles a response to request_player().
 /datum/ghosttrap/Topic(href, href_list)
@@ -78,12 +78,12 @@ proc/populate_ghost_traps()
 
 // Fluff!
 /datum/ghosttrap/proc/welcome_candidate(var/mob/target)
-	to_chat(target, "<b>You are a positronic brain, brought into existence on [station_name()].</b>")
-	to_chat(target, "<b>As a synthetic intelligence, you answer to all crewmembers, as well as the AI.</b>")
-	to_chat(target, "<b>Remember, the purpose of your existence is to serve the crew and the station. Above all else, do no harm.</b>")
-	to_chat(target, "<b>Use say #b to speak to other artificial intelligences.</b>")
+	to_chat(target, "<b>Вы - позитронный мозг, появившийся на [station_name()].</b>")
+	to_chat(target, "<b>Как синтетический интеллект, вы отвечаете перед всеми членами экипажа, а также перед ИИ.</b>")
+	to_chat(target, "<b>Помните, цель вашего существования - служить экипажу и станции. Прежде всего, не навредидть.</b>")
+	to_chat(target, "<b>Используйте #b, чтобы общаться с другими искусственными интеллектами.</b>")
 	var/turf/T = get_turf(target)
-	T.visible_message("<span class='notice'>\The [src] chimes quietly.</span>")
+	T.visible_message("<span class='notice'>[src] тихо дзынькает.</span>")
 	var/obj/item/device/mmi/digital/posibrain/P = target.loc
 	if(!istype(P)) //wat
 		return
@@ -93,7 +93,7 @@ proc/populate_ghost_traps()
 
 // Allows people to set their own name. May or may not need to be removed for posibrains if people are dumbasses.
 /datum/ghosttrap/proc/set_new_name(var/mob/target)
-	var/newname = sanitizeSafe(input(target,"Enter a name, or leave blank for the default name.", "Name change","") as text, MAX_NAME_LEN)
+	var/newname = sanitizeSafe(input(target,"Введите имя или оставьте поле пустым для имени по умолчанию.", "Name change","") as text, MAX_NAME_LEN)
 	if (newname != "")
 		target.real_name = newname
 		target.name = target.real_name
@@ -103,12 +103,12 @@ proc/populate_ghost_traps()
 	object = "living plant"
 	ban_checks = list("Dionaea")
 	pref_check = BE_PLANT
-	ghost_trap_message = "They are occupying a living plant now."
+	ghost_trap_message = "Сейчас они занимают живое растение."
 	ghost_trap_role = "Plant"
 
 /datum/ghosttrap/plant/welcome_candidate(var/mob/target)
-	to_chat(target, "<span class='alium'><B>You awaken slowly, stirring into sluggish motion as the air caresses you.</B></span>")
+	to_chat(target, "<span class='alium'><B>Вы медленно просыпаетесь, переходя в медленное движение, пока вас ласкает воздух.</B></span>")
 	// This is a hack, replace with some kind of species blurb proc.
 	if(istype(target,/mob/living/carbon/alien/diona))
-		to_chat(target, "<B>You are \a [target], one of a race of drifting interstellar plantlike creatures that sometimes share their seeds with human traders.</B>")
-		to_chat(target, "<B>Too much darkness will send you into shock and starve you, but light will help you heal.</B>")
+		to_chat(target, "<B>Вы [target], один из расы дрейфующих межзвездных существ, похожих на растения, которые иногда делятся своими семенами с людьми-торговцами.</B>")
+		to_chat(target, "<B>Слишком много тьмы вызовет у вас шок и голод, но свет поможет вам исцелиться.</B>")

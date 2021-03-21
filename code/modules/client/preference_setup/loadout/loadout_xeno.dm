@@ -1,25 +1,25 @@
 // Alien clothing.
 
 /datum/gear/suit/zhan_furs
-	display_name = "Zhan-Khazan furs (Tajaran)"
+	display_name = "Таджара: Одежда Дзан-Казан"
 	path = /obj/item/clothing/suit/tajaran/furs
-	sort_category = "Xenowear"
+	sort_category = "Расовая одежда"
 
 /datum/gear/head/zhan_scarf
-	display_name = "Zhan headscarf"
+	display_name = "Таджара: Платок Дзан"
 	path = /obj/item/clothing/head/tajaran/scarf
 	whitelisted = SPECIES_TAJ
 
 /datum/gear/suit/unathi_mantle
-	display_name = "hide mantle (Unathi)"
+	display_name = "Унати: Мантия из шкуры"
 	path = /obj/item/clothing/suit/unathi/mantle
 	cost = 1
-	sort_category = "Xenowear"
+	sort_category = "Расовая одежда"
 
 /datum/gear/ears/skrell/chains	//Chains
-	display_name = "headtail chain selection (Skrell)"
+	display_name = "Скрелл: Цепочка для хвоста"
 	path = /obj/item/clothing/ears/skrell/chain
-	sort_category = "Xenowear"
+	sort_category = "Расовая одежда"
 	whitelisted = SPECIES_SKRELL
 
 /datum/gear/ears/skrell/chains/New()
@@ -31,9 +31,9 @@
 	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(chaintypes))
 
 /datum/gear/ears/skrell/bands
-	display_name = "headtail band selection (Skrell)"
+	display_name = "Скрелл: Повязка для хвоста"
 	path = /obj/item/clothing/ears/skrell/band
-	sort_category = "Xenowear"
+	sort_category = "Расовая одежда"
 	whitelisted = SPECIES_SKRELL
 
 /datum/gear/ears/skrell/bands/New()
@@ -45,9 +45,9 @@
 	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(bandtypes))
 
 /datum/gear/ears/skrell/cloth/short
-	display_name = "short headtail cloth (Skrell)"
+	display_name = "Скрелл: Повязка для хвоста"
 	path = /obj/item/clothing/ears/skrell/cloth_male/black
-	sort_category = "Xenowear"
+	sort_category = "Расовая одежда"
 	whitelisted = SPECIES_SKRELL
 
 /datum/gear/ears/skrell/cloth/short/New()
@@ -59,9 +59,9 @@
 	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(shorttypes))
 
 /datum/gear/ears/skrell/cloth/long
-	display_name = "long headtail cloth (Skrell)"
+	display_name = "Скрелл: Платок для хвоста"
 	path = /obj/item/clothing/ears/skrell/cloth_female/black
-	sort_category = "Xenowear"
+	sort_category = "Расовая одежда"
 	whitelisted = SPECIES_SKRELL
 
 /datum/gear/ears/skrell/cloth/long/New()
@@ -73,9 +73,9 @@
 	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(longtypes))
 
 /datum/gear/ears/skrell/colored/band
-	display_name = "Colored bands (Skrell)"
+	display_name = "Скрелл: Повязка для хвоста (окрашиваемая)"
 	path = /obj/item/clothing/ears/skrell/colored/band
-	sort_category = "Xenowear"
+	sort_category = "Расовая одежда"
 	whitelisted = SPECIES_SKRELL
 
 /datum/gear/ears/skrell/colored/band/New()
@@ -83,9 +83,9 @@
 	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/ears/skrell/colored/chain
-	display_name = "Colored chain (Skrell)"
+	display_name = "Скрелл: Цепочка для хвоста (окрашиваемая)"
 	path = /obj/item/clothing/ears/skrell/colored/chain
-	sort_category = "Xenowear"
+	sort_category = "Расовая одежда"
 	whitelisted = SPECIES_SKRELL
 
 /datum/gear/ears/skrell/colored/chain/New()
@@ -93,10 +93,10 @@
 	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/uniform/smock
-	display_name = "smock selection (Teshari)"
+	display_name = "Тешари: Халат (выбор)"
 	path = /obj/item/clothing/under/seromi/smock
 	whitelisted = SPECIES_TESHARI
-	sort_category = "Xenowear"
+	sort_category = "Расовая одежда"
 
 /datum/gear/uniform/smock/New()
 	..()
@@ -107,10 +107,10 @@
 	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(smocks))
 
 /datum/gear/uniform/undercoat
-	display_name = "undercoat selection (Teshari)"
+	display_name = "Тешари: Накидка (выбор)"
 	path = /obj/item/clothing/under/seromi/undercoat/standard
 	whitelisted = SPECIES_TESHARI
-	sort_category = "Xenowear"
+	sort_category = "Расовая одежда"
 
 /datum/gear/uniform/undercoat/New()
 	..()
@@ -121,10 +121,10 @@
 	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(undercoats))
 
 /datum/gear/suit/cloak
-	display_name = "cloak selection (Teshari)"
+	display_name = "Тешари: Плащ (выбор)"
 	path = /obj/item/clothing/suit/storage/seromi/cloak/standard
 	whitelisted = SPECIES_TESHARI
-	sort_category = "Xenowear"
+	sort_category = "Расовая одежда"
 
 /datum/gear/suit/cloak/New()
 	..()
@@ -135,14 +135,14 @@
 	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(cloaks))
 
 /datum/gear/uniform/harness
-	display_name = "gear harness (Full Body Prosthetic, Diona)"
+	display_name = "Упряжь для снаряжения"
 	path = /obj/item/clothing/under/harness
-	sort_category = "Xenowear"
+	sort_category = "Расовая одежда"
 
 /datum/gear/shoes/footwraps
-	display_name = "cloth footwraps"
+	display_name = "Обмотки для ступней"
 	path = /obj/item/clothing/shoes/footwraps
-	sort_category = "Xenowear"
+	sort_category = "Расовая одежда"
 	cost = 1
 
 /datum/gear/shoes/footwraps/New()
@@ -150,9 +150,9 @@
 	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/uniform/cohesionsuits
-	display_name = "cohesion suit selection (Promethean)"
+	display_name = "Прометеан: Костюм поддержания когезии (выбор)"
 	path = /obj/item/clothing/under/cohesion
-	sort_category = "Xenowear"
+	sort_category = "Расовая одежда"
 
 /datum/gear/uniform/cohesionsuits/New()
 	..()
@@ -164,7 +164,7 @@
 
 /datum/gear/uniform/dept
 	whitelisted = SPECIES_TESHARI
-	sort_category = "Xenowear"
+	sort_category = "Расовая одежда"
 
 /datum/gear/uniform/dept/undercoat/cap
 	display_name = "facility director undercoat (Teshari)"
@@ -271,9 +271,9 @@
 	path = /obj/item/clothing/under/seromi/undercoat/jobs/iaa
 	allowed_roles = list("Internal Affairs Agent")
 
-/datum/gear/suit/dept/cloak
+/datum/gear/suit/dept/cloak/
 	whitelisted = SPECIES_TESHARI
-	sort_category = "Xenowear"
+	sort_category = "Расовая одежда"
 
 /datum/gear/suit/dept/cloak/cap
 	display_name = "facility director cloak (Teshari)"
@@ -520,7 +520,7 @@
 	display_name = "smock, recolorable (Teshari)"
 	path = /obj/item/clothing/under/seromi/smock/white
 	whitelisted = SPECIES_TESHARI
-	sort_category = "Xenowear"
+	sort_category = "Расовая одежда"
 
 /datum/gear/uniform/smockcolor/New()
 	..()
@@ -530,7 +530,7 @@
 	display_name = "belted cloak selection (Teshari)"
 	path = /obj/item/clothing/suit/storage/seromi/beltcloak/standard
 	whitelisted = SPECIES_TESHARI
-	sort_category = "Xenowear"
+	sort_category = "Расовая одежда"
 
 /datum/gear/suit/beltcloak/New()
 	..()
@@ -544,7 +544,7 @@
 	display_name = "belted cloak, recolorable (Teshari)"
 	path = /obj/item/clothing/suit/storage/seromi/beltcloak/standard/white_grey
 	whitelisted = SPECIES_TESHARI
-	sort_category = "Xenowear"
+	sort_category = "Расовая одежда"
 
 /datum/gear/suit/beltcloak_color/New()
 	..()
@@ -569,7 +569,7 @@
 	display_name = "hooded cloak selection (Teshari)"
 	path = /obj/item/clothing/suit/storage/hooded/teshari/standard
 	whitelisted = SPECIES_TESHARI
-	sort_category = "Xenowear"
+	sort_category = "Расовая одежда"
 
 /datum/gear/suit/cloak_hood/New()
 	..()
@@ -583,7 +583,7 @@
 	display_name = "worksuit selection (Teshari)"
 	path = /obj/item/clothing/under/seromi/undercoat/standard/worksuit
 	whitelisted = SPECIES_TESHARI
-	sort_category = "Xenowear"
+	sort_category = "Расовая одежда"
 
 /datum/gear/uniform/worksuit/New()
 	..()
@@ -597,7 +597,7 @@
 	display_name = "undercoat, recolorable (Teshari)"
 	path = /obj/item/clothing/under/seromi/undercoat/standard/white_grey
 	whitelisted = SPECIES_TESHARI
-	sort_category = "Xenowear"
+	sort_category = "Расовая одежда"
 
 /datum/gear/uniform/undercoatcolor/New()
 	..()
@@ -607,7 +607,7 @@
 	display_name = "cloak, recolorable (Teshari)"
 	path = /obj/item/clothing/suit/storage/seromi/cloak/standard/white_grey
 	whitelisted = SPECIES_TESHARI
-	sort_category = "Xenowear"
+	sort_category = "Расовая одежда"
 
 /datum/gear/suit/cloakcolor/New()
 	..()
@@ -617,7 +617,7 @@
 	display_name = "labcoat, colorable (Teshari)"
 	path = /obj/item/clothing/suit/storage/toggle/labcoat/teshari
 	whitelisted = SPECIES_TESHARI
-	sort_category = "Xenowear"
+	sort_category = "Расовая одежда"
 
 /datum/gear/suit/labcoat_tesh/New()
 	..()
@@ -627,7 +627,7 @@
 	display_name = "small black coat, recolorable stripes (Teshari)"
 	path = /obj/item/clothing/suit/storage/toggle/tesharicoat
 	whitelisted = SPECIES_TESHARI
-	sort_category = "Xenowear"
+	sort_category = "Расовая одежда"
 
 /datum/gear/suit/teshcoat/New()
 	..()
@@ -637,7 +637,7 @@
 	display_name = "smallcoat, recolorable (Teshari)"
 	path = /obj/item/clothing/suit/storage/toggle/tesharicoatwhite
 	whitelisted = SPECIES_TESHARI
-	sort_category = "Xenowear"
+	sort_category = "Расовая одежда"
 
 /datum/gear/suit/teshcoatwhite/New()
 	..()
@@ -647,7 +647,7 @@
 	display_name = "neckscarf, recolorable (Teshari)"
 	path = /obj/item/clothing/accessory/scarf/teshari/neckscarf
 	whitelisted = SPECIES_TESHARI
-	sort_category = "Xenowear"
+	sort_category = "Расовая одежда"
 
 /datum/gear/accessory/teshneckscarf/New()
 	..()
@@ -669,11 +669,11 @@
 	display_name = "airtight orange goggles (Teshari)"
 	path = /obj/item/clothing/glasses/aerogelgoggles
 	whitelisted = SPECIES_TESHARI
-	sort_category = "Xenowear"
+	sort_category = "Расовая одежда"
 
 /datum/gear/utility/teshchair
 	display_name = "small electric wheelchair (Teshari)"
 	path = /obj/item/wheelchair/motor/small
 	whitelisted = SPECIES_TESHARI
-	sort_category = "Xenowear"
+	sort_category = "Расовая одежда"
 	cost = 4

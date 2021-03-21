@@ -673,7 +673,7 @@
 		M.bodytemperature -= rand(1, 5) * M.species.spice_mod // Really fucks you up, cause it makes you cold.
 		if(prob(5))
 			M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!")]</span>", pick("<span class='danger'>You feel like your insides are freezing!</span>", "<span class='danger'>Your insides feel like they're turning to ice!</span>"))
-	// holder.remove_reagent("capsaicin", 5) // VOREStation Edit: Nop, we don't instadelete spices for free. 
+	// holder.remove_reagent("capsaicin", 5) // VOREStation Edit: Nop, we don't instadelete spices for free.
 
 /datum/reagent/frostoil/cryotoxin //A longer lasting version of frost oil.
 	name = "Cryotoxin"
@@ -719,7 +719,7 @@
 		M.bodytemperature += rand(1, 5) * M.species.spice_mod // Really fucks you up, cause it makes you overheat, too.
 		if(prob(5))
 			M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!")]</span>", pick("<span class='danger'>You feel like your insides are burning!</span>", "<span class='danger'>You feel like your insides are on fire!</span>", "<span class='danger'>You feel like your belly is full of lava!</span>"))
-	// holder.remove_reagent("frostoil", 5)  // VOREStation Edit: Nop, we don't instadelete spices for free. 
+	// holder.remove_reagent("frostoil", 5)  // VOREStation Edit: Nop, we don't instadelete spices for free.
 
 /datum/reagent/condensedcapsaicin
 	name = "Condensed Capsaicin"
@@ -863,7 +863,7 @@
 		M.apply_effect(4, AGONY, 0)
 		if(prob(5))
 			M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!")]</span>", "<span class='danger'>You feel like your insides are burning!</span>")
-	// holder.remove_reagent("frostoil", 5) // VOREStation Edit: Nop, we don't instadelete spices for free. 
+	// holder.remove_reagent("frostoil", 5) // VOREStation Edit: Nop, we don't instadelete spices for free.
 
 /* Drinks */
 
@@ -1700,7 +1700,7 @@
 
 	glass_name = "Rewriter"
 	glass_desc = "The secret of the sanctuary of the Libarian..."
-	allergen_type = FRUIT|COFFEE //Made with space mountain wind (Fruit) 
+	allergen_type = FRUIT|COFFEE //Made with space mountain wind (Fruit)
 
 /datum/reagent/drink/rewriter/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
@@ -2720,7 +2720,7 @@
 	glass_name = "Banana Honk"
 	glass_desc = "A drink from Banana Heaven."
 
-	allergen_type = FRUIT|DAIRY //Made from banana juice(fruit) and cream(dairy) 
+	allergen_type = FRUIT|DAIRY //Made from banana juice(fruit) and cream(dairy)
 
 /datum/reagent/ethanol/barefoot
 	name = "Barefoot"
@@ -3988,7 +3988,7 @@
 				return
 			var/adjust_liver = rand(-3, 2)
 			if(prob(L.damage))
-				to_chat(M, "<span class='cult'>You feel woozy...</span>")
+				to_chat(M, "<span class='cult'>Вы чувствуете себя одурманенным ...</span>")
 			L.damage = max(L.damage + (adjust_liver * removed), 0)
 	var/adjust_tox = rand(-4, 2)
 	M.adjustToxLoss(adjust_tox * removed)

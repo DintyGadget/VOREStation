@@ -9,8 +9,8 @@
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/cola
 	name = "\improper Space Cola"
-	desc = "Reassuringly artificial."
-	description_fluff = "The 'Space' branding was originally added to the 'Alpha Cola' product line in order to justify selling cans for 50% higher prices to 'off-world' retailers. Despite being chemically identical, Space Cola proved so popular that Centauri Provisions eventually applied the name to the entire product line - price hike and all."
+	desc = "Обнадеживающе искусственно."
+	description_fluff = "Бренд \"Космос\" был первоначально добавлен в линейку продуктов \"Альфа-Кола\", чтобы оправдать продажу банок по 50% более высоким ценам \"внешним\" розничным торговцам. Несмотря на химическую идентичность, Космическая кола оказалась настолько популярной, что Centauri Provisions в конце концов применила это название ко всей линейке продуктов - повышение цен и все такое."
 	icon_state = "cola"
 	center_of_mass = list("x"=16, "y"=10)
 
@@ -20,7 +20,7 @@
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/waterbottle
 	name = "bottled water"
-	desc = "Ice cold and utterly tasteless, this 'all-natural' mineral water comes 'fresh' from one of NanoTrasen's heavy-duty bottling plants in the Sivian poles."
+	desc = "Ледяная и совершенно безвкусная, эта \"полностью натуральная\" минеральная вода поступает \"свежая\" с одного из сверхмощных заводов по розливу NanoTrasen на Сивийских полюсах."
 	icon_state = "waterbottle"
 	center_of_mass = list("x"=16, "y"=8)
 	drop_sound = 'sound/items/drop/disk.ogg'
@@ -32,8 +32,8 @@
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/space_mountain_wind
 	name = "\improper Space Mountain Wind"
-	desc = "Blows right through you like a space wind."
-	description_fluff = "The 'Space' branding was originally added to the 'Alpha Cola' product line in order to justify selling cans for 50% higher prices to 'off-world' retailers. Despite being chemically identical, Space Cola proved so popular that Centauri Provisions eventually applied the name to the entire product line - price hike and all."
+	desc = "Дует прямо сквозь тебя, как космический ветер."
+	description_fluff = "Бренд \"Космос\" был первоначально добавлен в линейку продуктов \"Альфа-Кола\", чтобы оправдать продажу банок по 50% более высоким ценам \"внешним\" розничным торговцам. Несмотря на химическую идентичность, Космическая кола оказалась настолько популярной, что Centauri Provisions в конце концов применила это название ко всей линейке продуктов - повышение цен и все такое."
 	icon_state = "space_mountain_wind"
 	center_of_mass = list("x"=16, "y"=8)
 
@@ -43,7 +43,7 @@
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/thirteenloko
 	name = "\improper Thirteen Loko"
-	desc = "The Vir Health Board has advised consumers that consumption of Thirteen Loko may result in seizures, blindness, drunkenness, or even death. Please Drink Responsibly."
+	desc = "Совет по здравоохранению Вирго предупредил потребителей, что потребление Тринадцати Локо может привести к судорогам, слепоте, пьянству или даже смерти. Пожалуйста, Пейте Ответственно."
 	icon_state = "thirteen_loko"
 	center_of_mass = list("x"=16, "y"=10)
 
@@ -53,8 +53,8 @@
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/dr_gibb
 	name = "\improper Dr. Gibb"
-	desc = "A delicious mixture of 42 different flavors."
-	description_fluff = "Following a 2490 lawsuit and a spate of deaths, Gilthari Exports reminds customers that the 'Dr.' legally stands for 'Drink'."
+	desc = "Восхитительная смесь из 42 различных вкусов."
+	description_fluff = "После 2490 судебных процессов и череды смертей Gilthari Exports напоминает клиентам, что \"Доктор\" юридически означает \"Напиток\"."
 	icon_state = "dr_gibb"
 	center_of_mass = list("x"=16, "y"=8)
 
@@ -64,8 +64,8 @@
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/dr_gibb_diet
 	name = "\improper Diet Dr. Gibb"
-	desc = "A delicious mixture of 42 different flavors, one of which is water."
-	description_fluff = "Following a 2490 lawsuit and a spate of deaths, Gilthari Exports reminds customers that the 'Dr.' legally stands for 'Drink'."
+	desc = "Восхитительная смесь из 42 различных вкусов, один из которых-вода."
+	description_fluff = "После 2490 судебных процессов и череды смертей Gilthari Exports напоминает клиентам, что \"Доктор\" юридически означает \"Напиток\"."
 	icon_state = "dr_gibb_diet"
 	center_of_mass = list("x"=16, "y"=8)
 
@@ -75,8 +75,8 @@
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/starkist
 	name = "\improper Star-kist"
-	desc = "The taste of a star in liquid form. And, a bit of tuna...?"
-	description_fluff = "Brought back by popular demand in 2515 after a limited-run release in 2510, the cult success of this bizarre tasting soda has never truly been accounted for by economists."
+	desc = "Вкус звезды в жидком виде. И немного тунца...?"
+	description_fluff = "Вызванный массовым спросом в 2515 году после ограниченного выпуска в 2510 году, культовый успех этой странной на вкус соды никогда по-настоящему не учитывался экономистами."
 	icon_state = "starkist"
 	center_of_mass = list("x"=16, "y"=8)
 
@@ -86,8 +86,8 @@
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/space_up
 	name = "\improper Space-Up"
-	desc = "Tastes like a hull breach in your mouth."
-	description_fluff = "The 'Space' branding was originally added to the 'Alpha Cola' product line in order to justify selling cans for 50% higher prices to 'off-world' retailers. Despite being chemically identical, Space Cola proved so popular that Centauri Provisions eventually applied the name to the entire product line - price hike and all."
+	desc = "Во рту вкус, как от пробоины в корпусе."
+	description_fluff = "Бренд \"Космос\" был первоначально добавлен в линейку продуктов \"Альфа-Кола\", чтобы оправдать продажу банок по 50% более высоким ценам \"внешним\" розничным торговцам. Несмотря на химическую идентичность, Космическая кола оказалась настолько популярной, что Centauri Provisions в конце концов применила это название ко всей линейке продуктов - повышение цен и все такое."
 	icon_state = "space-up"
 	center_of_mass = list("x"=16, "y"=8)
 
@@ -97,8 +97,8 @@
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/lemon_lime
 	name = "\improper Lemon-Lime"
-	desc = "You wanted ORANGE. It gave you Lemon-Lime."
-	description_fluff = "Not to be confused with 'lemon & lime soda', Lemon-Lime is specially formulated using the highly propriatary Lemon-Lime Fruit. Growing the Lemon-Lime without a license is punishable by fines or jail time. Accept no immitations."
+	desc = "Вы хотели АПЕЛЬСИН. Он дал вам Лимонно-лаймовый."
+	description_fluff = "Не путайте с \"лимонно-лаймовой содой\", Лимонно-лаймовая сода специально разработана с использованием высоко запатентованных фруктов Лимонно-лаймовой соды. Выращивание лимона-лайма без лицензии карается штрафом или тюремным заключением. Не принимайте подражаний."
 	icon_state = "lemon-lime"
 	center_of_mass = list("x"=16, "y"=8)
 
@@ -108,8 +108,8 @@
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/iced_tea
 	name = "\improper Vrisk Serket Iced Tea"
-	desc = "That sweet, refreshing southern earthy flavor. That's where it's from, right? South Earth?"
-	description_fluff = "Produced exclusively on the planet Oasis, Vrisk Serket Iced Tea is not sold outside of the Golden Crescent, let alone Earth."
+	desc = "Этот сладкий, освежающий южный землистый аромат. Это ведь оттуда, верно? Южная Земля?"
+	description_fluff = "Произведенный исключительно на планете Оазис, Холодный чай Вриска Серкет не продается за пределами Золотого Полумесяца, не говоря уже о Земле."
 	icon_state = "ice_tea_can"
 	center_of_mass = list("x"=16, "y"=8)
 
@@ -119,8 +119,8 @@
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/grape_juice
 	name = "\improper Grapel Juice"
-	desc = "500 pages of rules of how to appropriately enter into a combat with this juice!"
-	description_fluff = "Strangely, this unassuming grape soda is a product of Hephaestus Industries."
+	desc = "500 страниц правил, как правильно вступать в бой с этим соком!"
+	description_fluff = "Как ни странно, эта непритязательная виноградная сода-продукт Гефестус Индастриз."
 	icon_state = "purple_can"
 	center_of_mass = list("x"=16, "y"=8)
 
@@ -130,8 +130,8 @@
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/tonic
 	name = "\improper T-Borg's Tonic Water"
-	desc = "Quinine tastes funny, but at least it'll keep the Malaria away."
-	description_fluff = "Due to its technically medicinal properties and the complexities of chemical copyright law, T-Borg's Tonic Water is a rare product of Zeng-Hu's 'LifeWater' refreshments division."
+	desc = "У хинина странный вкус, но, по крайней мере, он убережет от малярии."
+	description_fluff = "Благодаря своим технически целебным свойствам и сложностям химического авторского права тонизирующая вода T-Borg является редким продуктом подразделения освежающих напитков Zeng-Hu \"LifeWater\"."
 	icon_state = "tonic"
 	center_of_mass = list("x"=16, "y"=8)
 
@@ -141,7 +141,7 @@
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/sodawater
 	name = "soda water"
-	desc = "A can of soda water. Still water's more refreshing cousin."
+	desc = "Банка содовой воды. Все - таки вода более освежающая."
 	icon_state = "sodawater"
 	center_of_mass = list("x"=16, "y"=8)
 
@@ -151,8 +151,8 @@
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/gingerale
 	name = "\improper Classic Ginger Ale"
-	desc = "For when you need to be more retro than NanoTrasen already pays you for."
-	description_fluff = "'Classic' beverages is a registered trademark of the Centauri Provisions corporation."
+	desc = "Для тех случаев, когда вам нужно быть более ретро, чем вам уже платит НаноТразен."
+	description_fluff = "\"Классические\" напитки являются зарегистрированной торговой маркой корпорации Centauri Provisions."
 	icon_state = "gingerale"
 	center_of_mass = list("x"=16, "y"=8)
 
@@ -162,8 +162,8 @@
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/root_beer
 	name = "\improper R&D Root Beer"
-	desc = "Guaranteed to be both Rootin' and Tootin'."
-	description_fluff = "Despite centuries of humanity's expansion, this particular soda is still produced almost exclusively on Earth, in North America."
+	desc = "Гарантированно будет и Корень, и Зубец."
+	description_fluff = "Несмотря на многовековую экспансию человечества, эта особая сода все еще производится почти исключительно на Земле, в Северной Америке."
 	icon_state = "root_beer"
 	center_of_mass = list("x"=16, "y"=10)
 

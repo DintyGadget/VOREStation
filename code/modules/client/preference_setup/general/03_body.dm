@@ -389,47 +389,47 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 
 		switch(name)
 			if(BP_TORSO)
-				organ_name = "torso"
+				organ_name = "торс"
 			if(BP_GROIN)
-				organ_name = "groin"
+				organ_name = "пах"
 			if(BP_HEAD)
-				organ_name = "head"
+				organ_name = "голова"
 			if(BP_L_ARM)
-				organ_name = "left arm"
+				organ_name = "левая рука"
 			if(BP_R_ARM)
-				organ_name = "right arm"
+				organ_name = "правая рука"
 			if(BP_L_LEG)
-				organ_name = "left leg"
+				organ_name = "левая нога"
 			if(BP_R_LEG)
-				organ_name = "right leg"
+				organ_name = "правая нога"
 			if(BP_L_FOOT)
-				organ_name = "left foot"
+				organ_name = "левая стопа"
 			if(BP_R_FOOT)
-				organ_name = "right foot"
+				organ_name = "правая стопа"
 			if(BP_L_HAND)
-				organ_name = "left hand"
+				organ_name = "левая кисть"
 			if(BP_R_HAND)
-				organ_name = "right hand"
+				organ_name = "правая кисть"
 			if(O_HEART)
-				organ_name = "heart"
+				organ_name = "сердце"
 			if(O_EYES)
-				organ_name = "eyes"
+				organ_name = "глаза"
 			if(O_VOICE)
-				organ_name = "larynx"
+				organ_name = "гортань"
 			if(O_BRAIN)
-				organ_name = "brain"
+				organ_name = "мозг"
 			if(O_LUNGS)
-				organ_name = "lungs"
+				organ_name = "легкие"
 			if(O_LIVER)
-				organ_name = "liver"
+				organ_name = "печень"
 			if(O_KIDNEYS)
-				organ_name = "kidneys"
+				organ_name = "почки"
 			if(O_SPLEEN)
-				organ_name = "spleen"
+				organ_name = "селезенка"
 			if(O_STOMACH)
-				organ_name = "stomach"
+				organ_name = "живот"
 			if(O_INTESTINE)
-				organ_name = "intestines"
+				organ_name = "кишечник"
 
 		if(status == "cyborg")
 			++ind

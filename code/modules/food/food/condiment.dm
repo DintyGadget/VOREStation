@@ -7,7 +7,7 @@
 //Food items that aren't eaten normally and leave an empty container behind.
 /obj/item/weapon/reagent_containers/food/condiment
 	name = "Condiment Container"
-	desc = "Just your average condiment container."
+	desc = "Просто ваш средний контейнер для приправ."
 	icon = 'icons/obj/food.dmi'
 	icon_state = "emptycondiment"
 	flags = OPENCONTAINER
@@ -35,15 +35,15 @@
 
 	if(istype(target, /obj/item/weapon/reagent_containers/food/snacks)) // These are not opencontainers but we can transfer to them
 		if(!reagents || !reagents.total_volume)
-			to_chat(user, "<span class='notice'>There is no condiment left in \the [src].</span>")
+			to_chat(user, "<span class='notice'>В [src] не осталось никакой приправы.</span>")
 			return
 
 		if(!target.reagents.get_free_space())
-			to_chat(user, "<span class='notice'>You can't add more condiment to \the [target].</span>")
+			to_chat(user, "<span class='notice'>Вы не можете добавить больше приправы к [target].</span>")
 			return
 
 		var/trans = reagents.trans_to_obj(target, amount_per_transfer_from_this)
-		to_chat(user, "<span class='notice'>You add [trans] units of the condiment to \the [target].</span>")
+		to_chat(user, "<span class='notice'>Вы добавляете [trans] единиц приправы к [target].</span>")
 	else
 		..()
 
@@ -51,99 +51,99 @@
 	playsound(src, 'sound/items/drink.ogg', rand(10, 50), 1)
 
 /obj/item/weapon/reagent_containers/food/condiment/self_feed_message(var/mob/user)
-	to_chat(user, "<span class='notice'>You swallow some of contents of \the [src].</span>")
+	to_chat(user, "<span class='notice'>Вы проглатываете часть содержимого [src].</span>")
 
 /obj/item/weapon/reagent_containers/food/condiment/on_reagent_change()
 	if(reagents.reagent_list.len > 0)
 		switch(reagents.get_master_reagent_id())
 			if("ketchup")
 				name = "Ketchup"
-				desc = "You feel more American already."
+				desc = "Теперь ты чувствуешь себя американцем."
 				icon_state = "ketchup"
 				center_of_mass = list("x"=16, "y"=6)
 			if("capsaicin")
 				name = "Hotsauce"
-				desc = "You can almost TASTE the stomach ulcers now!"
+				desc = "Теперь язвы желудка ощущаются на вкус!"
 				icon_state = "hotsauce"
 				center_of_mass = list("x"=16, "y"=6)
 			if("enzyme")
 				name = "Universal Enzyme"
-				desc = "Used in cooking various dishes."
+				desc = "Используется при приготовлении различных блюд."
 				icon_state = "enzyme"
 				center_of_mass = list("x"=16, "y"=6)
 			if("soysauce")
 				name = "Soy Sauce"
-				desc = "A salty soy-based flavoring."
+				desc = "Соленый ароматизатор на основе сои."
 				icon_state = "soysauce"
 				center_of_mass = list("x"=16, "y"=6)
 			if("frostoil")
 				name = "Coldsauce"
-				desc = "Leaves the tongue numb in its passage."
+				desc = "Оставляет язык онемевшим после пробы."
 				icon_state = "coldsauce"
 				center_of_mass = list("x"=16, "y"=6)
 			if("sodiumchloride")
 				name = "Salt Shaker"
-				desc = "Salt. From space oceans, presumably."
+				desc = "Соль. Вероятно, из космических океанов."
 				icon_state = "saltshaker"
 				center_of_mass = list("x"=17, "y"=11)
 			if("blackpepper")
 				name = "Pepper Mill"
-				desc = "Often used to flavor food or make people sneeze."
+				desc = "Часто используется для ароматизации пищи или для того, чтобы люди чихали."
 				icon_state = "peppermillsmall"
 				center_of_mass = list("x"=17, "y"=11)
 			if("cornoil")
 				name = "Corn Oil"
-				desc = "A delicious oil used in cooking. Made from corn."
+				desc = "Восхитительное масло, используемое в кулинарии. Сделано из кукурузы."
 				icon_state = "oliveoil"
 				center_of_mass = list("x"=16, "y"=6)
 			if("sugar")
 				name = "Sugar"
-				desc = "Tastey space sugar!"
+				desc = "Вкусный космический сахар!"
 				center_of_mass = list("x"=16, "y"=6)
 			if("peanutbutter")
 				name = "Peanut Butter"
-				desc = "A jar of smooth peanut butter."
+				desc = "Баночка гладкого арахисового масла."
 				icon_state = "peanutbutter"
 				center_of_mass = list("x"=16, "y"=6)
 			if("mayo")
 				name = "Mayonnaise"
-				desc = "A jar of mayonnaise!"
+				desc = "Баночка майонеза!"
 				icon_state = "mayo"
 				center_of_mass = list("x"=16, "y"=6)
 			if("yeast")
 				name = "Yeast"
-				desc = "This is what you use to make bread fluffy."
+				desc = "Это то, что вы используете, чтобы сделать хлеб пушистым."
 				icon_state = "yeast"
 				center_of_mass = list("x"=16, "y"=6)
 			if("spacespice")
 				name = "bottle of space spice"
-				desc = "An exotic blend of spices for cooking. Definitely not worms."
+				desc = "Экзотическая смесь специй для приготовления пищи. Определенно не черви."
 				icon = 'icons/obj/food_syn.dmi'
 				icon_state = "spacespicebottle"
 				center_of_mass = list("x"=16, "y"=6)
 			if("barbecue")
 				name = "barbecue sauce"
-				desc = "Barbecue sauce, it's labeled 'sweet and spicy'."
+				desc = "Соус для барбекю, он помечен как \"сладкий и острый\"."
 				icon_state = "barbecue"
 				center_of_mass = list("x"=16, "y"=6)
 			else
 				name = "Misc Condiment Bottle"
 				if (reagents.reagent_list.len==1)
-					desc = "Looks like it is [reagents.get_master_reagent_name()], but you are not sure."
+					desc = "Выглядит как [reagents.get_master_reagent_name()], но вы не уверены."
 				else
-					desc = "A mixture of various condiments. [reagents.get_master_reagent_name()] is one of them."
+					desc = "Смесь различных приправ. [reagents.get_master_reagent_name()] это один из них."
 				icon_state = "mixedcondiments"
 				center_of_mass = list("x"=16, "y"=6)
 	else
 		icon_state = "emptycondiment"
 		name = "Condiment Bottle"
-		desc = "An empty condiment bottle."
+		desc = "Пустая бутылка из-под приправ."
 		center_of_mass = list("x"=16, "y"=6)
 		return
 
 /obj/item/weapon/reagent_containers/food/condiment/enzyme
 	name = "Universal Enzyme"
-	desc = "Used in cooking various dishes."
+	desc = "Используется при приготовлении различных блюд."
 	icon_state = "enzyme"
 
 /obj/item/weapon/reagent_containers/food/condiment/enzyme/Initialize()
@@ -195,7 +195,7 @@
 
 /obj/item/weapon/reagent_containers/food/condiment/small/saltshaker	//Seperate from above since it's a small shaker rather then
 	name = "salt shaker"											//	a large one.
-	desc = "Salt. From space oceans, presumably."
+	desc = "Соль. Вероятно, из космических океанов."
 	icon_state = "saltshakersmall"
 	center_of_mass = list("x"=17, "y"=11)
 
@@ -205,7 +205,7 @@
 
 /obj/item/weapon/reagent_containers/food/condiment/small/peppermill
 	name = "pepper mill"
-	desc = "Often used to flavor food or make people sneeze."
+	desc = "Часто используется для ароматизации пищи или для того, чтобы люди чихали."
 	icon_state = "peppermillsmall"
 	center_of_mass = list("x"=17, "y"=11)
 
@@ -215,7 +215,7 @@
 
 /obj/item/weapon/reagent_containers/food/condiment/small/sugar
 	name = "sugar"
-	desc = "Sweetness in a bottle"
+	desc = "Сладость в бутылке"
 	icon_state = "sugarsmall"
 
 /obj/item/weapon/reagent_containers/food/condiment/small/sugar/Initialize()
@@ -233,7 +233,7 @@
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/salt
 	name = "salt packet"
-	desc = "Contains 5u of table salt."
+	desc = "Содержит 5u поваренной соли."
 	icon_state = "packet_small_white"
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/salt/Initialize()
@@ -242,7 +242,7 @@
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/pepper
 	name = "pepper packet"
-	desc = "Contains 5u of black pepper."
+	desc = "Содержит 5u черного перца."
 	icon_state = "packet_small_black"
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/pepper/Initialize()
@@ -251,7 +251,7 @@
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/sugar
 	name = "sugar packet"
-	desc = "Contains 5u of refined sugar."
+	desc = "Содержит 5u рафинированного сахара."
 	icon_state = "packet_small_white"
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/sugar/Initialize()
@@ -260,7 +260,7 @@
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/jelly
 	name = "jelly packet"
-	desc = "Contains 10u of cherry jelly. Best used for spreading on crackers."
+	desc = "Содержит 10u вишневого желе. Лучше всего использовать для намазывания на крекеры."
 	icon_state = "packet_medium"
 	volume = 10
 
@@ -270,7 +270,7 @@
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/honey
 	name = "honey packet"
-	desc = "Contains 10u of honey."
+	desc = "Содержит 10u меда."
 	icon_state = "packet_medium"
 	volume = 10
 
@@ -280,7 +280,7 @@
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/capsaicin
 	name = "hot sauce packet"
-	desc = "Contains 5u of hot sauce. Enjoy in moderation."
+	desc = "Содержит 5u острого соуса. Наслаждайтесь в меру."
 	icon_state = "packet_small_red"
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/capsaicin/Initialize()
@@ -289,7 +289,7 @@
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/ketchup
 	name = "ketchup packet"
-	desc = "Contains 5u of ketchup."
+	desc = "Содержит 5u кетчупа."
 	icon_state = "packet_small_red"
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/ketchup/Initialize()
@@ -298,7 +298,7 @@
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/mayo
 	name = "mayonnaise packet"
-	desc = "Contains 5u of mayonnaise."
+	desc = "Содержит 5u майонеза."
 	icon_state = "packet_small_white"
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/mayo/Initialize()
@@ -307,7 +307,7 @@
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/soy
 	name = "soy sauce packet"
-	desc = "Contains 5u of soy sauce."
+	desc = "Содержит 5u соевого соуса."
 	icon_state = "packet_small_black"
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/soy/Initialize()
@@ -316,7 +316,7 @@
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/coffee
 	name = "coffee powder packet"
-	desc = "Contains 5u of coffee powder. Mix with 25u of water and heat."
+	desc = "Содержит 5u кофейного порошка. Смешайте с 25u воды и нагрейте."
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/coffee/Initialize()
 	. = ..()
@@ -324,7 +324,7 @@
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/tea
 	name = "tea powder packet"
-	desc = "Contains 5u of black tea powder. Mix with 25u of water and heat."
+	desc = "Содержит 5u порошка черного чая. Смешайте с 25u воды и нагрейте."
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/tea/Initialize()
 	. = ..()
@@ -332,7 +332,7 @@
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/cocoa
 	name = "cocoa powder packet"
-	desc = "Contains 5u of cocoa powder. Mix with 25u of water and heat."
+	desc = "Содержит 5u какао-порошка. Смешайте с 25u воды и нагрейте."
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/cocoa/Initialize()
 	. = ..()
@@ -340,7 +340,7 @@
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/grape
 	name = "grape juice powder packet"
-	desc = "Contains 5u of powdered grape juice. Mix with 15u of water."
+	desc = "Содержит 5u порошкообразного виноградного сока. Смешайте с 15u воды."
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/grape/Initialize()
 	. = ..()
@@ -348,7 +348,7 @@
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/orange
 	name = "orange juice powder packet"
-	desc = "Contains 5u of powdered orange juice. Mix with 15u of water."
+	desc = "Содержит 5u порошкообразного апельсинового сока. Смешайте с 15u воды."
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/orange/Initialize()
 	. = ..()
@@ -356,7 +356,7 @@
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/watermelon
 	name = "watermelon juice powder packet"
-	desc = "Contains 5u of powdered watermelon juice. Mix with 15u of water."
+	desc = "Содержит 5u порошкообразного арбузного сока. Смешайте с 15u воды."
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/watermelon/Initialize()
 	. = ..()
@@ -364,7 +364,7 @@
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/apple
 	name = "apple juice powder packet"
-	desc = "Contains 5u of powdered apple juice. Mix with 15u of water."
+	desc = "Содержит 5u порошкообразного яблочного сока. Смешайте с 15u воды."
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/apple/Initialize()
 	. = ..()
@@ -372,7 +372,7 @@
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/protein
 	name = "protein powder packet"
-	desc = "Contains 10u of powdered protein. Mix with 20u of water."
+	desc = "Содержит 10u порошкообразного белка. Смешайте с 20u воды."
 	icon_state = "packet_medium"
 	volume = 10
 
@@ -382,7 +382,7 @@
 
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/crayon
 	name = "crayon powder packet"
-	desc = "Contains 10u of powdered crayon. Mix with 30u of water."
+	desc = "Содержит 10u порошкообразного мелка. Смешайте с 30u воды."
 	volume = 10
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/crayon/generic/Initialize()
 	. = ..()
@@ -416,7 +416,7 @@
 
 /obj/item/weapon/reagent_containers/food/condiment/flour
 	name = "flour sack"
-	desc = "A big bag of flour. Good for baking!"
+	desc = "Большой мешок муки. Хорош для выпечки!"
 	icon = 'icons/obj/food.dmi'
 	icon_state = "flour"
 	volume = 220
@@ -429,10 +429,10 @@
 	. = ..()
 	reagents.add_reagent("flour", 200)
 	randpixel_xy()
-	
+
 /obj/item/weapon/reagent_containers/food/condiment/spacespice
 	name = "space spices"
-	desc = "An exotic blend of spices for cooking. Definitely not worms."
+	desc = "Экзотическая смесь специй для приготовления пищи. Определенно не черви."
 	icon = 'icons/obj/food_syn.dmi'
 	icon_state = "spacespicebottle"
 	possible_transfer_amounts = list(1,40) //for clown turning the lid off

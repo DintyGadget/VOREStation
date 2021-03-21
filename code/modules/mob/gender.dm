@@ -35,7 +35,6 @@
 	var/ru_g_pcase = "них"
 // End of XenosStation Edit
 
-
 /datum/gender/male
 	key  = "male"
 

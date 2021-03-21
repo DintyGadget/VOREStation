@@ -35,7 +35,7 @@
 			piece = SP.speaking.format_message(piece)
 
 		msg += (piece + " ")
-	
+
 	if(msg == "")
 		// There is literally no content left in this message, we need to shut this shit down
 		. = "" // hear_say will suppress it
@@ -49,7 +49,7 @@
 	else
 		return stars(SP.message)
 
-/mob/proc/hear_say(var/list/message_pieces, var/verb = "says", var/italics = 0, var/mob/speaker = null, var/sound/speech_sound, var/sound_vol)
+/mob/proc/hear_say(var/list/message_pieces, var/verb = "оворит", var/italics = 0, var/mob/speaker = null, var/sound/speech_sound, var/sound_vol)
 	if(!client && !teleop)
 		return FALSE
 
@@ -79,7 +79,7 @@
 	var/message = combine_message(message_pieces, verb, speaker)
 	if(message == "")
 		return
-	
+
 	if(sleeping || stat == UNCONSCIOUS)
 		hear_sleep(multilingual_to_message(message_pieces))
 		return FALSE
@@ -99,7 +99,7 @@
 
 	if(is_deaf())
 		if(speaker == src)
-			to_chat(src, "<span class='filter_say'><span class='warning'>You cannot hear yourself speak!</span></span>")
+			to_chat(src, "<span class='filter_say'><span class='warning'>Вы не слышите себя!</span></span>")
 		else
 			to_chat(src, "<span class='filter_say'><span class='name'>[speaker_name]</span>[speaker.GetAltName()] makes a noise, possibly speech, but you cannot hear them.</span>")
 	else
@@ -157,10 +157,10 @@
         var/regex/R = new("\\[delimiter](.+?)\\[delimiter]","g")
         var/tag = GLOB.speech_toppings[delimiter]
         tagged_message = R.Replace(tagged_message,"<[tag]>$1</[tag]>")
-        
+
     return tagged_message
 
-/mob/proc/hear_radio(var/list/message_pieces, var/verb = "says", var/part_a, var/part_b, var/part_c, var/mob/speaker = null, var/hard_to_hear = 0, var/vname = "")
+/mob/proc/hear_radio(var/list/message_pieces, var/verb = "говорит", var/part_a, var/part_b, var/part_c, var/mob/speaker = null, var/hard_to_hear = 0, var/vname = "")
 	if(!client)
 		return
 
@@ -176,7 +176,7 @@
 
 	if((sdisabilities & DEAF) || ear_deaf)
 		if(prob(20))
-			to_chat(src, "<span class='warning'>You feel your headset vibrate but can hear nothing from it!</span>")
+			to_chat(src, "<span class='warning'>Вы чувствуете вибрацию гарнитуры, но ничего не слышите!</span>")
 	else
 		on_hear_radio(part_a, speaker_name, track, part_b, message, part_c)
 
@@ -268,10 +268,10 @@
 
 	return speaker_name
 
-/mob/proc/handle_track(message, verb = "says", mob/speaker = null, speaker_name, hard_to_hear)
+/mob/proc/handle_track(message, verb = "говорит", mob/speaker = null, speaker_name, hard_to_hear)
 	return
 
-/mob/proc/hear_holopad_talk(list/message_pieces, var/verb = "says", var/mob/speaker = null)
+/mob/proc/hear_holopad_talk(list/message_pieces, var/verb = "говорит", var/mob/speaker = null)
 	var/message = combine_message(message_pieces, verb, speaker)
 
 	var/name = speaker.name
@@ -279,4 +279,4 @@
 		name = speaker.voice_name
 
 	var/rendered = "<span class='game say'><span class='name'>[name]</span> [message]</span>"
-	to_chat(src, rendered) 
+	to_chat(src, rendered)

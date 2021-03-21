@@ -14,7 +14,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 		var/mob/living/carbon/human/H = src
 		var/obj/item/I = H.get_active_hand()
 		if(!I)
-			to_chat(H, "<span class='notice'>You are not holding anything to equip.</span>")
+			to_chat(H, "<span class='notice'>Вы не держите ничего для экипировки.</span>")
 			return
 		if(H.equip_to_appropriate_slot(I))
 			if(hand)
@@ -22,7 +22,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 			else
 				update_inv_r_hand(0)
 		else
-			to_chat(H, "<font color='red'>You are unable to equip that.</font>")
+			to_chat(H, "<font color='red'>Вы не можете это оборудовать.</font>")
 
 /mob/living/carbon/human/proc/equip_in_one_of_slots(obj/item/W, list/slots, del_on_fail = 1)
 	for (var/slot in slots)
@@ -327,7 +327,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 					if(C.attempt_attach_accessory(A, src))
 						return
 		else
-			to_chat(src, "<font color='red'>You are trying to equip this item to an unsupported inventory slot. How the heck did you manage that? Stop it...</font>")
+			to_chat(src, "<font color='red'>Вы пытаетесь установить этот предмет в неподдерживаемый слот инвентаря. Как, черт возьми, тебе это удалось? Прекрати ...</font>")
 			return
 
 	if((W == src.l_hand) && (slot != slot_l_hand))
@@ -365,7 +365,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 			covering = src.wear_suit
 
 	if(covering && (covering.body_parts_covered & (I.body_parts_covered|check_flags)))
-		to_chat(user, "<span class='warning'>\The [covering] is in the way.</span>")
+		to_chat(user, "<span class='warning'>[covering] мешает.</span>")
 		return 0
 	return 1
 

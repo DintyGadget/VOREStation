@@ -3,11 +3,11 @@
 	path = /obj/item/clothing/head/soft/sol*/
 
 /datum/gear/head/headbando
-	display_name = "basic headband"
+	display_name = "Повязка на голову"
 	path = /obj/item/clothing/head/fluff/headbando
 
 /datum/gear/head/maid
-	display_name = "maid headband"
+	display_name = "Головной убор горничной"
 	path = /obj/item/clothing/head/headband/maid
 
 /datum/gear/head/headbando/New()
@@ -16,7 +16,7 @@
 
 //Detective alternative
 /datum/gear/head/detective_alt
-	display_name = "cyberscope headgear, detective"
+	display_name = "СБ: Киберскоп (Детектив)"
 	path = /obj/item/clothing/head/helmet/detective_alt
 	allowed_roles = list("Head of Security", "Detective")
 

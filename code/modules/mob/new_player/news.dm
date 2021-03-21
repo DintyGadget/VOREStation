@@ -51,7 +51,7 @@
 			current_news_page = 1 //Start at the 'front' because of how the codex works.
 
 	if(!current_news_page || isemptylist(CHANNEL.messages))
-		dat += "No current available news on [GLOB.news_data.station_newspaper.channel_name], it may still be loading!"
+		dat += "Нет текущих доступных новостей на [GLOB.news_data.station_newspaper.channel_name], возможно, он все еще загружается!"
 	else
 		dat += get_news_page(CHANNEL, CHANNEL.messages[current_news_page], current_news_page)
 		if(CHANNEL.messages.len > current_news_page)
@@ -61,7 +61,7 @@
 
 		dat += "  (Page <b>[current_news_page]</b> out of <b>[CHANNEL.messages.len]</b>)"
 
-	var/datum/browser/popup = new(usr, "News", "Latest News", 640, 600, src)
+	var/datum/browser/popup = new(usr, "Новости", "Последние новости", 640, 600, src)
 	popup.set_content(jointext(dat,null))
 	popup.open()
 

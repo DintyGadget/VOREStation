@@ -1,14 +1,14 @@
 /client/var/inquisitive_ghost = 1
 /mob/observer/dead/verb/toggle_inquisition() // warning: unexpected inquisition
-	set name = "Toggle Inquisitiveness"
-	set desc = "Sets whether your ghost examines everything on click by default"
+	set name = "Режим изучения"
+	set desc = "Устанавливает, проверяет ли ваш призрак все при нажатии по умолчанию"
 	set category = "Ghost"
 	if(!client) return
 	client.inquisitive_ghost = !client.inquisitive_ghost
 	if(client.inquisitive_ghost)
-		to_chat(src, "<span class='notice'>You will now examine everything you click on.</span>")
+		to_chat(src, "<span class='notice'>Теперь вы исследуете все, на что нажимаете.</span>")
 	else
-		to_chat(src, "<span class='notice'>You will no longer examine things you click on.</span>")
+		to_chat(src, "<span class='notice'>Вы больше не будете изучать то, на что нажимаете.</span>")
 
 /mob/observer/dead/DblClickOn(var/atom/A, var/params)
 	if(client.buildmode)
@@ -70,13 +70,13 @@
 	if(awaygate)
 		user.loc = awaygate.loc
 	else
-		to_chat(user, "[src] has no destination.")
+		to_chat(user, "[src] не имеет назначения.")
 
 /obj/machinery/gateway/centeraway/attack_ghost(mob/user as mob)
 	if(stationgate)
 		user.loc = stationgate.loc
 	else
-		to_chat(user, "[src] has no destination.")
+		to_chat(user, "[src] не имеет назначения.")
 
 // -------------------------------------------
 // This was supposed to be used by adminghosts
