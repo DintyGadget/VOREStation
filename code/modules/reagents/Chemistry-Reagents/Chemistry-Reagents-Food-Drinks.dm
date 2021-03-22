@@ -303,9 +303,9 @@
 	allergen_type = DAIRY //Cheese is made from dairy
 
 /datum/reagent/nutriment/protein/egg
-	name = "egg yolk"
+	name = "яичный желток"
 	id = "egg"
-	taste_description = "egg"
+	taste_description = "яйцо"
 	color = "#FFFFAA"
 	allergen_type = EGGS //Eggs contain egg
 
@@ -320,7 +320,7 @@
 	name = "Мед"
 	id = "honey"
 	description = "Золотисто-желтый сироп, наполненный сладкой сладостью."
-	taste_description = "sweetness"
+	taste_description = "сладость"
 	nutriment_factor = 10
 	color = "#FFFF00"
 
