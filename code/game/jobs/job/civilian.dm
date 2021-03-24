@@ -12,19 +12,20 @@
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "Главой персонала"
+	supervisors = "the Head of Personnel"
 	selection_color = "#515151"
 	access = list(access_hydroponics, access_bar, access_kitchen)
 	minimal_access = list(access_bar)
 
 	outfit_type = /decl/hierarchy/outfit/job/service/bartender
-	job_description = "Бармен смешивает напитки для экипажа. Как правило, бармену не следует перебарщивать с обслуживанием ответственных лиц, а также ему разрешено отказать в заказе."
+	job_description = "A Bartender mixes drinks for the crew. They generally have permission to charge for drinks or deny service to unruly patrons."
 	alt_titles = list("Barista" = /datum/alt_title/barista)
 
 // Bartender Alt Titles
 /datum/alt_title/barista
 	title = "Barista"
-	title_blurb = "Бариста управляет кофейней, в которой подаются исключительно безалкогольные напитки."
+	title_blurb = "A barista mans the Cafe, serving primarily non-alcoholic drinks to the crew. They generally have permission to charge for drinks \
+					or deny service to unruly patrons."
 	title_outfit = /decl/hierarchy/outfit/job/service/bartender/barista
 
 //////////////////////////////////
@@ -39,19 +40,19 @@
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "Главой персонала"
+	supervisors = "the Head of Personnel"
 	selection_color = "#515151"
 	access = list(access_hydroponics, access_bar, access_kitchen)
 	minimal_access = list(access_kitchen)
 
 	outfit_type = /decl/hierarchy/outfit/job/service/chef
-	job_description = "Шеф-повар управляет кухней и отвечает за кормление всего экипажа."
+	job_description = "A Chef cooks food for the crew. They generally have permission to charge for food or deny service to unruly diners."
 	alt_titles = list("Cook" = /datum/alt_title/cook)
 
 // Chef Alt Titles
 /datum/alt_title/cook
 	title = "Cook"
-	title_blurb = "Обязанности повара точно такие же, однако он может быть менее опытным."
+	title_blurb = "A Cook has the same duties, though they may be less experienced."
 
 //////////////////////////////////
 //			Botanist
@@ -65,19 +66,19 @@
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "Главой персонала"
+	supervisors = "the Head of Personnel"
 	selection_color = "#515151"
 	access = list(access_hydroponics, access_bar, access_kitchen)
 	minimal_access = list(access_hydroponics)
 
 	outfit_type = /decl/hierarchy/outfit/job/service/gardener
-	job_description = "Ботаник отвечает за ботанический сад, в котором он выращивает необходимые для шеф-повару и бармену травы, фрукты и овощи."
+	job_description = "A Botanist grows plants for the Chef and Bartender."
 	alt_titles = list("Gardener" = /datum/alt_title/gardener)
 
 //Botanist Alt Titles
 /datum/alt_title/gardener
 	title = "Gardener"
-	title_blurb = "Садовник обычно менее опытен, чем ботаник, и, если от него больше ничего не требуется, он отвечает за поддержание частоты в гидропоническом саду."
+	title_blurb = "A Gardener may be less professional than their counterparts, and are more likely to tend to the public gardens if they aren't needed elsewhere."
 
 //Cargo
 //////////////////////////////////
@@ -93,7 +94,7 @@
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "Главой персонала"
+	supervisors = "the Head of Personnel"
 	selection_color = "#9b633e"
 	economic_modifier = 5
 	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station)
@@ -102,7 +103,7 @@
 	ideal_character_age = 40
 
 	outfit_type = /decl/hierarchy/outfit/job/cargo/qm
-	job_description = "Квартирмейстер управляет отделом снабжения, проверяя заказы на поставку грузов и обеспечивая их доставку туда, где они необходимы."
+	job_description = "The Quartermaster manages the Supply department, checking cargo orders and ensuring supplies get to where they are needed."
 	alt_titles = list("Supply Chief" = /datum/alt_title/supply_chief)
 
 // Quartermaster Alt Titles
@@ -120,14 +121,14 @@
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "Квартирмейстером и Главой персонала"
+	supervisors = "the Quartermaster and the Head of Personnel"
 	selection_color = "#7a4f33"
 	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_mining, access_mining_station)
 	minimal_access = list(access_maint_tunnels, access_cargo, access_cargo_bot, access_mailsorting)
 
 	outfit_type = /decl/hierarchy/outfit/job/cargo/cargo_tech
-	job_description = "Грузовой техник заполняет и доставляет заказы на груз. Им рекомендуется вернуть доставленные ящики в грузовой шаттл, \
-						потому что Центральное Командование дает за это частичный возврат денег."
+	job_description = "A Cargo Technician fills and delivers cargo orders. They are encouraged to return delivered crates to the Cargo Shuttle, \
+						because Central Command gives a partial refund."
 
 //////////////////////////////////
 //			Shaft Miner
@@ -141,19 +142,19 @@
 	faction = "Station"
 	total_positions = 3
 	spawn_positions = 3
-	supervisors = "Квартирмейстером и Главой персонала"
+	supervisors = "the Quartermaster and the Head of Personnel"
 	selection_color = "#7a4f33"
 	economic_modifier = 5
 	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_mining, access_mining_station)
 	minimal_access = list(access_mining, access_mining_station, access_mailsorting)
 
 	outfit_type = /decl/hierarchy/outfit/job/cargo/mining
-	job_description = "Шахтёр добывает и перерабатывает полезные ископаемые для доставки в те отделы, которые в них нуждаются."
+	job_description = "A Shaft Miner mines and processes minerals to be delivered to departments that need them."
 	alt_titles = list("Drill Technician" = /datum/alt_title/drill_tech)
 
 /datum/alt_title/drill_tech
 	title = "Drill Technician"
-	title_blurb = "Бурильщик специализируется на эксплуатации и обслуживании оборудования, необходимого для извлечения руды из жил глубоко под поверхностью."
+	title_blurb = "A Drill Technician specializes in operating and maintaining the machinery needed to extract ore from veins deep below the surface."
 
 //Service
 //////////////////////////////////
@@ -167,13 +168,13 @@
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "Главой персонала"
+	supervisors = "the Head of Personnel"
 	selection_color = "#515151"
 	access = list(access_janitor, access_maint_tunnels)
 	minimal_access = list(access_janitor, access_maint_tunnels)
 
 	outfit_type = /decl/hierarchy/outfit/job/service/janitor
-	job_description = "Уборщик следит за чистотой колонии, за исключением случаев, когда это активным местам преступления."
+	job_description = "A Janitor keeps the station clean, as long as it doesn't interfere with active crime scenes."
 	alt_titles = list("Custodian" = /datum/alt_title/custodian)
 
 // Janitor Alt Titles
@@ -192,23 +193,24 @@
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "Главой Персонала"
+	supervisors = "the Head of Personnel"
 	selection_color = "#515151"
 	access = list(access_library, access_maint_tunnels)
 	minimal_access = list(access_library)
 
 	outfit_type = /decl/hierarchy/outfit/job/librarian
-	job_description = "Библиотекарь курирует выбор книг в библиотеке, чтобы экипаж мог приятно провести время за чтением или обучением."
+	job_description = "The Librarian curates the book selection in the Library, so the crew might enjoy it."
 	alt_titles = list("Journalist" = /datum/alt_title/journalist, "Writer" = /datum/alt_title/writer)
 
 // Librarian Alt Titles
 /datum/alt_title/journalist
 	title = "Journalist"
-	title_blurb = "Журналист использует библиотеку как оперативную базу, откуда он может сообщать новости и происходящее на станции с помощью своей камеры."
+	title_outfit = /decl/hierarchy/outfit/job/librarian/journalist
+	title_blurb = "The Journalist uses the Library as a base of operations, from which they can report the news and goings-on on the station with their camera."
 
 /datum/alt_title/writer
 	title = "Writer"
-	title_blurb = "Писатель использует библиотеку как тихое место, чтобы заниматься написанием книг."
+	title_blurb = "The Writer uses the Library as a quiet place to write whatever it is they choose to write."
 
 //////////////////////////////////
 //		Internal Affairs Agent
@@ -223,7 +225,7 @@
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "должностными лицами компании NT и Корпоративным Регулированием"
+	supervisors = "company officials and Corporate Regulations"
 	selection_color = "#515151"
 	economic_modifier = 7
 	access = list(access_lawyer, access_sec_doors, access_maint_tunnels, access_heads)
@@ -231,9 +233,9 @@
 	minimal_player_age = 7
 
 	outfit_type = /decl/hierarchy/outfit/job/internal_affairs_agent
-	job_description = "Агент внутренних дел следит за тем, чтобы экипаж следовал Стандартному Проведению Операций. Он также \
-						обрабатывает жалобы на членов экипажа и могут ставить о них в известность Центральное Командование \
-						при наличии должных документов."
+	job_description = "An Internal Affairs Agent makes sure that the crew is following Standard Operating Procedure. They also \
+						handle complaints against crew members, and can have issues brought to the attention of Central Command, \
+						assuming their paperwork is in order."
 
 /*
 /datum/job/lawyer/equip(var/mob/living/carbon/human/H)
