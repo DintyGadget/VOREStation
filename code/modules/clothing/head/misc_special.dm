@@ -14,8 +14,8 @@
  * Welding mask
  */
 /obj/item/clothing/head/welding
-	name = "welding helmet"
-	desc = "A head-mounted face cover designed to protect the wearer completely from space-arc eye."
+	name = "сварочный шлем"
+	desc = "Маска для лица с креплением на голову, предназначенная для полной защиты пользователя от глаз космической дуги."
 	icon_state = "welding"
 	item_state_slots = list(slot_r_hand_str = "welding", slot_l_hand_str = "welding")
 	matter = list(DEFAULT_WALL_MATERIAL = 3000, "glass" = 1000)
@@ -38,7 +38,7 @@
 
 /obj/item/clothing/head/welding/verb/toggle()
 	set category = "Object"
-	set name = "Adjust welding mask"
+	set name = "Регулировка сварочной маски"
 	set src in usr
 
 	if(!base_state)
@@ -52,7 +52,7 @@
 			icon_state = base_state
 			flash_protection = FLASH_PROTECTION_MAJOR
 			tint = initial(tint)
-			to_chat(usr, "You flip the [src] down to protect your eyes.")
+			to_chat(usr, "Вы опускаете [src] вниз, чтобы защитить глаза.")
 		else
 			src.up = !src.up
 			body_parts_covered &= ~(EYES|FACE)
@@ -60,7 +60,7 @@
 			icon_state = "[base_state]up"
 			flash_protection = FLASH_PROTECTION_NONE
 			tint = TINT_NONE
-			to_chat(usr, "You push the [src] up out of your face.")
+			to_chat(usr, "Вы поднимаете [src] вверх, открывая ваше лицо.")
 		update_clothing_icon()	//so our mob-overlays
 		if (ismob(src.loc)) //should allow masks to update when it is opened/closed
 			var/mob/M = src.loc
@@ -145,25 +145,25 @@
  * Ushanka
  */
 /obj/item/clothing/head/ushanka
-	name = "ushanka"
-	desc = "Perfect for winter in Siberia, da?"
+	name = "ушанка"
+	desc = "Идеально для зимы в Сибири, да?"
 	icon_state = "ushankadown"
 	flags_inv = HIDEEARS
 
 /obj/item/clothing/head/ushanka/attack_self(mob/user as mob)
 	if(src.icon_state == initial(icon_state))
 		src.icon_state = "[icon_state]up"
-		to_chat(user, "You raise the ear flaps on the ushanka.")
+		to_chat(user, "Вы поднимаете ушки на ушанке.")
 	else
 		src.icon_state = initial(icon_state)
-		to_chat(user, "You lower the ear flaps on the ushanka.")
+		to_chat(user, "Вы опускаете ушки на ушанке")
 
 /*
  * Pumpkin head
  */
 /obj/item/clothing/head/pumpkinhead
-	name = "carved pumpkin"
-	desc = "A jack o' lantern! Believed to ward off evil spirits."
+	name = "резная тыква"
+	desc = "Фонарь из тыквы! Считается, что отгоняет злых духов."
 	icon_state = "hardhat0_pumpkin"//Could stand to be renamed
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
 	body_parts_covered = HEAD|FACE|EYES
@@ -177,8 +177,8 @@
  * Kitty ears
  */
 /obj/item/clothing/head/kitty
-	name = "kitty ears"
-	desc = "A pair of kitty ears. Meow!"
+	name = "кошачьи ушки"
+	desc = "Пара кошачьих ушей. Мяу!"
 	icon_state = "kitty"
 	body_parts_covered = 0
 	siemens_coefficient = 1.5
@@ -193,8 +193,8 @@
 		ears.Blend(earbit, ICON_OVERLAY)
 
 /obj/item/clothing/head/richard
-	name = "chicken mask"
-	desc = "You can hear the distant sounds of rhythmic electronica."
+	name = "куриная маска"
+	desc = "Слышны далекие звуки ритмичной электроники."
 	icon_state = "richard"
 	item_state_slots = list(slot_r_hand_str = "chickenhead", slot_l_hand_str = "chickenhead")
 	body_parts_covered = HEAD|FACE

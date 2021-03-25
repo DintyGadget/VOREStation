@@ -7,7 +7,7 @@
 	..()
 
 /obj/item/weapon/reagent_containers/food/snacks/csandwich
-	name = "бутерброд"
+	name = "sandwich"
 	desc = "Лучшее после нарезанного хлеба."
 	icon_state = "breadslice"
 	trash = /obj/item/trash/plate

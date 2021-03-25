@@ -112,7 +112,7 @@
 
 /obj/item/weapon/reagent_containers/food/drinks/golden_cup
 	desc = "Золотая чаша"
-	name = "золотая чашка"
+	name = "golden cup"
 	icon_state = "golden_cup"
 	item_state = "" //nope :(
 	w_class = ITEMSIZE_LARGE
@@ -132,7 +132,7 @@
 //	Formatting is the same as food.
 
 /obj/item/weapon/reagent_containers/food/drinks/milk
-	name = "пакет молока"
+	name = "milk carton"
 	desc = "Это молоко. Белое и питательное добро!"
 	description_fluff = "Продукт Нано-пастбищ. Кто бы мог подумать, что коровы будут жить в невесомости?"
 	icon_state = "milk"
@@ -160,7 +160,7 @@
 	reagents.add_reagent("soymilk", 50)
 
 /obj/item/weapon/reagent_containers/food/drinks/smallmilk
-	name = "маленький пакет молока"
+	name = "пакет молока"
 	desc = "Это молоко. Белое и питательное добро!"
 	description_fluff = "Продукт Нано-пастбищ. Кто бы мог подумать, что коровы будут жить в невесомости?"
 	volume = 30
@@ -175,7 +175,7 @@
 	reagents.add_reagent("milk", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/smallchocmilk
-	name = "маленькая коробка шоколадного молока"
+	name = "пакет шоколадного молока"
 	desc = "Это молоко! Этот с восхитительным шоколадным вкусом."
 	description_fluff = "Продукт Нано-пастбищ. Кто бы мог подумать, что коровы будут жить в невесомости?"
 	volume = 30
@@ -190,7 +190,7 @@
 	reagents.add_reagent("chocolate_milk", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/coffee
-	name = "крепкий кофе"
+	name = "\improper Robust Coffee"
 	desc = "Осторожно, напиток, которым вы собираетесь насладиться, очень горячий."
 	description_fluff = "Свежий кофе почти не встречается за пределами планет и станций, где его выращивают. Крепкий кофе с гордостью рекламирует шесть отдельных раз, когда он подвергается сублимационной сушке в процессе производства каждой чашки растворимого кофе."
 	icon_state = "coffee"
@@ -204,7 +204,7 @@
 	reagents.add_reagent("coffee", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/tea
-	name = "чашка чая Duke Purple"
+	name = "cup of Duke Purple tea"
 	desc = "Оскорбление герцога Пурпурного-это оскорбление Космической королевы! Любой порядочный джентльмен будет драться с вами, если вы запачкаете этот чай."
 	description_fluff = "Duke Purple-это фирменный сорт черного чая Нано-пастбищ, известный своим сильным, но в остальном совершенно не отличительным вкусом."
 	icon_state = "chai_vended"
@@ -219,7 +219,7 @@
 	reagents.add_reagent("tea", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/ice
-	name = "чашка льда"
+	name = "cup of ice"
 	desc = "Осторожно, холодный лед, не жуйте."
 	icon_state = "coffee"
 	center_of_mass = list("x"=15, "y"=10)
@@ -228,7 +228,7 @@
 	reagents.add_reagent("ice", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/h_chocolate
-	name = "чашка горячего какао Counselor's Choice"
+	name = "cup of Counselor's Choice hot cocoa"
 	desc = "Кому нужны черты характера, когда можно насладиться горячей кружкой какао?"
 	description_fluff = "Горячее какао марки Advisor's Choice производится из смеси горячей воды и немолочного заменителя сухого молока, что является компромиссом, предназначенным для раздражения всех сторон."
 	icon_state = "coffee"
@@ -243,7 +243,7 @@
 	reagents.add_reagent("hot_coco", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/greentea
-	name = "чашка зеленого чая"
+	name = "cup of green tea"
 	desc = "Исключительно традиционное, восхитительно утонченное."
 	description_fluff = "Чай остается важной традицией во многих культурах, зародившихся на Земле. Среди них зеленый чай, пожалуй, самый традиционный из всех... Через торговые автоматы современной эпохи вряд ли можно отдать ему должное."
 	icon_state = "greentea_vended"
@@ -258,7 +258,7 @@
 	reagents.add_reagent("greentea", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/chaitea
-	name = "чашка чаи чая"
+	name = "cup of chai tea"
 	desc = "Название излишне, но вкус восхитительный!"
 	description_fluff = "Чаи чай - чай, смешанный с пряной смесью корицы и гвоздики - граничит с национальным напитком на Кишаре."
 	icon_state = "chai_vended"
@@ -273,7 +273,7 @@
 	reagents.add_reagent("chaitea", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/decaf
-	name = "чашка кофе без кофеина"
+	name = "cup of decaf coffee"
 	desc = "Кофе с высосанным пробуждением."
 	description_fluff = "A trial run on two NanoTrasen stations in 2481 attempted to replace all vending machine coffee with decaf in order to combat an epidemic of caffeine addiction. After two days, three major industrial accidents and a death, the initiative was cancelled. Decaf is now thankfully optional."
 	icon_state = "coffee"
@@ -288,7 +288,7 @@
 	reagents.add_reagent("decaf", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/dry_ramen
-	name = "Чашка Рамена"
+	name = "Cup Ramen"
 	desc = "Просто добавьте 10 мл воды, самонагревается! Вкус, напоминающий о школьных годах."
 	description_fluff = "Бренд Konohagakure Ramen был одним из основных продуктов быстрого приготовления на протяжении веков. Дешево, быстро и доступно более двухсот сортов, хотя большинство из них по вкусу напоминает искусственную курицу."
 	icon_state = "ramen"
@@ -302,7 +302,7 @@
 	reagents.add_reagent("dry_ramen", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/sillycup
-	name = "бумажный стакан"
+	name = "paper cup"
 	desc = "Бумажный стаканчик для воды."
 	icon_state = "water_cup_e"
 	possible_transfer_amounts = null
@@ -339,7 +339,7 @@
 //	icon states.
 
 /obj/item/weapon/reagent_containers/food/drinks/shaker
-	name = "шейкер"
+	name = "shaker"
 	desc = "Металлический шейкер для смешивания напитков."
 	icon_state = "shaker"
 	amount_per_transfer_from_this = 10
@@ -350,7 +350,7 @@
 	..()
 
 /obj/item/weapon/reagent_containers/food/drinks/teapot
-	name = "чайник"
+	name = "teapot"
 	desc = "Элегантный чайник. Он просто источает класс."
 	icon_state = "teapot"
 	item_state = "teapot"
@@ -362,7 +362,7 @@
 	..()
 
 /obj/item/weapon/reagent_containers/food/drinks/flask
-	name = "фляжка Директора Колонии"
+	name = "\improper Site Manager's flask"
 	desc = "Металлическая фляга, принадлежащая Директору колонии."
 	icon_state = "flask"
 	volume = 60
@@ -372,38 +372,38 @@
 	..()
 
 /obj/item/weapon/reagent_containers/food/drinks/flask/shiny
-	name = "блестящая фляжка"
+	name = "shiny flask"
 	desc = "Блестящая металлическая фляга. Похоже, на нем написан греческий символ."
 	icon_state = "shinyflask"
 
 /obj/item/weapon/reagent_containers/food/drinks/flask/lithium
-	name = "литиевая фляжка"
+	name = "lithium flask"
 	desc = "Фляжка с символом атома лития на ней."
 	icon_state = "lithiumflask"
 
 /obj/item/weapon/reagent_containers/food/drinks/flask/detflask
-	name = "фляжка Детектива"
+	name = "\improper Detective's flask"
 	desc = "Металлическая фляга с кожаным ремешком и золотым значком, принадлежащая детективу."
 	icon_state = "detflask"
 	volume = 60
 	center_of_mass = list("x"=17, "y"=8)
 
 /obj/item/weapon/reagent_containers/food/drinks/flask/barflask
-	name = "фляжка"
+	name = "flask"
 	desc = "Для тех, кто не хочет тусоваться в баре, чтобы выпить."
 	icon_state = "barflask"
 	volume = 60
 	center_of_mass = list("x"=17, "y"=7)
 
 /obj/item/weapon/reagent_containers/food/drinks/flask/vacuumflask
-	name = "термос"
+	name = "vacuum flask"
 	desc = "Хранение напитков при идеальной температуре с 1892 года."
 	icon_state = "vacuumflask"
 	volume = 60
 	center_of_mass = list("x"=15, "y"=4)
 
 /obj/item/weapon/reagent_containers/food/drinks/britcup
-	name = "чашка"
+	name = "cup"
 	desc = "Чашка с изображением британского флага."
 	icon_state = "britcup"
 	volume = 30

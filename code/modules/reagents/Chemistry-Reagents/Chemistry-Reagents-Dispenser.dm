@@ -430,9 +430,9 @@
 		return
 	if((istype(O, /obj/item) || istype(O, /obj/effect/plant)) && (volume > meltdose))
 		var/obj/effect/decal/cleanable/molten_item/I = new/obj/effect/decal/cleanable/molten_item(O.loc)
-		I.desc = "Похоже, это было [О] некоторое время назад."
+		I.desc = "Похоже, это было [O] некоторое время назад."
 		for(var/mob/M in viewers(5, O))
-			to_chat(M, "<span class='warning'>[О] тает.</span>")
+			to_chat(M, "<span class='warning'>[O] тает.</span>")
 		qdel(O)
 		remove_self(meltdose) // 10 units of acid will not melt EVERYTHING on the tile
 

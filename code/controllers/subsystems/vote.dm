@@ -50,11 +50,11 @@ SUBSYSTEM_DEF(vote)
 		init_shift_change(null, 1)
 		return
 
-	initiate_vote(VOTE_CREW_TRANSFER, "the server", 1)
+	initiate_vote(VOTE_CREW_TRANSFER, "Server", 1)
 	log_debug("The server has called a crew transfer vote.")
 
 /datum/controller/subsystem/vote/proc/autogamemode()
-	initiate_vote(VOTE_GAMEMODE, "the server", 1)
+	initiate_vote(VOTE_GAMEMODE, "Server", 1)
 	log_debug("The server has called a gamemode vote.")
 
 /datum/controller/subsystem/vote/proc/reset()
@@ -274,7 +274,7 @@ SUBSYSTEM_DEF(vote)
 		if(C.holder.rights & R_ADMIN|R_EVENT)
 			admin = TRUE
 
-	. = "<html><meta charset=\"UTF-8\" http-equiv=\"refresh\" content=\"1\"><head><title>Панель голосования</title></head><body>"
+	. = "<html><meta charset=\"UTF-8\"><meta http-equiv=\"refresh\" content=\"1\"><head><title>Панель голосования</title></head><body>"
 	if(mode)
 		if(question)
 			. += "<h2>Голосование: '[question]'</h2>"

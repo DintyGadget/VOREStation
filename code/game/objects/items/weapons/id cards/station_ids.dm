@@ -1,6 +1,6 @@
 /obj/item/weapon/card/id
 	name = "identification card"
-	desc = "A card used to provide ID and determine access across the station."
+	desc = "Карта, используемая для удостоверения личности и определения доступа через станцию."
 	icon_state = "generic-nt"
 	item_state = "card-id"
 
@@ -35,7 +35,7 @@
 	if(in_range(user, src))
 		tgui_interact(user) //Not chat related
 	else
-		. += "<span class='warning'>It is too far away to read.</span>"
+		. += "<span class='warning'>Слишком далеко, чтобы прочесть.</span>"
 
 /obj/item/weapon/card/id/proc/prevent_tracking()
 	return 0
@@ -50,7 +50,7 @@
 		ui.open()
 
 /obj/item/weapon/card/id/proc/update_name()
-	name = "[src.registered_name]'s ID Card ([src.assignment])"
+	name = "ID Карта [src.registered_name] ([src.assignment])"
 
 /obj/item/weapon/card/id/proc/set_id_photo(var/mob/M)
 	COMPILE_OVERLAYS(M)
@@ -89,8 +89,8 @@
 	return data
 
 /obj/item/weapon/card/id/attack_self(mob/user as mob)
-	user.visible_message("\The [user] shows you: [bicon(src)] [src.name]. The assignment on the card: [src.assignment]",\
-		"You flash your ID card: [bicon(src)] [src.name]. The assignment on the card: [src.assignment]")
+	user.visible_message("[user] показывает вам: [bicon(src)] [src.name]. Назначение на карточке: [src.assignment]",\
+		"Вы показываете свою ID карту: [bicon(src)] [src.name]. Назначение на карточке: [src.assignment]")
 
 	src.add_fingerprint(user)
 	return
@@ -102,14 +102,14 @@
 	return src
 
 /obj/item/weapon/card/id/verb/read()
-	set name = "Read ID Card"
+	set name = "Прочесть ID карту"
 	set category = "Object"
 	set src in usr
 
-	to_chat(usr, "[bicon(src)] [src.name]: The current assignment on the card is [src.assignment].")
-	to_chat(usr, "The blood type on the card is [blood_type].")
-	to_chat(usr, "The DNA hash on the card is [dna_hash].")
-	to_chat(usr, "The fingerprint hash on the card is [fingerprint_hash].")
+	to_chat(usr, "[bicon(src)] [src.name]: Текущее назначение на карте - [src.assignment].")
+	to_chat(usr, "Группа крови на карте - [blood_type].")
+	to_chat(usr, "Хеш ДНК на карте - [dna_hash].")
+	to_chat(usr, "Хэш отпечатка пальца на карте - [fingerprint_hash].")
 	return
 
 /obj/item/weapon/card/id/get_worn_icon_state(var/slot_name)
@@ -126,13 +126,13 @@
 
 /obj/item/weapon/card/id/silver
 	name = "identification card"
-	desc = "A silver card which shows honour and dedication."
+	desc = "Серебряная карта, которая свидетельствует о чести и преданности делу."
 	icon_state = "silver-id"
 	item_state = "silver_id"
 
 /obj/item/weapon/card/id/gold
 	name = "identification card"
-	desc = "A golden card which shows power and might."
+	desc = "Золотая карта, которая показывает силу и мощь."
 	icon_state = "gold-id"
 	item_state = "gold_id"
 	preserve_item = 1
@@ -143,13 +143,13 @@
 
 /obj/item/weapon/card/id/gold/captain/spare
 	name = "\improper Site Manager's spare ID"
-	desc = "The spare ID of the High Lord himself."
+	desc = "Запасной ID самого Верховного Лорда."
 	icon_state = "gold-id-alternate"
 	registered_name = "Site Manager"
 
 /obj/item/weapon/card/id/synthetic
 	name = "\improper Synthetic ID"
-	desc = "Access module for NanoTrasen Synthetics"
+	desc = "Модуль доступа для NanoTrasen Synthetics"
 	icon_state = "id-robot"
 	item_state = "idgreen"
 	assignment = "Synthetic"
@@ -160,19 +160,19 @@
 
 /obj/item/weapon/card/id/platform
 	name = "\improper Support Platform ID"
-	desc = "Access module for support platforms."
+	desc = "Модуль доступа для платформ поддержки."
 	icon_state = "id-robot"
 	item_state = "tdgreen"
 	assignment = "Synthetic"
 	access = list(
 		access_synth, access_mining, access_mining_station, access_mining_office, access_research,
-		access_xenoarch, access_xenobiology, access_external_airlocks, access_robotics, access_tox, 
+		access_xenoarch, access_xenobiology, access_external_airlocks, access_robotics, access_tox,
 		access_tox_storage, access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot
 	)
 
 /obj/item/weapon/card/id/centcom
 	name = "\improper CentCom. ID"
-	desc = "An ID straight from Central Command."
+	desc = "ID прямо из Центрального командования."
 	icon_state = "cc-id"
 	registered_name = "Central Command"
 	assignment = "General"
@@ -197,14 +197,14 @@
 // Department-flavor IDs
 /obj/item/weapon/card/id/medical
 	name = "identification card"
-	desc = "A card issued to station medical staff."
+	desc = "Карточка, выданная медперсоналу станции."
 	icon_state = "medical-id"
 	primary_color = rgb(189,237,237)
 	secondary_color = rgb(223,255,255)
 
 /obj/item/weapon/card/id/medical/head
 	name = "identification card"
-	desc = "A card which represents care and compassion."
+	desc = "Карта, олицетворяющая заботу и сострадание."
 	primary_color = rgb(189,237,237)
 	secondary_color = rgb(255,223,127)
 	assignment = "Chief Medical Officer"
@@ -212,7 +212,7 @@
 
 /obj/item/weapon/card/id/security
 	name = "identification card"
-	desc = "A card issued to station security staff."
+	desc = "Карточка, выданная сотрудникам службы безопасности станции."
 	icon_state = "security-id"
 	primary_color = rgb(189,47,0)
 	secondary_color = rgb(223,127,95)
@@ -223,7 +223,7 @@
 
 /obj/item/weapon/card/id/security/head
 	name = "identification card"
-	desc = "A card which represents honor and protection."
+	desc = "Карта, олицетворяющая честь и защиту."
 	primary_color = rgb(189,47,0)
 	secondary_color = rgb(255,223,127)
 	assignment = "Head of Security"
@@ -231,7 +231,7 @@
 
 /obj/item/weapon/card/id/engineering
 	name = "identification card"
-	desc = "A card issued to station engineering staff."
+	desc = "Карта выдается инженерному составу станции."
 	icon_state = "engineering-id"
 	primary_color = rgb(189,94,0)
 	secondary_color = rgb(223,159,95)
@@ -242,7 +242,7 @@
 
 /obj/item/weapon/card/id/engineering/head
 	name = "identification card"
-	desc = "A card which represents creativity and ingenuity."
+	desc = "Карта, олицетворяющая креативность и изобретательность."
 	primary_color = rgb(189,94,0)
 	secondary_color = rgb(255,223,127)
 	assignment = "Chief Engineer"
@@ -250,14 +250,14 @@
 
 /obj/item/weapon/card/id/science
 	name = "identification card"
-	desc = "A card issued to station science staff."
+	desc = "Карточка, выданная научным сотрудникам станции."
 	icon_state = "science-id"
 	primary_color = rgb(142,47,142)
 	secondary_color = rgb(191,127,191)
 
 /obj/item/weapon/card/id/science/head
 	name = "identification card"
-	desc = "A card which represents knowledge and reasoning."
+	desc = "Карта, представляющая знания и рассуждения."
 	primary_color = rgb(142,47,142)
 	secondary_color = rgb(255,223,127)
 	assignment = "Research Director"
@@ -265,14 +265,14 @@
 
 /obj/item/weapon/card/id/cargo
 	name = "identification card"
-	desc = "A card issued to station cargo staff."
+	desc = "Карточка, выдаваемая сотрудникам грузовой станции."
 	icon_state = "cargo-id"
 	primary_color = rgb(142,94,0)
 	secondary_color = rgb(191,159,95)
 
 /obj/item/weapon/card/id/cargo/head
 	name = "identification card"
-	desc = "A card which represents service and planning."
+	desc = "Карта, представляющая обслуживание и планирование."
 	primary_color = rgb(142,94,0)
 	secondary_color = rgb(255,223,127)
 	assignment = "Quartermaster"
@@ -284,7 +284,7 @@
 
 /obj/item/weapon/card/id/civilian
 	name = "identification card"
-	desc = "A card issued to station civilian staff."
+	desc = "Карта, выданная гражданскому персоналу станции."
 	icon_state = "civilian-id"
 	primary_color = rgb(0,94,142)
 	secondary_color = rgb(95,159,191)
@@ -293,13 +293,13 @@
 
 /obj/item/weapon/card/id/civilian/head //This is not the HoP. There's no position that uses this right now.
 	name = "identification card"
-	desc = "A card which represents common sense and responsibility."
+	desc = "Карта, олицетворяющая здравый смысл и ответственность."
 	primary_color = rgb(0,94,142)
 	secondary_color = rgb(255,223,127)
 
 /obj/item/weapon/card/id/external
 	name = "identification card"
-	desc = "An identification card of some sort. It does not look like it is issued by NT."
+	desc = "Какое-то удостоверение личности. Не похоже, что он выпущен NT."
 	icon_state = "generic"
 	primary_color = rgb(142,94,0)
 	secondary_color = rgb(191,159,95)

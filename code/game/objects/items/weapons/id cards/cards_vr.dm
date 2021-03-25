@@ -1,6 +1,6 @@
 /obj/item/weapon/card/emag/examine(mob/user)
 	. = ..()
-	. += "[uses] uses remaining."
+	. += "[uses] использований осталось."
 
 /obj/item/weapon/card/emag/used
 	uses = 1

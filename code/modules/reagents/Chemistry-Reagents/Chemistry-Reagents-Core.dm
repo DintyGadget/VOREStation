@@ -184,7 +184,7 @@
 		var/removed_heat = between(0, volume * WATER_LATENT_HEAT, -environment.get_thermal_energy_change(min_temperature))
 		environment.add_thermal_energy(-removed_heat)
 		if (prob(5))
-			T.visible_message("<span class='warning'>Вода шипит, когда она приземляется на [Т]!</span>")
+			T.visible_message("<span class='warning'>Вода шипит, когда она приземляется на [T]!</span>")
 
 	else if(volume >= 10)
 		T.wet_floor(1)

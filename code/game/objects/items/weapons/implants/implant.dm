@@ -46,7 +46,7 @@
 /obj/item/weapon/implant/proc/post_implant(var/mob/source)
 
 /obj/item/weapon/implant/proc/get_data()
-	return "No information available"
+	return "Нет доступной информации"
 
 /obj/item/weapon/implant/proc/hear(message, source as mob)
 	return
@@ -55,14 +55,14 @@
 	return 0
 
 /obj/item/weapon/implant/proc/meltdown()	//breaks it down, making implant unrecongizible
-	to_chat(imp_in, "<span class='warning'>You feel something melting inside [part ? "your [part.name]" : "you"]!</span>")
+	to_chat(imp_in, "<span class='warning'>Вы чувствуете, как что-то тает внутри [part ? "вашего [part.name]" : "вас"]!</span>")
 	if (part)
 		part.take_damage(burn = 15, used_weapon = "Electronics meltdown")
 	else
 		var/mob/living/M = imp_in
 		M.apply_damage(15,BURN)
 	name = "melted implant"
-	desc = "Charred circuit in melted plastic case. Wonder what that used to be..."
+	desc = "Обугленный контур в расплавленном пластиковом корпусе. Интересно, что это было раньше ..."
 	icon_state = "implant_melted"
 	malfunction = MALFUNCTION_PERMANENT
 
@@ -102,7 +102,7 @@ GLOBAL_LIST_BOILERPLATE(all_tracking_implants, /obj/item/weapon/implant/tracking
 
 /obj/item/weapon/implant/tracking
 	name = "tracking implant"
-	desc = "An implant normally given to dangerous criminals. Allows security to track your location."
+	desc = "Имплант, который обычно ставят опасным преступникам. Позволяет системе безопасности отслеживать ваше местоположение."
 	known_implant = TRUE
 	var/id = 1
 	var/degrade_time = 10 MINUTES	//How long before the implant stops working outside of a living body.
@@ -128,26 +128,26 @@ GLOBAL_LIST_BOILERPLATE(all_tracking_implants, /obj/item/weapon/implant/tracking
 		if(L.stat == DEAD)
 			if(world.time >= L.timeofdeath + degrade_time)
 				name = "melted implant"
-				desc = "Charred circuit in melted plastic case. Wonder what that used to be..."
+				desc = "Обугленный контур в расплавленном пластиковом корпусе. Интересно, что это было раньше ..."
 				icon_state = "implant_melted"
 				malfunction = MALFUNCTION_PERMANENT
 				STOP_PROCESSING(SSobj, src)
 	return 1
 
 /obj/item/weapon/implant/tracking/get_data()
-	var/dat = {"<b>Implant Specifications:</b><BR>
-<b>Name:</b> Tracking Beacon<BR>
-<b>Life:</b> 10 minutes after death of host<BR>
-<b>Important Notes:</b> None<BR>
+	var/dat = {"<meta charset=\"utf-8\"><b>Характеристики имплантата:</b><BR>
+<b>Название:</b> Трекер<BR>
+<b>Жизнь:</b> Через 10 минут после смерти хозяина<BR>
+<b>Важные заметки:</b> Нет<BR>
 <HR>
-<b>Implant Details:</b> <BR>
-<b>Function:</b> Continuously transmits low power signal. Useful for tracking.<BR>
-<b>Special Features:</b><BR>
-<i>Neuro-Safe</i>- Specialized shell absorbs excess voltages self-destructing the chip if
-a malfunction occurs thereby securing safety of subject. The implant will melt and
-disintegrate into bio-safe elements.<BR>
-<b>Integrity:</b> Gradient creates slight risk of being overcharged and frying the
-circuitry. As a result neurotoxins can cause massive damage.<HR>
+<b>Детали имплантата:</b> <BR>
+<b>Функции:</b> Непрерывно передает сигнал малой мощности. Полезно для отслеживания.<BR>
+<b>Особые функции:</b><BR>
+<i>Нейробезопасный</i>- Специализированная оболочка поглощает избыточные напряжения, самоуничтожая
+микросхему в случае неисправности, тем самым обеспечивая безопасность объекта.
+Имплант расплавится и распадется на биологически безопасные элементы.<BR>
+<b>Целостность:</b> градиент создает небольшой риск перезарядки
+и сгорания схемы. В результате нейротоксины могут нанести огромный ущерб.<HR>
 Implant Specifics:<BR>"}
 	return dat
 
@@ -176,12 +176,12 @@ Implant Specifics:<BR>"}
 //////////////////////////////
 /obj/item/weapon/implant/dexplosive
 	name = "explosive"
-	desc = "And boom goes the weasel."
+	desc = "Да будет взрыв, сказал СБшник."
 	icon_state = "implant_evil"
 
 /obj/item/weapon/implant/dexplosive/get_data()
 	var/dat = {"
-<b>Implant Specifications:</b><BR>
+<b>Характеристики имплантата:</b><BR>
 <b>Name:</b> Robust Corp RX-78 Employee Management Implant<BR>
 <b>Life:</b> Activates upon death.<BR>
 <b>Important Notes:</b> Explodes<BR>
@@ -213,7 +213,7 @@ Implant Specifics:<BR>"}
 //////////////////////////////
 /obj/item/weapon/implant/explosive
 	name = "explosive implant"
-	desc = "A military grade micro bio-explosive. Highly dangerous."
+	desc = "Микробиологическое взрывчатое вещество военного класса. Очень опасно."
 	var/elevel = "Localized Limb"
 	var/phrase = "supercalifragilisticexpialidocious"
 	icon_state = "implant_evil"
@@ -255,7 +255,7 @@ Implant Specifics:<BR>"}
 		if(ishuman(imp_in))
 			if (elevel == "Localized Limb")
 				if(part) //For some reason, small_boom() didn't work. So have this bit of working copypaste.
-					imp_in.visible_message("<span class='warning'>Something beeps inside [imp_in][part ? "'s [part.name]" : ""]!</span>")
+					imp_in.visible_message("<span class='warning'>Что то пропищало внутри [imp_in][part ? " [part.name]" : ""]!</span>")
 					playsound(src, 'sound/items/countdown.ogg', 75, 1, -3)
 					sleep(25)
 					if (istype(part,/obj/item/organ/external/chest) ||	\
@@ -284,12 +284,12 @@ Implant Specifics:<BR>"}
 		t.hotspot_expose(3500,125)
 
 /obj/item/weapon/implant/explosive/post_implant(mob/source as mob)
-	elevel = alert("What sort of explosion would you prefer?", "Implant Intent", "Localized Limb", "Destroy Body", "Full Explosion")
-	phrase = input("Choose activation phrase:") as text
+	elevel = alert("Какой взрыв вы бы предпочли?", "Implant Intent", "Localized Limb", "Destroy Body", "Full Explosion")
+	phrase = input("Триггер фраза:") as text
 	var/list/replacechars = list("'" = "","\"" = "",">" = "","<" = "","(" = "",")" = "")
 	phrase = replace_characters(phrase, replacechars)
-	usr.mind.store_memory("Explosive implant in [source] can be activated by saying something containing the phrase ''[src.phrase]'', <B>say [src.phrase]</B> to attempt to activate.", 0, 0)
-	to_chat(usr, "The implanted explosive implant in [source] can be activated by saying something containing the phrase ''[src.phrase]'', <B>say [src.phrase]</B> to attempt to activate.")
+	usr.mind.store_memory("Взрывной имплант в [source] можно активировать, произнеся что-то, содержащее фразу ''[src.phrase]'', <B>скажите [src.phrase]</B>, чтобы попытаться активировать имплант.", 0, 0)
+	to_chat(usr, "Имплантированный взрывной имплант в [source] можно активировать, произнеся что-то, содержащее фразу ''[src.phrase]'', <B>скажите [src.phrase]</B>, чтобы попытаться активировать имплант.")
 
 /obj/item/weapon/implant/explosive/emp_act(severity)
 	if (malfunction)
@@ -328,7 +328,7 @@ Implant Specifics:<BR>"}
 
 /obj/item/weapon/implant/explosive/proc/small_boom()
 	if (ishuman(imp_in) && part)
-		imp_in.visible_message("<span class='warning'>Something beeps inside [imp_in][part ? "'s [part.name]" : ""]!</span>")
+		imp_in.visible_message("<span class='warning'>Что то пропищало внутри [imp_in][part ? "[part.name]" : ""]!</span>")
 		playsound(src, 'sound/items/countdown.ogg', 75, 1, -3)
 		spawn(25)
 			if (ishuman(imp_in) && part)
@@ -387,9 +387,9 @@ the implant may become unstable and either pre-maturely inject the subject or si
 	if((!cause) || (!src.imp_in))	return 0
 	var/mob/living/carbon/R = src.imp_in
 	src.reagents.trans_to_mob(R, cause, CHEM_BLOOD)
-	to_chat(R, "You hear a faint *beep*.")
+	to_chat(R, "Вы слышите слабый звуковой сигнал.")
 	if(!src.reagents.total_volume)
-		to_chat(R, "You hear a faint click from your chest.")
+		to_chat(R, "Вы слышите слабый щелчок в груди.")
 		playsound(R, 'sound/weapons/empty.ogg', 10, 1)
 		spawn(0)
 			qdel(src)
@@ -422,7 +422,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 //////////////////////////////
 /obj/item/weapon/implant/loyalty
 	name = "loyalty implant"
-	desc = "Makes you loyal or such."
+	desc = "Делает вас лояльным или что-то в этом роде."
 	known_implant = TRUE
 
 /obj/item/weapon/implant/loyalty/get_data()
@@ -445,20 +445,20 @@ the implant may become unstable and either pre-maturely inject the subject or si
 	var/mob/living/carbon/human/H = M
 	var/datum/antagonist/antag_data = get_antag_data(H.mind.special_role)
 	if(antag_data && (antag_data.flags & ANTAG_IMPLANT_IMMUNE))
-		H.visible_message("[H] seems to resist the implant!", "You feel the corporate tendrils of [using_map.company_name] try to invade your mind!")
+		H.visible_message("[H], кажется, сопротивляется имплантату!", "Вы чувствуете, что корпоративные усики [using_map.company_name] пытаются вторгнуться в ваш разум!")
 		. = FALSE
 
 /obj/item/weapon/implant/loyalty/post_implant(mob/M)
 	var/mob/living/carbon/human/H = M
 	clear_antag_roles(H.mind, 1)
-	to_chat(H, "<span class='notice'>You feel a surge of loyalty towards [using_map.company_name].</span>")
+	to_chat(H, "<span class='notice'>Вы чувствуете прилив лояльности к [using_map.company_name].</span>")
 
 //////////////////////////////
 //	Adrenaline Implant
 //////////////////////////////
 /obj/item/weapon/implant/adrenalin
 	name = "adrenalin"
-	desc = "Removes all stuns and knockdowns."
+	desc = "Снимает все оглушения и нокдауны."
 	var/uses
 
 /obj/item/weapon/implant/adrenalin/get_data()
@@ -495,7 +495,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 //////////////////////////////
 /obj/item/weapon/implant/death_alarm
 	name = "death alarm implant"
-	desc = "An alarm which monitors host vital signs and transmits a radio message upon death."
+	desc = "Тревога, которая контролирует жизненно важные функции хозяина и передает радиосообщение в случае смерти."
 	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 2, TECH_DATA = 1)
 	known_implant = TRUE
 	var/mobname = "Will Robinson"
@@ -530,11 +530,11 @@ the implant may become unstable and either pre-maturely inject the subject or si
 			var/obj/item/device/radio/headset/a = new /obj/item/device/radio/headset/heads/captain(null)
 			if(istype(t, /area/syndicate_station) || istype(t, /area/syndicate_mothership) || istype(t, /area/shuttle/syndicate_elite) )
 				//give the syndies a bit of stealth
-				a.autosay("[mobname] has died in Space!", "[mobname]'s Death Alarm")
+				a.autosay("[mobname] умирает в космосе!", "Сигнал о смерти [mobname]")
 //				a.autosay("[mobname] has died in Space!", "[mobname]'s Death Alarm", "Security")
 //				a.autosay("[mobname] has died in Space!", "[mobname]'s Death Alarm", "Medical")
 			else
-				a.autosay("[mobname] has died in [t.name]!", "[mobname]'s Death Alarm")
+				a.autosay("[mobname] умирает в [t.name]!", "Сигнал о смерти [mobname]")
 //				a.autosay("[mobname] has died in [t.name]!", "[mobname]'s Death Alarm", "Security")
 //				a.autosay("[mobname] has died in [t.name]!", "[mobname]'s Death Alarm", "Medical")
 			qdel(a)
@@ -542,13 +542,13 @@ the implant may become unstable and either pre-maturely inject the subject or si
 		if ("emp")
 			var/obj/item/device/radio/headset/a = new /obj/item/device/radio/headset/heads/captain(null)
 			var/name = prob(50) ? t.name : pick(teleportlocs)
-			a.autosay("[mobname] has died in [name]!", "[mobname]'s Death Alarm")
+			a.autosay("[mobname] умирает в [name]!", "Сигнал о смерти [mobname]")
 //			a.autosay("[mobname] has died in [name]!", "[mobname]'s Death Alarm", "Security")
 //			a.autosay("[mobname] has died in [name]!", "[mobname]'s Death Alarm", "Medical")
 			qdel(a)
 		else
 			var/obj/item/device/radio/headset/a = new /obj/item/device/radio/headset/heads/captain(null)
-			a.autosay("[mobname] has died-zzzzt in-in-in...", "[mobname]'s Death Alarm")
+			a.autosay("[mobname] умира-а-а-а пшшш...", "Сигнал о смерти [mobname]")
 //			a.autosay("[mobname] has died-zzzzt in-in-in...", "[mobname]'s Death Alarm", "Security")
 //			a.autosay("[mobname] has died-zzzzt in-in-in...", "[mobname]'s Death Alarm", "Medical")
 			qdel(a)
@@ -579,7 +579,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 //////////////////////////////
 /obj/item/weapon/implant/compressed
 	name = "compressed matter implant"
-	desc = "Based on compressed matter technology, can store a single item."
+	desc = "На основе технологии сжатого вещества может хранить один предмет."
 	icon_state = "implant_evil"
 	var/activation_emote = "sigh"
 	var/obj/item/scanned = null
@@ -615,7 +615,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 	qdel(src)
 
 /obj/item/weapon/implant/compressed/post_implant(mob/source)
-	src.activation_emote = input("Choose activation emote:") in list("blink", "blink_r", "eyebrow", "chuckle", "twitch", "frown", "nod", "blush", "giggle", "grin", "groan", "shrug", "smile", "pale", "sniff", "whimper", "wink")
+	src.activation_emote = input("Выберите эмоцию активации:") in list("blink", "blink_r", "eyebrow", "chuckle", "twitch", "frown", "nod", "blush", "giggle", "grin", "groan", "shrug", "smile", "pale", "sniff", "whimper", "wink")
 	if (source.mind)
 		source.mind.store_memory("Compressed matter implant can be activated by using the [src.activation_emote] emote, <B>say *[src.activation_emote]</B> to attempt to activate.", 0, 0)
 	to_chat(source, "The implanted compressed matter implant can be activated by using the [src.activation_emote] emote, <B>say *[src.activation_emote]</B> to attempt to activate.")

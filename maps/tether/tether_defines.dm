@@ -81,9 +81,9 @@
 	company_short = "NT"
 	starsys_name  = "Virgo-Erigone"
 
-	shuttle_docked_message = "The scheduled Orange Line tram to the %dock_name% has arrived. It will depart in approximately %ETD%."
-	shuttle_leaving_dock = "The Orange Line tram has left the station. Estimate %ETA% until the tram arrives at %dock_name%."
-	shuttle_called_message = "A scheduled crew transfer to the %dock_name% is occuring. The tram will be arriving shortly. Those departing should proceed to the Orange Line tram station within %ETA%."
+	shuttle_docked_message = "Прибыл запланированный рейс Orange Line до %dock_name% Он уйдет примерно через %ETD%."
+	shuttle_leaving_dock = "Трамвай Orange Line выехал со станции. Приблизительно %ETA% до прибытия в %dock_name%."
+	shuttle_called_message = "Планируется перевод экипажа на %dock_name% Скоро приедет трамвай. Уезжающим следует проехать к трамвайной остановке Orange Line в пределах %ETA%."
 	shuttle_recall_message = "The scheduled crew transfer has been cancelled."
 	shuttle_name = "Automated Tram"
 	emergency_shuttle_docked_message = "The evacuation tram has arrived at the tram station. You have approximately %ETD% to board the tram."
@@ -208,10 +208,10 @@
 
 /datum/map/tether/get_map_info()
 	. = list()
-	. +=  "The [full_name] is an ancient ruin turned workplace in the Virgo-Erigone System, deep in the midst of the Coreward Periphery.<br>"
-	. +=  "Humanity has spread across the stars and has met many species on similar or even more advanced terms than them - it's a brave new world and many try to find their place in it . <br>"
-	. +=  "Though Virgo-Erigone is not important for the great movers and shakers, it sees itself in the midst of the interests of a reviving alien species of the Zorren, corporate and subversive interests and other exciting dangers the Periphery has to face.<br>"
-	. +=  "As an employee or contractor of NanoTrasen, operators of the Adephagia and one of the galaxy's largest corporations, you're probably just here to do a job."
+	. +=  "[full_name] - это древние руины, превратившиеся в рабочее место в системе Дева-Эригон, глубоко в центре Периферии Ядра.<br>"
+	. +=  "Человечество расселилось по звездам и встретило множество видов на схожих или даже более сложных условиях, чем они - это дивный новый мир, и многие пытаются найти в нем свое место. <br>"
+	. +=  "Хотя Дева-Эригон не важна для великих движущих сил и потрясений, она видит себя в центре интересов возрождающегося инопланетного вида Зоррен, корпоративных и подрывных интересов и других захватывающих опасностей, с которыми приходится сталкиваться Периферии.<br>"
+	. +=  "Как сотрудник или подрядчик NanoTrasen, оператора Adephagia и одной из крупнейших корпораций галактики, вы, вероятно, здесь только для того, чтобы выполнять свою работу."
 	return jointext(., "<br>")
 
 /datum/map/tether/perform_map_generation()
@@ -245,7 +245,7 @@
 // Overmap represetation of tether
 /obj/effect/overmap/visitable/sector/virgo3b
 	name = "Virgo 3B"
-	desc = "Full of phoron, and home to the NSB Adephagia, where you can dock and refuel your craft."
+	desc = "Полный форона, а так же является домом для NSB Adephagia, где вы можете состыковаться и заправить свой корабль."
 	scanner_desc = @{"[i]Registration[/i]: NSB Adephagia
 [i]Class[/i]: Installation
 [i]Transponder[/i]: Transmitting (CIV), NanoTrasen IFF

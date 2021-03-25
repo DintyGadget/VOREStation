@@ -1,41 +1,41 @@
 /datum/gear/utility/implant
-	display_name = "implant, neural assistance web"
-	description = "A complex web implanted into the subject, medically in order to compensate for neurological disease."
+	display_name = "имплант, сеть нейронной помощи"
+	description = "Сложная сеть имплантируется субъекту с медицинской точки зрения, чтобы компенсировать неврологическое заболевание."
 	path = /obj/item/weapon/implant/neural
 	slot = "implant"
 	exploitable = 1
-	sort_category = "Cyberware"
+	sort_category = "Импланты"
 	cost = 6
 
 /datum/gear/utility/implant/tracking
-	display_name = "implant, tracking"
+	display_name = "имплант, трекер"
 	path = /obj/item/weapon/implant/tracking/weak
 	cost = 0 //VOREStation Edit. Changed cost to 0
 
 // Remove these after generic implant has been in for awhile and everyone has had a reasonable period to copy their old descs.
 /datum/gear/utility/implant/dud1
-	display_name = "implant, head"
-	description = "An implant with no obvious purpose (DEPRECATED, USE GENERIC IMPLANT)."
+	display_name = "имплант, голова"
+	description = "Имплант без очевидной цели (УСТАРЕВШИЙ, ИСПОЛЬЗУЙТЕ ОБЩИЙ ИМПЛАНТ)."
 	path = /obj/item/weapon/implant/dud
 	cost = 1
 /datum/gear/utility/implant/dud2
-	display_name = "implant, torso"
-	description = "An implant with no obvious purpose (DEPRECATED, USE GENERIC IMPLANT)."
+	display_name = "имплант, торс"
+	description = "Имплант без очевидной цели (УСТАРЕВШИЙ, ИСПОЛЬЗУЙТЕ ОБЩИЙ ИМПЛАНТ)."
 	path = /obj/item/weapon/implant/dud/torso
 	cost = 1
 // End removal marker.
 
 /datum/gear/utility/implant/generic
-	display_name = "implant, generic, primary"
-	description = "An implant with no obvious purpose."
+	display_name = "имплантат, универсальный, первичный"
+	description = "Имплант без очевидной цели."
 	path = /obj/item/weapon/implant
 	cost = 1
 
 /datum/gear/utility/implant/generic/second
-	display_name = "implant, generic, secondary"
+	display_name = "имплантат, универсальный, вторичный"
 
 /datum/gear/utility/implant/generic/third
-	display_name = "implant, generic, tertiary"
+	display_name = "имплантат, универсальный, третичный"
 
 /datum/gear/utility/implant/generic/New()
 	..()
@@ -46,11 +46,11 @@
 	exploitable = 0
 
 /datum/gear/utility/implant/language/eal
-	display_name = "vocal synthesizer, EAL"
-	description = "A surgically implanted vocal synthesizer which allows the owner to speak EAL, if they know it."
+	display_name = "вокальный синтезатор, EAL"
+	description = "Хирургически имплантированный вокальный синтезатор, который позволяет владельцу говорить на EAL, если они его знают."
 	path = /obj/item/weapon/implant/language/eal
 
 /datum/gear/utility/implant/language/skrellian
-	display_name = "vocal synthesizer, Skrellian"
-	description = "A surgically implanted vocal synthesizer which allows the owner to speak Common Skrellian, if they know it."
+	display_name = "вокальный синтезатор, Скреллиан"
+	description = "Хирургически имплантированный вокальный синтезатор, который позволяет владельцу говорить на общем скреллианском языке, если они его знают."
 	path = /obj/item/weapon/implant/language/skrellian

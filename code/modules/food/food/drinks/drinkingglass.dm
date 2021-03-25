@@ -167,7 +167,7 @@
 		overlays += filling
 
 /obj/item/weapon/reagent_containers/food/drinks/drinkingglass/fitnessflask/proteinshake
-	name = "protein shake"
+	name = "протеиновый коктейль"
 
 /obj/item/weapon/reagent_containers/food/drinks/drinkingglass/fitnessflask/proteinshake/Initialize()
 	. = ..()

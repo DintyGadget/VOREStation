@@ -23,7 +23,7 @@
 
 /datum/alt_title/kitchen_worker
 	title = "Kitchen Worker"
-	title_blurb = "A Kitchen Worker has the same duties, though they may be less experienced."
+	title_blurb = "Кухонный работник выполняет те же обязанности, что и повар, однако менее опытен."
 
 
 /datum/job/hydro
@@ -43,7 +43,7 @@
 
 /datum/alt_title/florsit
 	title = "Florist"
-	title_blurb = "A Florist may be less professional than their counterparts, and are more likely to tend to the public gardens if they aren't needed elsewhere."
+	title_blurb = "Флорист менее опытен, и, вероятнее всего, присматривает за общим ботаническим садом, если от него ничего не требуется."
 
 
 /datum/job/qm
@@ -64,19 +64,19 @@
 
 /datum/alt_title/supply_courier
 	title = "Supply Courier"
-	title_blurb = "A Supply Courier is usually tasked with devlivering packages or cargo directly to whoever requires it."
+	title_blurb = "На плечи курьера обычно возлагается обязанность доставлять полученный груз по месту назначения."
 
 /datum/alt_title/cargo_loader
 	title = "Cargo Loader"
-	title_blurb = "A Cargo Loader is usually tasked with more menial labor within Supply department, such as loading and unloading supply shuttle."
+	title_blurb = "Погрузчик обычно занимается более скучной работой в отделе снабжения - разгрузкой и возвратом ящиков."
 
 /datum/alt_title/cargo_handler
 	title = "Cargo Handler"
-	title_blurb = "A Cargo Loader is usually tasked with more menial labor within Supply department, such as loading and unloading supply shuttle."
+	title_blurb = "Поставщик груза обычно занимается более скучной работой в отделе снабжения - разгрузкой и возвратом ящиков."
 
 /datum/alt_title/disposal_sorter
 	title = "Disposals Sorter"
-	title_blurb = "A Disposals Sorter is usually tasked with operating disposals delivery system, sorting the trash and tagging parcels for delivery."
+	title_blurb = "Сортировщик обычно занимается сортировкой того, что приходит по трубам, а также доставкой посылок в нужные отделы."
 
 
 /datum/job/mining
@@ -87,7 +87,7 @@
 
 /datum/alt_title/deep_space_miner
 	title = "Deep Space Miner"
-	title_blurb = "A Deep Space Miner specializes primarily in mining operations in zero-g environments, mostly in asteroid and debris fields."
+	title_blurb = "Шахтёр астероидов специализируется на добыче руд в вакууме, а именно на астероидах."
 
 /datum/alt_title/prospector
 	title = "Prospector"
@@ -108,7 +108,7 @@
 
 /datum/alt_title/garbage_collector
 	title = "Garbage Collector"
-	title_blurb = "A Garbage Collector keeps the station clean, though focuses moreso on collecting larger trash, with wet cleaning being secondary task."
+	title_blurb = "Мусорщик специализируется на более крупном мусоре. Влажная чистка для него на втором плане."
 
 
 /datum/job/librarian
@@ -121,27 +121,27 @@
 
 /datum/alt_title/reporter
 	title = "Reporter"
-	title_blurb = "The Reporter uses the Library as a base of operations, from which they can report the news and goings-on on the station with their camera."
+	title_blurb = "Репортёр использует библиотеку как оперативную базу, откуда он может сообщать новости и происходящее на станции с помощью своей камеры."
 
 /datum/alt_title/historian
 	title = "Historian"
-	title_blurb = "The Historian uses the Library as a base of operation to record any important events occuring on station."
+	title_blurb = "Историк использует библиотеку в качестве своей базы для записи важных событий, происходящих на станции."
 
 /datum/alt_title/archivist
 	title = "Archivist"
-	title_blurb = "The Archivist uses the Library as a base of operation to record any important events occuring on station."
+	title_blurb = "Архивист использует библиотеку в качестве своей базы для записи важных событий, происходящих на станции."
 
 /datum/alt_title/professor
 	title = "Professor"
-	title_blurb = "The Professor uses the Library as a base of operations to share their vast knowledge with the crew."
+	title_blurb = "Профессор использует библиотеку как персональную аудиторию для просвещения экипажа."
 
 /datum/alt_title/academic
 	title = "Academic"
-	title_blurb = "The Academic uses the Library as a base of operations to share their vast knowledge with the crew."
+	title_blurb = "Преподаватель использует библиотеку как персональную аудиторию для просвещения экипажа."
 
 /datum/alt_title/philosopher
 	title = "Philosopher"
-	title_blurb = "The Philosopher uses the Library as a base of operation to ruminate on nature of life and other great questions, and share their opinions with the crew."
+	title_blurb = "Философ использует библиотеку как форум для рассуждений о величайших вопросах жизни и их обсуждения с экипажем."
 
 
 /datum/job/lawyer
@@ -166,7 +166,7 @@
 
 /datum/alt_title/guru
 	title = "Guru"
-	title_blurb = "The Guru primarily tries to offer spiritual guidance to those who come seeking it."
+	title_blurb = "Гуру в общих чертах предоставляет духовный совет тем, кто в нём нуждается."
 
 /datum/alt_title/missionary
 	title = "Missionary"
@@ -188,14 +188,14 @@
 	faction = "Station"
 	total_positions = 4
 	spawn_positions = 4
-	supervisors = "the Head of Personnel"
+	supervisors = "Главой персонала"
 	selection_color = "#515151"
 	access = list(access_entertainment)
 	minimal_access = list(access_entertainment)
 	pto_type = PTO_CIVILIAN
 
 	outfit_type = /decl/hierarchy/outfit/job/assistant/entertainer
-	job_description = "An entertainer does just that, entertains! Put on plays, play music, sing songs, tell stories, or read your favorite fanfic."
+	job_description = "Аниматор отвечает за развлечение персонала! Ставьте спектакли, играйте музыку, пойте песни, рассказывайте истории или читайте свои любимые фанфики."
 	alt_titles = list("Performer" = /datum/alt_title/performer, "Musician" = /datum/alt_title/musician, "Stagehand" = /datum/alt_title/stagehand,
 						"Actor" = /datum/alt_title/actor, "Dancer" = /datum/alt_title/dancer, "Singer" = /datum/alt_title/singer,
 						"Magician" = /datum/alt_title/magician, "Comedian" = /datum/alt_title/comedian, "Tragedian" = /datum/alt_title/tragedian)
@@ -203,36 +203,36 @@
 // Entertainer Alt Titles
 /datum/alt_title/actor
 	title = "Actor"
-	title_blurb = "An Actor is someone who acts out a role! Whatever sort of character it is, get into it and impress people with power of comedy and tragedy!"
+	title_blurb = "Актёр отыгрывает роли! Каким бы ни был его персонаж, он должен полностью в него влиться и впечатлять людей силой трагедии и комедии!"
 
 /datum/alt_title/performer
 	title = "Performer"
-	title_blurb = "A Performer is someone who performs! Whatever sort of performance will come to your mind, the world's a stage!"
+	title_blurb = "Артист - понятие растяжимое! Актерское мастерство, танцы, вокал и так далее!"
 
 /datum/alt_title/musician
 	title = "Musician"
-	title_blurb = "A Musician is someone who makes music with a wide variety of musical instruments!"
+	title_blurb = "Музыкант - это тот, кто создаёт музыку! Петь, играть на музыкальных инструментах, слогать стихами - это ваше дело!"
 
 /datum/alt_title/stagehand
 	title = "Stagehand"
-	title_blurb = "A Stagehand typically performs everything the rest of the entertainers don't. Operate lights, shutters, windows, or narrate through your voicebox!"
+	title_blurb = "Рабочий сцены обычно выполняет все, что не делают остальные артисты: управляет светом, ставнями, окнами или рассказывает что-либо через микрофон на сцену!"
 
 /datum/alt_title/dancer
 	title = "Dancer"
-	title_blurb = "A Dancer is someone who impresses people through power of their own body! From waltz to breakdance, as long as crowd as cheering!"
+	title_blurb = "Танцор впечатляет людей своим телом! От вальса до брейкданса, лишь бы публика была довольна."
 
 /datum/alt_title/singer
 	title = "Singer"
-	title_blurb = "A Singer is someone with gift of melodious voice! Impress people with your vocal range!"
+	title_blurb = "Певец одарён мелодичным голосом! Впечатлите людей своим вокалом!"
 
 /datum/alt_title/magician
 	title = "Magician"
-	title_blurb = "A Magician is someone who awes those around them with impossible! Show off your repertoire of magic tricks, while keeping the secret hidden!"
+	title_blurb = "Фокусник поражает своих зрителей невозможными трюками. Демонстрируйте свой репертуар, оставляя секрет фокусов за кулисами!"
 
 /datum/alt_title/comedian
 	title = "Comedian"
-	title_blurb = "A Comedian will focus on making people laugh with the power of wit! Telling jokes, stand-up comedy, you are here to make others smile!"
+	title_blurb = "Комедиант поднимает людям настроение при помощи юмора и острого ума! Анекдоты, стендапы, лишь бы люди улыбались!"
 
 /datum/alt_title/tragedian
 	title = "Tragedian"
-	title_blurb = "A Tragedian will focus on making people think about life and world around them! Life is a tragedy, and who's better to convey its emotions than you?"
+	title_blurb = "Трагик специализируется на донесении до людей мыслей о жизни и о мире вокруг них самих. Жизнь - трагедия, и кто же лучше Вас передаст её эмоции?"

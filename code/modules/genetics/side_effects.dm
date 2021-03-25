@@ -69,7 +69,7 @@
 
 	start(mob/living/carbon/human/H)
 		var/datum/gender/T = gender_datums[H.get_visible_gender()]
-		H.emote("me", 1, "пускат слюни, из [Т.ршы] рта.")
+		H.emote("me", 1, "пускат слюни, из [T.his] рта.")
 
 	finish(mob/living/carbon/human/H)
 		if(!H.reagents.has_reagent("anti_toxin"))

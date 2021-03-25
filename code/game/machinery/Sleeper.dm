@@ -43,11 +43,11 @@
 	if(!sleeper)
 		findsleeper()
 		if(!sleeper)
-			to_chat(user, "<span class='notice'>Sleeper not found!</span>")
+			to_chat(user, "<span class='notice'>Слипер не найден!</span>")
 			return
 
 	if(panel_open)
-		to_chat(user, "<span class='notice'>Close the maintenance panel first.</span>")
+		to_chat(user, "<span class='notice'>Сначала закройте панель обслуживания.</span>")
 		return
 
 	if(sleeper)
@@ -167,7 +167,7 @@
 /obj/machinery/sleeper/attack_hand(var/mob/user)
 	if(!controls_inside)
 		return FALSE
-	
+
 	if(user == occupant)
 		tgui_interact(user)
 
@@ -297,7 +297,7 @@
 	if(!controls_inside && usr == occupant)
 		return
 	if(panel_open)
-		to_chat(usr, "<span class='notice'>Close the maintenance panel first.</span>")
+		to_chat(usr, "<span class='notice'>Сначала закройте панель обслуживания.</span>")
 		return
 
 	. = TRUE
@@ -307,7 +307,7 @@
 				return
 			if(occupant.stat == DEAD)
 				var/datum/gender/G = gender_datums[occupant.get_visible_gender()]
-				to_chat(usr, "<span class='danger'>This person has no life to preserve anymore. Take [G.him] to a department capable of reanimating [G.him].</span>")
+				to_chat(usr, "<span class='danger'>У этого человека больше нет жизни, которую можно было бы сохранить. Отведите [G.him] в отдел, способный реанимировать [G.him].</span>")
 				return
 			var/chemical = params["chemid"]
 			var/amount = text2num(params["amount"])
@@ -316,7 +316,7 @@
 			if(occupant.health > min_health) //|| (chemical in emergency_chems))
 				inject_chemical(usr, chemical, amount)
 			else
-				to_chat(usr, "<span class='danger'>This person is not in good enough condition for sleepers to be effective! Use another means of treatment, such as cryogenics!</span>")
+				to_chat(usr, "<span class='danger'>яЭтот человек не в достаточно хорошем состоянии, чтобы спать спокойно! Используйте другие средства лечения, например криогенику!</span>")
 		if("removebeaker")
 			remove_beaker()
 		if("togglefilter")
@@ -326,7 +326,7 @@
 		if("ejectify")
 			go_out()
 		if("changestasis")
-			var/new_stasis = input("Levels deeper than 50% stasis level will render the patient unconscious.","Stasis Level") as null|anything in stasis_choices
+			var/new_stasis = input("Уровни, превышающие уровень стазиса 50%, приведут пациента в бессознательное состояние.","Stasis Level") as null|anything in stasis_choices
 			if(new_stasis)
 				stasis_level = stasis_choices[new_stasis]
 		if("auto_eject_dead_on")
@@ -382,9 +382,9 @@
 			beaker = I
 			user.drop_item()
 			I.loc = src
-			user.visible_message("<span class='notice'>\The [user] adds \a [I] to \the [src].</span>", "<span class='notice'>You add \a [I] to \the [src].</span>")
+			user.visible_message("<span class='notice'>[user] добавляет [I] в [src].</span>", "<span class='notice'>Вы добавляете [I] в [src].</span>")
 		else
-			to_chat(user, "<span class='warning'>\The [src] has a beaker already.</span>")
+			to_chat(user, "<span class='warning'>У [src] уже есть стакан.</span>")
 		return
 	if(!occupant)
 		if(default_deconstruction_screwdriver(user, I))
@@ -395,7 +395,7 @@
 			return
 
 /obj/machinery/sleeper/verb/move_eject()
-	set name = "Eject occupant"
+	set name = "Извлечь пациента"
 	set category = "Object"
 	set src in oview(1)
 	if(usr == occupant)
@@ -403,7 +403,7 @@
 			if(DEAD)
 				return
 			if(UNCONSCIOUS)
-				to_chat(usr, "<span class='notice'>You struggle through the haze to hit the eject button. This will take a couple of minutes...</span>")
+				to_chat(usr, "<span class='notice'>Вы пытаетесь выбраться из тумана, чтобы нажать кнопку выброса. Это займет пару минут ...</span>")
 				if(do_after(usr, 2 MINUTES, src))
 					go_out()
 			if(CONSCIOUS)
@@ -456,19 +456,19 @@
 	if(stat & (BROKEN|NOPOWER))
 		return
 	if(occupant)
-		to_chat(user, "<span class='warning'>\The [src] is already occupied.</span>")
+		to_chat(user, "<span class='warning'>[src] уже занят.</span>")
 		return
 	if(!ishuman(M))
-		to_chat(user, "<span class='warning'>\The [src] is not designed for that organism!</span>")
+		to_chat(user, "<span class='warning'>[src] не предназначен для этого организма!</span>")
 		return
 	if(M == user)
-		visible_message("\The [user] starts climbing into \the [src].")
+		visible_message("[user] начинает лазить в [src].")
 	else
-		visible_message("\The [user] starts putting [M] into \the [src].")
+		visible_message("[user] начинает помещать [M] в [src].")
 
 	if(do_after(user, 20))
 		if(occupant)
-			to_chat(user, "<span class='warning'>\The [src] is already occupied.</span>")
+			to_chat(user, "<span class='warning'>[src] уже занят.</span>")
 			return
 		M.stop_pulling()
 		if(M.client)
@@ -516,15 +516,15 @@
 		if(occupant.reagents.get_reagent_amount(chemical) + amount <= max_chem)
 			use_power(amount * CHEM_SYNTH_ENERGY)
 			occupant.reagents.add_reagent(chemical, amount)
-			to_chat(user, "Occupant now has [occupant.reagents.get_reagent_amount(chemical)] units of [available_chemicals[chemical]] in their bloodstream.")
+			to_chat(user, "Теперь у пациента в кровотоке имеется [occupant.reagents.get_reagent_amount(chemical)] единиц [available_chemicals[chemical]].")
 		else
-			to_chat(user, "The subject has too many chemicals in their bloodstream.")
+			to_chat(user, "В кровотоке субъекта слишком много химических веществ.")
 	else
 		to_chat(user, "There's no suitable occupant in \the [src].")
 
 //Survival/Stasis sleepers
 /obj/machinery/sleeper/survival_pod
-	desc = "A limited functionality sleeper, all it can do is put patients into stasis. It lacks the medication and configuration of the larger units."
+	desc = "Слипер с ограниченной функциональностью, все, что он может сделать, это поставить пациентов в состояние застоя. В нем отсутствуют лекарства и конфигурация больших блоков."
 	icon_state = "sleeper"
 	stasis_level = 100 //Just one setting
 

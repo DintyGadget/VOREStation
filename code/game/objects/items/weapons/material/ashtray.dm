@@ -34,12 +34,12 @@ var/global/list/ashtray_cache = list()
 		if(!ashtray_cache["full"])
 			ashtray_cache["full"] = image('icons/obj/objects.dmi',"ashtray_full")
 		overlays |= ashtray_cache["full"]
-		desc = "It's stuffed full."
+		desc = "Он набит до отказа."
 	else if (contents.len > max_butts/2)
 		if(!ashtray_cache["half"])
 			ashtray_cache["half"] = image('icons/obj/objects.dmi',"ashtray_half")
 		overlays |= ashtray_cache["half"]
-		desc = "It's half-filled."
+		desc = "Он наполовину заполнен."
 	else
 		desc = "An ashtray made of [material.display_name]."
 

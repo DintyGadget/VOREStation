@@ -5,7 +5,7 @@
 /// Static Load
 /datum/map_template/tether_lateload/tether_misc
 	name = "Tether - Misc"
-	desc = "Misc areas, like some transit areas, holodecks, merc area."
+	desc = "Разные зоны, такие как транзитные зоны, голодеки, зона наемников."
 	mappath = 'tether_misc.dmm'
 
 	associated_map_datum = /datum/map_z_level/tether_lateload/misc
@@ -18,7 +18,7 @@
 #include "underdark_pois/underdark_things.dm"
 /datum/map_template/tether_lateload/tether_underdark
 	name = "Tether - Underdark"
-	desc = "Mining, but harder."
+	desc = "Майнинг, но посильнее."
 	mappath = 'tether_underdark.dmm'
 
 	associated_map_datum = /datum/map_z_level/tether_lateload/underdark
@@ -38,7 +38,7 @@
 
 /datum/map_template/tether_lateload/tether_plains
 	name = "Tether - Plains"
-	desc = "The Virgo 3B away mission."
+	desc = "Выездная миссия Virgo 3B."
 	mappath = 'tether_plains.dmm'
 	associated_map_datum = /datum/map_z_level/tether_lateload/tether_plains
 

@@ -21,7 +21,7 @@
 	icon_state = "[base_icon]_[lid_color]"
 
 /obj/item/weapon/reagent_containers/food/drinks/glass2/fitnessflask/proteinshake
-	name = "protein shake"
+	name = "протеиновый коктейль"
 
 /obj/item/weapon/reagent_containers/food/drinks/glass2/fitnessflask/proteinshake/Initialize()
 	. = ..()

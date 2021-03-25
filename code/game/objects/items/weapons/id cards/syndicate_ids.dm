@@ -31,17 +31,17 @@
 		var/obj/item/weapon/card/id/I = O
 		src.access |= I.access
 		if(player_is_antag(user.mind))
-			to_chat(user, "<span class='notice'>The microscanner activates as you pass it over the ID, copying its access.</span>")
+			to_chat(user, "<span class='notice'>Микросканер активируется, когда вы передаете его по ID, копируя его доступ.</span>")
 
 /obj/item/weapon/card/id/syndicate/attack_self(mob/user as mob)
 	// We use the fact that registered_name is not unset should the owner be vaporized, to ensure the id doesn't magically become unlocked.
 	if(!registered_user && register_user(user))
-		to_chat(user, "<span class='notice'>The microscanner marks you as its owner, preventing others from accessing its internals.</span>")
+		to_chat(user, "<span class='notice'>Микросканер отмечает вас как своего владельца, не позволяя другим получить доступ к его внутренним устройствам.</span>")
 	if(registered_user == user)
-		switch(alert("Would you like edit the ID, or show it?","Show or Edit?", "Edit","Show"))
-			if("Edit")
+		switch(alert("Вы хотите отредактировать ID или показать его?","Show or Edit?", "Ред.","Показ."))
+			if("Ред.")
 				agentcard_module.tgui_interact(user)
-			if("Show")
+			if("Показ.")
 				..()
 	else
 		..()
@@ -89,7 +89,7 @@
 
 /obj/item/weapon/card/id/syndicate_command
 	name = "syndicate ID card"
-	desc = "An ID straight from the Syndicate."
+	desc = "ID прямо из Syndicate."
 	registered_name = "Syndicate"
 	assignment = "Syndicate Commander"
 	icon_state = "syndicate-id"

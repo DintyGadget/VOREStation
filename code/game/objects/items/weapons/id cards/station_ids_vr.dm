@@ -3,7 +3,7 @@
 
 /obj/item/weapon/card/id/itg
 	name = "identification card"
-	desc = "A small card designating affiliation with the Ironcrest Transport Group."
+	desc = "Маленькая карточка, обозначающая принадлежность к Ironcrest Transport Group."
 	icon = 'icons/obj/card_vr.dmi'
 	icon_state = "itg"
 	item_state = "itg_id"
