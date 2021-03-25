@@ -13,14 +13,14 @@
  */
 /obj/item/weapon/card
 	name = "card"
-	desc = "Занимается карточными делами."
+	desc = "A tiny plaque of plastic. Does card things."
 	icon = 'icons/obj/card_new.dmi'
 	w_class = ITEMSIZE_TINY
 	slot_flags = SLOT_EARS
 	var/associated_account_number = 0
 
 	var/list/initial_sprite_stack = list("")
-	var/base_icon = "icons/obj/card_new.dmi"
+	var/base_icon = 'icons/obj/card_new.dmi'
 	var/list/sprite_stack
 
 	var/list/files = list(  )
@@ -54,7 +54,7 @@
 
 /obj/item/weapon/card/data
 	name = "data card"
-	desc = "Твердотельная карта памяти, используемая для резервного копирования или передачи информации. Какие знания он мог содержать?"
+	desc = "A solid-state storage card, used to back up or transfer information. What knowledge could it contain?"
 	icon_state = "data"
 	var/function = "storage"
 	var/data = "null"
@@ -64,7 +64,7 @@
 	pickup_sound = 'sound/items/pickup/disk.ogg'
 
 /obj/item/weapon/card/data/verb/label(t as text)
-	set name = "Этикетка карты"
+	set name = "Label Card"
 	set category = "Object"
 	set src in usr
 
@@ -80,7 +80,7 @@
 	icon_state = "rainbow"
 	item_state = "card-id"
 	level = 2
-	desc = "На этой карте указаны координаты легендарной планеты Клоун. Обращаться осторожно."
+	desc = "This card contains coordinates to the fabled Clown Planet. Handle with care."
 	function = "teleporter"
 	data = "Clown Land"
 
@@ -89,14 +89,14 @@
  */
 
 /obj/item/weapon/card/emag_broken
-	desc = "Это карта с магнитной полосой, прикрепленной к какой-то схеме. Выглядит слишком разрушенной, чтобы её можно было использовать ни для чего, кроме спасения."
+	desc = "It's a card with a magnetic strip attached to some circuitry. It looks too busted to be used for anything but salvage."
 	name = "broken cryptographic sequencer"
 	icon_state = "emag-spent"
 	item_state = "card-id"
 	origin_tech = list(TECH_MAGNET = 2, TECH_ILLEGAL = 2)
 
 /obj/item/weapon/card/emag
-	desc = "Это карта с магнитной полосой, прикрепленной к какой-то схеме."
+	desc = "It's a card with a magnetic strip attached to some circuitry."
 	name = "cryptographic sequencer"
 	icon_state = "emag"
 	item_state = "card-id"
@@ -119,7 +119,7 @@
 	log_and_message_admins("emagged \an [A].")
 
 	if(uses<1)
-		user.visible_message("<span class='warning'>[src] шипит и вспыхивает - кажется, когда-то его использовали слишком часто, а теперь он потрачен.</span>")
+		user.visible_message("<span class='warning'>\The [src] fizzles and sparks - it seems it's been used once too often, and is now spent.</span>")
 		user.drop_item()
 		var/obj/item/weapon/card/emag_broken/junk = new(user.loc)
 		junk.add_fingerprint(user)
@@ -131,9 +131,9 @@
 	if(istype(O, /obj/item/stack/telecrystal))
 		var/obj/item/stack/telecrystal/T = O
 		if(T.amount < 1)
-			to_chat(usr, "<span class='notice'>Вы не добавляете достаточно телекристаллов для подпитки [src].</span>")
+			to_chat(usr, "<span class='notice'>You are not adding enough telecrystals to fuel \the [src].</span>")
 			return
 		uses += T.amount/2 //Gives 5 uses per 10 TC
 		uses = CEILING(uses, 1) //Ensures no decimal uses nonsense, rounds up to be nice
-		to_chat(usr, "<span class='notice'>Вы добавляете [O] в [src]. Увеличение использования [src] до [uses].</span>")
+		to_chat(usr, "<span class='notice'>You add \the [O] to \the [src]. Increasing the uses of \the [src] to [uses].</span>")
 		qdel(O)
