@@ -1,13 +1,13 @@
 /mob/proc/changeling_respec()
 	set category = "Changeling"
 	set name = "Re-adapt"
-	set desc = "Allows us to refund our purchased abilities."
+	set desc = "Позволяет вернуть нам купленные способности."
 
 	var/datum/changeling/changeling = changeling_power(0,0,100)
 	if(!changeling)
 		return
 	if(src.mind.changeling.readapts <= 0)
-		to_chat(src, "<span class='warning'>We must first absorb another compatible creature!</span>")
+		to_chat(src, "<span class='warning'>Сначала мы должны поглотить другое совместимое существо!</span>")
 		src.mind.changeling.readapts = 0
 		return
 
@@ -27,6 +27,6 @@
 		H.remove_modifiers_of_type(/datum/modifier/endoarmor) //Revert endoarmor too.
 	src.make_changeling() //And give back our freebies.
 
-	to_chat(src, "<span class='notice'>We have removed our evolutions from this form, and are now ready to readapt.</span>")
+	to_chat(src, "<span class='notice'>Мы удалили нашу эволюцию из этой формы и теперь готовы к повторной адаптации.</span>")
 
 	ling_datum.purchased_powers_history.Add("Re-adapt (Reset to [ling_datum.max_geneticpoints])")

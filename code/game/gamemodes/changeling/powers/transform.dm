@@ -1,6 +1,6 @@
 /datum/power/changeling/transform
 	name = "Transform"
-	desc = "We take on the appearance and voice of one we have absorbed."
+	desc = "Мы принимаем облик и голос поглощенного нами человека."
 	ability_icon_state = "ling_transform"
 	genomecost = 0
 	verbpath = /mob/proc/changeling_transform
@@ -8,20 +8,20 @@
 //Change our DNA to that of somebody we've absorbed.
 /mob/proc/changeling_transform()
 	set category = "Changeling"
-	set name = "Transform (5)"
+	set name = "Трансформация (5)"
 
 	var/datum/changeling/changeling = changeling_power(5,1,0)
 	if(!changeling)	return
 
 	if(!isturf(loc))
-		to_chat(src, "<span class='warning'>Transforming here would be a bad idea.</span>")
+		to_chat(src, "<span class='warning'>Преобразование здесь было бы плохой идеей.</span>")
 		return 0
 
 	var/list/names = list()
 	for(var/datum/absorbed_dna/DNA in changeling.absorbed_dna)
 		names += "[DNA.name]"
 
-	var/S = input("Select the target DNA: ", "Target DNA", null) as null|anything in names
+	var/S = input("Выберите целевую ДНК: ", "Target DNA", null) as null|anything in names
 	if(!S)	return
 
 	var/datum/absorbed_dna/chosen_dna = changeling.GetDNA(S)
@@ -29,7 +29,7 @@
 		return
 
 	changeling.chem_charges -= 5
-	src.visible_message("<span class='warning'>[src] transforms!</span>")
+	src.visible_message("<span class='warning'>[src] трансформируется!</span>")
 	changeling.geneticdamage = 5
 
 	if(ishuman(src))

@@ -1,15 +1,15 @@
 //Revive from revival stasis
 /mob/proc/changeling_revive()
 	set category = "Changeling"
-	set name = "Revive"
-	set desc = "We are ready to revive ourselves on command."
+	set name = "Возродиться"
+	set desc = "Мы готовы возродиться по команде."
 
 	var/datum/changeling/changeling = changeling_power(0,0,100,DEAD)
 	if(!changeling)
 		return 0
 
 	if(changeling.max_geneticpoints < 0) //Absorbed by another ling
-		to_chat(src, "<span class='danger'>You have no genomes, not even your own, and cannot revive.</span>")
+		to_chat(src, "<span class='danger'>У вас нет генома, даже собственного, и вы не можете возродиться.</span>")
 		return 0
 
 	if(src.stat == DEAD)
@@ -75,7 +75,7 @@
 
 	C.halloss = 0
 	C.shock_stage = 0 //Pain
-	to_chat(C, "<span class='notice'>We have regenerated.</span>")
+	to_chat(C, "<span class='notice'>Мы возродились.</span>")
 	C.update_canmove()
 	C.mind.changeling.purchased_powers -= C
 	feedback_add_details("changeling_powers","CR")
@@ -92,15 +92,15 @@
 
 /obj/changeling_revive_holder
 	name = "strange object"
-	desc = "Please report this object's existence to the dev team! You shouldn't see it."
+	desc = "Сообщите о существовании этого объекта команде разработчиков! Вы не должны этого видеть."
 	mouse_opacity = FALSE
 	alpha = 1
 
 /obj/changeling_revive_holder/verb/ling_revive()
 	set src = usr.contents
 	set category = "Regenerate"
-	set name = "Revive"
-	set desc = "We are ready to revive ourselves on command."
+	set name = "Возродиться"
+	set desc = "Мы готовы возродиться по команде."
 
 	if(iscarbon(usr))
 		var/mob/living/carbon/C = usr

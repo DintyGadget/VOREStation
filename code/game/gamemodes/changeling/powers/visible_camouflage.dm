@@ -1,9 +1,9 @@
 /datum/power/changeling/visible_camouflage
 	name = "Camouflage"
-	desc = "We rapidly shape the color of our skin and secrete easily reversible dye on our clothes, to blend in with our surroundings.  \
-	We are undetectable, so long as we move slowly.(Toggle)"
-	helptext = "Running, and performing most acts will reveal us.  Our chemical regeneration is halted while we are hidden."
-	enhancedtext = "Can run while hidden."
+	desc = "Мы быстро меняем цвет нашей кожи и выделяем на одежду легко обратимый краситель, чтобы он гармонировал с окружающей средой.  \
+	Пока мы двигаемся медленно, нас невозможно обнаружить. (Toggle)"
+	helptext = "Бег и исполнение большинства действий раскроют нас. Наша химическая регенерация остановлена, пока мы спрятаны."
+	enhancedtext = "Не может бегать, когда спрятан."
 	ability_icon_state = "ling_camoflage"
 	genomecost = 3
 	verbpath = /mob/proc/changeling_visible_camouflage
@@ -11,8 +11,8 @@
 //Hide us from anyone who would do us harm.
 /mob/proc/changeling_visible_camouflage()
 	set category = "Changeling"
-	set name = "Visible Camouflage (10)"
-	set desc = "Turns yourself almost invisible, as long as you move slowly."
+	set name = "Видимый камуфляж (10)"
+	set desc = "Делает тебя почти невидимым, пока вы двигаетесь медленно."
 
 
 	if(istype(src,/mob/living/carbon/human))
@@ -30,7 +30,7 @@
 		changeling.chem_charges -= 10
 		var/old_regen_rate = H.mind.changeling.chem_recharge_rate
 
-		to_chat(H, "<span class='notice'>We vanish from sight, and will remain hidden, so long as we move carefully.</span>")
+		to_chat(H, "<span class='notice'>Мы исчезаем из виду и будем оставаться незамеченными, если будем двигаться осторожно.</span>")
 		H.mind.changeling.cloaked = 1
 		H.mind.changeling.chem_recharge_rate = 0
 		animate(src,alpha = 255, alpha = 10, time = 10)
@@ -38,7 +38,7 @@
 		var/must_walk = TRUE
 		if(src.mind.changeling.recursive_enhancement)
 			must_walk = FALSE
-			to_chat(src, "<span class='notice'>We may move at our normal speed while hidden.</span>")
+			to_chat(src, "<span class='notice'>Пока мы спрятаны, мы можем двигаться с нормальной скоростью.</span>")
 
 		if(must_walk)
 			H.set_m_intent("walk")
@@ -63,8 +63,8 @@
 
 
 		H.invisibility = initial(invisibility)
-		visible_message("<span class='warning'>[src] suddenly fades in, seemingly from nowhere!</span>",
-		"<span class='notice'>We revert our camouflage, revealing ourselves.</span>")
+		visible_message("<span class='warning'>[src] внезапно исчезает, словно в никуда!</span>",
+		"<span class='notice'>Мы снимаем камуфляж, обнажая себя.</span>")
 		H.set_m_intent("run")
 		H.mind.changeling.cloaked = 0
 		H.mind.changeling.chem_recharge_rate = old_regen_rate

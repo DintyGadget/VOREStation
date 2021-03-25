@@ -1,17 +1,17 @@
 /datum/power/changeling/resonant_shriek
 	name = "Resonant Shriek"
-	desc = "Our lungs and vocal cords shift, allowing us to briefly emit a noise that deafens and confuses the weak-minded."
-	helptext = "Lights are blown, organics are disoriented, and synthetics act as if they were flashed."
-	enhancedtext = "Range is doubled."
+	desc = "Наши легкие и голосовые связки смещаются, позволяя нам на короткое время издать шум, который оглушает и сбивает с толку слабонервных."
+	helptext = "Свет задут, органика дезориентирована, а синтетика действует так, как будто ее всковырнули."
+	enhancedtext = "Дальность увеличена вдвое."
 	ability_icon_state = "ling_resonant_shriek"
 	genomecost = 2
 	verbpath = /mob/proc/changeling_resonant_shriek
 
 /datum/power/changeling/dissonant_shriek
 	name = "Dissonant Shriek"
-	desc = "We shift our vocal cords to release a high-frequency sound that overloads nearby electronics."
-	helptext = "Creates a moderate sized EMP."
-	enhancedtext = "Range is doubled."
+	desc = "Мы сдвигаем наши голосовые связки, чтобы издать высокочастотный звук, который перегружает находящуюся рядом электронику."
+	helptext = "Создает ЭМИ среднего размера."
+	enhancedtext = "Дальность увеличена вдвое."
 	ability_icon_state = "ling_dissonant_shriek"
 	genomecost = 2
 	verbpath = /mob/proc/changeling_dissonant_shriek
@@ -19,28 +19,28 @@
 //A flashy ability, good for crowd control and sewing chaos.
 /mob/proc/changeling_resonant_shriek()
 	set category = "Changeling"
-	set name = "Resonant Shriek (20)"
+	set name = "Резонирующий визг (20)"
 	set desc = "Emits a high-frequency sound that confuses and deafens organics, blows out nearby lights, and overloads synthetics' sensors."
 
 	var/datum/changeling/changeling = changeling_power(20,0,100,CONSCIOUS)
 	if(!changeling)	return 0
 
 	if(is_muzzled())
-		to_chat(src, "<span class='danger'>Mmmf mrrfff!</span>")
+		to_chat(src, "<span class='danger'>Мммф мрмфф!</span>")
 		return 0
 
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
 		if(H.silent)
-			to_chat(src, "<span class='danger'>You can't speak!</span>")
+			to_chat(src, "<span class='danger'>Вы не можете говорить!</span>")
 			return 0
 
 	if(world.time < (changeling.last_shriek + 10 SECONDS) )
-		to_chat(src, "<span class='warning'>We are still recovering from our last shriek...</span>")
+		to_chat(src, "<span class='warning'>Мы все еще оправляемся от нашего последнего крика ...</span>")
 		return 0
 
 	if(!isturf(loc))
-		to_chat(src, "<span class='warning'>Shrieking here would be a bad idea.</span>")
+		to_chat(src, "<span class='warning'>Кричать здесь было бы плохой идеей.</span>")
 		return 0
 
 	src.break_cloak()	//No more invisible shrieking
@@ -49,29 +49,29 @@
 	var/range = 4
 	if(src.mind.changeling.recursive_enhancement)
 		range = range * 2
-		to_chat(src, "<span class='notice'>We are extra loud.</span>")
+		to_chat(src, "<span class='notice'>Мы очень громкие.</span>")
 
-	visible_message("<span class='notice'>[src] appears to shout.</span>")
+	visible_message("<span class='notice'>[src], кажется, кричит.</span>")
 	var/list/affected = list()
 	for(var/mob/living/M in range(range, src))
 		if(iscarbon(M))
 			if(!M.mind || !M.mind.changeling)
 				if(M.get_ear_protection() >= 2)
 					continue
-				to_chat(M, "<span class='danger'>You hear an extremely loud screeching sound!  It \
-				[pick("confuses","confounds","perturbs","befuddles","dazes","unsettles","disorients")] you.</span>")
+				to_chat(M, "<span class='danger'>Вы слышите очень громкий визг!  Он \
+				[pick("сбивает с толку","поражает","беспокоит","одурманивает","ошеломляет","тревожит","дезориентирует")] вас.</span>")
 				M.adjustEarDamage(0,30)
 				M.Confuse(20)
 				M << sound('sound/effects/screech.ogg')
 				affected += M
 			else
 				if(M != src)
-					to_chat(M, "<span class='notice'>You hear a familiar screech from nearby.  It has no effect on you.</span>")
+					to_chat(M, "<span class='notice'>Вы слышите знакомый визг поблизости. На вас это не действует.</span>")
 				M << sound('sound/effects/screech.ogg')
 
 		if(issilicon(M))
 			M << sound('sound/weapons/flash.ogg')
-			to_chat(M, "<span class='notice'>Auditory input overloaded.  Reinitializing...</span>")
+			to_chat(M, "<span class='notice'>Слуховой ввод перегружен. Повторная инициализация ...</span>")
 			M.Weaken(rand(5,10))
 			affected += M
 
@@ -88,28 +88,28 @@
 //EMP version
 /mob/proc/changeling_dissonant_shriek()
 	set category = "Changeling"
-	set name = "Dissonant Shriek (20)"
+	set name = "Диссонантный визг (20)"
 	set desc = "We shift our vocal cords to release a high-frequency sound that overloads nearby electronics."
 
 	var/datum/changeling/changeling = changeling_power(20,0,100,CONSCIOUS)
 	if(!changeling)	return 0
 
 	if(is_muzzled())
-		to_chat(src, "<span class='danger'>Mmmf mrrfff!</span>")
+		to_chat(src, "<span class='danger'>Мммф мрммф!</span>")
 		return 0
 
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
 		if(H.silent)
-			to_chat(src, "<span class='danger'>You can't speak!</span>")
+			to_chat(src, "<span class='danger'>Вы не можете говорить!</span>")
 			return 0
 
 	if(world.time < (changeling.last_shriek + 10 SECONDS) )
-		to_chat(src, "<span class='warning'>We are still recovering from our last shriek...</span>")
+		to_chat(src, "<span class='warning'>Мы все еще оправляемся от нашего последнего крика ...</span>")
 		return 0
 
 	if(!isturf(loc))
-		to_chat(src, "<span class='warning'>Shrieking here would be a bad idea.</span>")
+		to_chat(src, "<span class='warning'>Кричать здесь было бы плохой идеей.</span>")
 		return 0
 
 	src.break_cloak()	//No more invisible shrieking
@@ -125,10 +125,10 @@
 		range_med = range_med * 2
 		range_light = range_light * 2
 		range_long = range_long * 2
-		to_chat(src, "<span class='notice'>We are extra loud.</span>")
+		to_chat(src, "<span class='notice'>Мы очень громкие.</span>")
 		src.mind.changeling.recursive_enhancement = 0
 
-	visible_message("<span class='notice'>[src] appears to shout.</span>")
+	visible_message("<span class='notice'>[src], кажется, кричит.</span>")
 
 	add_attack_logs(src,null,"Use dissonant shriek")
 

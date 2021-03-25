@@ -1,10 +1,10 @@
 
 /obj/item/stack/hose
-	name = "plastic tubing"
+	name = "пластиковые трубки"
 	singular_name = "plastic tube"
-	desc = "A non-reusable plastic tube for moving reagents to and fro. It looks flimsy."
+	desc = "Пластиковая трубка одноразового использования для перемещения реагентов туда и обратно. Выглядит хлипко."
 
-	description_info = "This tubing may be used to join two hose sockets, if able.<br>\
+	description_info = "Эту трубку можно использовать для соединения двух шланговых муфт, если это возможно.<br>\
 	Clicking on an object with a connector, such as a water tank, will display a list of possible sockets.<br>\
 	Neutral can link to all socket types, and Input/Output sockets can link to all but their own type.<br><br>\
 	<span class='warning'>This hose does not stretch. The maximum distance you can move two objects from eachother\
@@ -25,7 +25,7 @@
 
 /obj/item/stack/hose/CtrlClick(mob/user)
 	if(remembered)
-		to_chat(user, "<span class='notice'>You wind \the [src] back up.</span>")
+		to_chat(user, "<span class='notice'>Вы снова накручиваете [src].</span>")
 		remembered = null
 	return
 
