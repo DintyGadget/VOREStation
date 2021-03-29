@@ -10,7 +10,7 @@
 	desc = "Ультра редкий коллекционный головной убор. Вызывает уважение."
 	icon_state = "petehat"
 	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/species/seromi/head.dmi',
+		SPECIES_TESHARI = 'icons/mob/species/teshari/head.dmi',
 		SPECIES_VOX = 'icons/mob/species/vox/head.dmi'
 		)
 
