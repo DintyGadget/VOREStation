@@ -32,8 +32,8 @@
  * Balloons
  */
 /obj/item/toy/balloon
-	name = "водяной шарик"
-	desc = "Прозрачный резиновый шарик. Внутри ничего нет."
+	name = "water balloon"
+	desc = "A translucent balloon. There's nothing in it."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "waterballoon-e"
 	drop_sound = 'sound/items/drop/rubber.ogg'
@@ -50,8 +50,8 @@
 	if(!proximity) return
 	if (istype(A, /obj/structure/reagent_dispensers/watertank) && get_dist(src,A) <= 1)
 		A.reagents.trans_to_obj(src, 10)
-		to_chat(user, "<span class='notice'>Вы наполняете водяной шарик содержимым сосуда.</span>")
-		src.desc = "Прозрачный резиновый шарик с некой бултыхающейся жидкостью внутри."
+		to_chat(user, "<span class='notice'>You fill the balloon with the contents of [A].</span>")
+		src.desc = "A translucent balloon with some form of liquid sloshing around in it."
 		src.update_icon()
 	return
 
@@ -59,22 +59,22 @@
 	if(istype(O, /obj/item/weapon/reagent_containers/glass))
 		if(O.reagents)
 			if(O.reagents.total_volume < 1)
-				to_chat(user, "Этот [O] пуст.")
+				to_chat(user, "The [O] is empty.")
 			else if(O.reagents.total_volume >= 1)
 				if(O.reagents.has_reagent("pacid", 1))
-					to_chat(user, "Кислота прожигает шарик!")
+					to_chat(user, "The acid chews through the balloon!")
 					O.reagents.splash(user, reagents.total_volume)
 					qdel(src)
 				else
-					src.desc = "Прозрачный резиновый шарик с некой бултыхающейся жидкостью внутри."
-					to_chat(user, "<span class='notice'>Вы наполняете водяной шарик содержимым сосуда.</span>")
+					src.desc = "A translucent balloon with some form of liquid sloshing around in it."
+					to_chat(user, "<span class='notice'>You fill the balloon with the contents of [O].</span>")
 					O.reagents.trans_to_obj(src, 10)
 	src.update_icon()
 	return
 
 /obj/item/toy/balloon/throw_impact(atom/hit_atom)
 	if(src.reagents.total_volume >= 1)
-		src.visible_message("<span class='warning'>Водяной шарик лопается!</span>","Вы слышите, как что-то лопается и расплескивается.")
+		src.visible_message("<span class='warning'>\The [src] bursts!</span>","You hear a pop and a splash.")
 		src.reagents.touch_turf(get_turf(hit_atom))
 		for(var/atom/A in get_turf(hit_atom))
 			src.reagents.touch(A)
@@ -91,8 +91,8 @@
 		icon_state = "waterballoon-e"
 
 /obj/item/toy/syndicateballoon
-	name = "преступный шарик"
-	desc = "На тыльной стороне бирка с надписью \"НТ СОСАТТ!11!\"."
+	name = "criminal balloon"
+	desc = "There is a tag on the back that reads \"FUK NT!11!\"."
 	throwforce = 0
 	throw_speed = 4
 	throw_range = 20
@@ -103,8 +103,8 @@
 	drop_sound = 'sound/items/drop/rubber.ogg'
 
 /obj/item/toy/nanotrasenballoon
-	name = "преступный шарик"
-	desc = "По всему шарику распластана надпись: \"Блин, я тааааак тащусь от НТ. Я использую только товары НТ, вы даже не представляете.\""
+	name = "criminal balloon"
+	desc = "Across the balloon the following is printed: \"Man, I love NanoTrasen soooo much. I use only NT products. You have NO idea.\""
 	throwforce = 0
 	throw_speed = 4
 	throw_range = 20
@@ -130,8 +130,8 @@
  * Fake telebeacon
  */
 /obj/item/toy/blink
-	name = "электронная мигалка"
-	desc = "Пик. Пик. Пик. Детям от 8 лет."
+	name = "electronic blink toy game"
+	desc = "Blink.  Blink.  Blink. Ages 8 and up."
 	icon = 'icons/obj/radio.dmi'
 	icon_state = "beacon"
 	item_state = "signaler"
@@ -140,8 +140,8 @@
  * Fake singularity
  */
 /obj/item/toy/spinningtoy
-	name = "гравитационная сингулярность"
-	desc = "Спиннер бренда \"Сингуло\"."
+	name = "gravitational singularity"
+	desc = "\"Singulo\" brand spinning toy."
 	icon = 'icons/obj/singularity.dmi'
 	icon_state = "singularity_s1"
 
@@ -150,8 +150,8 @@
  */
 
 /obj/item/toy/crossbow
-	name = "пенный арбалет"
-	desc = "Любимое оружие среди множества гиперактивных детей. Детям от 8 лет."
+	name = "foam dart crossbow"
+	desc = "A weapon favored by many overactive children. Ages 8 and up."
 	icon = 'icons/obj/gun.dmi'
 	icon_state = "crossbow"
 	item_icons = list(
@@ -167,7 +167,7 @@
 	examine(mob/user)
 		. = ..()
 		if(bullets && get_dist(user, src) <= 2)
-			. += "<span class='notice'>В него заправлено [bullets] дротиков!</span>"
+			. += "<span class='notice'>It is loaded with [bullets] foam darts!</span>"
 
 	attackby(obj/item/I as obj, mob/user as mob)
 		if(istype(I, /obj/item/toy/ammo/crossbow))
@@ -175,9 +175,9 @@
 				user.drop_item()
 				qdel(I)
 				bullets++
-				to_chat(user, "<span class='notice'>Вы заправляете пенный дротик в арбалет!</span>")
+				to_chat(user, "<span class='notice'>You load the foam dart into the crossbow.</span>")
 			else
-				to_chat(usr, "<span class='warning'>В арбалете больше нет места!</span>")
+				to_chat(usr, "<span class='warning'>It's already fully loaded.</span>")
 
 
 	afterattack(atom/target as mob|obj|turf|area, mob/user as mob, flag)
@@ -191,7 +191,7 @@
 			var/obj/effect/foam_dart_dummy/D = new/obj/effect/foam_dart_dummy(get_turf(src))
 			bullets--
 			D.icon_state = "foamdart"
-			D.name = "пенный дротик"
+			D.name = "foam dart"
 			playsound(src, 'sound/items/syringeproj.ogg', 50, 1)
 
 			for(var/i=0, i<6, i++)
@@ -203,7 +203,7 @@
 						if(!istype(M,/mob/living)) continue
 						if(M == user) continue
 						for(var/mob/O in viewers(world.view, D))
-							O.show_message(text("<span class='warning'>В [] попадает пенный дротик!</span>", M), 1)
+							O.show_message(text("<span class='warning'>\The [] was hit by the foam dart!</span>", M), 1)
 						new /obj/item/toy/ammo/crossbow(M.loc)
 						qdel(D)
 						return
@@ -225,7 +225,7 @@
 		else if (bullets == 0)
 			user.Weaken(5)
 			for(var/mob/O in viewers(world.view, user))
-				O.show_message(text("<span class='warning'>[] осознает, что в арбалете закончились снаряды, и начинает трепетно искать оставшиеся!</span>", user), 1)
+				O.show_message(text("<span class='warning'>\The [] realized they were out of ammo and starting scrounging for some!</span>", user), 1)
 
 
 	attack(mob/M as mob, mob/user as mob)
@@ -237,7 +237,7 @@
 
 			for(var/mob/O in viewers(M, null))
 				if(O.client)
-					O.show_message(text("<span class='danger'>[] как ни в чем ни бывало целится в голову [] и нажимает на курок!</span>", user, M), 1, "<span class='warning'>Вы слышите звук удара пенного дротика об череп.</span>", 2)
+					O.show_message(text("<span class='danger'>\The [] casually lines up a shot with []'s head and pulls the trigger!</span>", user, M), 1, "<span class='warning'>You hear the sound of foam against skull</span>", 2)
 					O.show_message(text("<span class='warning'>\The [] was hit in the head by the foam dart!</span>", M), 1)
 
 			playsound(src, 'sound/items/syringeproj.ogg', 50, 1)
@@ -245,13 +245,13 @@
 			src.bullets--
 		else if (M.lying && src.bullets == 0)
 			for(var/mob/O in viewers(M, null))
-				if (O.client)	O.show_message(text("<span class='danger'>[] как ни в чем ни бывало целится в голову [] и нажимает на курок, однако осознаёт, что патронов не осталось, и бросается собирать их по полу!</span>", user, M), 1, "<span class='warning'>Вы слышите, как кто-то упал.</span>", 2)
+				if (O.client)	O.show_message(text("<span class='danger'>\The [] casually lines up a shot with []'s head, pulls the trigger, then realizes they are out of ammo and drops to the floor in search of some!</span>", user, M), 1, "<span class='warning'>You hear someone fall</span>", 2)
 			user.Weaken(5)
 		return
 
 /obj/item/toy/ammo/crossbow
-	name = "пенный дротик"
-	desc = "Нёрф. Всё или ничего! Детям от 8 лет."
+	name = "foam dart"
+	desc = "It's nerf or nothing! Ages 8 and up."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "foamdart"
 	w_class = ITEMSIZE_TINY
@@ -270,8 +270,8 @@
  * Toy swords
  */
 /obj/item/toy/sword
-	name = "игрушечный меч"
-	desc = "Дешевая пластиковая копия энергетического меча. Реалистичные звуки! Детям от 8 лет."
+	name = "toy sword"
+	desc = "A cheap, plastic replica of an energy sword. Realistic sounds! Ages 8 and up."
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "esword"
 	drop_sound = 'sound/items/drop/gun.ogg'
@@ -283,17 +283,17 @@
 		)
 	var/active = 0
 	w_class = ITEMSIZE_SMALL
-	attack_verb = list("атакует", "ударяет")
+	attack_verb = list("attacked", "struck", "hit")
 
 	attack_self(mob/user as mob)
 		src.active = !( src.active )
 		if (src.active)
-			to_chat(user, "<span class='notice'>Вы выдвигаете пластиковый клинок быстрым движением запястья.</span>")
+			to_chat(user, "<span class='notice'>You extend the plastic blade with a quick flick of your wrist.</span>")
 			playsound(src, 'sound/weapons/saberon.ogg', 50, 1)
 			src.item_state = "[icon_state]_blade"
 			src.w_class = ITEMSIZE_LARGE
 		else
-			to_chat(user, "<span class='notice'>Вы проталкиваете пластиковый клинок обратно в рукоятку.</span>")
+			to_chat(user, "<span class='notice'>You push the plastic blade back down into the handle.</span>")
 			playsound(src, 'sound/weapons/saberoff.ogg', 50, 1)
 			src.item_state = "[icon_state]"
 			src.w_class = ITEMSIZE_SMALL
@@ -317,18 +317,18 @@
 	if(!in_range(src, user))	//Basic checks to prevent abuse
 		return
 	if(user.incapacitated() || !istype(user))
-		to_chat(user, "<span class='warning'>Вы не можете сейчас это сделать!</span>")
+		to_chat(user, "<span class='warning'>You can't do that right now!</span>")
 		return
 
-	if(alert("Хотите ли Вы перекрасить свой меч?", "Подтвердить Перекрас", "Да", "Нет") == "Да")
-		var/energy_color_input = input(usr,"","Выберите Цвет",lcolor) as color|null
+	if(alert("Are you sure you want to recolor your blade?", "Confirm Recolor", "Yes", "No") == "Yes")
+		var/energy_color_input = input(usr,"","Choose Energy Color",lcolor) as color|null
 		if(energy_color_input)
 			lcolor = sanitize_hexcolor(energy_color_input)
 		update_icon()
 
 /obj/item/toy/sword/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>Альт+клик, чтобы перекрасить.</span>"
+	. += "<span class='notice'>Alt-click to recolor it.</span>"
 
 /obj/item/toy/sword/attackby(obj/item/weapon/W, mob/user)
 	if(istype(W, /obj/item/device/multitool) && !active)
@@ -336,11 +336,11 @@
 			rainbow = TRUE
 		else
 			rainbow = FALSE
-		to_chat(user, "<span class='notice'>Вы настраиваете цветовой модуль игрушечного меча.</span>")
+		to_chat(user, "<span class='notice'>You manipulate the color controller in [src].</span>")
 		update_icon()
 /obj/item/toy/katana
-	name = "поддельная катана"
-	desc = "Крайне слаба в д20."
+	name = "replica katana"
+	desc = "Woefully underpowered in D20."
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "katana"
 	item_state = "katana"
@@ -358,8 +358,8 @@
  * Snap pops
  */
 /obj/item/toy/snappop
-	name = "хлопушка"
-	desc = "Вау!"
+	name = "snap pop"
+	desc = "Wow!"
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "snappop"
 	w_class = ITEMSIZE_TINY
@@ -371,7 +371,7 @@
 		s.set_up(3, 1, src)
 		s.start()
 		new /obj/effect/decal/cleanable/ash(src.loc)
-		src.visible_message("<span class='warning'>Хлопушка лопается!</span>","<span class='warning'>Вы услышали, как что-то хлопнуло!</span>")
+		src.visible_message("<span class='warning'>The [src.name] explodes!</span>","<span class='warning'>You hear a snap!</span>")
 		playsound(src, 'sound/effects/snap.ogg', 50, 1)
 		qdel(src)
 
@@ -381,13 +381,13 @@
 	if((ishuman(H))) //i guess carp and shit shouldn't set them off
 		var/mob/living/carbon/M = H
 		if(M.m_intent == "run")
-			to_chat(M, "<span class='warning'>Вы наступаете на хлопушку!</span>")
+			to_chat(M, "<span class='warning'>You step on the snap pop!</span>")
 
 			var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
 			s.set_up(2, 0, src)
 			s.start()
 			new /obj/effect/decal/cleanable/ash(src.loc)
-			src.visible_message("<span class='warning'>Хлопушка лопается!</span>","<span class='warning'>Вы услышали, как что-то хлопнуло!</span>")
+			src.visible_message("<span class='warning'>The [src.name] explodes!</span>","<span class='warning'>You hear a snap!</span>")
 			playsound(src, 'sound/effects/snap.ogg', 50, 1)
 			qdel(src)
 
@@ -396,8 +396,8 @@
  */
 
 /obj/item/toy/bosunwhistle
-	name = "свисток Босуна"
-	desc = "Настоящий свисток Адмирала Краш Босуна для любого, кто мечтает стать капитаном корабля! Предназачен детям от 8 лет, не проглатывать."
+	name = "bosun's whistle"
+	desc = "A genuine Admiral Krush Bosun's Whistle, for the aspiring ship's captain! Suitable for ages 8 and up, do not swallow."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "bosunwhistle"
 	drop_sound = 'sound/items/drop/card.ogg'
@@ -407,7 +407,7 @@
 
 /obj/item/toy/bosunwhistle/attack_self(mob/user as mob)
 	if(cooldown < world.time - 35)
-		to_chat(user, "<span class='notice'>Вы свистите [src], создавая режущий уши звук!</span>")
+		to_chat(user, "<span class='notice'>You blow on [src], creating an ear-splitting noise!</span>")
 		playsound(src, 'sound/misc/boatswain.ogg', 20, 1)
 		cooldown = world.time
 
@@ -415,257 +415,257 @@
  * Action figures
  */
 /obj/item/toy/figure
-	name = "какая-то коллекционная фигурка"
-	desc = "Бренд \"Space Life\"... стоп, это вообще что?"
+	name = "Non-Specific Action Figure action figure"
+	desc = "A \"Space Life\" brand... wait, what the hell is this thing?"
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "nuketoy"
 	var/cooldown = 0
-	var/toysay = "Ты че натворил вообще?"
+	var/toysay = "What the fuck did you do?"
 	drop_sound = 'sound/items/drop/accessory.ogg'
 
 /obj/item/toy/figure/New()
 	..()
-	desc = "Это [name] бренда \"Space Life\""
+	desc = "A \"Space Life\" brand [name]"
 
 /obj/item/toy/figure/attack_self(mob/user as mob)
 	if(cooldown < world.time)
 		cooldown = (world.time + 30) //3 second cooldown
-		user.visible_message("<span class='notice'>Эта [src] говорит \"[toysay]\".</span>")
+		user.visible_message("<span class='notice'>The [src] says \"[toysay]\".</span>")
 		playsound(src, 'sound/machines/click.ogg', 20, 1)
 
 /obj/item/toy/figure/cmo
-	name = "коллекционная фигурка Главврача"
-	desc = "Коллекционная фигурка Главврача бренда \"Space Life\"."
+	name = "Chief Medical Officer action figure"
+	desc = "A \"Space Life\" brand Chief Medical Officer action figure."
 	icon_state = "cmo"
-	toysay = "Не забываем про датчики!"
+	toysay = "Suit sensors!"
 
 /obj/item/toy/figure/assistant
-	name = "коллекционная фигурка ассистента"
-	desc = "Коллекционная фигурка ассистента бренда \"Space Life\"."
+	name = "Assistant action figure"
+	desc = "A \"Space Life\" brand Assistant action figure."
 	icon_state = "assistant"
-	toysay = "Набегаем, пацаны!"
+	toysay = "Grey tide station wide!"
 
 /obj/item/toy/figure/atmos
-	name = "коллекционная фигурка атмосферного техника"
-	desc = "Коллекционная фигурка атмосферного техника бренда \"Space Life\"."
+	name = "Atmospheric Technician action figure"
+	desc = "A \"Space Life\" brand Atmospheric Technician action figure."
 	icon_state = "atmos"
-	toysay = "Слава Атмосии!"
+	toysay = "Glory to Atmosia!"
 
 /obj/item/toy/figure/bartender
-	name = "коллекционная фигурка бармена"
-	desc = "Коллекционная фигурка бармена бренда \"Space Life\"."
+	name = "Bartender action figure"
+	desc = "A \"Space Life\" brand Bartender action figure."
 	icon_state = "bartender"
-	toysay = "Где моя мартышка?"
+	toysay = "Where's my monkey?"
 
 /obj/item/toy/figure/borg
-	name = "коллекционная фигурка дрона"
-	desc = "Коллекционная фигурка дрона бренда \"Space Life\"."
+	name = "Drone action figure"
+	desc = "A \"Space Life\" brand Drone action figure."
 	icon_state = "borg"
-	toysay = "Я. СНОВА. ЖИВ."
+	toysay = "I. LIVE. AGAIN."
 
 /obj/item/toy/figure/gardener
-	name = "коллекционная фигурка садовника"
-	desc = "Коллекционная фигурка садовника бренда \"Space Life\"."
+	name = "Gardener action figure"
+	desc = "A \"Space Life\" brand Gardener action figure."
 	icon_state = "botanist"
-	toysay = "Бро, я вижу радугу..."
+	toysay = "Dude, I see colors..."
 
 /obj/item/toy/figure/captain
-	name = "коллекционная фигурка Директора Колонии"
-	desc = "Коллекционная фигурка Директора Колонии бренда \"Space Life\"."
+	name = "Site Manager action figure"
+	desc = "A \"Space Life\" brand Site Manager action figure."
 	icon_state = "captain"
-	toysay = "Как открыть эту витрину?"
+	toysay = "How do I open this display case?"
 
 /obj/item/toy/figure/cargotech
-	name = "коллекционная фигурка грузчика"
-	desc = "Коллекционная фигурка грузчика бренда \"Space Life\"."
+	name = "Cargo Technician action figure"
+	desc = "A \"Space Life\" brand Cargo Technician action figure."
 	icon_state = "cargotech"
-	toysay = "За Каргонию!"
+	toysay = "For Cargonia!"
 
 /obj/item/toy/figure/ce
-	name = "коллекционная фигурка Главного Инженера"
-	desc = "Коллекционная фигурка Главного Инженера бренда \"Space Life\"."
+	name = "Chief Engineer action figure"
+	desc = "A \"Space Life\" brand Chief Engineer action figure."
 	icon_state = "ce"
-	toysay = "Подключите солярки!"
+	toysay = "Wire the solars!"
 
 /obj/item/toy/figure/chaplain
-	name = "коллекционная фигурка капеллана"
-	desc = "Коллекционная фигурка капеллана бренда \"Space Life\"."
+	name = "Chaplain action figure"
+	desc = "A \"Space Life\" brand Chaplain action figure."
 	icon_state = "chaplain"
-	toysay = "Боги, даруйте мне орудие убийств!"
+	toysay = "Gods make me a killing machine please!"
 
 /obj/item/toy/figure/chef
-	name = "коллекционная фигурка повара"
-	desc = "Коллекционная фигурка повара бренда \"Space Life\"."
+	name = "Chef action figure"
+	desc = "A \"Space Life\" brand Chef action figure."
 	icon_state = "chef"
-	toysay = "Клянусь, это не человеческое мясо."
+	toysay = "I swear it's not human meat."
 
 /obj/item/toy/figure/chemist
-	name = "коллекционная фигурка химика"
-	desc = "Коллекционная фигурка химика бренда \"Space Life\"."
+	name = "Chemist action figure"
+	desc = "A \"Space Life\" brand Chemist action figure."
 	icon_state = "chemist"
-	toysay = "Забирайте свои таблетки!"
+	toysay = "Get your pills!"
 
 /obj/item/toy/figure/clown
-	name = "коллекционная фигурка клоуна"
-	desc = "Коллекционная фигурка клоуна бренда \"Space Life\"."
+	name = "Clown action figure"
+	desc = "A \"Space Life\" brand Clown action figure."
 	icon_state = "clown"
-	toysay = "<font face='comic sans ms'><b>Хонк!</b></font>"
+	toysay = "<font face='comic sans ms'><b>Honk!</b></font>"
 
 /obj/item/toy/figure/corgi
-	name = "коллекционная фигурка корги"
-	desc = "Коллекционная фигурка корги бренда \"Space Life\"."
+	name = "Corgi action figure"
+	desc = "A \"Space Life\" brand Corgi action figure."
 	icon_state = "ian"
-	toysay = "Арф!"
+	toysay = "Arf!"
 
 /obj/item/toy/figure/detective
-	name = "коллекционная фигурка детектива"
-	desc = "Коллекционная фигурка детектива бренда \"Space Life\"."
+	name = "Detective action figure"
+	desc = "A \"Space Life\" brand Detective action figure."
 	icon_state = "detective"
-	toysay = "На этом шлюзе остались фибры серого комбинезона и резиновых перчаток."
+	toysay = "This airlock has grey jumpsuit and insulated glove fibers on it."
 
 /obj/item/toy/figure/dsquad
-	name = "коллекционная фигурка коммандо"
-	desc = "Коллекционная фигурка коммандо бренда \"Space Life\"."
+	name = "Space Commando action figure"
+	desc = "A \"Space Life\" brand Space Commando action figure."
 	icon_state = "dsquad"
-	toysay = "Устранить все угрозы!"
+	toysay = "Eliminate all threats!"
 
 /obj/item/toy/figure/engineer
-	name = "коллекционная фигурка инженера"
-	desc = "Коллекционная фигурка инженера бренда \"Space Life\"."
+	name = "Engineer action figure"
+	desc = "A \"Space Life\" brand Engineer action figure."
 	icon_state = "engineer"
-	toysay = "О боже, движок щас полетит!"
+	toysay = "Oh god, the engine is gonna go!"
 
 /obj/item/toy/figure/geneticist
-	name = "коллекционная фигурка генетика"
-	desc = "Коллекционная фигурка генетика бренда \"Space Life\", которую больше уже не делают."
+	name = "Geneticist action figure"
+	desc = "A \"Space Life\" brand Geneticist action figure, which was recently dicontinued."
 	icon_state = "geneticist"
-	toysay = "Эта работа не для меня."
+	toysay = "I'm not qualified for this job."
 
 /obj/item/toy/figure/hop
-	name = "коллекционная фигурка Главы Персонала"
-	desc = "Коллекционная фигурка Главы Персонала бренда \"Space Life\"."
+	name = "Head of Personnel action figure"
+	desc = "A \"Space Life\" brand Head of Personnel action figure."
 	icon_state = "hop"
-	toysay = "Раздаю доступы!"
+	toysay = "Giving out all access!"
 
 /obj/item/toy/figure/hos
-	name = "коллекционная фигурка Главы Службы Безопасности"
-	desc = "Коллекционная фигурка Главы Службы Безопасности бренда \"Space Life\"."
+	name = "Head of Security action figure"
+	desc = "A \"Space Life\" brand Head of Security action figure."
 	icon_state = "hos"
-	toysay = "Я здесь, чтобы побеждать, а остальное уже потом."
+	toysay = "I'm here to win, anything else is secondary."
 
 /obj/item/toy/figure/qm
-	name = "коллекционная фигурка Квартирмейстера"
-	desc = "Коллекционная фигурка Квартирмейстера бренда \"Space Life\"."
+	name = "Quartermaster action figure"
+	desc = "A \"Space Life\" brand Quartermaster action figure."
 	icon_state = "qm"
-	toysay = "Славься, Каргония!"
+	toysay = "Hail Cargonia!"
 
 /obj/item/toy/figure/janitor
-	name = "коллекционная фигурка уборщика"
-	desc = "Коллекционная фигурка уборщика бренда \"Space Life\"."
+	name = "Janitor action figure"
+	desc = "A \"Space Life\" brand Janitor action figure."
 	icon_state = "janitor"
-	toysay = "Смотри на таблички, кретин."
+	toysay = "Look at the signs, you idiot."
 
 /obj/item/toy/figure/agent
-	name = "коллекционная фигурка агента внутренних дел"
-	desc = "Коллекционная фигурка агента внутренних дел бренда \"Space Life\"."
+	name = "Internal Affairs Agent action figure"
+	desc = "A \"Space Life\" brand Internal Affairs Agent action figure."
 	icon_state = "agent"
-	toysay = "Согласно Стандартам Операционного Порядка, он виновен! Взлом доказывает, что он враг корпорации!"
+	toysay = "Standard Operating Procedure says they're guilty! Hacking is proof they're an Enemy of the Corporation!"
 
 /obj/item/toy/figure/librarian
-	name = "коллекционная фигурка библиотекаря"
-	desc = "Коллекционная фигурка библиотекаря бренда \"Space Life\"."
+	name = "Librarian action figure"
+	desc = "A \"Space Life\" brand Librarian action figure."
 	icon_state = "librarian"
-	toysay = "Жили-были..."
+	toysay = "One day while..."
 
 /obj/item/toy/figure/md
-	name = "коллекционная фигурка врача"
-	desc = "Коллекционная фигурка врача бренда \"Space Life\"."
+	name = "Medical Doctor action figure"
+	desc = "A \"Space Life\" brand Medical Doctor action figure."
 	icon_state = "md"
-	toysay = "Пациент уже мертв!"
+	toysay = "The patient is already dead!"
 
 /obj/item/toy/figure/mime
-	name = "коллекционная фигурка мима"
-	desc = "Коллекционная фигурка мима бренда \"Space Life\"."
+	name = "Mime action figure"
+	desc = "A \"Space Life\" brand Mime action figure."
 	icon_state = "mime"
 	toysay = "..."
 
 /obj/item/toy/figure/miner
-	name = "коллекционная фигурка шахтера"
-	desc = "Коллекционная фигурка шахтера бренда \"Space Life\"."
+	name = "Shaft Miner action figure"
+	desc = "A \"Space Life\" brand Shaft Miner action figure."
 	icon_state = "miner"
-	toysay = "О боже, оно жрёт мои внутренности!"
+	toysay = "Oh god, it's eating my intestines!"
 
 /obj/item/toy/figure/ninja
-	name = "коллекционная фигурка космического ниндзя"
-	desc = "Коллекционная фигурка космического ниндзя бренда \"Space Life\"."
+	name = "Space Ninja action figure"
+	desc = "A \"Space Life\" brand Space Ninja action figure."
 	icon_state = "ninja"
-	toysay = "Господи, хватит стрелять, я не враг!"
+	toysay = "Oh god! Stop shooting, I'm friendly!"
 
 /obj/item/toy/figure/wizard
-	name = "коллекционная фигурка волшебника"
-	desc = "Коллекционная фигурка волшебника бренда \"Space Life\"."
+	name = "Wizard action figure"
+	desc = "A \"Space Life\" brand Wizard action figure."
 	icon_state = "wizard"
 	toysay = "Ei Nath!"
 
 /obj/item/toy/figure/rd
-	name = "коллекционная фигурка Директора Исследований"
-	desc = "Коллекционная фигурка Директора Исследований бренда \"Space Life\"."
+	name = "Research Director action figure"
+	desc = "A \"Space Life\" brand Research Director action figure."
 	icon_state = "rd"
-	toysay = "Взрываем всех боргов!"
+	toysay = "Blowing all of the borgs!"
 
 /obj/item/toy/figure/roboticist
-	name = "коллекционная фигурка робототехника"
-	desc = "Коллекционная фигурка робототехника бренда \"Space Life\"."
+	name = "Roboticist action figure"
+	desc = "A \"Space Life\" brand Roboticist action figure."
 	icon_state = "roboticist"
-	toysay = "Он сам попросил сделать его боргом!"
+	toysay = "He asked to be borged!"
 
 /obj/item/toy/figure/scientist
-	name = "коллекционная фигурка ученого"
-	desc = "Коллекционная фигурка ученого бренда \"Space Life\"."
+	name = "Scientist action figure"
+	desc = "A \"Space Life\" brand Scientist action figure."
 	icon_state = "scientist"
-	toysay = "Эти бомбы сделал кто-то другой!"
+	toysay = "Someone else must have made those bombs!"
 
 /obj/item/toy/figure/syndie
-	name = "коллекционная фигурка спецоператора"
-	desc = "Коллекционная фигурка спецоператора бренда \"Space Life\"."
+	name = "Doom Operative action figure"
+	desc = "A \"Space Life\" brand Doom Operative action figure."
 	icon_state = "syndie"
-	toysay = "Где этот блядский диск?!"
+	toysay = "Get that fucking disk!"
 
 /obj/item/toy/figure/secofficer
-	name = "коллекционная фигурка офицера службы безопасности"
-	desc = "Коллекционная фигурка офицера службы безопасности бренда \"Space Life\"."
+	name = "Security Officer action figure"
+	desc = "A \"Space Life\" brand Security Officer action figure."
 	icon_state = "secofficer"
-	toysay = "Я есть закон!"
+	toysay = "I am the law!"
 
 /obj/item/toy/figure/virologist
-	name = "коллекционная фигурка вирусолога"
-	desc = "Коллекционная фигурка вирусолога бренда \"Space Life\"."
+	name = "Virologist action figure"
+	desc = "A \"Space Life\" brand Virologist action figure."
 	icon_state = "virologist"
-	toysay = "Всё лечится калием!"
+	toysay = "The cure is potassium!"
 
 /obj/item/toy/figure/warden
-	name = "коллекционная фигурка надзирателя"
-	desc = "Коллекционная фигурка надзирателя бренда \"Space Life\"."
+	name = "Warden action figure"
+	desc = "A \"Space Life\" brand Warden action figure."
 	icon_state = "warden"
-	toysay = "Казнить его за взлом и проникновение!"
+	toysay = "Execute him for breaking in!"
 
 /obj/item/toy/figure/psychologist
-	name = "коллекционная фигурка психолога"
-	desc = "Коллекционная фигурка психолога бренда \"Space Life\"."
+	name = "Psychologist action figure"
+	desc = "A \"Space Life\" brand Psychologist action figure."
 	icon_state = "psychologist"
-	toysay = "На анализаторе написано, что ты в порядке!"
+	toysay = "The analyzer says you're fine!"
 
 /obj/item/toy/figure/paramedic
-	name = "коллекционная фигурка парамедика"
-	desc = "Коллекционная фигурка парамедика бренда \"Space Life\"."
+	name = "Paramedic action figure"
+	desc = "A \"Space Life\" brand Paramedic action figure."
 	icon_state = "paramedic"
-	toysay = "ГДЕ ТЫ??"
+	toysay = "WHERE ARE YOU??"
 
 /obj/item/toy/figure/ert
-	name = "коллекционная фигурка командира групп экстренного реагирования"
-	desc = "Коллекционная фигурка командира групп экстренного реагирования бренда \"Space Life\"."
+	name = "Emergency Response Team Commander action figure"
+	desc = "A \"Space Life\" brand Emergency Response Team Commander action figure."
 	icon_state = "ert"
-	toysay = "Мы хорошие ребята, наверное!"
+	toysay = "We're probably the good guys!"
 
 /*
  * Plushies
@@ -676,11 +676,11 @@
  */
 
 /obj/item/toy/plushie/carp
-	name = "плюшевый космический карпик"
-	desc = "Милая плюшевая игрушка, похожая на космического карпа."
+	name = "space carp plushie"
+	desc = "An adorable stuffed toy that resembles a space carp."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "basecarp"
-	attack_verb = list("укусил", "схвавал", "шлепнул плавником")
+	attack_verb = list("bitten", "eaten", "fin slapped")
 	var/bitesound = 'sound/weapons/bite.ogg'
 
 // Attack mob
@@ -695,8 +695,8 @@
 
 
 /obj/random/carp_plushie
-	name = "случайный плюшевый карпик"
-	desc = "Случайная плюшевая игрушка."
+	name = "Random Carp Plushie"
+	desc = "This is a random plushie"
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "basecarp"
 
@@ -704,54 +704,54 @@
 	return pick(typesof(/obj/item/toy/plushie/carp)) //can pick any carp plushie, even the original.
 
 /obj/item/toy/plushie/carp/ice
-	name = "плюшевый ледяной карпик"
+	name = "ice carp plushie"
 	icon_state = "icecarp"
 
 /obj/item/toy/plushie/carp/silent
-	name = "плюшевый монохромный карпик"
+	name = "monochrome carp plushie"
 	icon_state = "silentcarp"
 
 /obj/item/toy/plushie/carp/electric
-	name = "плюшевый электрический карпик"
+	name = "electric carp plushie"
 	icon_state = "electriccarp"
 
 /obj/item/toy/plushie/carp/gold
-	name = "плюшевый золотой карпик"
+	name = "golden carp plushie"
 	icon_state = "goldcarp"
 
 /obj/item/toy/plushie/carp/toxin
-	name = "плюшевый токсичный карпик"
+	name = "toxic carp plushie"
 	icon_state = "toxincarp"
 
 /obj/item/toy/plushie/carp/dragon
-	name = "плюшевый драконовидный карпик"
+	name = "dragon carp plushie"
 	icon_state = "dragoncarp"
 
 /obj/item/toy/plushie/carp/pink
-	name = "плюшевый розовый карпик"
+	name = "pink carp plushie"
 	icon_state = "pinkcarp"
 
 /obj/item/toy/plushie/carp/candy
-	name = "плюшевый конфетный карпик"
+	name = "candy carp plushie"
 	icon_state = "candycarp"
 
 /obj/item/toy/plushie/carp/nebula
-	name = "плюшевый туманный карпик"
+	name = "nebula carp plushie"
 	icon_state = "nebulacarp"
 
 /obj/item/toy/plushie/carp/void
-	name = "плюшевый вакуумный карпик"
+	name = "void carp plushie"
 	icon_state = "voidcarp"
 
 //Large plushies.
 /obj/structure/plushie
-	name = "плюшевая игрушка"
-	desc = "Обыкновенная плюшевая игрушка. Похоже, она не хочет существовать."
+	name = "generic plush"
+	desc = "A very generic plushie. It seems to not want to exist."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "ianplushie"
 	anchored = 0
 	density = 1
-	var/phrase = "Я не хочу существовать!"
+	var/phrase = "I don't want to exist anymore!"
 	var/searching = FALSE
 	var/opened = FALSE	// has this been slit open? this will allow you to store an object in a plushie.
 	var/obj/item/stored_item	// Note: Stored items can't be bigger than the plushie itself.
@@ -759,9 +759,9 @@
 /obj/structure/plushie/examine(mob/user)
 	. = ..()
 	if(opened)
-		. += "<i>Вы видите на этой игрушке надрез...</i>"
+		. += "<i>You notice an incision has been made on [src].</i>"
 		if(in_range(user, src) && stored_item)
-			. += "<i>Вам виднеется что-то внутри...</i>"
+			. += "<i>You can see something in there...</i>"
 
 /obj/structure/plushie/attack_hand(mob/user)
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
@@ -769,7 +769,7 @@
 	if(stored_item && opened && !searching)
 		searching = TRUE
 		if(do_after(user, 10))
-			to_chat(user, "Вы находите \icon[stored_item] [stored_item] внутри игрушки!")
+			to_chat(user, "You find \icon[stored_item] [stored_item] in [src]!")
 			stored_item.forceMove(get_turf(src))
 			stored_item = null
 			searching = FALSE
@@ -778,78 +778,78 @@
 			searching = FALSE
 
 	if(user.a_intent == I_HELP)
-		user.visible_message("<span class='notice'><b>[user]</b> обнимает [src]!</span>","<span class='notice'>Вы обнимаете [src]!</span>")
+		user.visible_message("<span class='notice'><b>\The [user]</b> hugs [src]!</span>","<span class='notice'>You hug [src]!</span>")
 	else if (user.a_intent == I_HURT)
-		user.visible_message("<span class='warning'><b>[user]</b> ударяет [src]!</span>","<span class='warning'>Вы ударяете [src]!</span>")
+		user.visible_message("<span class='warning'><b>\The [user]</b> punches [src]!</span>","<span class='warning'>You punch [src]!</span>")
 	else if (user.a_intent == I_GRAB)
-		user.visible_message("<span class='warning'><b>[user]</b> пытается задушить [src]!</span>","<span class='warning'>Вы пытаетесь задушить [src]!</span>")
+		user.visible_message("<span class='warning'><b>\The [user]</b> attempts to strangle [src]!</span>","<span class='warning'>You attempt to strangle [src]!</span>")
 	else
-		user.visible_message("<span class='notice'><b>[user]</b> тыкает [src].</span>","<span class='notice'>Вы тыкаете [src].</span>")
-		visible_message("[src] говорит, \"[phrase]\"")
+		user.visible_message("<span class='notice'><b>\The [user]</b> pokes the [src].</span>","<span class='notice'>You poke the [src].</span>")
+		visible_message("[src] says, \"[phrase]\"")
 
 
 /obj/structure/plushie/attackby(obj/item/I as obj, mob/user as mob)
 	if(istype(I, /obj/item/device/threadneedle) && opened)
-		to_chat(user, "Вы зашиваете дырку в [src].")
+		to_chat(user, "You sew the hole in [src].")
 		opened = FALSE
 		return
 
 	if(is_sharp(I) && !opened)
-		to_chat(user, "Вы раскрываете небольшую дырочку в [src]. Внутри можно поместить крохотные предметы.")
+		to_chat(user, "You open a small incision in [src]. You can place tiny items inside.")
 		opened = TRUE
 		return
 
 	if(opened)
 		if(stored_item)
-			to_chat(user, "Внутри уже что-то есть.")
+			to_chat(user, "There is already something in here.")
 			return
 
 		if(!(I.w_class > w_class))
-			to_chat(user, "Вы вкладываете [I] в [src].")
+			to_chat(user, "You place [I] inside [src].")
 			user.drop_from_inventory(I, src)
 			I.forceMove(src)
 			stored_item = I
 			return
 		else
-			to_chat(user, "Вы раскрываете небольшую дырочку в [src]. Внутри можно поместить крохотные предметы.")
+			to_chat(user, "You open a small incision in [src]. You can place tiny items inside.")
 
 
 	..()
 
 /obj/structure/plushie/ian
-	name = "плюшевый корги"
-	desc = "Милый плюшевый корги! Так и хочется его потискать и прозвать Ианом!"
+	name = "plush corgi"
+	desc = "A plushie of an adorable corgi! Don't you just want to hug it and squeeze it and call it \"Ian\"?"
 	icon_state = "ianplushie"
-	phrase = "Арф!"
+	phrase = "Arf!"
 
 /obj/structure/plushie/drone
-	name = "плюшевый дрончик"
-	desc = "Плюшевый дрон! Выглядит так, будто улыбается."
+	name = "plush drone"
+	desc = "A plushie of a happy drone! It appears to be smiling."
 	icon_state = "droneplushie"
-	phrase = "Бип буп!"
+	phrase = "Beep boop!"
 
 /obj/structure/plushie/carp
-	name = "плюшевый карпик"
-	desc = "Радостный плюшевый карп! Прямиком из неиследованных краев границ Вир, теперь в Ваших руках."
+	name = "plush carp"
+	desc = "A plushie of an elated carp! Straight from the wilds of the Vir frontier, now right here in your hands."
 	icon_state = "carpplushie"
-	phrase = "Глорф!"
+	phrase = "Glorf!"
 
 /obj/structure/plushie/beepsky
-	name = "плюшевый офицер Бипски"
-	desc = "Плюшевая версия известного робоуборщика! Если бы он умел чувствовать, он бы Вас полюбил."
+	name = "plush Officer Sweepsky"
+	desc = "A plushie of a popular industrious cleaning robot! If it could feel emotions, it would love you."
 	icon_state = "beepskyplushie"
-	phrase = "Бип!"
+	phrase = "Ping!"
 
 //Small plushies.
 /obj/item/toy/plushie
-	name = "маленькая плюшевая игрушка"
-	desc = "Маленькая плюшевая игрушка. Очень милая."
+	name = "generic small plush"
+	desc = "A small toy plushie. It's very cute."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "nymphplushie"
 	drop_sound = 'sound/items/drop/plushie.ogg'
 	w_class = ITEMSIZE_TINY
 	var/last_message = 0
-	var/pokephrase = "Увв!"
+	var/pokephrase = "Uww!"
 	var/searching = FALSE
 	var/opened = FALSE	// has this been slit open? this will allow you to store an object in a plushie.
 	var/obj/item/stored_item	// Note: Stored items can't be bigger than the plushie itself.
@@ -858,15 +858,15 @@
 /obj/item/toy/plushie/examine(mob/user)
 	. = ..()
 	if(opened)
-		. += "<i>Вы видите на этой игрушке надрез.</i>"
+		. += "<i>You notice an incision has been made on [src].</i>"
 		if(in_range(user, src) && stored_item)
-			. += "<i>Вам видится что-то внутри...</i>"
+			. += "<i>You can see something in there...</i>"
 
 /obj/item/toy/plushie/attack_self(mob/user as mob)
 	if(stored_item && opened && !searching)
 		searching = TRUE
 		if(do_after(user, 10))
-			to_chat(user, "Вы находите \icon[stored_item] [stored_item] внутри [src]!")
+			to_chat(user, "You find \icon[stored_item] [stored_item] in [src]!")
 			stored_item.forceMove(get_turf(src))
 			stored_item = null
 			searching = FALSE
@@ -877,305 +877,305 @@
 	if(world.time - last_message <= 1 SECOND)
 		return
 	if(user.a_intent == I_HELP)
-		user.visible_message("<span class='notice'><b>[user]</b> обнимает [src]!</span>","<span class='notice'>Вы обнимаете [src]!</span>")
+		user.visible_message("<span class='notice'><b>\The [user]</b> hugs [src]!</span>","<span class='notice'>You hug [src]!</span>")
 	else if (user.a_intent == I_HURT)
-		user.visible_message("<span class='warning'><b>[user]</b> ударяет [src]!</span>","<span class='warning'>Вы ударяете [src]!</span>")
+		user.visible_message("<span class='warning'><b>\The [user]</b> punches [src]!</span>","<span class='warning'>You punch [src]!</span>")
 	else if (user.a_intent == I_GRAB)
-		user.visible_message("<span class='warning'><b>[user]</b> пытается задушить [src]!</span>","<span class='warning'>Вы пытаетесь задушить [src]!</span>")
+		user.visible_message("<span class='warning'><b>\The [user]</b> attempts to strangle [src]!</span>","<span class='warning'>You attempt to strangle [src]!</span>")
 	else
-		user.visible_message("<span class='notice'><b>[user]</b> тыкает [src].</span>","<span class='notice'>Вы тыкаете [src].</span>")
+		user.visible_message("<span class='notice'><b>\The [user]</b> pokes [src].</span>","<span class='notice'>You poke [src].</span>")
 		playsound(src, 'sound/items/drop/plushie.ogg', 25, 0)
-		visible_message("[src] говорит, \"[pokephrase]\"")
+		visible_message("[src] says, \"[pokephrase]\"")
 	last_message = world.time
 
 /obj/item/toy/plushie/verb/rename_plushie()
-	set name = "Дать Игрушке Имя"
+	set name = "Name Plushie"
 	set category = "Object"
-	set desc = "Дать Вашей игрушке милое имя!"
+	set desc = "Give your plushie a cute name!"
 	var/mob/M = usr
 	if(!M.mind)
 		return 0
 
-	var/input = sanitizeSafe(input("Как Вы хотите назвать свою игрушку?", ,""), MAX_NAME_LEN)
+	var/input = sanitizeSafe(input("What do you want to name the plushie?", ,""), MAX_NAME_LEN)
 
 	if(src && input && !M.stat && in_range(M,src))
 		name = input
-		to_chat(M, "Вы называете свою игрушку [input] и нежно её обнимаете на удачу.")
+		to_chat(M, "You name the plushie [input], giving it a hug for good luck.")
 		return 1
 
 /obj/item/toy/plushie/attackby(obj/item/I as obj, mob/user as mob)
 	if(istype(I, /obj/item/toy/plushie) || istype(I, /obj/item/organ/external/head))
-		user.visible_message("<span class='notice'>[user] заставляет [I] и [src] поцеловаться!.</span>", \
-		"<span class='notice'>Вы заставляете [I] и [src] поцеловаться!.</span>")
+		user.visible_message("<span class='notice'>[user] makes \the [I] kiss \the [src]!.</span>", \
+		"<span class='notice'>You make \the [I] kiss \the [src]!.</span>")
 		return
 
 
 	if(istype(I, /obj/item/device/threadneedle) && opened)
-		to_chat(user, "Вы зашиваете дырочку под [src].")
+		to_chat(user, "You sew the hole underneath [src].")
 		opened = FALSE
 		return
 
 	if(is_sharp(I) && !opened)
-		to_chat(user, "Вы делаете надрез на [src]. Внутри можно поместить небольшие предметы.")
+		to_chat(user, "You open a small incision in [src]. You can place tiny items inside.")
 		opened = TRUE
 		return
 
 	if( (!(I.w_class > w_class)) && opened)
 		if(stored_item)
-			to_chat(user, "Внутри уже что-то есть.")
+			to_chat(user, "There is already something in here.")
 			return
 
-		to_chat(user, "Вы помещаете [I] внутрь [src].")
+		to_chat(user, "You place [I] inside [src].")
 		user.drop_from_inventory(I, src)
 		I.forceMove(src)
 		stored_item = I
-		to_chat(user, "Вы поместили [I] в [src].")
+		to_chat(user, "You placed [I] into [src].")
 		return
 
 	return ..()
 
 /obj/item/toy/plushie/nymph
-	name = "плюшевая дионочка"
-	desc = "Милая плюшевая дионочка! Уровень её интеллекта пока ещё подлежит спору, а вот уровень милоты явно нет."
+	name = "diona nymph plush"
+	desc = "A plushie of an adorable diona nymph! While its level of self-awareness is still being debated, its level of cuteness is not."
 	icon_state = "nymphplushie"
-	pokephrase = "Чирик!"
+	pokephrase = "Chirp!"
 
 /obj/item/toy/plushie/teshari
-	name = "плюшевая тешарька"
-	desc = "Плюшевая тешарька. Очень мягкий, с помпончиком на хвосте. Игрушка качественная, будто живая. Выглядит так, будто спит. Тссссс."
+	name = "teshari plush"
+	desc = "This is a plush teshari. Very soft, with a pompom on the tail. The toy is made well, as if alive. Looks like she is sleeping. Shhh!"
 	icon_state = "teshariplushie"
-	pokephrase = "Ря!"
+	pokephrase = "Rya!"
 
 /obj/item/toy/plushie/mouse
-	name = "плюшевая мышка"
-	desc = "Милая плюшевая мышка. То, что все привыкли видеть как надоедливого грызуна, отныне Ваш самый лучший друг."
-	icon_state = "mouseplushie"	//TFF 12/11/19 - updated icon to show a sprite that doesn't replicate a dead mouse. Heck you for that! >:C
-	pokephrase = "Пик!"
+	name = "mouse plush"
+	desc = "A plushie of a delightful mouse! What was once considered a vile rodent is now your very best friend."
+	icon_state = "mouseplushie"
+	pokephrase = "Squeak!"
 
 /obj/item/toy/plushie/kitten
-	name = "плюшевый котенок"
-	desc = "Милый плюшевый котёнок! От одного мурлыканья тает сердце."
+	name = "kitten plush"
+	desc = "A plushie of a cute kitten! Watch as it purrs its way right into your heart."
 	icon_state = "kittenplushie"
-	pokephrase = "Мряу!"
+	pokephrase = "Mrow!"
 
 /obj/item/toy/plushie/lizard
-	name = "плюшевая ящеричка"
-	desc = "Плющевая ящеричка! Очень противоречивая игрушка с тех пор, как Унати прозвали её \"расистской\"."
+	name = "lizard plush"
+	desc = "A plushie of a scaly lizard! Very controversial, after being accused as \"racist\" by some Unathi."
 	icon_state = "lizardplushie"
-	pokephrase = "Хсс!"
+	pokephrase = "Hiss!"
 
 /obj/item/toy/plushie/spider
-	name = "плюшевай паучок"
-	desc = "Пушистый плюшевый паучок! Восемь ножек, дабы лучше Вас обнимать."
+	name = "spider plush"
+	desc = "A plushie of a fuzzy spider! It has eight legs - all the better to hug you with."
 	icon_state = "spiderplushie"
-	pokephrase = "Ск-ск-ск!"
+	pokephrase = "Sksksk!"
 
 /obj/item/toy/plushie/farwa
-	name = "плюшевая фарвочка"
-	desc = "Плюшевая фарвочка, мягкая и теплая."
+	name = "farwa plush"
+	desc = "A farwa plush doll. It's soft and comforting!"
 	icon_state = "farwaplushie"
-	pokephrase = "Кар!"
+	pokephrase = "Squaw!"
 
 /obj/item/toy/plushie/corgi
-	name = "плюшевый корги"
+	name = "corgi plushie"
 	icon_state = "corgi"
-	pokephrase = "Вуф!"
+	pokephrase = "Woof!"
 
 /obj/item/toy/plushie/girly_corgi
-	name = "плюшевая корги"
+	name = "corgi plushie"
 	icon_state = "girlycorgi"
-	pokephrase = "Арф!"
+	pokephrase = "Arf!"
 
 /obj/item/toy/plushie/robo_corgi
-	name = "плюшевый борги"
+	name = "borgi plushie"
 	icon_state = "robotcorgi"
-	pokephrase = "Гав."
+	pokephrase = "Bark."
 
 /obj/item/toy/plushie/octopus
-	name = "плюшевый осминожка"
+	name = "octopus plushie"
 	icon_state = "loveable"
-	pokephrase = "Пшш!"
+	pokephrase = "Squish!"
 
 /obj/item/toy/plushie/face_hugger
-	name = "плюшевый хедкрабик"
+	name = "facehugger plushie"
 	icon_state = "huggable"
-	pokephrase = "Обнимашка!"
+	pokephrase = "Hug!"
 
 //foxes are basically the best
 
 /obj/item/toy/plushie/red_fox
-	name = "плюшевая рыжая лисичка"
+	name = "red fox plushie"
 	icon_state = "redfox"
-	pokephrase = "Гекеке!"
+	pokephrase = "Gecker!"
 
 /obj/item/toy/plushie/black_fox
-	name = "плюшевая черная лисичка"
+	name = "black fox plushie"
 	icon_state = "blackfox"
-	pokephrase = "Ак!"
+	pokephrase = "Ack!"
 
 /obj/item/toy/plushie/marble_fox
-	name = "плюшевая мраморная лисичка"
+	name = "marble fox plushie"
 	icon_state = "marblefox"
-	pokephrase = "Ауууу!"
+	pokephrase = "Awoo!"
 
 /obj/item/toy/plushie/blue_fox
-	name = "плюшевая синя лисичка"
+	name = "blue fox plushie"
 	icon_state = "bluefox"
-	pokephrase = "Яуу!"
+	pokephrase = "Yoww!"
 
 /obj/item/toy/plushie/orange_fox
-	name = "плюшевая оранжевая лисичка"
+	name = "orange fox plushie"
 	icon_state = "orangefox"
-	pokephrase = "Ях!"
+	pokephrase = "Yagh!"
 
 /obj/item/toy/plushie/coffee_fox
-	name = "плюшевая кофейная лисичка"
+	name = "coffee fox plushie"
 	icon_state = "coffeefox"
-	pokephrase = "Герр!"
+	pokephrase = "Gerr!"
 
 /obj/item/toy/plushie/pink_fox
-	name = "плюшевая розовая лисичка"
+	name = "pink fox plushie"
 	icon_state = "pinkfox"
-	pokephrase = "Якк!"
+	pokephrase = "Yack!"
 
 /obj/item/toy/plushie/purple_fox
-	name = "плюшевая фиолетовая лисичка"
+	name = "purple fox plushie"
 	icon_state = "purplefox"
-	pokephrase = "Ммнн!"
+	pokephrase = "Whine!"
 
 /obj/item/toy/plushie/crimson_fox
-	name = "плюшевая алая лисичка"
+	name = "crimson fox plushie"
 	icon_state = "crimsonfox"
-	pokephrase = "Ауу!"
+	pokephrase = "Auuu!"
 
 /obj/item/toy/plushie/deer
-	name = "плюшевый олененок"
+	name = "deer plushie"
 	icon_state = "deer"
-	pokephrase = "Бее!"
+	pokephrase = "Bleat!"
 
 /obj/item/toy/plushie/black_cat
-	name = "плюшевый черный котенок"
+	name = "black cat plushie"
 	icon_state = "blackcat"
-	pokephrase = "Млем!"
+	pokephrase = "Mlem!"
 
 /obj/item/toy/plushie/grey_cat
-	name = "плюшевый серый котенок"
+	name = "grey cat plushie"
 	icon_state = "greycat"
-	pokephrase = "Мрау!"
+	pokephrase = "Mraw!"
 
 /obj/item/toy/plushie/white_cat
-	name = "плюшевый белый котенок"
+	name = "white cat plushie"
 	icon_state = "whitecat"
-	pokephrase = "Меу!"
+	pokephrase = "Mew!"
 
 /obj/item/toy/plushie/orange_cat
-	name = "плюшевый оранжевый котенок"
+	name = "orange cat plushie"
 	icon_state = "orangecat"
-	pokephrase = "Мяу!"
+	pokephrase = "Meow!"
 
 /obj/item/toy/plushie/siamese_cat
-	name = "плюшевый сиамский котенок"
+	name = "siamese cat plushie"
 	icon_state = "siamesecat"
-	pokephrase = "Мреу?"
+	pokephrase = "Mrew?"
 
 /obj/item/toy/plushie/tabby_cat
-	name = "плюшевый рыжий котенок"
+	name = "tabby cat plushie"
 	icon_state = "tabbycat"
-	pokephrase = "Мурр!"
+	pokephrase = "Purr!"
 
 /obj/item/toy/plushie/tuxedo_cat
-	name = "плюшевый пятнистый котенок"
+	name = "tuxedo cat plushie"
 	icon_state = "tuxedocat"
-	pokephrase = "Мряууу!!"
+	pokephrase = "Mrowww!!"
 
 // nah, squids are better than foxes :>
 
 /obj/item/toy/plushie/squid/green
-	name = "плюшевый зеленый осьминожка"
-	desc = "Маленький милый друг-осьминожка. Этот осьминог зеленого цвета."
+	name = "green squid plushie"
+	desc = "A small, cute and loveable squid friend. This one is green."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "greensquid"
 	slot_flags = SLOT_HEAD
 	pokephrase = "Squrr!"
 
 /obj/item/toy/plushie/squid/mint
-	name = "плюшевый мятный осьминожка"
-	desc = "Маленький милый друг-осьминожка. Этот осьминог мятного цвета."
+	name = "mint squid plushie"
+	desc = "A small, cute and loveable squid friend. This one is mint coloured."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "mintsquid"
 	slot_flags = SLOT_HEAD
 	pokephrase = "Blurble!"
 
 /obj/item/toy/plushie/squid/blue
-	name = "плюшевый синий осьминожка"
-	desc = "Маленький милый друг-осьминожка. Этот осьминог синего цвета."
+	name = "blue squid plushie"
+	desc = "A small, cute and loveable squid friend. This one is blue."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "bluesquid"
 	slot_flags = SLOT_HEAD
 	pokephrase = "Blob!"
 
 /obj/item/toy/plushie/squid/orange
-	name = "плюшевый оранжевый осьминожка"
-	desc = "Маленький милый друг-осьминожка. Этот осьминог оранжевого цвета."
+	name = "orange squid plushie"
+	desc = "A small, cute and loveable squid friend. This one is orange."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "orangesquid"
 	slot_flags = SLOT_HEAD
 	pokephrase = "Squash!"
 
 /obj/item/toy/plushie/squid/yellow
-	name = "плюшевый желтый осьминожка"
-	desc = "Маленький милый друг-осьминожка. Этот осьминог желтого цвета."
+	name = "yellow squid plushie"
+	desc = "A small, cute and loveable squid friend. This one is yellow."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "yellowsquid"
 	slot_flags = SLOT_HEAD
 	pokephrase = "Glorble!"
 
 /obj/item/toy/plushie/squid/pink
-	name = "плюшевый розовый осьминожка"
-	desc = "Маленький милый друг-осьминожка. Этот осьминог розового цвета."
+	name = "pink squid plushie"
+	desc = "A small, cute and loveable squid friend. This one is pink."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "pinksquid"
 	slot_flags = SLOT_HEAD
 	pokephrase = "Wobble!"
 
 /obj/item/toy/plushie/therapy/red
-	name = "красная кукла"
-	desc = "Игрушка как для развлечения, так и для терапии. Эта кукла красного цвета."
+	name = "red therapy doll"
+	desc = "A toy for therapeutic and recreational purposes. This one is red."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "therapyred"
 	item_state = "egg4" // It's the red egg in items_left/righthand
 
 /obj/item/toy/plushie/therapy/purple
-	name = "фиолетовая кукла"
-	desc = "Игрушка как для развлечения, так и для терапии. Эта кукла фиолетового цвета."
+	name = "purple therapy doll"
+	desc = "A toy for therapeutic and recreational purposes. This one is purple."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "therapypurple"
 	item_state = "egg1" // It's the magenta egg in items_left/righthand
 
 /obj/item/toy/plushie/therapy/blue
-	name = "синяя кукла"
-	desc = "Игрушка как для развлечения, так и для терапии. Эта кукла синего цвета."
+	name = "blue therapy doll"
+	desc = "A toy for therapeutic and recreational purposes. This one is blue."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "therapyblue"
 	item_state = "egg2" // It's the blue egg in items_left/righthand
 
 /obj/item/toy/plushie/therapy/yellow
-	name = "желтая кукла"
-	desc = "Игрушка как для развлечения, так и для терапии. Эта кукла желтого цвета."
+	name = "yellow therapy doll"
+	desc = "A toy for therapeutic and recreational purposes. This one is yellow."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "therapyyellow"
 	item_state = "egg5" // It's the yellow egg in items_left/righthand
 
 /obj/item/toy/plushie/therapy/orange
-	name = "оранжевая кукла"
-	desc = "Игрушка как для развлечения, так и для терапии. Эта кукла оранжевого цвета."
+	name = "orange therapy doll"
+	desc = "A toy for therapeutic and recreational purposes. This one is orange."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "therapyorange"
 	item_state = "egg4" // It's the red one again, lacking an orange item_state and making a new one is pointless
 
 /obj/item/toy/plushie/therapy/green
-	name = "зеленая кукла"
-	desc = "Игрушка как для развлечения, так и для терапии. Эта кукла зеленого цвета."
+	name = "green therapy doll"
+	desc = "A toy for therapeutic and recreational purposes. This one is green."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "therapygreen"
 	item_state = "egg3" // It's the green egg in items_left/righthand
@@ -1183,8 +1183,8 @@
 
 //Toy cult sword
 /obj/item/toy/cultsword
-	name = "пенопластовый меч"
-	desc = "Мистическое оружие (из пенопласта), принадлежащее последователям популярного субботнего шоу \"Король Нарсий и Приспешники Героизма\"."
+	name = "foam sword"
+	desc = "An arcane weapon (made of foam) wielded by the followers of the hit Saturday morning cartoon \"King Nursee and the Acolytes of Heroism\"."
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "cultblade"
 	item_icons = list(
@@ -1192,24 +1192,24 @@
 		slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
 		)
 	w_class = ITEMSIZE_LARGE
-	attack_verb = list("ударил", "разрубил", "зарезал", "потыкал")
+	attack_verb = list("attacked", "slashed", "stabbed", "poked")
 
 //Flowers fake & real
 
 /obj/item/toy/bouquet
-	name = "букет"
-	desc = "Замечательный букет цветов. Отлично пахнет!"
+	name = "bouquet"
+	desc = "A lovely bouquet of flowers. Smells nice!"
 	icon = 'icons/obj/items.dmi'
 	icon_state = "bouquet"
 	w_class = ITEMSIZE_SMALL
 
 /obj/item/toy/bouquet/fake
-	name = "искусственный букет"
-	desc = "Дешевый букет из пластмассовых цветов. Пахнет как дешевая пластмасса."
+	name = "plastic bouquet"
+	desc = "A cheap plastic bouquet of flowers. Smells like cheap, toxic plastic."
 
 /obj/item/toy/stickhorse
-	name = "лошадь на палке"
-	desc = "Игого. На таких катаются юные ковбои."
+	name = "stick horse"
+	desc = "A pretend horse on a stick for any aspiring little cowboy to ride."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "stickhorse"
 	w_class = ITEMSIZE_LARGE
@@ -1219,13 +1219,13 @@
 //////////////////////////////////////////////////////
 
 /obj/item/toy/eight_ball
-	name = "Волшебный Шар"
-	desc = "Мистический! Волшебный! Детям от 8 лет!"
+	name = "\improper Magic 8-Ball"
+	desc = "Mystical! Magical! Ages 8+!"
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "eight-ball"
-	var/use_action = "встряхивает волшебный шар."
+	var/use_action = "shakes the ball"
 	var/cooldown = 0
-	var/list/possible_answers = list("Абсолютно да.", "Знаки говорят - \"Да\"", "Вероятнее всего.", "Да.", "Спроси позже.", "Лучше пока не рассказывать.", "Будущее не ясно.", "Может быть.", "Сомнительно.", "Нет.", "Не расчитывай на это.", "Ни в коем случае.")
+	var/list/possible_answers = list("Definitely.", "All signs point to yes.", "Most likely.", "Yes.", "Ask again later.", "Better not tell you now.", "Future unclear.", "Maybe.", "Doubtful.", "No.", "Don't count on it.", "Never.")
 
 /obj/item/toy/eight_ball/attack_self(mob/user as mob)
 	if(!cooldown)
@@ -1237,11 +1237,11 @@
 		return
 
 /obj/item/toy/eight_ball/conch
-	name = "Волшебная Ракушка"
-	desc = "Славься, Волшебная Ракушка!"
+	name = "Magic Conch shell"
+	desc = "All hail the Magic Conch!"
 	icon_state = "conch"
-	use_action = "тянет за ниточку."
-	possible_answers = list("Да.", "Нет.", "Спроси ещё раз.", "Ответа нет.", "Я так не думаю.", "Ни то, ни другое.", "Может быть, когда-нибудь.")
+	use_action = "pulls the string"
+	possible_answers = list("Yes.", "No.", "Try asking again.", "Nothing.", "I don't think so.", "Neither.", "Maybe someday.")
 
 // DND Character minis. Use the naming convention (type)character for the icon states.
 /obj/item/toy/character
@@ -1250,36 +1250,36 @@
 	pixel_z = 5
 
 /obj/item/toy/character/alien
-	name = "фигурка ксеноморфа"
-	desc = "Миниксеноморф. Жуть!"
+	name = "xenomorph xiniature"
+	desc = "A miniature xenomorph. Scary!"
 	icon_state = "aliencharacter"
 /obj/item/toy/character/cleric
-	name = "фигурка жреца"
-	desc = "Маленький жрец размахивает своим маленьким посохом."
+	name = "cleric miniature"
+	desc = "A wee little cleric, with his wee little staff."
 	icon_state = "clericcharacter"
 /obj/item/toy/character/warrior
-	name = "фигурка воина"
-	desc = "Из такого меча вышла бы неплохая зубочистка."
+	name = "warrior miniature"
+	desc = "That sword would make a decent toothpick."
 	icon_state = "warriorcharacter"
 /obj/item/toy/character/thief
-	name = "фигурка вора"
-	desc = "Эй, а куда делся мой кошелёк?!"
+	name = "thief miniature"
+	desc = "Hey, where did my wallet go!?"
 	icon_state = "thiefcharacter"
 /obj/item/toy/character/wizard
-	name = "фигурка мага"
-	desc = "МАГИЯ!"
+	name = "wizard miniature"
+	desc = "MAGIC!"
 	icon_state = "wizardcharacter"
 /obj/item/toy/character/voidone
-	name = "фигурка порождения бездны"
-	desc = "Тёмный лорд восстал!"
+	name = "void one miniature"
+	desc = "The dark lord has risen!"
 	icon_state = "darkmastercharacter"
 /obj/item/toy/character/lich
-	name = "фигурка лича"
-	desc = "Эксперт в массовых убийствах."
+	name = "lich miniature"
+	desc = "Murderboner extraordinaire."
 	icon_state = "lichcharacter"
 /obj/item/weapon/storage/box/characters
-	name = "коробка фигурок"
-	desc = "Лучшие друзья ботана."
+	name = "box of miniatures"
+	desc = "The nerd's best friends."
 	icon_state = "box"
 /obj/item/weapon/storage/box/characters/starts_with = list(
 //	/obj/item/toy/character/alien,
@@ -1292,10 +1292,10 @@
 	)
 
 /obj/item/toy/AI
-	name = "игрушечный ИИ"
-	desc = "Маленькое игрушечное ядро ИИ!"// with real law announcing action!" //Alas, requires a rewrite of how ion laws work.
+	name = "toy AI"
+	desc = "A little toy model AI core!"// with real law announcing action!" //Alas, requires a rewrite of how ion laws work.
 	icon = 'icons/obj/toy.dmi'
-	icon_state = "ИИ"
+	icon_state = "AI"
 	w_class = ITEMSIZE_SMALL
 	var/cooldown = 0
 /*
@@ -1311,8 +1311,8 @@
 	..()
 */
 /obj/item/toy/owl
-	name = "фигурка Филина"
-	desc = "Фигурка Филина, защитника справедливости."
+	name = "owl action figure"
+	desc = "An action figure modeled after 'The Owl', defender of justice."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "owlprize"
 	w_class = ITEMSIZE_SMALL
@@ -1320,8 +1320,8 @@
 
 /obj/item/toy/owl/attack_self(mob/user)
 	if(!cooldown) //for the sanity of everyone
-		var/message = pick("На этот раз тебе не убежать, Грифон!", "Ни с места, преступник!", "Хуу! Хуу!!", "Я есть ночь!")
-		to_chat(user, "<span class='notice'>Вы тянете ниточку фигурки Филина.</span>")
+		var/message = pick("You won't get away this time, Griffin!", "Stop right there, criminal!", "Hoot! Hoot!", "I am the night!")
+		to_chat(user, "<span class='notice'>You pull the string on the [src].</span>")
 		//playsound(src, 'sound/misc/hoot.ogg', 25, 1)
 		visible_message("<span class='danger'>[message]</span>")
 		cooldown = 1
@@ -1330,8 +1330,8 @@
 	..()
 
 /obj/item/toy/griffin
-	name = "фигурка Грифона"
-	desc = "Фигурка Грифона, преступного гения."
+	name = "griffin action figure"
+	desc = "An action figure modeled after 'The Griffin', criminal mastermind."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "griffinprize"
 	w_class = ITEMSIZE_SMALL
@@ -1339,8 +1339,8 @@
 
 /obj/item/toy/griffin/attack_self(mob/user)
 	if(!cooldown) //for the sanity of everyone
-		var/message = pick("Тебе не остановить меня, Филин!", "Мой план безупречен! Хранилище будет моим!", "Карррррр!", "Тебе меня не поймать!")
-		to_chat(user, "<span class='notice'>Вы тянете ниточку фигурки Грифона.</span>")
+		var/message = pick("You can't stop me, Owl!", "My plan is flawless! The vault is mine!", "Caaaawwww!", "You will never catch me!")
+		to_chat(user, "<span class='notice'>You pull the string on the [src].</span>")
 		//playsound(src, 'sound/misc/caw.ogg', 25, 1)
 		visible_message("<span class='danger'>[message]</span>")
 		cooldown = 1
@@ -1361,16 +1361,16 @@
 //This should really be somewhere else but I don't know where. w/e
 
 /obj/item/weapon/inflatable_duck
-	name = "резиновая утка"
-	desc = "Зачем опускаться или плавать, если можно держаться на плаву?"
+	name = "inflatable duck"
+	desc = "No bother to sink or swim when you can just float!"
 	icon_state = "inflatable"
 	icon = 'icons/obj/clothing/belts.dmi'
 	slot_flags = SLOT_BELT
 	drop_sound = 'sound/items/drop/rubber.ogg'
 
 /obj/item/toy/xmastree
-	name = "миниатюрная новогодняя елка"
-	desc = "Малюсенькая рождественская ёлочка."
+	name = "Miniature Christmas tree"
+	desc = "Tiny cute Christmas tree."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "tinyxmastree"
 	w_class = ITEMSIZE_TINY
@@ -1383,8 +1383,8 @@
 //////////////////////////////////////////////////////
 
 /obj/item/toy/chess
-	name = "шахматная фигурка"
-	desc = "Этот текст не должно быть видно."
+	name = "chess piece"
+	desc = "This should never display."
 	icon = 'icons/obj/chess.dmi'
 	w_class = ITEMSIZE_SMALL
 	force = 1
@@ -1392,71 +1392,71 @@
 	drop_sound = 'sound/items/drop/glass.ogg'
 
 /obj/item/toy/chess/pawn_white
-	name = "синяя пешка"
-	desc = "Большая пешка для игры в шахматы. Сделана из синего стекла."
-	description_info = "Пешки могут передвигаться на одну клетку вперёд, если эта клетка не занята. Если пешка ещё не ходила, она может сделать шаг на две клетки вперед, если обе клетки перед ней не заняты. Пешка не может сделать шаг назад. Пешка может захватить вражескую фигуру только на одной из двух клеток по диагонали спереди от неё, но не на клетке перед собой."
+	name = "blue pawn"
+	desc = "A large pawn piece for playing chess. It's made of a blue-colored glass."
+	description_info = "Pawns can move forward one square, if that square is unoccupied. If the pawn has not yet moved, it has the option of moving two squares forward provided both squares in front of the pawn are unoccupied. A pawn cannot move backward. They can only capture an enemy piece on either of the two tiles diagonally in front of them, but not the tile directly in front of them."
 	icon_state = "w-pawn"
 /obj/item/toy/chess/pawn_black
-	name = "фиолетовая пешка"
-	desc = "Большая пешка для игры в шахматы. Сделана из фиолетового стекла"
-	description_info = "Пешки могут передвигаться на одну клетку вперёд, если эта клетка не занята. Если пешка ещё не ходила, она может сделать шаг на две клетки вперед, если обе клетки перед ней не заняты. Пешка не может сделать шаг назад. Пешка может захватить вражескую фигуру только на одной из двух клеток по диагонали спереди от неё, но не на клетке перед собой."
+	name = "purple pawn"
+	desc = "A large pawn piece for playing chess. It's made of a purple-colored glass."
+	description_info = "Pawns can move forward one square, if that square is unoccupied. If the pawn has not yet moved, it has the option of moving two squares forward provided both squares in front of the pawn are unoccupied. A pawn cannot move backward. They can only capture an enemy piece on either of the two tiles diagonally in front of them, but not the tile directly in front of them."
 	icon_state = "b-pawn"
 /obj/item/toy/chess/rook_white
-	name = "синяя ладья"
-	desc = "Большая ладья для игры в шахматы. Сделана из синего стекла."
-	description_info = "Ладья может сходить на любое количество свободных клеток по горизонтали или вертикали."
+	name = "blue rook"
+	desc = "A large rook piece for playing chess. It's made of a blue-colored glass."
+	description_info = "The Rook can move any number of vacant squares vertically or horizontally."
 	icon_state = "w-rook"
 /obj/item/toy/chess/rook_black
-	name = "фиолетовая ладья"
-	desc = "Большая пешка для игры в шахматы. Сделана из фиолетового стекла."
-	description_info = "Ладья может сходить на любое количество свободных клеток по горизонтали или вертикали."
+	name = "purple rook"
+	desc = "A large rook piece for playing chess. It's made of a purple-colored glass."
+	description_info = "The Rook can move any number of vacant squares vertically or horizontally."
 	icon_state = "b-rook"
 /obj/item/toy/chess/knight_white
-	name = "синий конь"
-	desc = "Большой конь для игры в шахматы. Сделан из синего стекла. К сожалению, на нём не прокатишься."
-	description_info = "Конь может сходить либо на две клетки по горизонтали и одну по вертикали, либо на две по вертикали и одну по горизонтали, т.е. в форме буквы Г."
+	name = "blue knight"
+	desc = "A large knight piece for playing chess. It's made of a blue-colored glass. Sadly, you can't ride it."
+	description_info = "The Knight can either move two squares horizontally and one square vertically or two squares vertically and one square horizontally. The knight's movement can also be viewed as an 'L' laid out at any horizontal or vertical angle."
 	icon_state = "w-knight"
 /obj/item/toy/chess/knight_black
-	name = "фиолетовый конь"
-	desc = "Большой конь для игры в шахматы. Сделан из фиолетового стекла. Лишь царапина."
-	description_info = "Конь может сходить либо на две клетки по горизонтали и одну по вертикали, либо на две по вертикали и одну по горизонтали, т.е. в форме буквы Г."
+	name = "purple knight"
+	desc = "A large knight piece for playing chess. It's made of a purple-colored glass. 'Just a flesh wound.'"
+	description_info = "The Knight can either move two squares horizontally and one square vertically or two squares vertically and one square horizontally. The knight's movement can also be viewed as an 'L' laid out at any horizontal or vertical angle."
 	icon_state = "b-knight"
 /obj/item/toy/chess/bishop_white
-	name = "синий слон"
-	desc = "Большой слон для игры в шахматы. Сделан из синего стекла."
-	description_info = "Слон может сходить на любое количество свободных клеток по диагонали."
+	name = "blue bishop"
+	desc = "A large bishop piece for playing chess. It's made of a blue-colored glass."
+	description_info = "The Bishop can move any number of vacant squares in any diagonal direction."
 	icon_state = "w-bishop"
 /obj/item/toy/chess/bishop_black
-	name = "фиолетовый слон"
-	desc = "Большой слон для игры в шахматы. Сделан из фиолетового стекла."
-	description_info = "Слон может сходить на любое количество свободных клеток по диагонали."
+	name = "purple bishop"
+	desc = "A large bishop piece for playing chess. It's made of a purple-colored glass."
+	description_info = "The Bishop can move any number of vacant squares in any diagonal direction."
 	icon_state = "b-bishop"
 /obj/item/toy/chess/queen_white
-	name = "синий ферзь"
-	desc = "Большой ферзь для игры в шахматы. Сделан из синего стекла."
-	description_info = "Ферзь может сходить на любое количество свободных клеток по горизонтали, вертикали или диагонали."
+	name = "blue queen"
+	desc = "A large queen piece for playing chess. It's made of a blue-colored glass."
+	description_info = "The Queen can move any number of vacant squares diagonally, horizontally, or vertically."
 	icon_state = "w-queen"
 /obj/item/toy/chess/queen_black
-	name = "фиолетовый ферзь"
-	desc = "Большой ферзь для игры в шахматы. Сделан из фиолетового стекла."
-	description_info = "Ферзь может сходить на любое количество свободных клеток по горизонтали, вертикали или диагонали."
+	name = "purple queen"
+	desc = "A large queen piece for playing chess. It's made of a purple-colored glass."
+	description_info = "The Queen can move any number of vacant squares diagonally, horizontally, or vertically."
 	icon_state = "b-queen"
 /obj/item/toy/chess/king_white
-	name = "синий король"
-	desc = "Большой король для игры в шахматы. Сделан из синего стекла."
-	description_info = "Король может сходить на одну клетку по горизонтали, вертикали или диагонали. Если оппонент захватит эту фигуру, он выигрывает."
+	name = "blue king"
+	desc = "A large king piece for playing chess. It's made of a blue-colored glass."
+	description_info = "The King can move exactly one square horizontally, vertically, or diagonally. If your opponent captures this piece, you lose."
 	icon_state = "w-king"
 /obj/item/toy/chess/king_black
-	name = "фиолетовый король"
-	desc = "Большой король для игры в шахматы. Сделан из фиолетового стекла."
-	description_info = "Король может сходить на одну клетку по горизонтали, вертикали или диагонали. Если оппонент захватит эту фигуру, он выигрывает."
+	name = "purple king"
+	desc = "A large king piece for playing chess. It's made of a purple-colored glass."
+	description_info = "The King can move exactly one square horizontally, vertically, or diagonally. If your opponent captures this piece, you lose."
 	icon_state = "b-king"
 
 /// Balloon structures
 
 /obj/structure/balloon
-	name = "обыкновенный шарик"
-	desc = "Самый что ни на есть обыкновенный шарик. Скукотища."
+	name = "generic balloon"
+	desc = "A generic balloon. How boring."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "ghostballoon"
 	anchored = 0
@@ -1466,20 +1466,20 @@
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 
 	if(user.a_intent == I_HELP)
-		user.visible_message("<span class='notice'><b>[user]</b> тыкает [src]!</span>","<span class='notice'>Вы тыкаете [src]!</span>")
+		user.visible_message("<span class='notice'><b>\The [user]</b> pokes [src]!</span>","<span class='notice'>You poke [src]!</span>")
 	else if (user.a_intent == I_HURT)
-		user.visible_message("<span class='warning'><b>[user]</b> стукает [src]!</span>","<span class='warning'>Вы стукаете [src]!</span>")
+		user.visible_message("<span class='warning'><b>\The [user]</b> punches [src]!</span>","<span class='warning'>You punch [src]!</span>")
 	else if (user.a_intent == I_GRAB)
-		user.visible_message("<span class='warning'><b>[user]</b> пытается лопнуть [src]!</span>","<span class='warning'>Вы пытаетесь лопнуть [src]!</span>")
+		user.visible_message("<span class='warning'><b>\The [user]</b> attempts to pop [src]!</span>","<span class='warning'>You attempt to pop [src]!</span>")
 	else
-		user.visible_message("<span class='notice'><b>[user]</b> легонько стукает [src].</span>","<span class='notice'>Вы легонько стукаете [src].</span>")
+		user.visible_message("<span class='notice'><b>\The [user]</b> lightly bats the [src].</span>","<span class='notice'>You lightly bat the [src].</span>")
 
 /obj/structure/balloon/bat
-	name = "шарик в виде летучей мыши"
-	desc = "Большой воздушный шар в форме страшной летучей мыши с оранжевыми глазами."
+	name = "giant bat balloon"
+	desc = "A large balloon in the shape of a spooky bat with orange eyes."
 	icon_state = "batballoon"
 
 /obj/structure/balloon/ghost
-	name = "шарик в виде привидения"
-	desc = "О нет, привидение! А, нет, всего лишь воздушный шарик. Фух!"
+	name = "giant ghost balloon"
+	desc = "Oh no, it's a ghost! Oh wait, it's just a balloon. Phew!"
 	icon_state = "ghostballoon"

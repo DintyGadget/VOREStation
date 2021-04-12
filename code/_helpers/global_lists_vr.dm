@@ -11,7 +11,7 @@ var/global/list/traits_costs = list()		// Just path = cost list, saves time in c
 var/global/list/all_traits = list()			// All of 'em at once (same instances)
 var/global/list/active_ghost_pods = list()
 
-var/global/list/sensorpreflist = list("Отключен", "Бинарный датчик", "Датчики органов", "Маячок отслеживания", "Нет предпочтения")	//TFF 5/8/19 - Suit Sensors global list
+var/global/list/sensorpreflist = list("Off", "Binary", "Vitals", "Tracking", "No Preference")
 
 //stores numeric player size options indexed by name
 var/global/list/player_sizes_list = list(
@@ -23,10 +23,10 @@ var/global/list/player_sizes_list = list(
 
 //stores vantag settings indexed by name
 var/global/list/vantag_choices_list = list(
-		VANTAG_NONE		=	"Без участия",
-		VANTAG_VORE		=	"Быть добычей",
-		VANTAG_KIDNAP	=	"Быть похищенным",
-		VANTAG_KILL		=	"Быть убитым")
+		VANTAG_NONE		=	"No Involvement",
+		VANTAG_VORE		=	"Be Prey",
+		VANTAG_KIDNAP	=	"Be Kidnapped",
+		VANTAG_KILL		=	"Be Killed")
 
 //Blacklist to exclude items from object ingestion. Digestion blacklist located in digest_act_vr.dm
 var/global/list/item_vore_blacklist = list(
@@ -173,8 +173,8 @@ var/global/list/tf_vore_egg_types = list(
 	"Spotted pink"	= /obj/item/weapon/storage/vore_egg/pinkspots)
 
 var/global/list/edible_trash = list(/obj/item/broken_device,
-				/obj/item/clothing/accessory/collar,	//TFF 10/7/19 - add option to nom collars,
-				/obj/item/device/communicator,		//TFF 19/9/19 - add option to nom communicators and commwatches,
+				/obj/item/clothing/accessory/collar,
+				/obj/item/device/communicator,
 				/obj/item/clothing/mask,
 				/obj/item/clothing/glasses,
 				/obj/item/clothing/gloves,
@@ -485,15 +485,16 @@ var/global/list/remainless_species = list(SPECIES_PROMETHEAN,
 		hair_accesories_list[path] = instance
 
 	// Custom species traits
-	paths = typesof(/datum/trait) - /datum/trait
+	paths = typesof(/datum/trait) - /datum/trait - /datum/trait/negative - /datum/trait/neutral - /datum/trait/positive
 	for(var/path in paths)
 		var/datum/trait/instance = new path()
 		if(!instance.name)
 			continue //A prototype or something
+		var/category = instance.category
 		var/cost = instance.cost
 		traits_costs[path] = cost
 		all_traits[path] = instance
-		switch(cost)
+		switch(category)
 			if(-INFINITY to -0.1)
 				negative_traits[path] = instance
 			if(0)
