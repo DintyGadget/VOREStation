@@ -22,7 +22,7 @@
 /datum/event/rogue_drone/announce()
 	var/msg
 	var/rng = rand(1,5)
-	//VOREStation Edit Start TFF 16/12/19 - Sif -> Virgo 3b
+	//VOREStation Edit Start
 	switch(rng)
 		if(1)
 			msg = "Крыло боевого дрона, работающее на близкой орбите над Virgo 3b, не смогло вернуться после антипиратской атаки. Если они заметны, подходите к ним осторожно."
