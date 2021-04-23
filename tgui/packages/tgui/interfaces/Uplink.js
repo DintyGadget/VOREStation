@@ -11,7 +11,7 @@ export const Uplink = (props, context) => {
   const { data } = useBackend(context);
 
   const [screen, setScreen] = useLocalState(context, 'screen', 0);
-  
+
   const { telecrystals } = data;
   return (
     <Window
@@ -29,7 +29,7 @@ export const Uplink = (props, context) => {
           <ExploitableInformation />
         ) || (
           <Section color="bad">
-            Ошибка
+            Error
           </Section>
         )}
       </Window.Content>
@@ -60,22 +60,22 @@ const UplinkHeader = (props, context) => {
         <Tabs.Tab
           selected={screen === 0}
           onClick={() => setScreen(0)}>
-          Запрос предметов
+          Request Items
         </Tabs.Tab>
         <Tabs.Tab
           selected={screen === 1}
           onClick={() => setScreen(1)}>
-          Эксплуатируемая Информация
+          Exploitable Information
         </Tabs.Tab>
       </Tabs>
-      <Section title="Скидка на товар" level={2}>
+      <Section title="Item Discount" level={2}>
         {discount_amount < 100 && (
           <Box>
             {discount_name} - {discount_amount}% off. Offer expires at: {offer_expiry}
           </Box>
         ) || (
           <Box>
-            В настоящее время нет товаров со скидкой.
+            No items currently discounted.
           </Box>
         )}
       </Section>
@@ -92,52 +92,52 @@ const ExploitableInformation = (props, context) => {
   } = data;
 
   return (
-    <Section title="Эксплуатируемая Информация" buttons={exploit && (
+    <Section title="Exploitable Information" buttons={exploit && (
       <Button
         icon="undo"
-        content="Назад"
+        content="Back"
         onClick={() => act("view_exploits", { id: 0 })} />
     )}>
       {exploit && (
         <Box>
           <LabeledList>
-            <LabeledList.Item label="Ф.И">
+            <LabeledList.Item label="Name">
               {exploit.name}
             </LabeledList.Item>
-            <LabeledList.Item label="Пол">
+            <LabeledList.Item label="Sex">
               {exploit.sex}
             </LabeledList.Item>
-            <LabeledList.Item label="Раса">
+            <LabeledList.Item label="Species">
               {exploit.species}
             </LabeledList.Item>
-            <LabeledList.Item label="Возраст">
+            <LabeledList.Item label="Age">
               {exploit.age}
             </LabeledList.Item>
-            <LabeledList.Item label="Должность">
+            <LabeledList.Item label="Rank">
               {exploit.rank}
             </LabeledList.Item>
-            <LabeledList.Item label="Родная система">
+            <LabeledList.Item label="Home System">
               {exploit.home_system}
             </LabeledList.Item>
-            <LabeledList.Item label="Гражданство">
+            <LabeledList.Item label="Citizenship">
               {exploit.citizenship}
             </LabeledList.Item>
-            <LabeledList.Item label="Фракция">
+            <LabeledList.Item label="Faction">
               {exploit.faction}
             </LabeledList.Item>
-            <LabeledList.Item label="Религия">
+            <LabeledList.Item label="Religion">
               {exploit.religion}
             </LabeledList.Item>
-            <LabeledList.Item label="Отпечаток">
+            <LabeledList.Item label="Fingerprint">
               {exploit.fingerprint}
             </LabeledList.Item>
-            <LabeledList.Item label="Другие Принадлежности">
+            <LabeledList.Item label="Other Affiliations">
               {exploit.antagfaction}
             </LabeledList.Item>
             <LabeledList.Divider />
             <LabeledList.Item>Acquired Information</LabeledList.Item>
-            <LabeledList.Item label="Заметки">
-              {exploit.nanoui_exploit_record}
+            <LabeledList.Item label="Notes">
+              {exploit.nanoui_exploit_record.split("<br>").map(m => <Box key={m}>{m}</Box>)}
             </LabeledList.Item>
           </LabeledList>
         </Box>
@@ -198,7 +198,7 @@ export const GenericUplink = (props, context) => {
       )}
       buttons={(
         <Fragment>
-          Поиск
+          Search
           <Input
             autoFocus
             value={searchText}
@@ -206,12 +206,12 @@ export const GenericUplink = (props, context) => {
             mx={1} />
           <Button
             icon={compactMode ? 'list' : 'info'}
-            content={compactMode ? 'Компактный' : 'Подробный'}
+            content={compactMode ? 'Compact' : 'Detailed'}
             onClick={() => act('compact_toggle')} />
           {!!lockable && (
             <Button
               icon="lock"
-              content="Закр."
+              content="Lock"
               onClick={() => act('lock')} />
           )}
         </Fragment>
@@ -235,8 +235,8 @@ export const GenericUplink = (props, context) => {
           {items.length === 0 && (
             <NoticeBox>
               {searchText.length === 0
-                ? 'Нет предметов в этой категории.'
-                : 'Результатов не найдено.'}
+                ? 'No items in this category.'
+                : 'No results found.'}
             </NoticeBox>
           )}
           <ItemList

@@ -67,8 +67,8 @@ var/global/datum/controller/subsystem/ticker/ticker
 			post_game_tick()
 
 /datum/controller/subsystem/ticker/proc/pregame_welcome()
-	to_world("<span class='boldannounce notice'><em>Добро пожаловать в предыгровое лобби!</em></span>")
-	to_world("<span class='boldannounce notice'>Пожалуйста, настройте своего персонажа и выберите \"Готов\". Раунд начнется через [pregame_timeleft] секунд.</span>")
+	to_world("<span class='boldannounce notice'><em>Welcome to the pregame lobby!</em></span>")
+	to_world("<span class='boldannounce notice'>Please set up your character and select ready. The round will start in [pregame_timeleft] seconds.</span>")
 	world << sound('sound/misc/server-ready.ogg', volume = 100)
 
 // Called during GAME_STATE_PREGAME (RUNLEVEL_LOBBY)
@@ -116,7 +116,7 @@ var/global/datum/controller/subsystem/ticker/ticker
 	var/list/runnable_modes = config.get_runnable_modes()
 	if((master_mode == "random") || (master_mode == "secret"))
 		if(!runnable_modes.len)
-			to_world("<span class='danger'><B>Невозможно выбрать игровой режим.</B> Возврат к предигровому лобби.</span>")
+			to_world("<span class='danger'><B>Unable to choose playable game mode.</B> Reverting to pregame lobby.</span>")
 			return 0
 		if(secret_force_mode != "secret")
 			src.mode = config.pick_mode(secret_force_mode)
@@ -129,7 +129,7 @@ var/global/datum/controller/subsystem/ticker/ticker
 		src.mode = config.pick_mode(master_mode)
 
 	if(!src.mode)
-		to_world("<span class='danger'>Серьезная ошибка в настройке режима! Возврат к предигровому лобби.</span>") //Uses setup instead of set up due to computational context.
+		to_world("<span class='danger'>Serious error in mode setup! Reverting to pregame lobby.</span>") //Uses setup instead of set up due to computational context.
 		return 0
 
 	job_master.ResetOccupations()
@@ -138,21 +138,21 @@ var/global/datum/controller/subsystem/ticker/ticker
 	job_master.DivideOccupations() // Apparently important for new antagonist system to register specific job antags properly.
 
 	if(!src.mode.can_start())
-		to_world("<span class='danger'><B>Невозможно запустить [mode.name].</B> Недостаточно игроков наготове, нужно еще игроков: [config.player_requirements[mode.config_tag]]. Возврат к предигровому лобби.</span>")
+		to_world("<span class='danger'><B>Unable to start [mode.name].</B> Not enough players readied, [config.player_requirements[mode.config_tag]] players needed. Reverting to pregame lobby.</span>")
 		mode.fail_setup()
 		mode = null
 		job_master.ResetOccupations()
 		return 0
 
 	if(hide_mode)
-		to_world("<span class='notice'><B>Текущий режим игры - Секретный!</B></span>")
+		to_world("<span class='notice'><B>The current game mode is - Secret!</B></span>")
 		if(runnable_modes.len)
 			var/list/tmpmodes = new
 			for (var/datum/game_mode/M in runnable_modes)
 				tmpmodes+=M.name
 			tmpmodes = sortList(tmpmodes)
 			if(tmpmodes.len)
-				to_world("<span class='info'><B>Возможно:</B> [english_list(tmpmodes, and_text= "; ", comma_text = "; ")]</span>")
+				to_world("<span class='info'><B>Possibilities:</B> [english_list(tmpmodes, and_text= "; ", comma_text = "; ")]</span>")
 	else
 		src.mode.announce()
 	return 1
@@ -174,14 +174,14 @@ var/global/datum/controller/subsystem/ticker/ticker
 			//Deleting Startpoints but we need the ai point to AI-ize people later
 			if (S.name != "AI")
 				qdel(S)
-		to_world("<span class='boldannounce notice'><em>Приятной игры!</em></span>")
+		to_world("<span class='boldannounce notice'><em>Enjoy the game!</em></span>")
 		world << sound('sound/AI/welcome.ogg') // Skie
 		//Holiday Round-start stuff	~Carn
 		Holiday_Game_Start()
 
 	var/list/adm = get_admin_counts()
 	if(adm["total"] == 0)
-		send2adminirc("Раунд начался без администраторов.")
+		send2adminirc("A round has started with no admins online.")
 
 	current_state = GAME_STATE_PLAYING
 	Master.SetRunLevel(RUNLEVEL_GAME)
@@ -218,7 +218,7 @@ var/global/datum/controller/subsystem/ticker/ticker
 		end_game_state = END_GAME_MODE_FINISHED // Only do this cleanup once!
 		mode.cleanup()
 		//call a transfer shuttle vote
-		to_world("<span class='danger'>Раунд окончен!</span>")
+		to_world("<span class='danger'>The round has ended!</span>")
 		SSvote.autotransfer()
 
 // Called during GAME_STATE_FINISHED (RUNLEVEL_POSTGAME)
@@ -245,7 +245,7 @@ var/global/datum/controller/subsystem/ticker/ticker
 		if(END_GAME_ENDING)
 			restart_timeleft -= (world.time - last_fire)
 			if(delay_end)
-				to_world("<span class='notice'><b>Администратор отложил завершение раунда.</b></span>")
+				to_world("<span class='notice'><b>An admin has delayed the round end.</b></span>")
 				end_game_state = END_GAME_DELAYED
 			else if(restart_timeleft <= 0)
 				to_world("<span class='warning'><b>Restarting world!</b></span>")
@@ -431,46 +431,46 @@ var/global/datum/controller/subsystem/ticker/ticker
 	if(captainless)
 		for(var/mob/M in player_list)
 			if(!istype(M,/mob/new_player))
-				to_chat(M, "<span class='notice'>Директор на данный момент отсутствует.</span>")
+				to_chat(M, "<span class='notice'>Site Management is not forced on anyone.</span>")
 
 
 /datum/controller/subsystem/ticker/proc/declare_completion()
-	to_world("<span class='filter_system'><br><br><br><H1>Раунд [mode.name] завершен!</H1></span>")
+	to_world("<span class='filter_system'><br><br><br><H1>A round of [mode.name] has ended!</H1></span>")
 	for(var/mob/Player in player_list)
 		if(Player.mind && !isnewplayer(Player))
 			if(Player.stat != DEAD)
 				var/turf/playerTurf = get_turf(Player)
 				if(emergency_shuttle.departed && emergency_shuttle.evac)
 					if(isNotAdminLevel(playerTurf.z))
-						to_chat(Player, "<span class='filter_system'><font color='blue'><b>Вы выжили, но остались на [station_name()] будучи [Player.real_name].</b></font></span>")
+						to_chat(Player, "<span class='filter_system'><font color='blue'><b>You survived the round, but remained on [station_name()] as [Player.real_name].</b></font></span>")
 					else
-						to_chat(Player, "<span class='filter_system'><font color='green'><b>Вам удалось пережить события на [station_name()] будучи [Player.real_name].</b></font></span>")
+						to_chat(Player, "<span class='filter_system'><font color='green'><b>You managed to survive the events on [station_name()] as [Player.real_name].</b></font></span>")
 				else if(isAdminLevel(playerTurf.z))
-					to_chat(Player, "<span class='filter_system'><font color='green'><b>Вы успешно пережили эвакуацию экипажа после событий на [station_name()] будучи [Player.real_name].</b></font></span>")
+					to_chat(Player, "<span class='filter_system'><font color='green'><b>You successfully underwent crew transfer after events on [station_name()] as [Player.real_name].</b></font></span>")
 				else if(issilicon(Player))
-					to_chat(Player, "<span class='filter_system'><font color='green'><b>Вы остались целым после событий на [station_name()] будучи [Player.real_name].</b></font></span>")
+					to_chat(Player, "<span class='filter_system'><font color='green'><b>You remain operational after the events on [station_name()] as [Player.real_name].</b></font></span>")
 				else
-					to_chat(Player, "<span class='filter_system'><font color='blue'><b>Вы пропустили эвакуацию экипажа после событий на [station_name()] будучи [Player.real_name].</b></font></span>")
+					to_chat(Player, "<span class='filter_system'><font color='blue'><b>You missed the crew transfer after the events on [station_name()] as [Player.real_name].</b></font></span>")
 			else
 				if(istype(Player,/mob/observer/dead))
 					var/mob/observer/dead/O = Player
 					if(!O.started_as_observer)
-						to_chat(Player, "<span class='filter_system'><font color='red'><b>Вы не пережили события на [station_name()]...</b></font></span>")
+						to_chat(Player, "<span class='filter_system'><font color='red'><b>You did not survive the events on [station_name()]...</b></font></span>")
 				else
-					to_chat(Player, "<span class='filter_system'><font color='red'><b>Вы не пережили события на [station_name()]...</b></font></span>")
+					to_chat(Player, "<span class='filter_system'><font color='red'><b>You did not survive the events on [station_name()]...</b></font></span>")
 	to_world("<br>")
 
 	for (var/mob/living/silicon/ai/aiPlayer in mob_list)
 		if (aiPlayer.stat != 2)
-			to_world("<span class='filter_system'><b>[aiPlayer.name] (Игрок: [aiPlayer.key]) законы в конце раунда были:</b></span>")
+			to_world("<span class='filter_system'><b>[aiPlayer.name]'s laws at the end of the round were:</b></span>") // VOREStation edit
 		else
-			to_world("<span class='filter_system'><b>[aiPlayer.name] (Игрок: [aiPlayer.key])законы, когда произошла деактивация:</b></span>")
+			to_world("<span class='filter_system'><b>[aiPlayer.name]'s laws when it was deactivated were:</b></span>") // VOREStation edit
 		aiPlayer.show_laws(1)
 
 		if (aiPlayer.connected_robots.len)
-			var/robolist = "<b>Верными приспешниками ИИ были:</b> "
+			var/robolist = "<b>The AI's loyal minions were:</b> "
 			for(var/mob/living/silicon/robot/robo in aiPlayer.connected_robots)
-				robolist += "[robo.name][robo.stat?" (Деактивирован) (Игрок: [robo.key]), ":" (Игрок: [robo.key]), "]"
+				robolist += "[robo.name][robo.stat?" (Deactivated), ":", "]"  // VOREStation edit
 			to_world("<span class='filter_system'>[robolist]</span>")
 
 	var/dronecount = 0
@@ -488,9 +488,9 @@ var/global/datum/controller/subsystem/ticker/ticker
 
 		if (!robo.connected_ai)
 			if (robo.stat != 2)
-				to_world("<span class='filter_system'><b>[robo.name] (Played by: [robo.key]) survived as an AI-less stationbound synthetic! Its laws were:</b></span>")
+				to_world("<span class='filter_system'><b>[robo.name] survived as an AI-less stationbound synthetic! Its laws were:</b></span>") // VOREStation edit
 			else
-				to_world("<span class='filter_system'><b>[robo.name] (Played by: [robo.key]) was unable to survive the rigors of being a stationbound synthetic without an AI. Its laws were:</b></span>")
+				to_world("<span class='filter_system'><b>[robo.name] was unable to survive the rigors of being a stationbound synthetic without an AI. Its laws were:</b></span>") // VOREStation edit
 
 			if(robo) //How the hell do we lose robo between here and the world messages directly above this?
 				robo.laws.show_laws(world)
