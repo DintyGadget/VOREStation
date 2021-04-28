@@ -1,9 +1,9 @@
 /* General medicine */
 
 /datum/reagent/inaprovaline
-	name = "Инапровалин"
+	name = "Inaprovaline"
 	id = "inaprovaline"
-	description = "Инапровалин является синаптическим стимулятором и кардиостимулятором. Обычно используется для стабилизации состояния пациентов."
+	description = "Inaprovaline is a synaptic stimulant and cardiostimulant. Commonly used to stabilize patients."
 	taste_description = "bitterness"
 	reagent_state = LIQUID
 	color = "#00BFFF"
@@ -1295,8 +1295,8 @@
 	//VOREstation edit. Floor polishing.
 	if(istype(T, /turf/simulated))
 		var/turf/simulated/S = T
-		S.dirt = -50
-	//VOREstation edit end
+		S.dirt = -50 
+	//VOREstation edit end	
 
 /datum/reagent/sterilizine/touch_mob(var/mob/living/L, var/amount)
 	if(istype(L))
@@ -1490,10 +1490,10 @@
 	M.adjustCloneLoss(-2 * removed)
 
 /datum/reagent/menthol
-	name = "Ментол"
+	name = "Menthol"
 	id = "menthol"
-	description = "Имеет естественный мятный вкус и вызывает легкое онемение."
-	taste_description = "мята"
+	description = "Tastes naturally minty, and imparts a very mild numbing sensation."
+	taste_description = "mint"
 	reagent_state = LIQUID
 	color = "#80af9c"
 	metabolism = REM * 0.002

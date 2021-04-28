@@ -1,8 +1,8 @@
 /datum/reagent/blood
 	data = new/list("donor" = null, "viruses" = null, "species" = SPECIES_HUMAN, "blood_DNA" = null, "blood_type" = null, "blood_colour" = "#A10808", "resistances" = null, "trace_chem" = null, "antibodies" = list())
-	name = "Кровь"
+	name = "Blood"
 	id = "blood"
-	taste_description = "железо"
+	taste_description = "iron"
 	taste_mult = 1.3
 	reagent_state = LIQUID
 	metabolism = REM * 5
@@ -118,7 +118,7 @@
 	remove_self(volume)
 
 /datum/reagent/blood/synthblood
-	name = "синтетическая кровь"
+	name = "synthetic blood"
 	id = "synthblood"
 	color = "#999966"
 	volume_mod = 2
@@ -132,7 +132,7 @@
 	return
 
 /datum/reagent/blood/synthblood/dilute
-	name = "синтетическая плазма"
+	name = "synthetic plasma"
 	id = "synthblood_dilute"
 	color = "#cacaaf"
 	volume_mod = 1.2
@@ -140,8 +140,8 @@
 // pure concentrated antibodies
 /datum/reagent/antibodies
 	data = list("antibodies"=list())
-	name = "Антитела"
-	taste_description = "слизь"
+	name = "Antibodies"
+	taste_description = "slime"
 	id = "antibodies"
 	reagent_state = LIQUID
 	color = "#0050F0"
@@ -154,16 +154,16 @@
 
 #define WATER_LATENT_HEAT 19000 // How much heat is removed when applied to a hot turf, in J/unit (19000 makes 120 u of water roughly equivalent to 4L)
 /datum/reagent/water
-	name = "Вода"
+	name = "Water"
 	id = "water"
-	taste_description = "вода"
-	description = "Вездесущее химическое вещество, состоящее из водорода и кислорода."
+	taste_description = "water"
+	description = "A ubiquitous chemical substance that is composed of hydrogen and oxygen."
 	reagent_state = LIQUID
 	color = "#0064C877"
 	metabolism = REM * 10
 
 	glass_name = "water"
-	glass_desc = "Отец всех угощений."
+	glass_desc = "The father of all refreshments."
 
 /datum/reagent/water/touch_turf(var/turf/simulated/T)
 	if(!istype(T))
@@ -184,7 +184,7 @@
 		var/removed_heat = between(0, volume * WATER_LATENT_HEAT, -environment.get_thermal_energy_change(min_temperature))
 		environment.add_thermal_energy(-removed_heat)
 		if (prob(5))
-			T.visible_message("<span class='warning'>Вода шипит, когда она приземляется на [T]!</span>")
+			T.visible_message("<span class='warning'>The water sizzles as it lands on \the [T]!</span>")
 
 	else if(volume >= 10)
 		T.wet_floor(1)
@@ -203,7 +203,7 @@
 		if(istype(L, /mob/living/simple_mob/slime))
 			var/mob/living/simple_mob/slime/S = L
 			S.adjustToxLoss(15 * amount)
-			S.visible_message("<span class='warning'>Плоть [S] шипит там, где ее касается вода!</span>", "<span class='danger'>Ваша плоть горит в воде!</span>")
+			S.visible_message("<span class='warning'>[S]'s flesh sizzles where the water touches it!</span>", "<span class='danger'>Your flesh burns in the water!</span>")
 
 		// Then extinguish people on fire.
 		var/needed = max(0,L.fire_stacks) * 5
@@ -219,7 +219,7 @@
 					var/obj/item/clothing/mask/smokable/S = H.wear_mask
 					if(S.lit)
 						S.quench()
-						H.visible_message("<span class='notice'>[H] [S.name] потушен.</span>")
+						H.visible_message("<span class='notice'>[H]\'s [S.name] is put out.</span>")
 
 /*  //VOREStation Edit Start. Stops slimes from dying from water. Fixes fuel affect_ingest, too.
 /datum/reagent/water/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -241,15 +241,15 @@
 */  //VOREStation Edit End.
 
 /datum/reagent/fuel
-	name = "Сварочное топливо"
+	name = "Welding fuel"
 	id = "fuel"
-	description = "Требуется для сварщиков. Легковоспламеняющийся."
+	description = "Required for welders. Flamable."
 	taste_description = "gross metal"
 	reagent_state = LIQUID
 	color = "#660000"
 
 	glass_name = "welder fuel"
-	glass_desc = "Если вы не промышленный инструмент, это, вероятно, небезопасно для употребления."
+	glass_desc = "Unless you are an industrial tool, this is probably not safe for consumption."
 
 /datum/reagent/fuel/touch_turf(var/turf/T, var/amount)
 	new /obj/effect/decal/cleanable/liquid_fuel(T, amount, FALSE)

@@ -1,16 +1,16 @@
 /datum/reagent/aluminum
-	name = "Алюминий"
+	name = "Aluminum"
 	id = "aluminum"
-	description = "Серебристо-белый и пластичный член группы химических элементов бора."
+	description = "A silvery white and ductile member of the boron group of chemical elements."
 	taste_description = "metal"
 	taste_mult = 1.1
 	reagent_state = SOLID
 	color = "#A8A8A8"
 
 /datum/reagent/calcium
-	name = "Кальций"
+	name = "Calcium"
 	id = "calcium"
-	description = "Химический элемент, строительный блок костей."
+	description = "A chemical element, the building block of bones."
 	taste_description = "metallic chalk" // Apparently, calcium tastes like calcium.
 	taste_mult = 1.3
 	reagent_state = SOLID
@@ -23,15 +23,15 @@
 		for(var/obj/item/organ/external/O in H.bad_external_organs)
 			if(O.status & ORGAN_BROKEN)
 				O.mend_fracture()
-				H.custom_pain("Вы ощущаете мучительную силу кальция, исцеляющего ваши кости!",60)
+				H.custom_pain("You feel the agonizing power of calcium mending your bones!",60)
 				H.AdjustWeakened(1)
 				break // Only mend one bone, whichever comes first in the list
 //VOREStation Edit End
 
 /datum/reagent/carbon
-	name = "Углерод"
+	name = "Carbon"
 	id = "carbon"
-	description = "Химический элемент, строительный блок жизни."
+	description = "A chemical element, the building block of life."
 	taste_description = "sour chalk"
 	taste_mult = 1.5
 	reagent_state = SOLID
@@ -58,9 +58,9 @@
 			dirtoverlay.alpha = min(dirtoverlay.alpha + volume * 30, 255)
 
 /datum/reagent/chlorine
-	name = "Хлор"
+	name = "Chlorine"
 	id = "chlorine"
-	description = "Химический элемент с характерным запахом."
+	description = "A chemical element with a characteristic odour."
 	taste_description = "pool water"
 	reagent_state = GAS
 	color = "#808080"
@@ -72,9 +72,9 @@
 	M.take_organ_damage(1*REM, 0)
 
 /datum/reagent/copper
-	name = "Медь"
+	name = "Copper"
 	id = "copper"
-	description = "Очень пластичный металл."
+	description = "A highly ductile metal."
 	taste_description = "pennies"
 	color = "#6E3B08"
 
@@ -83,9 +83,9 @@
 		M.add_chemical_effect(CE_BLOODRESTORE, 8 * removed)
 
 /datum/reagent/ethanol
-	name = "Этанол" //Parent class for all alcoholic reagents.
+	name = "Ethanol" //Parent class for all alcoholic reagents.
 	id = "ethanol"
-	description = "Хорошо известный алкоголь с самыми разнообразными приложениями."
+	description = "A well-known alcohol with a variety of applications."
 	taste_description = "pure alcohol"
 	reagent_state = LIQUID
 	color = "#404030"
@@ -102,7 +102,7 @@
 	var/halluci = 0
 
 	glass_name = "ethanol"
-	glass_desc = "Хорошо известный алкоголь с самыми разнообразными приложениями."
+	glass_desc = "A well-known alcohol with a variety of applications."
 	allergen_factor = 0.5	//simulates mixed drinks containing less of the allergen, as they have only a single actual reagent unlike food
 
 /datum/reagent/ethanol/touch_mob(var/mob/living/L, var/amount)
@@ -122,7 +122,7 @@
 		strength_mod = 0
 	if(alien == IS_SLIME)
 		strength_mod *= 2 // VOREStation Edit - M.adjustToxLoss(removed)
-
+	
 	M.add_chemical_effect(CE_ALCOHOL, 1)
 	var/effective_dose = dose * strength_mod * (1 + volume/60) //drinking a LOT will make you go down faster
 
@@ -202,23 +202,23 @@
 	if(istype(O, /obj/item/weapon/paper))
 		var/obj/item/weapon/paper/paperaffected = O
 		paperaffected.clearpaper()
-		to_chat(usr, "Раствор растворяет чернила на бумаге.")
+		to_chat(usr, "The solution dissolves the ink on the paper.")
 		return
 	if(istype(O, /obj/item/weapon/book))
 		if(volume < 5)
 			return
 		if(istype(O, /obj/item/weapon/book/tome))
-			to_chat(usr, "<span class='notice'>Раствор ничего не дает. Что бы это ни было, это не обычные чернила.</span>")
+			to_chat(usr, "<span class='notice'>The solution does nothing. Whatever this is, it isn't normal ink.</span>")
 			return
 		var/obj/item/weapon/book/affectedbook = O
 		affectedbook.dat = null
-		to_chat(usr, "<span class='notice'>Раствор растворяет чернила на книге.</span>")
+		to_chat(usr, "<span class='notice'>The solution dissolves the ink on the book.</span>")
 	return
 
 /datum/reagent/fluorine
-	name = "Фтор"
+	name = "Fluorine"
 	id = "fluorine"
-	description = "Высокореактивный химический элемент."
+	description = "A highly-reactive chemical element."
 	taste_description = "acid"
 	reagent_state = GAS
 	color = "#808080"
@@ -230,17 +230,17 @@
 	M.adjustToxLoss(removed)
 
 /datum/reagent/hydrogen
-	name = "Водород"
+	name = "Hydrogen"
 	id = "hydrogen"
-	description = "Бесцветный, без запаха, неметаллический, безвкусный, очень горючий двухатомный газ."
+	description = "A colorless, odorless, nonmetallic, tasteless, highly combustible diatomic gas."
 	taste_mult = 0 //no taste
 	reagent_state = GAS
 	color = "#808080"
 
 /datum/reagent/iron
-	name = "Железо"
+	name = "Iron"
 	id = "iron"
-	description = "Чистое железо-это металл."
+	description = "Pure iron is a metal."
 	taste_description = "metal"
 	reagent_state = SOLID
 	color = "#353535"
@@ -250,9 +250,9 @@
 		M.add_chemical_effect(CE_BLOODRESTORE, 8 * removed)
 
 /datum/reagent/lithium
-	name = "Литий"
+	name = "Lithium"
 	id = "lithium"
-	description = "Химический элемент, используемый в качестве антидепрессанта."
+	description = "A chemical element, used as antidepressant."
 	taste_description = "metal"
 	reagent_state = SOLID
 	color = "#808080"
@@ -265,9 +265,9 @@
 			M.emote(pick("twitch", "drool", "moan"))
 
 /datum/reagent/mercury
-	name = "Ртуть"
+	name = "Mercury"
 	id = "mercury"
-	description = "Химический элемент."
+	description = "A chemical element."
 	taste_mult = 0 //mercury apparently is tasteless. IDK
 	reagent_state = LIQUID
 	color = "#484848"
@@ -281,17 +281,17 @@
 		M.adjustBrainLoss(0.5 * removed)
 
 /datum/reagent/nitrogen
-	name = "Азот"
+	name = "Nitrogen"
 	id = "nitrogen"
-	description = "Бесцветный, без запаха, безвкусный газ."
+	description = "A colorless, odorless, tasteless gas."
 	taste_mult = 0 //no taste
 	reagent_state = GAS
 	color = "#808080"
 
 /datum/reagent/oxygen
-	name = "Кислород"
+	name = "Oxygen"
 	id = "oxygen"
-	description = "Бесцветный газ без запаха."
+	description = "A colorless, odorless gas."
 	taste_mult = 0
 	reagent_state = GAS
 	color = "#808080"
@@ -301,25 +301,25 @@
 		M.adjustToxLoss(removed * 3)
 
 /datum/reagent/phosphorus
-	name = "Фосфор"
+	name = "Phosphorus"
 	id = "phosphorus"
-	description = "Химический элемент, основа биологических энергоносителей."
+	description = "A chemical element, the backbone of biological energy carriers."
 	taste_description = "vinegar"
 	reagent_state = SOLID
 	color = "#832828"
 
 /datum/reagent/potassium
-	name = "Калий"
+	name = "Potassium"
 	id = "potassium"
-	description = "Мягкое, легкоплавкое твердое вещество, которое можно легко разрезать ножом. Бурно реагирует с водой."
+	description = "A soft, low-melting solid that can easily be cut with a knife. Reacts violently with water."
 	taste_description = "sweetness" //potassium is bitter in higher doses but sweet in lower ones.
 	reagent_state = SOLID
 	color = "#A0A0A0"
 
 /datum/reagent/radium
-	name = "Радий"
+	name = "Radium"
 	id = "radium"
-	description = "Радий-щелочноземельный металл. Он чрезвычайно радиоактивен."
+	description = "Radium is an alkaline earth metal. It is extremely radioactive."
 	taste_mult = 0	//Apparently radium is tasteless
 	reagent_state = SOLID
 	color = "#C7C7C7"
@@ -350,9 +350,9 @@
 			return
 
 /datum/reagent/acid
-	name = "Серная кислота"
+	name = "Sulphuric acid"
 	id = "sacid"
-	description = "Очень агрессивная минеральная кислота с молекулярной формулой H2SO4."
+	description = "A very corrosive mineral acid with the molecular formula H2SO4."
 	taste_description = "acid"
 	reagent_state = LIQUID
 	color = "#DB5008"
@@ -370,11 +370,11 @@
 		var/mob/living/carbon/human/H = M
 		if(H.head)
 			if(H.head.unacidable)
-				to_chat(H, "<span class='danger'>Ваша [H.head] защищает вас от кислоты.</span>")
+				to_chat(H, "<span class='danger'>Your [H.head] protects you from the acid.</span>")
 				remove_self(volume)
 				return
 			else if(removed > meltdose)
-				to_chat(H, "<span class='danger'>Ваша [H.head] тает!</span>")
+				to_chat(H, "<span class='danger'>Your [H.head] melts away!</span>")
 				qdel(H.head)
 				H.update_inv_head(1)
 				H.update_hair(1)
@@ -384,11 +384,11 @@
 
 		if(H.wear_mask)
 			if(H.wear_mask.unacidable)
-				to_chat(H, "<span class='danger'>Ваша [H.wear_mask] защищает вас от кислоты.</span>")
+				to_chat(H, "<span class='danger'>Your [H.wear_mask] protects you from the acid.</span>")
 				remove_self(volume)
 				return
 			else if(removed > meltdose)
-				to_chat(H, "<span class='danger'>Ваша [H.wear_mask] тает!</span>")
+				to_chat(H, "<span class='danger'>Your [H.wear_mask] melts away!</span>")
 				qdel(H.wear_mask)
 				H.update_inv_wear_mask(1)
 				H.update_hair(1)
@@ -398,10 +398,10 @@
 
 		if(H.glasses)
 			if(H.glasses.unacidable)
-				to_chat(H, "<span class='danger'>Ваши [H.glasses] частично защищают вас от кислоты!</span>")
+				to_chat(H, "<span class='danger'>Your [H.glasses] partially protect you from the acid!</span>")
 				removed /= 2
 			else if(removed > meltdose)
-				to_chat(H, "<span class='danger'>Ваши [H.glasses] тают!</span>")
+				to_chat(H, "<span class='danger'>Your [H.glasses] melt away!</span>")
 				qdel(H.glasses)
 				H.update_inv_glasses(1)
 				removed -= meltdose / 2
@@ -430,39 +430,39 @@
 		return
 	if((istype(O, /obj/item) || istype(O, /obj/effect/plant)) && (volume > meltdose))
 		var/obj/effect/decal/cleanable/molten_item/I = new/obj/effect/decal/cleanable/molten_item(O.loc)
-		I.desc = "Похоже, это было [O] некоторое время назад."
+		I.desc = "Looks like this was \an [O] some time ago."
 		for(var/mob/M in viewers(5, O))
-			to_chat(M, "<span class='warning'>[O] тает.</span>")
+			to_chat(M, "<span class='warning'>\The [O] melts.</span>")
 		qdel(O)
 		remove_self(meltdose) // 10 units of acid will not melt EVERYTHING on the tile
 
 /datum/reagent/silicon
-	name = "Кремний"
+	name = "Silicon"
 	id = "silicon"
-	description = "Четырехвалентный металлоид, кремний менее реакционноспособен, чем его химический аналог углерод."
+	description = "A tetravalent metalloid, silicon is less reactive than its chemical analog carbon."
 	taste_mult = 0
 	reagent_state = SOLID
 	color = "#A8A8A8"
 
 /datum/reagent/sodium
-	name = "Натрий"
+	name = "Sodium"
 	id = "sodium"
-	description = "Химический элемент, легко реагирует с водой."
+	description = "A chemical element, readily reacts with water."
 	taste_description = "salty metal"
 	reagent_state = SOLID
 	color = "#808080"
 
 /datum/reagent/sugar
-	name = "Сахар"
+	name = "Sugar"
 	id = "sugar"
-	description = "Органическое соединение, широко известное как столовый сахар и иногда называемое сахарозой. Этот белый кристаллический порошок без запаха имеет приятный сладкий вкус."
+	description = "The organic compound commonly known as table sugar and sometimes called saccharose. This white, odorless, crystalline powder has a pleasing, sweet taste."
 	taste_description = "sugar"
 	taste_mult = 1.8
 	reagent_state = SOLID
 	color = "#FFFFFF"
 
 	glass_name = "sugar"
-	glass_desc = "Органическое соединение, широко известное как столовый сахар и иногда называемое сахарозой. Этот белый кристаллический порошок без запаха имеет приятный сладкий вкус."
+	glass_desc = "The organic compound commonly known as table sugar and sometimes called saccharose. This white, odorless, crystalline powder has a pleasing, sweet taste."
 	glass_icon = DRINK_ICON_NOISY
 
 /datum/reagent/sugar/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -487,17 +487,17 @@
 			M.drowsyness = max(M.drowsyness, 60)
 
 /datum/reagent/sulfur
-	name = "Сера"
+	name = "Sulfur"
 	id = "sulfur"
-	description = "Химический элемент с резким запахом."
+	description = "A chemical element with a pungent smell."
 	taste_description = "old eggs"
 	reagent_state = SOLID
 	color = "#BF8C00"
 
 /datum/reagent/tungsten
-	name = "Вольфрам"
+	name = "Tungsten"
 	id = "tungsten"
-	description = "Химический элемент и сильный окислитель."
+	description = "A chemical element, and a strong oxidising agent."
 	taste_description = "metal"
 	taste_mult = 0 //no taste
 	reagent_state = SOLID

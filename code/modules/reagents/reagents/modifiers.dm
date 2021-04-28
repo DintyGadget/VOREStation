@@ -3,10 +3,10 @@
  */
 
 /datum/reagent/modapplying
-	name = "грубый сок"
+	name = "brute juice"
 	id = "berserkmed"
-	description = "Жидкость, способная вызывать длительное состояние повышенной агрессии и стойкости."
-	taste_description = "металл"
+	description = "A liquid that is capable of causing a prolonged state of heightened aggression and durability."
+	taste_description = "metal"
 	reagent_state = LIQUID
 	color = "#ff5555"
 	metabolism = REM
@@ -21,10 +21,10 @@
 	M.add_modifier(modifier_to_add, modifier_duration, suppress_failure = TRUE)
 
 /datum/reagent/modapplying/cryofluid
-	name = "криогенная суспензия"
+	name = "cryogenic slurry"
 	id = "cryoslurry"
-	description = "Невероятно странная жидкость, которая быстро поглощает тепловую энергию из материалов, с которыми соприкасается."
-	taste_description = "сибирский ад"
+	description = "An incredibly strange liquid that rapidly absorbs thermal energy from materials it contacts."
+	taste_description = "siberian hellscape"
 	color = "#4CDBDB"
 	metabolism = REM * 0.5
 
@@ -50,7 +50,7 @@
 
 /datum/reagent/modapplying/cryofluid/touch_turf(var/turf/T, var/amount)
 	if(istype(T, /turf/simulated/floor/water) && prob(amount))
-		T.visible_message("<span class='danger'>[T] громко потрескивает, когда криогенная жидкость выкипает, оставляя после себя твердый слой льда.</span>")
+		T.visible_message("<span class='danger'>\The [T] crackles loudly as the cryogenic fluid causes it to boil away, leaving behind a hard layer of ice.</span>")
 		T.ChangeTurf(/turf/simulated/floor/outdoors/ice, 1, 1, TRUE)
 	else
 		if(istype(T, /turf/simulated))
@@ -59,10 +59,10 @@
 	return
 
 /datum/reagent/modapplying/vatstabilizer
-	name = "ингибитор роста клонов"
+	name = "clone growth inhibitor"
 	id = "vatstabilizer"
-	description = "Соединение, производимое NanoTrasen с использованием секретной смеси форона и токсинов, чтобы остановить безудержный рост клона за пределами запланированных состояний."
-	taste_description = "кислый клей"
+	description = "A compound produced by NanoTrasen using a secret blend of phoron and toxins to stop the rampant growth of a clone beyond intended states."
+	taste_description = "sour glue"
 	color = "#060501"
 	metabolism = REM * 0.2
 
