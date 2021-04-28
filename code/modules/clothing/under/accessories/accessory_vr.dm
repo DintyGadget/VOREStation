@@ -3,9 +3,9 @@
 //
 
 /obj/item/clothing/accessory/choker //A colorable, tagless choker
-	name = "plain choker"
+	name = "чокер"
 	slot_flags = SLOT_TIE | SLOT_OCLOTHING
-	desc = "A simple, plain choker. Or maybe it's a collar? Use in-hand to customize it."
+	desc = "Простой, незамысловатый чокер. А может, это ошейник? Используйте в руке, чтобы настроить его."
 	icon = 'icons/obj/clothing/ties_vr.dmi'
 	icon_override = 'icons/mob/ties_vr.dmi'
 	icon_state = "choker_cst"
@@ -46,15 +46,15 @@
 
 /obj/item/clothing/accessory/choker/attack_self(mob/user as mob)
 	if(!customized)
-		var/design = input(user,"Descriptor?","Pick descriptor","") in list("plain","simple","ornate","elegant","opulent")
-		var/material = input(user,"Material?","Pick material","") in list("leather","velvet","lace","fabric","latex","plastic","metal","chain","silver","gold","platinum","steel","bead","ruby","sapphire","emerald","diamond")
-		var/type = input(user,"Type?","Pick type","") in list("choker","collar","necklace")
+		var/design = input(user,"Вид?","Выберите вид:","") in list("обычный","простой","украшенный","элегантный","роскошный")
+		var/material = input(user,"Материал?","Выберите материал:","") in list("кожаный","бархатный","кружевной","тканый","латексный","пластиковый","металлический","цепной","серебряный","золотой","платиновый","стальной","бусинный","рубиновый","сапфировый","изумрудный","бриллиантовый")
+		var/type = input(user,"Тип?","Выберите тип:","") in list("чокер","ошейник")
 		name = "[design] [material] [type]"
-		desc = "A [type], made of [material]. It's rather [design]."
+		desc = "Это [material] [type]. На вид вполне [design]."
 		customized = 1
-		to_chat(usr,"<span class='notice'>[src] has now been customized.</span>")
+		to_chat(usr,"<span class='notice'>Вы видоизменили [ru_getcase(src, "acase")].</span>")
 	else
-		to_chat(usr,"<span class='notice'>[src] has already been customized!</span>")
+		to_chat(usr,"<span class='notice'>Вы уже видоизменzли [ru_getcase(src, "acase")]!</span>")
 
 /obj/item/clothing/accessory/collar
 	slot_flags = SLOT_TIE | SLOT_OCLOTHING
@@ -95,36 +95,36 @@
 	icon_override = icon_previous_override
 
 /obj/item/clothing/accessory/collar/silver
-	name = "Silver tag collar"
-	desc = "A collar for your little pets... or the big ones."
+	name = "Серебряный ошейник с биркой"
+	desc = "Ошейник для ваших маленьких питомцев... или больших."
 	icon_state = "collar_blk"
 	item_state = "collar_blk"
 	overlay_state = "collar_blk"
 
 /obj/item/clothing/accessory/collar/gold
-	name = "Golden tag collar"
-	desc = "A collar for your little pets... or the big ones."
+	name = "Золотой ошейник с биркой"
+	desc = "Ошейник для ваших маленьких питомцев... или больших."
 	icon_state = "collar_gld"
 	item_state = "collar_gld"
 	overlay_state = "collar_gld"
 
 /obj/item/clothing/accessory/collar/bell
-	name = "Bell collar"
-	desc = "A collar with a tiny bell hanging from it, purrfect furr kitties."
+	name = "Ошейник с колокольчиком"
+	desc = "Ошейник с прицепленным колокольчиком."
 	icon_state = "collar_bell"
 	item_state = "collar_bell"
 	overlay_state = "collar_bell"
 	var/jingled = 0
 
 /obj/item/clothing/accessory/collar/bell/verb/jinglebell()
-	set name = "Jingle Bell"
+	set name = "Позвонить В Колокольчик"
 	set category = "Object"
 	set src in usr
 	if(!istype(usr, /mob/living)) return
 	if(usr.stat) return
 
 	if(!jingled)
-		usr.audible_message("[usr] jingles the [src]'s bell.")
+		usr.audible_message("[usr] звонит в колокольчик [ru_getcase(src, "gcase")].")
 		playsound(src, 'sound/items/pickup/ring.ogg', 50, 1)
 		jingled = 1
 		addtimer(CALLBACK(src, .proc/jingledreset), 50)
@@ -134,8 +134,8 @@
 		jingled = 0
 
 /obj/item/clothing/accessory/collar/shock
-	name = "Shock collar"
-	desc = "A collar used to ease hungry predators."
+	name = "Электрический ошейник"
+	desc = "Ошейник, используемый для усмирения голодных хищников."
 	icon_state = "collar_shk0"
 	item_state = "collar_shk"
 	overlay_state = "collar_shk"
@@ -167,15 +167,15 @@
 			var/new_frequency = sanitize_frequency(frequency + text2num(href_list["freq"]))
 			set_frequency(new_frequency)
 		if(href_list["tag"])
-			var/str = copytext(reject_bad_text(input(usr,"Tag text?","Set tag","")),1,MAX_NAME_LEN)
+			var/str = copytext_char(reject_bad_text(input(usr,"Текст на бирке?","Введите текст бирки","")),1,MAX_NAME_LEN)
 			if(!str || !length(str))
-				to_chat(usr,"<span class='notice'>[name]'s tag set to be blank.</span>")
+				to_chat(usr,"<span class='notice'>Установлен пустой текст на бирке.</span>")
 				name = initial(name)
 				desc = initial(desc)
 			else
-				to_chat(usr,"<span class='notice'>You set the [name]'s tag to '[str]'.</span>")
+				to_chat(usr,"<span class='notice'>Вы написали на бирке ошейника '[str]'.</span>")
 				name = initial(name) + " ([str])"
-				desc = initial(desc) + " The tag says \"[str]\"."
+				desc = initial(desc) + " На бирке написано: \"[str]\"."
 		else
 			if(href_list["code"])
 				code += text2num(href_list["code"])
@@ -215,7 +215,7 @@
 			M = loc
 		if(ismob(loc.loc))
 			M = loc.loc // This is about as terse as I can make my solution to the whole 'collar won't work when attached as accessory' thing.
-		to_chat(M,"<span class='danger'>You feel a sharp shock!</span>")
+		to_chat(M,"<span class='danger'>Вы чувствуете острый удар током!</span>")
 		var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
 		s.set_up(3, 1, M)
 		s.start()
@@ -226,126 +226,126 @@
 	if(!istype(user, /mob/living/carbon/human))
 		return
 	user.set_machine(src)
-	var/dat = {"<TT>
-			<A href='?src=\ref[src];power=1'>Turn [on ? "Off" : "On"]</A><BR>
-			<B>Frequency/Code</B> for collar:<BR>
-			Frequency:
+	var/dat = {"<TT><meta charset=\"utf-8\">
+			<A href='?src=\ref[src];power=1'>[on ? "Выключить" : "Включить"]</A><BR>
+			<B>Код частоты</B> для ошейника:<BR>
+			Частота:
 			<A href='byond://?src=\ref[src];freq=-10'>-</A>
 			<A href='byond://?src=\ref[src];freq=-2'>-</A> [format_frequency(frequency)]
 			<A href='byond://?src=\ref[src];freq=2'>+</A>
 			<A href='byond://?src=\ref[src];freq=10'>+</A><BR>
 
-			Code:
+			Код:
 			<A href='byond://?src=\ref[src];code=-5'>-</A>
 			<A href='byond://?src=\ref[src];code=-1'>-</A> [code]
 			<A href='byond://?src=\ref[src];code=1'>+</A>
 			<A href='byond://?src=\ref[src];code=5'>+</A><BR>
 
-			Tag:
-			<A href='?src=\ref[src];tag=1'>Set tag</A><BR>
+			Бирка:
+			<A href='?src=\ref[src];tag=1'>Установить текст</A><BR>
 			</TT>"}
 	user << browse(dat, "window=radio")
 	onclose(user, "radio")
 	return
 
 /obj/item/clothing/accessory/collar/spike
-	name = "Spiked collar"
-	desc = "A collar with spikes that look as sharp as your teeth."
+	name = "Шипованный ошейник"
+	desc = "Ошейник с шипами. Острые, как и клыки хищника."
 	icon_state = "collar_spik"
 	item_state = "collar_spik"
 	overlay_state = "collar_spik"
 
 /obj/item/clothing/accessory/collar/pink
-	name = "Pink collar"
-	desc = "This collar will make your pets look FA-BU-LOUS."
+	name = "Розовый ошейник"
+	desc = "Придаёт Вашим питомцам определенный шарм."
 	icon_state = "collar_pnk"
 	item_state = "collar_pnk"
 	overlay_state = "collar_pnk"
 
 /obj/item/clothing/accessory/collar/holo
-	name = "Holo-collar"
-	desc = "An expensive holo-collar for the modern day pet."
+	name = "Голо-ошейник"
+	desc = "Дорогой голо-ошейник для современного питомца."
 	icon_state = "collar_holo"
 	item_state = "collar_holo"
 	overlay_state = "collar_holo"
 	matter = list(DEFAULT_WALL_MATERIAL = 50)
 
 /obj/item/clothing/accessory/collar/holo/indigestible
-	desc = "A special variety of the holo-collar that seems to be made of a very durable fabric that fits around the neck."
+	desc = "Особая разновидность голо-ошейника, изготовленная сделан из очень прочной на вид ткани."
 //Make indigestible
 /obj/item/clothing/accessory/collar/holo/indigestible/digest_act(var/atom/movable/item_storage = null)
 	return FALSE
 
 /obj/item/clothing/accessory/collar/attack_self(mob/user as mob)
 	if(istype(src,/obj/item/clothing/accessory/collar/holo))
-		to_chat(user,"<span class='notice'>[name]'s interface is projected onto your hand.</span>")
+		to_chat(user,"<span class='notice'>Интерфейс [ru_getcase(src,"gcase")] проецируется Вам на руку.</span>")
 	else
 		if(writtenon)
-			to_chat(user,"<span class='notice'>You need a pen or a screwdriver to edit the tag on this collar.</span>")
+			to_chat(user,"<span class='notice'>Чтобы изменить текст на бирке, необходима отвертка или ручка.</span>")
 			return
-		to_chat(user,"<span class='notice'>You adjust the [name]'s tag.</span>")
+		to_chat(user,"<span class='notice'>Вы редактируете бирку на ошейнике.</span>")
 
-	var/str = copytext(reject_bad_text(input(user,"Tag text?","Set tag","")),1,MAX_NAME_LEN)
+	var/str = copytext_char(reject_bad_text(input(user,"Текст на бирке?","Установите текст","")),1,MAX_NAME_LEN)
 
 	if(!str || !length(str))
-		to_chat(user,"<span class='notice'>[name]'s tag set to be blank.</span>")
+		to_chat(user,"<span class='notice'>Установлен пустой текст на бирке [ru_getcase(src,"gcase")].</span>")
 		name = initial(name)
 		desc = initial(desc)
 	else
-		to_chat(user,"<span class='notice'>You set the [name]'s tag to '[str]'.</span>")
+		to_chat(user,"<span class='notice'>Вы написали на бирке ошейника: '[str]'.</span>")
 		initialize_tag(str)
 
 /obj/item/clothing/accessory/collar/proc/initialize_tag(var/tag)
 		name = initial(name) + " ([tag])"
-		desc = initial(desc) + " \"[tag]\" has been engraved on the tag."
+		desc = initial(desc) + " На ошейнике написано: \"[tag]\""
 		writtenon = 1
 
 /obj/item/clothing/accessory/collar/holo/initialize_tag(var/tag)
 		..()
-		desc = initial(desc) + " The tag says \"[tag]\"."
+		desc = initial(desc) + " На ошейнике написано: \"[tag]\"."
 
 /obj/item/clothing/accessory/collar/attackby(obj/item/I, mob/user)
 	if(istype(src,/obj/item/clothing/accessory/collar/holo))
 		return
 
 	if(istype(I,/obj/item/weapon/tool/screwdriver))
-		update_collartag(user, I, "scratched out", "scratch out", "engraved")
+		update_collartag(user, I, "зацарапаны", "зацарапываете слова на ошейнике отверткой", "выгравированы слова:")
 		return
 
 	if(istype(I,/obj/item/weapon/pen))
-		update_collartag(user, I, "crossed out", "cross out", "written")
+		update_collartag(user, I, "перечеркнуты", "зачеркиваете слова на ошейнике ручкой", "записаны слова:")
 		return
 
-	to_chat(user,"<span class='notice'>You need a pen or a screwdriver to edit the tag on this collar.</span>")
+	to_chat(user,"<span class='notice'>Чтобы изменить текст на бирке, необходима отвертка или ручка.</span>")
 
 /obj/item/clothing/accessory/collar/proc/update_collartag(mob/user, obj/item/I, var/erasemethod, var/erasing, var/writemethod)
 	if(!(istype(user.get_active_hand(),I)) || !(istype(user.get_inactive_hand(),src)) || (user.stat))
 		return
 
-	var/str = copytext(reject_bad_text(input(user,"Tag text?","Set tag","")),1,MAX_NAME_LEN)
+	var/str = copytext_char(reject_bad_text(input(user,"Tag text?","Set tag","")),1,MAX_NAME_LEN)
 
 	if(!str || !length(str))
 		if(!writtenon)
-			to_chat(user,"<span class='notice'>You don't write anything.</span>")
+			to_chat(user,"<span class='notice'>Вы решили ничего не вписывать.</span>")
 		else
-			to_chat(user,"<span class='notice'>You [erasing] the words with the [I].</span>")
+			to_chat(user,"<span class='notice'>Вы [erasing].</span>")
 			name = initial(name)
-			desc = initial(desc) + " The tag has had the words [erasemethod]."
+			desc = initial(desc) + " На бирке [erasemethod] слова."
 	else
 		if(!writtenon)
-			to_chat(user,"<span class='notice'>You write '[str]' on the tag with the [I].</span>")
+			to_chat(user,"<span class='notice'>Вы записываете на бирке: '[str]'.</span>")
 			name = initial(name) + " ([str])"
-			desc = initial(desc) + " \"[str]\" has been [writemethod] on the tag."
+			desc = initial(desc) + " На бирке [writemethod] \"[str]\"."
 			writtenon = 1
 		else
-			to_chat(user,"<span class='notice'>You [erasing] the words on the tag with the [I], and write '[str]'.</span>")
+			to_chat(user,"<span class='notice'>Вы [erasing] и записываете '[str]'.</span>")
 			name = initial(name) + " ([str])"
-			desc = initial(desc) + " Something has been [erasemethod] on the tag, and it now has \"[str]\" [writemethod] on it."
+			desc = initial(desc) + " На бирке [erasemethod] слова, и поверх [writemethod] \"[str]\"."
 
 //Machete Holsters
 /obj/item/clothing/accessory/holster/machete
-	name = "machete sheath"
-	desc = "A handsome synthetic leather sheath with matching belt."
+	name = "Ножны для мачете"
+	desc = "Красивые ножны из искусственной кожи с соответствующим поясом."
 	icon_state = "holster_machete"
 	slot = ACCESSORY_SLOT_WEAPON
 	concealed_holster = 0
@@ -356,8 +356,8 @@
 //Medals
 
 /obj/item/clothing/accessory/medal/silver/unity
-	name = "medal of unity"
-	desc = "A silver medal awarded to a group which has demonstrated exceptional teamwork to achieve a notable feat."
+	name = "Медаль единства"
+	desc = "Данная серебряная медаль присуждается группе, которая проявила исключительную командную работу в совершении выдающегося подвига."
 
 /obj/item/clothing/accessory/medal/silver/unity/tabiranth
 	icon = 'icons/obj/clothing/ties_vr.dmi'
@@ -365,4 +365,4 @@
 	icon_state = "silverthree"
 	item_state = "silverthree"
 	overlay_state = "silverthree"
-	desc = "A silver medal awarded to a group which has demonstrated exceptional teamwork to achieve a notable feat. This one has three bronze service stars, denoting that it has been awarded four times."
+	desc = "Данная серебряная медаль присуждается группе, которая проявила исключительную командную работу в совершении выдающегося подвига. На этой медали есть две бронзовые звездочки, означающие, что медаль была присуждена трижды."
