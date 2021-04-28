@@ -1,5 +1,5 @@
 /obj/item/clothing/accessory/storage/bluespace
-	name = "bluespace badge"
-	desc = "A small, shielded device capable of holding a number of items in it. Used for carrying items discreetly."
+	name = "значок bluespace"
+	desc = "Небольшое экранированное устройство, способное удерживать в себе несколько предметов. Используется для незаметной переноски предметов."
 	icon_state = "solbadge"
 	item_state = "badge"

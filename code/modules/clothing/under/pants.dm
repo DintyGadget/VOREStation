@@ -1,126 +1,126 @@
 //these need item states -S2-
 /obj/item/clothing/under/pants
-	name = "jeans"
-	desc = "A nondescript pair of tough blue jeans."
+	name = "джинсы"
+	desc = "Обыкновенные плотные джинсы."
 	icon_state = "jeans"
 	gender = PLURAL
 	body_parts_covered = LOWER_TORSO|LEGS
 	index = 1
 
 /obj/item/clothing/under/pants/ripped
-	name = "ripped jeans"
-	desc = "A nondescript pair of tough blue jeans with holes in them."
+	name = "порванные джинсы"
+	desc = "Обыкновенные плотные джинсы с дырками."
 	icon_state = "jeansripped"
 
 /obj/item/clothing/under/pants/classicjeans
-	name = "classic jeans"
-	desc = "You feel cooler already."
+	name = "классические джинсы"
+	desc = "В них Вы уже чувствуете себя круче."
 	icon_state = "jeansclassic"
 
 /obj/item/clothing/under/pants/classicjeans/ripped
-	name = "ripped classic jeans"
-	desc = "You feel cooler already. These have holes in them."
+	name = "порванные классические джинсы"
+	desc = "В них Вы уже чувствуете себя круче. В этих джинсах есть дырки."
 	icon_state = "jeansclassicripped"
 
 /obj/item/clothing/under/pants/mustangjeans
-	name = "must hang jeans"
-	desc = "Made in the finest space jeans factory this side of Alpha Centauri."
+	name = "мустанговые джинсы"
+	desc = "Произведены на самой роскошной фабрике джинс на этом конце Альфа Центавра."
 	icon_state = "jeansmustang"
 
 /obj/item/clothing/under/pants/mustangjeans/ripped
-	name = "ripped must hang jeans"
-	desc = "Made in the finest space jeans factory this side of Alpha Centauri. These have holes in them."
+	name = "порванные мустанговые джинсы"
+	desc = "Произведены на самой роскошной фабрике джинс на этом конце Альфа Центавра. В этих джинсах есть дырки."
 	icon_state = "jeansmustangripped"
 
 /obj/item/clothing/under/pants/blackjeans
-	name = "black jeans"
-	desc = "Only for those who can pull it off."
+	name = "черные джинсы"
+	desc = "Подойдут не всем."
 	icon_state = "jeansblack"
 
 /obj/item/clothing/under/pants/blackjeans/ripped
-	name = "ripped black jeans"
-	desc = "Only for those who can pull it off. These have holes in them."
+	name = "порванные черные джинсы"
+	desc = "Подойдут не всем. В этих джинсах есть дырки."
 	icon_state = "jeansblackripped"
 
 /obj/item/clothing/under/pants/greyjeans
-	name = "grey jeans"
-	desc = "Only for those who can pull it off."
+	name = "серые джинсы"
+	desc = "Подойдут не всем."
 	icon_state = "jeansgrey"
 
 /obj/item/clothing/under/pants/greyjeans/ripped
-	name = "ripped grey jeans"
-	desc = "Only for those who can pull it off. These have holes in them."
+	name = "порванные серые джинсы"
+	desc = "Подойдут не всем. В этих джинсах есть дырки."
 	icon_state = "jeansgreyripped"
 
 /obj/item/clothing/under/pants/youngfolksjeans
-	name = "young folks jeans"
-	desc = "For those tired of boring old jeans. Relive the passion of your youth!"
+	name = "молодежные джинсы"
+	desc = "Для тех, кто скучает по старым временам."
 	icon_state = "jeansyoungfolks"
 
 /obj/item/clothing/under/pants/white
-	name = "white pants"
-	desc = "Plain white pants. Boring."
+	name = "белые брюки"
+	desc = "Обыкновенные белые брюки. Скукотища."
 	icon_state = "whitepants"
 
 /obj/item/clothing/under/pants/red
-	name = "red pants"
-	desc = "Bright red pants. Overflowing with personality."
+	name = "красные брюки"
+	desc = "Ярко-красные брюки. Так и блещут дерзостью."
 	icon_state = "redpants"
 
 /obj/item/clothing/under/pants/black
-	name = "black pants"
-	desc = "These pants are dark, like your soul."
+	name = "черные брюки"
+	desc = "Чёрные, как Ваша душа."
 	icon_state = "blackpants"
 
 /obj/item/clothing/under/pants/tan
-	name = "tan pants"
-	desc = "Some tan pants. You look like a white collar worker with these on."
+	name = "бежевые брюки"
+	desc = "Обыкновенные бежевые штаны."
 	icon_state = "tanpants"
 
 /obj/item/clothing/under/pants/track
-	name = "track pants"
-	desc = "A pair of track pants, for the athletic."
+	name = "спортивные штаны"
+	desc = "Спортивные штаны для атлетов."
 	icon_state = "trackpants"
 
 /obj/item/clothing/under/pants/track/blue
-	name = "blue track pants"
+	name = "синие спортивные штаны"
 	icon_state = "trackpantsblue"
 
 /obj/item/clothing/under/pants/track/green
-	name = "green track pants"
+	name = "зеленые спортивные штаны"
 	icon_state = "trackpantsgreen"
 
 /obj/item/clothing/under/pants/track/white
-	name = "white track pants"
+	name = "белые спортивные штаны"
 	icon_state = "trackpantswhite"
 
 /obj/item/clothing/under/pants/track/red
-	name = "red track pants"
+	name = "красные спортивные штаны"
 	icon_state = "trackpantsred"
 
 /obj/item/clothing/under/pants/khaki
-	name = "khaki pants"
-	desc = "A pair of dust beige khaki pants."
+	name = "спортивные штаны цвета хаки"
+	desc = "Пыльно-бежевые штаны."
 	icon_state = "khaki"
 
 /obj/item/clothing/under/pants/camo
-	name = "camo pants"
-	desc = "A pair of woodland camouflage pants. Probably not the best choice for a space station."
+	name = "камуфляжные штаны"
+	desc = "Камуфляжные штаны. Вероятно, не лучший вариант для космической станции."
 	icon_state = "camopants"
 
 /obj/item/clothing/under/pants/chaps
-	name = "sexy brown chaps"
-	desc = "A pair of sexy, tight brown leather chaps."
+	name = "сексапильные коричневые гамаши"
+	desc = "Пара сексапильных, плотно прилегающих коричневых гамаш."
 	icon_state = "chapsb"
 
 /obj/item/clothing/under/pants/chaps/black
-	name = "sexy black chaps"
-	desc = "A pair of sexy, tight black leather chaps."
+	name = "сексапильные черные гамаши"
+	desc = "Пара сексапильных, плотно прилегающих чёрных гамаш."
 	icon_state = "chapsbl"
 
 /obj/item/clothing/under/pants/yogapants
-	name = "yoga pants"
-	desc = "A pair of tight-fitting yoga pants for those lazy days."
+	name = "облегающие штаны"
+	desc = "Пара облегающих штанов для йоги."
 	icon_state = "yogapants"
 	addblends = "yogapants_a"
 
@@ -128,91 +128,91 @@
  * Baggy Pants
  */
 /obj/item/clothing/under/pants/baggy
-	name = "baggy jeans"
-	desc = "A nondescript pair of tough baggy blue jeans."
+	name = "свисающие джинсы"
+	desc = "Неприметная пара свисающих джинс."
 	icon_state = "baggy_jeans"
 
 /obj/item/clothing/under/pants/baggy/classicjeans
-	name = "baggy classic jeans"
-	desc = "You feel cooler already."
+	name = "свисающие классические джинсы"
+	desc = "В них Вы уже чувствуете себя круче."
 	icon_state = "baggy_jeansclassic"
 
 /obj/item/clothing/under/pants/baggy/mustangjeans
-	name = "maggy must hang jeans"
-	desc = "Made in the finest space jeans factory this side of Alpha Centauri."
+	name = "свисающие мустанговые джинсы"
+	desc = "Произведены на самой роскошной фабрике джинс на этом конце Альфа Центавра."
 	icon_state = "baggy_jeansmustang"
 
 /obj/item/clothing/under/pants/baggy/blackjeans
-	name = "baggy black jeans"
-	desc = "Only for those who can pull it off."
+	name = "свисающие черные джинсы"
+	desc = "Подойдут не всем."
 	icon_state = "baggy_jeansblack"
 
 /obj/item/clothing/under/pants/baggy/greyjeans
-	name = "baggy grey jeans"
-	desc = "Only for those who can pull it off."
+	name = "свисающие серые джинсы"
+	desc = "Подойдут не всем."
 	icon_state = "baggy_jeansgrey"
 
 /obj/item/clothing/under/pants/baggy/youngfolksjeans
-	name = "baggy young folks jeans"
-	desc = "For those tired of boring old jeans. Relive the passion of your youth!"
+	name = "свисающие молодежные джинсы"
+	desc = "Для тех, кто скучает по старым временам."
 	icon_state = "baggy_jeansyoungfolks"
 
 /obj/item/clothing/under/pants/baggy/white
-	name = "baggy white pants"
-	desc = "Plain white pants. Boring."
+	name = "свисающие белые брюки"
+	desc = "Обыкновенные белые брюки. Скукотища."
 	icon_state = "baggy_whitepants"
 
 /obj/item/clothing/under/pants/baggy/red
-	name = "baggy red pants"
-	desc = "Bright red pants. Overflowing with personality."
+	name = "свисающие красные брюки"
+	desc = "Ярко-красные брюки. Так и блещут дерзостью."
 	icon_state = "baggy_redpants"
 
 /obj/item/clothing/under/pants/baggy/black
-	name = "baggy black pants"
-	desc = "These pants are dark, like your soul."
+	name = "свисающие черные брюки"
+	desc = "Чёрные, как Ваша душа."
 	icon_state = "baggy_blackpants"
 
 /obj/item/clothing/under/pants/baggy/tan
-	name = "baggy tan pants"
-	desc = "Some tan pants. You look like a white collar worker with these on."
+	name = "свисающие бежевые брюки"
+	desc = "Бежевые брюки. В них Вы похожи на белого воротничка."
 	icon_state = "baggy_tanpants"
 
 /obj/item/clothing/under/pants/baggy/track
-	name = "baggy track pants"
-	desc = "A pair of track pants, for the athletic."
+	name = "свисающие спортивные штаны"
+	desc = "Пара спортивных штанов для атлетов."
 	icon_state = "baggy_trackpants"
 
 /obj/item/clothing/under/pants/baggy/khaki
-	name = "baggy khaki pants"
-	desc = "A pair of dust beige khaki pants."
+	name = "свисающие брюки хаки"
+	desc = "Пара брюки цвета хаки."
 	icon_state = "baggy_khaki"
 
 /obj/item/clothing/under/pants/baggy/camo
-	name = "baggy camo pants"
-	desc = "A pair of woodland camouflage pants. Probably not the best choice for a space station."
+	name = "свисающие камуфляжные штаны"
+	desc = "Камуфляжные штаны. Вероятно, не лучший вариант для космической станции."
 	icon_state = "baggy_camopants"
 
 /obj/item/clothing/under/pants/utility
-	name = "green utility pants"
-	desc = "A pair of pleather reinforced green work pants."
+	name = "зеленые рабочие штаны"
+	desc = "Зеленые рабочие штаны с подкладкой из кожзама"
 	icon_state = "workpants_green"
 
 /obj/item/clothing/under/pants/utility/orange
-	name = "orange utility pants"
-	desc = "A pair of pleather reinforced orange work pants."
+	name = "оранжевые рабочие штаны"
+	desc = "Оранжевые рабочие штаны с подкладкой из кожзама"
 	icon_state = "workpants_orange"
 
 /obj/item/clothing/under/pants/utility/blue
-	name = "blue utility pants"
-	desc = "A pair of pleather reinforced blue work pants."
+	name = "синие рабочие штаны"
+	desc = "Синие рабочие штаны с подкладкой из кожзама."
 	icon_state = "workpants_blue"
 
 /obj/item/clothing/under/pants/utility/white
-	name = "white utility pants"
-	desc = "A pair of pleather reinforced white work pants."
+	name = "белые рабочие штаны"
+	desc = "Белые рабочие штаны с подкладкой из кожзама."
 	icon_state = "workpants_white"
 
 /obj/item/clothing/under/pants/utility/red
-	name = "red utility pants"
-	desc = "A pair of pleather reinforced red work pants."
+	name = "красные рабочие штаны"
+	desc = "Красные рабочие штаны с подкладкой из кожзама."
 	icon_state = "workpants_red"

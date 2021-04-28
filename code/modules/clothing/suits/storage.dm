@@ -32,8 +32,8 @@
 	flags_inv = HIDEHOLSTER
 	var/open = 0	//0 is closed, 1 is open, -1 means it won't be able to toggle
 	verb/toggle()
-		set name = "Toggle Coat Buttons"
-		set category = "Object"
+		set name = "Пуговицы Верхней Одежды"
+		set category = "Объект"
 		set src in usr
 		if(!usr.canmove || usr.stat || usr.restrained())
 			return 0
@@ -42,14 +42,14 @@
 			open = 0
 			icon_state = initial(icon_state)
 			flags_inv = HIDETIE|HIDEHOLSTER
-			to_chat(usr, "You button up the coat.")
+			to_chat(usr, "Вы застегиваете [ru_g_obj(src, "свой", "свою", "своё", "свои")] [ru_getcase(src, "acase")].")
 		else if(open == 0)
 			open = 1
 			icon_state = "[icon_state]_open"
 			flags_inv = HIDEHOLSTER
-			to_chat(usr, "You unbutton the coat.")
+			to_chat(usr, "Вы расстегиваете [ru_g_obj(src, "сво", "й", "ю", "ё", "и")] [ru_getcase(src, "acase")].")
 		else //in case some goofy admin switches icon states around without switching the icon_open or icon_closed
-			to_chat(usr, "You attempt to button-up the velcro on your [src], before promptly realising how silly you are.")
+			to_chat(usr, "Вы пытаетесь застегнуть [ru_g_obj(src, "сво", "й", "ю", "ё", "и")] [ru_getcase(src, "acase")], прежде чем сразу понимаете, насколько Вы глупы.")
 			return
 		update_clothing_icon()	//so our overlays update
 
@@ -58,8 +58,8 @@
 	flags_inv = HIDEHOLSTER
 	var/open = 0	//0 is closed, 1 is open, -1 means it won't be able to toggle
 	verb/toggle()
-		set name = "Toggle Coat Buttons"
-		set category = "Object"
+		set name = "Пуговицы Верхней Одежды"
+		set category = "Объект"
 		set src in usr
 		if(!usr.canmove || usr.stat || usr.restrained())
 			return 0
@@ -68,14 +68,14 @@
 			open = 0
 			icon_state = initial(icon_state)
 			flags_inv = HIDETIE|HIDEHOLSTER
-			to_chat(usr, "You button up the coat.")
+			to_chat(usr, "Вы застегиваете [ru_g_obj(src, "сво", "й", "ю", "ё", "и")] [ru_getcase(src, "acase")].")
 		else if(open == 0)
 			open = 1
 			icon_state = "[icon_state]_open"
 			flags_inv = HIDEHOLSTER
-			to_chat(usr, "You unbutton the coat.")
+			to_chat(usr, "Вы расстегиваете верхнюю одежду.")
 		else //in case some goofy admin switches icon states around without switching the icon_open or icon_closed
-			to_chat(usr, "You attempt to button-up the velcro on your [src], before promptly realising how silly you are.")
+			to_chat(usr, "Вы пытаетесь застегнуть [ru_g_obj(src, "сво", "й", "ю", "ё", "и")] [ru_getcase(src, "acase")], прежде чем сразу понимаете, насколько Вы глупы.")
 			return
 		update_clothing_icon()	//so our overlays update
 
@@ -91,20 +91,20 @@
 	var/icon_badge
 	var/icon_nobadge
 	verb/toggle()
-		set name ="Adjust Badge"
-		set category = "Object"
+		set name ="Отрегулировать Бейдж"
+		set category = "Объект"
 		set src in usr
 		if(!usr.canmove || usr.stat || usr.restrained())
 			return 0
 
 		if(icon_state == icon_badge)
 			icon_state = icon_nobadge
-			to_chat(usr, "You conceal \the [src]'s badge.")
+			to_chat(usr, "Вы скрываете бейдж на [ru_g_obj(src, "сво", "ём", "ей", "ём", "их")] [ru_getcase(src, "pcase")].")
 		else if(icon_state == icon_nobadge)
 			icon_state = icon_badge
-			to_chat(usr, "You reveal \the [src]'s badge.")
+			to_chat(usr, "Вы показываете бейдж на [ru_g_obj(src, "сво", "ём", "ей", "ём", "их")] [ru_getcase(src, "pcase")].")
 		else
-			to_chat(usr, "\The [src] does not have a badge.")
+			to_chat(usr, "[capitalize(ru_getcase(src, "ncase"))] не имеет бейджа.")
 			return
 		update_clothing_icon()
 

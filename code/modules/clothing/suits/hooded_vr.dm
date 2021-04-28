@@ -3,8 +3,8 @@
 	starting_accessories = list(/obj/item/clothing/accessory/armband/med/cross)
 
 /obj/item/clothing/suit/storage/hooded/techpriest
-	name = "tech priest robe"
-	desc = "Praise be to the Omnissiah."
+	name = "Облачение техносвященника"
+	desc = "Слава Омниссии."
 	icon = 'icons/obj/clothing/suits_vr.dmi'
 	icon_override = 'icons/mob/suit_vr.dmi'
 	icon_state = "techpriest"
@@ -14,31 +14,31 @@
 
 // Regular armor versions here, costumes below
 /obj/item/clothing/suit/storage/hooded/knight
-	name = "crusader's armor"
-	desc = "ye olde knight, risen again."
+	name = "Броня крестоносца"
+	desc = "Старый воин восстаёт вновь."
 	icon_state = "galahad"
 	icon = 'icons/obj/clothing/knights_vr.dmi'
 	icon_override = 'icons/obj/clothing/knights_vr.dmi'
 	hoodtype = /obj/item/clothing/head/hood/galahad
 	armor = list(melee = 80, bullet = 50, laser = 10, energy = 0, bomb = 0, bio = 0, rad = 0)
 	siemens_coefficient = 2
-	action_button_name = "Toggle Knight Headgear"
-	
+	action_button_name = "Отрегулировать Рыцарский Шлем"
+
 /obj/item/clothing/suit/storage/hooded/knight/galahad
-	name = "crusader's armor"
-	desc = "ye olde knight, risen again."
+	name = "Броня крестоносца"
+	desc = "Старый воин восстаёт вновь."
 	icon_state = "galahad"
 	hoodtype = /obj/item/clothing/head/hood/galahad
-	
+
 /obj/item/clothing/suit/storage/hooded/knight/lancelot
-	name = "crusader's armor"
-	desc = "ye olde knight, risen again."
+	name = "Броня крестоносца"
+	desc = "Старый воин восстаёт вновь."
 	icon_state = "lancelot"
 	hoodtype = /obj/item/clothing/head/hood/lancelot
-	
+
 /obj/item/clothing/suit/storage/hooded/knight/robin
-	name = "crusader's armor"
-	desc = "ye olde knight, risen again. This one seems slightly faster than the rest, but weaker."
+	name = "Броня крестоносца"
+	desc = "Старый воин восстаёт вновь. Эта броня, кажется, легче остальных, однако предоставляет меньше защиты."
 	icon_state = "robin"
 	hoodtype = /obj/item/clothing/head/hood/robin
 	armor = list(melee = 70, bullet = 40, laser = 10, energy = 0, bomb = 0, bio = 0, rad = 0)
@@ -47,24 +47,24 @@
 
 // Costume Knight Gear Here
 /obj/item/clothing/suit/storage/hooded/knight_costume
-	name = "crusader's costume armor"
-	desc = "ye olde knight, risen again."
+	name = "Костюм крестоносца"
+	desc = "Старый воин восстаёт вновь."
 	icon_state = "galahad"
 	icon = 'icons/obj/clothing/knights_vr.dmi'
 	icon_override = 'icons/obj/clothing/knights_vr.dmi'
 	hoodtype = /obj/item/clothing/head/hood/galahad_costume
-	action_button_name = "Toggle Knight Headgear"
-	
+	action_button_name = "Отрегулировать Рыцарский Шлем"
+
 /obj/item/clothing/suit/storage/hooded/knight_costume/galahad
 	icon_state = "galahad"
 	hoodtype = /obj/item/clothing/head/hood/galahad_costume
-	
+
 /obj/item/clothing/suit/storage/hooded/knight_costume/lancelot
 	icon_state = "lancelot"
 	hoodtype = /obj/item/clothing/head/hood/lancelot_costume
-	
+
 /obj/item/clothing/suit/storage/hooded/knight_costume/robin
-	name = "crusader's armor"
-	desc = "ye olde knight, risen again. This one seems slightly faster than the rest, but weaker."
+	name = "Костюм крестоносца"
+	desc = "Старый воин восстаёт вновь. Эта броня, кажется, легче остальных, однако предоставляет меньше защиты."
 	icon_state = "robin"
 	hoodtype = /obj/item/clothing/head/hood/robin_costume

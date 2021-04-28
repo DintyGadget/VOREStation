@@ -1,6 +1,6 @@
 /obj/item/clothing/accessory/holster
-	name = "shoulder holster"
-	desc = "A handgun holster."
+	name = "Наплечная кобура"
+	desc = "Кобура для пистолета."
 	icon_state = "holster"
 	slot = ACCESSORY_SLOT_WEAPON
 	concealed_holster = 1
@@ -11,17 +11,17 @@
 
 /obj/item/clothing/accessory/holster/proc/holster(var/obj/item/I, var/mob/living/user)
 	if(holstered && istype(user))
-		to_chat(user, "<span class='warning'>There is already \a [holstered] holstered here!</span>")
+		to_chat(user, "<span class='warning'>Здесь уже находится [ru_getcase(holstered, "ncase")]!</span>")
 		return
 	//VOREStation Edit - Machete sheath support
 	if (LAZYLEN(can_hold))
 		if(!is_type_in_list(I,can_hold))
-			to_chat(user, "<span class='warning'>[I] won't fit in [src]!</span>")
+			to_chat(user, "<span class='warning'>[capitalize(ru_getcase(I, "ncase"))] не [ru_g_obj(I, "помест", "ится", "ится", "ится", "ятся")] в [ru_getcase(src, "acase")]!</span>")
 			return
 
 	else if (!(I.slot_flags & SLOT_HOLSTER))
 	//VOREStation Edit End
-		to_chat(user, "<span class='warning'>[I] won't fit in [src]!</span>")
+		to_chat(user, "<span class='warning'>[capitalize(ru_getcase(I, "ncase"))] не [ru_g_obj(I, "помест", "ится", "ится", "ится", "ятся")] в [ru_getcase(src, "acase")]!</span>")
 		return
 
 	if(holster_in)
@@ -34,8 +34,8 @@
 	holstered.loc = src
 	holstered.add_fingerprint(user)
 	w_class = max(w_class, holstered.w_class)
-	user.visible_message("<span class='notice'>[user] holsters \the [holstered].</span>", "<span class='notice'>You holster \the [holstered].</span>")
-	name = "occupied [initial(name)]"
+	user.visible_message("<span class='notice'>[user] помещает [ru_getcase(holstered, "acase")] в кобуру.</span>", "<span class='notice'>Вы помещаете [ru_getcase(holstered, "acase")] в кобуру.</span>")
+	name = "[ru_g_obj(src, "Занят", "ый", "ая", "ое", "ые")] [ru_getcase(src, "ncase")]"
 
 /obj/item/clothing/accessory/holster/proc/clear_holster()
 	holstered = null
@@ -46,19 +46,19 @@
 		return
 
 	if(istype(user.get_active_hand(),/obj) && istype(user.get_inactive_hand(),/obj))
-		to_chat(user, "<span class='warning'>You need an empty hand to draw \the [holstered]!</span>")
+		to_chat(user, "<span class='warning'>Чтобы достать [ru_getcase(holstered, "acase")] из кобуры, одна рука должна быть свободной!</span>")
 	else
 		var/sound_vol = 25
 		if(user.a_intent == I_HURT)
 			sound_vol = 50
 			usr.visible_message(
-				"<span class='danger'>[user] draws \the [holstered], ready to go!</span>", //VOREStation Edit
-				"<span class='warning'>You draw \the [holstered], ready to go!</span>" //VOREStation Edit
+				"<span class='danger'>[user] угрожающе [ru_g_mob(user, "достал")] [ru_getcase(holstered, "acase")] из кобуры!</span>", //VOREStation Edit
+				"<span class='warning'>Вы угрожающе достали [ru_getcase(holstered, "acase")] из кобуры!</span>" //VOREStation Edit
 				)
 		else
 			user.visible_message(
-				"<span class='notice'>[user] draws \the [holstered], pointing it at the ground.</span>",
-				"<span class='notice'>You draw \the [holstered], pointing it at the ground.</span>"
+				"<span class='notice'>[user] [ru_g_mob(user, "достал")] [ru_getcase(holstered, "acase")] из кобуры и [ru_g_mob(user, "отвёл")] оружие вниз.</span>",
+				"<span class='notice'>Вы достаете [ru_getcase(holstered, "acase")] из кобуры и [ru_g_mob(user, "отвёл")] оружие вниз.</span>"
 				)
 
 		if(holster_out)
@@ -88,9 +88,9 @@
 /obj/item/clothing/accessory/holster/examine(mob/user)
 	. = ..(user)
 	if(holstered)
-		. += "A [holstered] is holstered here."
+		. += "Внутри находится [ru_getcase(holstered, "ncase")]."
 	else
-		. += "It is empty."
+		. += "Внутри ничего нет."
 
 /obj/item/clothing/accessory/holster/on_attached(obj/item/clothing/under/S, mob/user as mob)
 	..()
@@ -104,8 +104,8 @@
 
 //For the holster hotkey
 /obj/item/clothing/accessory/holster/verb/holster_verb()
-	set name = "Holster"
-	set category = "Object"
+	set name = "Расчехлить/Спрятать"
+	set category = "Объект"
 	set src in usr
 	if(!istype(usr, /mob/living)) return
 	if(usr.stat) return
@@ -120,38 +120,38 @@
 			H = locate() in S.accessories
 
 	if (!H)
-		to_chat(usr, "<span class='warning'>Something is very wrong.</span>")
+		to_chat(usr, "<span class='warning'>Что-то тут не так.</span>")
 
 	if(!H.holstered)
 		var/obj/item/W = usr.get_active_hand()
 		if(!istype(W, /obj/item))
-			to_chat(usr, "<span class='warning'>You need your gun equipped to holster it.</span>")
+			to_chat(usr, "<span class='warning'>Чтобы сложить оружие в кобуру, нужно сперва иметь его в руках.</span>")
 			return
 		H.holster(W, usr)
 	else
 		H.unholster(usr)
 
 /obj/item/clothing/accessory/holster/armpit
-	name = "armpit holster"
-	desc = "A worn-out handgun holster. Perfect for concealed carry"
+	name = "Кобура под мышки"
+	desc = "Поношенная кобура для пистолета. Отлично подходит для скрытого ношения."
 	icon_state = "holster"
 
 /obj/item/clothing/accessory/holster/waist
-	name = "waist holster"
-	desc = "A handgun holster. Made of expensive leather."
+	name = "Кобура на талию"
+	desc = "Кобура для пистолета из дорогой кожи."
 	icon_state = "holster"
 	overlay_state = "holster_low"
 	concealed_holster = 0
 
 /obj/item/clothing/accessory/holster/hip
-	name = "hip holster"
-	desc = "A handgun holster slung low on the hip, draw pardner!"
+	name = "Набедренная кобура"
+	desc = "Пистолетная кобура, опущенная до бёдер."
 	icon_state = "holster_hip"
 	concealed_holster = 0
 
 /obj/item/clothing/accessory/holster/leg
-	name = "leg holster"
-	desc = "A tacticool handgun holster. Worn on the upper leg."
+	name = "Ножная кобура"
+	desc = "Тактическая кобура для пистолета. Надевается на ногу."
 	icon_state = "holster_leg"
 	overlay_state = "holster_leg"
 	concealed_holster = 0

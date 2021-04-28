@@ -1,9 +1,9 @@
 /* Food */
 
 /datum/reagent/nutriment
-	name = "Nutriment"
+	name = "Корм"
 	id = "nutriment"
-	description = "All the vitamins, minerals, and carbohydrates the body needs in pure form."
+	description = "Все витамины, минералы и углеводы, необходимые организму в чистом виде."
 	taste_mult = 4
 	reagent_state = SOLID
 	metabolism = REM * 4
@@ -76,14 +76,14 @@
 	var/icon_raw
 	var/icon_cooked
 	var/coated_adj = "coated"
-	var/cooked_name = "coating"
+	var/cooked_name = "обмазка"
 
 /datum/reagent/nutriment/coating/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 
 	//We'll assume that the batter isnt going to be regurgitated and eaten by someone else. Only show this once
 	if(data["cooked"] != 1)
 		if (!messaged)
-			to_chat(M, "<span class='warning'>Ugh, this raw [name] tastes disgusting.</span>")
+			to_chat(M, "<span class='warning'>Ух, [name] отвратительно на вкус в сыром виде.</span>")
 			nutriment_factor *= 0.5
 			messaged = 1
 
@@ -116,8 +116,8 @@
 	data["cooked"] = newdata["cooked"]
 
 /datum/reagent/nutriment/coating/batter
-	name = "batter mix"
-	cooked_name = "batter"
+	name = "смесь теста"
+	cooked_name = "тесто"
 	id = "batter"
 	color = "#f5f4e9"
 	reagent_state = LIQUID
@@ -127,8 +127,8 @@
 	allergen_type = GRAINS | EGGS //Made with flour(grain), and eggs(eggs)
 
 /datum/reagent/nutriment/coating/beerbatter
-	name = "beer batter mix"
-	cooked_name = "beer batter"
+	name = "смесь пивного теста"
+	cooked_name = "тесто для пива"
 	id = "beerbatter"
 	color = "#f5f4e9"
 	reagent_state = LIQUID
@@ -145,23 +145,23 @@
 //Fats
 //=========================
 /datum/reagent/nutriment/triglyceride
-	name = "triglyceride"
+	name = "триглицерид"
 	id = "triglyceride"
-	description = "More commonly known as fat, the third macronutrient, with over double the energy content of carbs and protein"
+	description = "Более известный как жир, третий макроэлемент, с более чем удвоенным содержанием энергии по сравнению с углеводами и белками."
 
 	reagent_state = SOLID
-	taste_description = "greasiness"
+	taste_description = "сало"
 	taste_mult = 0.1
 	nutriment_factor = 27//The caloric ratio of carb/protein/fat is 4:4:9
 	color = "#CCCCCC"
 
 /datum/reagent/nutriment/triglyceride/oil
 	//Having this base class incase we want to add more variants of oil
-	name = "Oil"
+	name = "Масло"
 	id = "oil"
-	description = "Oils are liquid fats."
+	description = "Масла - это жидкие жиры."
 	reagent_state = LIQUID
-	taste_description = "oil"
+	taste_description = "масло"
 	color = "#c79705"
 	touch_met = 1.5
 	var/lastburnmessage = 0
@@ -231,21 +231,21 @@
 		M.take_organ_damage(0, removed * 1.5 * dfactor)
 		data["temperature"] -= (6 * removed) / (1 + volume*0.1)//Cools off as it burns you
 		if (lastburnmessage+100 < world.time	)
-			to_chat(M, "<span class='danger'>Searing hot oil burns you, wash it off quick!</span>")
+			to_chat(M, "<span class='danger'>Очень горячее масло обжигает, быстро смойте его!</span>")
 			lastburnmessage = world.time
 
 /datum/reagent/nutriment/triglyceride/oil/corn
-	name = "Corn Oil"
+	name = "Кукурузное масло"
 	id = "cornoil"
-	description = "An oil derived from various types of corn."
+	description = "Масло, полученное из различных видов кукурузы."
 	reagent_state = LIQUID
 	allergen_type = VEGETABLE //Corn is a vegetable
 
 /datum/reagent/nutriment/triglyceride/oil/peanut
-	name = "Peanut Oil"
+	name = "Арахисовое масло"
 	id = "peanutoil"
-	description = "An oil derived from various types of nuts."
-	taste_description = "nuts"
+	description = "Масло, полученное из различных видов орехов."
+	taste_description = "орехи"
 	taste_mult = 0.3
 	nutriment_factor = 15
 	color = "#4F3500"
@@ -254,17 +254,17 @@
 // Aurora Cooking Port Insertion End
 
 /datum/reagent/nutriment/glucose
-	name = "Glucose"
+	name = "Глюкоза"
 	id = "glucose"
-	taste_description = "sweetness"
+	taste_description = "сладость"
 	color = "#FFFFFF"
 
 	injectable = 1
 
 /datum/reagent/nutriment/protein // Bad for Skrell!
-	name = "animal protein"
+	name = "животный белок"
 	id = "protein"
-	taste_description = "some sort of meat"
+	taste_description = "какое-то мясо"
 	color = "#440000"
 	allergen_type = MEAT //"Animal protein" implies it comes from animals, therefore meat.
 
@@ -282,44 +282,44 @@
 			..()
 
 /datum/reagent/nutriment/protein/tofu
-	name = "tofu protein"
+	name = "белок тофу"
 	id = "tofu"
 	color = "#fdffa8"
-	taste_description = "tofu"
+	taste_description = "тофу"
 	allergen_type = BEANS //Made from soy beans
 
 /datum/reagent/nutriment/protein/seafood
-	name = "seafood protein"
+	name = "протеин из морепродуктов"
 	id = "seafood"
 	color = "#f5f4e9"
-	taste_description = "fish"
+	taste_description = "рыба"
 	allergen_type = FISH //I suppose the fish allergy likely refers to seafood in general.
 
 /datum/reagent/nutriment/protein/cheese
-	name = "cheese"
+	name = "сыр"
 	id = "cheese"
 	color = "#EDB91F"
-	taste_description = "cheese"
+	taste_description = "сыр"
 	allergen_type = DAIRY //Cheese is made from dairy
 
 /datum/reagent/nutriment/protein/egg
-	name = "egg yolk"
+	name = "яичный желток"
 	id = "egg"
-	taste_description = "egg"
+	taste_description = "яйцо"
 	color = "#FFFFAA"
 	allergen_type = EGGS //Eggs contain egg
 
 /datum/reagent/nutriment/protein/murk
-	name = "murkfin protein"
+	name = "белок муркфин"
 	id = "murk_protein"
-	taste_description = "mud"
+	taste_description = "грязь"
 	color = "#664330"
 	allergen_type = FISH //Murkfin is fish
 
 /datum/reagent/nutriment/honey
-	name = "Honey"
+	name = "Мед"
 	id = "honey"
-	description = "A golden yellow syrup, loaded with sugary sweetness."
+	description = "Золотисто-желтый сироп, наполненный сладкой сладостью."
 	taste_description = "sweetness"
 	nutriment_factor = 10
 	color = "#FFFF00"
@@ -346,27 +346,27 @@
 			M.drowsyness = max(M.drowsyness, 60)
 
 /datum/reagent/nutriment/mayo
-	name = "mayonnaise"
+	name = "майонез"
 	id = "mayo"
-	description = "A thick, bitter sauce."
-	taste_description = "unmistakably mayonnaise"
+	description = "Густой горький соус."
+	taste_description = "безошибочно майонез"
 	nutriment_factor = 10
 	color = "#FFFFFF"
 	allergen_type = EGGS	//Mayo is made from eggs
 
 /datum/reagent/nutriment/yeast
-	name = "Yeast"
+	name = "Дрожжи"
 	id = "yeast"
-	description = "For making bread rise!"
-	taste_description = "yeast"
+	description = "Для приготовления хлеба!"
+	taste_description = "дрожжи"
 	nutriment_factor = 1
 	color = "#D3AF70"
 
 /datum/reagent/nutriment/flour
-	name = "Flour"
+	name = "Мука"
 	id = "flour"
-	description = "This is what you rub all over yourself to pretend to be a ghost."
-	taste_description = "chalky wheat"
+	description = "Это то, чем вы натираете себя, чтобы притвориться призраком."
+	taste_description = "меловая пшеница"
 	reagent_state = SOLID
 	nutriment_factor = 1
 	color = "#FFFFFF"
@@ -377,29 +377,29 @@
 		new /obj/effect/decal/cleanable/flour(T)
 
 /datum/reagent/nutriment/coffee
-	name = "Coffee Powder"
+	name = "Растворимый кофе"
 	id = "coffeepowder"
-	description = "A bitter powder made by grinding coffee beans."
-	taste_description = "bitterness"
+	description = "Горький порошок, полученный при измельчении кофейных зерен."
+	taste_description = "горечь"
 	taste_mult = 1.3
 	nutriment_factor = 1
 	color = "#482000"
 	allergen_type = COFFEE //Again, coffee contains coffee
 
 /datum/reagent/nutriment/tea
-	name = "Tea Powder"
+	name = "Чайный порошок"
 	id = "teapowder"
-	description = "A dark, tart powder made from black tea leaves."
-	taste_description = "tartness"
+	description = "Темный терпкий порошок из листьев черного чая."
+	taste_description = "терпкость"
 	taste_mult = 1.3
 	nutriment_factor = 1
 	color = "#101000"
 
 /datum/reagent/nutriment/coco
-	name = "Coco Powder"
+	name = "Какао порошок"
 	id = "coco"
-	description = "A fatty, bitter paste made from coco beans."
-	taste_description = "bitterness"
+	description = "Жирная горькая паста из какао-бобов."
+	taste_description = "горечь"
 	taste_mult = 1.3
 	reagent_state = SOLID
 	nutriment_factor = 5
@@ -673,7 +673,7 @@
 		M.bodytemperature -= rand(1, 5) * M.species.spice_mod // Really fucks you up, cause it makes you cold.
 		if(prob(5))
 			M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!")]</span>", pick("<span class='danger'>You feel like your insides are freezing!</span>", "<span class='danger'>Your insides feel like they're turning to ice!</span>"))
-	// holder.remove_reagent("capsaicin", 5) // VOREStation Edit: Nop, we don't instadelete spices for free. 
+	// holder.remove_reagent("capsaicin", 5) // VOREStation Edit: Nop, we don't instadelete spices for free.
 
 /datum/reagent/frostoil/cryotoxin //A longer lasting version of frost oil.
 	name = "Cryotoxin"
@@ -719,7 +719,7 @@
 		M.bodytemperature += rand(1, 5) * M.species.spice_mod // Really fucks you up, cause it makes you overheat, too.
 		if(prob(5))
 			M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!")]</span>", pick("<span class='danger'>You feel like your insides are burning!</span>", "<span class='danger'>You feel like your insides are on fire!</span>", "<span class='danger'>You feel like your belly is full of lava!</span>"))
-	// holder.remove_reagent("frostoil", 5)  // VOREStation Edit: Nop, we don't instadelete spices for free. 
+	// holder.remove_reagent("frostoil", 5)  // VOREStation Edit: Nop, we don't instadelete spices for free.
 
 /datum/reagent/condensedcapsaicin
 	name = "Condensed Capsaicin"
@@ -863,7 +863,7 @@
 		M.apply_effect(4, AGONY, 0)
 		if(prob(5))
 			M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!")]</span>", "<span class='danger'>You feel like your insides are burning!</span>")
-	// holder.remove_reagent("frostoil", 5) // VOREStation Edit: Nop, we don't instadelete spices for free. 
+	// holder.remove_reagent("frostoil", 5) // VOREStation Edit: Nop, we don't instadelete spices for free.
 
 /* Drinks */
 

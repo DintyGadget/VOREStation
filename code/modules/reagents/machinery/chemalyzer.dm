@@ -2,10 +2,10 @@
 
 /obj/machinery/chemical_analyzer
 	name = "chem analyzer"
-	desc = "Used to precisely scan chemicals and other liquids inside various containers. \
-	It may also identify the liquid contents of unknown objects."
-	description_info = "This machine will try to tell you what reagents are inside of something capable of holding reagents. \
-	It is also used to 'identify' specific reagent-based objects with their properties obscured from inspection by normal means."
+	desc = "Используется для точного сканирования химических веществ и других жидкостей внутри различных контейнеров. \
+	Он также может идентифицировать жидкое содержимое неизвестных объектов."
+	description_info = "Эта машина попытается сказать вам, какие реагенты находятся внутри чего-то, способного удерживать реагенты. \
+	Он также используется для «идентификации» конкретных объектов на основе реагентов, чьи свойства скрыты от проверки обычными средствами."
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "chem_analyzer"
 	density = TRUE
@@ -30,10 +30,10 @@
 	if(istype(I,/obj/item/weapon/reagent_containers))
 		analyzing = TRUE
 		update_icon()
-		to_chat(user, span("notice", "Analyzing \the [I], please stand by..."))
+		to_chat(user, span("notice", "Анализ [I], пожалуйста подождите..."))
 
 		if(!do_after(user, 2 SECONDS, src))
-			to_chat(user, span("warning", "Sample moved outside of scan range, please try again and remain still."))
+			to_chat(user, span("warning", "Образец переместился за пределы диапазона сканирования, попробуйте еще раз и не двигайтесь."))
 			analyzing = FALSE
 			update_icon()
 			return
@@ -50,14 +50,14 @@
 			for(var/datum/reagent/R in I.reagents.reagent_list)
 				if(!R.name)
 					continue
-				to_chat(user, span("notice", "Contains [R.volume]u of <b>[R.name]</b>.<br>[R.description]<br>"))
+				to_chat(user, span("notice", "Содержит единиц [R.volume] в <b>[R.name]</b>.<br>[R.description]<br>"))
 
 		// Last, unseal it if it's an autoinjector.
 		if(istype(I,/obj/item/weapon/reagent_containers/hypospray/autoinjector/biginjector) && !(I.flags & OPENCONTAINER))
 			I.flags |= OPENCONTAINER
-			to_chat(user, span("notice", "Sample container unsealed.<br>"))
+			to_chat(user, span("notice", "Контейнер для образца открыт.<br>"))
 
-		to_chat(user, span("notice", "Scanning of \the [I] complete."))
+		to_chat(user, span("notice", "Сканирование[I] завершено."))
 		analyzing = FALSE
 		update_icon()
 		return

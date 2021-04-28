@@ -1,201 +1,201 @@
 //Alphabetical order of civilian jobs.
 
 /obj/item/clothing/under/rank/bartender
-	desc = "It looks like it could use some more flair."
-	name = "bartender's uniform"
+	desc = "Костюму не хватает немножко выразительности."
+	name = "униформа бармена"
 	icon_state = "ba_suit"
 	rolled_sleeves = 0
 
 /obj/item/clothing/under/rank/bartender/skirt
-	desc = "Short and cute."
-	name = "bartender's skirt"
+	desc = "Короткая, милая."
+	name = "юбка бармена"
 	icon_state = "ba_suit_skirt"
 	item_state_slots = list(slot_r_hand_str = "ba_suit", slot_l_hand_str = "ba_suit")
 
 /obj/item/clothing/under/rank/captain //Alright, technically not a 'civilian' but its better then giving a .dm file for a single define.
-	desc = "It's a blue jumpsuit with some gold markings denoting the rank of \"Site Manager\"."
-	name = "site manager's jumpsuit"
+	desc = "Синий комбинезон с золотыми метакми подстать цветам униформы Директора Колонии."
+	name = "комбинезон Директора Колонии"
 	icon_state = "captain"
 	rolled_sleeves = 0
 
 /obj/item/clothing/under/rank/cargo
-	name = "quartermaster's jumpsuit"
-	desc = "It's a jumpsuit worn by the quartermaster. It's specially designed to prevent back injuries caused by pushing paper."
+	name = "комбинезон Квартирмейстера"
+	desc = "Комбинезон, предназначенный для Квартирмейстера. Изготовлен специально для предупреждения болезней спины от постоянного таскания бумаг."
 	icon_state = "qm"
 	item_state_slots = list(slot_r_hand_str = "cargo", slot_l_hand_str = "cargo")
 	rolled_sleeves = 0
 
 /obj/item/clothing/under/rank/cargo/jeans
-	name = "quartermaster's jumpjeans"
-	desc = "Jeeeaaans! They're comfy!"
+	name = "джинсы Квартирмейстера"
+	desc = "Джиииинсы! Удобные!"
 	icon_state = "qmj"
 
 /obj/item/clothing/under/rank/cargo/jeans/female
-	name = "quartermaster's jumpjeans"
-	desc = "Jeeeaaans! They're comfy!"
+	name = "джинсы Квартирмейстера"
+	desc = "Джиииинсы! Удобные!"
 	icon_state = "qmjf"
 	rolled_sleeves = -1
 
 /obj/item/clothing/under/rank/cargotech
-	name = "cargo technician's jumpsuit"
-	desc = "Shooooorts! They're comfy and easy to wear!"
+	name = "комбинезон грузчика"
+	desc = "Шоооорты! Лёгкие и удобные!"
 	icon_state = "cargo"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 	rolled_sleeves = 0
 
 /obj/item/clothing/under/rank/cargotech/jeans
-	name = "cargo technician's jumpjeans"
-	desc = "Jeeeaaans! They're comfy!"
+	name = "джинсы грузчика"
+	desc = "Джиииинсы! Удобные!"
 	icon_state = "cargoj"
 	item_state_slots = list(slot_r_hand_str = "cargo", slot_l_hand_str = "cargo")
 	rolled_sleeves = -1
 
 /obj/item/clothing/under/rank/cargotech/jeans/female
-	name = "cargo technician's jumpjeans"
-	desc = "Jeeeaaans! They're comfy!"
+	name = "джинсы грузчика"
+	desc = "Джиииинсы! Удобные!"
 	icon_state = "cargojf"
 
 /obj/item/clothing/under/rank/chaplain
-	desc = "It's a black jumpsuit, often worn by religious folk."
-	name = "chaplain's jumpsuit"
+	desc = "Чёрные комбинезон, популярный среди верующих."
+	name = "комбинезон капеллана"
 	icon_state = "chaplain"
 	item_state_slots = list(slot_r_hand_str = "black", slot_l_hand_str = "black")
 	rolled_sleeves = 0
 
 /obj/item/clothing/under/rank/chef
-	desc = "It's an apron which is given only to the most <b>hardcore</b> chefs in space."
-	name = "chef's uniform"
+	desc = "Униформа, вручаемая лишь самым <b>жёстким</b> шеф-поварам космоса."
+	name = "униформа повара"
 	icon_state = "chef"
 	rolled_sleeves = 0
 
 /obj/item/clothing/under/rank/clown
-	name = "clown suit"
-	desc = "<i><font face='comic sans ms'>Honk!</i></font>"
+	name = "костюм клоуна"
+	desc = "<i><font face='comic sans ms'>Хонк!</i></font>"
 	icon_state = "clown"
 	rolled_sleeves = -1
 
 /obj/item/clothing/under/rank/head_of_personnel
-	desc = "It's a jumpsuit worn by someone who works in the position of \"Head of Personnel\"."
-	name = "head of personnel's jumpsuit"
+	desc = "Комбинезон, предназначенный для Главы Персонала."
+	name = "комбинезон Главы Персонала"
 	icon_state = "hop"
 	rolled_sleeves = 0
 
 /obj/item/clothing/under/rank/head_of_personnel_whimsy
-	desc = "A blue jacket and red tie, with matching red cuffs! Snazzy. Wearing this makes you feel more important than your job title does."
-	name = "head of personnel's suit"
+	desc = "Синий пиджак с красным галстуком. Нехило! От такого вида Вы чувствуете себя гораздо большей шишкой, чем являетесь на самом деле."
+	name = "костюм Главы Персонала"
 	icon_state = "hopwhimsy"
 	item_state_slots = list(slot_r_hand_str = "hop", slot_l_hand_str = "hop")
 	rolled_sleeves = -1
 
 /obj/item/clothing/under/rank/hydroponics
-	desc = "It's a jumpsuit designed to protect against minor plant-related hazards."
-	name = "botanist's jumpsuit"
+	desc = "Комбинезон, предназначенный для защиты от малоопасных угроз растительного происхождения."
+	name = "комбинезон ботаника"
 	icon_state = "hydroponics"
 	item_state_slots = list(slot_r_hand_str = "green", slot_l_hand_str = "green")
 	permeability_coefficient = 0.50
 	rolled_sleeves = 0
 
 /obj/item/clothing/under/rank/internalaffairs
-	desc = "The plain, professional attire of an Internal Affairs Agent. The collar is <i>immaculately</i> starched."
-	name = "Internal Affairs uniform"
+	desc = "Официальный костюм агента внутренних дел. Ошейник <i>на удивление</i> хорошо закрахмален."
+	name = "униформа агента внутренних дел"
 	icon_state = "internalaffairs"
 	item_state_slots = list(slot_r_hand_str = "ba_suit", slot_l_hand_str = "ba_suit")
 	rolled_sleeves = 0
 	starting_accessories = list(/obj/item/clothing/accessory/tie/black)
 
 /obj/item/clothing/under/rank/internalaffairs/skirt
-	desc = "The plain, professional attire of an Internal Affairs Agent. The top button is sewn shut."
-	name = "Internal Affairs skirt"
+	desc = "Официальный костюм агента внутренних дел. Верхняя пуговица вшита полностью."
+	name = "юбка агента внутренних дел"
 	icon_state = "internalaffairs_skirt"
 
 /obj/item/clothing/under/rank/janitor
-	desc = "It's the official uniform of the station's janitor. It has minor protection from biohazards."
-	name = "janitor's jumpsuit"
+	desc = "Официальная униформа уборщика станции. Предоставляет слабую защиту от биологических угроз."
+	name = "комбинезон уборщика"
 	icon_state = "janitor"
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
 	rolled_sleeves = 0
 
 /obj/item/clothing/under/lawyer
-	desc = "Slick threads."
-	name = "lawyer suit"
+	desc = "Роскошные нити."
+	name = "костюм юриста"
 
 /obj/item/clothing/under/lawyer/black
-	name = "black lawyer suit"
+	name = "черный костюм"
 	icon_state = "lawyer_black"
 
 /obj/item/clothing/under/lawyer/black/skirt
-	name = "black lawyer skirt"
+	name = "черная юбка"
 	icon_state = "lawyer_black_skirt"
 	item_state_slots = list(slot_r_hand_str = "lawyer_black", slot_l_hand_str = "lawyer_black")
 
 /obj/item/clothing/under/lawyer/female
-	name = "black lawyer suit"
+	name = "черный костюм"
 	icon_state = "black_suit_fem"
 	item_state_slots = list(slot_r_hand_str = "lawyer_black", slot_l_hand_str = "lawyer_black")
 
 /obj/item/clothing/under/lawyer/red
-	name = "red lawyer suit"
+	name = "красный костюм"
 	icon_state = "lawyer_red"
 
 /obj/item/clothing/under/lawyer/red/skirt
-	name = "red lawyer skirt"
+	name = "красный костюм с юбкой"
 	icon_state = "lawyer_red_skirt"
 	item_state_slots = list(slot_r_hand_str = "lawyer_red", slot_l_hand_str = "lawyer_red")
 
 /obj/item/clothing/under/lawyer/blue
-	name = "blue lawyer suit"
+	name = "синий костюм"
 	icon_state = "lawyer_blue"
 
 /obj/item/clothing/under/lawyer/blue/skirt
-	name = "blue lawyer skirt"
+	name = "синий костюм с юбкой"
 	icon_state = "lawyer_blue_skirt"
 	item_state_slots = list(slot_r_hand_str = "lawyer_blue", slot_l_hand_str = "lawyer_blue")
 
 /obj/item/clothing/under/lawyer/bluesuit
-	name = "blue suit"
-	desc = "A classy suit."
+	name = "синий костюм"
+	desc = "Элегантный костюм."
 	icon_state = "bluesuit"
 	item_state_slots = list(slot_r_hand_str = "lawyer_blue", slot_l_hand_str = "lawyer_blue")
 	starting_accessories = list(/obj/item/clothing/accessory/tie/red)
 
 /obj/item/clothing/under/lawyer/bluesuit/skirt
-	name = "blue skirt suit"
+	name = "синий костюм с юбкой"
 	icon_state = "bluesuit_skirt"
 
 /obj/item/clothing/under/lawyer/purpsuit
-	name = "purple suit"
+	name = "фиолетовый костюм"
 	icon_state = "lawyer_purp"
 	item_state_slots = list(slot_r_hand_str = "purple", slot_l_hand_str = "purple")
 
 /obj/item/clothing/under/lawyer/purpsuit/skirt
-	name = "purple skirt suit"
+	name = "фиолетовый костюм с юбкой"
 	icon_state = "lawyer_purp_skirt"
 
 /obj/item/clothing/under/lawyer/oldman
-	name = "Old Man's Suit"
-	desc = "A classic suit for the older gentleman, with built in back support."
+	name = "костюм пожилого мужчины"
+	desc = "Классический наряд пожилого джентльмена."
 	icon_state = "oldman"
 	item_state_slots = list(slot_r_hand_str = "johnny", slot_l_hand_str = "johnny")
 
 /obj/item/clothing/under/oldwoman
-	name = "Old Woman's Attire"
-	desc = "A typical outfit for the older woman, a lovely cardigan and comfortable skirt."
+	name = "костюм пожилой женщины"
+	desc = "Типичный наряд пожилой леди: прелестный кардиган и удобная юбка."
 	icon_state = "oldwoman"
 	item_state_slots = list(slot_r_hand_str = "johnny", slot_l_hand_str = "johnny")
 
 /obj/item/clothing/under/librarian
-	name = "sensible suit"
-	desc = "It's very... sensible."
+	name = "костюм начитанного человека"
+	desc = "Вот так дела."
 	icon_state = "red_suit"
 	item_state_slots = list(slot_r_hand_str = "lawyer_red", slot_l_hand_str = "lawyer_red")
 
 /obj/item/clothing/under/mime
-	name = "mime's outfit"
-	desc = "It's not very colourful."
+	name = "костюм мима"
+	desc = "Не очень выразительный."
 	icon_state = "mime"
 
 /obj/item/clothing/under/rank/miner
-	desc = "It's a snappy jumpsuit with a sturdy set of overalls. It is very dirty."
-	name = "shaft miner's jumpsuit"
+	desc = "Контрастный комбинезон. Изношенный и грязный."
+	name = "комбинезон шахтера"
 	icon_state = "miner"
 	rolled_sleeves = 0

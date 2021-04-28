@@ -5,7 +5,7 @@
 
 /obj/machinery/portable_atmospherics/powered/reagent_distillery
 	name = "chemical distillery"
-	desc = "A complex machine utilizing state-of-the-art components to mix chemicals at different temperatures."
+	desc = "Сложная машина, в которой используются самые современные компоненты для смешивания химикатов при различных температурах."
 	use_power = USE_POWER_IDLE
 
 	icon = 'icons/obj/machines/reagent.dmi'

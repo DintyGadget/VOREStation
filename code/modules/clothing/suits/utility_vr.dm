@@ -3,8 +3,8 @@
 	body_parts_covered = HEAD
 
 /obj/item/clothing/suit/storage/toggle/paramedic
-	name = "paramedic vest"
-	desc = "A vest that protects against minor chemical spills."
+	name = "Жилет парамедика"
+	desc = "Жилет, предоставляющий защиту от воздействия пролитых химикатов."
 	icon = 'icons/obj/clothing/suits_vr.dmi'
 	icon_override = 'icons/mob/suit_vr.dmi'
 	icon_state = "paramedic-vest"

@@ -1,46 +1,46 @@
 /obj/item/clothing/accessory/armband
-	name = "red armband"
-	desc = "A fancy red armband!"
+	name = "Красная повязка"
+	desc = "Модная красная повязка!"
 	icon_state = "red"
 	slot = ACCESSORY_SLOT_ARMBAND
 	on_rolled = list("down" = "none")
 
 /obj/item/clothing/accessory/armband/cargo
-	name = "cargo armband"
-	desc = "An armband, worn by the crew to display which department they're assigned to. This one is brown."
+	name = "Повязка отдела снабжения"
+	desc = "Повязка на руку, обозначающая принадлежность к какому-либо отделу. Эта коричневого цвета."
 	icon_state = "cargo"
 
 /obj/item/clothing/accessory/armband/engine
-	name = "engineering armband"
-	desc = "An armband, worn by the crew to display which department they're assigned to. This one is orange with a reflective strip!"
+	name = "Повязка инженера"
+	desc = "Повязка на руку, обозначающая принадлежность к какому-либо отделу. Эта оранжевого цвета со светоотражающей полосой."
 	icon_state = "engie"
 
 /obj/item/clothing/accessory/armband/science
-	name = "science armband"
-	desc = "An armband, worn by the crew to display which department they're assigned to. This one is purple."
+	name = "Повязка учёного"
+	desc = "Повязка на руку, обозначающая принадлежность к какому-либо отделу. Эта фиолетового цвета."
 	icon_state = "rnd"
 
 /obj/item/clothing/accessory/armband/hydro
-	name = "hydroponics armband"
-	desc = "An armband, worn by the crew to display which department they're assigned to. This one is green and blue."
+	name = "Повязка ботаника"
+	desc = "Повязка на руку, обозначающая принадлежность к какому-либо отделу. Эта зелёная с синим."
 	icon_state = "hydro"
 
 /obj/item/clothing/accessory/armband/med
-	name = "medical armband"
-	desc = "An armband, worn by the crew to display which department they're assigned to. This one is white."
+	name = "Повязка медработника"
+	desc = "Повязка на руку, обозначающая принадлежность к какому-либо отделу. Эта белого цвета."
 	icon_state = "med"
 
 /obj/item/clothing/accessory/armband/med/cross
-	name = "medic armband"
-	desc = "A white armband with a blue cross on it. Typically used by people in the Medical department."
+	name = "Повязка врача"
+	desc = "Белая повязка на руку с синим крестом, предназначенная для врачей."
 	icon_state = "medicband"
 
 /obj/item/clothing/accessory/armband/med/color
-	name = "armband"
-	desc = "A fancy armband."
+	name = "Повязка"
+	desc = "Модная повязка на руку."
 	addblends = "med_a"
 
 /obj/item/clothing/accessory/armband/medblue
-	name = "EMT armband"
-	desc = "An armband, worn by the crew to display which department they're assigned to. This one is white and blue."
+	name = "Повязка парамедика"
+	desc = "Повязка на руку, обозначающая принадлежность к какому-либо отделу. Эта белого-голубого цвета."
 	icon_state = "medblue"

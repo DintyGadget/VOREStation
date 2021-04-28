@@ -1,6 +1,6 @@
 /obj/item/clothing/suit/armor/heavy
-	name = "heavy armor"
-	desc = "An old military-grade suit of armor. Incredibly robust against brute force damage! However, it offers little protection from energy-based weapons, which, combined with its bulk, makes it woefully obsolete."
+	name = "Тяжёлая броня"
+	desc = "Бронированный костюм старого военного стандарта. Крайне устойчив против прямого урона! Однако предоставляет малую защиту против энергетических снарядов, что вкупе с его размерами делает этот костюм крайне устаревшим."
 	icon_state = "heavy"
 	item_state_slots = list(slot_r_hand_str = "swat", slot_l_hand_str = "swat")
 	armor = list(melee = 90, bullet = 80, laser = 10, energy = 10, bomb = 80, bio = 0, rad = 0)
@@ -13,8 +13,8 @@
 
 
 /obj/item/clothing/suit/armor/vest/wolftaur
-	name = "wolf-taur armor vest"
-	desc = "An armored vest that protects against some damage. It appears to be created for a wolf-taur."
+	name = "Волкотавровый бронежилет"
+	desc = "Бронированный жилет, предоставляющий небольшую защиту от урона. Похоже, сделан с расчётом на волкотавров."
 	species_restricted = null //Species restricted since all it cares about is a taur half
 	icon = 'icons/mob/taursuits_wolf_vr.dmi'
 	icon_state = "wolf_item"
@@ -24,7 +24,7 @@
 			if(istype(H) && istype(H.tail_style, /datum/sprite_accessory/tail/taur/wolf))
 				return ..()
 			else
-				to_chat(H,"<span class='warning'>You need to have a wolf-taur half to wear this.</span>")
+				to_chat(H,"<span class='warning'>Вам необходимо быть волкотавром, чтобы это надеть.</span>")
 				return 0
 
 // HoS armor improved by Vorestation to be slightly better than normal security stuff.
@@ -35,15 +35,15 @@
 	armor = list(melee = 50, bullet = 40, laser = 40, energy = 25, bomb = 25, bio = 0, rad = 0)
 
 /obj/item/clothing/suit/storage/vest/hoscoat/jensen
-	name = "armored trenchcoat"
-	desc = "A trenchcoat augmented with a special alloy for some protection and style."
+	name = "Бронированный тренчкот"
+	desc = "Тренчкот, укреплённый особым сплавом и предоставляющий как защиту, так и стильный внешний вид."
 	icon_state = "hostrench"
 	flags_inv = HIDEHOLSTER
 
 // Override Polaris's "confederate" naming convention. I hate it.
 /obj/item/clothing/suit/storage/vest/solgov
 	name = "peacekeeper armored vest"
-	desc = "A synthetic armor vest. This one is marked with the crest of the Terran Commonwealth Government."
+	desc = "Легковесный разгрузочный жилет в цветах миротворца ЦПС. Сам по себе не предоставляет защиты, однако может быть совмещён с пластинами брони."
 
 /obj/item/clothing/suit/storage/vest/solgov/heavy
 	name = "peacekeeper heavy armored vest"
@@ -88,8 +88,8 @@
 
 // Armor Versions Here
 /obj/item/clothing/suit/armor/combat/crusader
-	name = "crusader armor"
-	desc = "ye olde knight, risen again."
+	name = "Броня крестоносца"
+	desc = "Старый рыцарь восстал вновь."
 	icon_state = "crusader"
 	icon = 'icons/obj/clothing/knights_vr.dmi'
 	icon_override = 'icons/obj/clothing/knights_vr.dmi'
@@ -98,15 +98,15 @@
 	siemens_coefficient = 2
 
 /obj/item/clothing/suit/armor/combat/crusader/bedevere
-	name = "bedevere's armor"
-	desc = "ye olde knight, risen again."
+	name = "Броня Бедивера"
+	desc = "Старый рыцарь восстал вновь."
 	icon_state = "bedevere"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 
 // Costume Versions Here
 /obj/item/clothing/suit/armor/combat/crusader_costume
-	name = "crusader costume armor"
-	desc = "ye olde knight, risen again."
+	name = "Костюм крестоносца"
+	desc = "Старый рыцарь восстал вновь."
 	icon_state = "crusader"
 	icon = 'icons/obj/clothing/knights_vr.dmi'
 	icon_override = 'icons/obj/clothing/knights_vr.dmi'
@@ -115,7 +115,7 @@
 	siemens_coefficient = 1
 
 /obj/item/clothing/suit/armor/combat/crusader_costume/bedevere
-	name = "bedevere's costume armor"
-	desc = "ye olde knight, risen again."
+	name = "Костюм Бедивера"
+	desc = "Старый рыцарь восстал вновь."
 	icon_state = "bedevere"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO

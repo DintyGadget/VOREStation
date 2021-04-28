@@ -140,7 +140,7 @@
  * Fake singularity
  */
 /obj/item/toy/spinningtoy
-	nname = "гравитационная сингулярность"
+	name = "гравитационная сингулярность"
 	desc = "Спиннер бренда \"Сингуло\"."
 	icon = 'icons/obj/singularity.dmi'
 	icon_state = "singularity_s1"

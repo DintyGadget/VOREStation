@@ -43,8 +43,8 @@
 //Utility
 //These are just colored
 /obj/item/clothing/under/utility
-	name = "utility uniform"
-	desc = "A comfortable turtleneck and black utility trousers."
+	name = "комплект черной одежды"
+	desc = "Удобная водолазка с черными штанами."
 	icon_state = "blackutility"
 	worn_state = "blackutility"
 	rolled_sleeves = 0
@@ -52,14 +52,14 @@
 	siemens_coefficient = 0.9
 
 /obj/item/clothing/under/utility/blue
-	name = "utility uniform"
-	desc = "A comfortable blue utility jumpsuit."
+	name = "комплект синей одежды"
+	desc = "Удобный синий комбинезон."
 	icon_state = "navyutility"
 	worn_state = "navyutility"
 
 /obj/item/clothing/under/utility/grey
-	name = "utility uniform"
-	desc = "A comfortable grey utility jumpsuit."
+	name = "комплект серой одежды"
+	desc = "Удобный серый комбинезон."
 	icon_state = "greyutility"
 	worn_state = "greyutility"
 
@@ -471,30 +471,30 @@
 
 //Terrans
 
-/obj/item/clothing/under/saare
-	name = "master SAARE uniform"
+/obj/item/clothing/under/terran
+	name = "master ICCGN uniform"
 	desc = "You shouldn't be seeing this."
 	icon = 'icons/obj/clothing/uniforms_solgov.dmi'
 	item_icons = list(slot_w_uniform_str = 'icons/mob/uniform_solgov.dmi')
 	armor = list(melee = 5, bullet = 0, laser = 5, energy = 5, bomb = 0, bio = 5, rad = 5)
 	siemens_coefficient = 0.8
 
-/obj/item/clothing/under/saare/utility
-	name = "SAARE utility uniform"
-	desc = "A comfortable black utility jumpsuit. Worn by Stealth Assault Enterprises mercenaries."
+/obj/item/clothing/under/terran/navy/utility
+	name = "ICCGN utility uniform"
+	desc = "A comfortable black utility jumpsuit. Worn by the ICCG Navy."
 	icon_state = "terranutility"
 	worn_state = "terranutility"
 
-/obj/item/clothing/under/saare/service
-	name = "SAARE service uniform"
-	desc = "The service uniform of Stealth Assault Enterprises, for low-ranking mercenaries."
+/obj/item/clothing/under/terran/navy/service
+	name = "ICCGN service uniform"
+	desc = "The service uniform of the ICCG Navy, for low-ranking crew."
 	icon_state = "terranservice"
 	worn_state = "terranservice"
 	armor = list(melee = 5, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 5, rad = 0)
 	siemens_coefficient = 0.9
 
-/obj/item/clothing/under/saare/service/command
-	name = "SAARE command service uniform"
-	desc = "The service uniform of Stealth Assault Enterprises, for high-ranking mercenaries."
+/obj/item/clothing/under/terran/navy/service/command
+	name = "ICCGN command service uniform"
+	desc = "The service uniform of the ICCG Navy, for high-ranking crew."
 	icon_state = "terranservice_comm"
 	worn_state = "terranservice_comm"

@@ -1,8 +1,8 @@
 //SolGov Uniforms
 //PT
 /obj/item/clothing/under/solgov/pt/sifguard
-	name = "\improper NDF pt uniform"
-	desc = "A baggy shirt bearing the seal of the Nanotrasen Defense Force and some dorky looking blue shorts."
+	name = "трунировочная униформа ОСН"
+	desc = "Свисающая рубашка с эмблемой Оборонительных Сил НаноТрасен в комплекте с парой причудливых синих шорт."
 
 /obj/item/clothing/under/solgov/pt/fleet
 	name = "fleet pt uniform"

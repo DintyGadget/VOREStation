@@ -1,11 +1,11 @@
 /obj/item/clothing/under/customs
-	desc = "A standard SolCom customs uniform. Complete with epaulettes."
+	desc = "Стандартная таможенная униформа Сол. На ней множество нашивок."
 
 /obj/item/clothing/var/hides_bulges = FALSE // OwO wats this?
 
 /obj/item/clothing/under/permit
-	name = "public nudity permit"
-	desc = "This permit entitles the bearer to conduct their duties without a uniform. Normally issued to furred crewmembers or those with nothing to hide."
+	name = "лицензия на наготу"
+	desc = "Эта карточка позволяет носителю исполнять свои обязанности без рабочей формы. Обычно выдаётся работникам, которым нечего скрывать."
 	icon = 'icons/obj/card.dmi'
 	icon_state = "guest"
 	body_parts_covered = 0
@@ -49,17 +49,17 @@
 		to_chat(user, "You relax the suit fibers, revealing your stomach(s) and weight.")
 
 /obj/item/clothing/under/hyperfiber/bluespace
-	name = "bluespace jumpsuit"
+	name = "Bluespace-костюм"
 	icon_state = "bluespace"
 	item_state = "bluespace"
 	worn_state = "bluespace"
-	desc = "Do you feel like warping spacetime today? Because it seems like that's on the agenda, now. \
-			Allows one to resize themselves at will, and conceals their true weight as well as any bulges or protrusions on their body."
+	desc = "Как насчёт сегодня поискривлять пространство и время? Нынче только этим все и занимаются.\
+			Позволяет изменить собственный размер и скрыть свой настоящий вес."
 	var/original_size
 
 /obj/item/clothing/under/hyperfiber/bluespace/verb/resize()
-	set name = "Adjust Bluespace Fibers"
-	set desc = "Adjust your suit's bluespace fibers. Activating it allows you to expand your own body or reduce it in size! Effect is limited to when you have the suit on."
+	set name = "Отрегулировать Фибры"
+	set desc = "Отрегулировать фибры костюма. Скрывает, либо показывает Ваш живот."
 	set category = "Object"
 	set src in usr
 	bluespace_size(usr)
@@ -75,29 +75,29 @@
 		return
 
 	if (src != H.w_uniform)
-		to_chat(H,"<span class='warning'>You must be WEARING the uniform to change your size.</span>")
+		to_chat(H,"<span class='warning'>Необходимо носить униформу на СЕБЕ, чтобы изменить свой размер.</span>")
 		return
 
-	var/new_size = input("Put the desired size (25-200%), or (1-600%) in dormitory areas.", "Set Size", 200) as num|null
+	var/new_size = input("Введите желаемый размер (25-200%)", "Изменить Размер", 200) as num|null
 	if(!new_size)
 		return //cancelled
 
 	//Check AGAIN because we accepted user input which is blocking.
 	if (src != H.w_uniform)
-		to_chat(H,"<span class='warning'>You must be WEARING the uniform to change your size.</span>")
+		to_chat(H,"<span class='warning'>Необходимо носить униформу на СЕБЕ, чтобы изменить свой размер.</span>")
 		return
 
 	if (H.stat || H.restrained())
 		return
 
 	if (isnull(H.size_multiplier)) // Why would this ever be the case?
-		to_chat(H,"<span class='warning'>The uniform panics and corrects your apparently microscopic size.</span>")
+		to_chat(H,"<span class='warning'>Униформа поправляет Ваш якобы микроскопический размер.</span>")
 		H.resize(RESIZE_NORMAL, ignore_prefs = TRUE)
 		H.update_icons() //Just want the matrix transform
 		return
 
 	if (!H.size_range_check(new_size))
-		to_chat(H,"<span class='notice'>The safety features of the uniform prevent you from choosing this size.</span>")
+		to_chat(H,"<span class='notice'>Предохранитель в униформе не позволяет Вам выбрать такой размер.</span>")
 		return
 
 	else if(new_size)
@@ -105,7 +105,7 @@
 			if(!original_size)
 				original_size = H.size_multiplier
 			H.resize(new_size/100, ignore_prefs = TRUE) // Ignores prefs because you can only resize yourself
-			H.visible_message("<span class='warning'>The space around [H] distorts as they change size!</span>","<span class='notice'>The space around you distorts as you change size!</span>")
+			H.visible_message("<span class='warning'>[H] изменяет свой размер, пока пространство вокруг фигуры искривляется!</span>","<span class='notice'>Пространство вокруг Вас искривляется, пока Вы изменяете свой размер!</span>")
 		else //They chose their current size.
 			return
 
@@ -115,26 +115,26 @@
 		var/mob/living/carbon/human/H = M
 		H.resize(original_size, ignore_prefs = TRUE)
 		original_size = null
-		H.visible_message("<span class='warning'>The space around [H] distorts as they return to their original size!</span>","<span class='notice'>The space around you distorts as you return to your original size!</span>")
+		H.visible_message("<span class='warning'>[H] возвращается к обычному размеру, пока пространство вокруг фигуры искривляется!</span>","<span class='notice'>Пространство вокруг Вас искривляется, пока Вы возвращаетесь к привычному размеру!</span>")
 
 //Same as Nanotrasen Security Uniforms
 /obj/item/clothing/under/ert
 	armor = list(melee = 5, bullet = 10, laser = 10, energy = 5, bomb = 5, bio = 0, rad = 0)
 
 /obj/item/clothing/under/dress/qipao
-	name = "qipao"
-	desc = "A type of feminine body-hugging dress with distinctive Chinese features of Manchu origin."
+	name = "ципао"
+	desc = "Прилегающее женское платье из Китая."
 	icon = 'icons/obj/clothing/uniforms_vr.dmi'
 	icon_override = 'icons/mob/uniform_vr.dmi'
 	icon_state = "qipao"
 	item_state = "qipao"
 
 /obj/item/clothing/under/dress/qipao/white
-	name = "white qipao"
+	name = "белый ципао"
 	icon_state = "qipao_white"
 	item_state = "qipao_white"
 
 /obj/item/clothing/under/dress/qipao/red
-	name = "red qipao"
+	name = "красный ципао"
 	icon_state = "qipao_red"
 	item_state = "qipao_red"

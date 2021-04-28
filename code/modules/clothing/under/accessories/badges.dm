@@ -5,18 +5,18 @@
 */
 
 /obj/item/clothing/accessory/badge
-	name = "detective's badge"
-	desc = "Security Department detective's badge, made from gold."
+	name = "Значок детектива"
+	desc = "Значок детектива из службы безопасности, изготовленный из золота."
 	icon_state = "badge"
 	slot_flags = SLOT_BELT | SLOT_TIE
 	slot = ACCESSORY_SLOT_MEDAL
 
 	var/stored_name
-	var/badge_string = "Corporate Security"
+	var/badge_string = "Корпоративная служба безопасности"
 
 /obj/item/clothing/accessory/badge/old
-	name = "faded badge"
-	desc = "A faded badge, backed with leather. It bears the emblem of the Forensic division."
+	name = "Потёртый значок"
+	desc = "Потёртый значок. На нём эмблема отдела криминалистики."
 	icon_state = "badge_round"
 
 /obj/item/clothing/accessory/badge/proc/set_name(var/new_name)
@@ -28,43 +28,43 @@
 /obj/item/clothing/accessory/badge/attack_self(mob/user as mob)
 
 	if(!stored_name)
-		to_chat(user, "You polish your old badge fondly, shining up the surface.")
+		to_chat(user, "Вы заботливо протираете свой значок, полируя его поверхность.")
 		set_name(user.real_name)
 		return
 
 	if(isliving(user))
 		if(stored_name)
-			user.visible_message("<span class='notice'>[user] displays their [src.name].\nIt reads: [stored_name], [badge_string].</span>","<span class='notice'>You display your [src.name].\nIt reads: [stored_name], [badge_string].</span>")
+			user.visible_message("<span class='notice'>[user] [ru_g_mob(user, "показыва", "ет", "ет", "ет", "ют")] [ru_g_obj(src, "", "свой", "свою", "своё", "свои")] [ru_getcase(src, "acase")]. На [ru_g_obj(src, "", "нём", "ней", "нём", "них")] написано: [stored_name], [badge_string].</span>","<span class='notice'>Вы показываете [ru_g_obj(src, "", "свой", "свою", "своё", "свои")] [ru_getcase(src, "acase")]. На [ru_g_obj(src, "", "нём", "ней", "нём", "них")] написано: [stored_name], [badge_string].</span>")
 		else
-			user.visible_message("<span class='notice'>[user] displays their [src.name].\nIt reads: [badge_string].</span>","<span class='notice'>You display your [src.name]. It reads: [badge_string].</span>")
+			user.visible_message("<span class='notice'>[user] [ru_g_mob(user, "показыва", "ет", "ет", "ет", "ют")] [ru_g_obj(src, "", "свой", "свою", "своё", "свои")] [ru_getcase(src, "acase")]. На [ru_g_obj(src, "", "нём", "ней", "нём", "них")] написано: [badge_string].</span>","<span class='notice'>Вы показываете [ru_g_obj(src, "", "свой", "свою", "своё", "свои")] [ru_getcase(src, "acase")]. На [ru_g_obj(src, "", "нём", "ней", "нём", "них")] написано: [badge_string].</span>")
 
 /obj/item/clothing/accessory/badge/attack(mob/living/carbon/human/M, mob/living/user)
 	if(isliving(user))
-		user.visible_message("<span class='danger'>[user] invades [M]'s personal space, thrusting [src] into their face insistently.</span>","<span class='danger'>You invade [M]'s personal space, thrusting [src] into their face insistently.</span>")
+		user.visible_message("<span class='danger'>[user] [ru_g_mob(user, "вторга", "ется", "ется", "ется", "ются")] в личное пространство [M], пихая [ru_g_mob(M, "", "ему", "ей", "ему", "им")] в лицо [ru_getcase(src, "acase")]!</span>","<span class='danger'>Вы вторгаетесь в личное пространство [M], пихая [ru_g_mob(M, "", "ему", "ей", "ему", "им")] в лицо [ru_getcase(src, "acase")].</span>")
 		user.do_attack_animation(M)
 		user.setClickCooldown(DEFAULT_QUICK_COOLDOWN) //to prevent spam
 
 // Sheriff Badge (toy)
 /obj/item/clothing/accessory/badge/sheriff
-	name = "sheriff badge"
-	desc = "This town ain't big enough for the two of us, pardner."
+	name = "Значок шерифа"
+	desc = "Этот город слишком тесен для нас двоих, малой."
 	icon_state = "sheriff"
 	item_state = "goldbadge"
 
 /obj/item/clothing/accessory/badge/sheriff/attack_self(mob/user as mob)
-	user.visible_message("[user] shows their sheriff badge. There's a new sheriff in town!",\
-		"You flash the sheriff badge to everyone around you!")
+	user.visible_message("[user] показывает свой значок шерифа. В городе появился новый шериф!",\
+		"Вы показываете всем вокруг свой значок шерифа!")
 
 /obj/item/clothing/accessory/badge/sheriff/attack(mob/living/carbon/human/M, mob/living/user)
 	if(isliving(user))
-		user.visible_message("<span class='danger'>[user] invades [M]'s personal space, the sheriff badge into their face!.</span>","<span class='danger'>You invade [M]'s personal space, thrusting the sheriff badge into their face insistently.</span>")
+		user.visible_message("<span class='danger'>[user] [ru_g_mob(user, "вторга", "ется", "ется", "ется", "ются")] в личное пространство [M], пихая [ru_g_mob(M, "", "ему", "ей", "ему", "им")] в лицо [ru_getcase(src, "acase")]!</span>","<span class='danger'>Вы вторгаетесь в личное пространство [M], пихая [ru_g_mob(M, "", "ему", "ей", "ему", "им")] в лицо [ru_getcase(src, "acase")].</span>")
 		user.do_attack_animation(M)
 		user.setClickCooldown(DEFAULT_QUICK_COOLDOWN) //to prevent spam
 
 //.Holobadges.
 /obj/item/clothing/accessory/badge/holo
-	name = "holobadge"
-	desc = "This glowing blue badge marks the holder as THE LAW."
+	name = "Голобейдж"
+	desc = "Этот сияющий голубой бейдж делает своего владельца самим ЗАКОНОМ."
 	icon_state = "holobadge"
 	var/emagged //Emagging removes Sec check.
 
@@ -74,17 +74,17 @@
 
 /obj/item/clothing/accessory/badge/holo/attack_self(mob/user as mob)
 	if(!stored_name)
-		to_chat(user, "Waving around a holobadge before swiping an ID would be pretty pointless.")
+		to_chat(user, "Размахивать своим голобейджем бесполезно, не проведя по нему сперва своей ID-картой.")
 		return
 	return ..()
 
 /obj/item/clothing/accessory/badge/holo/emag_act(var/remaining_charges, var/mob/user)
 	if (emagged)
-		to_chat(user, "<span class='danger'>\The [src] is already cracked.</span>")
+		to_chat(user, "<span class='danger'>[capitalize(ru_getcase(src, "ncase"))] уже взломан.</span>")
 		return
 	else
 		emagged = 1
-		to_chat(user, "<span class='danger'>You crack the holobadge security checks.</span>")
+		to_chat(user, "<span class='danger'>Вы взламываете флажки безопасности голобейджа.</span>")
 		return 1
 
 /obj/item/clothing/accessory/badge/holo/attackby(var/obj/item/O as obj, var/mob/user as mob)
@@ -99,16 +99,16 @@
 			id_card = pda.id
 
 		if(access_security in id_card.access || emagged)
-			to_chat(user, "You imprint your ID details onto the badge.")
+			to_chat(user, "Вы заводите на голобейдж данные своей ID-карты.")
 			set_name(user.real_name)
 		else
-			to_chat(user, "[src] rejects your insufficient access rights.")
+			to_chat(user, "[capitalize(ru_getcase(src, "ncase"))] отказывает Вам в доступе.")
 		return
 	..()
 
 /obj/item/weapon/storage/box/holobadge
-	name = "holobadge box"
-	desc = "A box claiming to contain holobadges."
+	name = "Коробка голобейджей"
+	desc = "Коробка, содержащая несколько голобейджей."
 	New()
 		new /obj/item/clothing/accessory/badge/holo(src)
 		new /obj/item/clothing/accessory/badge/holo(src)
@@ -120,26 +120,26 @@
 		return
 
 /obj/item/clothing/accessory/badge/holo/warden
-	name = "warden's holobadge"
-	desc = "A silver corporate security badge. Stamped with the words 'Warden.'"
+	name = "Голобейдж надзирателя"
+	desc = "Серебряный бейдж корпоративной службы безопасности. На нём отпечатано слово 'Надзиратель'."
 	icon_state = "silverbadge"
 	slot_flags = SLOT_TIE | SLOT_BELT
 
 /obj/item/clothing/accessory/badge/holo/hos
-	name = "head of security's holobadge"
-	desc = "An immaculately polished gold security badge. Labeled 'Head of Security.'"
+	name = "Голобейдж Главы службы безопасности"
+	desc = "До блеска отполированный бейдж из золота. Подпись: 'Глава службы безопасности'."
 	icon_state = "goldbadge"
 	slot_flags = SLOT_TIE | SLOT_BELT
 
 /obj/item/clothing/accessory/badge/holo/detective
-	name = "detective's holobadge"
-	desc = "An immaculately polished gold security badge on leather. Labeled 'Detective.'"
+	name = "Голобейдж детектива"
+	desc = "До блеска отполированный бейдж из золота. Подпись: 'Детектив'."
 	icon_state = "marshalbadge"
 	slot_flags = SLOT_TIE | SLOT_BELT
 
 /obj/item/weapon/storage/box/holobadge/hos
-	name = "holobadge box"
-	desc = "A box claiming to contain holobadges."
+	name = "Коробка голобейджей"
+	desc = "Коробка, содержащая несколько голобейджей."
 	New()
 		new /obj/item/clothing/accessory/badge/holo(src)
 		new /obj/item/clothing/accessory/badge/holo(src)
@@ -154,62 +154,62 @@
 // Synthmorph bag / Corporation badges. Primarily used on the robobag, but can be worn. Default is NT.
 
 /obj/item/clothing/accessory/badge/corporate_tag
-	name = "NanoTrasen Badge"
-	desc = "A plain metallic plate that might denote the wearer as a member of NanoTrasen."
+	name = "Значок NanoTrasen"
+	desc = "Обыкновенная металлическая пластинка, обозначающая принадлежность носителя к NanoTrasen."
 	icon_state = "tag_nt"
 	item_state = "badge"
 	badge_string = "NanoTrasen"
 
 /obj/item/clothing/accessory/badge/corporate_tag/morpheus
-	name = "Morpheus Badge"
-	desc = "A plain metallic plate that might denote the wearer as a member of Morpheus Cyberkinetics."
+	name = "Значок Morpheus"
+	desc = "Обыкновенная металлическая пластинка, обозначающая принадлежность носителя к  Morpheus Cyberkinetics."
 	icon_state = "tag_blank"
 	badge_string = "Morpheus"
 
 /obj/item/clothing/accessory/badge/corporate_tag/wardtaka
-	name = "Ward-Takahashi Badge"
-	desc = "A plain metallic plate that might denote the wearer as a member of Ward-Takahashi."
+	name = "Значок Ward-Takahashi"
+	desc = "Обыкновенная металлическая пластинка, обозначающая принадлежность носителя к Ward-Takahashi."
 	icon_state = "tag_ward"
 	badge_string = "Ward-Takahashi"
 
 /obj/item/clothing/accessory/badge/corporate_tag/zenghu
-	name = "Zeng-Hu Badge"
-	desc = "A plain metallic plate that might denote the wearer as a member of Zeng-Hu."
+	name = "Значок Zeng-Hu"
+	desc = "Обыкновенная металлическая пластинка, обозначающая принадлежность носителя к Zeng-Hu."
 	icon_state = "tag_zeng"
 	badge_string = "Zeng-Hu"
 
 /obj/item/clothing/accessory/badge/corporate_tag/gilthari
-	name = "Gilthari Badge"
-	desc = "An opulent metallic plate that might denote the wearer as a member of Gilthari."
+	name = "Значок Gilthari"
+	desc = "Обыкновенная металлическая пластинка, обозначающая принадлежность носителя к Gilthari."
 	icon_state = "tag_gil"
 	badge_string = "Gilthari"
 
 /obj/item/clothing/accessory/badge/corporate_tag/veymed
-	name = "Vey-Medical Badge"
-	desc = "A plain metallic plate that might denote the wearer as a member of Vey-Medical."
+	name = "Значок Vey-Medical"
+	desc = "Обыкновенная металлическая пластинка, обозначающая принадлежность носителя к Vey-Medical."
 	icon_state = "tag_vey"
 	badge_string = "Vey-Medical"
 
 /obj/item/clothing/accessory/badge/corporate_tag/hephaestus
-	name = "Hephaestus Badge"
-	desc = "A rugged metallic plate that might denote the wearer as a member of Hephaestus."
+	name = "Значок Hephaestus"
+	desc = "Обыкновенная металлическая пластинка, обозначающая принадлежность носителя к Hephaestus."
 	icon_state = "tag_heph"
 	badge_string = "Hephaestus"
 
 /obj/item/clothing/accessory/badge/corporate_tag/grayson
-	name = "Grayson Badge"
-	desc = "A rugged metallic plate that might denote the wearer as a member of Grayson."
+	name = "Значок Grayson"
+	desc = "Обыкновенная металлическая пластинка, обозначающая принадлежность носителя к Grayson."
 	icon_state = "tag_grayson"
 	badge_string = "Grayson"
 
 /obj/item/clothing/accessory/badge/corporate_tag/xion
-	name = "Xion Badge"
-	desc = "A rugged metallic plate that might denote the wearer as a member of Xion."
+	name = "Значок Xion"
+	desc = "Обыкновенная металлическая пластинка, обозначающая принадлежность носителя к Xion."
 	icon_state = "tag_xion"
 	badge_string = "Xion"
 
 /obj/item/clothing/accessory/badge/corporate_tag/bishop
-	name = "Bishop Badge"
-	desc = "A sleek metallic plate that might denote the wearer as a member of Bishop."
+	name = "Значок Bishop"
+	desc = "Обыкновенная металлическая пластинка, обозначающая принадлежность носителя к Bishop."
 	icon_state = "tag_bishop"
 	badge_string = "Bishop"

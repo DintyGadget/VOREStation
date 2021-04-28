@@ -1,6 +1,6 @@
 /obj/item/clothing/accessory/permit/drone
-	desc = "A card issued by the EIO, indicating that the owner is a Drone Intelligence. Drones are mandated to carry this card within SolCom space, by law."
+	desc = "Карточка, изготавливаемая EIO. Означает, что носитель является дроном. По закону, дроны обязуются иметь при себе эту карту на территории Сол."
 
 /obj/item/clothing/accessory/permit/gun/planetside
-	name = "explorer gun permit"
-	desc = "A card indicating that the owner is allowed to carry a firearm during active exploration missions."
+	name = "Лицензия на оружие искателя"
+	desc = "Карточка, дающая владельцу право на ношение огнестрельного оружия при проведении исследовательских операций."
