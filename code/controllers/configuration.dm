@@ -798,10 +798,13 @@ var/list/gamemode_cache = list()
 /*
 				if("station_levels")
 					using_map.station_levels = text2numlist(value, ";")
+
 				if("admin_levels")
 					using_map.admin_levels = text2numlist(value, ";")
+
 				if("contact_levels")
 					using_map.contact_levels = text2numlist(value, ";")
+
 				if("player_levels")
 					using_map.player_levels = text2numlist(value, ";")
 */
