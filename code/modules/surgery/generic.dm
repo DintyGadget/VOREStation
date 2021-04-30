@@ -326,9 +326,9 @@
 
 /datum/surgery_step/generic/amputate/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("[user] is beginning to amputate [target]'s [affected.name] with \the [tool]." , \
-	"You are beginning to cut through [target]'s [affected.amputation_point] with \the [tool].")
-	target.custom_pain("Your [affected.amputation_point] is being ripped apart!", 100)
+	user.visible_message("[user] начинает ампутировать [affected.name] [target] с помощью [tool]." , \
+	"Вы начинаете отрезать [affected.amputation_point] [target] с помощью [tool].")
+	target.custom_pain("Ваша [affected.amputation_point] разрывается на части!", 100)
 	..()
 
 /datum/surgery_step/generic/amputate/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)

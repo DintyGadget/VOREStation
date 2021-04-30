@@ -1,6 +1,6 @@
 /obj/item/weapon/reagent_containers/borghypo
-	name = "cyborg hypospray"
-	desc = "An advanced chemical synthesizer and injection system, designed for heavy-duty medical equipment."
+	name = "гипоспрей киборгов"
+	desc = "Усовершенствованный химический синтезатор и система впрыска, разработанная для тяжелого медицинского оборудования."
 	icon = 'icons/obj/syringe.dmi'
 	item_state = "hypo"
 	icon_state = "borghypo"
@@ -28,9 +28,9 @@
 	reagent_ids = list("tricordrazine", "bicaridine", "dexalin", "anti_toxin", "tramadol", "spaceacillin")
 
 /obj/item/weapon/reagent_containers/borghypo/merc
-	name = "advanced cyborg hypospray"
-	desc = "An advanced nanite and chemical synthesizer and injection system, designed for heavy-duty medical equipment.  This type is capable of safely bypassing \
-	thick materials that other hyposprays would struggle with."
+	name = "продвинутый гипоспрей киборгов"
+	desc = "Усовершенствованный синтезатор нанитов и химикатов и система впрыска, разработанная для тяжелого медицинского оборудования.  Этот тип способен безопасно обходить толстые \
+	материалы, с которыми не справятся другие гипоспреи."
 	bypass_protection = TRUE // Because mercs tend to be in spacesuits.
 	reagent_ids = list("healing_nanites", "hyperzine", "tramadol", "oxycodone", "spaceacillin", "peridaxon", "osteodaxon", "myelamine", "synthblood")
 
@@ -67,14 +67,14 @@
 		return
 
 	if(!reagent_volumes[reagent_ids[mode]])
-		to_chat(user, "<span class='warning'>The injector is empty.</span>")
+		to_chat(user, "<span class='warning'>Инжектор пуст.</span>")
 		return
 
 	var/mob/living/carbon/human/H = M
 	if(istype(H))
 		var/obj/item/organ/external/affected = H.get_organ(user.zone_sel.selecting)
 		if(!affected)
-			to_chat(user, "<span class='danger'>\The [H] is missing that limb!</span>")
+			to_chat(user, "<span class='danger'>У [H] нет этой конечности!</span>")
 			return
 		/* since synths have oil/coolant streams now, it only makes sense that you should be able to inject stuff. preserved for posterity.
 		else if(affected.robotic >= ORGAN_ROBOT)
@@ -83,15 +83,15 @@
 		*/
 
 	if(M.can_inject(user, 1, ignore_thickness = bypass_protection))
-		to_chat(user, "<span class='notice'>You inject [M] with the injector.</span>")
-		to_chat(M, "<span class='notice'>You feel a tiny prick!</span>")
+		to_chat(user, "<span class='notice'>Вы вводите [M] с помощью инжектора.</span>")
+		to_chat(M, "<span class='notice'>Вы чувствуете крошечный укол!</span>")
 
 		if(M.reagents)
 			var/t = min(amount_per_transfer_from_this, reagent_volumes[reagent_ids[mode]])
 			M.reagents.add_reagent(reagent_ids[mode], t)
 			reagent_volumes[reagent_ids[mode]] -= t
-			add_attack_logs(user, M, "Borg injected with [reagent_ids[mode]]")
-			to_chat(user, "<span class='notice'>[t] units injected. [reagent_volumes[reagent_ids[mode]]] units remaining.</span>")
+			add_attack_logs(user, M, "Борг вводит [reagent_ids[mode]]")
+			to_chat(user, "<span class='notice'>[t] единиц введено. [reagent_volumes[reagent_ids[mode]]] единиц осталось.</span>")
 	return
 
 /obj/item/weapon/reagent_containers/borghypo/attack_self(mob/user as mob) //Change the mode
@@ -103,7 +103,7 @@
 			t += "<b>[reagent_names[i]]</b>"
 		else
 			t += "<a href='?src=\ref[src];reagent=[reagent_ids[i]]'>[reagent_names[i]]</a>"
-	t = "Available reagents: [t]."
+	t = "Доступные реагенты: [t]."
 	to_chat(user,t)
 
 	return
@@ -115,17 +115,17 @@
 			playsound(src, 'sound/effects/pop.ogg', 50, 0)
 			mode = t
 			var/datum/reagent/R = SSchemistry.chemical_reagents[reagent_ids[mode]]
-			to_chat(usr, "<span class='notice'>Synthesizer is now producing '[R.name]'.</span>")
+			to_chat(usr, "<span class='notice'>Синтезатор сейчас производит '[R.name]'.</span>")
 
 /obj/item/weapon/reagent_containers/borghypo/examine(mob/user)
 	. = ..()
 	if(get_dist(user, src) <= 2)
 		var/datum/reagent/R = SSchemistry.chemical_reagents[reagent_ids[mode]]
-		. += "<span class='notice'>It is currently producing [R.name] and has [reagent_volumes[reagent_ids[mode]]] out of [volume] units left.</span>"
+		. += "<span class='notice'>В настоящее время он производит [R.name] и ​​у него осталось [reagent_volumes[reagent_ids[mode]]] [volume] единиц.</span>"
 
 /obj/item/weapon/reagent_containers/borghypo/service
-	name = "cyborg drink synthesizer"
-	desc = "A portable drink dispencer."
+	name = "синтезатор напитков киборгов"
+	desc = "Портативный диспенсер для напитков."
 	icon = 'icons/obj/drinks.dmi'
 	icon_state = "shaker"
 	charge_cost = 20
@@ -186,15 +186,15 @@
 		return
 
 	if(!reagent_volumes[reagent_ids[mode]])
-		to_chat(user, "<span class='notice'>[src] is out of this reagent, give it some time to refill.</span>")
+		to_chat(user, "<span class='notice'>[src] закончился в этом реактиве, дайте ему немного времени для пополнения.</span>")
 		return
 
 	if(!target.reagents.get_free_space())
-		to_chat(user, "<span class='notice'>[target] is full.</span>")
+		to_chat(user, "<span class='notice'>[target] полон.</span>")
 		return
 
 	var/t = min(amount_per_transfer_from_this, reagent_volumes[reagent_ids[mode]])
 	target.reagents.add_reagent(reagent_ids[mode], t)
 	reagent_volumes[reagent_ids[mode]] -= t
-	to_chat(user, "<span class='notice'>You transfer [t] units of the solution to [target].</span>")
+	to_chat(user, "<span class='notice'>Вы переносите [t] единиц раствора в [target].</span>")
 	return

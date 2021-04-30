@@ -1,7 +1,7 @@
 /obj/machinery/reagentgrinder
 
 	name = "All-In-One Grinder"
-	desc = "Grinds stuff into itty bitty bits."
+	desc = "Размалывает материал на крошечные кусочки."
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "juicer1"
 	density = 0

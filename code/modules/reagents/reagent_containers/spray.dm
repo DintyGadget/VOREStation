@@ -1,6 +1,6 @@
 /obj/item/weapon/reagent_containers/spray
-	name = "spray bottle"
-	desc = "A spray bottle, with an unscrewable top."
+	name = "Аэрозольный баллончик"
+	desc = "Аэрозольный баллончик с отвинчивающимся верхом."
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "cleaner"
 	item_state = "cleaner"
@@ -75,7 +75,7 @@
 		return
 	amount_per_transfer_from_this = next_in_list(amount_per_transfer_from_this, possible_transfer_amounts)
 	spray_size = next_in_list(spray_size, spray_sizes)
-	to_chat(user, "<span class='notice'>You adjusted the pressure nozzle. You'll now use [amount_per_transfer_from_this] units per spray.</span>")
+	to_chat(user, "<span class='notice'>Вы отрегулировали напорное сопло. Теперь вы будете использовать [amount_per_transfer_from_this] единиц в спрее.</span>")
 
 /obj/item/weapon/reagent_containers/spray/examine(mob/user)
 	. = ..()
@@ -84,24 +84,24 @@
 
 /obj/item/weapon/reagent_containers/spray/verb/empty()
 
-	set name = "Empty Spray Bottle"
+	set name = "Опустошить Аэрозольный баллончик"
 	set category = "Object"
 	set src in usr
 
-	if (alert(usr, "Are you sure you want to empty that?", "Empty Bottle:", "Yes", "No") != "Yes")
+	if (alert(usr, "Вы уверены, что хотите его очистить?", "Empty Bottle:", "Да", "Нет") != "Да")
 		return
 	if(isturf(usr.loc))
-		to_chat(usr, "<span class='notice'>You empty \the [src] onto the floor.</span>")
+		to_chat(usr, "<span class='notice'>Вы опустошаете [src] прямо на пол.</span>")
 		reagents.splash(usr.loc, reagents.total_volume)
 
 //space cleaner
 /obj/item/weapon/reagent_containers/spray/cleaner
 	name = "space cleaner"
-	desc = "BLAM!-brand non-foaming space cleaner!"
+	desc = "БЛАМ! -Брендовый непенный очиститель пространства!"
 
 /obj/item/weapon/reagent_containers/spray/cleaner/drone
 	name = "space cleaner"
-	desc = "BLAM!-brand non-foaming space cleaner!"
+	desc = "БЛАМ! -Брендовый непенный очиститель пространства!"
 	volume = 50
 
 /obj/item/weapon/reagent_containers/spray/cleaner/Initialize()
@@ -109,16 +109,16 @@
 	reagents.add_reagent("cleaner", volume)
 
 /obj/item/weapon/reagent_containers/spray/sterilizine
-	name = "sterilizine"
-	desc = "Great for hiding incriminating bloodstains and sterilizing scalpels."
+	name = "стерилизин"
+	desc = "Отлично подходит для скрытия инкриминирующих пятен крови и стерилизации скальпелей."
 
 /obj/item/weapon/reagent_containers/spray/sterilizine/Initialize()
 	. = ..()
 	reagents.add_reagent("sterilizine", volume)
 
 /obj/item/weapon/reagent_containers/spray/pepper
-	name = "pepperspray"
-	desc = "Manufactured by UhangInc, used to blind and down an opponent quickly."
+	name = "перцовый баллончик"
+	desc = "Изготовлено UhangInc, используется для быстрого ослепления и подавления противника."
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "pepperspray"
 	item_state = "pepperspray"
@@ -134,21 +134,21 @@
 /obj/item/weapon/reagent_containers/spray/pepper/examine(mob/user)
 	. = ..()
 	if(Adjacent(user))
-		. += "The safety is [safety ? "on" : "off"]."
+		. += "Защита [safety ? "вкл" : "выкл"]."
 
 /obj/item/weapon/reagent_containers/spray/pepper/attack_self(var/mob/user)
 	safety = !safety
-	to_chat(usr, "<span class = 'notice'>You switch the safety [safety ? "on" : "off"].</span>")
+	to_chat(usr, "<span class = 'notice'>Вы переключаете защиту на [safety ? "вкл" : "выкл"].</span>")
 
 /obj/item/weapon/reagent_containers/spray/pepper/Spray_at(atom/A as mob|obj)
 	if(safety)
-		to_chat(usr, "<span class = 'warning'>The safety is on!</span>")
+		to_chat(usr, "<span class = 'warning'>Защита включена!!</span>")
 		return
 	. = ..()
 
 /obj/item/weapon/reagent_containers/spray/waterflower
-	name = "water flower"
-	desc = "A seemingly innocent sunflower...with a twist."
+	name = "водный цветок"
+	desc = "На вид невинный подсолнух ... с изюминкой."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "sunflower"
 	item_state = "sunflower"
@@ -163,8 +163,8 @@
 	reagents.add_reagent("water", 10)
 
 /obj/item/weapon/reagent_containers/spray/chemsprayer
-	name = "chem sprayer"
-	desc = "A utility used to spray large amounts of reagent in a given area."
+	name = "химический опрыскиватель"
+	desc = "Утилита, используемая для распыления большого количества реагента в заданной области."
 	icon = 'icons/obj/gun.dmi'
 	icon_state = "chemsprayer"
 	item_state = "chemsprayer"
@@ -196,8 +196,8 @@
 	return
 
 /obj/item/weapon/reagent_containers/spray/plantbgone
-	name = "Plant-B-Gone"
-	desc = "Kills those pesky weeds!"
+	name = "Завод-И-Утиль"
+	desc = "Убивает надоедливые сорняки!"
 	icon = 'icons/obj/hydroponics_machines.dmi'
 	icon_state = "plantbgone"
 	item_state = "plantbgone"
@@ -208,8 +208,8 @@
 	reagents.add_reagent("plantbgone", 100)
 
 /obj/item/weapon/reagent_containers/spray/chemsprayer/hosed
-	name = "hose nozzle"
-	desc = "A heavy spray nozzle that must be attached to a hose."
+	name = "насадка для шланга"
+	desc = "Тяжелая форсунка, которую необходимо прикрепить к шлангу."
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "cleaner-industrial"
 	item_state = "cleaner"
@@ -243,7 +243,7 @@
 /obj/item/weapon/reagent_containers/spray/chemsprayer/hosed/AltClick(mob/living/carbon/user)
 	if(++spray_particles > 3) spray_particles = 1
 
-	to_chat(user, "<span class='notice'>You turn the dial on \the [src] to [spray_particles].</span>")
+	to_chat(user, "<span class='notice'>Вы поворачиваете шкалу [src] на [spray_particles].</span>")
 	return
 
 /obj/item/weapon/reagent_containers/spray/chemsprayer/hosed/CtrlClick(var/mob/user)
@@ -262,7 +262,7 @@
 	var/list/the_targets = list(T, T1, T2)
 
 	if(src.reagents.total_volume < 1)
-		to_chat(usr, "<span class='notice'>\The [src] is empty.</span>")
+		to_chat(usr, "<span class='notice'>[src] пуст.</span>")
 		return
 
 	if(!heavy_spray)

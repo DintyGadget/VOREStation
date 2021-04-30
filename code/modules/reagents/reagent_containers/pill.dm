@@ -2,8 +2,8 @@
 /// Pills.
 ////////////////////////////////////////////////////////////////////////////////
 /obj/item/weapon/reagent_containers/pill
-	name = "pill"
-	desc = "A pill."
+	name = "таблетка"
+	desc = "Это таблет.ка"
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = null
 	item_state = "pill"
@@ -27,14 +27,14 @@
 		if(istype(M, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = M
 			if(!H.check_has_mouth())
-				to_chat(user, "Where do you intend to put \the [src]? You don't have a mouth!")
+				to_chat(user, "Куда вы собираетесь поместить [src]? У вас нет рта!")
 				return
 			var/obj/item/blocked = H.check_mouth_coverage()
 			if(blocked)
-				to_chat(user, "<span class='warning'>\The [blocked] is in the way!</span>")
+				to_chat(user, "<span class='warning'>[blocked] мешает!</span>")
 				return
 
-			to_chat(M, "<span class='notice'>You swallow \the [src].</span>")
+			to_chat(M, "<span class='notice'>Вы глотаете [src].</span>")
 			M.drop_from_inventory(src) //icon update
 			if(reagents.total_volume)
 				reagents.trans_to_mob(M, reagents.total_volume, CHEM_INGEST)
@@ -45,24 +45,24 @@
 
 		var/mob/living/carbon/human/H = M
 		if(!H.check_has_mouth())
-			to_chat(user, "Where do you intend to put \the [src]? \The [H] doesn't have a mouth!")
+			to_chat(user, "Куда вы собираетесь поместить [src]? У [H] нет рта!")
 			return
 		var/obj/item/blocked = H.check_mouth_coverage()
 		if(blocked)
-			to_chat(user, "<span class='warning'>\The [blocked] is in the way!</span>")
+			to_chat(user, "<span class='warning'>[blocked] мешает!</span>")
 			return
 
-		user.visible_message("<span class='warning'>[user] attempts to force [M] to swallow \the [src].</span>")
+		user.visible_message("<span class='warning'>[user] пытается заставить [M] проглотить [src].</span>")
 
 		user.setClickCooldown(user.get_attack_speed(src))
 		if(!do_mob(user, M))
 			return
 
 		user.drop_from_inventory(src) //icon update
-		user.visible_message("<span class='warning'>[user] forces [M] to swallow \the [src].</span>")
+		user.visible_message("<span class='warning'>[user] заставляет [M] проглотить [src].</span>")
 
 		var/contained = reagentlist()
-		add_attack_logs(user,M,"Fed a pill containing [contained]")
+		add_attack_logs(user,M,"Накормил таблеткой, содержащую [contained]")
 
 		if(reagents && reagents.total_volume)
 			reagents.trans_to_mob(M, reagents.total_volume, CHEM_INGEST)
@@ -77,15 +77,15 @@
 
 	if(target.is_open_container() && target.reagents)
 		if(!target.reagents.total_volume)
-			to_chat(user, "<span class='notice'>[target] is empty. Can't dissolve \the [src].</span>")
+			to_chat(user, "<span class='notice'>[target] пуст. Невозможно растворить [src].</span>")
 			return
-		to_chat(user, "<span class='notice'>You dissolve \the [src] in [target].</span>")
+		to_chat(user, "<span class='notice'>Вы растворяете [src] в [target].</span>")
 
 		add_attack_logs(user,null,"Spiked [target.name] with a pill containing [reagentlist()]")
 
 		reagents.trans_to(target, reagents.total_volume)
 		for(var/mob/O in viewers(2, user))
-			O.show_message("<span class='warning'>[user] puts something in \the [target].</span>", 1)
+			O.show_message("<span class='warning'>[user] помещает что-то в [target].</span>", 1)
 
 		qdel(src)
 
@@ -97,8 +97,8 @@
 
 //Pills
 /obj/item/weapon/reagent_containers/pill/antitox
-	name = "Dylovene (30u)" //VOREStation Edit
-	desc = "Neutralizes many common toxins."
+	name = "Диловен (30 ед.)" //VOREStation Edit
+	desc = "Нейтрализует многие распространенные токсины."
 	icon_state = "pill1"
 
 /obj/item/weapon/reagent_containers/pill/antitox/Initialize()
@@ -107,8 +107,8 @@
 	color = reagents.get_color()
 
 /obj/item/weapon/reagent_containers/pill/tox
-	name = "Toxins pill"
-	desc = "Highly toxic."
+	name = "Таблетка токсин"
+	desc = "Сильно токсична."
 	icon_state = "pill4"
 
 /obj/item/weapon/reagent_containers/pill/tox/Initialize()
@@ -117,8 +117,8 @@
 	color = reagents.get_color()
 
 /obj/item/weapon/reagent_containers/pill/cyanide
-	name = "Strange pill"
-	desc = "It's marked 'KCN'. Smells vaguely of almonds."
+	name = "Странная таблетка"
+	desc = "Она помечена как «KCN». Слабо пахнет миндалем."
 	icon_state = "pill9"
 
 /obj/item/weapon/reagent_containers/pill/cyanide/Initialize()
@@ -127,8 +127,8 @@
 
 
 /obj/item/weapon/reagent_containers/pill/adminordrazine
-	name = "Adminordrazine pill"
-	desc = "It's magic. We don't have to explain it."
+	name = "Админордразин в таблетках"
+	desc = "Это магия. Нам не нужно это объяснять."
 	icon_state = "pillA"
 
 /obj/item/weapon/reagent_containers/pill/adminordrazine/Initialize()
@@ -137,8 +137,8 @@
 
 
 /obj/item/weapon/reagent_containers/pill/stox
-	name = "Soporific (15u)"
-	desc = "Commonly used to treat insomnia."
+	name = "Снотворное (15 ед.)"
+	desc = "Обычно используется для лечения бессонницы."
 	icon_state = "pill2"
 
 /obj/item/weapon/reagent_containers/pill/stox/Initialize()
@@ -147,8 +147,8 @@
 	color = reagents.get_color()
 
 /obj/item/weapon/reagent_containers/pill/kelotane
-	name = "Kelotane (20u)" //VOREStation Edit
-	desc = "Used to treat burns."
+	name = "Келотан (20 ед.)" //VOREStation Edit
+	desc = "Используется для лечения ожогов."
 	icon_state = "pill3"
 
 /obj/item/weapon/reagent_containers/pill/kelotane/Initialize()
@@ -157,8 +157,8 @@
 	color = reagents.get_color()
 
 /obj/item/weapon/reagent_containers/pill/paracetamol
-	name = "Paracetamol (15u)"
-	desc = "Paracetamol! A painkiller for the ages. Chewables!"
+	name = "Парацетамол (15 ед.)"
+	desc = "Парацетамол! Обезболивающее на века. Жевательные таблетки!"
 	icon_state = "pill3"
 
 /obj/item/weapon/reagent_containers/pill/paracetamol/Initialize()
@@ -167,8 +167,8 @@
 	color = reagents.get_color()
 
 /obj/item/weapon/reagent_containers/pill/tramadol
-	name = "Tramadol (15u)"
-	desc = "A simple painkiller."
+	name = "Трамадол (15 ед.)"
+	desc = "Простое обезболивающее."
 	icon_state = "pill3"
 
 /obj/item/weapon/reagent_containers/pill/tramadol/Initialize()
@@ -177,8 +177,8 @@
 	color = reagents.get_color()
 
 /obj/item/weapon/reagent_containers/pill/methylphenidate
-	name = "Methylphenidate (15u)"
-	desc = "Improves the ability to concentrate."
+	name = "Метилфенидат (15 ед.)"
+	desc = "Улучшает способность концентрироваться."
 	icon_state = "pill2"
 
 /obj/item/weapon/reagent_containers/pill/methylphenidate/Initialize()
@@ -187,8 +187,8 @@
 	color = reagents.get_color()
 
 /obj/item/weapon/reagent_containers/pill/citalopram
-	name = "Citalopram (15u)"
-	desc = "Mild anti-depressant."
+	name = "Циталопрам (15 ед.)"
+	desc = "Мягкий антидепрессант."
 	icon_state = "pill4"
 
 /obj/item/weapon/reagent_containers/pill/citalopram/Initialize()
@@ -197,8 +197,8 @@
 	color = reagents.get_color()
 
 /obj/item/weapon/reagent_containers/pill/dexalin
-	name = "Dexalin (7.5u)" //VOREstation Edit
-	desc = "Used to treat oxygen deprivation."
+	name = "Дексалин (7.5 ед.)" //VOREstation Edit
+	desc = "Используется для лечения кислородного голодания."
 	icon_state = "pill1"
 
 /obj/item/weapon/reagent_containers/pill/dexalin/Initialize()
@@ -207,8 +207,8 @@
 	color = reagents.get_color()
 
 /obj/item/weapon/reagent_containers/pill/dexalin_plus
-	name = "Dexalin Plus (15u)"
-	desc = "Used to treat extreme oxygen deprivation."
+	name = "Дексалин Плюс (15 ед.)"
+	desc = "Используется для лечения крайнего кислородного голодания."
 	icon_state = "pill2"
 
 /obj/item/weapon/reagent_containers/pill/dexalin_plus/Initialize()
@@ -217,8 +217,8 @@
 	color = reagents.get_color()
 
 /obj/item/weapon/reagent_containers/pill/dermaline
-	name = "Dermaline (15u)"
-	desc = "Used to treat burn wounds."
+	name = "Дермалин (15 ед.)"
+	desc = "Используется для лечения ожоговых ран."
 	icon_state = "pill2"
 
 /obj/item/weapon/reagent_containers/pill/dermaline/Initialize()
@@ -227,8 +227,8 @@
 	color = reagents.get_color()
 
 /obj/item/weapon/reagent_containers/pill/dylovene
-	name = "Dylovene (15u)"
-	desc = "A broad-spectrum anti-toxin."
+	name = "Диловен (15 ед.)"
+	desc = "Антитоксин широкого спектра действия."
 	icon_state = "pill1"
 
 /obj/item/weapon/reagent_containers/pill/dylovene/Initialize()
@@ -237,8 +237,8 @@
 	color = reagents.get_color()
 
 /obj/item/weapon/reagent_containers/pill/inaprovaline
-	name = "Inaprovaline (30u)"
-	desc = "Used to stabilize patients."
+	name = "Инапровалин (30 ед.)"
+	desc = "Используется для стабилизации состояния пациентов."
 	icon_state = "pill2"
 
 /obj/item/weapon/reagent_containers/pill/inaprovaline/Initialize()
@@ -247,8 +247,8 @@
 	color = reagents.get_color()
 
 /obj/item/weapon/reagent_containers/pill/bicaridine
-	name = "Bicaridine (20u)"
-	desc = "Used to treat physical injuries."
+	name = "Бикаридин (20 ед.)"
+	desc = "Используется для лечения физических травм."
 	icon_state = "pill2"
 
 /obj/item/weapon/reagent_containers/pill/bicaridine/Initialize()
@@ -257,8 +257,8 @@
 	color = reagents.get_color()
 
 /obj/item/weapon/reagent_containers/pill/spaceacillin
-	name = "Spaceacillin (15u)" //VOREStation Edit
-	desc = "A theta-lactam antibiotic. Effective against many diseases likely to be encountered in space."
+	name = "Космоциллин (15 ед.)" //VOREStation Edit
+	desc = "Тета-лактамный антибиотик. Эффективен против многих болезней, которые могут встретиться в космосе."
 	icon_state = "pill3"
 
 /obj/item/weapon/reagent_containers/pill/spaceacillin/Initialize()
@@ -267,8 +267,8 @@
 	color = reagents.get_color()
 
 /obj/item/weapon/reagent_containers/pill/carbon
-	name = "Carbon (30u)" //VOREStation Edit
-	desc = "Used to neutralise chemicals in the stomach."
+	name = "Углерод (30 ед.)" //VOREStation Edit
+	desc = "Используется для нейтрализации химических веществ в желудке."
 	icon_state = "pill3"
 
 /obj/item/weapon/reagent_containers/pill/carbon/Initialize()
@@ -277,8 +277,8 @@
 	color = reagents.get_color()
 
 /obj/item/weapon/reagent_containers/pill/iron
-	name = "Iron (30u)" //VOREStation Edit
-	desc = "Used to aid in blood regeneration after bleeding."
+	name = "Железо (30 ед.)" //VOREStation Edit
+	desc = "Используется для регенерации крови после кровотечения."
 	icon_state = "pill1"
 
 /obj/item/weapon/reagent_containers/pill/iron/Initialize()
@@ -288,8 +288,8 @@
 
 //Not-quite-medicine
 /obj/item/weapon/reagent_containers/pill/happy
-	name = "Happy pill"
-	desc = "Happy happy joy joy!"
+	name = "Веселая таблеточка"
+	desc = "Счастливого счастья радости и радости!"
 	icon_state = "pill4"
 
 /obj/item/weapon/reagent_containers/pill/happy/Initialize()
@@ -299,7 +299,7 @@
 	color = reagents.get_color()
 
 /obj/item/weapon/reagent_containers/pill/zoom
-	name = "Zoom pill"
+	name = "Таблетка увеличения"
 	desc = "Zoooom!"
 	icon_state = "pill4"
 
@@ -312,8 +312,8 @@
 	color = reagents.get_color()
 
 /obj/item/weapon/reagent_containers/pill/diet
-	name = "diet pill"
-	desc = "Guaranteed to get you slim!"
+	name = "таблетки для похудения"
+	desc = "Гарантированно сделает вас стройными!"
 	icon_state = "pill4"
 
 /obj/item/weapon/reagent_containers/pill/diet/Initialize()

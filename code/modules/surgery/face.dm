@@ -36,19 +36,19 @@
 	return ..() && target_zone == O_MOUTH && target.op_stage.face == 0
 
 /datum/surgery_step/generic/cut_face/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	user.visible_message("[user] starts to cut open [target]'s face and neck with \the [tool].", \
-	"You start to cut open [target]'s face and neck with \the [tool].")
+	user.visible_message("[user] начинает разрезать лицо и шею [target] с помощью [tool].", \
+	"Вы начинаете разрезать лицо и шею [target] с помощью [tool].")
 	..()
 
 /datum/surgery_step/generic/cut_face/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	user.visible_message("<span class='notice'>[user] has cut open [target]'s face and neck with \the [tool].</span>" , \
-	"<span class='notice'> You have cut open[target]'s face and neck with \the [tool].</span>",)
+	user.visible_message("<span class='notice'>[user] разрезает лицо и шею [target] с помощью [tool].</span>" , \
+	"<span class='notice'> Вы разрезали лицо и шею [target] с помощью [tool].</span>",)
 	target.op_stage.face = 1
 
 /datum/surgery_step/generic/cut_face/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("<span class='danger'>[user]'s hand slips, slicing [target]'s throat wth \the [tool]!</span>" , \
-	"<span class='danger'>Your hand slips, slicing [target]'s throat wth \the [tool]!</span>" )
+	user.visible_message("<span class='danger'>Рука [user] соскальзывает, разрезая шею [target] с помощью [tool]!</span>" , \
+	"<span class='danger'>Ваша рука соскальзывает разрешая шею [target] с помощью [tool]!</span>" )
 	affected.createwound(CUT, 60)
 	target.AdjustLosebreath(10)
 

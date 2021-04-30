@@ -6,8 +6,8 @@
 #define SYRINGE_BROKEN 2
 
 /obj/item/weapon/reagent_containers/syringe
-	name = "syringe"
-	desc = "A syringe."
+	name = "шприц"
+	desc = "Это шприц."
 	icon = 'icons/obj/syringe.dmi'
 	item_state = "syringe_0"
 	icon_state = "0"
@@ -61,7 +61,7 @@
 		return
 
 	if(mode == SYRINGE_BROKEN)
-		to_chat(user, "<span class='warning'>This syringe is broken!</span>")
+		to_chat(user, "<span class='warning'>Этот шприц сломан!</span>")
 		return
 
 	if(user.a_intent == I_HURT && ismob(target))
@@ -74,31 +74,31 @@
 	switch(mode)
 		if(SYRINGE_DRAW)
 			if(!reagents.get_free_space())
-				to_chat(user, "<span class='warning'>The syringe is full.</span>")
+				to_chat(user, "<span class='warning'>Шприц полон.</span>")
 				mode = SYRINGE_INJECT
 				return
 
 			if(ismob(target))//Blood!
 				if(reagents.has_reagent("blood"))
-					to_chat(user, "<span class='notice'>There is already a blood sample in this syringe.</span>")
+					to_chat(user, "<span class='notice'>В этом шприце уже есть образец крови.</span>")
 					return
 
 				if(istype(target, /mob/living/carbon))
 					var/amount = reagents.get_free_space()
 					var/mob/living/carbon/T = target
 					if(!T.dna)
-						to_chat(user, "<span class='warning'>You are unable to locate any blood. (To be specific, your target seems to be missing their DNA datum).</span>")
+						to_chat(user, "<span class='warning'>Вы не можете найти кровь. (Если немного точнее, ваша цель, похоже, не имеет данных ДНК).</span>")
 						return
 					if(NOCLONE in T.mutations) //target done been et, no more blood in him
-						to_chat(user, "<span class='warning'>You are unable to locate any blood.</span>")
+						to_chat(user, "<span class='warning'>Вы не можете найти кровь.</span>")
 						return
 
 					if(T.isSynthetic())
-						to_chat(user, "<span class = 'warning'>You can't draw blood from a synthetic!</span>")
+						to_chat(user, "<span class = 'warning'>Кровь из синтетики взять нельзя!</span>")
 						return
 
 					if(drawing)
-						to_chat(user, "<span class='warning'>You are already drawing blood from [T.name].</span>")
+						to_chat(user, "<span class='warning'>Вы уже берете кровь у [T.name].</span>")
 						return
 
 					var/datum/reagent/B
@@ -126,21 +126,21 @@
 						reagents.update_total()
 						on_reagent_change()
 						reagents.handle_reactions()
-					to_chat(user, "<span class='notice'>You take a blood sample from [target].</span>")
+					to_chat(user, "<span class='notice'>Вы берете образец крови у [target].</span>")
 					for(var/mob/O in viewers(4, user))
-						O.show_message("<span class='notice'>[user] takes a blood sample from [target].</span>", 1)
+						O.show_message("<span class='notice'>[user] берет образец крови у [target].</span>", 1)
 
 			else //if not mob
 				if(!target.reagents.total_volume)
-					to_chat(user, "<span class='notice'>[target] is empty.</span>")
+					to_chat(user, "<span class='notice'>[target] пуст.</span>")
 					return
 
 				if(!target.is_open_container() && !istype(target, /obj/structure/reagent_dispensers) && !istype(target, /obj/item/slime_extract) && !istype(target, /obj/item/weapon/reagent_containers/food))
-					to_chat(user, "<span class='notice'>You cannot directly remove reagents from this object.</span>")
+					to_chat(user, "<span class='notice'>Вы не можете напрямую удалить реагенты с этого объекта.</span>")
 					return
 
 				var/trans = target.reagents.trans_to_obj(src, amount_per_transfer_from_this)
-				to_chat(user, "<span class='notice'>You fill the syringe with [trans] units of the solution.</span>")
+				to_chat(user, "<span class='notice'>Вы наполняете шприц [trans] ед. раствора.</span>")
 				update_icon()
 
 
@@ -150,17 +150,17 @@
 
 		if(SYRINGE_INJECT)
 			if(!reagents.total_volume)
-				to_chat(user, "<span class='notice'>The syringe is empty.</span>")
+				to_chat(user, "<span class='notice'>Шприц пуст.</span>")
 				mode = SYRINGE_DRAW
 				return
 			if(istype(target, /obj/item/weapon/implantcase/chem))
 				return
 
 			if(!target.is_open_container() && !ismob(target) && !istype(target, /obj/item/weapon/reagent_containers/food) && !istype(target, /obj/item/slime_extract) && !istype(target, /obj/item/clothing/mask/smokable/cigarette) && !istype(target, /obj/item/weapon/storage/fancy/cigarettes))
-				to_chat(user, "<span class='notice'>You cannot directly fill this object.</span>")
+				to_chat(user, "<span class='notice'>Вы не можете напрямую заполнить этот объект.</span>")
 				return
 			if(!target.reagents.get_free_space())
-				to_chat(user, "<span class='notice'>[target] is full.</span>")
+				to_chat(user, "<span class='notice'>[target] полон.</span>")
 				return
 
 			var/mob/living/carbon/human/H = target
@@ -168,7 +168,7 @@
 			if(istype(H))
 				affected = H.get_organ(user.zone_sel.selecting) //VOREStation Edit - See above comment.
 				if(!affected)
-					to_chat(user, "<span class='danger'>\The [H] is missing that limb!</span>")
+					to_chat(user, "<span class='danger'>У [H] нет этой конечности!</span>")
 					return
 				/* since synths have oil/coolant streams now, it only makes sense that you should be able to inject stuff. preserved for posterity.
 				else if(affected.robotic >= ORGAN_ROBOT)
@@ -196,9 +196,9 @@
 						return
 
 				if(injtime == time)
-					user.visible_message("<span class='warning'>[user] is trying to inject [target] with [visible_name]!</span>","<span class='notice'>You begin injecting [target] with [visible_name].</span>")
+					user.visible_message("<span class='warning'>[user] пытается ввести раствор в [target] с помощью [visible_name]!</span>","<span class='notice'>Вы начинаете вводить в [target] используя [visible_name].</span>")
 				else
-					user.visible_message("<span class='warning'>[user] begins hunting for an injection port on [target]'s suit!</span>","<span class='notice'>You begin hunting for an injection port on [target]'s suit!</span>")
+					user.visible_message("<span class='warning'>[user] начинает поиски инъекционного порта на скафандре [target]!</span>","<span class='notice'>Вы начинаете охоту за инъекционным отверстием на скафандре [target]!</span>")
 
 			//The warmup
 			user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
@@ -221,11 +221,11 @@
 				update_icon()
 
 			if(trans)
-				to_chat(user, "<span class='notice'>You inject [trans] units of the solution. The syringe now contains [src.reagents.total_volume] units.</span>")
+				to_chat(user, "<span class='notice'>Вы вводите [trans] ед. раствора. В шприце теперь [src.reagents.total_volume] ед..</span>")
 				if(ismob(target))
 					add_attack_logs(user,target,"Injected with [src.name] containing [contained], trasferred [trans] units")
 			else
-				to_chat(user, "<span class='notice'>The syringe is empty.</span>")
+				to_chat(user, "<span class='notice'>Шприц пуст.</span>")
 
 //		dirty(target,affected) //VOREStation Add -- Removed by Request
 
@@ -267,7 +267,7 @@
 		var/obj/item/organ/external/affecting = H.get_organ(target_zone)
 
 		if (!affecting || affecting.is_stump())
-			to_chat(user, "<span class='danger'>They are missing that limb!</span>")
+			to_chat(user, "<span class='danger'>Им не хватает этой конечности!</span>")
 			return
 
 		var/hit_area = affecting.name
@@ -277,7 +277,7 @@
 
 		if (target != user && H.getarmor(target_zone, "melee") > 5 && prob(50))
 			for(var/mob/O in viewers(world.view, user))
-				O.show_message(text("<font color='red'><B>[user] tries to stab [target] in \the [hit_area] with [src.name], but the attack is deflected by armor!</B></font>"), 1)
+				O.show_message(text("<font color='red'><B>[user] пытается нанести удар по [target] в [hit_area] с помощью [src.name], но атака отражается броней!</B></font>"), 1)
 			user.remove_from_mob(src)
 			qdel(src)
 
@@ -285,13 +285,13 @@
 
 			return
 
-		user.visible_message("<span class='danger'>[user] stabs [target] in \the [hit_area] with [src.name]!</span>")
+		user.visible_message("<span class='danger'>[user] наносит удар [target] в [hit_area] с помощью [src.name]!</span>")
 
 		if(affecting.take_damage(3))
 			H.UpdateDamageIcon()
 
 	else
-		user.visible_message("<span class='danger'>[user] stabs [target] with [src.name]!</span>")
+		user.visible_message("<span class='danger'>[user] наносит удар [target] с помощью [src.name]!</span>")
 		target.take_organ_damage(3)// 7 is the same as crowbar punch
 
 
@@ -305,7 +305,7 @@
 		break_syringe(target, user)
 
 /obj/item/weapon/reagent_containers/syringe/proc/break_syringe(mob/living/carbon/target, mob/living/carbon/user)
-	desc += " It is broken."
+	desc += " Оно сломано."
 	mode = SYRINGE_BROKEN
 	if(target)
 		add_blood(target)
@@ -314,19 +314,19 @@
 	update_icon()
 
 /obj/item/weapon/reagent_containers/syringe/ld50_syringe
-	name = "Lethal Injection Syringe"
-	desc = "A syringe used for lethal injections."
+	name = "Шприц для смертельной инъекции"
+	desc = "Шприц для смертельных инъекций."
 	amount_per_transfer_from_this = 50
 	volume = 50
-	visible_name = "a giant syringe"
+	visible_name = "гигантский шприц"
 	time = 300
 
 /obj/item/weapon/reagent_containers/syringe/ld50_syringe/afterattack(obj/target, mob/user, flag)
 	if(mode == SYRINGE_DRAW && ismob(target)) // No drawing 50 units of blood at once
-		to_chat(user, "<span class='notice'>This needle isn't designed for drawing blood.</span>")
+		to_chat(user, "<span class='notice'>Эта игла не предназначена для забора крови.</span>")
 		return
 	if(user.a_intent == "hurt" && ismob(target)) // No instant injecting
-		to_chat(user, "<span class='notice'>This syringe is too big to stab someone with it.</span>")
+		to_chat(user, "<span class='notice'>Этот шприц слишком велик, чтобы нанести им удар.</span>")
 	..()
 
 ////////////////////////////////////////////////////////////////////////////////

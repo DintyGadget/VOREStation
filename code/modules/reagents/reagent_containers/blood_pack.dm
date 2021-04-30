@@ -1,6 +1,6 @@
 /obj/item/weapon/storage/box/bloodpacks
-	name = "blood packs bags"
-	desc = "This box contains blood packs."
+	name = "пакеты с кровью"
+	desc = "В этой коробке находятся пакеты с кровью."
 	icon_state = "sterile"
 
 /obj/item/weapon/storage/box/bloodpacks/Initialize()
@@ -14,9 +14,9 @@
 		new /obj/item/weapon/reagent_containers/blood/empty(src)
 
 /obj/item/weapon/reagent_containers/blood
-	name = "IV pack"
+	name = "IV пакет"
 	var/base_name = " "
-	desc = "Holds liquids used for transfusion."
+	desc = "Вмещает жидкости, используемые для переливания."
 	var/base_desc = " "
 	icon = 'icons/obj/bloodpack.dmi'
 	icon_state = "empty"
@@ -56,15 +56,15 @@
 
 /obj/item/weapon/reagent_containers/blood/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/weapon/pen) || istype(W, /obj/item/device/flashlight/pen))
-		var/tmp_label = sanitizeSafe(input(user, "Enter a label for [name]", "Label", label_text), MAX_NAME_LEN)
+		var/tmp_label = sanitizeSafe(input(user, "Введите ярлык для [name]", "Ярлык", label_text), MAX_NAME_LEN)
 		if(length(tmp_label) > 50)
-			to_chat(user, "<span class='notice'>The label can be at most 50 characters long.</span>")
+			to_chat(user, "<span class='notice'>Ярлык может содержать не более 50 символов.</span>")
 		else if(length(tmp_label) > 10)
-			to_chat(user, "<span class='notice'>You set the label.</span>")
+			to_chat(user, "<span class='notice'>Вы устанавливаете ярлычок.</span>")
 			label_text = tmp_label
 			update_iv_label()
 		else
-			to_chat(user, "<span class='notice'>You set the label to \"[tmp_label]\".</span>")
+			to_chat(user, "<span class='notice'>Вы устанавливаете ярлычок \"[tmp_label]\".</span>")
 			label_text = tmp_label
 			update_iv_label()
 
@@ -76,7 +76,7 @@
 		name = "[base_name] ([short_label_text]...)"
 	else
 		name = "[base_name] ([label_text])"
-	desc = "[base_desc] It is labeled \"[label_text]\"."
+	desc = "[base_desc] помечено как \"[label_text]\"."
 
 /obj/item/weapon/reagent_containers/blood/APlus
 	blood_type = "A+"
@@ -105,7 +105,7 @@
 	reag_id = "synthblood"
 
 /obj/item/weapon/reagent_containers/blood/empty
-	name = "Empty BloodPack"
-	desc = "Seems pretty useless... Maybe if there were a way to fill it?"
+	name = "Пустой пакет крови"
+	desc = "Вроде бесполезно ... Но вроде как можно и заполнить?"
 	icon_state = "empty"
 	item_state = "bloodpack_empty"

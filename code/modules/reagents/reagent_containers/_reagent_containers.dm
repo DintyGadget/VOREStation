@@ -1,5 +1,5 @@
 /obj/item/weapon/reagent_containers
-	name = "Container"
+	name = "Контейнер"
 	desc = "..."
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = null
@@ -38,11 +38,11 @@
 		return 0
 
 	if(!target.reagents || !target.reagents.total_volume)
-		to_chat(user, "<span class='notice'>[target] is empty.</span>")
+		to_chat(user, "<span class='notice'>[target] пуст.</span>")
 		return 1
 
 	if(reagents && !reagents.get_free_space())
-		to_chat(user, "<span class='notice'>[src] is full.</span>")
+		to_chat(user, "<span class='notice'>[src] полон.</span>")
 		return 1
 
 	var/trans = target.reagents.trans_to_obj(src, target:amount_per_transfer_from_this)

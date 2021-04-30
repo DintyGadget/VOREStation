@@ -1,7 +1,7 @@
 /datum/reagent/advmutationtoxin
-	name = "Advanced Mutation Toxin"
+	name = "Токсин повышенной мутации"
 	id = "advmutationtoxin"
-	description = "A corruptive toxin produced by slimes. Turns the subject of the chemical into a Promethean."
+	description = "Разлагающий токсин, производимый слизью. Превращает предмет химического вещества в Прометеев."
 	reagent_state = LIQUID
 	color = "#13BC5E"
 
@@ -9,7 +9,7 @@
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(H.species.name != "Promethean")
-			to_chat(M, "<span class='danger'>Your flesh rapidly mutates!</span>")
+			to_chat(M, "<span class='danger'>Ваша плоть стремительно мутирует!</span>")
 
 			var/list/backup_implants = list()
 			for(var/obj/item/organ/I in H.organs)
@@ -29,10 +29,10 @@
 					torso.implants += BI
 
 /datum/reagent/nif_repair_nanites
-	name = "Programmed Nanomachines"
+	name = "Программируемые наномашины"
 	id = "nifrepairnanites"
-	description = "A thick grey slurry of NIF repair nanomachines."
-	taste_description = "metallic"
+	description = "Густая серая суспензия ремонтных наномашин НИФ."
+	taste_description = "металл"
 	reagent_state = LIQUID
 	color = "#333333"
 	scannable = 1
@@ -48,12 +48,12 @@
 			nif.durability = min(nif.durability + removed, initial(nif.durability))
 
 /datum/reagent/firefighting_foam
-	name = "Firefighting Foam"
+	name = "Пена для пожаротушения"
 	id = "firefoam"
-	description = "A historical fire suppressant. Originally believed to simply displace oxygen to starve fires, it actually interferes with the combustion reaction itself. Vastly superior to the cheap water-based extinguishers found on most NT vessels."
+	description = "Историческое средство пожаротушения. Первоначально считалось, что он просто вытесняет кислород, чтобы погасить огонь, но на самом деле он мешает самой реакции горения. Значительно превосходит дешевые огнетушители на водной основе, которые можно найти на большинстве судов NT."
 	reagent_state = LIQUID
 	color = "#A6FAFF"
-	taste_description = "the inside of a fire extinguisher"
+	taste_description = "внутренность огнетушителя"
 
 /datum/reagent/firefighting_foam/touch_turf(var/turf/T, reac_volume)
 	if(reac_volume >= 1)
@@ -78,7 +78,7 @@
 		var/removed_heat = between(0, volume * 19000, -environment.get_thermal_energy_change(min_temperature))
 		environment.add_thermal_energy(-removed_heat)
 		if(prob(5))
-			T.visible_message("<span class='warning'>The foam sizzles as it lands on \the [T]!</span>")
+			T.visible_message("<span class='warning'>Пена шипит, когда попадает на [T]!</span>")
 
 /datum/reagent/firefighting_foam/touch_obj(var/obj/O, reac_volume)
 	O.water_act(reac_volume / 5)
@@ -87,16 +87,16 @@
 	if(istype(M, /mob/living/simple_mob/slime)) //I'm sure foam is water-based!
 		var/mob/living/simple_mob/slime/S = M
 		S.adjustToxLoss(15 * reac_volume)
-		S.visible_message("<span class='warning'>[S]'s flesh sizzles where the foam touches it!</span>", "<span class='danger'>Your flesh burns in the foam!</span>")
+		S.visible_message("<span class='warning'>Плоть [S] шипит там, где ее касается пена!</span>", "<span class='danger'>Ваша плоть горит в пене!</span>")
 
 	M.adjust_fire_stacks(-reac_volume)
 	M.ExtinguishMob()
 
 /datum/reagent/liquid_protean
-	name = "Liquid protean"
+	name = "Жидкий протеин"
 	id = "liquid_protean"
-	description = "This seems to be a small portion of a Protean creature, still slightly wiggling."
-	taste_description = "wiggly peanutbutter"
+	description = "Похоже, это небольшая часть протейского существа, все еще слегка шевелящаяся."
+	taste_description = "извивающееся арахисовое масло"
 	reagent_state = LIQUID
 	color = "#1d1d1d"
 	scannable = 0

@@ -1,113 +1,113 @@
 /* Paint and crayons */
 
 /datum/reagent/crayon_dust
-	name = "Crayon dust"
+	name = "Мелковая пыль"
 	id = "crayon_dust"
-	description = "Intensely coloured powder obtained by grinding crayons."
-	taste_description = "powdered wax"
+	description = "Сильно окрашенный порошок, полученный при измельчении мелками."
+	taste_description = "порошковый воск"
 	reagent_state = LIQUID
 	color = "#888888"
 	overdose = 5
 
 /datum/reagent/crayon_dust/red
-	name = "Red crayon dust"
+	name = "Красная мелковая пыль"
 	id = "crayon_dust_red"
 	color = "#FE191A"
 
 /datum/reagent/crayon_dust/orange
-	name = "Orange crayon dust"
+	name = "Оранжевая мелковая пыль"
 	id = "crayon_dust_orange"
 	color = "#FFBE4F"
 
 /datum/reagent/crayon_dust/yellow
-	name = "Yellow crayon dust"
+	name = "Желтая мелковая пыль"
 	id = "crayon_dust_yellow"
 	color = "#FDFE7D"
 
 /datum/reagent/crayon_dust/green
-	name = "Green crayon dust"
+	name = "Зеленая мелковая пыль"
 	id = "crayon_dust_green"
 	color = "#18A31A"
 
 /datum/reagent/crayon_dust/blue
-	name = "Blue crayon dust"
+	name = "Синяя мелковая пыль"
 	id = "crayon_dust_blue"
 	color = "#247CFF"
 
 /datum/reagent/crayon_dust/purple
-	name = "Purple crayon dust"
+	name = "Пурпурная мелковая пыль"
 	id = "crayon_dust_purple"
 	color = "#CC0099"
 
 /datum/reagent/crayon_dust/grey //Mime
-	name = "Grey crayon dust"
+	name = "Серая мелковая пыль"
 	id = "crayon_dust_grey"
 	color = "#808080"
 
 /datum/reagent/crayon_dust/brown //Rainbow
-	name = "Brown crayon dust"
+	name = "Коричневая мелковая пыль"
 	id = "crayon_dust_brown"
 	color = "#846F35"
 
 /datum/reagent/marker_ink
-	name = "Marker ink"
+	name = "Маркерные чернила"
 	id = "marker_ink"
-	description = "Intensely coloured ink used in markers."
-	taste_description = "extremely bitter"
+	description = "Ярко окрашенные чернила, используемые в маркерах."
+	taste_description = "чрезвычайно горький"
 	reagent_state = LIQUID
 	color = "#888888"
 	overdose = 5
 
 /datum/reagent/marker_ink/black
-	name = "Black marker ink"
+	name = "Черные маркерные чернила"
 	id = "marker_ink_black"
 	color = "#000000"
 
 /datum/reagent/marker_ink/red
-	name = "Red marker ink"
+	name = "Красные маркерные чернила"
 	id = "marker_ink_red"
 	color = "#FE191A"
 
 /datum/reagent/marker_ink/orange
-	name = "Orange marker ink"
+	name = "Оранженвые маркерные чернила"
 	id = "marker_ink_orange"
 	color = "#FFBE4F"
 
 /datum/reagent/marker_ink/yellow
-	name = "Yellow marker ink"
+	name = "Желтые маркерные чернила"
 	id = "marker_ink_yellow"
 	color = "#FDFE7D"
 
 /datum/reagent/marker_ink/green
-	name = "Green marker ink"
+	name = "Зеленые маркерные чернила"
 	id = "marker_ink_green"
 	color = "#18A31A"
 
 /datum/reagent/marker_ink/blue
-	name = "Blue marker ink"
+	name = "Синие маркерные чернила"
 	id = "marker_ink_blue"
 	color = "#247CFF"
 
 /datum/reagent/marker_ink/purple
-	name = "Purple marker ink"
+	name = "Фиолетовые маркерные чернила"
 	id = "marker_ink_purple"
 	color = "#CC0099"
 
 /datum/reagent/marker_ink/grey //Mime
-	name = "Grey marker ink"
+	name = "Серые маркерные чернила"
 	id = "marker_ink_grey"
 	color = "#808080"
 
 /datum/reagent/marker_ink/brown //Rainbow
-	name = "Brown marker ink"
+	name = "Коричневые маркерные чернила"
 	id = "marker_ink_brown"
 	color = "#846F35"
 
 /datum/reagent/paint
-	name = "Paint"
+	name = "Краска"
 	id = "paint"
-	description = "This paint will stick to almost any object."
-	taste_description = "chalk"
+	description = "Эта краска приклеится практически к любому объекту."
+	taste_description = "мелок"
 	reagent_state = LIQUID
 	color = "#808080"
 	overdose = REAGENTS_OVERDOSE * 0.5
@@ -161,10 +161,10 @@
 /* Things that didn't fit anywhere else */
 
 /datum/reagent/adminordrazine //An OP chemical for admins
-	name = "Adminordrazine"
+	name = "Админордразин"
 	id = "adminordrazine"
-	description = "It's magic. We don't have to explain it."
-	taste_description = "bwoink"
+	description = "Это магия. Нам не нужно это объяснять."
+	taste_description = "админ"
 	reagent_state = LIQUID
 	color = "#C8A5DC"
 	affects_dead = 1 //This can even heal dead people.
@@ -172,7 +172,7 @@
 	mrate_static = TRUE //Just in case
 
 	glass_name = "liquid gold"
-	glass_desc = "It's magic. We don't have to explain it."
+	glass_desc = "Это магия. Нам не нужно это объяснять."
 
 /datum/reagent/adminordrazine/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
 	affect_blood(M, alien, removed)
@@ -223,34 +223,34 @@
 						O.wounds -= W
 
 /datum/reagent/gold
-	name = "Gold"
+	name = "Золото"
 	id = "gold"
-	description = "Gold is a dense, soft, shiny metal and the most malleable and ductile metal known."
-	taste_description = "metal"
+	description = "Золото - это плотный, мягкий, блестящий металл, самый ковкий и пластичный из известных."
+	taste_description = "металл"
 	reagent_state = SOLID
 	color = "#F7C430"
 
 /datum/reagent/silver
-	name = "Silver"
+	name = "Серебро"
 	id = "silver"
-	description = "A soft, white, lustrous transition metal, it has the highest electrical conductivity of any element and the highest thermal conductivity of any metal."
-	taste_description = "metal"
+	description = "Мягкий, белый, блестящий переходный металл, он имеет самую высокую электропроводность среди всех элементов и самую высокую теплопроводность среди всех металлов."
+	taste_description = "металл"
 	reagent_state = SOLID
 	color = "#D0D0D0"
 
 /datum/reagent/platinum
-	name = "Platinum"
+	name = "Платина"
 	id = "platinum"
-	description = "Platinum is a dense, malleable, ductile, highly unreactive, precious, gray-white transition metal.  It is very resistant to corrosion."
-	taste_description = "metal"
+	description = "Платина - это плотный, ковкий, пластичный, крайне инертный, драгоценный переходный металл серо-белого цвета. Он очень устойчив к коррозии."
+	taste_description = "металл"
 	reagent_state = SOLID
 	color = "#777777"
 
 /datum/reagent/uranium
-	name ="Uranium"
+	name = "Уран"
 	id = "uranium"
-	description = "A silvery-white metallic chemical element in the actinide series, weakly radioactive."
-	taste_description = "metal"
+	description = "Серебристо-белый металлический химический элемент из ряда актинидов, слаборадиоактивный."
+	taste_description = "металл"
 	reagent_state = SOLID
 	color = "#B8B8C0"
 
@@ -269,39 +269,39 @@
 			return
 
 /datum/reagent/hydrogen/deuterium
-	name = "Deuterium"
+	name = "Дейтерий"
 	id = "deuterium"
-	description = "A isotope of hydrogen. It has one extra neutron, and shares all chemical characteristics with hydrogen."
+	description = "Изотоп водорода. Он имеет один дополнительный нейтрон и разделяет все химические характеристики с водородом."
 
 /datum/reagent/hydrogen/tritium
-	name = "Tritium"
+	name = "Тритий"
 	id = "tritium"
-	description = "A radioactive isotope of hydrogen. It has two extra neutrons, and shares all other chemical characteristics with hydrogen."
+	description = "Радиоактивный изотоп водорода. Он имеет два дополнительных нейтрона и разделяет все остальные химические характеристики с водородом."
 
 /datum/reagent/lithium/lithium6
-	name = "Lithium-6"
+	name = "Литий-6"
 	id = "lithium6"
-	description = "An isotope of lithium. It has 3 neutrons, but shares all chemical characteristics with regular lithium."
-	
+	description = "Изотоп лития. Он имеет 3 нейтрона, но имеет все химические характеристики обычного лития."
+
 /datum/reagent/helium/helium3
-	name = "Helium-3"
+	name = "Гелий-3"
 	id = "helium3"
-	description = "An isotope of helium. It only has one neutron, but shares all chemical characteristics with regular helium."
+	description = "Изотоп гелия. Он имеет только один нейтрон, но имеет все химические характеристики обычного гелия."
 	taste_mult = 0
 	reagent_state = GAS
 	color = "#808080"
 
 /datum/reagent/boron/boron11
-	name = "Boron-11"
+	name = "Бор-11"
 	id = "boron11"
-	description = "An isotope of boron. It has 6 neutrons."
-	taste_description = "metallic" // Apparently noone on the internet knows what boron tastes like. Or at least they won't share
+	description = "Изотоп бора. В нем 6 нейтронов."
+	taste_description = "металлический" // Apparently noone on the internet knows what boron tastes like. Or at least they won't share
 
 /datum/reagent/supermatter
-	name = "Supermatter"
+	name = "Суперматерия"
 	id = "supermatter"
-	description = "The immense power of a supermatter crystal, in liquid form. You're not entirely sure how that's possible, but it's probably best handled with care."
-	taste_description = "taffy" // 0. The supermatter is tasty, tasty taffy.
+	description = "Огромная сила кристалла суперматериалы в жидкой форме. Вы не совсем уверены, как это возможно, но, вероятно, лучше всего обращаться с этим осторожно."
+	taste_description = "ириска" // 0. The supermatter is tasty, tasty taffy.
 
 // Same as if you boop it wrong. It touches you, you die
 /datum/reagent/supermatter/affect_touch(mob/living/carbon/M, alien, removed)
@@ -311,17 +311,17 @@
 /datum/reagent/supermatter/affect_ingest(mob/living/carbon/M, alien, removed)
 	. = ..()
 	M.ash()
-	
+
 /datum/reagent/supermatter/affect_blood(mob/living/carbon/M, alien, removed)
 	. = ..()
 	M.ash()
-	
+
 
 /datum/reagent/adrenaline
-	name = "Adrenaline"
+	name = "Адреналин"
 	id = "adrenaline"
-	description = "Adrenaline is a hormone used as a drug to treat cardiac arrest and other cardiac dysrhythmias resulting in diminished or absent cardiac output."
-	taste_description = "bitterness"
+	description = "Адреналин - это гормон, используемый в качестве лекарственного средства для лечения остановки сердца и других сердечных нарушений ритма, приводящих к снижению или отсутствию сердечного выброса."
+	taste_description = "горечь"
 	reagent_state = LIQUID
 	color = "#C8A5DC"
 	mrate_static = TRUE
@@ -334,15 +334,15 @@
 	M.adjustToxLoss(rand(3))
 
 /datum/reagent/water/holywater
-	name = "Holy Water"
+	name = "Святая вода"
 	id = "holywater"
-	description = "An ashen-obsidian-water mix, this solution will alter certain sections of the brain's rationality."
-	taste_description = "water"
+	description = "Смесь пепла, обсидиана и воды, этот раствор изменит некоторые части рационального мышления мозга."
+	taste_description = "вода"
 	color = "#E0E8EF"
 	mrate_static = TRUE
 
 	glass_name = "holy water"
-	glass_desc = "An ashen-obsidian-water mix, this solution will alter certain sections of the brain's rationality."
+	glass_desc = "Смесь пепла, обсидиана и воды, этот раствор изменит некоторые части рационального мышления мозга."
 
 /datum/reagent/water/holywater/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
@@ -356,43 +356,43 @@
 	return
 
 /datum/reagent/ammonia
-	name = "Ammonia"
+	name = "Аммиак"
 	id = "ammonia"
-	description = "A caustic substance commonly used in fertilizer or household cleaners."
-	taste_description = "mordant"
+	description = "Едкое вещество, обычно используемое в удобрениях или бытовых чистящих средствах."
+	taste_description = "язва"
 	taste_mult = 2
 	reagent_state = GAS
 	color = "#404030"
 
 /datum/reagent/diethylamine
-	name = "Diethylamine"
+	name = "Диэтиламин"
 	id = "diethylamine"
-	description = "A secondary amine, mildly corrosive."
-	taste_description = "iron"
+	description = "Вторичный амин, умеренно коррозионный."
+	taste_description = "железо"
 	reagent_state = LIQUID
 	color = "#604030"
 
 /datum/reagent/fluorosurfactant // Foam precursor
-	name = "Fluorosurfactant"
+	name = "Фторсодержащее поверхностно-активное вещество"
 	id = "fluorosurfactant"
-	description = "A perfluoronated sulfonic acid that forms a foam when mixed with water."
-	taste_description = "metal"
+	description = "Перфторированная сульфоновая кислота, образующая пену при смешивании с водой."
+	taste_description = "металл"
 	reagent_state = LIQUID
 	color = "#9E6B38"
 
 /datum/reagent/foaming_agent // Metal foaming agent. This is lithium hydride. Add other recipes (e.g. LiH + H2O -> LiOH + H2) eventually.
-	name = "Foaming agent"
+	name = "Пенообразователь"
 	id = "foaming_agent"
-	description = "A agent that yields metallic foam when mixed with light metal and a strong acid."
-	taste_description = "metal"
+	description = "Средство, образующее металлическую пену при смешивании с легким металлом и сильной кислотой."
+	taste_description = "металл"
 	reagent_state = SOLID
 	color = "#664B63"
 
 /datum/reagent/thermite
-	name = "Thermite"
+	name = "Термит"
 	id = "thermite"
-	description = "Thermite produces an aluminothermic reaction known as a thermite reaction. Can be used to melt walls."
-	taste_description = "sweet tasting metal"
+	description = "Термит вызывает алюминотермическую реакцию, известную как термитная реакция. Может использоваться для плавления стен."
+	taste_description = "сладкий на вкус металл"
 	reagent_state = SOLID
 	color = "#673910"
 	touch_met = 50
@@ -416,8 +416,8 @@
 /datum/reagent/space_cleaner
 	name = "Space cleaner"
 	id = "cleaner"
-	description = "A compound used to clean things. Now with 50% more sodium hypochlorite!"
-	taste_description = "sourness"
+	description = "Состав, используемый для чистки вещей. Теперь на 50% больше гипохлорита натрия!"
+	taste_description = "кислинка"
 	reagent_state = LIQUID
 	color = "#A5F0EE"
 	touch_met = 50
@@ -488,10 +488,10 @@
 					H.visible_message("<span class='notice'>[H]\'s [S.name] is put out.</span>")
 
 /datum/reagent/lube // TODO: spraying on borgs speeds them up
-	name = "Space Lube"
+	name = "Космическая смазка"
 	id = "lube"
-	description = "Lubricant is a substance introduced between two moving surfaces to reduce the friction and wear between them. giggity."
-	taste_description = "slime"
+	description = "Смазка - это вещество, помещенное между двумя движущимися поверхностями, чтобы уменьшить трение и износ между ними. хихиканье."
+	taste_description = "слизь"
 	reagent_state = LIQUID
 	color = "#009CA8"
 
@@ -502,10 +502,10 @@
 		T.wet_floor(2)
 
 /datum/reagent/silicate
-	name = "Silicate"
+	name = "Силикат"
 	id = "silicate"
-	description = "A compound that can be used to reinforce glass."
-	taste_description = "plastic"
+	description = "Состав, который можно использовать для усиления стекла."
+	taste_description = "пластик"
 	reagent_state = LIQUID
 	color = "#C7FFFF"
 
@@ -517,26 +517,26 @@
 	return
 
 /datum/reagent/glycerol
-	name = "Glycerol"
+	name = "Глицерин"
 	id = "glycerol"
-	description = "Glycerol is a simple polyol compound. Glycerol is sweet-tasting and of low toxicity."
-	taste_description = "sweetness"
+	description = "Глицерин - это простое соединение полиола. Глицерин имеет сладкий вкус и малотоксичен."
+	taste_description = "сладость"
 	reagent_state = LIQUID
 	color = "#808080"
 
 /datum/reagent/nitroglycerin
-	name = "Nitroglycerin"
+	name = "Нитроглицерин"
 	id = "nitroglycerin"
-	description = "Nitroglycerin is a heavy, colorless, oily, explosive liquid obtained by nitrating glycerol."
-	taste_description = "oil"
+	description = "Нитроглицерин - тяжелая, бесцветная, маслянистая, взрывоопасная жидкость, получаемая нитрованием глицерина."
+	taste_description = "масло"
 	reagent_state = LIQUID
 	color = "#808080"
 
 /datum/reagent/coolant
-	name = "Coolant"
+	name = "Хладоген"
 	id = "coolant"
-	description = "Industrial cooling substance."
-	taste_description = "sourness"
+	description = "Промышленное охлаждающее вещество."
+	taste_description = "кислинка"
 	taste_mult = 1.1
 	reagent_state = LIQUID
 	color = "#C8A5DC"
@@ -560,25 +560,25 @@
 		..()
 
 /datum/reagent/ultraglue
-	name = "Ultra Glue"
+	name = "Ультра клей"
 	id = "glue"
-	description = "An extremely powerful bonding agent."
-	taste_description = "a special education class"
+	description = "Чрезвычайно мощный связующий агент."
+	taste_description = "класс специального образования"
 	color = "#FFFFCC"
 
 /datum/reagent/woodpulp
-	name = "Wood Pulp"
+	name = "Древесная масса"
 	id = "woodpulp"
-	description = "A mass of wood fibers."
-	taste_description = "wood"
+	description = "Масса древесных волокон."
+	taste_description = "дерево"
 	reagent_state = LIQUID
 	color = "#B97A57"
 
 /datum/reagent/luminol
-	name = "Luminol"
+	name = "Люминол"
 	id = "luminol"
-	description = "A compound that interacts with blood on the molecular level."
-	taste_description = "metal"
+	description = "Соединение, взаимодействующее с кровью на молекулярном уровне."
+	taste_description = "металл"
 	reagent_state = LIQUID
 	color = "#F2F3F4"
 
@@ -589,27 +589,27 @@
 	L.reveal_blood()
 
 /datum/reagent/nutriment/biomass
-	name = "Biomass"
+	name = "Биомасса"
 	id = "biomass"
-	description = "A slurry of compounds that contains the basic requirements for life."
-	taste_description = "salty meat"
+	description = "Суспензия соединений, содержащая основные требования для жизни."
+	taste_description = "соленое мясо"
 	reagent_state = LIQUID
 	color = "#DF9FBF"
 
 /datum/reagent/mineralfluid
-	name = "Mineral-Rich Fluid"
+	name = "Жидкость, богатая минералами"
 	id = "mineralizedfluid"
-	description = "A warm, mineral-rich fluid."
-	taste_description = "salt"
+	description = "Теплая, богатая минералами жидкость."
+	taste_description = "соль"
 	reagent_state = LIQUID
 	color = "#ff205255"
 
 // The opposite to healing nanites, exists to make unidentified hypos implied to have nanites not be 100% safe.
 /datum/reagent/defective_nanites
-	name = "Defective Nanites"
+	name = "Дефектные наниты"
 	id = "defective_nanites"
-	description = "Miniature medical robots that are malfunctioning and cause bodily harm. Fortunately, they cannot self-replicate."
-	taste_description = "metal"
+	description = "Миниатюрные медицинские роботы, которые работают со сбоями и причиняют телесные повреждения. К счастью, они не могут самовоспроизводиться."
+	taste_description = "металл"
 	reagent_state = SOLID
 	color = "#333333"
 	metabolism = REM * 3 // Broken nanomachines go a bit slower.
@@ -622,9 +622,9 @@
 	M.adjustCloneLoss(2 * removed)
 
 /datum/reagent/fishbait
-	name = "Fish Bait"
+	name = "Рыбная приманка"
 	id = "fishbait"
-	description = "A natural slurry that particularily appeals to fish."
-	taste_description = "earthy"
+	description = "Натуральная суспензия, которая особенно нравится рыбе."
+	taste_description = "земля"
 	reagent_state = LIQUID
 	color = "#62764E"

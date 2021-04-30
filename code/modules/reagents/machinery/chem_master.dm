@@ -1,6 +1,6 @@
 /obj/machinery/chem_master
 	name = "ChemMaster 3000"
-	desc = "Used to seperate and package chemicals in to patches, pills, or bottles. Warranty void if used to create Space Drugs."
+	desc = "Используется для разделения и упаковки химикатов в пластыри, таблетки или флаконы. Гарантия недействительна при использовании для создания космических препаратов."
 	density = 1
 	anchored = 1
 	icon = 'icons/obj/chemical.dmi'
@@ -46,12 +46,12 @@
 	if(istype(B, /obj/item/weapon/reagent_containers/glass) || istype(B, /obj/item/weapon/reagent_containers/food))
 
 		if(src.beaker)
-			to_chat(user, "\A [beaker] is already loaded into the machine.")
+			to_chat(user, "[beaker] уже загружен в машину.")
 			return
 		src.beaker = B
 		user.drop_item()
 		B.loc = src
-		to_chat(user, "You add \the [B] to the machine.")
+		to_chat(user, "Вы добавляете [B] в мащину.")
 		update_icon()
 
 	else if(istype(B, /obj/item/weapon/storage/pill_bottle))

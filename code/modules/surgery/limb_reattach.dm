@@ -34,16 +34,16 @@
 	var/obj/item/organ/external/P = target.organs_by_name[E.parent_organ]
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	if (affected)
-		to_chat(user, "<span class='warning'>Something is in the way! You can't attach [E] here!</span>")
+		to_chat(user, "<span class='warning'>Что-то мешает! Вы не можете прикрепить сюда [E]!</span>")
 		return 0
 	if(!P)
-		to_chat(user, "<span class='warning'>There's nothing to attach [E] to!</span>")
+		to_chat(user, "<span class='warning'>Не к чему прикрепить [E]!</span>")
 		return 0
 	else if((P.robotic >= ORGAN_ROBOT) && (E.robotic < ORGAN_ROBOT))
-		to_chat(user, "<span class='warning'>Attaching [E] to [P] wouldn't work well.</span>")
+		to_chat(user, "<span class='warning'>Прикрепить [E] к [P] не получится.</span>")
 		return 0
 	else if(istype(E, /obj/item/organ/external/head) && E.robotic >= ORGAN_ROBOT && P.robotic < ORGAN_ROBOT)
-		to_chat(user, "<span class='warning'>Attaching [E] to [P] might break [E].</span>")
+		to_chat(user, "<span class='warning'>Присоединение [E] к [P] может сломать [E].</span>")
 		return 0
 	else
 		return 1
