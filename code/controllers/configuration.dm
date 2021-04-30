@@ -71,7 +71,7 @@ var/list/gamemode_cache = list()
 
 	var/static/respawn = 1
 	var/static/respawn_time = 3000			// time before a dead player is allowed to respawn (in ds, though the config file asks for minutes, and it's converted below)
-	var/static/respawn_message = "<span class='notice'><B>Make sure to play a different character, and please roleplay correctly!</B></span>"
+	var/static/respawn_message = "<span class='notice'><B>Убедитесь, что вы играете другим персонажем, и, пожалуйста, играйте правильно!</B></span>"
 
 	var/static/guest_jobban = 1
 	var/static/usewhitelist = 0
@@ -128,18 +128,18 @@ var/list/gamemode_cache = list()
 	var/static/mapurl
 
 	//Alert level description
-	var/static/alert_desc_green = "All threats to the station have passed. Security may not have weapons visible, privacy laws are once again fully enforced."
-	var/static/alert_desc_yellow_upto = "A minor security emergency has developed. Security personnel are to report to their supervisor for orders and may have weapons visible on their person. Privacy laws are still enforced."
-	var/static/alert_desc_yellow_downto = "Code yellow procedures are now in effect. Security personnel are to report to their supervisor for orders and may have weapons visible on their person. Privacy laws are still enforced."
-	var/static/alert_desc_violet_upto = "A major medical emergency has developed. Medical personnel are required to report to their supervisor for orders, and non-medical personnel are required to obey all relevant instructions from medical staff."
-	var/static/alert_desc_violet_downto = "Code violet procedures are now in effect; Medical personnel are required to report to their supervisor for orders, and non-medical personnel are required to obey relevant instructions from medical staff."
-	var/static/alert_desc_orange_upto = "A major engineering emergency has developed. Engineering personnel are required to report to their supervisor for orders, and non-engineering personnel are required to evacuate any affected areas and obey relevant instructions from engineering staff."
-	var/static/alert_desc_orange_downto = "Code orange procedures are now in effect; Engineering personnel are required to report to their supervisor for orders, and non-engineering personnel are required to evacuate any affected areas and obey relevant instructions from engineering staff."
-	var/static/alert_desc_blue_upto = "A major security emergency has developed. Security personnel are to report to their supervisor for orders, are permitted to search staff and facilities, and may have weapons visible on their person."
-	var/static/alert_desc_blue_downto = "Code blue procedures are now in effect. Security personnel are to report to their supervisor for orders, are permitted to search staff and facilities, and may have weapons visible on their person."
-	var/static/alert_desc_red_upto = "There is an immediate serious threat to the station. Security may have weapons unholstered at all times. Random searches are allowed and advised."
-	var/static/alert_desc_red_downto = "The self-destruct mechanism has been deactivated, there is still however an immediate serious threat to the station. Security may have weapons unholstered at all times, random searches are allowed and advised."
-	var/static/alert_desc_delta = "The station's self-destruct mechanism has been engaged. All crew are instructed to obey all instructions given by heads of staff. Any violations of these orders can be punished by death. This is not a drill."
+	var/static/alert_desc_green = "Все угрозы станции миновали. Охрана может не иметь видимого оружия, законы о неприкосновенности частной жизни снова полностью соблюдаются."
+	var/static/alert_desc_yellow_upto = "Возникла небольшая чрезвычайная ситуация с безопасностью. Сотрудники Службы безопасности должны подчиняться своему начальнику для получения приказов и могут иметь при себе видимое оружие. Законы о неприкосновенности частной жизни все еще действуют."
+	var/static/alert_desc_yellow_downto = "В настоящее время действуют процедуры желтого кода. Сотрудники Службы безопасности должны подчиняться своему начальнику для получения приказов и могут иметь при себе видимое оружие. Законы о неприкосновенности частной жизни все еще действуют."
+	var/static/alert_desc_violet_upto = "Возникла серьезная неотложная медицинская помощь. Медицинский персонал обязан подчиняться своему начальнику для получения приказов, а немедицинский персонал обязан подчиняться всем соответствующим инструкциям медицинского персонала."
+	var/static/alert_desc_violet_downto = "В настоящее время действует кодекс фиолетовых процедур; медицинский персонал обязан подчиняться своему начальнику для получения приказов, а немедицинский персонал обязан подчиняться соответствующим инструкциям медицинского персонала."
+	var/static/alert_desc_orange_upto = "Возникла серьезная инженерная авария. Инженерный персонал обязан подчиняться своему начальнику для получения приказов, а неинженерный персонал обязан эвакуировать все пострадавшие районы и выполнять соответствующие инструкции инженерного персонала."
+	var/static/alert_desc_orange_downto = "В настоящее время действуют процедуры оранжевого кода; инженерный персонал обязан подчиняться своему начальнику для получения приказов, а неинженерный персонал обязан эвакуировать любых пострадавших в зонах и выполнять соответствующие инструкции инженерного персонала."
+	var/static/alert_desc_blue_upto = "Возникла серьезная чрезвычайная ситуация в области безопасности. Сотрудники Службы безопасности должны подчиняться своему начальнику для получения приказов, им разрешается обыскивать персонал и помещения, открытое ношение оружия разрешено."
+	var/static/alert_desc_blue_downto = "Синий код вступили в силу. Сотрудники Службы безопасности должны подчиняться своему начальнику для получения приказов, им разрешается обыскивать персонал и помещения, и у них может быть видимое оружие."
+	var/static/alert_desc_red_upto = "Существует непосредственная серьезная угроза для станции. Охрана может иметь при себе оружие в кобуре в любое время. Случайные поиски разрешены и рекомендуются."
+	var/static/alert_desc_red_downto = "Механизм самоуничтожения был деактивирован, однако непосредственная серьезная угроза станции все еще существует. Охрана может иметь при себе оружие в кобуре в любое время, случайные обыски разрешены и рекомендуются."
+	var/static/alert_desc_delta = "Сработал механизм самоуничтожения станции. Всем членам экипажа предписано выполнять все указания, данные начальниками их отдела. Любое нарушение этих приказов может быть наказано смертью. Это не учебная тревога."
 
 	var/static/forbid_singulo_possession = 0
 
@@ -215,7 +215,7 @@ var/list/gamemode_cache = list()
 	var/python_path = "" //Path to the python executable.  Defaults to "python" on windows and "/usr/bin/env python2" on unix
 	var/use_lib_nudge = 0 //Use the C library nudge instead of the python nudge.
 	var/use_overmap = 0
-	
+
 	var/static/list/engine_map = list("Supermatter Engine", "Edison's Bane")	// Comma separated list of engines to choose from.  Blank means fully random.
 
 	// Event settings
@@ -288,7 +288,7 @@ var/list/gamemode_cache = list()
 
 	// How strictly the loadout enforces object species whitelists
 	var/loadout_whitelist = LOADOUT_WHITELIST_LAX
-	
+
 	var/static/vgs_access_identifier = null	// VOREStation Edit - VGS
 	var/static/vgs_server_port = null	// VOREStation Edit - VGS
 
@@ -937,7 +937,7 @@ var/list/gamemode_cache = list()
 
 				if("enable_night_shifts")
 					config.enable_night_shifts = TRUE
-				
+
 				// VOREStation Edit Start - Can't be in _vr file because it is loaded too late.
 				if("vgs_access_identifier")
 					config.vgs_access_identifier = value
