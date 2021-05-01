@@ -15,7 +15,7 @@
 	..()
 
 /obj/structure/table/darkglass/dismantle(obj/item/weapon/wrench/W, mob/user)
-	to_chat(user, "<span class='warning'>You cannot dismantle \the [src].</span>")
+	to_chat(user, "<span class='warning'>Вы не можете разобрать [src].</span>")
 	return
 /obj/structure/table/alien/blue
 	icon = 'icons/turf/shuttle_alien_blue.dmi'
@@ -23,7 +23,7 @@
 
 /obj/structure/table/fancyblack
 	name = "fancy table"
-	desc = "Cloth!"
+	desc = "Ткань!"
 	icon = 'icons/obj/tablesfancy_vr.dmi'
 	icon_state = "fancyblack"
 	flipped = -1
@@ -38,7 +38,7 @@
 	..()
 
 /obj/structure/table/fancyblack/dismantle(obj/item/weapon/wrench/W, mob/user)
-	to_chat(user, "<span class='warning'>You cannot dismantle \the [src].</span>")
+	to_chat(user, "<span class='warning'>Вы не можете разобрать [src].</span>")
 	return
 
 /obj/structure/table/gold

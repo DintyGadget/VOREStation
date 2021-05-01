@@ -161,7 +161,7 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("data/iconCache.sav")) //Cache of ic
 	update_vis()
 
 	spawn()
-		alert(owner,"VChat didn't load after some time. Switching to use oldchat as a fallback. Try using 'Reload VChat' verb in OOC verbs, or reconnecting to try again.")
+		alert(owner,"VChat не загружался через некоторое время. Включен старый чат в качестве альтернативы. Попробуйте использовать кнопку «Reload VChat» в разделе OOC или повторно подключитесь, чтобы повторить попытку.")
 
 //Provide the JS with who we are
 /datum/chatOutput/proc/send_playerinfo()
@@ -212,7 +212,7 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("data/iconCache.sav")) //Cache of ic
 		too_many_topics++
 		if(too_many_topics >= topic_spam_limit)
 			log_and_message_admins("Kicking [key_name(owner)] - VChat Topic() spam")
-			to_chat(owner,"<span class='danger'>You have been kicked due to VChat sending too many messages to the server. Try reconnecting.</span>")
+			to_chat(owner,"<span class='danger'>Вас выгнали из-за того, что VChat отправил на сервер слишком много сообщений. Попробуй переподключиться.</span>")
 			qdel(owner)
 			qdel(src)
 			return

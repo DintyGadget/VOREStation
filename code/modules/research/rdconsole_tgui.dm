@@ -407,20 +407,20 @@
 				return FALSE
 
 			if(linked_destroy.busy)
-				to_chat(usr, "<span class='notice'>The destructive analyzer is busy at the moment.</span>")
+				to_chat(usr, "<span class='notice'>Деструктивный анализатор сейчас занят.</span>")
 				return
 
-			if(alert("Proceeding will destroy loaded item. Continue?", "Destructive analyzer confirmation", "Yes", "No") == "No" || !linked_destroy)
+			if(alert("Продолжение уничтожит загруженный предмет. Продолжать?", "Destructive analyzer confirmation", "Да", "Нет") == "Нет" || !linked_destroy)
 				return
 			linked_destroy.busy = 1
-			busy_msg = "Processing and Updating Database..."
+			busy_msg = "Обработка и обновление базы данных..."
 			flick("d_analyzer_process", linked_destroy)
 			spawn(2.4 SECONDS)
 				if(linked_destroy)
 					linked_destroy.busy = 0
 					busy_msg = null
 					if(!linked_destroy.loaded_item)
-						to_chat(usr, "<span class='notice'>The destructive analyzer appears to be empty.</span>")
+						to_chat(usr, "<span class='notice'>Деструктивный анализатор кажется пустым.</span>")
 						return
 
 					for(var/T in linked_destroy.loaded_item.origin_tech)
@@ -459,17 +459,17 @@
 
 		if("lock") //Lock the console from use by anyone without tox access.
 			if(!allowed(usr))
-				to_chat(usr, "Unauthorized Access.")
+				to_chat(usr, "Несанкционированный доступ.")
 				return
 			locked = !locked
 			return TRUE
 
 		if("sync") //Sync the research holder with all the R&D consoles in the game that aren't sync protected.
 			if(!sync)
-				to_chat(usr, "<span class='notice'>You must connect to the network first.</span>")
+				to_chat(usr, "<span class='notice'>Сначала вы должны подключиться к сети.</span>")
 				return
 
-			busy_msg = "Updating Database..."
+			busy_msg = "Обновление базы данных..."
 			griefProtection() //Putting this here because I dont trust the sync process
 			spawn(3 SECONDS)
 				if(src)
@@ -582,7 +582,7 @@
 			return TRUE
 
 		if("find_device") //The R&D console looks for devices nearby to link up with.
-			busy_msg = "Updating Database..."
+			busy_msg = "Обновление базы данных..."
 
 			spawn(10)
 				busy_msg = null
@@ -605,9 +605,9 @@
 
 		if("reset") //Reset the R&D console's database.
 			griefProtection()
-			var/choice = alert("R&D Console Database Reset", "Are you sure you want to reset the R&D console's database? Data lost cannot be recovered.", "Continue", "Cancel")
-			if(choice == "Continue")
-				busy_msg = "Updating Database..."
+			var/choice = alert("R&D Console Database Reset", "Вы уверены, что хотите сбросить базу данных консоли R&D? Потерянные данные не могут быть восстановлены.", "Продолжить", "Отмена")
+			if(choice == "Продолжить")
+				busy_msg = "Обновление базы данных..."
 				qdel(files)
 				files = new /datum/research(src)
 				spawn(20)
@@ -615,7 +615,7 @@
 					update_tgui_static_data(usr, ui)
 
 		if("print") //Print research information
-			busy_msg = "Printing Research Information. Please Wait..."
+			busy_msg = "Печать исследовательской информации. Пожалуйста, подождите..."
 			spawn(20)
 				var/obj/item/weapon/paper/PR = new/obj/item/weapon/paper
 				PR.name = "list of researched technologies"

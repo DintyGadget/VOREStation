@@ -4,7 +4,7 @@ var/list/table_icon_cache = list()
 	name = "table frame"
 	icon = 'icons/obj/tables.dmi'
 	icon_state = "frame"
-	desc = "It's a table, for putting things on. Or standing on, if you really want to."
+	desc = "Это стол для вещей. Или для чего-то еще."
 	density = 1
 	anchored = 1
 	climbable = 1
@@ -55,7 +55,7 @@ var/list/table_icon_cache = list()
 			amount *= TABLE_BRITTLE_MATERIAL_MULTIPLIER
 	health -= amount
 	if(health <= 0)
-		visible_message("<span class='warning'>\The [src] breaks down!</span>")
+		visible_message("<span class='warning'>[src] не работает!</span>")
 		return break_to_parts() // if we break and form shards, return them to the caller to do !FUN! things with
 
 /obj/structure/table/blob_act()
@@ -110,8 +110,8 @@ var/list/table_icon_cache = list()
 		return 1
 
 	if(carpeted && W.is_crowbar())
-		user.visible_message("<span class='notice'>\The [user] removes the carpet from \the [src].</span>",
-		                              "<span class='notice'>You remove the carpet from \the [src].</span>")
+		user.visible_message("<span class='notice'>[user] убирает ковер с [src].</span>",
+		                              "<span class='notice'>Вы убираете ковер с [src].</span>")
 		new carpeted_type(loc)
 		carpeted = 0
 		update_icon()
@@ -120,14 +120,14 @@ var/list/table_icon_cache = list()
 	if(!carpeted && material && istype(W, /obj/item/stack/tile/carpet))
 		var/obj/item/stack/tile/carpet/C = W
 		if(C.use(1))
-			user.visible_message("<span class='notice'>\The [user] adds \the [C] to \the [src].</span>",
-			                              "<span class='notice'>You add \the [C] to \the [src].</span>")
+			user.visible_message("<span class='notice'>[user] добавляет [C] к [src].</span>",
+			                              "<span class='notice'>Вы добавляете [C] к [src].</span>")
 			carpeted = 1
 			carpeted_type = W.type
 			update_icon()
 			return 1
 		else
-			to_chat(user, "<span class='warning'>You don't have enough carpet!</span>")
+			to_chat(user, "<span class='warning'>Вам не хватает ковра!</span>")
 
 	if(!reinforced && !carpeted && material && W.is_wrench())
 		remove_material(W, user)
@@ -147,12 +147,12 @@ var/list/table_icon_cache = list()
 	if(health < maxhealth && istype(W, /obj/item/weapon/weldingtool))
 		var/obj/item/weapon/weldingtool/F = W
 		if(F.welding)
-			to_chat(user, "<span class='notice'>You begin reparing damage to \the [src].</span>")
+			to_chat(user, "<span class='notice'>Вы начинаете восстанавливать повреждения [src].</span>")
 			playsound(src, F.usesound, 50, 1)
 			if(!do_after(user, 20 * F.toolspeed) || !F.remove_fuel(1, user))
 				return
-			user.visible_message("<span class='notice'>\The [user] repairs some damage to \the [src].</span>",
-			                              "<span class='notice'>You repair some damage to \the [src].</span>")
+			user.visible_message("<span class='notice'>[user] исправляет некоторые повреждения [src].</span>",
+			                              "<span class='notice'>Вы исправляете некоторые повреждения [src].</span>")
 			health = max(health+(maxhealth/5), maxhealth) // 20% repair per application
 			return 1
 
@@ -282,14 +282,14 @@ var/list/table_icon_cache = list()
 /obj/structure/table/proc/dismantle(obj/item/W, mob/user)
 	if(manipulating) return
 	manipulating = 1
-	user.visible_message("<span class='notice'>\The [user] begins dismantling \the [src].</span>",
-	                              "<span class='notice'>You begin dismantling \the [src].</span>")
+	user.visible_message("<span class='notice'>[user] начинает разбирать [src].</span>",
+	                              "<span class='notice'>Вы начинаете разбирать [src].</span>")
 	playsound(src, W.usesound, 50, 1)
 	if(!do_after(user, 20 * W.toolspeed))
 		manipulating = 0
 		return
-	user.visible_message("<span class='notice'>\The [user] dismantles \the [src].</span>",
-	                              "<span class='notice'>You dismantle \the [src].</span>")
+	user.visible_message("<span class='notice'>[user] разбирает [src].</span>",
+	                              "<span class='notice'>Вы разбираете [src].</span>")
 	new /obj/item/stack/material/steel(src.loc)
 	qdel(src)
 	return

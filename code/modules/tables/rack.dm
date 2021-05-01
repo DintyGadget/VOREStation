@@ -1,6 +1,6 @@
 /obj/structure/table/rack
 	name = "rack"
-	desc = "Different from the Middle Ages version."
+	desc = "Отличается от средневековой версии."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "rack"
 	can_plate = 0
@@ -24,5 +24,5 @@
 	return
 
 /obj/structure/table/rack/holorack/dismantle(obj/item/weapon/wrench/W, mob/user)
-	to_chat(user, "<span class='warning'>You cannot dismantle \the [src].</span>")
+	to_chat(user, "<span class='warning'>Вы не можете разобрать [src].</span>")
 	return

@@ -130,7 +130,7 @@
 	..()
 
 /obj/structure/table/alien/dismantle(obj/item/weapon/wrench/W, mob/user)
-	to_chat(user, "<span class='warning'>You cannot dismantle \the [src].</span>")
+	to_chat(user, "<span class='warning'>Вы не можете разобрать [src].</span>")
 	return
 
 //BENCH PRESETS

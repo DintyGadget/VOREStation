@@ -16,7 +16,7 @@
 	density = FALSE
 	circuit = /obj/item/weapon/circuitboard/timeclock
 	clicksound = null
-	var/channel = "Common" //Radio channel to announce on
+	var/channel = "Общий" //Radio channel to announce on
 
 	var/obj/item/weapon/card/id/card // Inserted Id card
 	var/obj/item/device/radio/intercom/announce	// Integreated announcer

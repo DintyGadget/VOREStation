@@ -123,19 +123,19 @@ GLOBAL_LIST_INIT(generic_fishing_chance_list, list(FISHING_RARE = 5, FISHING_UNC
 	if(istype(P, /obj/item/weapon/material/fishing_rod) && !being_fished)
 		var/obj/item/weapon/material/fishing_rod/R = P
 		if(!R.strung)
-			to_chat(user, "<span class='notice'>It is hard to go fishing without any line!</span>")
+			to_chat(user, "<span class='notice'>Трудно ловить рыбу без лески!</span>")
 			return
 		if(R.cast)
-			to_chat(user, "<span class='notice'>You can only cast one line at a time!</span>")
+			to_chat(user, "<span class='notice'>Вы можете разыграть только одну линию за раз!</span>")
 			return
 		playsound(src, 'sound/effects/slosh.ogg', 5, 1, 5)
-		to_chat(user,"You cast \the [P.name] into \the [src].")
+		to_chat(user,"Вы добавляете [P.name] в [src].")
 		being_fished = TRUE
 		R.cast = TRUE
 		var/fishing_time = rand(min_fishing_time SECONDS,max_fishing_time SECONDS) * R.toolspeed
 		if(do_after(user,fishing_time,user))
 			playsound(src, 'sound/effects/slosh.ogg', 5, 1, 5)
-			to_chat(user,"<span class='notice'>You feel a tug and begin pulling!</span>")
+			to_chat(user,"<span class='notice'>Вы чувствуете рывок и начинаете тянуть!</span>")
 			if(world.time >= last_fished + fishing_cooldown)
 				pick_fish()
 				last_fished = world.time
@@ -145,7 +145,7 @@ GLOBAL_LIST_INIT(generic_fishing_chance_list, list(FISHING_RARE = 5, FISHING_UNC
 					has_fish = FALSE
 			//List of possible outcomes.
 			if(!fish_type)
-				to_chat(user,"You caught... nothing. How sad.")
+				to_chat(user,"Вы поймали... ничего. Как грустно.")
 			else
 				var/fished = new fish_type(get_turf(user))
 				if(isliving(fished))
@@ -154,17 +154,17 @@ GLOBAL_LIST_INIT(generic_fishing_chance_list, list(FISHING_RARE = 5, FISHING_UNC
 					if(prob(rand(L.mob_size) + 10) && R.line_break)
 						R.strung = FALSE
 						R.update_icon()
-						user.visible_message("<span class='danger'>\The [R]'s string snaps!</span>")
+						user.visible_message("<span class='danger'>Леска [R] рвется!</span>")
 					if(prob(33))	// Dead on hook. Good for food, not so much for live catch.
 						L.death()
-				to_chat(user,"<span class='notice'>You fish out \the [fished] from the water with [P.name]!</span>")
+				to_chat(user,"<span class='notice'>Вы выуживаете [fished] из воды с помощью [P.name]!</span>")
 		R.cast = FALSE
 		being_fished = FALSE
 	else ..()
 
 /obj/random/fishing_junk
-	name = "junk"
-	desc = "This is a random fishing junk item."
+	name = "хлам"
+	desc = "Это случайный рыболовный мусор."
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "red"
 

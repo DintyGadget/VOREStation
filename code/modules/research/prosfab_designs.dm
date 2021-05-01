@@ -97,7 +97,7 @@
 	var/gender = MALE
 
 /datum/design/item/prosfab/pros/torso/male
-	name = "FBP Torso (M)"
+	name = "FBP Торс (M)"
 	id = "pros_torso_m"
 	build_path = /obj/item/organ/external/chest
 	gender = MALE
@@ -105,13 +105,13 @@
 /obj/item/organ/external/chest/f //To satisfy CI. :|
 
 /datum/design/item/prosfab/pros/torso/female
-	name = "FBP Torso (F)"
+	name = "FBP Торс (F)"
 	id = "pros_torso_f"
 	build_path = /obj/item/organ/external/chest/f
 	gender = FEMALE
 
 /datum/design/item/prosfab/pros/head
-	name = "Prosthetic Head"
+	name = "Протез головы"
 	id = "pros_head"
 	build_path = /obj/item/organ/external/head
 	time = 30
@@ -119,56 +119,56 @@
 //	req_tech = list(TECH_ENGINEERING = 2, TECH_MATERIAL = 3, TECH_DATA = 3)	//Saving the values just in case
 
 /datum/design/item/prosfab/pros/l_arm
-	name = "Prosthetic Left Arm"
+	name = "Протез левой руки"
 	id = "pros_l_arm"
 	build_path = /obj/item/organ/external/arm
 	time = 20
 	materials = list(DEFAULT_WALL_MATERIAL = 10125)
 
 /datum/design/item/prosfab/pros/l_hand
-	name = "Prosthetic Left Hand"
+	name = "Протез левой кисти"
 	id = "pros_l_hand"
 	build_path = /obj/item/organ/external/hand
 	time = 15
 	materials = list(DEFAULT_WALL_MATERIAL = 3375)
 
 /datum/design/item/prosfab/pros/r_arm
-	name = "Prosthetic Right Arm"
+	name = "Протез правой руки"
 	id = "pros_r_arm"
 	build_path = /obj/item/organ/external/arm/right
 	time = 20
 	materials = list(DEFAULT_WALL_MATERIAL = 10125)
 
 /datum/design/item/prosfab/pros/r_hand
-	name = "Prosthetic Right Hand"
+	name = "Протез правой кисти"
 	id = "pros_r_hand"
 	build_path = /obj/item/organ/external/hand/right
 	time = 15
 	materials = list(DEFAULT_WALL_MATERIAL = 3375)
 
 /datum/design/item/prosfab/pros/l_leg
-	name = "Prosthetic Left Leg"
+	name = "Протез левой ноги"
 	id = "pros_l_leg"
 	build_path = /obj/item/organ/external/leg
 	time = 20
 	materials = list(DEFAULT_WALL_MATERIAL = 8437)
 
 /datum/design/item/prosfab/pros/l_foot
-	name = "Prosthetic Left Foot"
+	name = "Протез левой ступни"
 	id = "pros_l_foot"
 	build_path = /obj/item/organ/external/foot
 	time = 15
 	materials = list(DEFAULT_WALL_MATERIAL = 2813)
 
 /datum/design/item/prosfab/pros/r_leg
-	name = "Prosthetic Right Leg"
+	name = "Протез правой ноги"
 	id = "pros_r_leg"
 	build_path = /obj/item/organ/external/leg/right
 	time = 20
 	materials = list(DEFAULT_WALL_MATERIAL = 8437)
 
 /datum/design/item/prosfab/pros/r_foot
-	name = "Prosthetic Right Foot"
+	name = "Протез правой ступни"
 	id = "pros_r_foot"
 	build_path = /obj/item/organ/external/foot/right
 	time = 15
@@ -178,7 +178,7 @@
 	category = list("Prosthetics, Internal")
 
 /datum/design/item/prosfab/pros/internal/cell
-	name = "Prosthetic Powercell"
+	name = "Протез Энергоячейка"
 	id = "pros_cell"
 	build_path = /obj/item/organ/internal/cell
 	time = 15
@@ -186,7 +186,7 @@
 //	req_tech = list(TECH_ENGINEERING = 2, TECH_MATERIAL = 2)
 
 /datum/design/item/prosfab/pros/internal/eyes
-	name = "Prosthetic Eyes"
+	name = "Протез глаз"
 	id = "pros_eyes"
 	build_path = /obj/item/organ/internal/eyes/robot
 	time = 15
@@ -194,35 +194,35 @@
 //	req_tech = list(TECH_ENGINEERING = 2, TECH_MATERIAL = 2)
 
 /datum/design/item/prosfab/pros/internal/hydraulic
-	name = "Hydraulic Hub"
+	name = "Гидравлический концентратор"
 	id = "pros_hydraulic"
 	build_path = /obj/item/organ/internal/heart/machine
 	time = 15
 	materials = list(DEFAULT_WALL_MATERIAL = 7500, MAT_PLASTIC = 3000)
 
 /datum/design/item/prosfab/pros/internal/reagcycler
-	name = "Reagent Cycler"
+	name = "Циклер реагентов"
 	id = "pros_reagcycler"
 	build_path = /obj/item/organ/internal/stomach/machine
 	time = 15
 	materials = list(DEFAULT_WALL_MATERIAL = 7500, MAT_PLASTIC = 3000)
 
 /datum/design/item/prosfab/pros/internal/heatsink
-	name = "Heatsink"
+	name = "Радиатор"
 	id = "pros_heatsink"
 	build_path = /obj/item/organ/internal/robotic/heatsink
 	time = 15
 	materials = list(DEFAULT_WALL_MATERIAL = 7500, MAT_PLASTIC = 3000)
 
 /datum/design/item/prosfab/pros/internal/diagnostic
-	name = "Diagnostic Controller"
+	name = "Диагностический контроллер"
 	id = "pros_diagnostic"
 	build_path = /obj/item/organ/internal/robotic/diagnostic
 	time = 15
 	materials = list(DEFAULT_WALL_MATERIAL = 7500, MAT_PLASTIC = 3000)
 
 /datum/design/item/prosfab/pros/internal/heart
-	name = "Prosthetic Heart"
+	name = "Протез сердца"
 	id = "pros_heart"
 	build_path = /obj/item/organ/internal/heart
 	time = 15
@@ -230,7 +230,7 @@
 //	req_tech = list(TECH_ENGINEERING = 2, TECH_MATERIAL = 2)
 
 /datum/design/item/prosfab/pros/internal/lungs
-	name = "Prosthetic Lungs"
+	name = "Протез легких"
 	id = "pros_lung"
 	build_path = /obj/item/organ/internal/lungs
 	time = 15
@@ -238,7 +238,7 @@
 //	req_tech = list(TECH_ENGINEERING = 2, TECH_MATERIAL = 2)
 
 /datum/design/item/prosfab/pros/internal/liver
-	name = "Prosthetic Liver"
+	name = "Протез печени"
 	id = "pros_liver"
 	build_path = /obj/item/organ/internal/liver
 	time = 15
@@ -246,7 +246,7 @@
 //	req_tech = list(TECH_ENGINEERING = 2, TECH_MATERIAL = 2)
 
 /datum/design/item/prosfab/pros/internal/kidneys
-	name = "Prosthetic Kidneys"
+	name = "Протез почек"
 	id = "pros_kidney"
 	build_path = /obj/item/organ/internal/kidneys
 	time = 15
@@ -254,7 +254,7 @@
 //	req_tech = list(TECH_ENGINEERING = 2, TECH_MATERIAL = 2)
 
 /datum/design/item/prosfab/pros/internal/spleen
-	name = "Prosthetic Spleen"
+	name = "Протез селезенки"
 	id = "pros_spleen"
 	build_path = /obj/item/organ/internal/spleen
 	time = 15
@@ -262,7 +262,7 @@
 //	req_tech = list(TECH_ENGINEERING = 2, TECH_MATERIAL = 2)
 
 /datum/design/item/prosfab/pros/internal/larynx
-	name = "Prosthetic Larynx"
+	name = "Протез гортани"
 	id = "pros_larynx"
 	build_path = /obj/item/organ/internal/voicebox
 	time = 15
@@ -275,49 +275,49 @@
 	materials = list(DEFAULT_WALL_MATERIAL = 3750)
 
 /datum/design/item/prosfab/cyborg/exoskeleton
-	name = "Robot Exoskeleton"
+	name = "Экзоскелет робота"
 	id = "robot_exoskeleton"
 	build_path = /obj/item/robot_parts/robot_suit
 	time = 50
 	materials = list(DEFAULT_WALL_MATERIAL = 37500)
 
 /datum/design/item/prosfab/cyborg/torso
-	name = "Robot Torso"
+	name = "Торс робота"
 	id = "robot_torso"
 	build_path = /obj/item/robot_parts/chest
 	time = 35
 	materials = list(DEFAULT_WALL_MATERIAL = 30000)
 
 /datum/design/item/prosfab/cyborg/head
-	name = "Robot Head"
+	name = "Голова робота"
 	id = "robot_head"
 	build_path = /obj/item/robot_parts/head
 	time = 35
 	materials = list(DEFAULT_WALL_MATERIAL = 18750)
 
 /datum/design/item/prosfab/cyborg/l_arm
-	name = "Robot Left Arm"
+	name = "Левая рука робота"
 	id = "robot_l_arm"
 	build_path = /obj/item/robot_parts/l_arm
 	time = 20
 	materials = list(DEFAULT_WALL_MATERIAL = 13500)
 
 /datum/design/item/prosfab/cyborg/r_arm
-	name = "Robot Right Arm"
+	name = "Правая рука робота"
 	id = "robot_r_arm"
 	build_path = /obj/item/robot_parts/r_arm
 	time = 20
 	materials = list(DEFAULT_WALL_MATERIAL = 13500)
 
 /datum/design/item/prosfab/cyborg/l_leg
-	name = "Robot Left Leg"
+	name = "Левая нога робота"
 	id = "robot_l_leg"
 	build_path = /obj/item/robot_parts/l_leg
 	time = 20
 	materials = list(DEFAULT_WALL_MATERIAL = 11250)
 
 /datum/design/item/prosfab/cyborg/r_leg
-	name = "Robot Right Leg"
+	name = "Правая нога робота"
 	id = "robot_r_leg"
 	build_path = /obj/item/robot_parts/r_leg
 	time = 20
@@ -332,42 +332,42 @@
 	materials = list(DEFAULT_WALL_MATERIAL = 7500)
 
 /datum/design/item/prosfab/cyborg/component/binary_communication_device
-	name = "Binary Communication Device"
+	name = "Устройство двоичной связи"
 	id = "binary_communication_device"
 	build_path = /obj/item/robot_parts/robot_component/binary_communication_device
 
 /datum/design/item/prosfab/cyborg/component/radio
-	name = "Radio"
+	name = "Радио"
 	id = "radio"
 	build_path = /obj/item/robot_parts/robot_component/radio
 
 /datum/design/item/prosfab/cyborg/component/actuator
-	name = "Actuator"
+	name = "Привод"
 	id = "actuator"
 	build_path = /obj/item/robot_parts/robot_component/actuator
 
 /datum/design/item/prosfab/cyborg/component/diagnosis_unit
-	name = "Diagnosis Unit"
+	name = "Блок диагностики"
 	id = "diagnosis_unit"
 	build_path = /obj/item/robot_parts/robot_component/diagnosis_unit
 
 /datum/design/item/prosfab/cyborg/component/camera
-	name = "Camera"
+	name = "Камера"
 	id = "camera"
 	build_path = /obj/item/robot_parts/robot_component/camera
 
 /datum/design/item/prosfab/cyborg/component/armour
-	name = "Armour Plating (Robot)"
+	name = "Броня (Робот)"
 	id = "armour"
 	build_path = /obj/item/robot_parts/robot_component/armour
 
 /datum/design/item/prosfab/cyborg/component/armour_heavy
-	name = "Armour Plating (Platform)"
+	name = "Броня (платформа)"
 	id = "platform_armour"
 	build_path = /obj/item/robot_parts/robot_component/armour_platform
 
 /datum/design/item/prosfab/cyborg/component/ai_shell
-	name = "AI Remote Interface"
+	name = "Удаленный интерфейс AI"
 	id = "mmi_ai_shell"
 	build_path = /obj/item/device/mmi/inert/ai_remote
 
@@ -379,63 +379,63 @@
 	materials = list(DEFAULT_WALL_MATERIAL = 7500)
 
 /datum/design/item/prosfab/robot_upgrade/rename
-	name = "Rename Module"
-	desc = "Used to rename a cyborg."
+	name = "Модуль переименовки"
+	desc = "Используется для переименования киборга."
 	id = "borg_rename_module"
 	build_path = /obj/item/borg/upgrade/rename
 
 /datum/design/item/prosfab/robot_upgrade/reset
-	name = "Reset Module"
-	desc = "Used to reset a cyborg's module. Destroys any other upgrades applied to the robot."
+	name = "Модуль сброса"
+	desc = "Используется для сброса модуля киборга. Уничтожает любые другие улучшения, примененные к роботу."
 	id = "borg_reset_module"
 	build_path = /obj/item/borg/upgrade/reset
 
 /datum/design/item/prosfab/robot_upgrade/restart
-	name = "Emergency Restart Module"
-	desc = "Used to force a restart of a disabled-but-repaired robot, bringing it back online."
+	name = "Модуль аварийного перезапуска"
+	desc = "Используется для принудительного перезапуска неисправного, но отремонтированного робота, чтобы вернуть его в оперативный режим."
 	id = "borg_restart_module"
 	materials = list(DEFAULT_WALL_MATERIAL = 45000, "glass" = 3750)
 	build_path = /obj/item/borg/upgrade/restart
 
 /datum/design/item/prosfab/robot_upgrade/vtec
-	name = "VTEC Module"
-	desc = "Used to kick in a robot's VTEC systems, increasing their speed."
+	name = "Модуль VTEC"
+	desc = "Используется для включения систем VTEC робота, увеличивая их скорость."
 	id = "borg_vtec_module"
 	materials = list(DEFAULT_WALL_MATERIAL = 60000, "glass" = 4500, "gold" = 3750)
 	build_path = /obj/item/borg/upgrade/vtec
 
 /datum/design/item/prosfab/robot_upgrade/tasercooler
-	name = "Rapid Taser Cooling Module"
-	desc = "Used to cool a mounted taser, increasing the potential current in it and thus its recharge rate."
+	name = "Модуль быстрого охлаждения электрошокера"
+	desc = "Используется для охлаждения установленного электрошокера, увеличения потенциального тока в нем и, следовательно, скорости его перезарядки."
 	id = "borg_taser_module"
 	materials = list(DEFAULT_WALL_MATERIAL = 60000, "glass" = 4500, "gold" = 1500, "diamond" = 375)
 	build_path = /obj/item/borg/upgrade/tasercooler
 
 /datum/design/item/prosfab/robot_upgrade/jetpack
-	name = "Jetpack Module"
-	desc = "A carbon dioxide jetpack suitable for low-gravity mining operations."
+	name = "Реактивный модуль"
+	desc = "Реактивный ранец с диоксидом углерода, подходящий для горных работ в условиях малой гравитации."
 	id = "borg_jetpack_module"
 	materials = list(DEFAULT_WALL_MATERIAL = 7500, "phoron" = 11250, "uranium" = 15000)
 	build_path = /obj/item/borg/upgrade/jetpack
 
 /datum/design/item/prosfab/robot_upgrade/advhealth
-	name = "Advanced Health Analyzer Module"
-	desc = "An advanced health analyzer suitable for diagnosing more serious injuries."
+	name = "Модуль Продвинутого анализа здоровья"
+	desc = "Продвинутый анализатор здоровья, подходящий для диагностики более серьезных травм."
 	id = "borg_advhealth_module"
 	materials = list(DEFAULT_WALL_MATERIAL = 10000, "glass" = 6500, "diamond" = 350)
 	build_path = /obj/item/borg/upgrade/advhealth
 
 /datum/design/item/prosfab/robot_upgrade/syndicate
-	name = "Scrambled Equipment Module"
-	desc = "Allows for the construction of lethal upgrades for cyborgs."
+	name = "Модуль скремблированного оборудования"
+	desc = "Позволяет создавать смертоносные улучшения для киборгов."
 	id = "borg_syndicate_module"
 	req_tech = list(TECH_COMBAT = 4, TECH_ILLEGAL = 3)
 	materials = list(DEFAULT_WALL_MATERIAL = 7500, "glass" = 11250, "diamond" = 7500)
 	build_path = /obj/item/borg/upgrade/syndicate
 
 /datum/design/item/prosfab/robot_upgrade/language
-	name = "Language Module"
-	desc = "Used to let cyborgs other than clerical or service speak a variety of languages."
+	name = "Языковой модуль"
+	desc = "Используется, чтобы позволить киборгам, кроме клерков или служащих, говорить на разных языках."
 	id = "borg_language_module"
 	req_tech = list(TECH_DATA = 6, TECH_MATERIAL = 6)
 	materials = list(DEFAULT_WALL_MATERIAL = 25000, "glass" = 3000, "gold" = 350)
@@ -444,8 +444,8 @@
 // Synthmorph Bags.
 
 /datum/design/item/prosfab/synthmorphbag
-	name = "Synthmorph Storage Bag"
-	desc = "Used to store or slowly defragment an FBP."
+	name = "Сумка для хранения синтморфа"
+	desc = "Используется для хранения или медленной дефрагментации FBP."
 	id = "misc_synth_bag"
 	materials = list(DEFAULT_WALL_MATERIAL = 250, "glass" = 250, "plastic" = 2000)
 	build_path = /obj/item/bodybag/cryobag/robobag

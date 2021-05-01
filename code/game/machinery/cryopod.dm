@@ -203,7 +203,7 @@
 	var/on_enter_occupant_message = "Вы чувствуете, что вас окружает прохладный воздух. Вы онемеете, когда ваши чувства обращаются внутрь."
 	var/on_store_visible_message_1 = "гудит и шипит при движении" //We need two variables because byond doesn't let us have variables inside strings at compile-time.
 	var/on_store_visible_message_2 = "в хранилище."
-	var/announce_channel = "Common"
+	var/announce_channel = "Общий"
 	var/allow_occupant_types = list(/mob/living/carbon/human)
 	var/disallow_occupant_types = list()
 

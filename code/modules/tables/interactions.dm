@@ -79,7 +79,7 @@
 			var/mob/living/M = G.affecting
 			var/obj/occupied = turf_is_crowded()
 			if(occupied)
-				to_chat(user, "<span class='danger'>There's \a [occupied] in the way.</span>")
+				to_chat(user, "<span class='danger'>На пути мешает [occupied].</span>")
 				return
 			if(!user.Adjacent(M))
 				return
@@ -87,7 +87,7 @@
 				if(user.a_intent == I_HURT)
 					if (prob(15))	M.Weaken(5)
 					M.apply_damage(8,def_zone = BP_HEAD)
-					visible_message("<span class='danger'>[G.assailant] slams [G.affecting]'s face against \the [src]!</span>")
+					visible_message("<span class='danger'>[G.assailant] бьет [G.affecting] лицом, о [src]!</span>")
 					if(material)
 						playsound(src, material.tableslam_noise, 50, 1)
 					else
@@ -96,8 +96,8 @@
 					// Shards. Extra damage, plus potentially the fact YOU LITERALLY HAVE A PIECE OF GLASS/METAL/WHATEVER IN YOUR FACE
 					for(var/obj/item/weapon/material/shard/S in L)
 						if(prob(50))
-							M.visible_message("<span class='danger'>\The [S] slices [M]'s face messily!</span>",
-							                   "<span class='danger'>\The [S] slices your face messily!</span>")
+							M.visible_message("<span class='danger'>[S] беспорядочно режет лицо [M]!</span>",
+							                   "<span class='danger'>[S] беспорядочно режет ваше лицо!</span>")
 							M.apply_damage(10, def_zone = BP_HEAD)
 							if(prob(2))
 								M.embed(S, def_zone = BP_HEAD)
@@ -107,7 +107,7 @@
 			else if(G.state > GRAB_AGGRESSIVE || world.time >= (G.last_action + UPGRADE_COOLDOWN))
 				M.forceMove(get_turf(src))
 				M.Weaken(5)
-				visible_message("<span class='danger'>[G.assailant] puts [G.affecting] on \the [src].</span>")
+				visible_message("<span class='danger'>[G.assailant] помещает [G.affecting] в [src].</span>")
 			qdel(W)
 			return
 
@@ -124,17 +124,17 @@
 		spark_system.start()
 		playsound(src, 'sound/weapons/blade1.ogg', 50, 1)
 		playsound(src, "sparks", 50, 1)
-		user.visible_message("<span class='danger'>\The [src] was sliced apart by [user]!</span>")
+		user.visible_message("<span class='danger'>[src] был разрезан на части [user]!</span>")
 		break_to_parts()
 		return
 
 	if(istype(W, /obj/item/weapon/melee/changeling/arm_blade))
-		user.visible_message("<span class='danger'>\The [src] was sliced apart by [user]!</span>")
+		user.visible_message("<span class='danger'>[src] был разрезан на части [user]!</span>")
 		break_to_parts()
 		return
 
 	if(can_plate && !material)
-		to_chat(user, "<span class='warning'>There's nothing to put \the [W] on! Try adding plating to \the [src] first.</span>")
+		to_chat(user, "<span class='warning'>Не на что ставить [W]! Попробуйте сначала добавить покрытие на [src].</span>")
 		return
 
 // Placing stuff on tables

@@ -47,9 +47,9 @@
 				A.icon_state = "ano[A.icon_num][activated]"
 			var/display_msg
 			if(activated)
-				display_msg = pick("momentarily glows brightly!","distorts slightly for a moment!","flickers slightly!","vibrates!","shimmers slightly for a moment!")
+				display_msg = pick("на мгновение ярко светится!","слегка искажается на мгновение!","слегка мерцает!","вибрирует!","слегка мерцает на мгновение!")
 			else
-				display_msg = pick("grows dull!","fades in intensity!","suddenly becomes very still!","suddenly becomes very quiet!")
+				display_msg = pick("становится скучной!","блекнет интенсивно!","внезапно становится неподвижной!","вдруг становится очень тихой!")
 			var/atom/toplevelholder = holder
 			while(!istype(toplevelholder.loc, /turf))
 				toplevelholder = toplevelholder.loc
@@ -75,33 +75,33 @@
 	. = "<b>"
 	switch(effect_type)
 		if(EFFECT_ENERGY)
-			. += "Concentrated energy emissions"
+			. += "Концентрированные выбросы энергии"
 		if(EFFECT_PSIONIC)
-			. += "Intermittent psionic wavefront"
+			. += "Прерывистые псионические волновые потоки"
 		if(EFFECT_ELECTRO)
-			. += "Electromagnetic energy"
+			. += "Электромагнитные энергии"
 		if(EFFECT_PARTICLE)
-			. += "High frequency particles"
+			. += "Высокочастотные частицы"
 		if(EFFECT_ORGANIC)
-			. += "Organically reactive exotic particles"
+			. += "Органически реактивные экзотические частицы"
 		if(EFFECT_BLUESPACE)
-			. += "Interdimensional/bluespace? phasing"
+			. += "Межпространственная/bluespace? фазировка"
 		if(EFFECT_SYNTH)
-			. += "Atomic synthesis"
+			. += "Атомный синтез"
 		else
-			. += "Low level energy emissions"
+			. += "Низкий уровень выбросов энергии"
 
-	. += "</b> have been detected <b>"
+	. += "</b> был/ли обнаружен/ны <b>"
 
 	switch(effect)
 		if(EFFECT_TOUCH)
-			. += "interspersed throughout substructure and shell."
+			. += "как вкрапления в основание и оболочку."
 		if(EFFECT_AURA)
-			. += "emitting in an ambient energy field."
+			. += "как излучение в окружающем энергетическом поле."
 		if(EFFECT_PULSE)
-			. += "emitting in periodic bursts."
+			. += "как излучение с периодическими всплесками."
 		else
-			. += "emitting in an unknown way."
+			. += "как волны испускаемые неизвестным образом"
 
 	. += "</b>"
 

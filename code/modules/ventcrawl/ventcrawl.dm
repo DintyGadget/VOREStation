@@ -25,16 +25,16 @@ var/list/ventcrawl_machinery = list(
 	if(!client)
 		return FALSE
 	if(!(/mob/living/proc/ventcrawl in verbs))
-		to_chat(src, "<span class='warning'>You don't possess the ability to ventcrawl!</span>")
+		to_chat(src, "<span class='warning'>У вас нет способности ползать по вентиляции!</span>")
 		return FALSE
 	if(pulling)
 		to_chat(src, "<span class='warning'>You cannot bring \the [pulling] into the vent with you!</span>")
 		return FALSE
 	if(incapacitated())
-		to_chat(src, "<span class='warning'>You cannot ventcrawl in your current state!</span>")
+		to_chat(src, "<span class='warning'>В текущем состоянии вы не можете ползать по вентиляции!</span>")
 		return FALSE
 	if(buckled)
-		to_chat(src, "<span class='warning'>You cannot ventcrawl while buckled!</span>")
+		to_chat(src, "<span class='warning'>Вы не можете ползать по вентиляции, пока пристегнуты!</span>")
 		return FALSE
 	return ventcrawl_carry()
 
@@ -48,7 +48,7 @@ var/list/ventcrawl_machinery = list(
 
 /mob/living/simple_mob/slime/xenobio/can_ventcrawl()
 	if(victim)
-		to_chat(src, "<span class='warning'>You cannot ventcrawl while feeding.</span>")
+		to_chat(src, "<span class='warning'>Вы не можете ползать по вентиляции во время кормления.</span>")
 		return FALSE
 	. = ..()
 

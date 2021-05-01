@@ -1,6 +1,6 @@
 /obj/structure/boulder
-	name = "rocky debris"
-	desc = "Leftover rock from an excavation, it's been partially dug out already but there's still a lot to go."
+	name = "каменистые обломки"
+	desc = "Камень, оставшийся после раскопок, уже частично выкопан, но еще многое предстоит сделать."
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "boulder1"
 	density = 1
@@ -35,14 +35,14 @@
 			C.depth_scanner.scan_atom(user, src)
 			return
 		else
-			user.visible_message("<span class='notice'>\The [user] extends \the [C] over \the [src], a flurry of red beams scanning \the [src]'s surface!</span>", "<span class='notice'>You extend \the [C] over \the [src], a flurry of red beams scanning \the [src]'s surface!</span>")
+			user.visible_message("<span class='notice'>[user] распространяеn [C] над [src], поток красных лучей сканирует поверхность [src]!</span>", "<span class='notice'>Вы распространяете [C] на [src], поток красных лучей сканирует поверхность [src]!</span>")
 			if(do_after(user, 15))
-				to_chat(user, "<span class='notice'>\The [src] has been excavated to a depth of [2 * src.excavation_level]cm.</span>")
+				to_chat(user, "<span class='notice'>[src] был выкопан на глубину [2 * src.excavation_level]см.</span>")
 			return
 
 	if(istype(I, /obj/item/device/measuring_tape))
 		var/obj/item/device/measuring_tape/P = I
-		user.visible_message("<span class='notice'>\The [user] extends \the [P] towards \the [src].</span>", "<span class='notice'>You extend \the [P] towards \the [src].</span>")
+		user.visible_message("<span class='notice'>[user] расширяет [P] в сторону [src].</span>", "<span class='notice'>Вы расширяете [P] в сторону [src].</span>")
 		if(do_after(user, 15))
 			to_chat(user, "<span class='notice'>\The [src] has been excavated to a depth of [2 * src.excavation_level]cm.</span>")
 		return
@@ -54,12 +54,12 @@
 			return
 		last_act = world.time
 
-		to_chat(user, "<span class='warning'>You start [P.drill_verb] [src].</span>")
+		to_chat(user, "<span class='warning'>Вы начинаете [P.drill_verb] [src].</span>")
 
 		if(!do_after(user, P.digspeed))
 			return
 
-		to_chat(user, "<span class='notice'>You finish [P.drill_verb] [src].</span>")
+		to_chat(user, "<span class='notice'>Вы заканчиваете [P.drill_verb] [src].</span>")
 		excavation_level += P.excavation_amount
 
 		if(excavation_level > 100)

@@ -31,7 +31,7 @@
 	var/time_coeff = 1
 	/// Coefficient for the efficiency of material usage in item building. Based on the installed parts.
 	var/component_coeff = 1
-	
+
 	var/loading_icon_state = "mechfab-idle"
 
 	var/list/materials = list(
@@ -284,7 +284,7 @@
 
 	if(!check_resources(D))
 		if(verbose)
-			atom_say("Not enough resources. Processing stopped.")
+			atom_say("Недостаточно ресурсов. Обработка остановлена.")
 		return FALSE
 
 	build_materials = get_resources_w_coeff(D)
@@ -309,7 +309,7 @@
 		atom_say("Obstruction cleared. \The [stored_part] is complete.")
 		stored_part.forceMove(exit)
 		stored_part = null
-	
+
 	// If there's nothing being built, try to build something
 	if(!being_built)
 		// If we're not processing the queue anymore or there's nothing to build, end processing.
@@ -343,7 +343,7 @@
 
 	var/turf/exit = get_step(src,(dir))
 	if(exit.density)
-		atom_say("Error! Part outlet is obstructed.")
+		atom_say("Ошибка! Выход детали заблокирован.")
 		desc = "It's trying to dispense \a [D.name], but the part outlet is obstructed."
 		stored_part = I
 		return FALSE

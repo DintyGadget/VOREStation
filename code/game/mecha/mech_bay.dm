@@ -1,6 +1,6 @@
 /obj/machinery/mech_recharger
 	name = "mech recharger"
-	desc = "A mech recharger, built into the floor."
+	desc = "Зарядное устройство для мехов, встроенное в пол."
 	icon = 'icons/mecha/mech_bay.dmi'
 	icon_state = "recharge_floor"
 	density = 0
@@ -58,7 +58,7 @@
 	var/done = FALSE
 	var/obj/mecha/mech = charging
 	var/obj/item/weapon/cell/cell = charging.get_cell()
-	if(cell)	
+	if(cell)
 		var/t = min(charge, cell.maxcharge - cell.charge)
 		if(t > 0)
 			if(istype(mech))
@@ -68,13 +68,13 @@
 			use_power(t * 150)
 		else
 			if(istype(mech))
-				mech.occupant_message(SPAN_NOTICE("Fully charged."))
+				mech.occupant_message(SPAN_NOTICE("Полностью заряжен."))
 			done = TRUE
 
 	if(repair && istype(mech) && mech.health < initial(mech.health))
 		mech.health = min(mech.health + repair, initial(mech.health))
 		if(mech.health == initial(mech.health))
-			mech.occupant_message(SPAN_NOTICE("Fully repaired."))
+			mech.occupant_message(SPAN_NOTICE("Полностью отремонтирован."))
 		else
 			done = FALSE
 	if(done)
@@ -93,14 +93,14 @@
 	var/obj/mecha/mech = M
 	if(stat & (NOPOWER | BROKEN))
 		if(istype(mech))
-			mech.occupant_message(SPAN_WARNING("Power port not responding. Terminating."))
+			mech.occupant_message(SPAN_WARNING("Порт питания не отвечает. Отключение."))
 		else
-			to_chat(M, SPAN_WARNING("Power port not responding. Terminating."))
+			to_chat(M, SPAN_WARNING("Порт питания не отвечает. Отключение."))
 		return
 	if(M.get_cell())
 		if(istype(mech))
-			mech.occupant_message(SPAN_NOTICE("Now charging..."))
+			mech.occupant_message(SPAN_NOTICE("Зарядка..."))
 		else
-			to_chat(M, SPAN_NOTICE("Now charging..."))
+			to_chat(M, SPAN_NOTICE("Зарядка..."))
 		charging = M
 	return

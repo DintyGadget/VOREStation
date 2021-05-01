@@ -1,25 +1,25 @@
 // Implements a verb to make your character look upward, mostly intended for the surface.
 
 /mob/living/verb/look_up()
-	set name = "Look Up"
+	set name = "Посмотреть вверх"
 	set category = "IC"
 	set desc = "Look above you, and hope there's no ceiling spiders."
 
-	to_chat(usr, "You look upwards...")
+	to_chat(usr, "Вы смотрите вверх...")
 
 	var/turf/T = get_turf(usr)
 	if(!T) // In null space.
-		to_chat(usr, span("warning", "You appear to be in a place without any sort of concept of direction. You have bigger problems to worry about."))
+		to_chat(usr, span("warning", "Вы, кажется, находитесь в месте, не имеющем никакого понятия о направлении. У вас есть более серьезные проблемы, о которых нужно беспокоиться."))
 		return
 
 	if(!T.outdoors) // They're inside.
-		to_chat(usr, "You see nothing interesting.")
+		to_chat(usr, "Вы не видите ничего интересного.")
 		return
 
 	else // They're outside and hopefully on a planet.
 		var/datum/planet/P = SSplanets.z_to_planet[T.z]
 		if(!P)
-			to_chat(usr, span("warning", "You appear to be outside, but not on a planet... Something is wrong."))
+			to_chat(usr, span("warning", "Кажется, что вы находитесь снаружи, но не на планете... Что-то не так."))
 			return
 
 		var/datum/weather_holder/WH = P.weather_holder
@@ -30,7 +30,7 @@
 
 		// If we can see the sky, we'll see things like sun position, phase of the moon, etc.
 		if(!WH.current_weather.sky_visible)
-			to_chat(usr, "You can't see the sky clearly due to the [WH.current_weather.name].")
+			to_chat(usr, "Вы не можете ясно видеть небо из-за [WH.current_weather.name].")
 		else
 			// Sun-related output.
 			if(P.sun_name)
@@ -39,9 +39,9 @@
 				var/sun_message = null
 				switch(P.sun_position)
 					if(0 to 0.4) // Night
-						sun_message = "It is night time, [P.sun_name] is not visible."
+						sun_message = "Сейчас ночь, [P.sun_name] не видно."
 					if(0.4 to 0.5) // Twilight
-						sun_message = "The sky is in twilight, however [P.sun_name] is not visible."
+						sun_message = "Небо в сумерках, однако [P.sun_name] не видно."
 					if(0.5 to 0.7) // Sunrise/set.
 						sun_message = "[P.sun_name] is slowly [!afternoon ? "rising from" : "setting on"] the horizon."
 					if(0.7 to 0.9) // Morning/evening

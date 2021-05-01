@@ -36,15 +36,15 @@
 
 /datum/surgery_step/fix_vein/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("[user] starts patching the damaged vein in [target]'s [affected.name] with \the [tool]." , \
-	"You start patching the damaged vein in [target]'s [affected.name] with \the [tool].")
+	user.visible_message("[user] начинает латать поврежденную вену [target] внутри [affected.name] используя [tool]." , \
+	"Вы начинаете латать поврежденную вену [target] внутри [affected.name] используя [tool].")
 	target.custom_pain("The pain in [affected.name] is unbearable!", 100)
 	..()
 
 /datum/surgery_step/fix_vein/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("<span class='notice'>[user] has patched the damaged vein in [target]'s [affected.name] with \the [tool].</span>", \
-		"<span class='notice'>You have patched the damaged vein in [target]'s [affected.name] with \the [tool].</span>")
+	user.visible_message("<span class='notice'>[user] залатал поврежденную вену [target] внутри [affected.name] используя [tool].</span>", \
+		"<span class='notice'>Вы залатали поврежденную вену [target] внутри [affected.name] используя [tool].</span>")
 
 	for(var/datum/wound/W in affected.wounds) if(W.internal)
 		affected.wounds -= W
@@ -53,8 +53,8 @@
 
 /datum/surgery_step/fix_vein/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("<span class='danger'>[user]'s hand slips, smearing [tool] in the incision in [target]'s [affected.name]!</span>" , \
-	"<span class='danger'>Your hand slips, smearing [tool] in the incision in [target]'s [affected.name]!</span>")
+	user.visible_message("<span class='danger'>Рука [user] соскальзывает, размазывая [tool] в разрезе [target] внутри [affected.name]!</span>" , \
+	"<span class='danger'>Ваша рука соскальзывает, размалывая [tool] в разрезе [target] внутри [affected.name]!</span>")
 	affected.take_damage(5, 0)
 
 ///////////////////////////////////////////////////////////////
@@ -89,21 +89,21 @@
 
 /datum/surgery_step/fix_dead_tissue/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("[user] starts cutting away necrotic tissue in [target]'s [affected.name] with \the [tool]." , \
-	"You start cutting away necrotic tissue in [target]'s [affected.name] with \the [tool].")
-	target.custom_pain("The pain in [affected.name] is unbearable!", 100)
+	user.visible_message("[user] начинает вырезать отмершую ткань [target] из [affected.name] используя [tool]." , \
+	"Вы начинаете вырезать отмершую ткань [target] из [affected.name] используя [tool].")
+	target.custom_pain("Боль в [affected.name] невыносима!", 100)
 	..()
 
 /datum/surgery_step/fix_dead_tissue/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("<span class='notice'>[user] has cut away necrotic tissue in [target]'s [affected.name] with \the [tool].</span>", \
-		"<span class='notice'>You have cut away necrotic tissue in [target]'s [affected.name] with \the [tool].</span>")
+	user.visible_message("<span class='notice'>[user] вырезает отмершую ткань [target] из [affected.name] используя [tool].</span>", \
+		"<span class='notice'>Вы вырезаете отмершую ткань [target] из [affected.name] используя [tool].</span>")
 	affected.open = 3
 
 /datum/surgery_step/fix_dead_tissue/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("<span class='danger'>[user]'s hand slips, slicing an artery inside [target]'s [affected.name] with \the [tool]!</span>", \
-	"<span class='danger'>Your hand slips, slicing an artery inside [target]'s [affected.name] with \the [tool]!</span>")
+	user.visible_message("<span class='danger'>Рука [user] соскальзывает, рассекая артерию [target] внутри [affected.name] с помощью [tool]!</span>", \
+	"<span class='danger'>Ваша рука соскальзывает, рассекая артерию [target] внутри [affected.name] с помощью [tool]!</span>")
 	affected.createwound(CUT, 20, 1)
 
 ///////////////////////////////////////////////////////////////

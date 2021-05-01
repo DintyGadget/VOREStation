@@ -413,7 +413,7 @@
 
 	var/turf/T = join_props["turf"]
 	var/join_message = join_props["msg"]
-	var/announce_channel = join_props["channel"] || "Common"
+	var/announce_channel = join_props["channel"] || "Общий"
 
 	if(!T || !join_message)
 		return 0

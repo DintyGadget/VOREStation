@@ -153,13 +153,13 @@
 	set name = "Fix TGUI"
 	set category = "OOC"
 
-	if(alert(src, "Only use this verb if you have a white TGUI window stuck on your screen.", "Fix TGUI", "Continue", "Nevermind") != "Continue")
+	if(alert(src, "Используйте этот глагол, только если на вашем экране застряло белое окно TGUI.", "Fix TGUI", "Продолжить", "Неважно") != "Продолжить")
 		return
 
 	SStgui.close_user_uis(mob)
-	if(alert(src, "Did that fix the problem?", "Fix TGUI", "Yes", "No") == "No")
+	if(alert(src, "Это устранило проблему?", "Fix TGUI", "Да", "Нет") == "Нет")
 		SStgui.force_close_all_windows(mob)
-		alert(src, "UIs should be fixed now. If not, please cry to your nearest coder.", "Fix TGUI")
+		alert(src, "Пользовательский интерфейс должен быть исправлен сейчас. Если нет, обратитесь к программисту.", "Fix TGUI")
 
 /**
  * verb

@@ -54,14 +54,14 @@
 
 /datum/surgery_step/robotics/unscrew_hatch/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("<span class='notice'>[user] открывает люк для техобслуживания на [affected.name] [target] с помощью [tool].</span>", \
-	"<span class='notice'>Вы открыли люк техобслуживания на [affected.name] [target] с помощью [tool].</span>",)
+	user.visible_message("<span class='notice'>[user] открывает люк для техобслуживания [target] на [affected.name] с помощью [tool].</span>", \
+	"<span class='notice'>Вы открыли люк техобслуживания [target] на [affected.name] с помощью [tool].</span>",)
 	affected.open = 1
 
 /datum/surgery_step/robotics/unscrew_hatch/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("<span class='warning'>Рука [user] с [tool.name] соскальзывает, не в состоянии открутить [affected.name] [target].</span>", \
-	"<span class='warning'>Ваш [tool] соскальзывает, не в состоянии открутить [affected.name] [target].</span>")
+	user.visible_message("<span class='warning'>Рука [user] с [tool.name] соскальзывает, не в состоянии открутить [affected.name], [target].</span>", \
+	"<span class='warning'>Ваш [tool] соскальзывает, не в состоянии открутить [affected.name], [target].</span>")
 
 ///////////////////////////////////////////////////////////////
 // Open Hatch Surgery
@@ -85,14 +85,14 @@
 
 /datum/surgery_step/robotics/open_hatch/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("[user] начинает открывать люк техобслуживания на [affected.name] [target] с помощью [tool].",
-	"Вы начинаете открывать люк для техобслуживания на [affected.name] [target] с помощью [tool].")
+	user.visible_message("[user] начинает открывать люк техобслуживания [target] на [affected.name] с помощью [tool].",
+	"Вы начинаете открывать люк для техобслуживания [target] на [affected.name] с помощью [tool].")
 	..()
 
 /datum/surgery_step/robotics/open_hatch/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("<span class='notice'>[user] открывает люк для техобслуживания на [affected.name] [target] с помощью [tool].</span>", \
-	 "<span class='notice'>Вы открываете люк техобслуживания на [affected.name] [target] с помощью [tool].</span>")
+	user.visible_message("<span class='notice'>[user] открывает люк для техобслуживания [target] на [affected.name] с помощью [tool].</span>", \
+	 "<span class='notice'>Вы открываете люк техобслуживания [target] на [affected.name] с помощью [tool].</span>")
 	affected.open = 3
 
 /datum/surgery_step/robotics/open_hatch/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)

@@ -1,7 +1,7 @@
 
 var/list/dreams = list(
-	"an ID card","a bottle","a familiar face","a crewmember","a toolbox","a Security Officer","the Site Manager",
-	"voices from all around","deep space","a doctor","the engine","a traitor","an ally","darkness",
+	"ID карта","бутылка","знакомое лицо","член экипажа","набор инструментов","Офицер службы безопасности","Директор колонии",
+	"голоса со всех сторон","глубокий космос","a doctor","the engine","a traitor","an ally","darkness",
 	"light","a scientist","a monkey","a catastrophe","a loved one","a gun","warmth","freezing","the sun",
 	"a hat","the Luna","a ruined station","a planet","phoron","air","the medical bay","the bridge","blinking lights",
 	"a blue light","an abandoned laboratory","NanoTrasen","mercenaries","blood","healing","power","respect",

@@ -29,7 +29,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 
 /obj/machinery/computer/rdconsole
 	name = "R&D control console"
-	desc = "Science, in a computer! Experiment results not guaranteed."
+	desc = "Наука в компьютере! Результаты эксперимента не гарантируются."
 	icon_keyboard = "rd_key"
 	icon_screen = "rdcomp"
 	light_color = "#a97faa"
@@ -119,7 +119,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 	//Loading a disk into it.
 	if(istype(D, /obj/item/weapon/disk))
 		if(t_disk || d_disk)
-			to_chat(user, "A disk is already loaded into the machine.")
+			to_chat(user, "Диск уже загружен в машину.")
 			return
 
 		if(istype(D, /obj/item/weapon/disk/tech_disk))
@@ -127,11 +127,11 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 		else if (istype(D, /obj/item/weapon/disk/design_disk))
 			d_disk = D
 		else
-			to_chat(user, "<span class='notice'>Machine cannot accept disks in that format.</span>")
+			to_chat(user, "<span class='notice'>Машина не может принимать диски в этом формате.</span>")
 			return
 		user.drop_item()
 		D.loc = src
-		to_chat(user, "<span class='notice'>You add \the [D] to the machine.</span>")
+		to_chat(user, "<span class='notice'>Вы добавляете [D] к машине.</span>")
 	else
 		//The construction/deconstruction of the console code.
 		..()
@@ -143,7 +143,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 	if(!emagged)
 		playsound(src, 'sound/effects/sparks4.ogg', 75, 1)
 		emagged = 1
-		to_chat(user, "<span class='notice'>You you disable the security protocols.</span>")
+		to_chat(user, "<span class='notice'>Вы отключаете протоколы безопасности.</span>")
 		return 1
 
 /obj/machinery/computer/rdconsole/proc/GetResearchLevelsInfo()

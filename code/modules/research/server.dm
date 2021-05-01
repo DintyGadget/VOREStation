@@ -146,7 +146,7 @@
 
 /obj/machinery/computer/rdservercontrol
 	name = "R&D Server Controller"
-	desc = "Manage the research designs and servers. Can also modify upload/download permissions to R&D consoles."
+	desc = "Управляйте исследовательскими проектами и серверами. Также можно изменять разрешения на загрузку / выгрузку для консолей R&D."
 	icon_keyboard = "rd_key"
 	icon_screen = "rdcomp"
 	light_color = "#a97faa"
@@ -246,8 +246,8 @@
 			var/obj/machinery/r_n_d/server/target = locate(params["server"])
 			if(!istype(target))
 				return FALSE
-			var/choice = alert("Technology Data Rest", "Are you sure you want to reset this technology to its default data? Data lost cannot be recovered.", "Continue", "Cancel")
-			if(choice == "Continue")
+			var/choice = alert("Технология Data Rest", "Вы уверены, что хотите сбросить эту технологию до данных по умолчанию? Потерянные данные не могут быть восстановлены.", "Продолжить", "Отмена")
+			if(choice == "Продолжить")
 				for(var/datum/tech/T in target.files.known_tech)
 					if(T.id == params["tech"])
 						T.level = 1

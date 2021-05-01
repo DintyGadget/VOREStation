@@ -8,7 +8,7 @@
 //DRINKS
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/cola
-	name = "\improper Space Cola"
+	name = "Космо Кола"
 	desc = "Обнадеживающе искусственно."
 	description_fluff = "Бренд \"Космос\" был первоначально добавлен в линейку продуктов \"Альфа-Кола\", чтобы оправдать продажу банок по 50% более высоким ценам \"внешним\" розничным торговцам. Несмотря на химическую идентичность, Космическая кола оказалась настолько популярной, что Centauri Provisions в конце концов применила это название ко всей линейке продуктов - повышение цен и все такое."
 	icon_state = "cola"
@@ -19,7 +19,7 @@
 	reagents.add_reagent("cola", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/waterbottle
-	name = "bottled water"
+	name = "бутылка воды"
 	desc = "Ледяная и совершенно безвкусная, эта \"полностью натуральная\" минеральная вода поступает \"свежая\" с одного из сверхмощных заводов по розливу NanoTrasen на Сивийских полюсах."
 	icon_state = "waterbottle"
 	center_of_mass = list("x"=16, "y"=8)
@@ -31,7 +31,7 @@
 	reagents.add_reagent("water", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/space_mountain_wind
-	name = "\improper Space Mountain Wind"
+	name = "Горный ветер космоса"
 	desc = "Дует прямо сквозь тебя, как космический ветер."
 	description_fluff = "Бренд \"Космос\" был первоначально добавлен в линейку продуктов \"Альфа-Кола\", чтобы оправдать продажу банок по 50% более высоким ценам \"внешним\" розничным торговцам. Несмотря на химическую идентичность, Космическая кола оказалась настолько популярной, что Centauri Provisions в конце концов применила это название ко всей линейке продуктов - повышение цен и все такое."
 	icon_state = "space_mountain_wind"
@@ -42,8 +42,8 @@
 	reagents.add_reagent("spacemountainwind", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/thirteenloko
-	name = "\improper Thirteen Loko"
-	desc = "Совет по здравоохранению Вирго предупредил потребителей, что потребление Тринадцати Локо может привести к судорогам, слепоте, пьянству или даже смерти. Пожалуйста, Пейте Ответственно."
+	name = "Тринадцать Локо"
+	desc = "Совет по здравоохранению Дева предупредил потребителей, что потребление Тринадцати Локо может привести к судорогам, слепоте, пьянству или даже смерти. Пожалуйста, Пейте Ответственно."
 	icon_state = "thirteen_loko"
 	center_of_mass = list("x"=16, "y"=10)
 
@@ -52,7 +52,7 @@
 	reagents.add_reagent("thirteenloko", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/dr_gibb
-	name = "\improper Dr. Gibb"
+	name = "Др. Гибб"
 	desc = "Восхитительная смесь из 42 различных вкусов."
 	description_fluff = "После 2490 судебных процессов и череды смертей Gilthari Exports напоминает клиентам, что \"Доктор\" юридически означает \"Напиток\"."
 	icon_state = "dr_gibb"
@@ -63,7 +63,7 @@
 		reagents.add_reagent("dr_gibb", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/dr_gibb_diet
-	name = "\improper Diet Dr. Gibb"
+	name = "Диетический Др. Гибб"
 	desc = "Восхитительная смесь из 42 различных вкусов, один из которых-вода."
 	description_fluff = "После 2490 судебных процессов и череды смертей Gilthari Exports напоминает клиентам, что \"Доктор\" юридически означает \"Напиток\"."
 	icon_state = "dr_gibb_diet"
@@ -74,7 +74,7 @@
 		reagents.add_reagent("diet_dr_gibb", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/starkist
-	name = "\improper Star-kist"
+	name = "Стар-кист"
 	desc = "Вкус звезды в жидком виде. И немного тунца...?"
 	description_fluff = "Вызванный массовым спросом в 2515 году после ограниченного выпуска в 2510 году, культовый успех этой странной на вкус соды никогда по-настоящему не учитывался экономистами."
 	icon_state = "starkist"
@@ -85,7 +85,7 @@
 	reagents.add_reagent("brownstar", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/space_up
-	name = "\improper Space-Up"
+	name = "Спейс-ап"
 	desc = "Во рту вкус, как от пробоины в корпусе."
 	description_fluff = "Бренд \"Космос\" был первоначально добавлен в линейку продуктов \"Альфа-Кола\", чтобы оправдать продажу банок по 50% более высоким ценам \"внешним\" розничным торговцам. Несмотря на химическую идентичность, Космическая кола оказалась настолько популярной, что Centauri Provisions в конце концов применила это название ко всей линейке продуктов - повышение цен и все такое."
 	icon_state = "space-up"
@@ -96,7 +96,7 @@
 	reagents.add_reagent("space_up", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/lemon_lime
-	name = "\improper Lemon-Lime"
+	name = "Лемон-лайм"
 	desc = "Вы хотели АПЕЛЬСИН. Он дал вам Лимонно-лаймовый."
 	description_fluff = "Не путайте с \"лимонно-лаймовой содой\", Лимонно-лаймовая сода специально разработана с использованием высоко запатентованных фруктов Лимонно-лаймовой соды. Выращивание лимона-лайма без лицензии карается штрафом или тюремным заключением. Не принимайте подражаний."
 	icon_state = "lemon-lime"

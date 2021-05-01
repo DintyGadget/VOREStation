@@ -101,8 +101,8 @@
 			src.visible_message("<font color='red'><b>[src.name] hits [T].</b></font>")
 		else
 			step_away(M,src)
-			src.occupant_message("You push [T] out of the way.")
-			src.visible_message("[src] pushes [T] out of the way.")
+			src.occupant_message("Вы толкаете [T] в сторону.")
+			src.visible_message("[src] толкает [T] в сторону.")
 
 		melee_can_hit = 0
 		if(do_after(melee_cooldown))

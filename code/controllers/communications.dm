@@ -128,7 +128,7 @@ var/const/SEC_I_FREQ = 1475
 var/const/TALON_FREQ = 1363 //VOREStation Add
 
 var/list/radiochannels = list(
-	"Common"		= PUB_FREQ,
+	"Общий"		= PUB_FREQ,
 	"Science"		= SCI_FREQ,
 	"Command"		= COMM_FREQ,
 	"Medical"		= MED_FREQ,
@@ -155,7 +155,7 @@ var/list/radiochannels = list(
 	set category = "Generate TGUI Radio Constants"
 
 	var/list/channel_info = list()
-	
+
 	for(var/i in RADIO_LOW_FREQ to RADIO_HIGH_FREQ)
 		for(var/key in radiochannels)
 			if(i == radiochannels[key])
