@@ -162,14 +162,14 @@
 //
 /obj/item/device/spaceflare
 	name = "bluespace flare"
-	desc = "Burst transmitter used to broadcast all needed information for shuttle navigation systems. Has a flare attached for marking the spot where you probably shouldn't be standing."
+	desc = "Передатчик пакетов используется для передачи всей необходимой информации для систем навигации шаттла. Имеет сигнальную ракету для обозначения места, где вам, вероятно, не следует стоять."
 	icon_state = "bluflare"
 	light_color = "#3728ff"
 	var/active
 
 /obj/item/device/spaceflare/attack_self(var/mob/user)
 	if(!active)
-		visible_message("<span class='notice'>[user] pulls the cord, activating the [src].</span>")
+		visible_message("<span class='notice'>[user] дергает за шнут, активируя [src].</span>")
 		activate()
 
 /obj/item/device/spaceflare/proc/activate()

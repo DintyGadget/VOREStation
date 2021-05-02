@@ -40,9 +40,9 @@
 		return
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 
-	user.visible_message("[user] begins to cut through [target]'s [affected.encased] with \the [tool].", \
-	"You begin to cut through [target]'s [affected.encased] with \the [tool].")
-	target.custom_pain("Something hurts horribly in your [affected.name]!", 60)
+	user.visible_message("[user] начинает разрезать [affected.encased], [target] используя [tool].", \
+	"Вы начинаете разрезать [affected.encased], [target] используя [tool].")
+	target.custom_pain("Что то ужасно болит внутри [affected.name]!", 60)
 	..()
 
 /datum/surgery_step/open_encased/saw/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
@@ -50,8 +50,8 @@
 		return
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 
-	user.visible_message("<span class='notice'>[user] has cut [target]'s [affected.encased] open with \the [tool].</span>", \
-	"<span class='notice'>You have cut [target]'s [affected.encased] open with \the [tool].</span>")
+	user.visible_message("<span class='notice'>[user] разрезает [affected.encased], [target] используя [tool].</span>", \
+	"<span class='notice'>Вы разрезаете [affected.encased], [target] используя [tool].</span>")
 	affected.open = 2.5
 
 /datum/surgery_step/open_encased/saw/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
@@ -59,8 +59,8 @@
 		return
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 
-	user.visible_message("<span class='danger'>[user]'s hand slips, cracking [target]'s [affected.encased] with \the [tool]!</span>" , \
-	"<span class='danger'>Your hand slips, cracking [target]'s [affected.encased] with \the [tool]!</span>" )
+	user.visible_message("<span class='danger'>Рука [user] соскальзывает, разрывая [affected.encased], [target] используя [tool]!</span>" , \
+	"<span class='danger'>Ваша рука соскальзывает, разрывая [affected.encased], [target] используя [tool]!</span>" )
 
 	affected.createwound(CUT, 20)
 	affected.fracture()
@@ -90,10 +90,10 @@
 		return
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 
-	var/msg = "[user] starts to force open the [affected.encased] in [target]'s [affected.name] with \the [tool]."
-	var/self_msg = "You start to force open the [affected.encased] in [target]'s [affected.name] with \the [tool]."
+	var/msg = "[user] силой начинает вскрывать [affected.encased] в [affected.name], [target] используя [tool]."
+	var/self_msg = "Вы силой начинаете вскрывать [affected.encased] в [affected.name], [target] используя [tool]."
 	user.visible_message(msg, self_msg)
-	target.custom_pain("Something hurts horribly in your [affected.name]!", 40)
+	target.custom_pain("Что-то ужасно болит внутри [affected.name]!", 40)
 	..()
 
 /datum/surgery_step/open_encased/retract/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)

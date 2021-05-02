@@ -4,7 +4,7 @@
 
 /datum/shuttle
 	var/list/crash_locations = null
-	var/crash_message = "Oops. The shuttle blew up."	// Announcement made when shuttle crashes
+	var/crash_message = "Упс. Шаттл взорвался."	// Announcement made when shuttle crashes
 
 /datum/shuttle/New()
 	if(crash_locations)
