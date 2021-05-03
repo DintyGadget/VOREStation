@@ -47,7 +47,7 @@
 	start_sound = 'sound/effects/weather/snowstorm/inside/weak_start.ogg'
 	start_length = 13 SECONDS
 	end_sound = 'sound/effects/weather/snowstorm/inside/weak_end.ogg'
-	volume = 30
+	volume = 10
 
 /datum/looping_sound/weather/wind
 	mid_sounds = list(
