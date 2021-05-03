@@ -1,6 +1,6 @@
 /obj/item/clothing/suit/bio_suit/anomaly
 	name = "Anomaly suit"
-	desc = "A sealed bio suit capable of insulating against exotic alien energies."
+	desc = "Герметичный биокостюм, защищающий от экзотических инопланетных энергий."
 	icon = 'icons/obj/clothing/spacesuits.dmi'
 	icon_state = "engspace_suit"
 	item_state = "engspace_suit"
@@ -11,7 +11,7 @@
 
 /obj/item/clothing/head/bio_hood/anomaly
 	name = "Anomaly hood"
-	desc = "A sealed bio hood capable of insulating against exotic alien energies."
+	desc = "Герметичный биозащитный кожух, способный защищать от экзотических инопланетных энергий."
 	icon_state = "engspace_helmet"
 	item_state = "engspace_helmet"
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 100, rad = 100)
@@ -20,7 +20,7 @@
 
 /obj/item/clothing/suit/space/anomaly
 	name = "Excavation suit"
-	desc = "A pressure resistant excavation suit partially capable of insulating against exotic alien energies."
+	desc = "Устойчивый к давлению костюм для раскопок, частично способный изолировать от экзотических инопланетных энергий."
 	icon_state = "cespace_suit"
 	item_state = "cespace_suit"
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 100, rad = 100)
@@ -30,7 +30,7 @@
 
 /obj/item/clothing/head/helmet/space/anomaly
 	name = "Excavation hood"
-	desc = "A pressure resistant excavation hood partially capable of insulating against exotic alien energies."
+	desc = "Устойчивый к давлению кожух раскопок, частично способный изолировать от экзотических инопланетных энергий."
 	icon_state = "cespace_helmet"
 	item_state = "cespace_helmet"
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 100, rad = 100)

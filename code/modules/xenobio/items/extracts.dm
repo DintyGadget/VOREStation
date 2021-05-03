@@ -1,7 +1,7 @@
 // Base
 /obj/item/slime_extract
 	name = "slime extract"
-	desc = "Goo extracted from a slime, which can do different things depending on its color and what it is injected with."
+	desc = "Слизь, извлекаемая из слайма, которая может делать разные вещи в зависимости от своего цвета и того, что в нее вводят."
 	icon = 'icons/mob/slimes.dmi'
 	icon_state = "grey slime extract"
 	force = 1
@@ -22,9 +22,9 @@
 /obj/item/slime_extract/attackby(obj/item/O, mob/user)
 	if(istype(O, /obj/item/slimepotion/enhancer))
 		if(enhanced)
-			to_chat(user, "<span class='warning'>You cannot enhance this extract further!</span>")
+			to_chat(user, "<span class='warning'>Вы не можете улучшить этот экстракт дальше!</span>")
 			return ..()
-		to_chat(user, "<span class='notice'>You apply the enhancer to the slime extract. It may now be reused one more time.</span>")
+		to_chat(user, "<span class='notice'>Вы наносите усилитель на экстракт слизи. Теперь его можно использовать еще раз.</span>")
 		playsound(src, 'sound/effects/bubbles.ogg', 50, 1)
 		uses += 2
 		enhanced = TRUE
@@ -35,9 +35,9 @@
 /obj/item/slime_extract/examine(mob/user)
 	. = ..()
 	if(uses)
-		. += "This extract has [uses] more use\s."
+		. += "У этого экстракта есть еще [uses] применение/ний."
 	else
-		. += "This extract is inert."
+		. += "Этот экстракт инертен."
 
 /decl/chemical_reaction/instant/slime
 	var/required = null
@@ -53,7 +53,7 @@
 	var/obj/item/slime_extract/T = holder.my_atom
 	T.uses--
 	if(T.uses <= 0)
-		T.visible_message("[bicon(T)]<span class='notice'>\The [T] goes inert.</span>")
+		T.visible_message("[bicon(T)]<span class='notice'>[T] инертен.</span>")
 		T.name = "inert [initial(T.name)]"
 
 
@@ -65,7 +65,7 @@
 /obj/item/slime_extract/grey
 	name = "grey slime extract"
 	icon_state = "grey slime extract"
-	description_info = "This extract will create a new grey baby slime if injected with phoron, or some new monkey cubes if injected with blood."
+	description_info = "Этот экстракт создаст нового серого мелкого слайма при введении форона или несколько новых манки кубов при введении крови."
 
 /decl/chemical_reaction/instant/slime/grey_new_slime
 	name = "Slime Spawn"
@@ -76,7 +76,7 @@
 	required = /obj/item/slime_extract/grey
 
 /decl/chemical_reaction/instant/slime/grey_new_slime/on_reaction(var/datum/reagents/holder)
-	holder.my_atom.visible_message("<span class='warning'>Infused with phoron, the core begins to quiver and grow, and soon a new baby slime emerges from it!</span>")
+	holder.my_atom.visible_message("<span class='warning'>Пропитанная фороном сердцевина начинает дрожать и расти, и вскоре из нее выходит новая детская слизь!</span>")
 	new /mob/living/simple_mob/slime/xenobio(get_turf(holder.my_atom))
 	..()
 
@@ -116,7 +116,7 @@
 /datum/reagent/toxin/metamorphic_metal
 	name = "Metamorphic Metal"
 	id = "metamorphic"
-	description = "A strange metallic liquid which can rearrange itself to take the form of other metals it touches."
+	description = "Странная металлическая жидкость, которая может трансформироваться, принимая форму других металлов, которых она касается."
 	taste_description = "metallic"
 	taste_mult = 1.1
 	reagent_state = LIQUID

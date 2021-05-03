@@ -172,15 +172,6 @@
 	. += "<a href='?src=\ref[src];blood_reset=1'>Сброс</a><br>"
 	. += "<br>"
 
-	. += "<b>Custom Say: </b>"
-	. += "<a href='?src=\ref[src];custom_say=1'>Set Say Verb</a><br>"
-	. += "<b>Custom Whisper: </b>"
-	. += "<a href='?src=\ref[src];custom_whisper=1'>Set Whisper Verb</a><br>"
-	. += "<b>Custom Ask: </b>"
-	. += "<a href='?src=\ref[src];custom_ask=1'>Set Ask Verb</a><br>"
-	. += "<b>Custom Exclaim: </b>"
-	. += "<a href='?src=\ref[src];custom_exclaim=1'>Set Exclaim Verb</a><br>"
-
 /datum/category_item/player_setup_item/vore/traits/OnTopic(var/href,var/list/href_list, var/mob/user)
 	if(!CanUseTopic(user))
 		return TOPIC_NOACTION
@@ -238,30 +229,6 @@
 		var/choice = alert("Убрать [initial(trait.name)] и потерять [initial(trait.cost)] очков?","Удалить черту","Удалить","Отмена")
 		if(choice == "Удалить")
 			pref.neg_traits -= trait
-		return TOPIC_REFRESH
-
-	else if(href_list["custom_say"])
-		var/say_choice = sanitize(input(usr, "This word or phrase will appear instead of 'says': [pref.real_name] says, \"Hi.\"", "Custom Say", pref.custom_say) as null|text, 12)
-		if(say_choice)
-			pref.custom_say = say_choice
-		return TOPIC_REFRESH
-
-	else if(href_list["custom_whisper"])
-		var/whisper_choice = sanitize(input(usr, "This word or phrase will appear instead of 'whispers': [pref.real_name] whispers, \"Hi...\"", "Custom Whisper", pref.custom_whisper) as null|text, 12)
-		if(whisper_choice)
-			pref.custom_whisper = whisper_choice
-		return TOPIC_REFRESH
-
-	else if(href_list["custom_ask"])
-		var/ask_choice = sanitize(input(usr, "This word or phrase will appear instead of 'asks': [pref.real_name] asks, \"Hi?\"", "Custom Ask", pref.custom_ask) as null|text, 12)
-		if(ask_choice)
-			pref.custom_ask = ask_choice
-		return TOPIC_REFRESH
-
-	else if(href_list["custom_exclaim"])
-		var/exclaim_choice = sanitize(input(usr, "This word or phrase will appear instead of 'exclaims', 'shouts' or 'yells': [pref.real_name] exclaims, \"Hi!\"", "Custom Exclaim", pref.custom_exclaim) as null|text, 12)
-		if(exclaim_choice)
-			pref.custom_exclaim = exclaim_choice
 		return TOPIC_REFRESH
 
 	else if(href_list["add_trait"])

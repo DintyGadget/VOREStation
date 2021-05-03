@@ -2,7 +2,7 @@
 
 /datum/design/item/general/pda
 	name = "PDA"
-	desc = "Cheaper than whiny non-digital assistants."
+	desc = "Дешевле, чем плаксивые нецифровые помощники."
 	id = "pda"
 	req_tech = list(TECH_ENGINEERING = 2, TECH_POWER = 3)
 	materials = list(DEFAULT_WALL_MATERIAL = 50, "glass" = 50, MAT_COPPER = 10)

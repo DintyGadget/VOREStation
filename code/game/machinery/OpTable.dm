@@ -1,6 +1,6 @@
 /obj/machinery/optable
-	name = "Operating Table"
-	desc = "Used for advanced medical procedures."
+	name = "Операционный Стол"
+	desc = "Используется для сложных медицинских процедур."
 	icon = 'icons/obj/surgery.dmi'
 	icon_state = "table2-idle"
 	density = 1
@@ -43,7 +43,7 @@
 
 /obj/machinery/optable/attack_hand(mob/user as mob)
 	if(HULK in usr.mutations)
-		visible_message("<span class='danger'>\The [usr] destroys \the [src]!</span>")
+		visible_message("<span class='danger'>[usr] разрушает [src]!</span>")
 		density = 0
 		qdel(src)
 	return
@@ -75,9 +75,9 @@
 
 /obj/machinery/optable/proc/take_victim(mob/living/carbon/C, mob/living/carbon/user as mob)
 	if(C == user)
-		user.visible_message("[user] climbs on \the [src].","You climb on \the [src].")
+		user.visible_message("[user] ложится на [src].","Вы ложитесь на [src].")
 	else
-		visible_message("<span class='notice'>\The [C] has been laid on \the [src] by [user].</span>")
+		visible_message("<span class='notice'>[C] был помещен в [src] [user].</span>")
 	if(C.client)
 		C.client.perspective = EYE_PERSPECTIVE
 		C.client.eye = src
@@ -99,14 +99,14 @@
 
 	if(!Adjacent(target) || !Adjacent(user))
 		return ..()
-	
+
 	if(user.incapacitated() || !check_table(target, user))
 		return ..()
 
 	take_victim(target, user)
-	
+
 /obj/machinery/optable/verb/climb_on()
-	set name = "Climb On Table"
+	set name = "Лечь на стол"
 	set category = "Object"
 	set src in oview(1)
 
@@ -127,9 +127,9 @@
 /obj/machinery/optable/proc/check_table(mob/living/carbon/patient, mob/living/user)
 	check_victim()
 	if(victim && get_turf(victim) == get_turf(src) && victim.lying)
-		to_chat(user, "<span class='warning'>\The [src] is already occupied!</span>")
+		to_chat(user, "<span class='warning'>[src] уже занят!</span>")
 		return 0
 	if(patient.buckled)
-		to_chat(user, "<span class='notice'>Unbuckle \the [patient] first!</span>")
+		to_chat(user, "<span class='notice'>Сначала отстегните [patient]!</span>")
 		return 0
 	return 1

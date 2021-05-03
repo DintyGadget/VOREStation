@@ -5,7 +5,7 @@
 	name = "General purpose design ([item_name])"
 
 /datum/design/item/general/communicator
-	name = "Communicator"
+	name = "Коммуникатор"
 	id = "communicator"
 	req_tech = list(TECH_DATA = 2, TECH_MAGNET = 2)
 	materials = list(DEFAULT_WALL_MATERIAL = 500, "glass" = 500, MAT_COPPER = 50)
@@ -13,8 +13,8 @@
 	sort_string = "TAAAA"
 
 datum/design/item/general/laserpointer
-	name = "laser pointer"
-	desc = "Don't shine it in your eyes!"
+	name = "Лазерная указка"
+	desc = "Не светите в глаза!"
 	id = "laser_pointer"
 	req_tech = list(TECH_MAGNET = 3)
 	materials = list(DEFAULT_WALL_MATERIAL = 100, "glass" = 50, MAT_COPPER = 10)
@@ -22,7 +22,7 @@ datum/design/item/general/laserpointer
 	sort_string = "TAABA"
 
 /datum/design/item/general/translator
-	name = "handheld translator"
+	name = "портативный переводчик"
 	id = "translator"
 	req_tech = list(TECH_DATA = 3, TECH_ENGINEERING = 3)
 	materials = list(DEFAULT_WALL_MATERIAL = 3000, "glass" = 3000, MAT_COPPER = 50)
@@ -30,7 +30,7 @@ datum/design/item/general/laserpointer
 	sort_string = "TAACA"
 
 /datum/design/item/general/ear_translator
-	name = "earpiece translator"
+	name = "наушник переводчик"
 	id = "ear_translator"
 	req_tech = list(TECH_DATA = 5, TECH_ENGINEERING = 5)	//It's been hella miniaturized.
 	materials = list(DEFAULT_WALL_MATERIAL = 2000, "glass" = 2000, "gold" = 1000, MAT_COPPER = 50)
@@ -38,8 +38,8 @@ datum/design/item/general/laserpointer
 	sort_string = "TAACB"
 
 /datum/design/item/general/light_replacer
-	name = "Light replacer"
-	desc = "A device to automatically replace lights. Refill with working lightbulbs."
+	name = "Заменитель ламп"
+	desc = "Устройство для автоматической замены лампочек. Заправить рабочими лампочками."
 	id = "light_replacer"
 	req_tech = list(TECH_MAGNET = 3, TECH_MATERIAL = 4)
 	materials = list(DEFAULT_WALL_MATERIAL = 1500, "silver" = 150, "glass" = 3000)

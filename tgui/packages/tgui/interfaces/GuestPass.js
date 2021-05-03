@@ -23,16 +23,16 @@ export const GuestPass = (props, context) => {
     <Window width={500} height={520} resizable>
       <Window.Content scrollable>
         {mode === 1 && (
-          <Section title="Activity Log" buttons={
+          <Section title="Журнал активности" buttons={
             <Button
               icon="scroll"
-              content="Activity Log"
+              content="Журнал активности"
               selected
               onClick={() => act("mode", { mode: 0 })} />
           }>
             <Button
               icon="print"
-              content="Print"
+              content="Печать"
               onClick={() => act("print")}
               fluid
               mb={1} />
@@ -40,33 +40,33 @@ export const GuestPass = (props, context) => {
               {/* These are internally generated only. */}
               {log.length
                 && log.map(l => <div key={l} dangerouslySetInnerHTML={{ __html: l }} />)
-                || <Box>No logs.</Box>}
+                || <Box>Пусто.</Box>}
             </Section>
           </Section>
         ) || (
-          <Section title={"Guest pass terminal #" + uid} buttons={
+          <Section title={"Гостевой терминал #" + uid} buttons={
             <Button
               icon="scroll"
-              content="Activity Log"
+              content="Журнал активности"
               onClick={() => act("mode", { mode: 1 })} />
           }>
             <LabeledList>
               <LabeledList.Item label="Issuing ID">
                 <Button
-                  content={giver || "Insert ID"}
+                  content={giver || "Вставьте ID"}
                   onClick={() => act("id")} />
               </LabeledList.Item>
-              <LabeledList.Item label="Issued To">
+              <LabeledList.Item label="Выдано">
                 <Button
                   content={giveName}
                   onClick={() => act("giv_name")} />
               </LabeledList.Item>
-              <LabeledList.Item label="Reason">
+              <LabeledList.Item label="Причина">
                 <Button
                   content={reason}
                   onClick={() => act("reason")} />
               </LabeledList.Item>
-              <LabeledList.Item label="Duration (minutes)">
+              <LabeledList.Item label="Срок (минуты)">
                 <Button
                   content={duration}
                   onClick={() => act("duration")} />
@@ -75,7 +75,7 @@ export const GuestPass = (props, context) => {
             <Button.Confirm
               icon="check"
               fluid
-              content="Issue Pass"
+              content="Выдать Пропуск"
               onClick={() => act("issue")} />
             <Section title="Access" level={2}>
               {sortBy(a => a.area_name)(area).map(a => (

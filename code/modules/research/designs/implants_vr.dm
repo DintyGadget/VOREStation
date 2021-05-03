@@ -1,5 +1,5 @@
 /datum/design/item/implant/backup
-	name = "Backup implant"
+	name = "Резервный имплант"
 	id = "implant_backup"
 	req_tech = list(TECH_MATERIAL = 2, TECH_BIO = 2, TECH_DATA = 4, TECH_ENGINEERING = 2)
 	materials = list(DEFAULT_WALL_MATERIAL = 2000, "glass" = 2000)
@@ -7,7 +7,7 @@
 	sort_string = "MFAVA"
 
 /datum/design/item/implant/sizecontrol
-	name = "Size control implant"
+	name = "Имплантат контроля размера"
 	id = "implant_size"
 	req_tech = list(TECH_MATERIAL = 3, TECH_BIO = 4, TECH_DATA = 4, TECH_ENGINEERING = 3)
 	materials = list(DEFAULT_WALL_MATERIAL = 2000, "glass" = 2000, MAT_COPPER = 2000, "silver" = 2000)

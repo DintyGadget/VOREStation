@@ -101,18 +101,18 @@
 		if("drainbattery")
 			if(inserted_battery)
 				if(inserted_battery.battery_effect && inserted_battery.stored_charge > 0)
-					if(alert("This action will dump all charge, safety gear is recommended before proceeding","Warning","Continue","Cancel"))
+					if(alert("Это действие сбрасывает весь заряд, перед продолжением рекомендуется защитное снаряжение.","Warning","Continue","Cancel"))
 						if(!inserted_battery.battery_effect.activated)
 							inserted_battery.battery_effect.ToggleActivate(1)
 						last_process = world.time
 						harvesting = -1
 						update_use_power(USE_POWER_ACTIVE)
 						icon_state = "incubator_on"
-						atom_say("Warning, battery charge dump commencing.")
+						atom_say("Предупреждение, начинается сброс заряда батареи.")
 				else
-					atom_say("Cannot dump energy. Battery is drained of charge already.")
+					atom_say("Сброс невозможен. Батарея уже разряжена.")
 			else
-				atom_say("Cannot dump energy. No battery inserted.")
+				atom_say("Сброс невозможен. Батарея не вставлена.")
 			return TRUE
 
 

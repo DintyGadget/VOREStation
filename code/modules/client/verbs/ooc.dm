@@ -4,27 +4,27 @@
 	set category = "OOC"
 
 	if(say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, "<span class='warning'>Speech is currently admin-disabled.</span>")
+		to_chat(usr, "<span class='warning'>Речь в настоящее время отключена администратором.</span>")
 		return
 
 	if(!mob)	return
 	if(IsGuestKey(key))
-		to_chat(src, "Guests may not use OOC.")
+		to_chat(src, "Гости не могут использовать OOC.")
 		return
 
 	msg = sanitize(msg)
 	if(!msg)	return
 
 	if(!is_preference_enabled(/datum/client_preference/show_ooc))
-		to_chat(src, "<span class='warning'>You have OOC muted.</span>")
+		to_chat(src, "<span class='warning'>У вас отключен OOC.</span>")
 		return
 
 	if(!holder)
 		if(!config.ooc_allowed)
-			to_chat(src, "<span class='danger'>OOC is globally muted.</span>")
+			to_chat(src, "<span class='danger'>OOC отключен.</span>")
 			return
 		if(!config.dooc_allowed && (mob.stat == DEAD))
-			to_chat(usr, "<span class='danger'>OOC for dead mobs has been turned off.</span>")
+			to_chat(usr, "<span class='danger'>OOC для мертвых отключен.</span>")
 			return
 		if(prefs.muted & MUTE_OOC)
 			to_chat(src, "<span class='danger'>You cannot use OOC (muted).</span>")

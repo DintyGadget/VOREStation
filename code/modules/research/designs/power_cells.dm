@@ -7,7 +7,7 @@
 /datum/design/item/powercell/AssembleDesignDesc()
 	if(build_path)
 		var/obj/item/weapon/cell/C = build_path
-		desc = "Allows the construction of power cells that can hold [initial(C.maxcharge)] units of energy."
+		desc = "Позволяет создавать энергоячейки, способные удерживать [initial(C.maxcharge)] единиц энергии."
 
 /datum/design/item/powercell/Fabricate()
 	var/obj/item/weapon/cell/C = ..()

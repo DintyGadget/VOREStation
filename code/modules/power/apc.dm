@@ -77,7 +77,7 @@ GLOBAL_LIST_EMPTY(apcs)
 
 /obj/machinery/power/apc
 	name = "area power controller"
-	desc = "A control terminal for the area electrical systems."
+	desc = "Терминал управления электрическими системами участка."
 	icon = 'icons/obj/power.dmi'
 	icon_state = "apc0"
 	layer = ABOVE_WINDOW_LAYER
@@ -134,7 +134,7 @@ GLOBAL_LIST_EMPTY(apcs)
 	var/global/list/status_overlays_lighting
 	var/global/list/status_overlays_environ
 	var/alarms_hidden = FALSE //If power alarms from this APC are visible on consoles
-	
+
 	var/nightshift_lights = FALSE
 	var/nightshift_setting = NIGHTSHIFT_AUTO
 	var/last_nightshift_switch = 0
@@ -275,27 +275,27 @@ GLOBAL_LIST_EMPTY(apcs)
 	. = ..()
 	if(Adjacent(user))
 		if(stat & BROKEN)
-			. += "This APC is broken."
+			. += "Этот APC сломан."
 
 		else if(opened)
 			if(has_electronics && terminal)
-				. += "The cover is [opened == 2 ? "removed" : "open"] and [ cell ? "a power cell is installed" : "the power cell is missing"]."
+				. += "Крышка [opened == 2 ? "снимается" : "ставится"], [ cell ? "энергоячейка установлена" : "энергоячейка отсутствует"]."
 			else if(!has_electronics && terminal)
-				. += "The frame is wired, but the electronics are missing."
+				. += "Рама подключена, но электроника отсутствует."
 			else if(has_electronics && !terminal)
-				. += "The electronics are installed, but not wired."
+				. += "Электроника установлена, но не подключена."
 			else /* if(!has_electronics && !terminal) */
-				. += "It's just an empty metal frame."
+				. += "Это просто пустая металлическая рама."
 
 		else
 			if(wiresexposed)
-				. += "The cover is closed and the wires are exposed."
+				. += "Крышка закрыта, провода обнажены."
 			else if((locked && emagged) || hacker) //Some things can cause locked && emagged. Malf AI causes hacker.
-				. += "The cover is closed, but the panel is unresponsive."
+				. += "Крышка закрыта, но панель не реагирует."
 			else if(!locked && emagged) //Normal emag does this.
-				. += "The cover is closed, but the panel is flashing an error."
+				. += "Крышка закрыта, но на панели мигает ошибка."
 			else
-				. += "The cover is closed."
+				. += "Крышка закрыта."
 
 
 // update the APC icon to show the three base states
@@ -486,40 +486,40 @@ GLOBAL_LIST_EMPTY(apcs)
 				to_chat(user, "<span class='warning'>Disconnect the wires first.</span>")
 				return
 			playsound(src, W.usesound, 50, 1)
-			to_chat(user, "You begin to remove the power control board...") //lpeters - fixed grammar issues //Ner - grrrrrr
+			to_chat(user, "Вы начинаете снимать плату управления питанием...") //lpeters - fixed grammar issues //Ner - grrrrrr
 			if(do_after(user, 50 * W.toolspeed))
 				if(has_electronics == APC_HAS_ELECTRONICS_WIRED)
 					has_electronics = APC_HAS_ELECTRONICS_NONE
 					if((stat & BROKEN))
 						user.visible_message(\
-							"<span class='warning'>[user.name] has broken the charred power control board inside [name]!</span>",\
-							"<span class='notice'>You broke the charred power control board and remove the remains.</span>",
+							"<span class='warning'>[user.name] ломает обугленную плату управления внутри [name]!</span>",\
+							"<span class='notice'>Вы сломали обугленную плату управления питанием и удалили останки.</span>",
 							"You hear a crack!")
 						//ticker.mode:apcs-- //XSI said no and I agreed. -rastaf0
 					else
 						user.visible_message(\
-							"<span class='warning'>[user.name] has removed the power control board from [name]!</span>",\
-							"<span class='notice'>You remove the power control board.</span>")
+							"<span class='warning'>[user.name] удаляет плату управления питанием внутри [name]!</span>",\
+							"<span class='notice'>Вы снимаете плату управления питанием.</span>")
 						new /obj/item/weapon/module/power_control(loc)
 		else if(opened != 2) //cover isn't removed
 			opened = 0
 			update_icon()
 	else if(W.is_crowbar() && !(stat & BROKEN) )
 		if(coverlocked && !(stat & MAINT))
-			to_chat(user, "<span class='warning'>The cover is locked and cannot be opened.</span>")
+			to_chat(user, "<span class='warning'>Крышка заблокирована и не открывается.</span>")
 			return
 		else
 			opened = 1
 			update_icon()
 	else if	(istype(W, /obj/item/weapon/cell) && opened)	// trying to put a cell inside
 		if(cell)
-			to_chat(user, "The [name] already has a power cell installed.")
+			to_chat(user, "В [name] уже стоит энергоячейка.")
 			return
 		if(stat & MAINT)
-			to_chat(user, "<span class='warning'>You need to install the wiring and electronics first.</span>")
+			to_chat(user, "<span class='warning'>Сначала необходимо установить проводку и электронику.</span>")
 			return
 		if(W.w_class != ITEMSIZE_NORMAL)
-			to_chat(user, "\The [W] is too [W.w_class < 3? "small" : "large"] to work here.")
+			to_chat(user, "[W] слишком [W.w_class < 3? "мал" : "большой"], чтобы работать здесь.")
 			return
 
 		user.drop_item()

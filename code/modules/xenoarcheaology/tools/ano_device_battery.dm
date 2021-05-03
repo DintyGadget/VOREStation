@@ -45,7 +45,7 @@
 /obj/item/weapon/anodevice/attackby(var/obj/I as obj, var/mob/user as mob)
 	if(istype(I, /obj/item/weapon/anobattery))
 		if(!inserted_battery)
-			to_chat(user, "<font color='blue'>You insert the battery.</font>")
+			to_chat(user, "<font color='blue'>Вы вставляете батарею.</font>")
 			user.drop_item()
 			I.loc = src
 			inserted_battery = I
@@ -67,7 +67,7 @@
 
 /obj/item/weapon/anodevice/tgui_data(mob/user, datum/tgui/ui, datum/tgui_state/state)
 	var/list/data = ..()
-	
+
 	data["inserted_battery"] = inserted_battery
 	data["anomaly"] = null
 	data["charge"] = null
@@ -103,13 +103,13 @@
 		if("startup")
 			if(inserted_battery && inserted_battery.battery_effect && (inserted_battery.stored_charge > 0))
 				activated = TRUE
-				visible_message("<font color='blue'>[bicon(src)] [src] whirrs.</font>", "[bicon(src)]<font color='blue'>You hear something whirr.</font>")
+				visible_message("<font color='blue'>[bicon(src)] [src] whirrs.</font>", "[bicon(src)]<font color='blue'>Вы слышите какое то жужжание.</font>")
 				if(!inserted_battery.battery_effect.activated)
 					inserted_battery.battery_effect.ToggleActivate(1)
 				time_end = world.time + duration
 				last_process = world.time
 			else
-				to_chat(usr, "<span class='warning'>[src] is unable to start due to no anomolous power source inserted/remaining.</span>")
+				to_chat(usr, "<span class='warning'>[src] не может запуститься из-за того, что не вставлен/отсутствует аномальный источник питания.</span>")
 			return TRUE
 		if("shutdown")
 			activated = FALSE

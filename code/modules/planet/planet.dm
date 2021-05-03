@@ -3,7 +3,7 @@
 
 /datum/planet
 	var/name = "a rock"
-	var/desc = "Someone neglected to write a nice description for this poor rock."
+	var/desc = "Кто-то забыл написать хорошее описание этого бедного камня."
 
 	var/datum/time/current_time = new() // Holds the current time for sun positioning.  Note that we assume day and night is the same length because simplicity.
 	var/sun_process_interval = 1 HOUR

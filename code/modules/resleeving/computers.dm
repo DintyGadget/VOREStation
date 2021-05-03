@@ -81,12 +81,12 @@
 			pods += P
 			P.connected = src
 			P.name = "[initial(P.name)] #[pods.len]"
-			to_chat(user, "<span class='notice'>You connect [P] to [src].</span>")
+			to_chat(user, "<span class='notice'>Вы подключаете [P] к [src].</span>")
 	else if(istype(W, /obj/item/weapon/disk/transcore) && SStranscore && !SStranscore.core_dumped)
 		user.unEquip(W)
 		disk = W
 		disk.forceMove(src)
-		to_chat(user, "<span class='notice'>You insert \the [W] into \the [src].</span>")
+		to_chat(user, "<span class='notice'>Вы вставляете [W] в [src].</span>")
 	if(istype(W, /obj/item/weapon/disk/body_record))
 		var/obj/item/weapon/disk/body_record/brDisk = W
 		if(!brDisk.stored)
@@ -133,7 +133,7 @@
 /obj/machinery/computer/transhuman/resleeving/tgui_data(mob/user)
 	var/data[0]
 	data["menu"] = menu
-	
+
 	var/list/temppods[0]
 	for(var/obj/machinery/clonepod/transhuman/pod in pods)
 		var/status = "idle"
@@ -178,7 +178,7 @@
 	data["selected_pod"] = "\ref[selected_pod]"
 	data["selected_printer"] = "\ref[selected_printer]"
 	data["selected_sleever"] = "\ref[selected_sleever]"
-	
+
 	var/bodyrecords_list_ui[0]
 	for(var/N in SStranscore.body_scans)
 		var/datum/transhuman/body_record/BR = SStranscore.body_scans[N]
@@ -226,7 +226,7 @@
 			if(istype(active_mr))
 				if(isnull(active_mr.ckey))
 					qdel(active_mr)
-					set_temp("Error: Record corrupt.", "danger")
+					set_temp("Ошибка: Запись повреждена.", "danger")
 				else
 					var/can_sleeve_active = 1
 					if(!LAZYLEN(sleevers))
@@ -248,7 +248,7 @@
 					tgui_modal_message(src, action, "", null, payload)
 			else
 				active_mr = null
-				set_temp("Error: Record missing.", "danger")
+				set_temp("Ошибка: запись отсутствует.", "danger")
 		if("coredump")
 			if(disk)
 				SStranscore.core_dump(disk)

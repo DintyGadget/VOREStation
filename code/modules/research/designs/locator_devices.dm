@@ -63,8 +63,8 @@
 	name = "Locator device design ([name])"
 
 /datum/design/item/locator/beacon_locator
-	name = "Tracking beacon pinpointer"
-	desc = "Used to scan and locate signals on a particular frequency."
+	name = "Пинпоинтер с маяком"
+	desc = "Используется для сканирования и определения местоположения сигналов на определенной частоте."
 	id = "beacon_locator"
 	req_tech = list(TECH_MAGNET = 3, TECH_ENGINEERING = 2, TECH_BLUESPACE = 3)
 	materials = list(DEFAULT_WALL_MATERIAL = 1000,"glass" = 500, MAT_COPPER = 150)
@@ -72,7 +72,7 @@
 	sort_string = "DBAAA"
 
 /datum/design/item/locator/beacon
-	name = "Bluespace tracking beacon"
+	name = "Маяк слежения Bluespace"
 	id = "beacon"
 	req_tech = list(TECH_BLUESPACE = 1)
 	materials = list (DEFAULT_WALL_MATERIAL = 20, "glass" = 10, MAT_COPPER = 5)

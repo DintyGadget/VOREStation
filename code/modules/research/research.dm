@@ -137,71 +137,71 @@ GLOBAL_LIST_INIT(design_datums, list())
 	var/level = 1						//A simple number scale of the research level. Level 0 = Secret tech.
 
 /datum/tech/materials
-	name = "Materials Research"
-	desc = "Development of new and improved materials."
+	name = "Материалы"
+	desc = "Разработка новых и улучшенных материалов."
 	id = TECH_MATERIAL
 
 /datum/tech/engineering
-	name = "Engineering Research"
-	desc = "Development of new and improved engineering parts."
+	name = "Инженерия"
+	desc = "Разработка новых и улучшенных инженерных частей."
 	id = TECH_ENGINEERING
 
 /datum/tech/phorontech
-	name = "Phoron Research"
-	desc = "Research into the mysterious substance colloqually known as 'phoron'."
+	name = "Форон"
+	desc = "Исследование загадочного вещества, в просторечии известного как «форон»."
 	id = TECH_PHORON
 
 /datum/tech/powerstorage
-	name = "Power Manipulation Technology"
-	desc = "The various technologies behind the storage and generation of electicity."
+	name = "Манипуляция энергией"
+	desc = "Различные технологии, лежащие в основе хранения и производства электроэнергии."
 	id = TECH_POWER
 
 /datum/tech/bluespace
-	name = "'Blue-space' Research"
-	desc = "Research into the sub-reality known as 'blue-space'"
+	name = "'Blue-space'"
+	desc = "Исследование суб-реальности, известной как 'blue-space'"
 	id = TECH_BLUESPACE
 
 /datum/tech/biotech
-	name = "Biological Technology"
-	desc = "Research into the deeper mysteries of life and organic substances."
+	name = "Биология"
+	desc = "Исследование более глубоких загадок жизни и органических веществ."
 	id = TECH_BIO
 
 /datum/tech/combat
-	name = "Combat Systems Research"
-	desc = "The development of offensive and defensive systems."
+	name = "Боевые системы"
+	desc = "Развитие наступательной и оборонительной систем."
 	id = TECH_COMBAT
 
 /datum/tech/magnets
-	name = "Electromagnetic Spectrum Research"
-	desc = "Research into the electromagnetic spectrum. No clue how they actually work, though."
+	name = "Электромагнитный спектр"
+	desc = "Исследование электромагнитного спектра. Однако никто понятия не имеет, как это на самом деле работают."
 	id = TECH_MAGNET
 
 /datum/tech/programming
-	name = "Data Theory Research"
-	desc = "The development of new computer and artificial intelligence and data storage systems."
+	name = "Теория данных"
+	desc = "Разработка новых компьютеров, искусственного интеллекта и систем хранения данных."
 	id = TECH_DATA
 
 /datum/tech/syndicate
-	name = "Illegal Technologies Research"
-	desc = "The study of technologies that violate standard government regulations."
+	name = "Незаконное"
+	desc = "Изучение технологий, нарушающих стандартные государственные постановления."
 	id = TECH_ILLEGAL
 	level = 0
 
 /datum/tech/arcane
-	name = "Anomalous Research"
-	desc = "Study of phenomena that disobey the fundamental laws of this universe."
+	name = "Аномалии"
+	desc = "Изучение явлений, которые не подчиняются фундаментальным законам этой вселенной."
 	id = TECH_ARCANE
 	level = 0
 
 /datum/tech/precursor
-	name = "Precursor Research"
-	desc = "The applied study of Precursor Technology, for modern applications."
+	name = "Предтечи"
+	desc = "Прикладное исследование технологии предтечей для современных приложений."
 	id = TECH_PRECURSOR
 	level = 0
 
 /obj/item/weapon/disk/tech_disk
-	name = "technology disk"
-	desc = "A disk for storing technology data for further research."
+	name = "технологический диск"
+	desc = "Диск для хранения технологических данных для дальнейших исследований."
 	icon = 'icons/obj/discs_vr.dmi' //VOREStation Edit
 	icon_state = "data-blue" //VOREStation Edit
 	item_state = "card-id"
@@ -214,8 +214,8 @@ GLOBAL_LIST_INIT(design_datums, list())
 	randpixel_xy()
 
 /obj/item/weapon/disk/design_disk
-	name = "component design disk"
-	desc = "A disk for storing device design data for construction in lathes."
+	name = "диск с конструкцией компонентов"
+	desc = "Диск для хранения конструкторских данных устройства для строительства на Латах."
 	icon = 'icons/obj/discs_vr.dmi' //VOREStation Edit
 	icon_state = "data-purple" //VOREStation Edit
 	item_state = "card-id"

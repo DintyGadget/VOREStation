@@ -41,17 +41,17 @@
 
 // Xeno stun gun + projectile
 /obj/item/weapon/gun/energy/taser/xeno
-	name = "xeno taser gun"
-	desc = "Straight out of NT's testing laboratories, this small gun is used to subdue non-humanoid xeno life forms. \
-	While marketed towards handling slimes, it may be useful for other creatures."
+	name = "ксено тазер"
+	desc = "Прямо из испытательных лабораторий NT, этот небольшой пистолет используется для подавления негуманоидных форм жизни ксеносов. \
+	Хотя он предназначен для обработки слаймов, он может быть полезен для других существ."
 	icon_state = "taserold"
 	fire_sound = 'sound/weapons/taser2.ogg'
 	charge_cost = 120 // Twice as many shots.
 	projectile_type = /obj/item/projectile/beam/stun/xeno
 	accuracy = 30 // Make it a bit easier to hit the slimes.
-	description_info = "This gun will stun a slime or other lesser slimy lifeform for about two seconds, if hit with the projectile it fires."
-	description_fluff = "An easy to use weapon designed by NanoTrasen, for NanoTrasen.  This weapon is designed to subdue lesser \
-	slime-based xeno lifeforms at a distance.  It is ineffective at stunning non-slimy lifeforms such as humanoids."
+	description_info = "Эта пушка оглушит слайм или другую менее слаймовую форму жизни примерно на две секунды, если в нее попадет выпущенный снаряд."
+	description_fluff = "Простое в использовании оружие, разработанное компанией NanoTrasen, для NanoTrasen.  Это оружие предназначено для подавления \
+	меньших форм жизни ксеносов на основе слаймов, на расстоянии.. Он неэффективен при ошеломлении не слаймовых форм жизни, таких как гуманоиды."
 
 /obj/item/weapon/gun/energy/taser/xeno/robot // Borg version
 	self_recharge = 1
@@ -59,13 +59,13 @@
 	recharge_time = 3
 
 /obj/item/weapon/gun/energy/taser/xeno/sec //NT's corner-cutting option for their on-station security.
-	desc = "An NT Mk30 NL retrofitted to fire beams for subduing non-humanoid slimy xeno life forms."
+	desc = "NT Mk30 NL, модифицированный для стрельбы лучами, и для подавления негуманоидных слаймовых форм жизни ксеносов."
 	icon_state = "taserblue"
 	item_state = "taser"
 	projectile_type = /obj/item/projectile/beam/stun/xeno/weak
 	charge_cost = 480
 	accuracy = 0 //Same accuracy as a normal Sec taser.
-	description_fluff = "An NT Mk30 NL retrofitted after the events that occurred aboard the NRS Prometheus."
+	description_fluff = "NT Mk30 NL был модернизирован после событий, произошедших на борту NRS Prometheus."
 
 /obj/item/weapon/gun/energy/taser/xeno/sec/robot //Cyborg variant of the security xeno-taser.
 	self_recharge = 1

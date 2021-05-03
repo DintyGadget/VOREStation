@@ -21,7 +21,7 @@
 
 /datum/category_item/player_setup_item/vore/egg/content(var/mob/user)
 	. += "<br>"
-	. += " Egg Type: <a href='?src=\ref[src];vore_egg_type=1'>[pref.vore_egg_type]</a><br>"
+	. += " Вид яйца: <a href='?src=\ref[src];vore_egg_type=1'>[pref.vore_egg_type]</a><br>"
 
 /datum/category_item/player_setup_item/vore/egg/OnTopic(var/href, var/list/href_list, var/mob/user)
 	if(!CanUseTopic(user))

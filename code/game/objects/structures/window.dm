@@ -28,24 +28,24 @@
 	. = ..()
 
 	if(health == maxhealth)
-		. += "<span class='notice'>It looks fully intact.</span>"
+		. += "<span class='notice'>Выглядит нетронуто.</span>"
 	else
 		var/perc = health / maxhealth
 		if(perc > 0.75)
-			. += "<span class='notice'>It has a few cracks.</span>"
+			. += "<span class='notice'>Есть несколько трещин.</span>"
 		else if(perc > 0.5)
-			. += "<span class='warning'>It looks slightly damaged.</span>"
+			. += "<span class='warning'>Выглядит слегка поврежденно.</span>"
 		else if(perc > 0.25)
-			. += "<span class='warning'>It looks moderately damaged.</span>"
+			. += "<span class='warning'>Выглядит умеренно поврежденно.</span>"
 		else
-			. += "<span class='danger'>It looks heavily damaged.</span>"
+			. += "<span class='danger'>Выглядит сильно поврежденно.</span>"
 	if(silicate)
 		if (silicate < 30)
-			. += "<span class='notice'>It has a thin layer of silicate.</span>"
+			. += "<span class='notice'>Имеет тонкий слой силиката.</span>"
 		else if (silicate < 70)
-			. += "<span class='notice'>It is covered in silicate.</span>"
+			. += "<span class='notice'>Покрыто силикатом.</span>"
 		else
-			. += "<span class='notice'>There is a thick layer of silicate covering it.</span>"
+			. += "<span class='notice'>Покрыто толстым слоем силиката.</span>"
 
 /obj/structure/window/examine_icon()
 	return icon(icon=initial(icon),icon_state=initial(icon_state))
@@ -64,13 +64,13 @@
 		if(sound_effect)
 			playsound(src, 'sound/effects/Glasshit.ogg', 100, 1)
 		if(health < maxhealth / 4 && initialhealth >= maxhealth / 4)
-			visible_message("[src] looks like it's about to shatter!" )
+			visible_message("[src] похоже, вот-вот разобьется!" )
 			update_icon()
 		else if(health < maxhealth / 2 && initialhealth >= maxhealth / 2)
-			visible_message("[src] looks seriously damaged!" )
+			visible_message("[src] выглядит серьезно поврежденным!" )
 			update_icon()
 		else if(health < maxhealth * 3/4 && initialhealth >= maxhealth * 3/4)
-			visible_message("Cracks begin to appear in [src]!" )
+			visible_message("В [src] начинают появляться трещины!" )
 			update_icon()
 	return
 
@@ -78,7 +78,7 @@
 	if(health < maxhealth) // Mend the damage
 		health = min(health + amount * 3, maxhealth)
 		if(health == maxhealth)
-			visible_message("[src] looks fully repaired." )
+			visible_message("[src] выглядит полностью восстановленным." )
 	else // Reinforce
 		silicate = min(silicate + amount, 100)
 		updateSilicate()
@@ -96,7 +96,7 @@
 /obj/structure/window/proc/shatter(var/display_message = 1)
 	playsound(src, "shatter", 70, 1)
 	if(display_message)
-		visible_message("[src] shatters!")
+		visible_message("[src] разбивается!")
 	new shardtype(loc)
 	if(reinf)
 		new /obj/item/stack/rods(loc)
@@ -175,14 +175,14 @@
 	take_damage(tforce)
 
 /obj/structure/window/attack_tk(mob/user as mob)
-	user.visible_message("<span class='notice'>Something knocks on [src].</span>")
+	user.visible_message("<span class='notice'>Кто-то стучит в [src].</span>")
 	playsound(src, 'sound/effects/Glasshit.ogg', 50, 1)
 
 /obj/structure/window/attack_hand(mob/user as mob)
 	user.setClickCooldown(user.get_attack_speed())
 	if(HULK in user.mutations)
 		user.say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!"))
-		user.visible_message("<span class='danger'>[user] smashes through [src]!</span>")
+		user.visible_message("<span class='danger'>[user] пробивает [src]!</span>")
 		user.do_attack_animation(src)
 		shatter()
 
@@ -196,14 +196,14 @@
 
 		playsound(src, 'sound/effects/glassknock.ogg', 80, 1)
 		user.do_attack_animation(src)
-		usr.visible_message("<span class='danger'>\The [usr] bangs against \the [src]!</span>",
-							"<span class='danger'>You bang against \the [src]!</span>",
-							"You hear a banging sound.")
+		usr.visible_message("<span class='danger'>[usr] бьется о [src]!</span>",
+							"<span class='danger'>Вы бьетесь о [src]!</span>",
+							"Вы слышите удар.")
 	else
 		playsound(src, 'sound/effects/glassknock.ogg', 80, 1)
-		usr.visible_message("[usr.name] knocks on the [src.name].",
-							"You knock on the [src.name].",
-							"You hear a knocking sound.")
+		usr.visible_message("[usr.name] стучит по [src.name].",
+							"Вы стучите по [src.name].",
+							"Вы слышите стук.")
 	return
 
 /obj/structure/window/attack_generic(var/mob/user, var/damage)
@@ -211,12 +211,12 @@
 	if(!damage)
 		return
 	if(damage >= STRUCTURE_MIN_DAMAGE_THRESHOLD)
-		visible_message("<span class='danger'>[user] smashes into [src]!</span>")
+		visible_message("<span class='danger'>[user] врезается в [src]!</span>")
 		if(reinf)
 			damage = damage / 2
 		take_damage(damage)
 	else
-		visible_message("<span class='notice'>\The [user] bonks \the [src] harmlessly.</span>")
+		visible_message("<span class='notice'>[user] безвредно сбивает [src].</span>")
 	user.do_attack_animation(src)
 	return 1
 
@@ -228,15 +228,15 @@
 		var/obj/item/weapon/weldingtool/WT = W
 		if(health < maxhealth)
 			if(WT.remove_fuel(1 ,user))
-				to_chat(user, "<span class='notice'>You begin repairing [src]...</span>")
+				to_chat(user, "<span class='notice'>Вы начинаете ремонтировать [src]...</span>")
 				playsound(src, WT.usesound, 50, 1)
 				if(do_after(user, 40 * WT.toolspeed, target = src))
 					health = maxhealth
 			//		playsound(src, 'sound/items/Welder.ogg', 50, 1)
 					update_icon()
-					to_chat(user, "<span class='notice'>You repair [src].</span>")
+					to_chat(user, "<span class='notice'>Вы ремонтируете [src].</span>")
 		else
-			to_chat(user, "<span class='warning'>[src] is already in good condition!</span>")
+			to_chat(user, "<span class='warning'>[src] уже в хорошем состоянии!</span>")
 		return
 
 	// Slamming.
@@ -304,7 +304,7 @@
 			playsound(src, 'sound/effects/sparks1.ogg', 75, 1)
 			user.visible_message( \
 				"<span class='notice'>\The [user] begins to wire \the [src] for electrochromic tinting.</span>", \
-				"<span class='notice'>You begin to wire \the [src] for electrochromic tinting.</span>", \
+				"<span class='notice'>Вы начинаете подключать [src] для электрохромной тонировки.</span>", \
 				"You hear sparks.")
 			if(do_after(user, 20 * C.toolspeed, src) && state == 0)
 				playsound(src, 'sound/items/Deconstruct.ogg', 50, 1)
@@ -343,7 +343,7 @@
 
 
 /obj/structure/window/verb/rotate_counterclockwise()
-	set name = "Rotate Window Counterclockwise"
+	set name = "Повернуть окно против часовой"
 	set category = "Object"
 	set src in oview(1)
 
@@ -354,7 +354,7 @@
 		return 0
 
 	if(anchored)
-		to_chat(usr, "It is fastened to the floor therefore you can't rotate it!")
+		to_chat(usr, "Оно прикреплено к полу, поэтому вращать его нельзя!")
 		return 0
 
 	update_nearby_tiles(need_rebuild=1) //Compel updates before
@@ -365,7 +365,7 @@
 
 
 /obj/structure/window/verb/rotate_clockwise()
-	set name = "Rotate Window Clockwise"
+	set name = "Повернуть окно по часовой"
 	set category = "Object"
 	set src in oview(1)
 
@@ -376,7 +376,7 @@
 		return 0
 
 	if(anchored)
-		to_chat(usr, "It is fastened to the floor therefore you can't rotate it!")
+		to_chat(usr, "Оно прикреплено к полу, поэтому вращать его нельзя!")
 		return 0
 
 	update_nearby_tiles(need_rebuild=1) //Compel updates before
@@ -491,7 +491,7 @@
 
 
 /obj/structure/window/basic
-	desc = "It looks thin and flimsy. A few knocks with... almost anything, really should shatter it."
+	desc = "Выглядит тонким и хлипким. Несколько ударов ... почти чем угодно, действительно должны разрушить его."
 	icon_state = "window"
 	basestate = "window"
 	glasstype = /obj/item/stack/material/glass
@@ -507,7 +507,7 @@
 
 /obj/structure/window/phoronbasic
 	name = "phoron window"
-	desc = "A borosilicate alloy window. It seems to be quite strong."
+	desc = "Окно из боросиликатного сплава. Вроде довольно прочное."
 	basestate = "phoronwindow"
 	icon_state = "phoronwindow"
 	shardtype = /obj/item/weapon/material/shard/phoron
@@ -524,7 +524,7 @@
 
 /obj/structure/window/phoronreinforced
 	name = "reinforced borosilicate window"
-	desc = "A borosilicate alloy window, with rods supporting it. It seems to be very strong."
+	desc = "Окно из боросиликатного сплава со стержнями, поддерживающими его. Вроде очень прочное."
 	basestate = "phoronrwindow"
 	icon_state = "phoronrwindow"
 	shardtype = /obj/item/weapon/material/shard/phoron
@@ -542,7 +542,7 @@
 
 /obj/structure/window/reinforced
 	name = "reinforced window"
-	desc = "It looks rather strong. Might take a few good hits to shatter it."
+	desc = "Смотрится довольно прочно. Может потребоваться несколько хороших ударов, чтобы разбить его."
 	icon_state = "rwindow"
 	basestate = "rwindow"
 	maxhealth = 40.0
@@ -683,7 +683,7 @@
 /obj/structure/window/rcd_act(mob/living/user, obj/item/weapon/rcd/the_rcd, passed_mode)
 	switch(passed_mode)
 		if(RCD_DECONSTRUCT)
-			to_chat(user, span("notice", "You deconstruct \the [src]."))
+			to_chat(user, span("notice", "Вы разбираете [src]."))
 			qdel(src)
 			return TRUE
 	return FALSE

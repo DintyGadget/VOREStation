@@ -1,6 +1,6 @@
 /obj/machinery/radiocarbon_spectrometer
 	name = "radiocarbon spectrometer"
-	desc = "A specialised, complex scanner for gleaning information on all manner of small things."
+	desc = "Специализированный сложный сканер для сбора информации о самых разных мелочах."
 	anchored = 1
 	density = 1
 	icon = 'icons/obj/virology_vr.dmi' //VOREStation Edit
@@ -126,7 +126,7 @@
 
 /obj/machinery/radiocarbon_spectrometer/tgui_data(mob/user, datum/tgui/ui, datum/tgui_state/state)
 	var/list/data = ..()
-	
+
 	// this is the data which will be sent to the ui
 	data["scanned_item"] = (scanned_item ? scanned_item.name : "")
 	data["scanned_item_desc"] = (scanned_item ? (scanned_item.desc ? scanned_item.desc : "No information on record.") : "")

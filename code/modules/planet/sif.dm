@@ -5,9 +5,9 @@ var/datum/planet/sif/planet_sif = null
 
 /datum/planet/sif
 	name = "Sif"
-	desc = "Sif is a terrestrial planet in the Vir system. It is somewhat earth-like, in that it has oceans, a \
-	breathable atmosphere, a magnetic field, weather, and similar gravity to Earth. It is currently the capital planet of Vir. \
-	Its center of government is the equatorial city and site of first settlement, New Reykjavik." // Ripped straight from the wiki.
+	desc = "Сиф - планета земного типа в системе Дева. Она чем-то похожа на Землю, поскольку имеет океаны, \
+	пригодную для дыхания атмосферу, магнитное поле, погоду и гравитацию, аналогичную земной. В настоящее время это столица планеты Дева. \
+	Его правительственный центр - экваториальный город и место первого поселения, Новый Рейкьявик." // Ripped straight from the wiki.
 	current_time = new /datum/time/sif() // 32 hour clocks are nice.
 //	expected_z_levels = list(1) // To be changed when real map is finished.
 	planetary_wall_type = /turf/unsimulated/wall/planetary/sif
@@ -149,12 +149,12 @@ var/datum/planet/sif/planet_sif = null
 		WEATHER_OVERCAST = 40
 		)
 	transition_messages = list(
-		"The sky clears up.",
-		"The sky is visible.",
-		"The weather is calm."
+		"Небо проясняется.",
+		"Видимое небо.",
+		"Погода спокойная."
 		)
 	sky_visible = TRUE
-	observed_message = "The sky is clear."
+	observed_message = "Небо чистое."
 
 /datum/weather/sif/overcast
 	name = "overcast"
@@ -167,11 +167,11 @@ var/datum/planet/sif/planet_sif = null
 		WEATHER_RAIN = 5,
 		WEATHER_HAIL = 5
 		)
-	observed_message = "It is overcast, all you can see are clouds."
+	observed_message = "Сейчас пасмурно, видны только облака."
 	transition_messages = list(
-		"All you can see above are clouds.",
-		"Clouds cut off your view of the sky.",
-		"It's very cloudy."
+		"Все, что вы видите наверху, - это облака.",
+		"Облака закрывают вам обзор неба.",
+		"Очень пасмурно."
 		)
 
 /datum/weather/sif/light_snow
