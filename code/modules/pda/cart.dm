@@ -46,7 +46,7 @@ var/list/civilian_cartridges = list(
 
 /obj/item/weapon/cartridge
 	name = "generic cartridge"
-	desc = "A data cartridge for portable microcomputers."
+	desc = "Картридж данных для портативных микрокомпьютеров."
 	icon = 'icons/obj/pda.dmi'
 	icon_state = "cart"
 	item_state = "electronic"
@@ -121,7 +121,7 @@ var/list/civilian_cartridges = list(
 
 /obj/item/weapon/cartridge/janitor
 	name = "\improper CustodiPRO cartridge"
-	desc = "The ultimate in clean-room design."
+	desc = "Превосходный дизайн чистых помещений."
 	icon_state = "cart-j"
 	programs = list(new/datum/data/pda/app/janitor)
 
@@ -145,11 +145,11 @@ var/list/civilian_cartridges = list(
 
 /obj/item/weapon/cartridge/service
 	name = "\improper Serv-U Pro cartridge"
-	desc = "A data cartridge designed to serve YOU!"
+	desc = "Картридж с данными, предназначенный для ВАС!"
 
 /obj/item/weapon/cartridge/signal
 	name = "generic signaler cartridge"
-	desc = "A data cartridge with an integrated radio signaler module."
+	desc = "Картридж данных со встроенным модулем радиосигнала."
 	programs = list(new/datum/data/pda/app/signaller)
 
 /obj/item/weapon/cartridge/signal/Initialize()
@@ -158,7 +158,7 @@ var/list/civilian_cartridges = list(
 
 /obj/item/weapon/cartridge/signal/science
 	name = "\improper Signal Ace 2 cartridge"
-	desc = "Complete with integrated radio signaler!"
+	desc = "В комплекте со встроенным радиосигналом!"
 	icon_state = "cart-tox"
 	programs = list(
 		new/datum/data/pda/utility/scanmode/gas,

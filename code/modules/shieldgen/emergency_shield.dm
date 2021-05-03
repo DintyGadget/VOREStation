@@ -1,6 +1,6 @@
 /obj/machinery/shield
-	name = "emergency energy shield"
-	desc = "An energy shield used to contain hull breaches."
+	name = "аварийный энергетический щит"
+	desc = "Энергетический щит, используемый для сдерживания пробоин в корпусе."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "shield-old"
 	density = 1
@@ -14,8 +14,8 @@
 	var/shield_idle_power = 1500		//how much power we use when just being sustained.
 
 /obj/machinery/shield/malfai
-	name = "emergency forcefield"
-	desc = "A weak forcefield which seems to be projected by the station's emergency atmosphere containment field"
+	name = "аварийное силовое поле"
+	desc = "Слабое силовое поле, которое, по-видимому, проецируется аварийным полем сдерживания атмосферы станции"
 	health = max_health/2 // Half health, it's not suposed to resist much.
 
 /obj/machinery/shield/malfai/process()
@@ -24,7 +24,7 @@
 
 /obj/machinery/shield/proc/check_failure()
 	if (src.health <= 0)
-		visible_message("<span class='notice'>\The [src] dissipates!</span>")
+		visible_message("<span class='notice'>[src] рассеивается!</span>")
 		qdel(src)
 		return
 
@@ -93,7 +93,7 @@
 
 /obj/machinery/shield/hitby(AM as mob|obj)
 	//Let everyone know we've been hit!
-	visible_message("<span class='notice'><B>\[src] was hit by [AM].</B></span>")
+	visible_message("<span class='notice'><B>\[src] был сбит [AM].</B></span>")
 
 	//Super realistic, resource-intensive, real-time damage calculations.
 	var/tforce = 0
@@ -252,25 +252,25 @@
 
 /obj/machinery/shieldgen/attack_hand(mob/user as mob)
 	if(locked)
-		to_chat(user, "The machine is locked, you are unable to use it.")
+		to_chat(user, "Машина заблокирована, вы не можете ею пользоваться.")
 		return
 	if(is_open)
-		to_chat(user, "The panel must be closed before operating this machine.")
+		to_chat(user, "Панель должна быть закрыта перед началом работы с этой машиной.")
 		return
 
 	if (src.active)
-		user.visible_message("<font color='blue'>[bicon(src)] [user] deactivated the shield generator.</font>", \
-			"<font color='blue'>[bicon(src)] You deactivate the shield generator.</font>", \
-			"You hear heavy droning fade out.")
+		user.visible_message("<font color='blue'>[bicon(src)] [user] деактивирует генератор щита.</font>", \
+			"<font color='blue'>[bicon(src)] Вы деактивируете генератор щита.</font>", \
+			"Вы слышите, как затихает тяжелое гудение.")
 		src.shields_down()
 	else
 		if(anchored)
-			user.visible_message("<font color='blue'>[bicon(src)] [user] activated the shield generator.</font>", \
-				"<font color='blue'>[bicon(src)] You activate the shield generator.</font>", \
-				"You hear heavy droning.")
+			user.visible_message("<font color='blue'>[bicon(src)] [user] активирует генератор щита.</font>", \
+				"<font color='blue'>[bicon(src)] Вы активируете генератор щита.</font>", \
+				"Вы слышите тяжелое гудение.")
 			src.shields_up()
 		else
-			to_chat(user, "The device must first be secured to the floor.")
+			to_chat(user, "Устройство предварительно необходимо закрепить на полу.")
 	return
 
 /obj/machinery/shieldgen/emag_act(var/remaining_charges, var/mob/user)
@@ -283,21 +283,21 @@
 	if(W.is_screwdriver())
 		playsound(src, W.usesound, 100, 1)
 		if(is_open)
-			to_chat(user, "<font color='blue'>You close the panel.</font>")
+			to_chat(user, "<font color='blue'>Вы закрываете панель.</font>")
 			is_open = 0
 		else
-			to_chat(user, "<font color='blue'>You open the panel and expose the wiring.</font>")
+			to_chat(user, "<font color='blue'>Вы открываете панель и обнажаете проводку.</font>")
 			is_open = 1
 
 	else if(istype(W, /obj/item/stack/cable_coil) && malfunction && is_open)
 		var/obj/item/stack/cable_coil/coil = W
-		to_chat(user, "<span class='notice'>You begin to replace the wires.</span>")
+		to_chat(user, "<span class='notice'>Вы начинаете заменять провода.</span>")
 		//if(do_after(user, min(60, round( ((getMaxHealth()/health)*10)+(malfunction*10) ))) //Take longer to repair heavier damage
 		if(do_after(user, 30))
 			if (coil.use(1))
 				health = max_health
 				malfunction = 0
-				to_chat(user, "<span class='notice'>You repair the [src]!</span>")
+				to_chat(user, "<span class='notice'>Вы чините [src]!</span>")
 				update_icon()
 
 	else if(W.is_wrench())
@@ -306,15 +306,15 @@
 			return
 		if(anchored)
 			playsound(src, W.usesound, 100, 1)
-			to_chat(user, "<font color='blue'>You unsecure the [src] from the floor!</font>")
+			to_chat(user, "<font color='blue'>Вы открепляете [src] от пола!</font>")
 			if(active)
-				to_chat(user, "<font color='blue'>The [src] shuts off!</font>")
+				to_chat(user, "<font color='blue'>[src] отключается!</font>")
 				src.shields_down()
 			anchored = 0
 		else
 			if(istype(get_turf(src), /turf/space)) return //No wrenching these in space!
 			playsound(src, W.usesound, 100, 1)
-			to_chat(user, "<font color='blue'>You secure the [src] to the floor!</font>")
+			to_chat(user, "<font color='blue'>Вы прикрепляете [src] к полу!</font>")
 			anchored = 1
 
 

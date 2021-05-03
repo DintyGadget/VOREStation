@@ -52,7 +52,7 @@
 /datum/data/pda/app/notekeeper/start()
 	. = ..()
 	if(!note)
-		note = "Congratulations, your station has chosen the [pda.model_name]!"
+		note = "Поздравляем, ваша станция выбрала [pda.model_name]!"
 
 /datum/data/pda/app/notekeeper/update_ui(mob/user as mob, list/data)
 	data["note"] = note									// current pda notes
@@ -62,7 +62,7 @@
 		return TRUE
 	switch(action)
 		if("Edit")
-			var/n = input("Please enter message", name, notehtml) as message
+			var/n = input("Пожалуйста, введите сообщение", name, notehtml) as message
 			if(pda.loc == usr)
 				note = adminscrub(n)
 				notehtml = html_decode(note)

@@ -1,6 +1,6 @@
 /obj/machinery/keycard_auth
 	name = "Keycard Authentication Device"
-	desc = "This device is used to trigger station functions, which require more than one ID card to authenticate."
+	desc = "Это устройство используется для запуска функций станции, для аутентификации которых требуется более одной идентификационной карты."
 	icon = 'icons/obj/monitors.dmi'
 	icon_state = "auth_off"
 	layer = ABOVE_WINDOW_LAYER
@@ -23,12 +23,12 @@
 	power_channel = ENVIRON
 
 /obj/machinery/keycard_auth/attack_ai(mob/user as mob)
-	to_chat (user, "<span class='warning'>A firewall prevents you from interfacing with this device!</span>")
+	to_chat (user, "<span class='warning'>Брандмауэр не позволяет вам взаимодействовать с этим устройством!</span>")
 	return
 
 /obj/machinery/keycard_auth/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(stat & (NOPOWER|BROKEN))
-		to_chat(user, "This device is not powered.")
+		to_chat(user, "Это устройство не запитано.")
 		return
 	if(istype(W,/obj/item/weapon/card/id))
 		var/obj/item/weapon/card/id/ID = W
@@ -43,10 +43,10 @@
 				broadcast_request() //This is the device making the initial event request. It needs to broadcast to other devices
 
 	if(W.is_screwdriver())
-		to_chat(user, "You begin removing the faceplate from the [src]")
+		to_chat(user, "Вы начинаете снимать лицевую панель с [src]")
 		playsound(src, W.usesound, 50, 1)
 		if(do_after(user, 10 * W.toolspeed))
-			to_chat(user, "You remove the faceplate from the [src]")
+			to_chat(user, "Вы снимаете лицевую панель с [src]")
 			var/obj/structure/frame/A = new /obj/structure/frame(loc)
 			var/obj/item/weapon/circuitboard/M = new circuit(A)
 			A.frame_type = M.board_type
@@ -71,34 +71,34 @@
 
 /obj/machinery/keycard_auth/attack_hand(mob/user as mob)
 	if(user.stat || stat & (NOPOWER|BROKEN))
-		to_chat(user, "This device is not powered.")
+		to_chat(user, "Это устройство не запитано.")
 		return
 	if(!user.IsAdvancedToolUser())
 		return 0
 	if(busy)
-		to_chat(user, "This device is busy.")
+		to_chat(user, "Это устройство занято.")
 		return
 
 	user.set_machine(src)
 
-	var/dat = "<h1>Keycard Authentication Device</h1>"
+	var/dat = "<meta charset=\"utf-8\"><h1>Keycard Authentication Device</h1>"
 
-	dat += "This device is used to trigger some high security events. It requires the simultaneous swipe of two high-level ID cards."
+	dat += "Это устройство используется для запуска некоторых событий с высоким уровнем безопасности. Это требует одновременного считывания двух высокоуровневых ID карт."
 	dat += "<br><hr><br>"
 
 	if(screen == 1)
-		dat += "Select an event to trigger:<ul>"
-		dat += "<li><A href='?src=\ref[src];triggerevent=Red alert'>Red alert</A></li>"
+		dat += "Выберите событие для запуска:<ul>"
+		dat += "<li><A href='?src=\ref[src];triggerevent=Red alert'>Красная тревога</A></li>"
 		if(!config.ert_admin_call_only)
-			dat += "<li><A href='?src=\ref[src];triggerevent=Emergency Response Team'>Emergency Response Team</A></li>"
+			dat += "<li><A href='?src=\ref[src];triggerevent=Emergency Response Team'>Группа аварийного реагирования</A></li>"
 
-		dat += "<li><A href='?src=\ref[src];triggerevent=Grant Emergency Maintenance Access'>Grant Emergency Maintenance Access</A></li>"
-		dat += "<li><A href='?src=\ref[src];triggerevent=Revoke Emergency Maintenance Access'>Revoke Emergency Maintenance Access</A></li>"
+		dat += "<li><A href='?src=\ref[src];triggerevent=Grant Emergency Maintenance Access'>Предоставить доступ для аварийного обслуживания</A></li>"
+		dat += "<li><A href='?src=\ref[src];triggerevent=Revoke Emergency Maintenance Access'>Отменить доступ для аварийного обслуживания</A></li>"
 		dat += "</ul>"
 		user << browse(dat, "window=keycard_auth;size=500x250")
 	if(screen == 2)
-		dat += "Please swipe your card to authorize the following event: <b>[event]</b>"
-		dat += "<p><A href='?src=\ref[src];reset=1'>Back</A>"
+		dat += "Пожалуйста, проведите своей картой, чтобы разрешить следующее событие: <b>[event]</b>"
+		dat += "<p><A href='?src=\ref[src];reset=1'>Назад</A>"
 		user << browse(dat, "window=keycard_auth;size=500x250")
 	return
 
@@ -106,10 +106,10 @@
 /obj/machinery/keycard_auth/Topic(href, href_list)
 	..()
 	if(busy)
-		to_chat(usr, "This device is busy.")
+		to_chat(usr, "Это устройство занято.")
 		return
 	if(usr.stat || stat & (BROKEN|NOPOWER))
-		to_chat(usr, "This device is without power.")
+		to_chat(usr, "Это устройство обесточено.")
 		return
 	if(href_list["triggerevent"])
 		event = href_list["triggerevent"]
@@ -175,7 +175,7 @@
 			feedback_inc("alert_keycard_auth_maintRevoke",1)
 		if("Emergency Response Team")
 			if(is_ert_blocked())
-				to_chat(usr, "<font color='red'>All emergency response teams are dispatched and can not be called at this time.</font>")
+				to_chat(usr, "<font color='red'>Все группы аварийного реагирования отправлены и не могут быть вызваны в настоящее время.</font>")
 				return
 
 			trigger_armed_response_team(1)
@@ -189,13 +189,13 @@ var/global/maint_all_access = 0
 
 /proc/make_maint_all_access()
 	maint_all_access = 1
-	to_world("<font size=4 color='red'>Attention!</font>")
-	to_world("<font color='red'>The maintenance access requirement has been revoked on all airlocks.</font>")
+	to_world("<font size=4 color='red'>Внимание!</font>")
+	to_world("<font color='red'>Требование доступа для обслуживания было отменено для всех шлюзов.</font>")
 
 /proc/revoke_maint_all_access()
 	maint_all_access = 0
-	to_world("<font size=4 color='red'>Attention!</font>")
-	to_world("<font color='red'>The maintenance access requirement has been readded on all maintenance airlocks.</font>")
+	to_world("<font size=4 color='red'>Внимание!</font>")
+	to_world("<font color='red'>Требование доступа для обслуживания было изменено на все шлюзы для обслуживания.</font>")
 
 /obj/machinery/door/airlock/allowed(mob/M)
 	if(maint_all_access && src.check_access_list(list(access_maint_tunnels)))

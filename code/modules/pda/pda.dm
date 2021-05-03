@@ -5,7 +5,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 
 /obj/item/device/pda
 	name = "\improper PDA"
-	desc = "A portable microcomputer by Thinktronic Systems, LTD. Functionality determined by a preprogrammed ROM cartridge."
+	desc = "Портативный микрокомпьютер от Thinktronic Systems, LTD. Функциональность определяется предварительно запрограммированным картриджем ПЗУ."
 	icon = 'icons/obj/pda.dmi'
 	icon_state = "pda"
 	item_state = "electronic"
@@ -20,7 +20,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 	var/obj/item/weapon/cartridge/cartridge = null //current cartridge
 
 	//Secondary variables
-	var/model_name = "Thinktronic 5230 Personal Data Assistant"
+	var/model_name = "Thinktronic 5230 Помощник по работе с персональными данными"
 	var/datum/data/pda/utility/scanmode/scanmode = null
 
 	var/lock_code = "" // Lockcode to unlock uplink

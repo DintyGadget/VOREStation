@@ -1,6 +1,6 @@
 /obj/item/radio/integrated
 	name = "\improper PDA radio module"
-	desc = "An electronic radio system."
+	desc = "Электронная радиосистема."
 	icon = 'icons/obj/module.dmi'
 	icon_state = "power_mod"
 	var/obj/item/device/pda/hostpda = null
@@ -8,7 +8,7 @@
 	var/list/botlist = null		// list of bots
 	var/mob/living/bot/active 	// the active bot; if null, show bot list
 	var/list/botstatus			// the status signal sent by the bot
-	
+
 	var/bot_type				//The type of bot it is.
 	var/bot_filter				//Determines which radio filter to use.
 

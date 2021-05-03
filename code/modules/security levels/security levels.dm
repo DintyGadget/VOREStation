@@ -32,40 +32,40 @@
 	if(level >= SEC_LEVEL_GREEN && level <= SEC_LEVEL_DELTA && level != security_level)
 		switch(level)
 			if(SEC_LEVEL_GREEN)
-				security_announcement_down.Announce("[config.alert_desc_green]", "Attention! Alert level lowered to code green.")
+				security_announcement_down.Announce("[config.alert_desc_green]", "Внимание! Уровень угрозы понижен до зеленого.")
 				security_level = SEC_LEVEL_GREEN
 			if(SEC_LEVEL_YELLOW)
 				if(security_level < SEC_LEVEL_YELLOW)
-					security_announcement_up.Announce("[config.alert_desc_yellow_upto]", "Attention! Alert level elevated to yellow")
+					security_announcement_up.Announce("[config.alert_desc_yellow_upto]", "Внимание! Уровень угрозы повышен до желтого")
 				else
-					security_announcement_down.Announce("[config.alert_desc_yellow_downto]", "Attention! Alert level lowered to yellow")
+					security_announcement_down.Announce("[config.alert_desc_yellow_downto]", "Внимание! Уровень угрозы понижен до желтого")
 				security_level = SEC_LEVEL_YELLOW
 			if(SEC_LEVEL_VIOLET)
 				if(security_level < SEC_LEVEL_VIOLET)
-					security_announcement_up.Announce("[config.alert_desc_violet_upto]", "Attention! Alert level elevated to violet")
+					security_announcement_up.Announce("[config.alert_desc_violet_upto]", "Внимание! Уровень угрозы повышен до фиолетового")
 				else
-					security_announcement_down.Announce("[config.alert_desc_violet_downto]", "Attention! Alert level lowered to violet")
+					security_announcement_down.Announce("[config.alert_desc_violet_downto]", "Внимание! Уровень угрозы понижен до фиолетового")
 				security_level = SEC_LEVEL_VIOLET
 			if(SEC_LEVEL_ORANGE)
 				if(security_level < SEC_LEVEL_ORANGE)
-					security_announcement_up.Announce("[config.alert_desc_orange_upto]", "Attention! Alert level elevated to orange")
+					security_announcement_up.Announce("[config.alert_desc_orange_upto]", "Внимание! Уровень угрозы повышен до оранжевого")
 				else
-					security_announcement_down.Announce("[config.alert_desc_orange_downto]", "Attention! Alert level lowered to orange")
+					security_announcement_down.Announce("[config.alert_desc_orange_downto]", "Внимание! Уровень угрозы понижен до оранжевого")
 				security_level = SEC_LEVEL_ORANGE
 			if(SEC_LEVEL_BLUE)
 				if(security_level < SEC_LEVEL_BLUE)
-					security_announcement_up.Announce("[config.alert_desc_blue_upto]", "Attention! Alert level elevated to blue")
+					security_announcement_up.Announce("[config.alert_desc_blue_upto]", "Внимание! Уровень угрозы повышен до синего")
 				else
-					security_announcement_down.Announce("[config.alert_desc_blue_downto]", "Attention! Alert level lowered to blue")
+					security_announcement_down.Announce("[config.alert_desc_blue_downto]", "Внимание! Уровень угрозы понижен до синего")
 				security_level = SEC_LEVEL_BLUE
 			if(SEC_LEVEL_RED)
 				if(security_level < SEC_LEVEL_RED)
-					security_announcement_up.Announce("[config.alert_desc_red_upto]", "Attention! Code red!", new_sound = sound('sound/effects/alert_levels/red_alert.ogg', volume = 75))
+					security_announcement_up.Announce("[config.alert_desc_red_upto]", "Внимание! Код красный!", new_sound = sound('sound/effects/alert_levels/red_alert.ogg', volume = 75))
 				else
-					security_announcement_down.Announce("[config.alert_desc_red_downto]", "Attention! Code red!")
+					security_announcement_down.Announce("[config.alert_desc_red_downto]", "Внимание! Код красный!")
 				security_level = SEC_LEVEL_RED
 			if(SEC_LEVEL_DELTA)
-				security_announcement_up.Announce("[config.alert_desc_delta]", "Attention! Delta alert level reached!", new_sound = 'sound/effects/alert_levels/deltaklaxon.ogg')
+				security_announcement_up.Announce("[config.alert_desc_delta]", "Внимание! Достигнут уровень дельта-оповещения!", new_sound = 'sound/effects/alert_levels/deltaklaxon.ogg')
 				security_level = SEC_LEVEL_DELTA
 
 		var/newlevel = get_security_level()
@@ -89,7 +89,7 @@
 		spawn()
 			SSnightshift.check_nightshift()
 
-		admin_chat_message(message = "Security level is now: [uppertext(get_security_level())]", color = "#CC2222") //VOREStation Add
+		admin_chat_message(message = "Уровень безопасности: [uppertext(get_security_level())]", color = "#CC2222") //VOREStation Add
 
 /proc/get_security_level()
 	switch(security_level)
