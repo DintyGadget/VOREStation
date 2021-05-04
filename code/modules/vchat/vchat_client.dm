@@ -398,7 +398,7 @@ var/to_chat_src
 		return
 
 	// Write the CSS file to the log
-	var/text_blob = "<html><head><style>"
+	var/text_blob = "<html><meta charset=\"utf-8\"><head><style>"
 	text_blob += file2text(file("code/modules/vchat/css/ss13styles.css"))
 	text_blob += "</style></head><body>"
 
