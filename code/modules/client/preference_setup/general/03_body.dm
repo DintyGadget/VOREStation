@@ -37,6 +37,43 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	var/g_wing3 = 30	// Wing tertiary color
 	var/b_wing3 = 30	// Wing tertiary color
 
+// Sanitize ear/wing/tail styles
+/datum/preferences/proc/sanitize_body_styles()
+
+	// Grandfather in anyone loading paths from a save.
+	if(ispath(ear_style, /datum/sprite_accessory))
+		var/datum/sprite_accessory/instance = global.ear_styles_list[ear_style]
+		if(istype(instance))
+			ear_style = instance.name
+	if(ispath(wing_style, /datum/sprite_accessory))
+		var/datum/sprite_accessory/instance = global.wing_styles_list[wing_style]
+		if(istype(instance))
+			wing_style = instance.name
+	if(ispath(tail_style, /datum/sprite_accessory))
+		var/datum/sprite_accessory/instance = global.tail_styles_list[tail_style]
+		if(istype(instance))
+			tail_style = instance.name
+
+	// Sanitize for non-existent keys.
+	if(ear_style && !(ear_style in get_available_styles(global.ear_styles_list)))
+		ear_style = null
+	if(wing_style && !(wing_style in get_available_styles(global.wing_styles_list)))
+		wing_style = null
+	if(tail_style && !(tail_style in get_available_styles(global.tail_styles_list)))
+		tail_style = null
+
+/datum/preferences/proc/get_available_styles(var/style_list)
+	. = list("Normal" = null)
+	for(var/path in style_list)
+		var/datum/sprite_accessory/instance = style_list[path]
+		if(!istype(instance))
+			continue
+		if(instance.ckeys_allowed && (!client || !(client.ckey in instance.ckeys_allowed)))
+			continue
+		if(instance.species_allowed && (!species || !(species in instance.species_allowed)) && (!client || !check_rights(R_ADMIN | R_EVENT | R_FUN, 0, client)))
+			continue
+		.[instance.name] = instance
+
 /datum/category_item/player_setup_item/general/body
 	name = "Body"
 	sort_order = 3
@@ -228,12 +265,8 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	pref.r_wing3	= sanitize_integer(pref.r_wing3, 0, 255, initial(pref.r_wing3))
 	pref.g_wing3	= sanitize_integer(pref.g_wing3, 0, 255, initial(pref.g_wing3))
 	pref.b_wing3	= sanitize_integer(pref.b_wing3, 0, 255, initial(pref.b_wing3))
-	if(get_ear_styles()[pref.ear_style])
-		pref.ear_style = initial(pref.ear_style)
-	if(get_wing_styles()[pref.wing_style])
-		pref.wing_style = initial(pref.wing_style)
-	if(get_tail_styles()[pref.tail_style])
-		pref.tail_style = initial(pref.tail_style)
+
+	pref.sanitize_body_styles()
 
 // Moved from /datum/preferences/proc/copy_to()
 /datum/category_item/player_setup_item/general/body/copy_to_mob(var/mob/living/carbon/human/character)
@@ -265,37 +298,44 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	character.g_synth	= pref.g_synth
 	character.b_synth	= pref.b_synth
 	character.synth_markings = pref.synth_markings
-	character.ear_style			= ear_styles_list[pref.ear_style]
-	character.r_ears	= pref.r_ears
-	character.b_ears	= pref.b_ears
-	character.g_ears			= pref.g_ears
-	character.r_ears2	= pref.r_ears2
-	character.b_ears2	= pref.b_ears2
-	character.g_ears2	= pref.g_ears2
-	character.r_ears3			= pref.r_ears3
-	character.b_ears3			= pref.b_ears3
-	character.g_ears3			= pref.g_ears3
-	character.tail_style = tail_styles_list[pref.tail_style]
-	character.r_tail	= pref.r_tail
-	character.b_tail	= pref.b_tail
-	character.g_tail	= pref.g_tail
-	character.r_tail2	= pref.r_tail2
-	character.b_tail2	= pref.b_tail2
-	character.g_tail2	= pref.g_tail2
-	character.r_tail3			= pref.r_tail3
-	character.b_tail3			= pref.b_tail3
-	character.g_tail3			= pref.g_tail3
-	character.wing_style = wing_styles_list[pref.wing_style]
-	character.r_wing	= pref.r_wing
-	character.b_wing	= pref.b_wing
-	character.g_wing	= pref.g_wing
-	character.r_wing2	= pref.r_wing2
-	character.b_wing2	= pref.b_wing2
-	character.g_wing2	= pref.g_wing2
-	character.r_wing3			= pref.r_wing3
-	character.b_wing3			= pref.b_wing3
-	character.g_wing3			= pref.g_wing3
-	character.set_gender( pref.biological_gender)
+
+	var/list/ear_styles = pref.get_available_styles(global.ear_styles_list)
+	character.ear_style =  ear_styles[pref.ear_style]
+	character.r_ears =     pref.r_ears
+	character.b_ears =     pref.b_ears
+	character.g_ears =     pref.g_ears
+	character.r_ears2 =    pref.r_ears2
+	character.b_ears2 =    pref.b_ears2
+	character.g_ears2 =    pref.g_ears2
+	character.r_ears3 =    pref.r_ears3
+	character.b_ears3 =    pref.b_ears3
+	character.g_ears3 =    pref.g_ears3
+
+	var/list/tail_styles = pref.get_available_styles(global.tail_styles_list)
+	character.tail_style = tail_styles[pref.tail_style]
+	character.r_tail =     pref.r_tail
+	character.b_tail =     pref.b_tail
+	character.g_tail =     pref.g_tail
+	character.r_tail2 =    pref.r_tail2
+	character.b_tail2 =    pref.b_tail2
+	character.g_tail2 =    pref.g_tail2
+	character.r_tail3 =    pref.r_tail3
+	character.b_tail3 =    pref.b_tail3
+	character.g_tail3 =    pref.g_tail3
+
+	var/list/wing_styles = pref.get_available_styles(global.wing_styles_list)
+	character.wing_style = wing_styles[pref.wing_style]
+	character.r_wing =     pref.r_wing
+	character.b_wing =     pref.b_wing
+	character.g_wing =     pref.g_wing
+	character.r_wing2 =    pref.r_wing2
+	character.b_wing2 =    pref.b_wing2
+	character.g_wing2 =    pref.g_wing2
+	character.r_wing3 =    pref.r_wing3
+	character.b_wing3 =    pref.b_wing3
+	character.g_wing3 =    pref.g_wing3
+
+	character.set_gender(pref.biological_gender)
 
 	// Destroy/cyborgize organs and limbs.
 	for(var/name in list(BP_HEAD, BP_L_HAND, BP_R_HAND, BP_L_ARM, BP_R_ARM, BP_L_FOOT, BP_R_FOOT, BP_L_LEG, BP_R_LEG, BP_GROIN, BP_TORSO))
@@ -361,16 +401,16 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	. = list()
 
 	var/datum/species/mob_species = GLOB.all_species[pref.species]
-	. += "<table><tr style='vertical-align:top'><td><b>Случайная внешность</b> "
+	. += "<table><tr style='vertical-align:top'><td><b>Body</b> "
 	. += "(<a href='?src=\ref[src];random=1'>&reg;</A>)"
 	. += "<br>"
-	. += "Раса: <a href='?src=\ref[src];show_species=1'>[pref.species]</a><br>"
-	. += "Группа крови: <a href='?src=\ref[src];blood_type=1'>[pref.b_type]</a><br>"
+	. += "Species: <a href='?src=\ref[src];show_species=1'>[pref.species]</a><br>"
+	. += "Blood Type: <a href='?src=\ref[src];blood_type=1'>[pref.b_type]</a><br>"
 	if(has_flag(mob_species, HAS_SKIN_TONE))
-		. += "Тон кожи: <a href='?src=\ref[src];skin_tone=1'>[-pref.s_tone + 35]/220</a><br>"
-	. += "Близорукость: <a href='?src=\ref[src];disabilities=[NEARSIGHTED]'><b>[pref.disabilities & NEARSIGHTED ? "Да" : "Нет"]</b></a><br>"
-	. += "Протезы: <a href='?src=\ref[src];limbs=1'>Выбрать</a> <a href='?src=\ref[src];reset_limbs=1'>Сброс</a><br>"
-	. += "Органы: <a href='?src=\ref[src];organs=1'>Выбрать</a><br>"
+		. += "Skin Tone: <a href='?src=\ref[src];skin_tone=1'>[-pref.s_tone + 35]/220</a><br>"
+	. += "Needs Glasses: <a href='?src=\ref[src];disabilities=[NEARSIGHTED]'><b>[pref.disabilities & NEARSIGHTED ? "Yes" : "No"]</b></a><br>"
+	. += "Limbs: <a href='?src=\ref[src];limbs=1'>Adjust</a> <a href='?src=\ref[src];reset_limbs=1'>Reset</a><br>"
+	. += "Internal Organs: <a href='?src=\ref[src];organs=1'>Adjust</a><br>"
 
 	//display limbs below
 	var/ind = 0
@@ -380,47 +420,47 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 
 		switch(name)
 			if(BP_TORSO)
-				organ_name = "торс"
+				organ_name = "torso"
 			if(BP_GROIN)
-				organ_name = "пах"
+				organ_name = "groin"
 			if(BP_HEAD)
-				organ_name = "голова"
+				organ_name = "head"
 			if(BP_L_ARM)
-				organ_name = "левая рука"
+				organ_name = "left arm"
 			if(BP_R_ARM)
-				organ_name = "правая рука"
+				organ_name = "right arm"
 			if(BP_L_LEG)
-				organ_name = "левая нога"
+				organ_name = "left leg"
 			if(BP_R_LEG)
-				organ_name = "правая нога"
+				organ_name = "right leg"
 			if(BP_L_FOOT)
-				organ_name = "левая стопа"
+				organ_name = "left foot"
 			if(BP_R_FOOT)
-				organ_name = "правая стопа"
+				organ_name = "right foot"
 			if(BP_L_HAND)
-				organ_name = "левая кисть"
+				organ_name = "left hand"
 			if(BP_R_HAND)
-				organ_name = "правая кисть"
+				organ_name = "right hand"
 			if(O_HEART)
-				organ_name = "сердце"
+				organ_name = "heart"
 			if(O_EYES)
-				organ_name = "глаза"
+				organ_name = "eyes"
 			if(O_VOICE)
-				organ_name = "гортань"
+				organ_name = "larynx"
 			if(O_BRAIN)
-				organ_name = "мозг"
+				organ_name = "brain"
 			if(O_LUNGS)
-				organ_name = "легкие"
+				organ_name = "lungs"
 			if(O_LIVER)
-				organ_name = "печень"
+				organ_name = "liver"
 			if(O_KIDNEYS)
-				organ_name = "почки"
+				organ_name = "kidneys"
 			if(O_SPLEEN)
-				organ_name = "селезенка"
+				organ_name = "spleen"
 			if(O_STOMACH)
-				organ_name = "желудок"
+				organ_name = "stomach"
 			if(O_INTESTINE)
-				organ_name = "кишечник"
+				organ_name = "intestines"
 
 		if(status == "cyborg")
 			++ind
@@ -431,43 +471,43 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 				R = all_robolimbs[pref.rlimb_data[name]]
 			else
 				R = basic_robolimb
-			. += "\t[organ_name] протез [R.company]"
+			. += "\t[R.company] [organ_name] prosthesis"
 		else if(status == "amputated")
 			++ind
 			if(ind > 1)
 				. += ", "
-			. += "\t[organ_name] отсутствует"
+			. += "\tAmputated [organ_name]"
 		else if(status == "mechanical")
 			++ind
 			if(ind > 1)
 				. += ", "
 			switch(organ_name)
 				if ("brain")
-					. += "\tПозитронный [organ_name]"
+					. += "\tPositronic [organ_name]"
 				else
-					. += "\tСинтетика: [organ_name]"
+					. += "\tSynthetic [organ_name]"
 		else if(status == "digital")
 			++ind
 			if(ind > 1)
 				. += ", "
-			. += "\tЦифровым [organ_name]"
+			. += "\tDigital [organ_name]"
 		else if(status == "assisted")
 			++ind
 			if(ind > 1)
 				. += ", "
 			switch(organ_name)
 				if("heart")
-					. += "\tКардиостимулятор [organ_name]"
+					. += "\tPacemaker-assisted [organ_name]"
 				if("lungs")
-					. += "\tВспомогательные [organ_name]"
+					. += "\tAssisted [organ_name]"
 				if("voicebox") //on adding voiceboxes for speaking skrell/similar replacements
-					. += "\tХирургически измененная [organ_name]"
+					. += "\tSurgically altered [organ_name]"
 				if("eyes")
-					. += "\t[organ_name], покрытые сетчаткой"
+					. += "\tRetinal overlayed [organ_name]"
 				if("brain")
-					. += "\tВспомомогательный интерфейс [organ_name]"
+					. += "\tAssisted-interface [organ_name]"
 				else
-					. += "\tМеханически улучшенный [organ_name]"
+					. += "\tMechanically assisted [organ_name]"
 	if(!ind)
 		. += "\[...\]<br><br>"
 	else
@@ -480,101 +520,89 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 			. += "<tr><td><b>[capitalize(descriptor.chargen_label)]:</b></td><td>[descriptor.get_standalone_value_descriptor(pref.body_descriptors[entry])]</td><td><a href='?src=\ref[src];change_descriptor=[entry]'>Change</a><br/></td></tr>"
 		. += "</table><br>"
 
-	. += "</td><td><b>Предпросмотр</b><br>"
-	. += "<br><a href='?src=\ref[src];cycle_bg=1'>Сменить фон</a>"
-	. += "<br><a href='?src=\ref[src];toggle_preview_value=[EQUIP_PREVIEW_LOADOUT]'>[pref.equip_preview_mob & EQUIP_PREVIEW_LOADOUT ? "Скрыть предметы" : "Показать предметы"]</a>"
-	. += "<br><a href='?src=\ref[src];toggle_preview_value=[EQUIP_PREVIEW_JOB]'>[pref.equip_preview_mob & EQUIP_PREVIEW_JOB ? "Скрыть униформу" : "Показать униформу"]</a>"
+	. += "</td><td><b>Preview</b><br>"
+	. += "<br><a href='?src=\ref[src];cycle_bg=1'>Cycle background</a>"
+	. += "<br><a href='?src=\ref[src];toggle_preview_value=[EQUIP_PREVIEW_LOADOUT]'>[pref.equip_preview_mob & EQUIP_PREVIEW_LOADOUT ? "Hide loadout" : "Show loadout"]</a>"
+	. += "<br><a href='?src=\ref[src];toggle_preview_value=[EQUIP_PREVIEW_JOB]'>[pref.equip_preview_mob & EQUIP_PREVIEW_JOB ? "Hide job gear" : "Show job gear"]</a>"
 	. += "</td></tr></table>"
 
-	. += "<b>Прическа</b><br>"
+	. += "<b>Hair</b><br>"
 	if(has_flag(mob_species, HAS_HAIR_COLOR))
-		. += "<a href='?src=\ref[src];hair_color=1'>Изм. цвет</a> [color_square(pref.r_hair, pref.g_hair, pref.b_hair)] "
-	. += " Стиль: <a href='?src=\ref[src];hair_style_left=[pref.h_style]'><</a> <a href='?src=\ref[src];hair_style_right=[pref.h_style]''>></a> <a href='?src=\ref[src];hair_style=1'>[pref.h_style]</a><br>" //The <</a> & ></a> in this line is correct-- those extra characters are the arrows you click to switch between styles.
+		. += "<a href='?src=\ref[src];hair_color=1'>Change Color</a> [color_square(pref.r_hair, pref.g_hair, pref.b_hair)] "
+	. += " Style: <a href='?src=\ref[src];hair_style_left=[pref.h_style]'><</a> <a href='?src=\ref[src];hair_style_right=[pref.h_style]''>></a> <a href='?src=\ref[src];hair_style=1'>[pref.h_style]</a><br>" //The <</a> & ></a> in this line is correct-- those extra characters are the arrows you click to switch between styles.
 
-	. += "<b>Градиент</b><br>"
-	. += "<a href='?src=\ref[src];grad_color=1'>Изм. цвет</a> [color_square(pref.r_grad, pref.g_grad, pref.b_grad)] "
-	. += " Стиль: <a href='?src=\ref[src];grad_style_left=[pref.grad_style]'><</a> <a href='?src=\ref[src];grad_style_right=[pref.grad_style]''>></a> <a href='?src=\ref[src];grad_style=1'>[pref.grad_style]</a><br>"
+	. += "<b>Gradient</b><br>"
+	. += "<a href='?src=\ref[src];grad_color=1'>Change Color</a> [color_square(pref.r_grad, pref.g_grad, pref.b_grad)] "
+	. += " Style: <a href='?src=\ref[src];grad_style_left=[pref.grad_style]'><</a> <a href='?src=\ref[src];grad_style_right=[pref.grad_style]''>></a> <a href='?src=\ref[src];grad_style=1'>[pref.grad_style]</a><br>"
 
-	. += "<br><b>Лицевая растительность</b><br>"
+	. += "<br><b>Facial</b><br>"
 	if(has_flag(mob_species, HAS_HAIR_COLOR))
-		. += "<a href='?src=\ref[src];facial_color=1'>Изм. цвет</a> [color_square(pref.r_facial, pref.g_facial, pref.b_facial)] "
-	. += " Стиль: <a href='?src=\ref[src];facial_style_left=[pref.f_style]'><</a> <a href='?src=\ref[src];facial_style_right=[pref.f_style]''>></a> <a href='?src=\ref[src];facial_style=1'>[pref.f_style]</a><br>" //Same as above with the extra > & < characters
+		. += "<a href='?src=\ref[src];facial_color=1'>Change Color</a> [color_square(pref.r_facial, pref.g_facial, pref.b_facial)] "
+	. += " Style: <a href='?src=\ref[src];facial_style_left=[pref.f_style]'><</a> <a href='?src=\ref[src];facial_style_right=[pref.f_style]''>></a> <a href='?src=\ref[src];facial_style=1'>[pref.f_style]</a><br>" //Same as above with the extra > & < characters
 
 	if(has_flag(mob_species, HAS_EYE_COLOR))
-		. += "<br><b>Глаза</b><br>"
-		. += "<a href='?src=\ref[src];eye_color=1'>Изм. цвет</a> [color_square(pref.r_eyes, pref.g_eyes, pref.b_eyes)]<br>"
+		. += "<br><b>Eyes</b><br>"
+		. += "<a href='?src=\ref[src];eye_color=1'>Change Color</a> [color_square(pref.r_eyes, pref.g_eyes, pref.b_eyes)]<br>"
 
 	if(has_flag(mob_species, HAS_SKIN_COLOR))
-		. += "<br><b>Цвет тела</b><br>"
-		. += "<a href='?src=\ref[src];skin_color=1'>Изм. цвет</a> [color_square(pref.r_skin, pref.g_skin, pref.b_skin)]<br>"
+		. += "<br><b>Body Color</b><br>"
+		. += "<a href='?src=\ref[src];skin_color=1'>Change Color</a> [color_square(pref.r_skin, pref.g_skin, pref.b_skin)]<br>"
 
-	. += "<h2>Параметры генетики</h2>"
+	. += "<h2>Genetics Settings</h2>"
 
-	var/ear_display = "Normal"
-	if(pref.ear_style && (pref.ear_style in ear_styles_list))
-		var/datum/sprite_accessory/ears/instance = ear_styles_list[pref.ear_style]
-		ear_display = instance.name
-
-	else if(pref.ear_style)
-		ear_display = "REQUIRES UPDATE"
-	. += "<b>Уши</b><br>"
-	. += " Стиль: <a href='?src=\ref[src];ear_style=1'>[ear_display]</a><br>"
-	if(ear_styles_list[pref.ear_style])
-		var/datum/sprite_accessory/ears/ear = ear_styles_list[pref.ear_style]
+	var/list/ear_styles = pref.get_available_styles(global.ear_styles_list)
+	var/datum/sprite_accessory/ears/ear = ear_styles[pref.ear_style]
+	. += "<b>Ears</b><br>"
+	if(istype(ear))
+		. += " Style: <a href='?src=\ref[src];ear_style=1'>[ear.name]</a><br>"
 		if(ear.do_colouration)
-			. += "<a href='?src=\ref[src];ear_color=1'>Изм. цвет</a> [color_square(pref.r_ears, pref.g_ears, pref.b_ears)]<br>"
+			. += "<a href='?src=\ref[src];ear_color=1'>Change Color</a> [color_square(pref.r_ears, pref.g_ears, pref.b_ears)]<br>"
 		if(ear.extra_overlay)
-			. += "<a href='?src=\ref[src];ear_color2=1'>Изм. втор. цвет</a> [color_square(pref.r_ears2, pref.g_ears2, pref.b_ears2)]<br>"
+			. += "<a href='?src=\ref[src];ear_color2=1'>Change Secondary Color</a> [color_square(pref.r_ears2, pref.g_ears2, pref.b_ears2)]<br>"
 		if(ear.extra_overlay2)
-			. += "<a href='?src=\ref[src];ear_color3=1'>Изм. трет. цвет</a> [color_square(pref.r_ears3, pref.g_ears3, pref.b_ears3)]<br>"
+			. += "<a href='?src=\ref[src];ear_color3=1'>Change Tertiary Color</a> [color_square(pref.r_ears3, pref.g_ears3, pref.b_ears3)]<br>"
+	else
+		. += " Style: <a href='?src=\ref[src];ear_style=1'>Select</a><br>"
 
-	var/tail_display = "Normal"
-	if(pref.tail_style && (pref.tail_style in tail_styles_list))
-		var/datum/sprite_accessory/tail/instance = tail_styles_list[pref.tail_style]
-		tail_display = instance.name
-	else if(pref.tail_style)
-		tail_display = "REQUIRES UPDATE"
-	. += "<b>Хвост</b><br>"
-	. += " Стиль: <a href='?src=\ref[src];tail_style=1'>[tail_display]</a><br>"
+	var/list/tail_styles = pref.get_available_styles(global.tail_styles_list)
+	var/datum/sprite_accessory/tail/tail = tail_styles[pref.tail_style]
+	. += "<b>Tail</b><br>"
+	if(istype(tail))
+		. += " Style: <a href='?src=\ref[src];tail_style=1'>[tail.name]</a><br>"
+		if(tail.do_colouration)
+			. += "<a href='?src=\ref[src];tail_color=1'>Change Color</a> [color_square(pref.r_tail, pref.g_tail, pref.b_tail)]<br>"
+		if(tail.extra_overlay)
+			. += "<a href='?src=\ref[src];tail_color2=1'>Change Secondary Color</a> [color_square(pref.r_tail2, pref.g_tail2, pref.b_tail2)]<br>"
+		if(tail.extra_overlay2)
+			. += "<a href='?src=\ref[src];tail_color3=1'>Change Tertiary Color</a> [color_square(pref.r_tail3, pref.g_tail3, pref.b_tail3)]<br>"
+	else
+		. += " Style: <a href='?src=\ref[src];tail_style=1'>Select</a><br>"
 
-	if(tail_styles_list[pref.tail_style])
-		var/datum/sprite_accessory/tail/T = tail_styles_list[pref.tail_style]
-		if(T.do_colouration)
-			. += "<a href='?src=\ref[src];tail_color=1'>Изм. цвет</a> [color_square(pref.r_tail, pref.g_tail, pref.b_tail)]<br>"
-		if(T.extra_overlay)
-			. += "<a href='?src=\ref[src];tail_color2=1'>Изм. втор. цвет</a> [color_square(pref.r_tail2, pref.g_tail2, pref.b_tail2)]<br>"
-		if(T.extra_overlay2)
-			. += "<a href='?src=\ref[src];tail_color3=1'>Изм. трет. цвет</a> [color_square(pref.r_tail3, pref.g_tail3, pref.b_tail3)]<br>"
+	var/list/wing_styles = pref.get_available_styles(global.wing_styles_list)
+	var/datum/sprite_accessory/wing/wings = wing_styles[pref.wing_style]
+	. += "<b>Wing</b><br>"
+	if(istype(wings))
+		. += " Style: <a href='?src=\ref[src];wing_style=1'>[wings.name]</a><br>"
+		if(wings.do_colouration)
+			. += "<a href='?src=\ref[src];wing_color=1'>Change Color</a> [color_square(pref.r_wing, pref.g_wing, pref.b_wing)]<br>"
+		if(wings.extra_overlay)
+			. += "<a href='?src=\ref[src];wing_color2=1'>Change Secondary Color</a> [color_square(pref.r_wing2, pref.g_wing2, pref.b_wing2)]<br>"
+		if(wings.extra_overlay2)
+			. += "<a href='?src=\ref[src];wing_color3=1'>Change Secondary Color</a> [color_square(pref.r_wing3, pref.g_wing3, pref.b_wing3)]<br>"
+	else
+		. += " Style: <a href='?src=\ref[src];wing_style=1'>Select</a><br>"
 
-	var/wing_display = "Normal"
-	if(pref.wing_style && (pref.wing_style in wing_styles_list))
-		var/datum/sprite_accessory/wing/instance = wing_styles_list[pref.wing_style]
-		wing_display = instance.name
-	else if(pref.wing_style)
-		wing_display = "REQUIRES UPDATE"
-	. += "<b>Крылья</b><br>"
-	. += " Стиль: <a href='?src=\ref[src];wing_style=1'>[wing_display]</a><br>"
-
-	if(wing_styles_list[pref.wing_style])
-		var/datum/sprite_accessory/wing/W = wing_styles_list[pref.wing_style]
-		if(W.do_colouration)
-			. += "<a href='?src=\ref[src];wing_color=1'>Изм. цвет</a> [color_square(pref.r_wing, pref.g_wing, pref.b_wing)]<br>"
-		if(W.extra_overlay)
-			. += "<a href='?src=\ref[src];wing_color2=1'>Изм. втор. цвет</a> [color_square(pref.r_wing2, pref.g_wing2, pref.b_wing2)]<br>"
-		if(W.extra_overlay2)
-			. += "<a href='?src=\ref[src];wing_color3=1'>Изм. втор. цвет</a> [color_square(pref.r_wing3, pref.g_wing3, pref.b_wing3)]<br>"
-
-	. += "<br><a href='?src=\ref[src];marking_style=1'>Особенности тела +</a><br>"
+	. += "<br><a href='?src=\ref[src];marking_style=1'>Body Markings +</a><br>"
 	. += "<table>"
 	for(var/M in pref.body_markings)
 		. += "<tr><td>[M]</td><td>[pref.body_markings.len > 1 ? "<a href='?src=\ref[src];marking_up=[M]'>&#708;</a> <a href='?src=\ref[src];marking_down=[M]'>&#709;</a> <a href='?src=\ref[src];marking_move=[M]'>mv</a> " : ""]<a href='?src=\ref[src];marking_remove=[M]'>-</a> <a href='?src=\ref[src];marking_color=[M]'>Color</a>[color_square(hex = pref.body_markings[M])]</td></tr>"
 
 	. += "</table>"
 	. += "<br>"
-	. += "<b>Допустить особенности тела для синтов:</b> <a href='?src=\ref[src];synth_markings=1'><b>[pref.synth_markings ? "Да" : "Нет"]</b></a><br>"
-	. += "<b>Допустиь выбор цвета для синтов:</b> <a href='?src=\ref[src];synth_color=1'><b>[pref.synth_color ? "Да" : "Нет"]</b></a><br>"
+	. += "<b>Allow Synth markings:</b> <a href='?src=\ref[src];synth_markings=1'><b>[pref.synth_markings ? "Yes" : "No"]</b></a><br>"
+	. += "<b>Allow Synth color:</b> <a href='?src=\ref[src];synth_color=1'><b>[pref.synth_color ? "Yes" : "No"]</b></a><br>"
 	if(pref.synth_color)
-		. += "<a href='?src=\ref[src];synth2_color=1'>Изменить цвет</a> [color_square(pref.r_synth, pref.g_synth, pref.b_synth)]"
+		. += "<a href='?src=\ref[src];synth2_color=1'>Change Color</a> [color_square(pref.r_synth, pref.g_synth, pref.b_synth)]"
 
 	. = jointext(.,null)
 
@@ -599,14 +627,14 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 					return TOPIC_REFRESH
 
 	else if(href_list["blood_type"])
-		var/new_b_type = input(user, "Выберите группу крови Вашего персонажа:", "Изменение Персонажа") as null|anything in valid_bloodtypes
+		var/new_b_type = input(user, "Choose your character's blood-type:", "Character Preference") as null|anything in valid_bloodtypes
 		if(new_b_type && CanUseTopic(user))
 			pref.b_type = new_b_type
 			return TOPIC_REFRESH
 
 	else if(href_list["show_species"])
 		// Actual whitelist checks are handled elsewhere, this is just for accessing the preview window.
-		var/choice = input("Выберите расу для предпросмотра:") as null|anything in GLOB.playable_species
+		var/choice = input("Which species would you like to look at?") as null|anything in GLOB.playable_species
 		if(!choice) return
 		pref.species_preview = choice
 		SetSpecies(preference_mob())
@@ -653,22 +681,16 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 				pref.f_style = facial_hair_styles_list["Shaved"]
 
 			//reset hair colour and skin colour
-			pref.r_hair = 0//hex2num(copytext_char(new_hair, 2, 4))
-			pref.g_hair = 0//hex2num(copytext_char(new_hair, 4, 6))
-			pref.b_hair = 0//hex2num(copytext_char(new_hair, 6, 8))
+			pref.r_hair = 0//hex2num(copytext(new_hair, 2, 4))
+			pref.g_hair = 0//hex2num(copytext(new_hair, 4, 6))
+			pref.b_hair = 0//hex2num(copytext(new_hair, 6, 8))
 			pref.s_tone = -75
 
 			reset_limbs() // Safety for species with incompatible manufacturers; easier than trying to do it case by case.
 			pref.body_markings.Cut() // Basically same as above.
-
-			// Sanitize ear/wing/tail styles
-			if(get_ear_styles()[pref.ear_style])
-				pref.ear_style = initial(pref.ear_style)
-			if(get_wing_styles()[pref.wing_style])
-				pref.wing_style = initial(pref.wing_style)
-			if(get_tail_styles()[pref.tail_style])
-				pref.tail_style = initial(pref.tail_style)
-
+			
+			pref.sanitize_body_styles()
+			
 			var/min_age = get_min_age()
 			var/max_age = get_max_age()
 			pref.age = max(min(pref.age, max_age), min_age)
@@ -678,27 +700,27 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	else if(href_list["hair_color"])
 		if(!has_flag(mob_species, HAS_HAIR_COLOR))
 			return TOPIC_NOACTION
-		var/new_hair = input(user, "Выберите цвет волос Вашего персонажа:", "Изменение Персонажа", rgb(pref.r_hair, pref.g_hair, pref.b_hair)) as color|null
+		var/new_hair = input(user, "Choose your character's hair colour:", "Character Preference", rgb(pref.r_hair, pref.g_hair, pref.b_hair)) as color|null
 		if(new_hair && has_flag(mob_species, HAS_HAIR_COLOR) && CanUseTopic(user))
-			pref.r_hair = hex2num(copytext_char(new_hair, 2, 4))
-			pref.g_hair = hex2num(copytext_char(new_hair, 4, 6))
-			pref.b_hair = hex2num(copytext_char(new_hair, 6, 8))
+			pref.r_hair = hex2num(copytext(new_hair, 2, 4))
+			pref.g_hair = hex2num(copytext(new_hair, 4, 6))
+			pref.b_hair = hex2num(copytext(new_hair, 6, 8))
 			return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["grad_color"])
 		if(!has_flag(mob_species, HAS_HAIR_COLOR))
 			return TOPIC_NOACTION
-		var/new_grad = input(user, "Выберите вторичный цвет волос Вашего персонажа:", "Изменение Персонажа", rgb(pref.r_grad, pref.g_grad, pref.b_grad)) as color|null
+		var/new_grad = input(user, "Choose your character's secondary hair color:", "Character Preference", rgb(pref.r_grad, pref.g_grad, pref.b_grad)) as color|null
 		if(new_grad && has_flag(mob_species, HAS_HAIR_COLOR) && CanUseTopic(user))
-			pref.r_grad = hex2num(copytext_char(new_grad, 2, 4))
-			pref.g_grad = hex2num(copytext_char(new_grad, 4, 6))
-			pref.b_grad = hex2num(copytext_char(new_grad, 6, 8))
+			pref.r_grad = hex2num(copytext(new_grad, 2, 4))
+			pref.g_grad = hex2num(copytext(new_grad, 4, 6))
+			pref.b_grad = hex2num(copytext(new_grad, 6, 8))
 			return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["hair_style"])
 		var/list/valid_hairstyles = pref.get_valid_hairstyles()
 
-		var/new_h_style = input(user, "Выберите прическу Вашего персонажа:", "Изменение Персонажа", pref.h_style)  as null|anything in valid_hairstyles
+		var/new_h_style = input(user, "Choose your character's hair style:", "Character Preference", pref.h_style)  as null|anything in valid_hairstyles
 		if(new_h_style && CanUseTopic(user))
 			pref.h_style = new_h_style
 			return TOPIC_REFRESH_UPDATE_PREVIEW
@@ -706,7 +728,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	else if(href_list["grad_style"])
 		var/list/valid_gradients = GLOB.hair_gradients
 
-		var/new_grad_style = input(user, "Выберите вид градиента прически персонажа:", "Изменение Персонажа", pref.grad_style)  as null|anything in valid_gradients
+		var/new_grad_style = input(user, "Choose a color pattern for your hair:", "Character Preference", pref.grad_style)  as null|anything in valid_gradients
 		if(new_grad_style && CanUseTopic(user))
 			pref.grad_style = new_grad_style
 			return TOPIC_REFRESH_UPDATE_PREVIEW
@@ -736,27 +758,27 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	else if(href_list["facial_color"])
 		if(!has_flag(mob_species, HAS_HAIR_COLOR))
 			return TOPIC_NOACTION
-		var/new_facial = input(user, "Выберите цвет лицевой растительности персонажа:", "Изменение Персонажа", rgb(pref.r_facial, pref.g_facial, pref.b_facial)) as color|null
+		var/new_facial = input(user, "Choose your character's facial-hair colour:", "Character Preference", rgb(pref.r_facial, pref.g_facial, pref.b_facial)) as color|null
 		if(new_facial && has_flag(mob_species, HAS_HAIR_COLOR) && CanUseTopic(user))
-			pref.r_facial = hex2num(copytext_char(new_facial, 2, 4))
-			pref.g_facial = hex2num(copytext_char(new_facial, 4, 6))
-			pref.b_facial = hex2num(copytext_char(new_facial, 6, 8))
+			pref.r_facial = hex2num(copytext(new_facial, 2, 4))
+			pref.g_facial = hex2num(copytext(new_facial, 4, 6))
+			pref.b_facial = hex2num(copytext(new_facial, 6, 8))
 			return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["eye_color"])
 		if(!has_flag(mob_species, HAS_EYE_COLOR))
 			return TOPIC_NOACTION
-		var/new_eyes = input(user, "Выберите цвет глаз Вашего персонажа:", "Изменение Персонажа", rgb(pref.r_eyes, pref.g_eyes, pref.b_eyes)) as color|null
+		var/new_eyes = input(user, "Choose your character's eye colour:", "Character Preference", rgb(pref.r_eyes, pref.g_eyes, pref.b_eyes)) as color|null
 		if(new_eyes && has_flag(mob_species, HAS_EYE_COLOR) && CanUseTopic(user))
-			pref.r_eyes = hex2num(copytext_char(new_eyes, 2, 4))
-			pref.g_eyes = hex2num(copytext_char(new_eyes, 4, 6))
-			pref.b_eyes = hex2num(copytext_char(new_eyes, 6, 8))
+			pref.r_eyes = hex2num(copytext(new_eyes, 2, 4))
+			pref.g_eyes = hex2num(copytext(new_eyes, 4, 6))
+			pref.b_eyes = hex2num(copytext(new_eyes, 6, 8))
 			return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["skin_tone"])
 		if(!has_flag(mob_species, HAS_SKIN_TONE))
 			return TOPIC_NOACTION
-		var/new_s_tone = input(user, "Выберите тон кожи Вашего персонажа:\n(Светлый 1-220 Темный)", "Изменение персонажа", (-pref.s_tone) + 35)  as num|null
+		var/new_s_tone = input(user, "Choose your character's skin-tone:\n(Light 1 - 220 Dark)", "Character Preference", (-pref.s_tone) + 35)  as num|null
 		if(new_s_tone && has_flag(mob_species, HAS_SKIN_TONE) && CanUseTopic(user))
 			pref.s_tone = 35 - max(min( round(new_s_tone), 220),1)
 			return TOPIC_REFRESH_UPDATE_PREVIEW
@@ -764,17 +786,17 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	else if(href_list["skin_color"])
 		if(!has_flag(mob_species, HAS_SKIN_COLOR))
 			return TOPIC_NOACTION
-		var/new_skin = input(user, "Выберите цвет кожи Вашего персонажа: ", "Изменение Персонажа", rgb(pref.r_skin, pref.g_skin, pref.b_skin)) as color|null
+		var/new_skin = input(user, "Choose your character's skin colour: ", "Character Preference", rgb(pref.r_skin, pref.g_skin, pref.b_skin)) as color|null
 		if(new_skin && has_flag(mob_species, HAS_SKIN_COLOR) && CanUseTopic(user))
-			pref.r_skin = hex2num(copytext_char(new_skin, 2, 4))
-			pref.g_skin = hex2num(copytext_char(new_skin, 4, 6))
-			pref.b_skin = hex2num(copytext_char(new_skin, 6, 8))
+			pref.r_skin = hex2num(copytext(new_skin, 2, 4))
+			pref.g_skin = hex2num(copytext(new_skin, 4, 6))
+			pref.b_skin = hex2num(copytext(new_skin, 6, 8))
 			return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["facial_style"])
 		var/list/valid_facialhairstyles = pref.get_valid_facialhairstyles()
 
-		var/new_f_style = input(user, "Выберите стиль волос на лице Вашего персонажа:", "Изменение Персонажа", pref.f_style)  as null|anything in valid_facialhairstyles
+		var/new_f_style = input(user, "Choose your character's facial-hair style:", "Character Preference", pref.f_style)  as null|anything in valid_facialhairstyles
 		if(new_f_style && has_flag(mob_species, HAS_HAIR_COLOR) && CanUseTopic(user))
 			pref.f_style = new_f_style
 			return TOPIC_REFRESH_UPDATE_PREVIEW
@@ -811,7 +833,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 			else if(!(pref.species in S.species_allowed))
 				usable_markings -= M
 		*/ //VOREStation Removal End
-		var/new_marking = input(user, "Выберите особенности тела:", "Особенности тела")  as null|anything in usable_markings
+		var/new_marking = input(user, "Choose a body marking:", "Character Preference")  as null|anything in usable_markings
 		if(new_marking && CanUseTopic(user))
 			pref.body_markings[new_marking] = "#000000" //New markings start black
 			return TOPIC_REFRESH_UPDATE_PREVIEW
@@ -841,7 +863,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		if(start != 1)
 			move_locs -= pref.body_markings[start-1]
 
-		var/inject_after = input(user, "Подвинуть [M] выше...", "Изменение Персонажа") as null|anything in move_locs //Move ahead of any marking that isn't the current or previous one.
+		var/inject_after = input(user, "Move [M] ahead of...", "Character Preference") as null|anything in move_locs //Move ahead of any marking that isn't the current or previous one.
 		var/newpos = pref.body_markings.Find(inject_after)
 		if(newpos)
 			moveElement(pref.body_markings, start, newpos+1)
@@ -854,7 +876,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 
 	else if(href_list["marking_color"])
 		var/M = href_list["marking_color"]
-		var/mark_color = input(user, "Выберите цвет [M]: ", "Изменение Персонажа", pref.body_markings[M]) as color|null
+		var/mark_color = input(user, "Choose the [M] color: ", "Character Preference", pref.body_markings[M]) as color|null
 		if(mark_color && CanUseTopic(user))
 			pref.body_markings[M] = "[mark_color]"
 			return TOPIC_REFRESH_UPDATE_PREVIEW
@@ -865,16 +887,16 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 
 	else if(href_list["limbs"])
 
-		var/list/limb_selection_list = list("Левая нога","Правая нога","Левая рука","Правая рука","Левая стопа","Правая стопа","Левая кисть","Правая кисть","Все тело")
+		var/list/limb_selection_list = list("Left Leg","Right Leg","Left Arm","Right Arm","Left Foot","Right Foot","Left Hand","Right Hand","Full Body")
 
 		// Full prosthetic bodies without a brain are borderline unkillable so make sure they have a brain to remove/destroy.
 		var/datum/species/current_species = GLOB.all_species[pref.species]
 		if(!current_species.has_organ["brain"])
-			limb_selection_list -= "Все тело"
+			limb_selection_list -= "Full Body"
 		else if(pref.organ_data[BP_TORSO] == "cyborg")
-			limb_selection_list |= "Голова"
+			limb_selection_list |= "Head"
 
-		var/organ_tag = input(user, "Какую конечность вы хотите изменить?") as null|anything in limb_selection_list
+		var/organ_tag = input(user, "Which limb do you want to change?") as null|anything in limb_selection_list
 
 		if(!organ_tag || !CanUseTopic(user)) return TOPIC_NOACTION
 
@@ -883,46 +905,46 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		var/third_limb = null  // if you try to unchange the hand, the arm should also change
 
 		// Do not let them amputate their entire body, ty.
-		var/list/choice_options = list("Без изменений","Ампутация","Протез")
+		var/list/choice_options = list("Normal","Amputated","Prosthesis")
 		switch(organ_tag)
-			if("Левая нога")
+			if("Left Leg")
 				limb =        BP_L_LEG
 				second_limb = BP_L_FOOT
-			if("Правая нога")
+			if("Right Leg")
 				limb =        BP_R_LEG
 				second_limb = BP_R_FOOT
-			if("Левая рука")
+			if("Left Arm")
 				limb =        BP_L_ARM
 				second_limb = BP_L_HAND
-			if("Правая рука")
+			if("Right Arm")
 				limb =        BP_R_ARM
 				second_limb = BP_R_HAND
-			if("Левая стопа")
+			if("Left Foot")
 				limb =        BP_L_FOOT
 				third_limb =  BP_L_LEG
-			if("Правая стопа")
+			if("Right Foot")
 				limb =        BP_R_FOOT
 				third_limb =  BP_R_LEG
-			if("Левая кисть")
+			if("Left Hand")
 				limb =        BP_L_HAND
 				third_limb =  BP_L_ARM
-			if("Правая кисть")
+			if("Right Hand")
 				limb =        BP_R_HAND
 				third_limb =  BP_R_ARM
-			if("Голова")
+			if("Head")
 				limb =        BP_HEAD
-				choice_options = list("Протез")
-			if("Все тело")
+				choice_options = list("Prosthesis")
+			if("Full Body")
 				limb =        BP_TORSO
 				second_limb = BP_HEAD
 				third_limb =  BP_GROIN
-				choice_options = list("Без изменений","Протез")
+				choice_options = list("Normal","Prosthesis")
 
-		var/new_state = input(user, "В каком состоянии Вы хотите видеть конечность?") as null|anything in choice_options
+		var/new_state = input(user, "What state do you wish the limb to be in?") as null|anything in choice_options
 		if(!new_state || !CanUseTopic(user)) return TOPIC_NOACTION
 
 		switch(new_state)
-			if("Без изменений")
+			if("Normal")
 				pref.organ_data[limb] = null
 				pref.rlimb_data[limb] = null
 				if(limb == BP_TORSO)
@@ -936,7 +958,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 					pref.organ_data[third_limb] = null
 					pref.rlimb_data[third_limb] = null
 
-			if("Ампутация")
+			if("Amputated")
 				if(limb == BP_TORSO)
 					return
 				pref.organ_data[limb] = "amputated"
@@ -945,7 +967,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 					pref.organ_data[second_limb] = "amputated"
 					pref.rlimb_data[second_limb] = null
 
-			if("Протез")
+			if("Prosthesis")
 				var/tmp_species = pref.species ? pref.species : SPECIES_HUMAN
 				var/list/usable_manufacturers = list()
 				for(var/company in chargen_robolimbs)
@@ -961,7 +983,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 					usable_manufacturers[company] = M
 				if(!usable_manufacturers.len)
 					return
-				var/choice = input(user, "Какого производителя вы хотите использовать для этой конечности?") as null|anything in usable_manufacturers
+				var/choice = input(user, "Which manufacturer do you wish to use for this limb?") as null|anything in usable_manufacturers
 				if(!choice)
 					return
 
@@ -989,67 +1011,67 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 
 	else if(href_list["organs"])
 
-		var/organ_name = input(user, "Какой орган Вы хотите изменить?") as null|anything in list("Сердце", "Глаза","Гортань", "Легкие", "Печень", "Почки", "Селезенка", "Кишечник", "Желудок", "Мозг")
+		var/organ_name = input(user, "Which internal function do you want to change?") as null|anything in list("Heart", "Eyes","Larynx", "Lungs", "Liver", "Kidneys", "Spleen", "Intestines", "Stomach", "Brain")
 		if(!organ_name) return
 
 		var/organ = null
 		switch(organ_name)
-			if("Сердце")
+			if("Heart")
 				organ = O_HEART
-			if("Глаза")
+			if("Eyes")
 				organ = O_EYES
-			if("Гортань")
+			if("Larynx")
 				organ = O_VOICE
-			if("Легкие")
+			if("Lungs")
 				organ = O_LUNGS
-			if("Печень")
+			if("Liver")
 				organ = O_LIVER
-			if("Почки")
+			if("Kidneys")
 				organ = O_KIDNEYS
-			if("Селезенка")
+			if("Spleen")
 				organ = O_SPLEEN
-			if("Кишечник")
+			if("Intestines")
 				organ = O_INTESTINE
-			if("Желудок")
+			if("Stomach")
 				organ = O_STOMACH
-			if("Мозг")
+			if("Brain")
 				if(pref.organ_data[BP_HEAD] != "cyborg")
-					to_chat(user, "<span class='warning'>Вы можете выбрать кибернетический или синтетический мозг только при протезировании всего тела.</span>")
+					to_chat(user, "<span class='warning'>You may only select a cybernetic or synthetic brain if you have a full prosthetic body.</span>")
 					return
 				organ = "brain"
 
 		var/datum/species/current_species = GLOB.all_species[pref.species]
-		var/list/organ_choices = list("Без изменений")
+		var/list/organ_choices = list("Normal")
 		if(pref.organ_data[BP_TORSO] == "cyborg")
-			organ_choices -= "Без изменений"
-			if(organ_name == "Мозг")
-				organ_choices += "Кибернетический"
+			organ_choices -= "Normal"
+			if(organ_name == "Brain")
+				organ_choices += "Cybernetic"
 				if(!(current_species.spawn_flags & SPECIES_NO_POSIBRAIN))
-					organ_choices += "Позитронный"
+					organ_choices += "Positronic"
 				if(!(current_species.spawn_flags & SPECIES_NO_DRONEBRAIN))
-					organ_choices += "Дрон"
+					organ_choices += "Drone"
 			else
-				organ_choices += "Вспомогательный"
-				organ_choices += "Механический"
+				organ_choices += "Assisted"
+				organ_choices += "Mechanical"
 		else
-			organ_choices += "Вспомогательный"
-			organ_choices += "Механический"
+			organ_choices += "Assisted"
+			organ_choices += "Mechanical"
 
-		var/new_state = input(user, "В каком состоянии Вы хотите видеть этот орган?") as null|anything in organ_choices
+		var/new_state = input(user, "What state do you wish the organ to be in?") as null|anything in organ_choices
 		if(!new_state) return
 
 		switch(new_state)
-			if("Без изменений")
+			if("Normal")
 				pref.organ_data[organ] = null
-			if("Вспомогательный")
+			if("Assisted")
 				pref.organ_data[organ] = "assisted"
-			if("Кибернетический")
+			if("Cybernetic")
 				pref.organ_data[organ] = "assisted"
-			if("Механический")
+			if("Mechanical")
 				pref.organ_data[organ] = "mechanical"
-			if("Дрон")
+			if("Drone")
 				pref.organ_data[organ] = "digital"
-			if("Позитронный")
+			if("Positronic")
 				pref.organ_data[organ] = "mechanical"
 
 		return TOPIC_REFRESH
@@ -1068,11 +1090,11 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["synth2_color"])
-		var/new_color = input(user, "Выберите синтетический цвет Вашего персонажа: ", "Изменение Персонажа", rgb(pref.r_synth, pref.g_synth, pref.b_synth)) as color|null
+		var/new_color = input(user, "Choose your character's synth colour: ", "Character Preference", rgb(pref.r_synth, pref.g_synth, pref.b_synth)) as color|null
 		if(new_color && CanUseTopic(user))
-			pref.r_synth = hex2num(copytext_char(new_color, 2, 4))
-			pref.g_synth = hex2num(copytext_char(new_color, 4, 6))
-			pref.b_synth = hex2num(copytext_char(new_color, 6, 8))
+			pref.r_synth = hex2num(copytext(new_color, 2, 4))
+			pref.g_synth = hex2num(copytext(new_color, 4, 6))
+			pref.b_synth = hex2num(copytext(new_color, 6, 8))
 			return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["synth_markings"])
@@ -1084,13 +1106,9 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["ear_style"])
-		// Construct the list of names allowed for this user.
-		var/list/pretty_ear_styles = get_ear_styles()
-
-		// Present choice to user
-		var/new_ear_style = input(user, "Выберите уши", "Изменение Персонажа", pref.ear_style) as null|anything in pretty_ear_styles
+		var/new_ear_style = input(user, "Select an ear style for this character:", "Character Preference", pref.ear_style) as null|anything in pref.get_available_styles(global.ear_styles_list)
 		if(new_ear_style)
-			pref.ear_style = pretty_ear_styles[new_ear_style]
+			pref.ear_style = new_ear_style
 
 		return TOPIC_REFRESH_UPDATE_PREVIEW
 
@@ -1098,75 +1116,66 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		var/new_earc = input(user, "Choose your character's ear colour:", "Character Preference",
 			rgb(pref.r_ears, pref.g_ears, pref.b_ears)) as color|null
 		if(new_earc)
-			pref.r_ears = hex2num(copytext_char(new_earc, 2, 4))
-			pref.g_ears = hex2num(copytext_char(new_earc, 4, 6))
-			pref.b_ears = hex2num(copytext_char(new_earc, 6, 8))
+			pref.r_ears = hex2num(copytext(new_earc, 2, 4))
+			pref.g_ears = hex2num(copytext(new_earc, 4, 6))
+			pref.b_ears = hex2num(copytext(new_earc, 6, 8))
 			return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["ear_color2"])
 		var/new_earc2 = input(user, "Choose your character's ear colour:", "Character Preference",
 			rgb(pref.r_ears2, pref.g_ears2, pref.b_ears2)) as color|null
 		if(new_earc2)
-			pref.r_ears3 = hex2num(copytext_char(new_earc2, 2, 4))
-			pref.g_ears3 = hex2num(copytext_char(new_earc2, 4, 6))
-			pref.b_ears3 = hex2num(copytext_char(new_earc2, 6, 8))
+			pref.r_ears2 = hex2num(copytext(new_earc2, 2, 4))
+			pref.g_ears2 = hex2num(copytext(new_earc2, 4, 6))
+			pref.b_ears2 = hex2num(copytext(new_earc2, 6, 8))
 			return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["ear_color3"])
-		var/new_earc3 = input(user, "Выберите третичный цвет ушей вашего персонажа:", "Изменение Персонажа",
+		var/new_earc3 = input(user, "Choose your character's tertiary ear colour:", "Character Preference",
 			rgb(pref.r_ears3, pref.g_ears3, pref.b_ears3)) as color|null
 		if(new_earc3)
-			pref.r_ears3 = hex2num(copytext_char(new_earc3, 2, 4))
-			pref.g_ears3 = hex2num(copytext_char(new_earc3, 4, 6))
-			pref.b_ears3 = hex2num(copytext_char(new_earc3, 6, 8))
+			pref.r_ears3 = hex2num(copytext(new_earc3, 2, 4))
+			pref.g_ears3 = hex2num(copytext(new_earc3, 4, 6))
+			pref.b_ears3 = hex2num(copytext(new_earc3, 6, 8))
 			return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["tail_style"])
-		// Construct the list of names allowed for this user.
-		var/list/pretty_tail_styles = get_tail_styles()
-
-		// Present choice to user
-		var/new_tail_style = input(user, "Выберите хвост", "Изменение Персонажа", pref.tail_style) as null|anything in pretty_tail_styles
+		var/new_tail_style = input(user, "Select a tail style for this character:", "Character Preference", pref.tail_style) as null|anything in pref.get_available_styles(global.tail_styles_list)
 		if(new_tail_style)
-			pref.tail_style = pretty_tail_styles[new_tail_style]
-
+			pref.tail_style = new_tail_style
 		return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["tail_color"])
-		var/new_tailc = input(user, "Выберите цвет хвоста/тавра вашего персонажа:", "Изменение Персонажа",
+		var/new_tailc = input(user, "Choose your character's tail/taur colour:", "Character Preference",
 			rgb(pref.r_tail, pref.g_tail, pref.b_tail)) as color|null
 		if(new_tailc)
-			pref.r_tail = hex2num(copytext_char(new_tailc, 2, 4))
-			pref.g_tail = hex2num(copytext_char(new_tailc, 4, 6))
-			pref.b_tail = hex2num(copytext_char(new_tailc, 6, 8))
+			pref.r_tail = hex2num(copytext(new_tailc, 2, 4))
+			pref.g_tail = hex2num(copytext(new_tailc, 4, 6))
+			pref.b_tail = hex2num(copytext(new_tailc, 6, 8))
 			return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["tail_color2"])
-		var/new_tailc2 = input(user, "Выберите вторичный цвет хвоста/тавра вашего персонажа:", "Изменение Персонажа",
+		var/new_tailc2 = input(user, "Choose your character's secondary tail/taur colour:", "Character Preference",
 			rgb(pref.r_tail2, pref.g_tail2, pref.b_tail2)) as color|null
 		if(new_tailc2)
-			pref.r_tail = hex2num(copytext_char(new_tailc2, 2, 4))
-			pref.g_tail = hex2num(copytext_char(new_tailc2, 4, 6))
-			pref.b_tail = hex2num(copytext_char(new_tailc2, 6, 8))
+			pref.r_tail2 = hex2num(copytext(new_tailc2, 2, 4))
+			pref.g_tail2 = hex2num(copytext(new_tailc2, 4, 6))
+			pref.b_tail2 = hex2num(copytext(new_tailc2, 6, 8))
 			return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["tail_color3"])
-		var/new_tailc3 = input(user, "Выберите третичный цвет хвоста/тавра вашего персонажа:", "Изменение Персонажа",
+		var/new_tailc3 = input(user, "Choose your character's tertiary tail/taur colour:", "Character Preference",
 			rgb(pref.r_tail3, pref.g_tail3, pref.b_tail3)) as color|null
 		if(new_tailc3)
-			pref.r_tail3 = hex2num(copytext_char(new_tailc3, 2, 4))
-			pref.g_tail3 = hex2num(copytext_char(new_tailc3, 4, 6))
-			pref.b_tail3 = hex2num(copytext_char(new_tailc3, 6, 8))
+			pref.r_tail3 = hex2num(copytext(new_tailc3, 2, 4))
+			pref.g_tail3 = hex2num(copytext(new_tailc3, 4, 6))
+			pref.b_tail3 = hex2num(copytext(new_tailc3, 6, 8))
 			return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["wing_style"])
-		// Construct the list of names allowed for this user.
-		var/list/pretty_wing_styles = get_wing_styles()
-
-		// Present choice to user
-		var/new_wing_style = input(user, "Pick wings", "Character Preference", pref.wing_style) as null|anything in pretty_wing_styles
+		var/new_wing_style = input(user, "Select a wing style for this character:", "Character Preference", pref.wing_style) as null|anything in pref.get_available_styles(global.wing_styles_list)
 		if(new_wing_style)
-			pref.wing_style = pretty_wing_styles[new_wing_style]
+			pref.wing_style = new_wing_style
 
 		return TOPIC_REFRESH_UPDATE_PREVIEW
 
@@ -1174,27 +1183,27 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		var/new_wingc = input(user, "Choose your character's wing colour:", "Character Preference",
 			rgb(pref.r_wing, pref.g_wing, pref.b_wing)) as color|null
 		if(new_wingc)
-			pref.r_wing = hex2num(copytext_char(new_wingc, 2, 4))
-			pref.g_wing = hex2num(copytext_char(new_wingc, 4, 6))
-			pref.b_wing = hex2num(copytext_char(new_wingc, 6, 8))
+			pref.r_wing = hex2num(copytext(new_wingc, 2, 4))
+			pref.g_wing = hex2num(copytext(new_wingc, 4, 6))
+			pref.b_wing = hex2num(copytext(new_wingc, 6, 8))
 			return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["wing_color2"])
 		var/new_wingc2 = input(user, "Choose your character's secondary wing colour:", "Character Preference",
 			rgb(pref.r_wing2, pref.g_wing2, pref.b_wing2)) as color|null
 		if(new_wingc2)
-			pref.r_wing2 = hex2num(copytext_char(new_wingc2, 2, 4))
-			pref.g_wing2 = hex2num(copytext_char(new_wingc2, 4, 6))
-			pref.b_wing2 = hex2num(copytext_char(new_wingc2, 6, 8))
+			pref.r_wing2 = hex2num(copytext(new_wingc2, 2, 4))
+			pref.g_wing2 = hex2num(copytext(new_wingc2, 4, 6))
+			pref.b_wing2 = hex2num(copytext(new_wingc2, 6, 8))
 			return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["wing_color3"])
 		var/new_wingc3 = input(user, "Choose your character's tertiary wing colour:", "Character Preference",
 			rgb(pref.r_wing3, pref.g_wing3, pref.b_wing3)) as color|null
 		if(new_wingc3)
-			pref.r_wing3 = hex2num(copytext_char(new_wingc3, 2, 4))
-			pref.g_wing3 = hex2num(copytext_char(new_wingc3, 4, 6))
-			pref.b_wing3 = hex2num(copytext_char(new_wingc3, 6, 8))
+			pref.r_wing3 = hex2num(copytext(new_wingc3, 2, 4))
+			pref.g_wing3 = hex2num(copytext(new_wingc3, 4, 6))
+			pref.b_wing3 = hex2num(copytext(new_wingc3, 6, 8))
 			return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	return ..()
@@ -1220,13 +1229,13 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	if(!pref.species_preview || !(pref.species_preview in GLOB.all_species))
 		pref.species_preview = SPECIES_HUMAN
 	var/datum/species/current_species = GLOB.all_species[pref.species_preview]
-	var/dat = "<meta charset=\"utf-8\"><body>"
-	dat += "<center><h2>[current_species.name] \[<a href='?src=\ref[src];show_species=1'>изменить</a>\]</h2></center><hr/>"
+	var/dat = "<body>"
+	dat += "<center><h2>[current_species.name] \[<a href='?src=\ref[src];show_species=1'>change</a>\]</h2></center><hr/>"
 	dat += "<table padding='8px'>"
 	dat += "<tr>"
 	//vorestation edit begin
 	if(current_species.wikilink)
-		dat += "<td width = 400>[current_species.blurb]<br><br>Смотрите <a href=[current_species.wikilink]>вики</a> чтобы узнать больше.</td>"
+		dat += "<td width = 400>[current_species.blurb]<br><br>See <a href=[current_species.wikilink]>the wiki</a> for more details.</td>"
 	else
 		dat += "<td width = 400>[current_species.blurb]</td>"
 	//vorestation edit end
@@ -1234,42 +1243,42 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	if("preview" in cached_icon_states(current_species.icobase))
 		usr << browse_rsc(icon(current_species.icobase,"preview"), "species_preview_[current_species.name].png")
 		dat += "<img src='species_preview_[current_species.name].png' width='64px' height='64px'><br/><br/>"
-	dat += "<b>Язык:</b> [current_species.species_language]<br/>"
+	dat += "<b>Language:</b> [current_species.species_language]<br/>"
 	dat += "<small>"
 	if(current_species.spawn_flags & SPECIES_CAN_JOIN)
 		switch(current_species.rarity_value)
 			if(1 to 2)
-				dat += "</br><b>Часто присутствует на людских станциях.</b>"
+				dat += "</br><b>Often present on human stations.</b>"
 			if(3 to 4)
-				dat += "</br><b>Редко присутствует на людских станциях.</b>"
+				dat += "</br><b>Rarely present on human stations.</b>"
 			if(5)
-				dat += "</br><b>Неслыханно на людских станциях.</b>"
+				dat += "</br><b>Unheard of on human stations.</b>"
 			else
 				dat += "</br><b>May be present on human stations.</b>"
 	if(current_species.spawn_flags & SPECIES_IS_WHITELISTED)
-		dat += "</br><b>Ограничен вайтлистом.</b>"
+		dat += "</br><b>Whitelist restricted.</b>"
 	if(!current_species.has_organ[O_HEART])
-		dat += "</br><b>Не имеет системы кровообращения.</b>"
+		dat += "</br><b>Does not have a circulatory system.</b>"
 	if(!current_species.has_organ[O_LUNGS])
-		dat += "</br><b>Не имеет дыхательной системы.</b>"
+		dat += "</br><b>Does not have a respiratory system.</b>"
 	if(current_species.flags & NO_SCAN)
-		dat += "</br><b>Не имеет ДНК.</b>"
+		dat += "</br><b>Does not have DNA.</b>"
 	if(current_species.flags & NO_DEFIB)
-		dat += "</br><b>Не подлежит дефибрилляции.</b>"
+		dat += "</br><b>Cannot be defibrillated.</b>"
 	if(current_species.flags & NO_PAIN)
-		dat += "</br><b>Не чувствует боли.</b>"
+		dat += "</br><b>Does not feel pain.</b>"
 	if(current_species.flags & NO_SLIP)
-		dat += "</br><b>Обладает хорошим сцеплением.</b>"
+		dat += "</br><b>Has excellent traction.</b>"
 	if(current_species.flags & NO_POISON)
-		dat += "</br><b>Невосприимчив к большинству ядов.</b>"
+		dat += "</br><b>Immune to most poisons.</b>"
 	if(current_species.appearance_flags & HAS_SKIN_TONE)
-		dat += "</br><b>Имеет различные оттенки кожи.</b>"
+		dat += "</br><b>Has a variety of skin tones.</b>"
 	if(current_species.appearance_flags & HAS_SKIN_COLOR)
-		dat += "</br><b>Имеет различные цвета кожи.</b>"
+		dat += "</br><b>Has a variety of skin colours.</b>"
 	if(current_species.appearance_flags & HAS_EYE_COLOR)
-		dat += "</br><b>Имеет различные цвета глаз.</b>"
+		dat += "</br><b>Has a variety of eye colours.</b>"
 	if(current_species.flags & IS_PLANT)
-		dat += "</br><b>Имеет растительную физиологию.</b>"
+		dat += "</br><b>Has a plantlike physiology.</b>"
 	dat += "</small></td>"
 	dat += "</tr>"
 	dat += "</table><center><hr/>"
@@ -1283,35 +1292,11 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 
 	if(restricted)
 		if(restricted == 1)
-			dat += "<font color='red'><b>Вы не можете играть за эту расу.</br><small>Если вы хотите быть в белом списке, вы можете оставить заявку в <a href='?src=\ref[user];preference=open_whitelist_forum'>Discord</a>.</small></b></font></br>"
+			dat += "<font color='red'><b>You cannot play as this species.</br><small>If you wish to be whitelisted, you can make an application post on <a href='?src=\ref[user];preference=open_whitelist_forum'>the forums</a>.</small></b></font></br>"
 		else if(restricted == 2)
-			dat += "<font color='red'><b>Вы не можете играть за эту расу.</br><small>Эта раса недоступна для игры на станции.</small></b></font></br>"
+			dat += "<font color='red'><b>You cannot play as this species.</br><small>This species is not available for play as a station race..</small></b></font></br>"
 	if(!restricted || check_rights(R_ADMIN|R_EVENT, 0) || current_species.spawn_flags & SPECIES_WHITELIST_SELECTABLE)	//VOREStation Edit: selectability
-		dat += "\[<a href='?src=\ref[src];set_species=[pref.species_preview]'>выбрать</a>\]"
+		dat += "\[<a href='?src=\ref[src];set_species=[pref.species_preview]'>select</a>\]"
 	dat += "</center></body>"
 
 	user << browse(dat, "window=species;size=700x400")
-
-/datum/category_item/player_setup_item/general/body/proc/get_tail_styles()
-	var/list/pretty_tail_styles = list("Normal" = null)
-	for(var/path in tail_styles_list)
-		var/datum/sprite_accessory/tail/instance = tail_styles_list[path]
-		if(((!instance.ckeys_allowed) || (pref.client.ckey in instance.ckeys_allowed)) && ((!instance.apply_restrictions) || (pref.species in instance.species_allowed)) || check_rights(R_ADMIN | R_EVENT | R_FUN, 0, pref.client))	//VOREStation Edit
-			pretty_tail_styles[instance.name] = path
-	return pretty_tail_styles
-
-/datum/category_item/player_setup_item/general/body/proc/get_ear_styles()
-	var/list/pretty_ear_styles = list("Normal" = null)
-	for(var/path in ear_styles_list)
-		var/datum/sprite_accessory/ears/instance = ear_styles_list[path]
-		if(((!instance.ckeys_allowed) || (pref.client.ckey in instance.ckeys_allowed)) && ((!instance.apply_restrictions) || (pref.species in instance.species_allowed)) || check_rights(R_ADMIN | R_EVENT | R_FUN, 0, pref.client))	//VOREStation Edit
-			pretty_ear_styles[instance.name] = path
-	return pretty_ear_styles
-
-/datum/category_item/player_setup_item/general/body/proc/get_wing_styles()
-	var/list/pretty_wing_styles = list("Normal" = null)
-	for(var/path in wing_styles_list)
-		var/datum/sprite_accessory/wing/instance = wing_styles_list[path]
-		if(((!instance.ckeys_allowed) || (pref.client.ckey in instance.ckeys_allowed)) && ((!instance.apply_restrictions) || (pref.species in instance.species_allowed)) || check_rights(R_ADMIN | R_EVENT | R_FUN, 0, pref.client))	//VOREStation Edit
-			pretty_wing_styles[instance.name] = path
-	return pretty_wing_styles
