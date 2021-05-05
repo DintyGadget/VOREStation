@@ -15,7 +15,7 @@
 
 /obj/machinery/door/blast
 	name = "Blast Door"
-	desc = "That looks like it doesn't open easily."
+	desc = "Похоже, он не открывается легко."
 	icon = 'icons/obj/doors/rapid_pdoor.dmi'
 	icon_state = null
 	min_force = 20 //minimum amount of force needed to damage the door with a melee weapon
@@ -158,7 +158,7 @@
 			if(istype(C,/obj/item/weapon/material/twohanded/fireaxe)) // Fireaxes need to be in both hands to pry.
 				var/obj/item/weapon/material/twohanded/fireaxe/F = C
 				if(!F.wielded)
-					to_chat(user, "<span class='warning'>You need to be wielding \the [F] to do that.</span>")
+					to_chat(user, "<span class='warning'>Для этого вам нужно держать [F] в руках.</span>")
 					return
 
 			// If we're at this point, it's a fireaxe in both hands or something else that doesn't care for twohanding.
@@ -166,7 +166,7 @@
 				force_toggle(1, user)
 
 			else
-				to_chat(user, "<span class='notice'>[src]'s motors resist your effort.</span>")
+				to_chat(user, "<span class='notice'>Двигатели [src] сопротивляются вашим усилиям.</span>")
 			return
 
 
@@ -176,7 +176,7 @@
 			if(W.damtype == BRUTE || W.damtype == BURN)
 				user.do_attack_animation(src)
 				if(W.force < min_force)
-					user.visible_message("<span class='danger'>\The [user] hits \the [src] with \the [W] with no visible effect.</span>")
+					user.visible_message("<span class='danger'>[user] нажимает [src] с помощью [W] без видимого эффекта.</span>")
 				else
 					user.visible_message("<span class='danger'>\The [user] forcefully strikes \the [src] with \the [W]!</span>")
 					playsound(src, hitsound, 100, 1)

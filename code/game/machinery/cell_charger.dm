@@ -1,6 +1,6 @@
 /obj/machinery/cell_charger
-	name = "heavy-duty cell charger"
-	desc = "A much more powerful version of the standard recharger that is specially designed for charging power cells."
+	name = "сверхмощное зарядное устройство"
+	desc = "Гораздо более мощная версия стандартного зарядного устройства, специально разработанная для зарядки энергоячеек."
 	icon = 'icons/obj/power.dmi'
 	icon_state = "ccharger0"
 	anchored = 1
@@ -47,28 +47,28 @@
 
 	if(istype(W, /obj/item/weapon/cell) && anchored)
 		if(istype(W, /obj/item/weapon/cell/device))
-			to_chat(user, "<span class='warning'>\The [src] isn't fitted for that type of cell.</span>")
+			to_chat(user, "<span class='warning'>[src] не подходит для этого типа ячейки.</span>")
 			return
 		if(charging)
-			to_chat(user, "<span class='warning'>There is already [charging] in [src].</span>")
+			to_chat(user, "<span class='warning'>В [src] уже есть [charging].</span>")
 			return
 		else
 			var/area/a = loc.loc // Gets our locations location, like a dream within a dream
 			if(!isarea(a))
 				return
 			if(a.power_equip == 0) // There's no APC in this area, don't try to cheat power!
-				to_chat(user, "<span class='warning'>\The [src] blinks red as you try to insert [W]!</span>")
+				to_chat(user, "<span class='warning'>[src] мигает красным при попытке вставить [W]!</span>")
 				return
 
 			user.drop_item()
 			W.loc = src
 			charging = W
-			user.visible_message("[user] inserts [charging] into [src].", "You insert [charging] into [src].")
+			user.visible_message("[user] вставляет [charging] в [src].", "Вы вставляете [charging] в [src].")
 			chargelevel = -1
 		update_icon()
 	else if(W.is_wrench())
 		if(charging)
-			to_chat(user, "<span class='warning'>Remove [charging] first!</span>")
+			to_chat(user, "<span class='warning'>Сначала уберите [charging]!</span>")
 			return
 
 		anchored = !anchored

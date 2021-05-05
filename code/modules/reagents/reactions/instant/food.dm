@@ -1,5 +1,5 @@
 /decl/chemical_reaction/instant/food/hot_ramen
-	name = "Hot Ramen"
+	name = "Горячий Рамэн"
 	id = "hot_ramen"
 	result = "hot_ramen"
 	required_reagents = list("water" = 1, "dry_ramen" = 3)
@@ -13,7 +13,7 @@
 	result_amount = 6
 
 /decl/chemical_reaction/instant/food/tofu
-	name = "Tofu"
+	name = "Тофу"
 	id = "tofu"
 	result = null
 	required_reagents = list("soymilk" = 10)
@@ -27,7 +27,7 @@
 	return
 
 /decl/chemical_reaction/instant/food/chocolate_bar
-	name = "Chocolate Bar"
+	name = "Шоколадка соя"
 	id = "chocolate_bar"
 	result = null
 	required_reagents = list("soymilk" = 2, "coco" = 2, "sugar" = 2)
@@ -40,7 +40,7 @@
 	return
 
 /decl/chemical_reaction/instant/food/chocolate_bar2
-	name = "Chocolate Bar"
+	name = "Шоколадка"
 	id = "chocolate_bar"
 	result = null
 	required_reagents = list("milk" = 2, "coco" = 2, "sugar" = 2)
@@ -53,14 +53,14 @@
 	return
 
 /decl/chemical_reaction/instant/food/soysauce
-	name = "Soy Sauce"
+	name = "Соевый соус"
 	id = "soysauce"
 	result = "soysauce"
 	required_reagents = list("soymilk" = 4, "sacid" = 1)
 	result_amount = 5
 
 /decl/chemical_reaction/instant/food/ketchup
-	name = "Ketchup"
+	name = "Кетчуп"
 	id = "ketchup"
 	result = "ketchup"
 	required_reagents = list("tomatojuice" = 2, "water" = 1, "sugar" = 1)

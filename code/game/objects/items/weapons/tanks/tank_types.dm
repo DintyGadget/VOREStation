@@ -11,8 +11,8 @@
  * Oxygen
  */
 /obj/item/weapon/tank/oxygen
-	name = "oxygen tank"
-	desc = "A tank of oxygen."
+	name = "кислородный баллон"
+	desc = "Баллон с кислородом."
 	icon_state = "oxygen"
 	distribute_pressure = ONE_ATMOSPHERE*O2STANDARD
 
@@ -23,22 +23,22 @@
 /obj/item/weapon/tank/oxygen/examine(mob/user)
 	. = ..()
 	if(loc == user && (air_contents.gas["oxygen"] < 10))
-		. += "<span class='warning'>The meter on \the [src] indicates you are almost out of oxygen!</span>"
+		. += "<span class='warning'>Измеритель на [src] показывает, что у вас почти закончился кислород!</span>"
 
 /obj/item/weapon/tank/oxygen/yellow
-	desc = "A tank of oxygen, this one is yellow."
+	desc = "Баллон с кислородом, этот желтый."
 	icon_state = "oxygen_f"
 
 /obj/item/weapon/tank/oxygen/red
-	desc = "A tank of oxygen, this one is red."
+	desc = "Баллон с кислородом, этот красный."
 	icon_state = "oxygen_fr"
 
 /*
  * Anesthetic
  */
 /obj/item/weapon/tank/anesthetic
-	name = "anesthetic tank"
-	desc = "A tank with an N2O/O2 gas mix."
+	name = "баллон с анестетиком"
+	desc = "Баллон с газовой смесью N2O/O2."
 	icon_state = "anesthetic"
 
 /obj/item/weapon/tank/anesthetic/Initialize()
@@ -52,14 +52,14 @@
  * Air
  */
 /obj/item/weapon/tank/air
-	name = "air tank"
-	desc = "Mixed anyone?"
+	name = "баллон с воздухом"
+	desc = "Кто-нибудь смешал?"
 	icon_state = "oxygen"
 
 /obj/item/weapon/tank/air/examine(mob/user)
 	. = ..()
 	if(loc == user && (air_contents.gas["oxygen"] < 1))
-		. += "<span class='warning'>The meter on \the [src] indicates you are almost out of air!</span>"
+		. += "<span class='warning'>Измеритель на [src] показывает, что у вас почти закончился воздух!</span>"
 		user << sound('sound/effects/alert.ogg')
 
 /obj/item/weapon/tank/air/Initialize()
@@ -70,8 +70,8 @@
  * Phoron
  */
 /obj/item/weapon/tank/phoron
-	name = "phoron tank"
-	desc = "Contains dangerous phoron. Do not inhale. Warning: extremely flammable."
+	name = "баллон с фороном"
+	desc = "Содержит опасный форон. Не вдыхайте. Предупреждение: очень легко воспламеняется."
 	icon_state = "phoron"
 	gauge_icon = null
 	slot_flags = null	//they have no straps!
@@ -93,8 +93,8 @@
 	return
 
 /obj/item/weapon/tank/vox	//Can't be a child of phoron or the gas amount gets screwey.
-	name = "phoron tank"
-	desc = "Contains dangerous phoron. Do not inhale. Warning: extremely flammable."
+	name = "баллон с фороном"
+	desc = "Содержит опасный форон. Не вдыхайте. Предупреждение: очень легко воспламеняется."
 	icon_state = "phoron_vox"
 	gauge_icon = null
 	distribute_pressure = ONE_ATMOSPHERE*O2STANDARD
@@ -105,7 +105,7 @@
 	air_contents.adjust_gas("phoron", (10*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)) //VOREStation Edit
 
 /obj/item/weapon/tank/phoron/pressurized
-	name = "fuel can"
+	name = "топливная канистра"
 	icon_state = "phoron_vox"
 	w_class = ITEMSIZE_NORMAL
 
@@ -119,7 +119,7 @@
  */
 
 /obj/item/weapon/tank/emergency
-	name = "emergency tank"
+	name = "аварийный баллон"
 	icon_state = "emergency"
 	gauge_icon = "indicator_emergency"
 	gauge_cap = 4
@@ -130,7 +130,7 @@
 	volume = 2 //Tiny. Real life equivalents only have 21 breaths of oxygen in them. They're EMERGENCY tanks anyway -errorage (dangercon 2011)
 
 /obj/item/weapon/tank/emergency/oxygen
-	name = "emergency oxygen tank"
+	name = "запасной кислородный баллон"
 	desc = "Used for emergencies. Contains very little oxygen, so try to conserve it until you actually need it."
 	icon_state = "emergency"
 	gauge_icon = "indicator_emergency"
@@ -142,7 +142,7 @@
 /obj/item/weapon/tank/emergency/oxygen/examine(mob/user)
 	. = ..()
 	if(loc == user && (air_contents.gas["oxygen"] < 0.2))
-		. += "<span class='danger'>The meter on the [src.name] indicates you are almost out of air!</span>"
+		. += "<span class='danger'>Счетчик на [src.name] показывает, что у вас почти закончился воздух!</span>"
 		user << sound('sound/effects/alert.ogg')
 
 /obj/item/weapon/tank/emergency/oxygen/engi

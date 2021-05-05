@@ -10,12 +10,13 @@
 	assisted_langs = list(LANGUAGE_ROOTGLOBAL)
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick,  /datum/unarmed_attack/claws/strong, /datum/unarmed_attack/bite/strong)
 	rarity_value = 4
-	blurb = "The Vox are the broken remnants of a once-proud race, now reduced to little more than \
-	scavenging vermin who prey on isolated stations, ships or planets to keep their own ancient arkships \
-	alive. They are four to five feet tall, reptillian, beaked, tailed and quilled; human crews often \
-	refer to them as 'shitbirds' for their violent and offensive nature, as well as their horrible \
-	smell.<br/><br/>Most humans will never meet a Vox raider, instead learning of this insular species through \
-	dealing with their traders and merchants; those that do rarely enjoy the experience."
+	blurb = "Вокс - это сломанные остатки некогда гордой расы, ныне уменьшенные \
+	до не более чем паразитов-падальщиков, которые охотятся на изолированные станции, \
+	корабли или планеты, чтобы сохранить жизнь своим собственным древним кораблям-кораблям. \
+	Они от четырех до пяти футов ростом, рептилии, птичие, хвостатые и гусиные; человеческие экипажи часто называют их \
+	«говнюками» из-за их агрессивного и воинственного характера, а также из-за их ужасного запаха. \
+	<br/><br/>Большинство людей никогда не встретят рейдера Вокса, вместо этого изучая этот островной вид, \
+	общаясь со своими торговцами; те, кто редко получает удовольствие от этого опыта."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/vox)
 
 //	taste_sensitivity = TASTE_DULL

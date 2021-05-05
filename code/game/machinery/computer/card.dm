@@ -2,7 +2,7 @@
 
 /obj/machinery/computer/card
 	name = "\improper ID card modification console"
-	desc = "Terminal for programming employee ID cards to access parts of the station."
+	desc = "Терминал для программирования ID карт сотрудников для доступа к частям станции."
 	icon_keyboard = "id_key"
 	icon_screen = "id"
 	light_color = "#0099ff"
@@ -40,19 +40,19 @@
 	if(!usr || usr.stat || usr.lying)	return
 
 	if(scan)
-		to_chat(usr, "You remove \the [scan] from \the [src].")
+		to_chat(usr, "Вы удаляете [scan] из [src].")
 		scan.forceMove(get_turf(src))
 		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
 			usr.put_in_hands(scan)
 		scan = null
 	else if(modify)
-		to_chat(usr, "You remove \the [modify] from \the [src].")
+		to_chat(usr, "Вы удаляете [modify] из [src].")
 		modify.forceMove(get_turf(src))
 		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
 			usr.put_in_hands(modify)
 		modify = null
 	else
-		to_chat(usr, "There is nothing to remove from the console.")
+		to_chat(usr, "В консоли убирать нечего.")
 	return
 
 /obj/machinery/computer/card/attackby(obj/item/weapon/card/id/id_card, mob/user)
@@ -236,7 +236,7 @@
 				if(temp_name)
 					modify.registered_name = temp_name
 				else
-					visible_message("<span class='notice'>[src] buzzes rudely.</span>")
+					visible_message("<span class='notice'>[src] грубо жужжит.</span>")
 			. = TRUE
 
 		if("account")
@@ -259,7 +259,7 @@
 					var/obj/item/weapon/paper/P = new(loc)
 					if(mode)
 						P.name = text("crew manifest ([])", stationtime2text())
-						P.info = {"<h4>Crew Manifest</h4>
+						P.info = {"<h4>Манифест экипажа</h4>
 							<br>
 							[data_core ? data_core.get_manifest(0) : ""]
 						"}

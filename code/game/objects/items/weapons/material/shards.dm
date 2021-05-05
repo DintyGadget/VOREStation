@@ -1,9 +1,9 @@
 // Glass shards
 
 /obj/item/weapon/material/shard
-	name = "shard"
+	name = "осколок"
 	icon = 'icons/obj/shards.dmi'
-	desc = "Made of nothing. How does this even exist?" // set based on material, if this desc is visible it's a bug (shards default to being made of glass)
+	desc = "Сделано из ничего. Как это вообще существует?" // set based on material, if this desc is visible it's a bug (shards default to being made of glass)
 	icon_state = "large"
 	randpixel = 8
 	sharp = 1

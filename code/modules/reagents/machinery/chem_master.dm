@@ -1,5 +1,5 @@
 /obj/machinery/chem_master
-	name = "ChemMaster 3000"
+	name = "ХимМастер 3000"
 	desc = "Используется для разделения и упаковки химикатов в пластыри, таблетки или флаконы. Гарантия недействительна при использовании для создания космических препаратов."
 	density = 1
 	anchored = 1
@@ -51,19 +51,19 @@
 		src.beaker = B
 		user.drop_item()
 		B.loc = src
-		to_chat(user, "Вы добавляете [B] в мащину.")
+		to_chat(user, "Вы добавляете [B] в машину.")
 		update_icon()
 
 	else if(istype(B, /obj/item/weapon/storage/pill_bottle))
 
 		if(src.loaded_pill_bottle)
-			to_chat(user, "A \the [loaded_pill_bottle] s already loaded into the machine.")
+			to_chat(user, "[loaded_pill_bottle] уже загружен в машину.")
 			return
 
 		src.loaded_pill_bottle = B
 		user.drop_item()
 		B.loc = src
-		to_chat(user, "You add \the [loaded_pill_bottle] into the dispenser slot.")
+		to_chat(user, "Вы добавляете [loaded_pill_bottle] в слот.")
 
 	else if(default_unfasten_wrench(user, B, 20))
 		return
@@ -181,15 +181,15 @@
 				if("addcustom")
 					if(!beaker || !beaker.reagents.total_volume)
 						return
-					tgui_modal_input(src, id, "Please enter the amount to transfer to buffer:", null, arguments, useramount)
+					tgui_modal_input(src, id, "Пожалуйста, введите количество для перевода в буфер:", null, arguments, useramount)
 				if("removecustom")
 					if(!reagents.total_volume)
 						return
-					tgui_modal_input(src, id, "Please enter the amount to transfer to [mode ? "beaker" : "disposal"]:", null, arguments, useramount)
+					tgui_modal_input(src, id, "Пожалуйста, введите количество для перевода в [mode ? "мензурку" : "disposal"]:", null, arguments, useramount)
 				if("create_condi_pack")
 					if(!condi || !reagents.total_volume)
 						return
-					tgui_modal_input(src, id, "Please name your new condiment pack:", null, arguments, reagents.get_master_reagent_name(), MAX_CUSTOM_NAME_LEN)
+					tgui_modal_input(src, id, "Пожалуйста, назовите свой новый пакет приправ:", null, arguments, reagents.get_master_reagent_name(), MAX_CUSTOM_NAME_LEN)
 				if("create_pill")
 					if(condi || !reagents.total_volume)
 						return

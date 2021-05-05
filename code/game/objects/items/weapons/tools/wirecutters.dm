@@ -2,8 +2,8 @@
  * Wirecutters
  */
 /obj/item/weapon/tool/wirecutters
-	name = "wirecutters"
-	desc = "This cuts wires."
+	name = "кусачки"
+	desc = "Это режет провода."
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "cutters"
 	center_of_mass = list("x" = 18,"y" = 10)
@@ -14,7 +14,7 @@
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
 	matter = list(DEFAULT_WALL_MATERIAL = 80)
-	attack_verb = list("pinched", "nipped")
+	attack_verb = list("ущипывает", "щипает")
 	hitsound = 'sound/items/wirecutter.ogg'
 	usesound = 'sound/items/wirecutter.ogg'
 	drop_sound = 'sound/items/drop/wirecutter.ogg'
@@ -32,9 +32,9 @@
 
 /obj/item/weapon/tool/wirecutters/attack(mob/living/carbon/C as mob, mob/user as mob)
 	if(istype(C) && user.a_intent == I_HELP && (C.handcuffed) && (istype(C.handcuffed, /obj/item/weapon/handcuffs/cable)))
-		usr.visible_message("\The [usr] cuts \the [C]'s restraints with \the [src]!",\
-		"You cut \the [C]'s restraints with \the [src]!",\
-		"You hear cable being cut.")
+		usr.visible_message("[usr] снимает ограничения [C] используя [src]!",\
+		"Вы разрезаете ограничения [C] с помощью [src]!",\
+		"Вы слышите, как кабель перерезается.")
 		C.handcuffed = null
 		if(C.buckled && C.buckled.buckle_require_restraints)
 			C.buckled.unbuckle_mob()
@@ -71,8 +71,8 @@
 	random_color = FALSE
 
 /obj/item/weapon/tool/wirecutters/cyborg
-	name = "wirecutters"
-	desc = "This cuts wires.  With science."
+	name = "кусачки"
+	desc = "Это режет провода. С наукой."
 	usesound = 'sound/items/jaws_cut.ogg'
 	toolspeed = 0.5
 
@@ -89,8 +89,8 @@
 	reach = 2
 
 /obj/item/weapon/tool/wirecutters/power
-	name = "jaws of life"
-	desc = "A set of jaws of life, compressed through the magic of science. It's fitted with a cutting head."
+	name = "челюсти жизни"
+	desc = "Набор челюстей жизни, сжатых магией науки. Оснащен режущей головкой."
 	icon_state = "jaws_cutter"
 	item_state = "jawsoflife"
 	origin_tech = list(TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
@@ -119,4 +119,4 @@
 	counterpart.forceMove(get_turf(src))
 	src.forceMove(counterpart)
 	user.put_in_active_hand(counterpart)
-	to_chat(user, "<span class='notice'>You attach the pry jaws to [src].</span>")
+	to_chat(user, "<span class='notice'>Вы прикрепляете челюсти к [src].</span>")

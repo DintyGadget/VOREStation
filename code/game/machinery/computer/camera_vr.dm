@@ -1,6 +1,6 @@
 /obj/machinery/computer/security/abductor
 	name = "camera uplink"
-	desc = "Used for hacking into camera networks"
+	desc = "Используется для взлома сетей камер"
 	icon = 'icons/obj/abductor.dmi'
 	icon_state = "camera"
 	network = list(	"Mercenary",

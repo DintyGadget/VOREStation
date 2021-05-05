@@ -1,10 +1,10 @@
 //////Kitchen Spike
 
 /obj/structure/kitchenspike
-	name = "meat spike"
+	name = "мясные крюки"
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "spike"
-	desc = "A spike for collecting meat from animals."
+	desc = "Крюки для сбора мяса с животных."
 	density = 1
 	anchored = 1
 	var/meat = 0
@@ -16,17 +16,17 @@
 	if(!istype(G, /obj/item/weapon/grab) || !ismob(G.affecting))
 		return
 	if(occupied)
-		to_chat(user, "<span class = 'danger'>The spike already has something on it, finish collecting its meat first!</span>")
+		to_chat(user, "<span class = 'danger'>На крюках уже что-то есть, сначала закончите собирать его мясо!</span>")
 	else
 		if(spike(G.affecting))
-			var/datum/gender/T = gender_datums[G.affecting.get_visible_gender()]
-			visible_message("<span class = 'danger'>[user] has forced [G.affecting] onto the spike, killing [T.him] instantly!</span>")
+			//var/datum/gender/T = gender_datums[G.affecting.get_visible_gender()]
+			visible_message("<span class = 'danger'>[user] силой насаживает [G.affecting] на крюк, мгновенно убивая жертву!</span>")
 			var/mob/M = G.affecting
 			M.forceMove(src)
 			qdel(G)
 			qdel(M)
 		else
-			to_chat(user, "<span class='danger'>They are too big for the spike, try something smaller!</span>")
+			to_chat(user, "<span class='danger'>Это слишком большое для крюка, попробуйте что-нибудь поменьше!</span>")
 
 /obj/structure/kitchenspike/proc/spike(var/mob/living/victim)
 	if(!istype(victim))
@@ -56,8 +56,8 @@
 	meat--
 	new meat_type(get_turf(src))
 	if(meat > 1)
-		to_chat(user, "You cut some meat from \the [victim_name]'s body.")
+		to_chat(user, "Вы отрезаете кусок мяса от тела [victim_name].")
 	else if(meat == 1)
-		to_chat(user, "You remove the last piece of meat from \the [victim_name]!")
+		to_chat(user, "Вы убираете последний кусок мяса с [victim_name]!")
 		icon_state = "spike"
 		occupied = 0

@@ -1,6 +1,6 @@
 /obj/item/weapon/melee/chainofcommand
-	name = "chain of command"
-	desc = "A tool used by great men to placate the frothing masses."
+	name = "цепочка подчинения"
+	desc = "Инструмент, используемый великими людьми для умиротворения бунтующих масс."
 	icon_state = "chain"
 	slot_flags = SLOT_BELT
 	force = 10
@@ -13,12 +13,12 @@
 
 /obj/item/weapon/melee/chainofcommand/suicide_act(mob/user)
 	var/datum/gender/T = gender_datums[user.get_visible_gender()]
-	user.visible_message(span("danger", "\The [user] [T.is] strangling [T.himself] with \the [src]! It looks like [T.he] [T.is] trying to commit suicide."), span("danger", "You start to strangle yourself with \the [src]!"), span("danger", "You hear the sound of someone choking!"))
+	user.visible_message(span("danger", "\The [user] [T.is] strangling [T.himself] with \the [src]! It looks like [T.he] [T.is] trying to commit suicide."), span("danger", "Вы начинаете душить себя [src]!"), span("danger", "Вы слышите звук удушья!"))
 	return (OXYLOSS)
 
 /obj/item/weapon/melee/umbrella
-	name = "umbrella"
-	desc = "To keep the rain off you. Use with caution on windy days."
+	name = "зонтик"
+	desc = "Чтобы дождь не попал на тебя. С осторожностью применять в ветреные дни."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "umbrella_closed"
 	addblends = "umbrella_closed_a"
@@ -53,8 +53,8 @@
 	..()
 
 /obj/item/weapon/melee/cursedblade
-	name = "crystal blade"
-	desc = "The red crystal blade's polished surface glints in the light, giving off a faint glow."
+	name = "хрустальный клинок"
+	desc = "Полированная поверхность красного кристалла лезвия блестит на свету, испуская слабое свечение."
 	icon_state = "soulblade"
 	slot_flags = SLOT_BELT | SLOT_BACK
 	force = 30
@@ -79,7 +79,7 @@
 	if(!isobserver(candidate))
 		return
 	//Handle moving the ghost into the new shell.
-	announce_ghost_joinleave(candidate, 0, "They are occupying a cursed sword now.")
+	announce_ghost_joinleave(candidate, 0, "Сейчас они занимают проклятый меч.")
 	var/mob/living/voice/new_voice = new /mob/living/voice(src) 	//Make the voice mob the ghost is going to be.
 	new_voice.transfer_identity(candidate) 	//Now make the voice mob load from the ghost's active character in preferences.
 	new_voice.mind = candidate.mind			//Transfer the mind, if any.

@@ -18,16 +18,16 @@
 	if(I.is_screwdriver())
 		if(occupier)
 			if(stat & (NOPOWER|BROKEN))
-				to_chat(user, "<span class='warning'>The screws on [name]'s screen won't budge.</span>")
+				to_chat(user, "<span class='warning'>Винты на экране [name] не сдвигаются с места.</span>")
 			else
-				to_chat(user, "<span class='warning'>The screws on [name]'s screen won't budge and it emits a warning beep.</span>")
+				to_chat(user, "<span class='warning'>Винты на экране [name] не сдвигаются, и он издает предупреждающий звуковой сигнал.</span>")
 			return
 	if(istype(I, /obj/item/device/aicard))
 		if(stat & (NOPOWER|BROKEN))
 			to_chat(user, "<span class='warning'>Этот терминал сейчас не работает.</span>")
 			return
 		if(restoring)
-			to_chat(user, "<span class='danger'>Terminal is busy restoring [occupier] right now.</span>")
+			to_chat(user, "<span class='danger'>Терминал сейчас занят восстановлением [occupier].</span>")
 			return
 
 		var/obj/item/device/aicard/card = I
@@ -36,8 +36,8 @@
 				occupier = null
 		else if(card.carded_ai)
 			var/mob/living/silicon/ai/new_occupant = card.carded_ai
-			to_chat(new_occupant, "<span class='notice'>You have been transferred into a stationary terminal. Sadly there is no remote access from here.</span>")
-			to_chat(user, "<span class='notice'>Transfer Successful:</span> [new_occupant] placed within stationary terminal.")
+			to_chat(new_occupant, "<span class='notice'>Вас перевели в стационарный терминал. К сожалению, удаленного доступа отсюда нет.</span>")
+			to_chat(user, "<span class='notice'>Передача успешна:</span> [new_occupant] размещен внутри стационарного терминала.")
 			new_occupant.forceMove(src)
 			new_occupant.cancel_camera()
 			new_occupant.control_disabled = TRUE
@@ -45,7 +45,7 @@
 			card.clear()
 			update_icon()
 		else
-			to_chat(user, "<span class='notice'>There is no AI loaded onto this computer, and no AI loaded onto [I]. What exactly are you trying to do here?</span>")
+			to_chat(user, "<span class='notice'>На этот компьютер нет ИИ, загруженного в [I]. Что именно вы здесь пытаетесь сделать?</span>")
 	return ..()
 
 /obj/machinery/computer/aifixer/attack_hand(mob/user)
@@ -92,12 +92,12 @@
 	switch(action)
 		if("PRG_beginReconstruction")
 			if(occupier?.health < 100)
-				to_chat(usr, "<span class='notice'>Reconstruction in progress. This will take several minutes.</span>")
+				to_chat(usr, "<span class='notice'>Реконструкция в процессе. Это займет несколько минут.</span>")
 				playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 25, FALSE)
 				restoring = TRUE
 				var/mob/observer/dead/ghost = occupier.get_ghost()
 				if(ghost)
-					ghost.notify_revive("Your core files are being restored!", source = src)
+					ghost.notify_revive("Ваши файлы ядра восстанавливаются!", source = src)
 				. = TRUE
 
 /obj/machinery/computer/aifixer/proc/Fix()

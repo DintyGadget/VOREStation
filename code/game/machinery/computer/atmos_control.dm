@@ -36,9 +36,9 @@
 
 /obj/machinery/computer/atmoscontrol/emag_act(var/remaining_carges, var/mob/user)
 	if(!emagged)
-		user.visible_message("<span class='warning'>\The [user] does something \the [src], causing the screen to flash!</span>",\
-			"<span class='warning'>You cause the screen to flash as you gain full control.</span>",\
-			"You hear an electronic warble.")
+		user.visible_message("<span class='warning'>[user] что-то делает с [src], заставляя экран мигать!</span>",\
+			"<span class='warning'>Вы заставляете экран мигать, когда получаете полный контроль.</span>",\
+			"Вы слышите электронную трель.")
 		atmos_control.emagged = 1
 		return 1
 

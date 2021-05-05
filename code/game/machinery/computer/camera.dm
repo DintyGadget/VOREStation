@@ -2,7 +2,7 @@
 
 /obj/machinery/computer/security
 	name = "security camera monitor"
-	desc = "Used to access the various cameras on the station."
+	desc = "Используется для доступа к различным камерам на станции."
 
 	icon_keyboard = "security_key"
 	icon_screen = "cameras"
@@ -97,7 +97,7 @@
 
 /obj/machinery/computer/security/wooden_tv
 	name = "security camera monitor"
-	desc = "An old TV hooked into the station's camera network."
+	desc = "Старый телевизор подключен к сети камер станции."
 	icon_state = "television"
 	icon_keyboard = null
 	icon_screen = "detective_tv"
@@ -127,7 +127,7 @@
 
 /obj/machinery/computer/security/nuclear
 	name = "head mounted camera monitor"
-	desc = "Used to access the built-in cameras in helmets."
+	desc = "Используется для доступа к встроенным камерам в шлемах."
 	icon_state = "syndicam"
 	network = list(NETWORK_MERCENARY)
 	circuit = null

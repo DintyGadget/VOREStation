@@ -1,10 +1,10 @@
 /* General medicine */
 
 /datum/reagent/inaprovaline
-	name = "Inaprovaline"
+	name = "Инапровалин"
 	id = "inaprovaline"
-	description = "Inaprovaline is a synaptic stimulant and cardiostimulant. Commonly used to stabilize patients."
-	taste_description = "bitterness"
+	description = "Инапровалин является синаптическим стимулятором и кардиостимулятором. Обычно используется для стабилизации состояния пациентов."
+	taste_description = "горечь"
 	reagent_state = LIQUID
 	color = "#00BFFF"
 	overdose = REAGENTS_OVERDOSE * 2
@@ -17,10 +17,10 @@
 		M.add_chemical_effect(CE_PAINKILLER, 10 * M.species.chem_strength_pain)
 
 /datum/reagent/inaprovaline/topical
-	name = "Inaprovalaze"
+	name = "Инапровалаза"
 	id = "inaprovalaze"
-	description = "Inaprovalaze is a topical variant of Inaprovaline."
-	taste_description = "bitterness"
+	description = "Инапровалаза - это вариант инапровалина для местного применения."
+	taste_description = "горечь"
 	reagent_state = LIQUID
 	color = "#00BFFF"
 	overdose = REAGENTS_OVERDOSE * 2
@@ -40,10 +40,10 @@
 		M.add_chemical_effect(CE_PAINKILLER, 12 * M.species.chem_strength_pain)
 
 /datum/reagent/bicaridine
-	name = "Bicaridine"
+	name = "Бикаридин"
 	id = "bicaridine"
-	description = "Bicaridine is an analgesic medication and can be used to treat blunt trauma."
-	taste_description = "bitterness"
+	description = "Бикаридин является обезболивающим и может использоваться для лечения тупой травмы."
+	taste_description = "горечь"
 	taste_mult = 3
 	reagent_state = LIQUID
 	color = "#BF0000"
@@ -76,10 +76,10 @@
 						O.wounds -= W
 
 /datum/reagent/bicaridine/topical
-	name = "Bicaridaze"
+	name = "Бикаридаза"
 	id = "bicaridaze"
-	description = "Bicaridaze is a topical variant of the chemical Bicaridine."
-	taste_description = "bitterness"
+	description = "Бикаридаза - это местный вариант химического препарата бикаридина."
+	taste_description = "горечь"
 	taste_mult = 3
 	reagent_state = LIQUID
 	color = "#BF0000"
@@ -104,10 +104,10 @@
 		M.heal_organ_damage(6 * removed * chem_effective, 0)
 
 /datum/reagent/calciumcarbonate
-	name = "calcium carbonate"
+	name = "карбонат кальция"
 	id = "calciumcarbonate"
-	description = "Calcium carbonate is a calcium salt commonly used as an antacid."
-	taste_description = "chalk"
+	description = "Карбонат кальция - это соль кальция, обычно используемая в качестве антацида."
+	taste_description = "мел"
 	reagent_state = SOLID
 	color = "#eae6e3"
 	overdose = REAGENTS_OVERDOSE * 0.8
@@ -123,10 +123,10 @@
 		M.add_chemical_effect(CE_ANTACID, 3)
 
 /datum/reagent/kelotane
-	name = "Kelotane"
+	name = "Келотан"
 	id = "kelotane"
-	description = "Kelotane is a drug used to treat burns."
-	taste_description = "bitterness"
+	description = "Келотан - это лекарство, используемое для лечения ожогов."
+	taste_description = "горечь"
 	reagent_state = LIQUID
 	color = "#FFA800"
 	overdose = REAGENTS_OVERDOSE
@@ -141,10 +141,10 @@
 		M.heal_organ_damage(0, 4 * removed * chem_effective) //VOREStation edit
 
 /datum/reagent/dermaline
-	name = "Dermaline"
+	name = "Дермалин"
 	id = "dermaline"
-	description = "Dermaline is the next step in burn medication. Works twice as good as kelotane and enables the body to restore even the direst heat-damaged tissue."
-	taste_description = "bitterness"
+	description = "Дермалин - следующий шаг в лечении ожогов. Работает вдвое лучше, чем келотан, и позволяет телу восстанавливать даже самые поврежденные жарой ткани."
+	taste_description = "горечь"
 	taste_mult = 1.5
 	reagent_state = LIQUID
 	color = "#FF8000"
@@ -159,10 +159,10 @@
 		M.heal_organ_damage(0, 8 * removed * chem_effective) //VOREStation edit
 
 /datum/reagent/dermaline/topical
-	name = "Dermalaze"
+	name = "Дермалаз"
 	id = "dermalaze"
-	description = "Dermalaze is a topical variant of the chemical Dermaline."
-	taste_description = "bitterness"
+	description = "Дермалаз - это местный вариант химического препарата Дермалин."
+	taste_description = "горечь"
 	taste_mult = 1.5
 	reagent_state = LIQUID
 	color = "#FF8000"
@@ -187,10 +187,10 @@
 		M.heal_organ_damage(0, 12 * removed * chem_effective)
 
 /datum/reagent/dylovene
-	name = "Dylovene"
+	name = "Диловен"
 	id = "anti_toxin"
-	description = "Dylovene is a broad-spectrum antitoxin."
-	taste_description = "a roll of gauze"
+	description = "Диловен - антитоксин широкого спектра действия."
+	taste_description = "марля"
 	reagent_state = LIQUID
 	color = "#00A000"
 	scannable = 1
@@ -209,9 +209,9 @@
 			M.remove_a_modifier_of_type(/datum/modifier/poisoned)
 
 /datum/reagent/carthatoline
-	name = "Carthatoline"
+	name = "Карфатолин"
 	id = "carthatoline"
-	description = "Carthatoline is strong evacuant used to treat severe poisoning."
+	description = "Карфатолин - сильный эвакуатор, применяемый при тяжелых отравлениях."
 	reagent_state = LIQUID
 	color = "#225722"
 	scannable = 1
@@ -243,10 +243,10 @@
 	H.internal_organs_by_name[O_STOMACH].take_damage(removed * 2) // Causes stomach contractions, makes sense for an overdose to make it much worse.
 
 /datum/reagent/dexalin
-	name = "Dexalin"
+	name = "Дексалин"
 	id = "dexalin"
-	description = "Dexalin is used in the treatment of oxygen deprivation."
-	taste_description = "bitterness"
+	description = "Дексалин используется при лечении кислородного голодания."
+	taste_description = "горечь"
 	reagent_state = LIQUID
 	color = "#0080FF"
 	overdose = REAGENTS_OVERDOSE
@@ -259,7 +259,7 @@
 	else if(alien == IS_SLIME && dose >= 15)
 		M.add_chemical_effect(CE_PAINKILLER, 15 * M.species.chem_strength_pain)
 		if(prob(15))
-			to_chat(M, "<span class='notice'>You have a moment of clarity as you collapse.</span>")
+			to_chat(M, "<span class='notice'>Когда вы падаете, у вас наступает момент ясности.</span>")
 			M.adjustBrainLoss(-20 * removed) //VOREStation Edit
 			M.Weaken(6)
 	else if(alien != IS_DIONA)
@@ -268,10 +268,10 @@
 	holder.remove_reagent("lexorin", 8 * removed) //VOREStation Edit
 
 /datum/reagent/dexalinp
-	name = "Dexalin Plus"
+	name = "Дексалин Плюс"
 	id = "dexalinp"
-	description = "Dexalin Plus is used in the treatment of oxygen deprivation. It is highly effective."
-	taste_description = "bitterness"
+	description = "Дексалин Плюс используется при лечении кислородного голодания. Это очень эффективно."
+	taste_description = "горечь"
 	reagent_state = LIQUID
 	color = "#0040FF"
 	overdose = REAGENTS_OVERDOSE * 0.5
@@ -284,7 +284,7 @@
 	else if(alien == IS_SLIME && dose >= 10)
 		M.add_chemical_effect(CE_PAINKILLER, 25 * M.species.chem_strength_pain)
 		if(prob(25))
-			to_chat(M, "<span class='notice'>You have a moment of clarity, as you feel your tubes lose pressure rapidly.</span>")
+			to_chat(M, "<span class='notice'>У вас есть момент ясности, когда вы чувствуете, что ваши трубки быстро теряют давление.</span>")
 			M.adjustBrainLoss(-8 * removed)
 			M.Weaken(3)
 	else if(alien != IS_DIONA)
@@ -293,10 +293,10 @@
 	holder.remove_reagent("lexorin", 3 * removed)
 
 /datum/reagent/tricordrazine
-	name = "Tricordrazine"
+	name = "Трикордразин"
 	id = "tricordrazine"
-	description = "Tricordrazine is a highly potent stimulant, originally derived from cordrazine. Can be used to treat a wide range of injuries."
-	taste_description = "bitterness"
+	description = "Трикордразин является очень мощным стимулятором, первоначально полученным из кордразина. Может использоваться для лечения широкого спектра травм."
+	taste_description = "горечь"
 	reagent_state = LIQUID
 	color = "#8040FF"
 	scannable = 1
@@ -315,10 +315,10 @@
 		affect_blood(M, alien, removed * 0.4)
 
 /datum/reagent/tricorlidaze
-	name = "Tricorlidaze"
+	name = "Трикордразин"
 	id = "tricorlidaze"
-	description = "Tricorlidaze is a topical gel produced with tricordrazine and sterilizine."
-	taste_description = "bitterness"
+	description = "Трикордразин - гель для местного применения, полученный из трикордразина и стерилизина."
+	taste_description = "горечь"
 	reagent_state = SOLID
 	color = "#B060FF"
 	scannable = 1
@@ -346,13 +346,13 @@
 		var/obj/item/stack/medical/M = C.upgrade_stack(to_produce)
 
 		if(M && M.amount)
-			holder.my_atom.visible_message("<span class='notice'>\The [packname] bubbles.</span>")
+			holder.my_atom.visible_message("<span class='notice'>[packname] пузыри.</span>")
 			remove_self(to_produce * 5)
 
 /datum/reagent/cryoxadone
-	name = "Cryoxadone"
+	name = "Криоксадон"
 	id = "cryoxadone"
-	description = "A chemical mixture with almost magical healing powers. Its main limitation is that the targets body temperature must be under 170K for it to metabolise correctly."
+	description = "Химическая смесь с почти магической целительной силой. Его основное ограничение заключается в том, что для правильного метаболизма температура тела целевой группы должна быть ниже 170K."
 	taste_description = "overripe bananas"
 	reagent_state = LIQUID
 	color = "#8080FF"
@@ -365,7 +365,7 @@
 		var/chem_effective = 1 * M.species.chem_strength_heal
 		if(alien == IS_SLIME)
 			chem_effective = 0.25
-			to_chat(M, "<span class='danger'>It's cold. Something causes your cellular mass to harden occasionally, resulting in vibration.</span>")
+			to_chat(M, "<span class='danger'>Холодно. Что-то заставляет вашу клеточную массу время от времени затвердевать, что приводит к вибрации.</span>")
 			M.Weaken(10)
 			M.silent = max(M.silent, 10)
 			M.make_jittery(4)
@@ -375,9 +375,9 @@
 		M.adjustToxLoss(-10 * removed * chem_effective)
 
 /datum/reagent/clonexadone
-	name = "Clonexadone"
+	name = "Клонексадон"
 	id = "clonexadone"
-	description = "A liquid compound similar to that used in the cloning process. Can be used to 'finish' the cloning process when used in conjunction with a cryo tube."
+	description = "Жидкое соединение, подобное тому, которое используется в процессе клонирования. Может использоваться для «завершения» процесса клонирования при использовании вместе с криопробиркой."
 	taste_description = "rotten bananas"
 	reagent_state = LIQUID
 	color = "#80BFFF"
@@ -390,7 +390,7 @@
 		var/chem_effective = 1 * M.species.chem_strength_heal
 		if(alien == IS_SLIME)
 			if(prob(10))
-				to_chat(M, "<span class='danger'>It's so cold. Something causes your cellular mass to harden sporadically, resulting in seizure-like twitching.</span>")
+				to_chat(M, "<span class='danger'>Так холодно. Что-то вызывает спорадическое затвердевание вашей клеточной массы, что приводит к судорожным подергиваниям.</span>")
 			chem_effective = 0.5
 			M.Weaken(20)
 			M.silent = max(M.silent, 20)
@@ -401,10 +401,10 @@
 		M.adjustToxLoss(-30 * removed * chem_effective)
 
 /datum/reagent/mortiferin
-	name = "Mortiferin"
+	name = "Мортиферин"
 	id = "mortiferin"
-	description = "A liquid compound based upon those used in cloning. Utilized in cases of toxic shock. May cause liver damage."
-	taste_description = "meat"
+	description = "Жидкое соединение на основе тех, что используются при клонировании. Применяется при токсическом шоке. Может вызвать повреждение печени."
+	taste_description = "мясо"
 	reagent_state = LIQUID
 	color = "#6b4de3"
 	metabolism = REM * 0.5
@@ -424,7 +424,7 @@
 		var/chem_effective = 1 * M.species.chem_strength_heal
 		if(alien == IS_SLIME)
 			if(prob(10))
-				to_chat(M, "<span class='danger'>It's so cold. Something causes your cellular mass to solidify sporadically, resulting in uncontrollable twitching.</span>")
+				to_chat(M, "<span class='danger'>Так холодно. Что-то заставляет вашу клеточную массу спорадически затвердевать, что приводит к неконтролируемым подергиваниям.</span>")
 			chem_effective = 0.5
 			M.Weaken(10)
 			M.silent = max(M.silent, 10)
@@ -444,10 +444,10 @@
 				L.take_damage(rand(1,3) * removed)
 
 /datum/reagent/necroxadone
-	name = "Necroxadone"
+	name = "Некроксадон"
 	id = "necroxadone"
-	description = "A liquid compound based upon that which is used in the cloning process. Utilized primarily in severe cases of toxic shock."
-	taste_description = "meat"
+	description = "Жидкое соединение на основе того, что используется в процессе клонирования. Используется преимущественно при тяжелых случаях токсического шока."
+	taste_description = "мясо"
 	reagent_state = LIQUID
 	color = "#94B21C"
 	metabolism = REM * 0.5
@@ -460,7 +460,7 @@
 	if(M.bodytemperature < 170 || (M.stat == DEAD && M.has_modifier_of_type(/datum/modifier/bloodpump_corpse)))
 		if(alien == IS_SLIME)
 			if(prob(10))
-				to_chat(M, "<span class='danger'>It's so cold. Something causes your cellular mass to harden sporadically, resulting in seizure-like twitching.</span>")
+				to_chat(M, "<span class='danger'>Так холодно. Что-то вызывает спорадическое затвердевание вашей клеточной массы, что приводит к судорожным подергиваниям.</span>")
 			chem_effective = 0.5
 			M.Weaken(20)
 			M.silent = max(M.silent, 20)
@@ -479,10 +479,10 @@
 /* Painkillers */
 
 /datum/reagent/paracetamol
-	name = "Paracetamol"
+	name = "Парацетамол"
 	id = "paracetamol"
-	description = "Most probably know this as Tylenol, but this chemical is a mild, simple painkiller."
-	taste_description = "bitterness"
+	description = "Скорее всего, это известно как тайленол, но это химическое вещество является легким и простым болеутоляющим."
+	taste_description = "горечь"
 	reagent_state = LIQUID
 	color = "#C8A5DC"
 	overdose = REAGENTS_OVERDOSE * 2
@@ -504,10 +504,10 @@
 	M.hallucination = max(M.hallucination, 2)
 
 /datum/reagent/tramadol
-	name = "Tramadol"
+	name = "Трамадол"
 	id = "tramadol"
-	description = "A simple, yet effective painkiller."
-	taste_description = "sourness"
+	description = "Простое, но эффективное обезболивающее."
+	taste_description = "кислинка"
 	reagent_state = LIQUID
 	color = "#CB68FC"
 	overdose = REAGENTS_OVERDOSE
@@ -528,10 +528,10 @@
 	M.hallucination = max(M.hallucination, 2)
 
 /datum/reagent/oxycodone
-	name = "Oxycodone"
+	name = "Оксикодон"
 	id = "oxycodone"
-	description = "An effective and very addictive painkiller."
-	taste_description = "bitterness"
+	description = "Эффективное обезболивающее, вызывающее сильное привыкание."
+	taste_description = "горечь"
 	reagent_state = LIQUID
 	color = "#800080"
 	overdose = 20
@@ -557,10 +557,10 @@
 /* Other medicine */
 
 /datum/reagent/synaptizine
-	name = "Synaptizine"
+	name = "Синаптизин"
 	id = "synaptizine"
-	description = "Synaptizine is used to treat various diseases."
-	taste_description = "bitterness"
+	description = "Синаптизин используется для лечения различных заболеваний."
+	taste_description = "горечь"
 	reagent_state = LIQUID
 	color = "#99CCFF"
 	metabolism = REM * 0.05
@@ -587,10 +587,10 @@
 	M.add_chemical_effect(CE_PAINKILLER, 20 * chem_effective * M.species.chem_strength_pain)
 
 /datum/reagent/hyperzine
-	name = "Hyperzine"
+	name = "Гиперзин"
 	id = "hyperzine"
-	description = "Hyperzine is a highly effective, long lasting, muscle stimulant."
-	taste_description = "bitterness"
+	description = "Hyperzine - это высокоэффективный, длительный мышечный стимулятор."
+	taste_description = "горечь"
 	reagent_state = LIQUID
 	color = "#FF3300"
 	overdose = REAGENTS_OVERDOSE * 0.5
@@ -613,13 +613,13 @@
 	if(prob(5)) // 1 in 20
 		var/mob/living/carbon/human/H = M
 		H.internal_organs_by_name[O_HEART].take_damage(1)
-		to_chat(M, "<span class='warning'>Huh... Is this what a heart attack feels like?</span>")
+		to_chat(M, "<span class='warning'>Ха... Это похоже на сердечный приступ?</span>")
 
 /datum/reagent/alkysine
-	name = "Alkysine"
+	name = "Алкизин"
 	id = "alkysine"
-	description = "Alkysine is a drug used to lessen the damage to neurological tissue after a catastrophic injury. Can heal brain tissue."
-	taste_description = "bitterness"
+	description = "Алкизин - это лекарство, используемое для уменьшения повреждения неврологической ткани после катастрофической травмы. Может лечить ткани мозга."
+	taste_description = "горечь"
 	reagent_state = LIQUID
 	color = "#FFFF66"
 	metabolism = REM * 0.25
@@ -640,10 +640,10 @@
 	M.add_chemical_effect(CE_PAINKILLER, 10 * chem_effective * M.species.chem_strength_pain)
 
 /datum/reagent/imidazoline
-	name = "Imidazoline"
+	name = "Имидазолин"
 	id = "imidazoline"
-	description = "Heals eye damage"
-	taste_description = "dull toxin"
+	description = "Лечит повреждения глаз"
+	taste_description = "фломастер"
 	reagent_state = LIQUID
 	color = "#C8A5DC"
 	overdose = REAGENTS_OVERDOSE
@@ -664,10 +664,10 @@
 				H.sdisabilities &= ~BLIND
 
 /datum/reagent/peridaxon
-	name = "Peridaxon"
+	name = "Перидаксон"
 	id = "peridaxon"
-	description = "Used to encourage recovery of internal organs and nervous systems. Medicate cautiously."
-	taste_description = "bitterness"
+	description = "Используется для восстановления внутренних органов и нервной системы. Используйте осторожно."
+	taste_description = "горечь"
 	reagent_state = LIQUID
 	color = "#561EC3"
 	overdose = 10
@@ -697,9 +697,9 @@
 	M.hallucination = max(M.hallucination, 10)
 
 /datum/reagent/osteodaxon
-	name = "Osteodaxon"
+	name = "Остеодаксон"
 	id = "osteodaxon"
-	description = "An experimental drug used to heal bone fractures."
+	description = "Экспериментальный препарат, применяемый для лечения переломов костей."
 	reagent_state = LIQUID
 	color = "#C9BCE3"
 	metabolism = REM * 0.5
@@ -716,13 +716,13 @@
 		for(var/obj/item/organ/external/O in H.bad_external_organs)
 			if(O.status & ORGAN_BROKEN)
 				O.mend_fracture()		//Only works if the bone won't rebreak, as usual
-				H.custom_pain("You feel a terrible agony tear through your bones!",60)
+				H.custom_pain("Вы чувствуете ужасную агонию, раздирающую ваши кости!",60)
 				H.AdjustWeakened(1)		//Bones being regrown will knock you over
 
 /datum/reagent/myelamine
-	name = "Myelamine"
+	name = "Миеламин"
 	id = "myelamine"
-	description = "Used to rapidly clot internal hemorrhages by increasing the effectiveness of platelets."
+	description = "Используется для быстрого свертывания внутренних кровоизлияний за счет повышения эффективности тромбоцитов."
 	reagent_state = LIQUID
 	color = "#4246C7"
 	metabolism = REM * 0.5
@@ -767,10 +767,10 @@
 						O.wounds -= W
 
 /datum/reagent/respirodaxon
-	name = "Respirodaxon"
+	name = "Респиродаксон"
 	id = "respirodaxon"
-	description = "Used to repair the tissue of the lungs and similar organs."
-	taste_description = "metallic"
+	description = "Используется для восстановления тканей легких и подобных органов."
+	taste_description = "металл"
 	reagent_state = LIQUID
 	color = "#4444FF"
 	metabolism = REM * 1.5
@@ -799,10 +799,10 @@
 			H.losebreath = max(H.losebreath - 4, 0)
 
 /datum/reagent/gastirodaxon
-	name = "Gastirodaxon"
+	name = "Гастиродаксон"
 	id = "gastirodaxon"
-	description = "Used to repair the tissues of the digestive system."
-	taste_description = "chalk"
+	description = "Используется для восстановления тканей пищеварительной системы."
+	taste_description = "мел"
 	reagent_state = LIQUID
 	color = "#8B4513"
 	metabolism = REM * 1.5
@@ -831,10 +831,10 @@
 			H.adjustToxLoss(-10 * removed) // Carthatoline based, considering cost.
 
 /datum/reagent/hepanephrodaxon
-	name = "Hepanephrodaxon"
+	name = "Гепанефродаксон"
 	id = "hepanephrodaxon"
-	description = "Used to repair the common tissues involved in filtration."
-	taste_description = "glue"
+	description = "Используется для восстановления общих тканей, участвующих в фильтрации."
+	taste_description = "клей"
 	reagent_state = LIQUID
 	color = "#D2691E"
 	metabolism = REM * 1.5
@@ -858,17 +858,17 @@
 			if(prob(5))
 				H.vomit(1)
 			else if(prob(5))
-				to_chat(H, "<span class='danger'>Something churns inside you.</span>")
+				to_chat(H, "<span class='danger'>Что-то бурлит внутри вас.</span>")
 				H.adjustToxLoss(10 * removed)
 				H.vomit(0, 1)
 		else
 			H.adjustToxLoss(-12 * removed) // Carthatoline based, considering cost.
 
 /datum/reagent/cordradaxon
-	name = "Cordradaxon"
+	name = "Кордрадаксон"
 	id = "cordradaxon"
-	description = "Used to repair the specialized tissues involved in the circulatory system."
-	taste_description = "rust"
+	description = "Используется для восстановления специализированных тканей, участвующих в системе кровообращения."
+	taste_description = "ржавчина"
 	reagent_state = LIQUID
 	color = "#FF4444"
 	metabolism = REM * 1.5
@@ -894,10 +894,10 @@
 			H.adjustOxyLoss(-30 * removed) // Deals with blood oxygenation.
 
 /datum/reagent/immunosuprizine
-	name = "Immunosuprizine"
+	name = "Иммуносупризин"
 	id = "immunosuprizine"
-	description = "An experimental powder believed to have the ability to prevent any organ rejection."
-	taste_description = "flesh"
+	description = "Экспериментальный порошок, который, как полагают, обладает способностью предотвращать отторжение любого органа."
+	taste_description = "плоть"
 	reagent_state = SOLID
 	color = "#7B4D4F"
 	overdose = 20
@@ -951,9 +951,9 @@
 						I.take_damage(1)
 
 /datum/reagent/skrellimmuno
-	name = "Malish-Qualem"
+	name = "Малиш-Куалем"
 	id = "malish-qualem"
-	description = "A strange, oily powder used by Malish-Katish to prevent organ rejection."
+	description = "Странный маслянистый порошок, используемый Малиш-Катиш для предотвращения отторжения органов."
 	taste_description = "mordant"
 	reagent_state = SOLID
 	color = "#84B2B0"
@@ -997,10 +997,10 @@
 						I.take_damage(1)
 
 /datum/reagent/ryetalyn
-	name = "Ryetalyn"
+	name = "Риеталин"
 	id = "ryetalyn"
-	description = "Ryetalyn can cure all genetic abnomalities via a catalytic process."
-	taste_description = "acid"
+	description = "Риеталин может вылечить все генетические аномалии с помощью каталитического процесса."
+	taste_description = "кислота"
 	reagent_state = SOLID
 	color = "#004000"
 	overdose = REAGENTS_OVERDOSE
@@ -1044,10 +1044,10 @@
 		H.update_mutations()
 
 /datum/reagent/ethylredoxrazine
-	name = "Ethylredoxrazine"
+	name = "Этилредоксразин"
 	id = "ethylredoxrazine"
-	description = "A powerful oxidizer that reacts with ethanol."
-	taste_description = "bitterness"
+	description = "Мощный окислитель, вступающий в реакцию с этанолом."
+	taste_description = "горечь"
 	reagent_state = SOLID
 	color = "#605048"
 	overdose = REAGENTS_OVERDOSE
@@ -1077,10 +1077,10 @@
 				R.remove_self(removed * 20)
 
 /datum/reagent/hyronalin
-	name = "Hyronalin"
+	name = "Гироналин"
 	id = "hyronalin"
-	description = "Hyronalin is a medicinal drug used to counter the effect of radiation poisoning."
-	taste_description = "bitterness"
+	description = "Гироналин - лекарственный препарат, применяемый для противодействия эффекту радиационного отравления."
+	taste_description = "горечь"
 	reagent_state = LIQUID
 	color = "#408000"
 	metabolism = REM * 0.25
@@ -1093,10 +1093,10 @@
 	M.radiation = max(M.radiation - 30 * removed * M.species.chem_strength_heal, 0)
 
 /datum/reagent/arithrazine
-	name = "Arithrazine"
+	name = "Аритразин"
 	id = "arithrazine"
-	description = "Arithrazine is an unstable medication used for the most extreme cases of radiation poisoning."
-	taste_description = "bitterness"
+	description = "Аритразин - нестабильный препарат, применяемый в самых тяжелых случаях радиационного отравления."
+	taste_description = "горечь"
 	reagent_state = LIQUID
 	color = "#008000"
 	metabolism = REM * 0.25
@@ -1113,10 +1113,10 @@
 		M.take_organ_damage(4 * removed, 0)
 
 /datum/reagent/spaceacillin
-	name = "Spaceacillin"
+	name = "Космоциллин"
 	id = "spaceacillin"
-	description = "An all-purpose antiviral agent."
-	taste_description = "bitterness"
+	description = "Универсальное противовирусное средство."
+	taste_description = "горечь"
 	reagent_state = LIQUID
 	color = "#C1C1C1"
 	metabolism = REM * 0.25
@@ -1135,17 +1135,17 @@
 			var/delay = (5 MINUTES)
 			if(world.time > data + delay)
 				data = world.time
-				to_chat(M, "<span class='warning'>Your senses feel unfocused, and divided.</span>")
+				to_chat(M, "<span class='warning'>Ваши чувства расфокусированы и разделены.</span>")
 	M.add_chemical_effect(CE_ANTIBIOTIC, dose >= overdose ? ANTIBIO_OD : ANTIBIO_NORM)
 
 /datum/reagent/spaceacillin/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
 	affect_blood(M, alien, removed * 0.8) // Not 100% as effective as injections, though still useful.
 
 /datum/reagent/corophizine
-	name = "Corophizine"
+	name = "Корофизин"
 	id = "corophizine"
-	description = "A wide-spectrum antibiotic drug. Powerful and uncomfortable in equal doses."
-	taste_description = "burnt toast"
+	description = "Антибиотик широкого спектра действия. Мощно и неудобно в равных дозах."
+	taste_description = "подгоревший тост"
 	reagent_state = LIQUID
 	color = "#FFB0B0"
 	mrate_static = TRUE
@@ -1163,12 +1163,12 @@
 	if(ishuman(M) && alien == IS_SLIME) //Everything about them is treated like a targetted organism. Widespread bodily function begins to fail.
 		if(volume <= 0.1 && data != -1)
 			data = -1
-			to_chat(M, "<span class='notice'>Your body ceases its revolt.</span>")
+			to_chat(M, "<span class='notice'>Ваше тело перестает бунтовать.</span>")
 		else
 			var/delay = (3 MINUTES)
 			if(world.time > data + delay)
 				data = world.time
-				to_chat(M, "<span class='critical'>It feels like your body is revolting!</span>")
+				to_chat(M, "<span class='critical'>Такое чувство, что ваше тело отвратительно!</span>")
 		M.Confuse(7)
 		M.adjustFireLoss(removed * 2)
 		M.adjustToxLoss(removed * 2)
@@ -1177,7 +1177,7 @@
 			M.eye_blurry = min(20, max(0, M.eye_blurry + 10))
 			if(prob(25))
 				if(prob(25))
-					to_chat(M, "<span class='danger'>Your pneumatic fluids seize for a moment.</span>")
+					to_chat(M, "<span class='danger'>Ваши пневматические жидкости на мгновение схватываются.</span>")
 				M.Stun(2)
 				spawn(30)
 					M.Weaken(2)
@@ -1190,7 +1190,7 @@
 		if(M.bruteloss >= 60 && M.toxloss >= 60 && M.brainloss >= 30) //Total Structural Failure. Limbs start splattering.
 			var/obj/item/organ/external/O = pick(H.organs)
 			if(prob(20) && !istype(O, /obj/item/organ/external/chest/unbreakable/slime) && !istype(O, /obj/item/organ/external/groin/unbreakable/slime))
-				to_chat(M, "<span class='critical'>You feel your [O] begin to dissolve, before it sloughs from your body.</span>")
+				to_chat(M, "<span class='critical'>Вы чувствуете, как ваша [O] начинает растворяться, прежде чем она отслаивается от вашего тела.</span>")
 				O.droplimb() //Splat.
 		return
 
@@ -1210,10 +1210,10 @@
 		eo.fracture()
 
 /datum/reagent/spacomycaze
-	name = "Spacomycaze"
+	name = "Спакомиказ"
 	id = "spacomycaze"
-	description = "An all-purpose painkilling antibiotic gel."
-	taste_description = "oil"
+	description = "Универсальный обезболивающий гель с антибиотиком."
+	taste_description = "масло"
 	reagent_state = SOLID
 	color = "#C1C1C8"
 	metabolism = REM * 0.4
@@ -1235,12 +1235,12 @@
 	if(alien == IS_SLIME)
 		if(volume <= 0.1 && data != -1)
 			data = -1
-			to_chat(M, "<span class='notice'>The itching fades...</span>")
+			to_chat(M, "<span class='notice'>Зуд утихает ...</span>")
 		else
 			var/delay = (2 MINUTES)
 			if(world.time > data + delay)
 				data = world.time
-				to_chat(M, "<span class='warning'>Your skin itches.</span>")
+				to_chat(M, "<span class='warning'>Вашп кожа чешется.</span>")
 
 	M.add_chemical_effect(CE_ANTIBIOTIC, dose >= overdose ? ANTIBIO_OD : ANTIBIO_NORM)
 	M.add_chemical_effect(CE_PAINKILLER, 20 * M.species.chem_strength_pain) // 5 less than paracetamol.
@@ -1254,14 +1254,14 @@
 		var/obj/item/stack/medical/M = C.upgrade_stack(to_produce)
 
 		if(M && M.amount)
-			holder.my_atom.visible_message("<span class='notice'>\The [packname] bubbles.</span>")
+			holder.my_atom.visible_message("<span class='notice'>[packname] bubbles.</span>")
 			remove_self(to_produce)
 
 /datum/reagent/sterilizine
-	name = "Sterilizine"
+	name = "Стерилизин"
 	id = "sterilizine"
-	description = "Sterilizes wounds in preparation for surgery and thoroughly removes blood."
-	taste_description = "bitterness"
+	description = "Стерилизует раны при подготовке к операции и тщательно удаляет кровь."
+	taste_description = "горечь"
 	reagent_state = LIQUID
 	color = "#C8A5DC"
 	touch_met = 5
@@ -1295,22 +1295,22 @@
 	//VOREstation edit. Floor polishing.
 	if(istype(T, /turf/simulated))
 		var/turf/simulated/S = T
-		S.dirt = -50 
-	//VOREstation edit end	
+		S.dirt = -50
+	//VOREstation edit end
 
 /datum/reagent/sterilizine/touch_mob(var/mob/living/L, var/amount)
 	if(istype(L))
 		if(istype(L, /mob/living/simple_mob/slime))
 			var/mob/living/simple_mob/slime/S = L
 			S.adjustToxLoss(rand(15, 25) * amount)	// Does more damage than water.
-			S.visible_message("<span class='warning'>[S]'s flesh sizzles where the fluid touches it!</span>", "<span class='danger'>Your flesh burns in the fluid!</span>")
+			S.visible_message("<span class='warning'>Плоть [S] шипит там, где жидкость соприкасается с ней!</span>", "<span class='danger'>Вашп плоть горит в жидкости!</span>")
 		remove_self(amount)
 
 /datum/reagent/leporazine
-	name = "Leporazine"
+	name = "Лепоразин"
 	id = "leporazine"
-	description = "Leporazine can be use to stabilize an individuals body temperature."
-	taste_description = "bitterness"
+	description = "Лепоразин можно использовать для стабилизации температуры тела человека."
+	taste_description = "горечь"
 	reagent_state = LIQUID
 	color = "#C8A5DC"
 	overdose = REAGENTS_OVERDOSE
@@ -1325,10 +1325,10 @@
 		M.bodytemperature = min(310, M.bodytemperature + (40 * TEMPERATURE_DAMAGE_COEFFICIENT))
 
 /datum/reagent/rezadone
-	name = "Rezadone"
+	name = "Резадон"
 	id = "rezadone"
-	description = "A powder with almost magical properties, this substance can effectively treat genetic damage in humanoids, though excessive consumption has side effects."
-	taste_description = "bitterness"
+	description = "Порошок с почти волшебными свойствами, это вещество может эффективно лечить генетические повреждения у гуманоидов, хотя чрезмерное употребление имеет побочные эффекты."
+	taste_description = "горечь"
 	reagent_state = SOLID
 	color = "#669900"
 	overdose = REAGENTS_OVERDOSE
@@ -1376,10 +1376,10 @@
 #define ANTIDEPRESSANT_MESSAGE_DELAY 5*60*10
 
 /datum/reagent/methylphenidate
-	name = "Methylphenidate"
+	name = "Метилфенидат"
 	id = "methylphenidate"
-	description = "Improves the ability to concentrate."
-	taste_description = "bitterness"
+	description = "Улучшает способность концентрироваться."
+	taste_description = "горечь"
 	reagent_state = LIQUID
 	color = "#BF80BF"
 	metabolism = 0.01
@@ -1392,17 +1392,17 @@
 		return
 	if(volume <= 0.1 && data != -1)
 		data = -1
-		to_chat(M, "<span class='warning'>You lose focus...</span>")
+		to_chat(M, "<span class='warning'>Вы теряете фокус ...</span>")
 	else
 		if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
 			data = world.time
-			to_chat(M, "<span class='notice'>Your mind feels focused and undivided.</span>")
+			to_chat(M, "<span class='notice'>Ваш ум ощущается сосредоточенным и неразделенным.</span>")
 
 /datum/reagent/citalopram
-	name = "Citalopram"
+	name = "Циталопрам"
 	id = "citalopram"
-	description = "Stabilizes the mind a little."
-	taste_description = "bitterness"
+	description = "Немного стабилизирует ум."
+	taste_description = "горечь"
 	reagent_state = LIQUID
 	color = "#FF80FF"
 	metabolism = 0.01
@@ -1415,17 +1415,17 @@
 		return
 	if(volume <= 0.1 && data != -1)
 		data = -1
-		to_chat(M, "<span class='warning'>Your mind feels a little less stable...</span>")
+		to_chat(M, "<span class='warning'>Ваш разум чувствует себя немного менее устойчивым ...</span>")
 	else
 		if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
 			data = world.time
-			to_chat(M, "<span class='notice'>Your mind feels stable... a little stable.</span>")
+			to_chat(M, "<span class='notice'>Ваш разум чувствует себя стабильным ... немного стабильным.</span>")
 
 /datum/reagent/paroxetine
-	name = "Paroxetine"
+	name = "Пароксетин"
 	id = "paroxetine"
-	description = "Stabilizes the mind greatly, but has a chance of adverse effects."
-	taste_description = "bitterness"
+	description = "Сильно стабилизирует ум, но имеет шанс на побочные эффекты."
+	taste_description = "горечь"
 	reagent_state = LIQUID
 	color = "#FF80BF"
 	metabolism = 0.01
@@ -1438,20 +1438,20 @@
 		return
 	if(volume <= 0.1 && data != -1)
 		data = -1
-		to_chat(M, "<span class='warning'>Your mind feels much less stable...</span>")
+		to_chat(M, "<span class='warning'>Ваш разум чувствует себя гораздо менее устойчивым ...</span>")
 	else
 		if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
 			data = world.time
 			if(prob(90))
-				to_chat(M, "<span class='notice'>Your mind feels much more stable.</span>")
+				to_chat(M, "<span class='notice'>Ваш ум чувствует себя намного более устойчивым.</span>")
 			else
-				to_chat(M, "<span class='warning'>Your mind breaks apart...</span>")
+				to_chat(M, "<span class='warning'>Ваш разум разваливается на части ...</span>")
 				M.hallucination += 200
 
 /datum/reagent/qerr_quem
-	name = "Qerr-quem"
+	name = "Кверр-Квем"
 	id = "qerr_quem"
-	description = "A potent stimulant and anti-anxiety medication, made for the Qerr-Katish."
+	description = "Мощный стимулятор и успокаивающее средство, созданное для племени Керр-Катиш."
 	taste_description = "mint"
 	reagent_state = LIQUID
 	color = "#e6efe3"
@@ -1465,18 +1465,18 @@
 		return
 	if(volume <= 0.1 && data != -1)
 		data = -1
-		to_chat(M, "<span class='warning'>You feel antsy, your concentration wavers...</span>")
+		to_chat(M, "<span class='warning'>Вы нервничаете, ваша концентрация колеблется ...</span>")
 	else
 		if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
 			data = world.time
-			to_chat(M, "<span class='notice'>You feel invigorated and calm.</span>")
+			to_chat(M, "<span class='notice'>Вы чувствуете себя бодрым и спокойным.</span>")
 
 // This exists to cut the number of chemicals a merc borg has to juggle on their hypo.
 /datum/reagent/healing_nanites
-	name = "Restorative Nanites"
+	name = "Восстановительные наниты"
 	id = "healing_nanites"
-	description = "Miniature medical robots that swiftly restore bodily damage."
-	taste_description = "metal"
+	description = "Миниатюрные медицинские роботы, быстро восстанавливающие телесные повреждения."
+	taste_description = "металл"
 	reagent_state = SOLID
 	color = "#555555"
 	metabolism = REM * 4 // Nanomachines gotta go fast.
@@ -1490,10 +1490,10 @@
 	M.adjustCloneLoss(-2 * removed)
 
 /datum/reagent/menthol
-	name = "Menthol"
+	name = "Ментол"
 	id = "menthol"
-	description = "Tastes naturally minty, and imparts a very mild numbing sensation."
-	taste_description = "mint"
+	description = "Имеет естественный мятный вкус и вызывает легкое онемение."
+	taste_description = "мята"
 	reagent_state = LIQUID
 	color = "#80af9c"
 	metabolism = REM * 0.002

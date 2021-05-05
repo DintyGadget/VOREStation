@@ -19,22 +19,22 @@
 /obj/item/weapon/airlock_electronics/emag_act(var/remaining_charges, var/mob/user)
 	if(!emagged)
 		emagged = 1
-		to_chat(user, "<span class='notice'>You remove the access restrictions on [src]!</span>")
+		to_chat(user, "<span class='notice'>Вы снимаете ограничения доступа на [src]!</span>")
 		return 1
 
 /obj/item/weapon/airlock_electronics/attack_self(mob/user as mob)
 	if (!ishuman(user) && !istype(user,/mob/living/silicon/robot))
 		return ..(user)
 
-	var/t1 = text("<B>Access control</B><br>\n")
+	var/t1 = text("<B>Контроль доступа</B><br>\n")
 
 	if (last_configurator)
-		t1 += "Operator: [last_configurator]<br>"
+		t1 += "Оператор: [last_configurator]<br>"
 
 	if (locked)
-		t1 += "<a href='?src=\ref[src];login=1'>Unlock Interface</a><hr>"
+		t1 += "<a href='?src=\ref[src];login=1'>Разблокировать интерфейс</a><hr>"
 	else
-		t1 += "<a href='?src=\ref[src];logout=1'>Lock Interface</a><hr>"
+		t1 += "<a href='?src=\ref[src];logout=1'>Заблокировать интерфейс</a><hr>"
 
 		t1 += "Access requirement is set to "
 		t1 += one_access ? "<a style='color: green' href='?src=\ref[src];one_access=1'>ONE</a><hr>" : "<a style='color: red' href='?src=\ref[src];one_access=1'>ALL</a><hr>"
@@ -133,11 +133,11 @@
 	// Nothing
 	if(!id || !id.access)
 		return list()
-	
+
 	// Has engineer access, can put any access
 	else if(has_access(null, apply_any_access, id.access))
 		return get_all_station_access()
-	
+
 	// Not an engineer, can only pick your own accesses to program
 	else
 		return id.access

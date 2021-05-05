@@ -1,9 +1,9 @@
 /obj/machinery/button
-	name = "button"
+	name = "кнопка"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "launcherbtt"
 	layer = ABOVE_WINDOW_LAYER
-	desc = "A remote control switch for something."
+	desc = "Пульт дистанционного управления для чего-то."
 	var/id = null
 	var/active = 0
 	anchored = 1.0

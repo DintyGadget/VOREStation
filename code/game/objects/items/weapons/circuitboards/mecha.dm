@@ -4,7 +4,7 @@
 #define T_BOARD_MECHA(name)	"exosuit module circuit board (" + (name) + ")"
 
 /obj/item/weapon/circuitboard/mecha
-	name = "exosuit circuit board"
+	name = "экзокостюм печатная плата"
 	icon = 'icons/obj/module.dmi'
 	icon_state = "std_mod"
 	board_type = "other"

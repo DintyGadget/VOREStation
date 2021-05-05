@@ -3,8 +3,8 @@
  */
 
 /obj/item/weapon/tool/prybar
-	name = "pry bar"
-	desc = "A steel bar with a wedge, designed specifically for opening unpowered doors in an emergency. It comes in a variety of configurations - collect them all!"
+	name = "монтировка"
+	desc = "Стальная штанга с клином, разработанная специально для открывания дверей без привода в экстренной ситуации. Он бывает разных конфигураций - соберите их все!"
 	icon = 'icons/obj/tools_vr.dmi'
 	icon_state = "prybar"
 	slot_flags = SLOT_BELT

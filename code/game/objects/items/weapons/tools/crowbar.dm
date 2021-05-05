@@ -3,7 +3,7 @@
  */
 
 /obj/item/weapon/tool/crowbar
-	name = "crowbar"
+	name = "ломик"
 	desc = "Используется для снятия полов и открывания дверей."
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "crowbar"
@@ -31,7 +31,7 @@
 
 
 /datum/category_item/catalogue/anomalous/precursor_a/alien_crowbar
-	name = "Предвестник Альфа-объекта - Инструмент Hard Light Pry"
+	name = "Альфа-объект Предтеч - Инструмент Hard Light Pry"
 	desc = "Предмет, поразительно напоминающий обычный лом. \
 	It appears to also serve a similar purpose, being used for prying. Unlike \
 	a crowbar, however, this object is made of some form of 'hard light'.\
@@ -64,7 +64,7 @@
 	reach = 2
 
 /obj/item/weapon/tool/crowbar/cyborg
-	name = "hydraulic crowbar"
+	name = "гидравлический лом"
 	desc = "Компактный, но мощный гидравлический инструмент для взлома. Предназначен для замены ломов в промышленной синтетике."
 	usesound = 'sound/items/jaws_pry.ogg'
 	force = 10

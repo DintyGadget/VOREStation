@@ -1,26 +1,26 @@
 /datum/category_item/autolathe/tools/crowbar
-	name = "crowbar"
+	name = "ломик"
 	path =/obj/item/weapon/tool/crowbar
 
 /datum/category_item/autolathe/tools/multitool
-	name = "multitool"
+	name = "мультитул"
 	path =/obj/item/device/multitool
 
 /datum/category_item/autolathe/tools/t_scanner
-	name = "T-ray scanner"
+	name = "T-ray сканер"
 	path =/obj/item/device/t_scanner
 
 /datum/category_item/autolathe/tools/weldertool
-	name = "welding tool"
+	name = "сварка"
 	path =/obj/item/weapon/weldingtool
 
 /datum/category_item/autolathe/tools/electric_welder
-	name = "electric welding tool"
+	name = "электросварка"
 	path =/obj/item/weapon/weldingtool/electric/unloaded
 	hidden = 1
 
 /datum/category_item/autolathe/tools/screwdriver
-	name = "screwdriver"
+	name = "отвертка"
 	path =/obj/item/weapon/tool/screwdriver
 
 /datum/category_item/autolathe/tools/wirecutters

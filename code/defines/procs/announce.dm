@@ -86,13 +86,13 @@
 			to_chat(M, command)
 
 /datum/announcement/priority/Message(var/message as text, var/message_title as text, var/list/zlevels)
-	global_announcer.autosay("<span class='alert'>[message_title]:</span> [message]", announcer ? announcer : ANNOUNCER_NAME, channel = "Common", zlevels = zlevels)
+	global_announcer.autosay("<span class='alert'>[message_title]:</span> [message]", announcer ? announcer : ANNOUNCER_NAME, channel = "Общий", zlevels = zlevels)
 
 /datum/announcement/priority/command/Message(var/message as text, var/message_title as text, var/list/zlevels)
-	global_announcer.autosay("<span class='alert'>[command_name()] - [message_title]:</span> [message]", ANNOUNCER_NAME, channel = "Common", zlevels = zlevels)
+	global_announcer.autosay("<span class='alert'>[command_name()] - [message_title]:</span> [message]", ANNOUNCER_NAME, channel = "Общий", zlevels = zlevels)
 
 /datum/announcement/priority/security/Message(var/message as text, var/message_title as text, var/list/zlevels)
-	global_announcer.autosay("<span class='alert'>[message_title]:</span> [message]", ANNOUNCER_NAME, channel = "Common", zlevels = zlevels)
+	global_announcer.autosay("<span class='alert'>[message_title]:</span> [message]", ANNOUNCER_NAME, channel = "Общий", zlevels = zlevels)
 
 /datum/announcement/proc/NewsCast(var/message as text, var/message_title as text)
 	if(!newscast)
@@ -136,17 +136,17 @@
 	return I.assignment ? "[I.registered_name] ([I.assignment])" : I.registered_name
 
 /proc/level_seven_announcement()
-	command_announcement.Announce("Confirmed outbreak of level 7 biohazard aboard \the [station_name()]. All personnel must contain the outbreak.", "Biohazard Alert", new_sound = 'sound/AI/outbreak7.ogg')
+	command_announcement.Announce("Подтверждена вспышка биологической опасности 7-го уровня на борту [station_name()]. Весь персонал должен сдерживать вспышку.", "Biohazard Alert", new_sound = 'sound/AI/outbreak7.ogg')
 
 /proc/ion_storm_announcement()
-	command_announcement.Announce("It has come to our attention that \the [station_name()] passed through an ion storm.  Please monitor all electronic equipment for malfunctions.", "Anomaly Alert")
+	command_announcement.Announce("До нашего сведения дошло, что [station_name()] прошел через ионный шторм.  Пожалуйста, проверьте за всем электронным оборудованием на предмет неисправностей.", "Anomaly Alert")
 
-/proc/AnnounceArrival(var/mob/living/carbon/human/character, var/rank, var/join_message, var/channel = "Common", var/zlevel)
+/proc/AnnounceArrival(var/mob/living/carbon/human/character, var/rank, var/join_message, var/channel = "Общий", var/zlevel)
 	if (ticker.current_state == GAME_STATE_PLAYING)
 		var/list/zlevels = zlevel ? using_map.get_map_levels(zlevel, TRUE, om_range = DEFAULT_OVERMAP_RANGE) : null
 		if(character.mind.role_alt_title)
 			rank = character.mind.role_alt_title
 		AnnounceArrivalSimple(character.real_name, rank, join_message, channel, zlevels)
 
-/proc/AnnounceArrivalSimple(var/name, var/rank = "visitor", var/join_message = "will arrive at the station shortly", var/channel = "Common", var/list/zlevels)
-	global_announcer.autosay("[name], [rank], [join_message].", "Arrivals Announcement Computer", channel, zlevels)
+/proc/AnnounceArrivalSimple(var/name, var/rank = "visitor", var/join_message = "прибудет на станцию в ближайшее время", var/channel = "Общий", var/list/zlevels)
+	global_announcer.autosay("[name], [rank], [join_message].", "Компьютер Прибытий", channel, zlevels)

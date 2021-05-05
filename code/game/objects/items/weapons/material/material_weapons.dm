@@ -116,7 +116,7 @@
 
 /obj/item/weapon/material/proc/dull()
 	var/turf/T = get_turf(src)
-	T.visible_message("<span class='danger'>\The [src] goes dull!</span>")
+	T.visible_message("<span class='danger'>[src] тускнеет!</span>")
 	playsound(src, "shatter", 70, 1)
 	dulled = 1
 	if(is_sharp() || has_edge())
@@ -126,17 +126,17 @@
 /obj/item/weapon/material/proc/repair(var/repair_amount, var/repair_time, mob/living/user)
 	if(!fragile)
 		if(health < initial(health))
-			user.visible_message("[user] begins repairing \the [src].", "You begin repairing \the [src].")
+			user.visible_message("[user] начинает исправлять [src].", "Вы начинаете исправлять [src].")
 			if(do_after(user, repair_time))
-				user.visible_message("[user] has finished repairing \the [src]", "You finish repairing \the [src].")
+				user.visible_message("[user] заканчивает исправлять [src]", "Вы заканчиваете исправлять [src].")
 				health = min(health + repair_amount, initial(health))
 				dulled = 0
 				sharp = initial(sharp)
 				edge = initial(edge)
 		else
-			to_chat(user, "<span class='notice'>[src] doesn't need repairs.</span>")
+			to_chat(user, "<span class='notice'>[src] не нуждается в починке.</span>")
 	else
-		to_chat(user, "<span class='warning'>You can't repair \the [src].</span>")
+		to_chat(user, "<span class='warning'>Вы не можете починить [src].</span>")
 		return
 
 /obj/item/weapon/material/proc/sharpen(var/material, var/sharpen_time, var/kit, mob/living/M)

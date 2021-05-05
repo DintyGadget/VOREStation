@@ -56,8 +56,8 @@
 		return
 
 /obj/item/weapon/material/kitchen/utensil/fork
-	name = "fork"
-	desc = "It's a fork. Sure is pointy."
+	name = "вилка"
+	desc = "Это вилка. Конечно заостренный."
 	icon_state = "fork"
 	sharp = 1
 	edge = 0
@@ -66,8 +66,8 @@
 	default_material = "plastic"
 
 /obj/item/weapon/material/kitchen/utensil/spoon
-	name = "spoon"
-	desc = "It's a spoon. You can see your own upside-down face in it."
+	name = "ложка"
+	desc = "Это ложка. Вы можете увидеть в нем свое собственное перевернутое лицо."
 	icon_state = "spoon"
 	attack_verb = list("attacked", "poked")
 	edge = 0
@@ -97,8 +97,8 @@
  */
 
 /obj/item/weapon/material/kitchen/rollingpin
-	name = "rolling pin"
-	desc = "Used to knock out the Bartender."
+	name = "скалка"
+	desc = "Используется для накаута бармена."
 	icon_state = "rolling_pin"
 	attack_verb = list("bashed", "battered", "bludgeoned", "thrashed", "whacked")
 	default_material = "wood"
@@ -110,7 +110,7 @@
 
 /obj/item/weapon/material/kitchen/rollingpin/attack(mob/living/M as mob, mob/living/user as mob)
 	if ((CLUMSY in user.mutations) && prob(50))
-		to_chat(user, "<span class='warning'>\The [src] slips out of your hand and hits your head.</span>")
+		to_chat(user, "<span class='warning'>[src] выскальзывает из вашей руки и ударяется по вашей голове.</span>")
 		user.take_organ_damage(10)
 		user.Paralyse(2)
 		return

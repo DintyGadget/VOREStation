@@ -33,9 +33,9 @@
 	min_age = 18
 	max_age = 80
 
-	blurb = "Some amalgamation of different species from across the universe,with extremely unstable DNA, making them unfit for regular cloners. \
-	Widely known for their voracious nature and violent tendencies when stressed or left unfed for long periods of time. \
-	Most, if not all chimeras possess the ability to undergo some type of regeneration process, at the cost of energy."
+	blurb = "Амальгамация различных видов со всей вселенной с крайне нестабильной ДНК, в связи с чем клонированию они не подлежат. \
+	Широко известны за свой хищнический образ жизни и склонности к насилию, проявляющиеся при длительном недостатке питания или стрессе. \
+	Большинство (если не все) ксенохимеры обладают способностью к какому-нибудь виду процесса регенерации ценой собственной энергии."
 
 	wikilink = "https://wiki.vore-station.net/Xenochimera"
 
@@ -339,11 +339,10 @@
 	min_age = 18
 	max_age = 80
 
-	blurb = "Vasilissans are a tall, lanky, spider like people. \
-	Each having four eyes, an extra four, large legs sprouting from their back, and a chitinous plating on their body, and the ability to spit webs \
-	from their mandible lined mouths.  They are a recent discovery by Nanotrasen, only being discovered roughly seven years ago.  \
-	Before they were found they built great cities out of their silk, being united and subjugated in warring factions under great Star Queens  \
-	Who forced the working class to build huge, towering cities to attempt to reach the stars, which they worship as gems of great spiritual and magical significance."
+	blurb = "Василиссаны - высокие паукоподобные люди. У каждого по четыре глаза, и ещё по четыре, а также большие ножки, растущие из спины. \
+	Их тела покрыты хитином, а сами они обладают способностью плести в своём рту паутину. NanoTrasen обнаружили эту расу всего семь лет назад. \
+	До своего обнаружения василиссаны строили величественные города из своего шёлка, объединенные и разделенные на воюющие фракциии под правлением Звездных Королев, \
+	что принуждали рабочий класс строить возвышающиеся города в попытке достичь звезды, почитаемые как самоцветы высокой духовной и магической значимости."
 
 	wikilink = "https://wiki.vore-station.net/Vasilissans"
 
@@ -414,7 +413,7 @@
 	min_age = 18
 	max_age = 200
 
-	blurb = "Big buff werewolves. These are a limited functionality event species that are not balanced for regular gameplay. Adminspawn only."
+	blurb = "Большие мускулистые оборотни. Недоработаны и не сбалансированы для нормальной игры. Спавнятся админами."
 
 	wikilink="N/A"
 

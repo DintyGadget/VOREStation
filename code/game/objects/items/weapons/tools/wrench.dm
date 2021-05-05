@@ -2,8 +2,8 @@
  * Wrench
  */
 /obj/item/weapon/tool/wrench
-	name = "wrench"
-	desc = "A wrench with many common uses. Can be usually found in your hand."
+	name = "гаечный ключ"
+	desc = "Гаечный ключ с множеством распространенных применений. Обычно можно найти в руке."
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "wrench"
 	slot_flags = SLOT_BELT
@@ -12,7 +12,7 @@
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
 	matter = list(DEFAULT_WALL_MATERIAL = 150)
-	attack_verb = list("bashed", "battered", "bludgeoned", "whacked")
+	attack_verb = list("бьет", "избивает", "забивает", "ударяет")
 	usesound = 'sound/items/ratchet.ogg'
 	toolspeed = 1
 	drop_sound = 'sound/items/drop/wrench.ogg'
@@ -22,14 +22,14 @@
 	return TRUE
 
 /obj/item/weapon/tool/wrench/cyborg
-	name = "automatic wrench"
-	desc = "An advanced robotic wrench. Can be found in industrial synthetic shells."
+	name = "авто гаечный ключ"
+	desc = "Усовершенствованный роботизированный ключ. Встречается в промышленных синтетических оболочках."
 	usesound = 'sound/items/drill_use.ogg'
 	toolspeed = 0.5
 
 /obj/item/weapon/tool/wrench/hybrid	// Slower and bulkier than normal power tools, but it has the power of reach. If reach even worked half the time.
-	name = "strange wrench"
-	desc = "A wrench with many common uses. Can be usually found in your hand."
+	name = "странный гаечный ключ"
+	desc = "Гаечный ключ с множеством распространенных применений. Обычно можно найти в руке."
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "hybwrench"
 	slot_flags = SLOT_BELT
@@ -45,7 +45,7 @@
 
 
 /datum/category_item/catalogue/anomalous/precursor_a/alien_wrench
-	name = "Precursor Alpha Object - Fastener Torque Tool"
+	name = "Альфа-объект предтеч - Инструмент затяжки крепежа"
 	desc = "This is an object that has a distinctive tool shape. \
 	It has a handle on one end, with a simple mechanism attached to it. \
 	On the other end is the head of the tool, with two sides each glowing \
@@ -60,8 +60,8 @@
 	value = CATALOGUER_REWARD_EASY
 
 /obj/item/weapon/tool/wrench/alien
-	name = "alien wrench"
-	desc = "A polarized wrench. It causes anything placed between the jaws to turn."
+	name = "инопланетный гаечный ключ"
+	desc = "Поляризованный ключ. Это заставляет поворачиваться все, что находится между челюстями."
 	catalogue_data = list(/datum/category_item/catalogue/anomalous/precursor_a/alien_wrench)
 	icon = 'icons/obj/abductor.dmi'
 	icon_state = "wrench"
@@ -70,8 +70,8 @@
 	origin_tech = list(TECH_MATERIAL = 5, TECH_ENGINEERING = 5)
 
 /obj/item/weapon/tool/wrench/power
-	name = "hand drill"
-	desc = "A simple powered hand drill. It's fitted with a bolt bit."
+	name = "ручная дрель"
+	desc = "Простая ручная дрель с приводом. Он оснащен битой для болта."
 	icon_state = "drill_bolt"
 	item_state = "drill"
 	usesound = 'sound/items/drill_use.ogg'
@@ -102,4 +102,4 @@
 	counterpart.forceMove(get_turf(src))
 	src.forceMove(counterpart)
 	user.put_in_active_hand(counterpart)
-	to_chat(user, "<span class='notice'>You attach the screw driver bit to [src].</span>")
+	to_chat(user, "<span class='notice'>Вы прикрепляете отвертку к [src].</span>")

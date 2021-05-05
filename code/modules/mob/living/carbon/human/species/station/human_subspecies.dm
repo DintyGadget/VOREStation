@@ -35,9 +35,8 @@
 /datum/species/human/vatgrown
 	name = SPECIES_HUMAN_VATBORN
 	name_plural = "Vatborn"
-	blurb = "With cloning on the forefront of human scientific advancement, cheap mass production \
-	of bodies is a very real and rather ethically grey industry. Vat-grown or Vatborn humans tend to be \
-	paler than baseline, with no appendix and fewer inherited genetic disabilities, but a more aggressive metabolism."
+	blurb = "Индустрия дешевого массового производства тел появилась на свет вместе с недавними научными достижениями людей, даже несмотря на свою моральную неоднозначность. \
+	Искусственно выращенные люди обычно бледнее настоящих, лишены аппендикса и имеют меньше наследственных генетических недостатков, однако их метаболизм гораздо чётче выражен."
 	icobase = 'icons/mob/human_races/subspecies/r_vatgrown.dmi'
 
 	toxins_mod =   1.1

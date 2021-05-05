@@ -7,7 +7,7 @@
 	name_plural = "Replicants"
 	primitive_form = SPECIES_MONKEY
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
-	blurb = "The remnants of some lost or dead race's research. These seem relatively normal."
+	blurb = "Остатки исследований какой-то заблудшей или мертвой расы. Это кажется относительно нормальным."
 	num_alternate_languages = 3
 	species_language = LANGUAGE_GALCOM
 	secondary_langs = list(LANGUAGE_TERMINUS)
@@ -67,7 +67,7 @@
 
 /datum/species/shapeshifter/replicant/alpha
 	name = SPECIES_REPLICANT_ALPHA
-	blurb = "The remnants of some lost or dead race's research. These seem caustic."
+	blurb = "Остатки исследований какой-то заблудшей или мертвой расы. Они кажутся едкими."
 
 	blood_color = "#55ff55"
 
@@ -104,7 +104,7 @@
 
 /datum/species/shapeshifter/replicant/beta
 	name = SPECIES_REPLICANT_BETA
-	blurb = "The remnants of some lost or dead race's research. These seem elastic."
+	blurb = "Остатки исследований какой-то заблудшей или мертвой расы. Они кажутся эластичными."
 
 	blood_color = "#C0C0C0"
 

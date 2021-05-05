@@ -83,7 +83,7 @@
 			add_overlay("[icon_state]_broken")
 		// Not broken
 		else
-			add_overlay(icon_screen)	
+			add_overlay(icon_screen)
 
 /obj/machinery/computer/power_change()
 	..()
@@ -105,11 +105,11 @@
 		if(istype(I,/obj/item/weapon/gripper)) //Behold, Grippers and their horribleness. If ..() is called by any computers' attackby() now or in the future, this should let grippers work with them appropriately.
 			var/obj/item/weapon/gripper/B = I	//B, for Borg.
 			if(!B.wrapped)
-				to_chat(user, "\The [B] is not holding anything.")
+				to_chat(user, "[B] ничего не держит.")
 				return
 			else
 				var/B_held = B.wrapped
-				to_chat(user, "You use \the [B] to use \the [B_held] with \the [src].")
+				to_chat(user, "Вы используете [B], чтобы использовать [B_held] с [src].")
 				playsound(src, "keyboard", 100, 1, 0)
 			return
 		attack_hand(user)

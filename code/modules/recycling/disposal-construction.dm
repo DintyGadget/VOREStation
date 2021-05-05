@@ -3,8 +3,8 @@
 
 /obj/structure/disposalconstruct
 
-	name = "disposal pipe segment"
-	desc = "A huge pipe segment used for constructing disposal systems."
+	name = "сегмент утилизационных труб"
+	desc = "Огромный сегмент труб, используемый для строительства систем утилизации отходов."
 	icon = 'icons/obj/pipes/disposal.dmi'
 	icon_state = "conpipe-s"
 	anchored = 0
@@ -123,14 +123,14 @@
 // flip and rotate verbs
 /obj/structure/disposalconstruct/verb/rotate_clockwise()
 	set category = "Object"
-	set name = "Rotate Pipe Clockwise"
+	set name = "Повернуть трубу по часовой"
 	set src in view(1)
 
 	if(usr.stat)
 		return
 
 	if(anchored)
-		to_chat(usr, "You must unfasten the pipe before rotating it.")
+		to_chat(usr, "Вы должны отстегнуть трубу, прежде чем вращать ее.")
 		return
 
 	src.set_dir(turn(src.dir, 270))
@@ -138,13 +138,13 @@
 
 /obj/structure/disposalconstruct/verb/flip()
 	set category = "Object"
-	set name = "Flip Pipe"
+	set name = "Перевернуть трубу"
 	set src in view(1)
 	if(usr.stat)
 		return
 
 	if(anchored)
-		to_chat(usr, "You must unfasten the pipe before flipping it.")
+		to_chat(usr, "Вы должны отстегнуть трубу, прежде чем вращать ее.")
 		return
 
 	do_a_flip()
@@ -240,7 +240,7 @@
 
 	var/turf/T = src.loc
 	if(!T.is_plating())
-		to_chat(user, "You can only attach the [nicetype] if the floor plating is removed.")
+		to_chat(user, "Вы можете прикрепить [nicetype], только если сняли покрытие пола.")
 		return
 
 	var/obj/structure/disposalpipe/CP = locate() in T
@@ -254,7 +254,7 @@
 				density = 0
 			else
 				density = 1
-			to_chat(user, "You detach the [nicetype] from the underfloor.")
+			to_chat(user, "Вы отделяете [nicetype] от пола.")
 		else
 			if(ptype == DISPOSAL_PIPE_BIN || ptype == DISPOSAL_PIPE_OUTLET || ptype == DISPOSAL_PIPE_CHUTE) // Disposal or outlet
 				if(CP) // There's something there

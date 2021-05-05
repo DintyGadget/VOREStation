@@ -100,7 +100,7 @@
 			return
 		status = !status
 		if(status)
-			to_chat(user, "<span class='notice'>You secure the welder.</span>")
+			to_chat(user, "<span class='notice'>Вы выключаете сварку.</span>")
 		else
 			to_chat(user, "<span class='notice'>Теперь сварку можно прикрепить и модифицировать.</span>")
 		src.add_fingerprint(user)

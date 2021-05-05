@@ -2,20 +2,20 @@
 	return
 
 /mob/verb/whisper(message as text)
-	set name = "Whisper"
+	set name = "Шепот"
 	set category = "IC"
 
 	usr.say(message,whispering=1)
 
 /mob/verb/say_verb(message as text)
-	set name = "Say"
+	set name = "Сказать"
 	set category = "IC"
 
 	set_typing_indicator(FALSE)
 	usr.say(message)
 
 /mob/verb/me_verb(message as message)
-	set name = "Me"
+	set name = "Эмоция"
 	set category = "IC"
 
 	if(say_disabled)	//This is here to try to identify lag problems
@@ -150,7 +150,7 @@
 		message = new_message
 
 /mob/proc/find_valid_prefixes(message)
-	var/list/prefixes = list() // [["Common", start, end], ["Gutter", start, end]]
+	var/list/prefixes = list() // [["Общий", start, end], ["Gutter", start, end]]
 	for(var/i in 1 to length(message))
 		// This grabs 3 character substrings, to allow for up to 1 prefix, 1 letter language key, and one post-key character to more strictly control where the language breaks happen
 		var/selection = trim_right(copytext(message, i, i + 3)) // VOREStation Edit: We use uppercase keys to avoid Polaris key duplication, but this had lowertext() in it
@@ -226,7 +226,7 @@
 		. += new /datum/multilingual_say_piece(get_default_language(), trim(strip_prefixes(message))) // So we'll just strip those pesky things and still make the message.
 
 	for(var/i in 1 to length(prefix_locations))
-		var/current = prefix_locations[i] // ["Common", start, end]
+		var/current = prefix_locations[i] // ["Общий", start, end]
 
 		// There are a few things that will make us want to ignore all other languages in - namely, HIVEMIND languages.
 		var/datum/language/L = current[1]

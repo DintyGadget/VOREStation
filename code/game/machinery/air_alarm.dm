@@ -26,7 +26,7 @@
 
 /obj/machinery/alarm
 	name = "alarm"
-	desc = "Used to control various station atmospheric systems. The light indicates the current air status of the area."
+	desc = "Используется для управления атмосферными системами различных станций. Свет указывает на текущее состояние воздуха в районе."
 	icon = 'icons/obj/monitors_vr.dmi' //VOREStation Edit - Other icons
 	icon_state = "alarm0"
 	layer = ABOVE_WINDOW_LAYER
@@ -190,16 +190,16 @@
 		if(!get_danger_level(target_temperature, TLV["temperature"]) && abs(environment.temperature - target_temperature) > 2.0 && environment.return_pressure() >= 1)
 			update_use_power(USE_POWER_ACTIVE)
 			regulating_temperature = 1
-			audible_message("\The [src] clicks as it starts [environment.temperature > target_temperature ? "cooling" : "heating"] the room.",\
-			"You hear a click and a faint electronic hum.")
+			audible_message("[src] щелкает по панели, включая [environment.temperature > target_temperature ? "охлаждение" : "нагрев"] помещения.",\
+			"Вы слышите щелчок и слабое электронное гудение.")
 			playsound(src, 'sound/machines/click.ogg', 50, 1)
 	else
 		//check for when we should stop adjusting temperature
 		if(get_danger_level(target_temperature, TLV["temperature"]) || abs(environment.temperature - target_temperature) <= 0.5 || environment.return_pressure() < 1)
 			update_use_power(USE_POWER_IDLE)
 			regulating_temperature = 0
-			audible_message("\The [src] clicks quietly as it stops [environment.temperature > target_temperature ? "cooling" : "heating"] the room.",\
-			"You hear a click as a faint electronic humming stops.")
+			audible_message("[src] щелкает по панели, отключая [environment.temperature > target_temperature ? "охлаждение" : "нагрев"] помещения.",\
+			"Вы слышите щелчок, когда слабое электронное гудение прекращается.")
 			playsound(src, 'sound/machines/click.ogg', 50, 1)
 
 	if(regulating_temperature)
@@ -477,7 +477,7 @@
 
 /obj/machinery/alarm/tgui_status(mob/user)
 	if(isAI(user) && aidisabled)
-		to_chat(user, "AI control has been disabled.")
+		to_chat(user, "Управление ИИ было отключено.")
 	else if(!shorted)
 		return ..()
 	return STATUS_CLOSE
@@ -510,14 +510,14 @@
 	data["environment_data"] = list()
 	var/pressure = environment.return_pressure()
 	data["environment_data"] += list(list(
-		"name" = "Pressure",
+		"name" = "Давление",
 		"value" = pressure,
-		"unit" = "kPa",
+		"unit" = "кПа",
 		"danger_level" = get_danger_level(pressure, TLV["pressure"])
 	))
 	var/temperature = environment.temperature
 	data["environment_data"] += list(list(
-		"name" = "Temperature",
+		"name" = "Температура",
 		"value" = temperature,
 		"unit" = "K ([round(temperature - T0C, 0.1)]C)",
 		"danger_level" = get_danger_level(temperature, TLV["temperature"])
@@ -534,7 +534,7 @@
 			"unit" = "%",
 			"danger_level" = get_danger_level(environment.gas[gas_id] * partial_pressure, TLV[gas_id])
 		))
-	
+
 	if(!locked || issilicon(user) || data["remoteUser"])
 		data["vents"] = list()
 		for(var/id_tag in A.air_vent_names)
@@ -579,12 +579,12 @@
 
 		var/list/modes = list()
 		data["mode"] = mode
-		modes[++modes.len] = list("name" = "Filtering - Scrubs out contaminants", 			"mode" = AALARM_MODE_SCRUBBING,		"selected" = mode == AALARM_MODE_SCRUBBING, 	"danger" = 0)
-		modes[++modes.len] = list("name" = "Replace Air - Siphons out air while replacing", "mode" = AALARM_MODE_REPLACEMENT,	"selected" = mode == AALARM_MODE_REPLACEMENT,	"danger" = 0)
-		modes[++modes.len] = list("name" = "Panic - Siphons air out of the room", 			"mode" = AALARM_MODE_PANIC,			"selected" = mode == AALARM_MODE_PANIC, 		"danger" = 1)
-		modes[++modes.len] = list("name" = "Cycle - Siphons air before replacing", 			"mode" = AALARM_MODE_CYCLE,			"selected" = mode == AALARM_MODE_CYCLE, 		"danger" = 1)
-		modes[++modes.len] = list("name" = "Fill - Shuts off scrubbers and opens vents", 	"mode" = AALARM_MODE_FILL,			"selected" = mode == AALARM_MODE_FILL, 			"danger" = 0)
-		modes[++modes.len] = list("name" = "Off - Shuts off vents and scrubbers", 			"mode" = AALARM_MODE_OFF,			"selected" = mode == AALARM_MODE_OFF, 			"danger" = 0)
+		modes[++modes.len] = list("name" = "Фильтрация - Очищает от загрязнений", 			"mode" = AALARM_MODE_SCRUBBING,		"selected" = mode == AALARM_MODE_SCRUBBING, 	"danger" = 0)
+		modes[++modes.len] = list("name" = "Заменить воздух - Отсасывает воздух при замене", "mode" = AALARM_MODE_REPLACEMENT,	"selected" = mode == AALARM_MODE_REPLACEMENT,	"danger" = 0)
+		modes[++modes.len] = list("name" = "Паника - Выкачивает воздух из комнаты", 			"mode" = AALARM_MODE_PANIC,			"selected" = mode == AALARM_MODE_PANIC, 		"danger" = 1)
+		modes[++modes.len] = list("name" = "Цикл - Сифоны воздуха перед заменой", 			"mode" = AALARM_MODE_CYCLE,			"selected" = mode == AALARM_MODE_CYCLE, 		"danger" = 1)
+		modes[++modes.len] = list("name" = "Заполнение - Отключает скрубберы и открывает вентиляционные отверстия", 	"mode" = AALARM_MODE_FILL,			"selected" = mode == AALARM_MODE_FILL, 			"danger" = 0)
+		modes[++modes.len] = list("name" = "Выключение - Отключает вентиляционные отверстия и скрубберы", 			"mode" = AALARM_MODE_OFF,			"selected" = mode == AALARM_MODE_OFF, 			"danger" = 0)
 		data["modes"] = modes
 
 		var/list/selected
@@ -630,14 +630,14 @@
 		var/list/selected = TLV["temperature"]
 		var/max_temperature = min(selected[3] - T0C, MAX_TEMPERATURE)
 		var/min_temperature = max(selected[2] - T0C, MIN_TEMPERATURE)
-		var/input_temperature = input("What temperature would you like the system to mantain? (Capped between [min_temperature] and [max_temperature]C)", "Thermostat Controls", target_temperature - T0C) as num|null
+		var/input_temperature = input("Какую температуру вы хотели бы поддерживать в системе? (Ограничение от [min_temperature] до [max_temperature]C)", "Thermostat Controls", target_temperature - T0C) as num|null
 		if(isnum(input_temperature))
 			if(input_temperature > max_temperature || input_temperature < min_temperature)
-				to_chat(usr, "Temperature must be between [min_temperature]C and [max_temperature]C")
+				to_chat(usr, "Температура должна быть от [min_temperature]C до [max_temperature]C")
 			else
 				target_temperature = input_temperature + T0C
 		return TRUE
-	
+
 	// Account for remote users here.
 	// Yes, this is kinda snowflaky; however, I would argue it would be far more snowflakey
 	// to include "custom hrefs" and all the other bullshit that nano states have just for the
@@ -767,9 +767,9 @@
 	else
 		if(allowed(usr) && !wires.is_cut(WIRE_IDSCAN))
 			locked = !locked
-			to_chat(user, "<span class='notice'>You [locked ? "lock" : "unlock"] the Air Alarm interface.</span>")
+			to_chat(user, "<span class='notice'>Вы [locked ? "закрываете" : "открываете"] интерфейс.</span>")
 		else
-			to_chat(user, "<span class='warning'>Access denied.</span>")
+			to_chat(user, "<span class='warning'>Доступ запрещен.</span>")
 		return
 
 /obj/machinery/alarm/AltClick()

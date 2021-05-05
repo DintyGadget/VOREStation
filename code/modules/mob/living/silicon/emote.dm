@@ -20,9 +20,9 @@
 				param = null
 
 			if (param)
-				message = "<b>[src]</b> beeps at [param]."
+				message = "<b>[src]</b> пищит [param]."
 			else
-				message = "<b>[src]</b> beeps."
+				message = "<b>[src]</b> пищит."
 			playsound(src, 'sound/machines/twobeep.ogg', 50, 0)
 			m_type = 1
 
@@ -37,9 +37,9 @@
 				param = null
 
 			if (param)
-				message = "<b>[src]</b> pings at [param]."
+				message = "<b>[src]</b> пингует [param]."
 			else
-				message = "<b>[src]</b> pings."
+				message = "<b>[src]</b> пингует."
 			playsound(src, 'sound/machines/ping.ogg', 50, 0)
 			m_type = 1
 
@@ -54,9 +54,9 @@
 				param = null
 
 			if (param)
-				message = "<b>[src]</b> buzzes at [param]."
+				message = "<b>[src]</b> жужжит [param]."
 			else
-				message = "<b>[src]</b> buzzes."
+				message = "<b>[src]</b> жужжит."
 			playsound(src, 'sound/machines/buzz-sigh.ogg', 50, 0)
 			m_type = 1
 
@@ -71,9 +71,9 @@
 				param = null
 
 			if (param)
-				message = "<b>[src]</b> emits an affirmative blip at [param]."
+				message = "<b>[src]</b> издает утвердительный сигнал [param]."
 			else
-				message = "<b>[src]</b> emits an affirmative blip."
+				message = "<b>[src]</b> издает утвердительный сигнал."
 			playsound(src, 'sound/machines/synth_yes.ogg', 50, 0)
 			m_type = 1
 
@@ -87,9 +87,9 @@
 				param = null
 
 			if (param)
-				message = "<b>[src]</b> chirps happily at [param]"
+				message = "<b>[src]</b> радостно щебечет [param]"
 			else
-				message = "<b>[src]</b> chirps happily."
+				message = "<b>[src]</b> радостно щебечет."
 			playsound(src, 'sound/machines/dwoop.ogg', 50, 0)
 			m_type = 1
 
@@ -104,9 +104,9 @@
 				param = null
 
 			if (param)
-				message = "<b>[src]</b> emits a negative blip at [param]."
+				message = "<b>[src]</b> издает отрицательный сигнал [param]."
 			else
-				message = "<b>[src]</b> emits a negative blip."
+				message = "<b>[src]</b> издает отрицательный сигнал."
 			playsound(src, 'sound/machines/synth_no.ogg', 50, 0)
 			m_type = 1
 

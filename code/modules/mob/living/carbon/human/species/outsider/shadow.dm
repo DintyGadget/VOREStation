@@ -18,7 +18,7 @@
 	virus_immune = 1
 
 	remains_type = /obj/effect/decal/cleanable/ash
-	death_message = "dissolves into ash..."
+	death_message = "растворяется в пепле..."
 
 	flags = NO_SCAN | NO_SLIP | NO_POISON | NO_MINOR_CUT | NO_DEFIB
 	spawn_flags = SPECIES_IS_RESTRICTED

@@ -4,7 +4,7 @@
  */
 
 /obj/machinery/portable_atmospherics/powered/reagent_distillery
-	name = "chemical distillery"
+	name = "химический ликероводочный завод"
 	desc = "Сложная машина, в которой используются самые современные компоненты для смешивания химикатов при различных температурах."
 	use_power = USE_POWER_IDLE
 

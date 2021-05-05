@@ -3,11 +3,10 @@
 	name_plural = "Humans"
 	primitive_form = SPECIES_MONKEY
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch, /datum/unarmed_attack/bite)
-	blurb = "Humanity originated in the Sol system, and over the last five centuries has spread \
-	colonies across a wide swathe of space. They hold a wide range of forms and creeds.<br/><br/> \
-	While the central Sol government maintains control of its far-flung people, powerful corporate \
-	interests, rampant cyber and bio-augmentation and secretive factions make life on most human \
-	worlds tumultous at best."
+	blurb = "Человечество зародилось в системе Сол и широко распространилось по необъятному космическому пространству за последние пятьсот лет. \
+	Люди бывают совершенно разной внешности, и придерживаются самых различных моральных ценностей.<br/><br/> \
+	Пускай центральное правительство Сол и держит всех своих раскиданных по космосу людей в узде, \
+	корпоративные интересы, тайные фракции и мода на кибер-имплантанты заметно усложняют людям жизнь."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/humans)
 	num_alternate_languages = 3
 	species_language = LANGUAGE_SOL_COMMON
@@ -77,11 +76,10 @@
 
 	economic_modifier = 7
 
-	blurb = "A heavily reptillian species, Unathi hail from the \
-	Uuosa-Eso system, which roughly translates to 'burning mother'.<br/><br/>Coming from a harsh, inhospitable \
-	planet, they mostly hold ideals of honesty, virtue, proficiency and bravery above all \
-	else, frequently even their own lives. They prefer warmer temperatures than most species and \
-	their native tongue is a heavy hissing laungage called Sinta'Unathi."
+	blurb = "Преимущественно рептилоидная раса, Унати родом из системы Уоса-Эсо, что переводится как 'горящая мать'. <br/><br/> \
+	Будучи родом с суровой и едва ли пригодной для жизни планеты, они в первую очередь ценят честность, подвиги, мастерство и храбрость, \
+	порой даже ставя их выше своей жизни. Они отдают предпочтение более высоким температурам, \
+	чем большинство рас, а их родной говор - шипящий язык под названием Синта'унати."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/unathi)
 
 	cold_level_1 = 280 //Default 260 - Lower is better
@@ -143,16 +141,16 @@
 
 	heat_discomfort_level = 295
 	heat_discomfort_strings = list(
-		"You feel soothingly warm.",
-		"You feel the heat sink into your bones.",
-		"You feel warm enough to take a nap."
+		"Вы ощущаете успокаивающее тепло.",
+		"Вы чувствуете, как жара пробирает ваши кости.",
+		"Вам настолько тепло, что вы не против вздремнуть."
 		)
 
 	cold_discomfort_level = 292
 	cold_discomfort_strings = list(
-		"You feel chilly.",
-		"You feel sluggish and cold.",
-		"Your scales bristle against the cold."
+		"Вы чувствуете неприятную прохладу.",
+		"Ваши кости пробирает холод.",
+		"Ваша чешуя леденеет на морозе."
 		)
 
 	descriptors = list(
@@ -191,11 +189,10 @@
 
 	economic_modifier = 7
 
-	blurb = "The Tajaran are a mammalian species resembling roughly felines, hailing from Meralar in the Rarkajar system. \
-	While reaching to the stars independently from outside influences, the humans engaged them in peaceful trade contact \
-	and have accelerated the fledgling culture into the interstellar age. Their history is full of war and highly fractious \
-	governments, something that permeates even to today's times. They prefer colder, tundra-like climates, much like their \
-	home worlds and speak a variety of languages, especially Siik and Akhani."
+	blurb = "Таджары - раса млекопитающих, напоминающая кошачьих, родом с Мералара в системе Раркаджар. \
+	Дотянувшись до звёзд самостоятельными усилиями, люди помогли сделать то же самое и таджарам, занимаясь с ними мирной торговлей. \
+	Их история полна воин и раздробленных государств, что имеет свои отголоски даже в наши дни. Они предпочитают более холодный климат \
+	своей родины, а также разговаривают на множестве языков (в основном - Сиик и Акани)."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/tajaran)
 
 	body_temperature = 280.15	//Even more cold resistant, even more flammable
@@ -231,9 +228,9 @@
 
 	heat_discomfort_level = 292
 	heat_discomfort_strings = list(
-		"Your fur prickles in the heat.",
-		"You feel uncomfortably warm.",
-		"Your overheated skin itches."
+		"Ваша шерсть колется на жаре.",
+		"Жара доставляет вам дискомфорт.",
+		"Ваша перегретая кожа чешется."
 		)
 
 	cold_discomfort_level = 215
@@ -261,11 +258,9 @@
 	deform = 'icons/mob/human_races/r_def_skrell.dmi'
 	primitive_form = SPECIES_MONKEY_SKRELL
 	unarmed_types = list(/datum/unarmed_attack/punch)
-	blurb = "An amphibious species, Skrell come from the star system known as Qerr'Vallis, which translates to 'Star of \
-	the royals' or 'Light of the Crown'.<br/><br/>Skrell are a highly advanced and logical race who live under the rule \
-	of the Qerr'Katish, a caste within their society which keeps the empire of the Skrell running smoothly. Skrell are \
-	herbivores on the whole and tend to be co-operative with the other species of the galaxy, although they rarely reveal \
-	the secrets of their empire to their allies."
+	blurb = "Земноводная раса скреллов зародилась в звездной системе Керр'Валлис, что означает 'Звезда Королей' или 'Сияние Престола'. \
+	<br/><br/>Скреллы - высокоразвитая раса, империя которой благополучно пребывает под управлением касты Керр'Катиш. \
+	Скреллы в целом травоядны и обычно содействуют другим расам, пускай и редко раскрывают своим союзникам секреты своей империи."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/skrell)
 	num_alternate_languages = 3
 	secondary_langs = list(LANGUAGE_SKRELLIAN, LANGUAGE_SCHECHI)
@@ -360,11 +355,9 @@
 	min_age = 16
 	max_age = 90
 
-	blurb = "The Zaddat are an Unathi client race only recently introduced to SolGov space. Having evolved on \
-	the high-pressure and post-apocalyptic world of Xohok, Zaddat require an environmental suit called a Shroud \
-	to survive in usual planetary and station atmospheres. Despite these restrictions, worsening conditions on \
-	Xohok and the blessing of the Moghes Hegemony have lead the Zaddat to enter human space in search of work \
-	and living space."
+	blurb = "Заддаты - раса, появившаяся в пространстве Правительства Сол сравнительно недавно. Эволюционировавшие в пост-апокалиптических землях Зохока, \
+	Заддаты носят специальный костюм -- так называемый Покров, который позволяет им выжить в привычных для остальных рас атмосферах. \
+	Несмотря на это ограничение, ухудшающееся состояние Зохока и ситуация касательно Могской гегемонии дали Заддатам возможность войти в человеческий космос в поисках работы и жилья."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/zaddat)
 
 	hazard_high_pressure = HAZARD_HIGH_PRESSURE + 500  // Dangerously high pressure.
@@ -386,15 +379,15 @@
 	reagent_tag = IS_ZADDAT
 
 	heat_discomfort_strings = list(
-		"Your joints itch.",
-		"You feel uncomfortably warm.",
-		"Your carapace feels like a stove."
+		"Ваши суставы чешутся.",
+		"Вы чувствуете неприятное тепло.",
+		"Ваш панцирь словно духовка."
 		)
 
 	cold_discomfort_strings = list(
-		"You feel chilly.",
-		"You shiver suddenly.",
-		"Your antenna ache."
+		"Вам прохладно.",
+		"Вы вздрагиваете от холода.",
+		"Ваша антенна болит."
 		)
 
 	has_organ = list(    //No appendix.
@@ -472,13 +465,12 @@
 
 	economic_modifier = 4
 
-	blurb = "Commonly referred to (erroneously) as 'plant people', the Dionaea are a strange space-dwelling collective \
-	species hailing from Epsilon Ursae Minoris. Each 'diona' is a cluster of numerous cat-sized organisms called nymphs; \
-	there is no effective upper limit to the number that can fuse in gestalt, and reports exist	of the Epsilon Ursae \
-	Minoris primary being ringed with a cloud of singing space-station-sized entities.<br/><br/>The Dionaea coexist peacefully with \
-	all known species, especially the Skrell. Their communal mind makes them slow to react, and they have difficulty understanding \
-	even the simplest concepts of other minds. Their alien physiology allows them survive happily off a diet of nothing but light, \
-	water and other radiation."
+	blurb = "Часто по ошибке прозываемые 'людьми-растениями', Дионы - странная раса родом с Эпсилона Малой Медведицы. \
+	Каждый 'диона' является кластером из крупных организмов под названием нимфа. \
+	Предел на количество объединенных таким образом организмов не был установлен, и существует информация о том, что Эпсилон Малой Медведицы \
+	окружен облаком поющих существ, каждое размером с космическую станцию.<br/><br/>Дионы мирно сосуществуют с другими известными расами, \
+	особенно со Скреллами. Их коллективный разум замедляет их реакцию и затрудняет их понимание даже простейших концепций, знакомых другим разумам. \
+	Их физиология позволяет им отлично существовать за счёт лишь света, воды и других излучений."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/dionaea)
 
 	has_organ = list(
@@ -556,7 +548,7 @@
 		H.mind.transfer_to(S)
 
 	if(H.isSynthetic())
-		H.visible_message("<span class='danger'>\The [H] collapses into parts, revealing a solitary diona nymph at the core.</span>")
+		H.visible_message("<span class='danger'>[H] распадается на части, и внутри виднеется нимфа дионы.</span>")
 
 		H.species = GLOB.all_species[SPECIES_HUMAN] // This is hard-set to default the body to a normal FBP, without changing anything.
 
@@ -575,7 +567,7 @@
 		else
 			qdel(D)
 
-	H.visible_message("<span class='danger'>\The [H] splits apart with a wet slithering noise!</span>")
+	H.visible_message("<span class='danger'>[H] разламывается на куски с влажным склизким звуком!</span>")
 
 /datum/species/diona/handle_environment_special(var/mob/living/carbon/human/H)
 	if(H.inStasisNow())

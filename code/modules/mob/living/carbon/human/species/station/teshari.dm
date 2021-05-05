@@ -1,10 +1,10 @@
 /datum/species/teshari
 	name = SPECIES_TESHARI
 	name_plural = "Tesharii"
-	blurb = "A race of feathered raptors who developed alongside the Skrell, inhabiting \
-	the polar tundral regions outside of Skrell territory. Extremely fragile, they developed \
-	hunting skills that emphasized taking out their prey without themselves getting hit. They \
-	are only recently becoming known on human stations after reaching space with Skrell assistance."
+	blurb = "Раса пернатых рапторов, развившаяся бок о бок со Скреллами, заселяя \
+	холодные тундры скрелльских территорий. Будучи крайне хрупкими существами, они приобрели охотьничьи навыки, \
+	позволяющие охотиться на добычу, не получая при этом каких-либо повреждений самим. \
+	На человеческих станциях пребывают сравнительно недавно после того, как достигли космоса благодаря помощи Скреллов."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/teshari)
 
 	num_alternate_languages = 3
@@ -84,17 +84,17 @@
 
 	heat_discomfort_level = 295
 	heat_discomfort_strings = list(
-		"Your feathers prickle in the heat.",
-		"You feel uncomfortably warm.",
-		"Your hands and feet feel hot as your body tries to regulate heat",
+		"Ваши пёрышки покалывают на жаре.",
+		"Вы ощущаете неприятное тепло.",
+		"Вашим ручкам и ножкам становится жарко, пока Ваше тело старается отрегулировать свою температуру.",
 		)
 	cold_discomfort_level = 180
 	cold_discomfort_strings = list(
-		"You feel a bit chilly.",
-		"You fluff up your feathers against the cold.",
-		"You move your arms closer to your body to shield yourself from the cold.",
-		"You press your ears against your head to conserve heat",
-		"You start to feel the cold on your skin",
+		"Вам слегка прохладно.",
+		"Ваши пёрышки расправляются в ответ на холодный воздух.",
+		"Вы прижимаете ручки ближе к телу, дабы защищить себя от мороза.",
+		"Ваши ушки прижимаются к голове для сохранения тепла.",
+		"Вы начинаете ощущать мороз по своей коже.",
 		)
 
 	minimum_breath_pressure = 12	//Smaller, so needs less air
@@ -161,7 +161,7 @@
 	// Tesh can glide to save themselves from some falls. Basejumping bird
 	// without parachute, or falling bird without free wings goes splat.
 
-	// Are we landing from orbit, or handcuffed/unconscious/tied to something? 
+	// Are we landing from orbit, or handcuffed/unconscious/tied to something?
 	if(planetary || !istype(H) || H.incapacitated(INCAPACITATION_DEFAULT|INCAPACITATION_DISABLED))
 		return ..()
 

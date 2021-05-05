@@ -18,7 +18,7 @@
 	//the reaction goes to completion. This is to prevent reactions from going on forever with tiny reagent amounts.
 //	min_reaction = 2
 
-	mix_message = "The solution churns."
+	mix_message = "Раствор вспенивается."
 	reaction_sound = 'sound/effects/slosh.ogg'
 
 //	log_is_important = 0 // If this reaction should be considered important for logging. Important recipes message admins when mixed, non-important ones just log to file.
@@ -50,7 +50,7 @@
 
 // Biomass
 /decl/chemical_reaction/distilling/biomass
-	name = "Distilling Biomass"
+	name = "Дистилляция биомассы"
 	id = "distill_biomass"
 	result = "biomass"
 	required_reagents = list("blood" = 1, "sugar" = 1, "phoron" = 0.5)
@@ -61,7 +61,7 @@
 
 // Medicinal
 /decl/chemical_reaction/distilling/inaprovalaze
-	name = "Distilling Inaprovalaze"
+	name = "Дистилляция инапровалазы"
 	id = "distill_inaprovalaze"
 	result = "inaprovalaze"
 	required_reagents = list("inaprovaline" = 2, "foaming_agent" = 1)
@@ -72,7 +72,7 @@
 	temp_range = list(T0C + 100, T0C + 120)
 
 /decl/chemical_reaction/distilling/bicaridaze
-	name = "Distilling Bicaridaze"
+	name = "Дистилляция бикаридазы"
 	id = "distill_bicaridaze"
 	result = "bicaridaze"
 	required_reagents = list("bicaridine" = 2, "foaming_agent" = 1)

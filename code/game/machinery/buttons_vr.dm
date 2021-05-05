@@ -4,7 +4,7 @@
 
 /obj/machinery/button/windowtint/multitint
 	name = "tint control"
-	desc = "A remote control switch for polarized windows and doors."
+	desc = "Пульт дистанционного управления для поляризованных окон и дверей."
 
 /obj/machinery/button/windowtint/multitint/toggle_tint()
 	use_power(5)

@@ -108,7 +108,7 @@ Protectiveness | Armor %
 		return ..()
 
 	if(material.negation && prob(material.negation)) // Strange and Alien materials, or just really strong materials.
-		user.visible_message("<span class='danger'>\The [src] completely absorbs [attack_text]!</span>")
+		user.visible_message("<span class='danger'>[src] полностью поглощает [attack_text]!</span>")
 		return TRUE
 
 	if(material.spatial_instability && prob(material.spatial_instability))
@@ -204,12 +204,12 @@ Protectiveness | Armor %
 	default_material = DEFAULT_WALL_MATERIAL
 
 /obj/item/clothing/suit/armor/material/makeshift
-	name = "sheet armor"
-	desc = "This appears to be two 'sheets' of a material held together by cable.  If the sheets are strong, this could be rather protective."
+	name = "листовая броня"
+	desc = "Похоже, это два «листа» материала, скрепленные тросом. Если листы прочные, это может быть довольно защитным."
 	icon_state = "material_armor_makeshift"
 
 /obj/item/clothing/accessory/material/makeshift/light //Craftable with 4 material sheets, less slowdown, less armour
-	name = "light armor plate"
+	name = "пластина легкой брони"
 	desc = "A thin plate of padded material, designed to fit into a plate carrier. Attaches to a plate carrier."
 	icon = 'icons/obj/clothing/modular_armor.dmi'
 	icon_state = "armor_light"
@@ -220,8 +220,8 @@ Protectiveness | Armor %
 	material_slowdown_multiplier = 0.8 //Multiplied by total slowdown
 
 /obj/item/clothing/accessory/material/makeshift/heavy //Craftable with 8 material sheets, more slowdown, more armour
-	name = "heavy armor plate"
-	desc = "A thick plate of padded material, designed to fit into a plate carrier. Attaches to a plate carrier."
+	name = "тяжелая пластинка брони"
+	desc = "Толстая пластина из мягкого материала, предназначенная для размещения в держателе пластин. Крепится к пластине-держателю."
 	icon = 'icons/obj/clothing/modular_armor.dmi'
 	icon_state = "armor_medium"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
@@ -231,8 +231,8 @@ Protectiveness | Armor %
 	material_slowdown_multiplier = 1
 
 /obj/item/clothing/accessory/material/custom //Not yet craftable, advanced version made with science!
-	name = "custom armor plate"
-	desc = "A composite plate of custom machined material, designed to fit into a plate carrier. Attaches to a plate carrier."
+	name = "кастомная пластина брони"
+	desc = "Композитная пластина из специально обработанного материала, предназначенная для размещения в держателе пластин. Крепится к пластине-держателю."
 	icon = 'icons/obj/clothing/modular_armor.dmi'
 	icon_state = "armor_tactical"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
@@ -243,7 +243,7 @@ Protectiveness | Armor %
 
 /obj/item/clothing/accessory/material/makeshift/armguards
 	name = "arm guards"
-	desc = "A pair of arm pads reinforced with material. Attaches to a plate carrier."
+	desc = "Пара подкладок для рук, усиленных материалом. Крепится к пластине-держателю."
 //	accessory_icons = list(slot_tie_str = 'icons/mob/modular_armor.dmi', slot_wear_suit_str = 'icons/mob/modular_armor.dmi')
 	icon = 'icons/obj/clothing/modular_armor.dmi'
 	icon_override = 'icons/mob/modular_armor.dmi'
@@ -257,7 +257,7 @@ Protectiveness | Armor %
 
 /obj/item/clothing/accessory/material/makeshift/legguards
 	name = "leg guards"
-	desc = "A pair of leg guards reinforced with material. Attaches to a plate carrier."
+	desc = "Пара защитных накладок для ног, усиленных материалом. Крепится к пластине-держателю."
 //	accessory_icons = list(slot_tie_str = 'icons/mob/modular_armor.dmi', slot_wear_suit_str = 'icons/mob/modular_armor.dmi')
 	icon = 'icons/obj/clothing/modular_armor.dmi'
 	icon_override = 'icons/mob/modular_armor.dmi'
@@ -277,8 +277,8 @@ Protectiveness | Armor %
 
 // Used to craft sheet armor, and possibly other things in the Future(tm).
 /obj/item/weapon/material/armor_plating
-	name = "armor plating"
-	desc = "A sheet designed to protect something."
+	name = "пластина брони"
+	desc = "Лист, предназначенный для защиты чего-либо."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "armor_plate"
 	unbreakable = TRUE
@@ -293,23 +293,23 @@ Protectiveness | Armor %
 	if(istype(O, /obj/item/stack/cable_coil))
 		var/obj/item/stack/cable_coil/S = O
 		if(wired)
-			to_chat(user, "<span class='warning'>This already has enough wires on it.</span>")
+			to_chat(user, "<span class='warning'>На нем уже достаточно проводов.</span>")
 			return
 		if(S.use(20))
-			to_chat(user, "<span class='notice'>You attach several wires to \the [src].  Now it needs another plate.</span>")
+			to_chat(user, "<span class='notice'>Вы подключаете несколько проводов к [src]. Теперь ему нужна еще одна пластина.</span>")
 			wired = TRUE
 			icon_state = "[initial(icon_state)]_wired"
 			return
 		else
-			to_chat(user, "<span class='notice'>You need more wire for that.</span>")
+			to_chat(user, "<span class='notice'>Для этого вам понадобится больше проводов.</span>")
 			return
 	if(istype(O, /obj/item/weapon/material/armor_plating))
 		var/obj/item/weapon/material/armor_plating/second_plate = O
 		if(!wired && !second_plate.wired)
-			to_chat(user, "<span class='warning'>You need something to hold the two pieces of plating together.</span>")
+			to_chat(user, "<span class='warning'>Вам нужно что-то, чтобы скрепить два куска пластины.</span>")
 			return
 		if(second_plate.material != src.material)
-			to_chat(user, "<span class='warning'>Both plates need to be the same type of material.</span>")
+			to_chat(user, "<span class='warning'>Обе пластины должны быть из одного материала.</span>")
 			return
 		user.drop_from_inventory(src)
 		user.drop_from_inventory(second_plate)
@@ -329,7 +329,7 @@ Protectiveness | Armor %
 		var /obj/item/weapon/weldingtool/S = O
 		if(S.remove_fuel(0,user))
 			if(!src || !S.isOn()) return
-			to_chat(user, "<span class='notice'>You trim down the edges to size.</span>")
+			to_chat(user, "<span class='notice'>Вы обрезаете края до нужного размера.</span>")
 			user.drop_from_inventory(src)
 			var/obj/item/clothing/accessory/material/makeshift/light/new_armor = new(null, src.material.name)
 			user.put_in_hands(new_armor)
@@ -339,9 +339,9 @@ Protectiveness | Armor %
 	if(istype(O, /obj/item/weapon/material/armor_plating/insert))
 		var/obj/item/weapon/material/armor_plating/insert/second_plate = O
 		if(second_plate.material != src.material)
-			to_chat(user, "<span class='warning'>Both plates need to be the same type of material.</span>")
+			to_chat(user, "<span class='warning'>Обе пластины должны быть из одного материала.</span>")
 			return
-		to_chat(user, "<span class='notice'>You bond the two plates together.</span>")
+		to_chat(user, "<span class='notice'>Вы склеиваете две пластины вместе.</span>")
 		user.drop_from_inventory(src)
 		user.drop_from_inventory(second_plate)
 		var/obj/item/clothing/accessory/material/makeshift/heavy/new_armor = new(null, src.material.name)
@@ -351,7 +351,7 @@ Protectiveness | Armor %
 		return
 
 	if(istype(O, /obj/item/weapon/tool/wirecutters))
-		to_chat(user, "<span class='notice'>You split the plate down the middle, and joint it at the elbow.</span>")
+		to_chat(user, "<span class='notice'>Вы разделяете пластину пополам и соединяете ее локтем.</span>")
 		user.drop_from_inventory(src)
 		var/obj/item/clothing/accessory/material/makeshift/armguards/new_armor = new(null, src.material.name)
 		user.put_in_hands(new_armor)
@@ -362,7 +362,7 @@ Protectiveness | Armor %
 		var/obj/item/stack/material/S = O
 		if(S.material == get_material_by_name("leather"))
 			if(S.use(2))
-				to_chat(user, "<span class='notice'>You curve the plate inwards, and add a strap for adjustment.</span>")
+				to_chat(user, "<span class='notice'>Вы изгибаете пластину внутрь и добавляете ремешок для регулировки.</span>")
 				user.drop_from_inventory(src)
 				var/obj/item/clothing/accessory/material/makeshift/legguards/new_armor = new(null, src.material.name)
 				user.put_in_hands(new_armor)
@@ -371,28 +371,28 @@ Protectiveness | Armor %
 
 // Used to craft the makeshift helmet
 /obj/item/clothing/head/helmet/bucket
-	name = "bucket"
-	desc = "It's a bucket with a large hole cut into it.  You could wear it on your head and look really stupid."
+	name = "ведро"
+	desc = "Это ведро с большим отверстием. Вы можете носить его на голове и выглядеть действительно глупо."
 	flags_inv = HIDEEARS|HIDEEYES|BLOCKHAIR
 	icon_state = "bucket"
 	armor = list(melee = 5, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
 
 /obj/item/clothing/head/helmet/bucket/wood
-	name = "wooden bucket"
+	name = "деревянное ведро"
 	icon_state = "woodbucket"
 
 /obj/item/clothing/head/helmet/bucket/attackby(var/obj/O, mob/user)
 	if(istype(O, /obj/item/stack/material))
 		var/obj/item/stack/material/S = O
 		if(S.use(2))
-			to_chat(user, "<span class='notice'>You apply some [S.material.use_name] to \the [src].  Hopefully it'll make the makeshift helmet stronger.</span>")
+			to_chat(user, "<span class='notice'>Вы применяете [S.material.use_name] к [src]. Надеюсь, это сделает самодельный шлем крепче.</span>")
 			var/obj/item/clothing/head/helmet/material/makeshift/helmet = new(null, S.material.name)
 			user.put_in_hands(helmet)
 			user.drop_from_inventory(src)
 			qdel(src)
 			return
 		else
-			to_chat(user, "<span class='warning'>You don't have enough material to build a helmet!</span>")
+			to_chat(user, "<span class='warning'>У вас недостаточно материала для изготовления шлема!</span>")
 	else
 		..()
 
@@ -402,9 +402,8 @@ Protectiveness | Armor %
 	default_material = DEFAULT_WALL_MATERIAL
 
 /obj/item/clothing/head/helmet/material/makeshift
-	name = "bucket"
-	desc = "A bucket with plating applied to the outside.  Very crude, but could potentially be rather protective, if \
-	it was plated with something strong."
+	name = "ведро"
+	desc = "Ведро с нанесенной снаружи обшивкой. Очень грубое, но потенциально может быть довольно защитным, если бы был покрыт чем-нибудь прочным."
 	icon_state = "material_armor_makeshift"
 
 /obj/item/clothing/head/helmet/material/makeshift/durasteel

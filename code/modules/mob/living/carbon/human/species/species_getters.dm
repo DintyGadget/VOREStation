@@ -38,18 +38,18 @@
 	return name
 
 /datum/species/proc/get_knockout_message(var/mob/living/carbon/human/H)
-	return ((H && H.isSynthetic()) ? "encounters a hardware fault and suddenly reboots!" : knockout_message)
+	return ((H && H.isSynthetic()) ? "обнаруживает аппаратный сбой и внезапно перезагружается!" : knockout_message)
 
 /datum/species/proc/get_death_message(var/mob/living/carbon/human/H)
 	if(config.show_human_death_message)
-		return ((H && H.isSynthetic()) ? "gives one shrill beep before falling lifeless." : death_message)
+		return ((H && H.isSynthetic()) ? "издает один пронзительный звуковой сигнал, прежде чем упасть замертво." : death_message)
 	else
 		return "no message"
 
 /datum/species/proc/get_ssd(var/mob/living/carbon/human/H)
 	if(H)
 		if(H.looksSynthetic())
-			return "flashing a 'system offline' light"
+			return "мигает световой индикатор \"система отключена\""
 		else if(!H.ai_holder)
 			return show_ssd
 		else

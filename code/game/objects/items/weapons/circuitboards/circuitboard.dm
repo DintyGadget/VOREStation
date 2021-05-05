@@ -5,7 +5,7 @@
 #define T_BOARD(name)	"circuit board (" + (name) + ")"
 
 /obj/item/weapon/circuitboard
-	name = "circuit board"
+	name = "печатная плата"
 	icon = 'icons/obj/module.dmi'
 	icon_state = "id_mod"
 	origin_tech = list(TECH_DATA = 2)

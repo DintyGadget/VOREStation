@@ -19,14 +19,14 @@
 	min_age = 18
 	max_age = 80
 
-	blurb = "There are two subspecies of Sergal; Southern and Northern. Northern sergals are a highly aggressive race \
-	that lives in the plains and tundra of their homeworld. They are characterized by long, fluffy fur bodies with cold colors; \
-	usually with white abdomens, somewhat short ears, and thick faces. Southern sergals are much more docile and live in the \
-	Gold Ring City and are scattered around the outskirts in rural areas and small towns. They usually have short, brown or yellow \
-	(or other 'earthy' colors) fur, long ears, and a long, thin face. They are smaller than their Northern relatives. Both have strong \
-	racial tensions which has resulted in more than a number of wars and outright attempts at genocide. Sergals have an incredibly long \
-	lifespan, but due to their lust for violence, only a handful have ever survived beyond the age of 80, such as the infamous and \
-	legendary General Rain Silves who is claimed to have lived to 5000."
+	blurb = "Выделяют два подвида Сергалов: южные и северные. Северные сергалы - крайне агрессивная раса, \
+	проживающая на равнинах и тундрах родной планеты. Они обладают продолговатым пушистым телом холодных цветов: \
+	преимущественно белые животы, коротковатые уши и пухлые лица. Южные сергалы гораздо более миролюбивые, и\
+	живут в основном в Городе Золотого Кольца, а также по окрестностям сельских земель и в маленьких городах. Обычно имеют короткую шерсть \
+	желтого или коричневого (или другого 'земляного') цвета, длинные уши и лицо, ростом ниже своих северных соседей. Оба подвида \
+	страдают от расовых междуособиц, что привело к большому количеству воин и даже попыток совершить геноцид. \
+	Сергалы обладают высокой средней продолжительностью жизни, однако в связи со своей склонности к насилию, лишь немногие доживают до 80. \
+	Легендарный сергальский Генерал Райн Сильвис прожил более 5000 лет."
 
 	wikilink="https://wiki.vore-station.net/Backstory#Sergal"
 
@@ -43,9 +43,9 @@
 	genders = list(MALE, FEMALE, PLURAL, NEUTER)
 
 	heat_discomfort_strings = list(
-		"Your fur prickles in the heat.",
-		"You feel uncomfortably warm.",
-		"Your overheated skin itches."
+		"Ваша шерсть колется на жаре.",
+		"Вы ощущаете некомфортное тепло.",
+		"Ваша перегретая кожа чешется."
 		)
 
 	has_limbs = list(
@@ -84,13 +84,13 @@
 	min_age = 18
 	max_age = 80
 
-	blurb = "The Akula are a species of amphibious humanoids like the Skrell, but have an appearance very similar to that of a shark. \
-	They were first discovered as a primitive race of underwater dwelling tribal creatures by the Skrell. At first they were not believed \
-	to be noteworthy, but the Akula proved to be such swift and clever learners that the Skrell reclassified them as sentients. Allegedly, \
-	the Akula were also the first sentient life that the Skrell had ever encountered beside themselves, and thus the two species became swift \
-	allies over the next few hundred years. With the help of Skrellean technology, the Akula had their genome modified to be capable of \
-	surviving in open air for long periods of time. However, Akula even today still require a high humidity environment to avoid drying out \
-	after a few days, which would make life on an arid world like Virgo-Prime nearly impossible if it were not for Skrellean technology to aid them."
+	blurb = "Акулами именуется раса гуманоидных амфибий, отличающихся от Скреллов своим акулоподобным внешним видом. \
+	Изначально были открыты Скреллам будучи примитивной расой подводных существ. На тот момент они ничем не отличались от животных, \
+	однако Акулы проявили настолько высокую способность к обучению, что Скреллы быстро переклассифицировали их в разумных существ. \
+	Говорят, что Акулы -- первая разумная раса, с которой сталкивались Скреллы, и поэтому оба вида быстро стали хорошими союзниками в течение следующих пятьсот лет. \
+	С помощью скрелльских технологий Акулы смогли получить модификации генома, что позволило им выживать на открытом воздухе в течение длительного времени. \
+	Однако Акулам по-прежнему необходима высокая влажность в атмосфере, чтобы не пересохнуть за несколько дней, \
+	в связи с чем жизнь на пустынной планете вроде Вирго-Прайм для Акул невозможно без помощи скрелльских технологий."
 
 	wikilink="https://wiki.vore-station.net/Backstory#Akula"
 
@@ -132,11 +132,11 @@
 	min_age = 18
 	max_age = 80
 
-	blurb = "Nevreans are a race of avian and dinosaur-like creatures living on Tal. They belong to a group of races that hails from Eltus, \
-	in the Vilous system. Unlike sergals whom they share a star system with, their species is a very peaceful one. They possess remarkable \
-	intelligence and very skillful hands that are put use for constructing precision instruments, but tire-out fast when repeatedly working \
-	over and over again. Consequently, they struggle to make copies of same things. Both genders have a voice that echoes a lot. Their natural \
-	tone oscillates between tenor and soprano. They are excessively noisy when they quarrel in their native language."
+	blurb = "Невреаны - раса птичьих динозавроподобных существ родом с Таля. Они принадлежат к группе рас, зародившихся на Элте с системе Вилос. \
+	В отличие от сергалов -- соседей невреанов по звездной системе -- невреаны весьма мирные. Они обладают выдающимся интеллектом и одаренными руками, \
+	с помощью которых они изготавливают высококачественные инструменты, однако которые очень быстро устают при постоянной работе. \
+	Как следствие, они с большим трудом изготавливают одно и то же. Голос обоих полов сопровождается слышимым эхом. \
+	Их обыкновенный тон колеблется между тенором и сопрано. В спорах на родном языке они становятся крайне шумными."
 
 	wikilink="https://wiki.vore-station.net/Backstory#Nevrean"
 
@@ -153,9 +153,9 @@
 	base_color = "#333333"
 
 	heat_discomfort_strings = list(
-		"Your fur prickles in the heat.",
-		"You feel uncomfortably warm.",
-		"Your overheated skin itches."
+		"Ваше оперение колется на жаре.",
+		"Вы ощущаете некомфортное тепло.",
+		"Ваша перегретая кожа чешется."
 		)
 
 /datum/species/hi_zoxxen
@@ -174,14 +174,12 @@
 	min_age = 18
 	max_age = 80
 
-	blurb = "The fox-like Zorren are native to Virgo-Prime, however there are two distinct varieties of Zorren one with large ears and shorter fur, \
-	and the other with longer fur that is a bit more vibrant. The long-eared, short-furred Zorren have come to be known as Flatland Zorren as that \
-	is where most of their settlements are located. The Flatland Zorren are somewhat tribal and shamanistic as they have only recently started to be \
-	hired by the Trans-Stellar Corporations. The other variety of Zorren are known as Highland Zorren as they frequently settle in hilly and/or \
-	mountainous areas, they have a differing societal structure than the Flatland Zorren having a more feudal social structure, like the Flatland Zorren, \
-	the Highland Zorren have also only recently been hired by the Trans-Stellar Corporations, but thanks to the different social structure they seem to \
-	have adjusted better to their new lives. Though similar fox-like beings have been seen they are different than the Zorren."
-	wikilink="https://wiki.vore-station.net/Zorren"
+	blurb = "Лисоподобные зоррены произошли на Вирго-Прайм, однако существует два совершенно разных подвида. \
+	Один обладает длинными ушами и короткой шерстью — равнинные зоррены, прозванные в честь своего привычного ареала. \
+	Равнинные зоррены весьма традиционны и почитают шаманизм, и транскосмические корпорации начали их нанимать совсем недавно. \
+	Горные зоррены обычно обустраиваются на более холмистых и горных местностях и привыкли жить с иной, более феодальной, социальной структурой, чем равнинные. \
+	Как и равнинные, горные зоррены начали работать на транскосмические корпорации совсем недавно, однако благодаря иной социальной структуре они смогли быстрее \
+	адаптироваться к своей новой жизни. Существуют и другие лисоподобные виды, однако они отличаются от зорренов."
 
 	catalogue_data = list(/datum/category_item/catalogue/fauna/zorren)
 
@@ -197,9 +195,9 @@
 	genders = list(MALE, FEMALE, PLURAL, NEUTER)
 
 	heat_discomfort_strings = list(
-		"Your fur prickles in the heat.",
-		"You feel uncomfortably warm.",
-		"Your overheated skin itches."
+		"Ваша шерсть колется на жаре.",
+		"Вы ощущаете некомфортное тепло.",
+		"Ваша перегретая кожа чешется."
 		)
 	inherent_verbs = list(/mob/living/proc/shred_limb)
 
@@ -222,11 +220,10 @@
 	color_mult = 1
 	inherent_verbs = list(/mob/living/carbon/human/proc/lick_wounds)
 
-	blurb = "Vulpkanin are a species of sharp-witted canine-pideds residing on the planet Altam just barely within the \
-	dual-star Vazzend system. Their politically de-centralized society and independent natures have led them to become a species and \
-	culture both feared and respected for their scientific breakthroughs. Discovery, loyalty, and utilitarianism dominates their lifestyles \
-	to the degree it can cause conflict with more rigorous and strict authorities. They speak a guttural language known as 'Canilunzt' \
-	which has a heavy emphasis on utilizing tail positioning and ear twitches to communicate intent."
+	blurb = "Вульпканины - раса хитроумных собачьих, проживающих на планете Альтам на самом краешке двухзвездной системы Ваззенд. \
+	Их политически децентрализованное общество и независимый характер привели к тому, что расу вульпканинов остерегаются и уважают \
+	за их научные прорывы. Открытия, верность и утилитаризм преобладают в их жизни настолько, что это нередко приводит к конфликтам с авторитетами. \
+	Они разговаривают на языке под названием Канилунцт, который основывается на движениях хвоста и ушей для сообщения намерений."
 
 	wikilink="https://wiki.vore-station.net/Backstory#Vulpkanin"
 
@@ -351,10 +348,10 @@ datum/species/harpy
 
 	base_color = "#EECEB3"
 
-	blurb = "An Avian species, coming from a distant planet, the Rapalas are the very proud race.\
-	Sol researchers have commented on them having a very close resemblance to the mythical race called 'Harpies',\
-	who are known for having massive winged arms and talons as feet. They've been clocked at speeds of over 35 miler per hour chasing the planet's many fish-like fauna.\
-	The Rapalan's home-world 'Verita' is a strangely habitable gas giant, while no physical earth exists, there are fertile floating islands orbiting around the planet from past asteroid activity."
+	blurb = "Крайне гордая раса птичьих с отдалённой планеты. \
+	Исследователи с Сол сравнивают с мифической расой 'гарпий', славившейся своими огромными крылатыми руками и когтями на ногах.'. \
+	Рапалы могут достигать до 35 миль в час в погоне за рыбьей фауной планеты. Родной мир Рапал - Верита - это на удивление обитаемый газовый гигант. \
+	Там не существует 'земли', и вместо этого Верита состоит из плодородных островов, орбитирующих вокруг планеты в результате бурной астероидной активности."
 
 	wikilink="https://wiki.vore-station.net/Backstory#Rapala"
 
@@ -365,9 +362,9 @@ datum/species/harpy
 
 
 	heat_discomfort_strings = list(
-		"Your feathers prickle in the heat.",
-		"You feel uncomfortably warm.",
-		"Your overheated skin itches."
+		"Ваши перья колятся на жаре.",
+		"Вы ощущаете некомфортное тепло.",
+		"Ваша перегретая кожа чешется."
 		)
 
 /datum/species/crew_shadekin
@@ -377,11 +374,10 @@ datum/species/harpy
 	deform = 'icons/mob/human_races/r_shadekin_vr.dmi'
 	tail = "tail"
 	icobase_tail = 1
-	blurb = "Very little is known about these creatures. They appear to be largely mammalian in appearance. \
-	Seemingly very rare to encounter, there have been widespread myths of these creatures the galaxy over, \
-	but next to no verifiable evidence to their existence. However, they have recently been more verifiably \
-	documented in the Virgo system, following a mining bombardment of Virgo 3. The crew of NSB Adephagia have \
-	taken to calling these creatures 'Shadekin', and the name has generally stuck and spread. "		//TODO: Something more fitting for black-eyes
+	blurb = "Немногое известно об этих существах. Внешность их в целом подобна млекопитающим. \
+	Будучи крайне редкими, они стали широко распространенным по галактике мифом без каких-либо приемлемых доказательств их существования. \
+	Тем не менее, за недавнее время они были обнаружены в системе Вирго после рудодобывающей бомбардировки Вирго 3. \
+	Персонал NSB Adephagia привык называть их Шейдкинами, и имя довольно быстро приелось и распространилось."		//TODO: Something more fitting for black-eyes
 	wikilink = "https://wiki.vore-station.net/Shadekin"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/shadekin)
 
@@ -508,9 +504,9 @@ datum/species/harpy
 	inherent_verbs = list(/mob/living/proc/shred_limb)
 
 	heat_discomfort_strings = list(
-		"Your fur prickles in the heat.",
-		"You feel uncomfortably warm.",
-		"Your overheated skin itches."
+		"Ваша шерсть колется на жаре.",
+		"Вы ощущаете некомфортное тепло.",
+		"Ваша перегретая кожа чешется."
 		)
 
 /datum/species/xenohybrid
@@ -528,11 +524,10 @@ datum/species/harpy
 	min_age = 18
 	max_age = 80
 
-	blurb = "Xenomorphs hybrids are a mixture of xenomorph DNA and some other humanoid species. \
-	Xenomorph hyrids mostly have had had their natural aggression removed due to the gene modification process \
-	although there are some exceptions, such as when they are harmed. Most xenomorph hybrids are female, due to their natural xenomorph genes, \
-	but there are multiple exceptions. All xenomorph hybrids have had their ability to lay eggs containing facehuggers \
-	removed if they had the ability to, although hybrids that previously contained this ability is extremely rare."
+	blurb = "Ксеноморфные гибриды являются результатом скрещивания ДНК ксеноморфа с ДНК другой гуманоидной расы. \
+	Благодаря процессу модификации генов, ксеноморфные гибриды лишены своей естественной агрессии, однако из правила бывают и исключения, \
+	например, когда они ранены. Большинство гибридов являются представителями женского пола в связи с естественными генами ксеноморфов. \
+	Все гибриды были также лишены своей способности откладывать яйца с лицесосами."
 	// No wiki page for xenohybrids at present
 
 	//primitive_form = "" //None for these guys
@@ -546,7 +541,7 @@ datum/species/harpy
 	base_color = "#201730"
 
 	heat_discomfort_strings = list(
-		"Your chitin feels extremely warm.",
-		"You feel uncomfortably warm.",
-		"Your chitin feels hot."
+		"Ваш хитин перегревается.",
+		"Вы ощущаете неприятное тепло.",
+		"Вашему хитину жарко."
 		)

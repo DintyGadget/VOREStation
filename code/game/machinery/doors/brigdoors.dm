@@ -179,7 +179,7 @@
 	. = TRUE
 
 	if(!allowed(usr))
-		to_chat(usr, "<span class='warning'>Access denied.</span>")
+		to_chat(usr, "<span class='warning'>Доступ запрещен.</span>")
 		return FALSE
 
 	switch(action)
@@ -286,7 +286,7 @@
 /obj/machinery/door_timer/tactical_pet_storage //Vorestation Addition
 	name = "Tactical Pet Storage"
 	id = "tactical_pet_storage"
-	desc = "Opens and Closes on a timer. This one seals away a tactical boost in morale."
+	desc = "Открывается и закрывается по таймеру. Это дает тактический подъем морального духа."
 
 #undef FONT_SIZE
 #undef FONT_COLOR

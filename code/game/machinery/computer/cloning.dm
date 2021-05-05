@@ -29,7 +29,7 @@
 	. = ..()
 	pods = list()
 	records = list()
-	set_scan_temp("Scanner ready.", "good")
+	set_scan_temp("Сканер готов.", "good")
 	updatemodules()
 
 /obj/machinery/computer/cloning/Destroy()
@@ -96,7 +96,7 @@
 			user.drop_item()
 			W.loc = src
 			diskette = W
-			to_chat(user, "You insert [W].")
+			to_chat(user, "Вы вставляете [W].")
 			SStgui.update_uis(src)
 			return
 	else if(istype(W, /obj/item/device/multitool))
@@ -106,7 +106,7 @@
 			pods += P
 			P.connected = src
 			P.name = "[initial(P.name)] #[pods.len]"
-			to_chat(user, "<span class='notice'>You connect [P] to [src].</span>")
+			to_chat(user, "<span class='notice'>Вы подключаете [P] к [src].</span>")
 	else
 		return ..()
 
@@ -206,22 +206,22 @@
 			if(params["id"] == "del_rec" && active_record)
 				var/obj/item/weapon/card/id/C = usr.get_active_hand()
 				if(!istype(C) && !istype(C, /obj/item/device/pda))
-					set_temp("ID not in hand.", "danger")
+					set_temp("ID не в руке.", "danger")
 					return
 				if(check_access(C))
 					records.Remove(active_record)
 					qdel(active_record)
-					set_temp("Record deleted.", "success")
+					set_temp("Запись удалена.", "success")
 					menu = MENU_RECORDS
 				else
-					set_temp("Access denied.", "danger")
+					set_temp("Доступ запрещен.", "danger")
 			return
 
 	switch(action)
 		if("scan")
 			if(!scanner || !scanner.occupant || loading)
 				return
-			set_scan_temp("Scanner ready.", "good")
+			set_scan_temp("Сканер готов.", "good")
 			loading = TRUE
 
 			spawn(20)
@@ -245,7 +245,7 @@
 			if(istype(active_record))
 				if(isnull(active_record.ckey))
 					qdel(active_record)
-					set_temp("Error: Record corrupt.", "danger")
+					set_temp("Ошибка: запись повреждена.", "danger")
 				else
 					var/obj/item/weapon/implant/health/H = null
 					if(active_record.implant)
@@ -260,29 +260,29 @@
 					tgui_modal_message(src, action, "", null, payload)
 			else
 				active_record = null
-				set_temp("Error: Record missing.", "danger")
+				set_temp("Ошибка: запись отсутствует.", "danger")
 		if("del_rec")
 			if(!active_record)
 				return
-			tgui_modal_boolean(src, action, "Please confirm that you want to delete the record by holding your ID and pressing Delete:", yes_text = "Delete", no_text = "Cancel")
+			tgui_modal_boolean(src, action, "Подтвердите, что вы хотите удалить запись, удерживая свой ID и нажав Удалить:", yes_text = "Удалить", no_text = "Отмена")
 		if("disk") // Disk management.
 			if(!length(params["option"]))
 				return
 			switch(params["option"])
 				if("load")
 					if(isnull(diskette) || isnull(diskette.buf))
-						set_temp("Error: The disk's data could not be read.", "danger")
+						set_temp("Ошибка: данные с диска не могут быть прочитаны.", "danger")
 						return
 					else if(isnull(active_record))
-						set_temp("Error: No active record was found.", "danger")
+						set_temp("Ошибка: не найдено ни одной активной записи.", "danger")
 						menu = MENU_MAIN
 						return
 
 					active_record = diskette.buf
-					set_temp("Successfully loaded from disk.", "success")
+					set_temp("Успешно загружен с диска.", "success")
 				if("save")
 					if(isnull(diskette) || diskette.read_only || isnull(active_record))
-						set_temp("Error: The data could not be saved.", "danger")
+						set_temp("Ошибка: данные не могут быть сохранены.", "danger")
 						return
 
 					// DNA2 makes things a little simpler.
@@ -295,12 +295,12 @@
 						if("se")
 							types = DNA2_BUF_SE
 						else
-							set_temp("Error: Invalid save format.", "danger")
+							set_temp("Ошибка: недопустимый формат сохранения.", "danger")
 							return
 					diskette.buf = active_record
 					diskette.buf.types = types
 					diskette.name = "data disk - '[active_record.dna.real_name]'"
-					set_temp("Successfully saved to disk.", "success")
+					set_temp("Успешно сохранено на диск.", "success")
 				if("eject")
 					if(!isnull(diskette))
 						diskette.loc = loc
@@ -324,32 +324,32 @@
 				tgui_modal_clear(src)
 				//Can't clone without someone to clone.  Or a pod.  Or if the pod is busy. Or full of gibs.
 				if(!length(pods))
-					set_temp("Error: No cloning pod detected.", "danger")
+					set_temp("Ошибка: модуль клонирования не обнаружен.", "danger")
 				else
 					var/obj/machinery/clonepod/pod = selected_pod
 					var/cloneresult
 					if(!selected_pod)
-						set_temp("Error: No cloning pod selected.", "danger")
+						set_temp("Ошибка: не выбран модуль клонирования.", "danger")
 					else if(pod.occupant)
-						set_temp("Error: The cloning pod is currently occupied.", "danger")
+						set_temp("Ошибка: модуль клонирования в настоящее время занят.", "danger")
 					else if(pod.get_biomass() < CLONE_BIOMASS)
-						set_temp("Error: Not enough biomass.", "danger")
+						set_temp("Ошибка: недостаточно биомассы.", "danger")
 					else if(pod.mess)
-						set_temp("Error: The cloning pod is malfunctioning.", "danger")
+						set_temp("Ошибка: модуль клонирования неисправен.", "danger")
 					else if(!config.revival_cloning)
-						set_temp("Error: Unable to initiate cloning cycle.", "danger")
+						set_temp("Ошибка: невозможно запустить цикл клонирования.", "danger")
 					else
 						cloneresult = pod.growclone(C)
 						if(cloneresult)
-							set_temp("Initiating cloning cycle...", "success")
+							set_temp("Запуск цикла клонирования ...", "success")
 							playsound(src, 'sound/machines/medbayscanner1.ogg', 100, 1)
 							records.Remove(C)
 							qdel(C)
 							menu = MENU_MAIN
 						else
-							set_temp("Error: Initialisation failure.", "danger")
+							set_temp("Ошибка: сбой инициализации.", "danger")
 			else
-				set_temp("Error: Data corruption.", "danger")
+				set_temp("Ошибка: повреждение данных.", "danger")
 		if("menu")
 			menu = clamp(text2num(params["num"]), MENU_MAIN, MENU_RECORDS)
 		if("toggle_mode")
@@ -380,43 +380,43 @@
 		return
 	if(isnull(subject) || (!(ishuman(subject))) || (!subject.dna))
 		if(isalien(subject))
-			set_scan_temp("Xenomorphs are not scannable.", "bad")
+			set_scan_temp("Ксеноморфы не поддаются сканированию.", "bad")
 			SStgui.update_uis(src)
 			return
 		// can add more conditions for specific non-human messages here
 		else
-			set_scan_temp("Subject species is not scannable.", "bad")
+			set_scan_temp("Предметный вид не поддается сканированию.", "bad")
 			SStgui.update_uis(src)
 			return
 	if(!subject.has_brain())
 		if(ishuman(subject))
 			var/mob/living/carbon/human/H = subject
 			if(H.should_have_organ("brain"))
-				set_scan_temp("No brain detected in subject.", "bad")
+				set_scan_temp("У субъекта нет мозга.", "bad")
 		else
-			set_scan_temp("No brain detected in subject.", "bad")
+			set_scan_temp("У субъекта нет мозга.", "bad")
 		SStgui.update_uis(src)
 		return
 	if(subject.suiciding)
-		set_scan_temp("Subject has committed suicide and is not scannable.", "bad")
+		set_scan_temp("Субъект покончил жизнь самоубийством, сканирование невозможно.", "bad")
 		SStgui.update_uis(src)
 		return
 	if((!subject.ckey) || (!subject.client))
-		set_scan_temp("Subject's brain is not responding. Further attempts after a short delay may succeed.", "bad")
+		set_scan_temp("Мозг подопытного не отвечает. Дальнейшие попытки после небольшой задержки могут быть успешными.", "bad")
 		SStgui.update_uis(src)
 		return
 	if((NOCLONE in subject.mutations))
-		set_scan_temp("Subject has incompatible genetic mutations.", "bad")
+		set_scan_temp("У субъекта несовместимые генетические мутации.", "bad")
 		SStgui.update_uis(src)
 		return
 	if(!isnull(find_record(subject.ckey)))
-		set_scan_temp("Subject already in database.")
+		set_scan_temp("Субъект уже в базе данных.")
 		SStgui.update_uis(src)
 		return
 
 	for(var/obj/machinery/clonepod/pod in pods)
 		if(pod.occupant && pod.occupant.mind == subject.mind)
-			set_scan_temp("Subject already getting cloned.")
+			set_scan_temp("Субъект уже клонируется.")
 			SStgui.update_uis(src)
 			return
 
@@ -450,7 +450,7 @@
 		R.mind = "\ref[subject.mind]"
 
 	records += R
-	set_scan_temp("Subject successfully scanned.", "good")
+	set_scan_temp("Субъект успешно отсканирована.", "good")
 	SStgui.update_uis(src)
 
 //Find a specific record by key.

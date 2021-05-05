@@ -66,7 +66,7 @@ Variables you may want to make use of are:
 	name_plural = SPECIES_EVENT1
 	primitive_form = SPECIES_MONKEY
 	unarmed_types = list(/datum/unarmed_attack/stomp/event1, /datum/unarmed_attack/kick/event1, /datum/unarmed_attack/punch/event1, /datum/unarmed_attack/bite/event1)
-	blurb = "We're not quite sure where these things came from. Are you?"
+	blurb = "Мы не совсем уверены, откуда все это взялось?"
 	num_alternate_languages = 3
 	species_language = LANGUAGE_GALCOM
 	secondary_langs = list()
@@ -178,7 +178,7 @@ Variables you may want to make use of are:
 
 /datum/species/event1/proc/choose_limbset()
 	var/list/limb_sets = list("Normal" = 1, "Unbreakable" = 2, "Unseverable" = 3, "Indestructible" = 4)
-	var/choice = input("Choose limb set to use for future spawns.", "Limb types.") as null|anything in limb_sets
+	var/choice = input("Выберите набор конечностей для использования в будущем.", "Типы конечностей.") as null|anything in limb_sets
 	set_limbset(limb_sets[choice])
 	return limb_sets[choice]
 
@@ -199,7 +199,7 @@ Variables you may want to make use of are:
 
 /datum/species/event1/proc/toggle_cloning()
 	flags ^= NO_SCAN
-	
+
 /datum/species/event1/proc/toggle_defibbing()
 	flags ^= NO_DEFIB
 

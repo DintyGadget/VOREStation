@@ -8,8 +8,8 @@
  * First Aid Kits
  */
 /obj/item/weapon/storage/firstaid
-	name = "first aid kit"
-	desc = "It's an emergency medical kit for those serious boo-boos."
+	name = "аптечка первой помощи"
+	desc = "Это аптечка для тех, кто серьезно болтает."
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "firstaid"
 	throw_speed = 2
@@ -26,8 +26,8 @@
 		icon_variety = null
 
 /obj/item/weapon/storage/firstaid/fire
-	name = "fire first aid kit"
-	desc = "It's an emergency medical kit for when the toxins lab <i>spontaneously</i> burns down."
+	name = "аптечка первой помощи (пожар)"
+	desc = "Это набор для оказания неотложной медицинской помощи на случай, когда лаборатория по изучению токсинов <i>самопроизвольно</i> возгорается."
 	icon_state = "ointment"
 	item_state_slots = list(slot_r_hand_str = "firstaid-ointment", slot_l_hand_str = "firstaid-ointment")
 	//icon_variety = list("ointment","firefirstaid") //VOREStation Removal
@@ -54,8 +54,8 @@
 	)
 
 /obj/item/weapon/storage/firstaid/toxin
-	name = "poison first aid kit" //IRL the term used would be poison first aid kit.
-	desc = "Used to treat when one has a high amount of toxins in their body."
+	name = "аптечка первой помощи (яды)" //IRL the term used would be poison first aid kit.
+	desc = "Используется для лечения, когда в организме много токсинов."
 	icon_state = "antitoxin"
 	item_state_slots = list(slot_r_hand_str = "firstaid-toxin", slot_l_hand_str = "firstaid-toxin")
 	//icon_variety = list("antitoxin","antitoxfirstaid","antitoxfirstaid2","antitoxfirstaid3") //VOREStation Removal
@@ -70,8 +70,8 @@
 	)
 
 /obj/item/weapon/storage/firstaid/o2
-	name = "oxygen deprivation first aid kit"
-	desc = "A box full of oxygen goodies."
+	name = "аптечка первой помощи (кислород)"
+	desc = "Коробка с кислородными вкусностями."
 	icon_state = "o2"
 	item_state_slots = list(slot_r_hand_str = "firstaid-o2", slot_l_hand_str = "firstaid-o2")
 	starts_with = list(
@@ -85,8 +85,8 @@
 	)
 
 /obj/item/weapon/storage/firstaid/adv
-	name = "advanced first aid kit"
-	desc = "Contains advanced medical treatments, for <b>serious</b> boo-boos."
+	name = "продвинутая аптечка первой помощи"
+	desc = "Содержит передовые методы лечения, для for <b>серьезных</b> проблем."
 	icon_state = "advfirstaid"
 	item_state_slots = list(slot_r_hand_str = "firstaid-advanced", slot_l_hand_str = "firstaid-advanced")
 	starts_with = list(
@@ -100,8 +100,8 @@
 	)
 
 /obj/item/weapon/storage/firstaid/combat
-	name = "combat medical kit"
-	desc = "Contains advanced medical treatments."
+	name = "боевая аптечка"
+	desc = "Содержит передовые медицинские препараты."
 	icon_state = "bezerk"
 	item_state_slots = list(slot_r_hand_str = "firstaid-advanced", slot_l_hand_str = "firstaid-advanced")
 	starts_with = list(
@@ -117,8 +117,8 @@
 	)
 
 /obj/item/weapon/storage/firstaid/surgery
-	name = "surgery kit"
-	desc = "Contains tools for surgery. Has precise foam fitting for safe transport and automatically sterilizes the content between uses."
+	name = "хирургический комплект"
+	desc = "Содержит инструменты для хирургии. Имеет точную подгонку поролона для безопасной транспортировки и автоматически стерилизует содержимое между использованием."
 	icon = 'icons/obj/storage.dmi' // VOREStation edit
 	icon_state = "surgerykit"
 	item_state = "firstaid-surgery"

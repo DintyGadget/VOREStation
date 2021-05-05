@@ -1,7 +1,7 @@
 var/global/list/ashtray_cache = list()
 
 /obj/item/weapon/material/ashtray
-	name = "ashtray"
+	name = "пепельница"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "blank"
 	randpixel = 5
@@ -41,14 +41,14 @@ var/global/list/ashtray_cache = list()
 		overlays |= ashtray_cache["half"]
 		desc = "Он наполовину заполнен."
 	else
-		desc = "An ashtray made of [material.display_name]."
+		desc = "пепельница из [material.display_name]."
 
 /obj/item/weapon/material/ashtray/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if (health <= 0)
 		return
 	if (istype(W,/obj/item/trash/cigbutt) || istype(W,/obj/item/clothing/mask/smokable/cigarette) || istype(W, /obj/item/weapon/flame/match))
 		if (contents.len >= max_butts)
-			to_chat(user, "\The [src] is full.")
+			to_chat(user, "[src] полна.")
 			return
 		user.remove_from_mob(W)
 		W.loc = src
@@ -65,16 +65,16 @@ var/global/list/ashtray_cache = list()
 				//spawn(1)
 				//	TemperatureAct(150)
 			else if (cig.lit == 0)
-				to_chat(user, "You place [cig] in [src] without even smoking it. Why would you do that?")
+				to_chat(user, "Вы кладете [cig] в [src], даже не куря. Почему ты бы так поступили?")
 
-		src.visible_message("[user] places [W] in [src].")
+		src.visible_message("[user] помещает [W] в [src].")
 		user.update_inv_l_hand()
 		user.update_inv_r_hand()
 		add_fingerprint(user)
 		update_icon()
 	else
 		health = max(0,health - W.force)
-		to_chat(user, "You hit [src] with [W].")
+		to_chat(user, "Вы ударяете [src] с помощью [W].")
 		if (health < 1)
 			shatter()
 	return
@@ -83,7 +83,7 @@ var/global/list/ashtray_cache = list()
 	if (health > 0)
 		health = max(0,health - 3)
 		if (contents.len)
-			src.visible_message("<span class='danger'>\The [src] slams into [hit_atom], spilling its contents!</span>")
+			src.visible_message("<span class='danger'>[src] врезается в [hit_atom], выплескивая его содержимое!</span>")
 		for (var/obj/item/clothing/mask/smokable/cigarette/O in contents)
 			O.loc = src.loc
 		if (health < 1)

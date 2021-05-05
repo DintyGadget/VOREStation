@@ -13,10 +13,9 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 */
 
 /obj/structure/loot_pile
-	name = "base loot pile"
-	desc = "If you can read me, this is bugged"
-	description_info = "This can be searched by clicking on it and waiting a few seconds.  You might find valuable treasures or worthless junk. \
-	These can only searched each once per player."
+	name = "куча предметов"
+	desc = "Если вы меня читаете, это ошибка"
+	description_info = "Его можно найти, щелкнув по нему и подождав несколько секунд. Вы можете найти ценные сокровища или бесполезный хлам. Их можно искать только один раз для каждого игрока."
 	icon = 'icons/obj/loot_piles.dmi'
 	icon_state = "randompile"
 	density = FALSE
@@ -50,29 +49,29 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		var/mob/living/L = user
 
 		if(busy)
-			to_chat(L, "<span class='warning'>\The [src] is already being searched.</span>")
+			to_chat(L, "<span class='warning'>[src] уже ищется.</span>")
 			return
 
-		L.visible_message("[user] searches through \the [src].","<span class='notice'>You search through \the [src].</span>")
+		L.visible_message("[user] выполняет поиск в [src].","<span class='notice'>Вы ищете что нибудь в [src].</span>")
 
 		//Do the searching
 		busy = TRUE
 		if(do_after(user,rand(4 SECONDS,6 SECONDS),src))
 			// The loot's all gone.
 			if(loot_depletion && loot_left <= 0)
-				to_chat(L, "<span class='warning'>\The [src] has been picked clean.</span>")
+				to_chat(L, "<span class='warning'>[src] уже обыскан.</span>")
 				busy = FALSE
 				return
 
 			//You already searched this one
 			if( (user.ckey in searched_by) && !allow_multiple_looting)
-				to_chat(L, "<span class='warning'>You can't find anything else vaguely useful in \the [src].  Another set of eyes might, however.</span>")
+				to_chat(L, "<span class='warning'>В [src] вы не найдете ничего более полезного.</span>")
 				busy = FALSE
 				return
 
 			// You got unlucky.
 			if(chance_nothing && prob(chance_nothing))
-				to_chat(L, "<span class='warning'>Nothing in this pile really catches your eye...</span>")
+				to_chat(L, "<span class='warning'>Ничто в этой кучке особо не бросается в глаза ...</span>")
 				searched_by |= user.ckey
 				busy = FALSE
 				return
@@ -95,11 +94,11 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 			if(loot)
 				searched_by |= user.ckey
 				loot.forceMove(get_turf(src))
-				to_chat(L, "<span class='[span]'>You found \a [loot]!</span>")
+				to_chat(L, "<span class='[span]'>Вы находите [loot]!</span>")
 				if(loot_depletion)
 					loot_left--
 					if(loot_left <= 0)
-						to_chat(L, "<span class='warning'>You seem to have gotten the last of the spoils inside \the [src].</span>")
+						to_chat(L, "<span class='warning'>Похоже, вы получили последнюю добычу внутри [src].</span>")
 						if(delete_on_depletion)
 							qdel(src)
 
@@ -126,8 +125,8 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 
 // Has large amounts of possible items, most of which may or may not be useful.
 /obj/structure/loot_pile/maint/junk
-	name = "pile of junk"
-	desc = "Lots of junk lying around.  They say one man's trash is another man's treasure."
+	name = "куча хлама"
+	desc = "Вокруг валяется много хлама. Говорят, что мусор для одного - сокровище для другого."
 	icon_states_to_use = list("junk_pile1", "junk_pile2", "junk_pile3", "junk_pile4", "junk_pile5")
 
 	common_loot = list(
@@ -219,8 +218,8 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 
 // Contains mostly useless garbage.
 /obj/structure/loot_pile/maint/trash
-	name = "pile of trash"
-	desc = "Lots of garbage in one place.  Might be able to find something if you're in the mood for dumpster diving."
+	name = "куча мусора"
+	desc = "Куча мусора в одном месте. Возможно, удастся найти что-нибудь, если вы настроены нырять в мусорном контейнере."
 	icon_states_to_use = list("trash_pile1", "trash_pile2")
 
 	common_loot = list(
@@ -270,8 +269,8 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 
 // Contains loads of different types of boxes, which may have items inside!
 /obj/structure/loot_pile/maint/boxfort
-	name = "pile of boxes"
-	desc = "A large pile of boxes sits here."
+	name = "куча ящиков"
+	desc = "Здесь большая куча коробок."
 	density = TRUE
 	icon_states_to_use = list("boxfort")
 
@@ -318,8 +317,8 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 
 // One of the more useful maint piles, contains electrical components.
 /obj/structure/loot_pile/maint/technical
-	name = "broken machine"
-	desc = "A destroyed machine with unknown purpose, and doesn't look like it can be fixed.  It might still have some functional components?"
+	name = "сломанная машина"
+	desc = "Разрушенная машина неизвестного назначения, и не похоже, что ее можно починить. Может, в нем еще есть какие-то функциональные компоненты?"
 	density = TRUE
 	icon_states_to_use = list("technical_pile1", "technical_pile2", "technical_pile3")
 
@@ -445,8 +444,8 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 
 // Base type for alien piles.
 /obj/structure/loot_pile/surface/alien
-	name = "alien pod"
-	desc = "A pod which looks bigger on the inside. Something quite shiny might be inside?"
+	name = "инопланетная капсула"
+	desc = "Капсула, которая внутри выглядит больше. Может быть, внутри что-то блестящее?"
 	icon_state = "alien_pile1"
 
 /obj/structure/loot_pile/surface/alien
@@ -531,8 +530,8 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 	)
 
 /obj/structure/loot_pile/surface/bones
-    name = "bone pile"
-    desc = "A pile of various dusty bones. Your graverobbing instincts tell you there might be valuables here."
+    name = "куча костей"
+    desc = "Куча различных пыльных костей. Инстинкты грабежа подсказывают, что здесь могут быть ценные вещи."
     icon = 'icons/obj/bones.dmi'
     icon_state = "bonepile"
     delete_on_depletion = TRUE
@@ -578,8 +577,8 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 
 // Subtype for mecha and mecha accessories. These might not always be on the surface.
 /obj/structure/loot_pile/mecha
-	name = "pod wreckage"
-	desc = "The ruins of some unfortunate pod. Perhaps something is salvageable."
+	name = "обломки капсулы"
+	desc = "Руины какой-то злополучной капсулы. Возможно, что-то можно спасти."
 	icon = 'icons/mecha/mecha.dmi'
 	icon_state = "engineering_pod-broken"
 	density = TRUE
@@ -623,8 +622,8 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 
 //Stuff you may find attached to a ripley.
 /obj/structure/loot_pile/mecha/ripley
-	name = "ripley wreckage"
-	desc = "The ruins of some unfortunate ripley. Perhaps something is salvageable."
+	name = "обломки Рипли"
+	desc = "Руины какого-то злополучного Рипли. Возможно, что-то можно спасти."
 	icon_state = "ripley-broken"
 
 	common_loot = list(
@@ -667,7 +666,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 
 //Death-Ripley, same common, but more combat-exosuit-based
 /obj/structure/loot_pile/mecha/deathripley
-	name = "strange ripley wreckage"
+	name = "странные обломки Рипли"
 	icon_state = "deathripley-broken"
 
 	common_loot = list(
@@ -701,8 +700,8 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		)
 
 /obj/structure/loot_pile/mecha/odysseus
-	name = "odysseus wreckage"
-	desc = "The ruins of some unfortunate odysseus. Perhaps something is salvageable."
+	name = "обломки Одиссея"
+	desc = "Руины какого-то злополучного Одиссея. Возможно, что-то можно спасти."
 	icon_state = "odysseus-broken"
 
 	common_loot = list(
@@ -925,8 +924,8 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 
 // Contains old mediciation, most of it unidentified and has a good chance of being useless.
 /obj/structure/loot_pile/surface/medicine_cabinet
-	name = "abandoned medicine cabinet"
-	desc = "An old cabinet, it might still have something of use inside."
+	name = "заброшенная аптечка"
+	desc = "Старый шкаф, возможно, внутри еще что-нибудь пригодится."
 	icon_state = "medicine_cabinet"
 	density = FALSE
 	chance_uncommon = 0
@@ -938,8 +937,8 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 
 // Like the above but has way better odds, in exchange for being in a place still inhabited (or was recently).
 /obj/structure/loot_pile/surface/medicine_cabinet/fresh
-	name = "medicine cabinet"
-	desc = "A cabinet designed to hold medicine, it might still have something of use inside."
+	name = "аптечка"
+	desc = "Шкаф, предназначенный для хранения лекарств, в нем все еще может быть что-то полезное."
 	icon_state = "medicine_cabinet"
 	density = FALSE
 

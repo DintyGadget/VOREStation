@@ -1377,6 +1377,7 @@
 #include "code\game\objects\items\weapons\storage\quickdraw.dm"
 #include "code\game\objects\items\weapons\storage\secure.dm"
 #include "code\game\objects\items\weapons\storage\storage.dm"
+#include "code\game\objects\items\weapons\storage\storage_ru.dm"
 #include "code\game\objects\items\weapons\storage\toolbox.dm"
 #include "code\game\objects\items\weapons\storage\toolbox_vr.dm"
 #include "code\game\objects\items\weapons\storage\uplink_kits.dm"
@@ -3953,4 +3954,5 @@
 #include "maps\submaps\surface_submaps\wilderness\wilderness_areas.dm"
 #include "maps\tether\tether.dm"
 #include "maps\~map_system\maps.dm"
+#include "voremy\code\game\verbs\emote.dm"
 // END_INCLUDE

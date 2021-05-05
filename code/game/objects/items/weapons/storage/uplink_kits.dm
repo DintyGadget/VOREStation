@@ -63,12 +63,12 @@
 	. = ..()
 
 /obj/item/weapon/storage/box/syndie_kit
-	name = "box"
+	name = "коробка"
 	desc = "Элегантная прочная коробка"
 	icon_state = "box_of_doom"
 
 /obj/item/weapon/storage/box/syndie_kit/imp_freedom
-	name = "boxed freedom implant (with injector)"
+	name = "имплант свободы в коробке (с инжектором)"
 
 /obj/item/weapon/storage/box/syndie_kit/imp_freedom/Initialize()
 	var/obj/item/weapon/implanter/O = new(src)
@@ -77,11 +77,11 @@
 	. = ..()
 
 /obj/item/weapon/storage/box/syndie_kit/imp_compress
-	name = "box (C)"
+	name = "коробка (C)"
 	starts_with = list(/obj/item/weapon/implanter/compressed)
 
 /obj/item/weapon/storage/box/syndie_kit/imp_explosive
-	name = "box (E)"
+	name = "коробка (E)"
 	starts_with = list(/obj/item/weapon/implanter/explosive)
 
 /obj/item/weapon/storage/box/syndie_kit/imp_uplink
@@ -94,7 +94,7 @@
 	. = ..()
 
 /obj/item/weapon/storage/box/syndie_kit/imp_aug
-	name = "boxed augment implant (with injector)"
+	name = "упакованный аугментарный имплант (с инжектором)"
 	var/case_type = /obj/item/weapon/implantcase/shades
 
 /obj/item/weapon/storage/box/syndie_kit/imp_aug/Initialize()
@@ -145,7 +145,7 @@
 	)
 
 /obj/item/weapon/storage/box/syndie_kit/chameleon
-	name = "chameleon kit"
+	name = "набор хамелеон"
 	desc = "Поставляется со всей одеждой, которая вам понадобится, чтобы выдать себя за большинство людей. Уроки актерского мастерства продаются отдельно."
 	starts_with = list(
 		/obj/item/weapon/storage/backpack/chameleon/full,
@@ -153,7 +153,7 @@
 	)
 
 /obj/item/weapon/storage/box/syndie_kit/clerical
-	name = "clerical kit"
+	name = "канцелярский набор"
 	desc = "Поставляется со всем необходимым для фальшивых документов. Предполагается, что вы прошли базовые уроки письма."
 	starts_with = list(
 		/obj/item/weapon/stamp/chameleon,
@@ -164,7 +164,7 @@
 	)
 
 /obj/item/weapon/storage/box/syndie_kit/spy
-	name = "spy kit"
+	name = "набор шпиона"
 	desc = "Когда вы хотите провести вуайеризм издалека."
 	starts_with = list(
 		/obj/item/device/camerabug/spy = 6,
@@ -173,14 +173,14 @@
 
 /obj/item/weapon/storage/box/syndie_kit/g9mm
 	name = "\improper Smooth operator"
-	desc = "Компактный 9 мм с комплектом глушителя."
+	desc = "Компактный 9мм с комплектом глушителя."
 	starts_with = list(
 		/obj/item/weapon/gun/projectile/pistol,
 		/obj/item/weapon/silencer
 	)
 
 /obj/item/weapon/storage/box/syndie_kit/toxin
-	name = "toxin kit"
+	name = "набор токсинов"
 	desc = "После этого одного яблока будет недостаточно, чтобы привести врача."
 	starts_with = list(
 		/obj/item/weapon/reagent_containers/glass/beaker/vial/random/toxin,
@@ -232,7 +232,7 @@
 		C.reagents.add_reagent(reagent, reagents[reagent] * C.storage_slots)
 
 /obj/item/weapon/storage/box/syndie_kit/ewar_voice
-	name = "Electrowarfare and Voice Synthesiser kit"
+	name = "Комплект электрооборудования и синтезатора голоса"
 	desc = "Набор для смешения как органических, так и синтетических сущностей."
 	starts_with = list(
 		/obj/item/rig_module/electrowarfare_suite,
@@ -240,12 +240,12 @@
 	)
 
 /obj/item/weapon/storage/secure/briefcase/money
-	name = "suspicious briefcase"
+	name = "подозрительный портфель"
 	desc = "Зловещий портфель, от которого безошибочно пахнет старым, затхлым сигаретным дымом и доставляет неприятные ощущения тем, кто на него смотрит."
 	starts_with = list(/obj/item/weapon/spacecash/c1000 = 10)
 
 /obj/item/weapon/storage/box/syndie_kit/combat_armor
-	name = "combat armor kit"
+	name = "комплект боевой брони"
 	desc = "Содержит полный комплект боевой брони."
 	starts_with = list(
 		/obj/item/clothing/head/helmet/combat,
@@ -322,7 +322,7 @@
 	)
 
 /obj/item/weapon/storage/secure/briefcase/fuelrod
-	name = "heavy briefcase"
+	name = "тяжелый портфель"
 	desc = "Тяжелый закрытый портфель."
 	description_fluff = "При открытии контейнера кажется, что в упаковке есть несколько углублений странной формы."
 	description_antag = "В этом ящике, вероятно, будет заряженная пушка с топливными стержнями и несколько топливных стержней. В нем можно разместить только топливный стержень, топливные стержни, батареи, отвертку и стандартные детали машин."

@@ -1,6 +1,6 @@
 /obj/item/weapon/material/gravemarker
-	name = "grave marker"
-	desc = "An object used in marking graves."
+	name = "могильный маркер"
+	desc = "Предмет, используемый для обозначения могил."
 	icon_state = "gravemarker"
 	w_class = ITEMSIZE_LARGE
 	fragile = 1

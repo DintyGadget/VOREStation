@@ -1,6 +1,6 @@
 /obj/machinery/autolathe
-	name = "autolathe"
-	desc = "It produces items using metal and glass."
+	name = "автолат"
+	desc = "Он производит изделия из металла и стекла."
 	icon_state = "autolathe"
 	density = 1
 	anchored = 1
@@ -116,12 +116,12 @@
 		return wires.Interact(user)
 
 	if(disabled)
-		to_chat(user, "<span class='danger'>\The [src] is disabled!</span>")
+		to_chat(user, "<span class='danger'>[src] отключен!</span>")
 		return
 
 	if(shocked)
 		shock(user, 50)
-	
+
 	tgui_interact(user)
 
 /obj/machinery/autolathe/attackby(var/obj/item/O as obj, var/mob/user as mob)
@@ -223,7 +223,7 @@
 	add_fingerprint(usr)
 
 	if(busy)
-		to_chat(usr, "<span class='notice'>The autolathe is busy. Please wait for completion of previous operation.</span>")
+		to_chat(usr, "<span class='notice'>Автолат занят. Пожалуйста, дождитесь завершения предыдущей операции.</span>")
 		return
 	switch(action)
 		if("make")

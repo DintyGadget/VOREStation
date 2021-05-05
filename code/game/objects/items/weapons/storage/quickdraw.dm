@@ -6,7 +6,7 @@
 
 /obj/item/weapon/storage/quickdraw
 	name = "quickdraw"
-	desc = "This object should not appear"
+	desc = "Этот объект не должен появляться"
 	icon = 'icons/obj/storage_vr.dmi' // VOREStation Edit
 
 	//Quickmode
@@ -57,8 +57,8 @@
 // -----------------------------
 
 /obj/item/weapon/storage/quickdraw/syringe_case
-	name = "syringe case"
-	desc = "A small case for safely carrying sharps around."
+	name = "кейс для шприцов"
+	desc = "Небольшой кейс для безопасного ношения острых предметов."
 	icon_state = "syringe_case"
 
 	w_class = ITEMSIZE_SMALL
@@ -81,7 +81,7 @@
 	)
 
 /obj/item/weapon/storage/quickdraw/syringe_case/clotting
-	desc = "A small case for safely carrying sharps around. This one is deluxe!"
+	desc = "Небольшой кейс для безопасного ношения острых предметов. Этот роскошный!"
 	max_w_class = ITEMSIZE_SMALL
 	starts_with = list(
 		/obj/item/weapon/reagent_containers/hypospray/autoinjector/biginjector/clotting,
@@ -90,7 +90,7 @@
 	)
 
 /obj/item/weapon/storage/quickdraw/syringe_case/bonemed
-	desc = "A small case for safely carrying sharps around. This one is deluxe!"
+	desc = "Небольшой кейс для безопасного ношения острых предметов. Этот роскошный!"
 	max_w_class = ITEMSIZE_SMALL
 	starts_with = list(
 		/obj/item/weapon/reagent_containers/hypospray/autoinjector/biginjector/bonemed,

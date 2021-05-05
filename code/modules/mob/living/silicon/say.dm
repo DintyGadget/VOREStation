@@ -2,7 +2,7 @@
 	..()
 	if(message_mode)
 		if(!is_component_functioning("radio"))
-			to_chat(src, "<span class='warning'>Your radio isn't functional at this time.</span>")
+			to_chat(src, "<span class='warning'>Ваше радио в настоящее время не работает.</span>")
 			return 0
 		if(message_mode == "general")
 			message_mode = null
@@ -17,7 +17,7 @@
 		return holopad_talk(message, verb, speaking)
 	else if(message_mode)
 		if (aiRadio.disabledAi || aiRestorePowerRoutine || stat)
-			to_chat(src, "<span class='danger'>System Error - Transceiver Disabled.</span>")
+			to_chat(src, "<span class='danger'>Системная ошибка - трансивер отключен.</span>")
 			return 0
 		if(message_mode == "general")
 			message_mode = null
@@ -72,7 +72,7 @@
 			O.hear_talk(src, message_pieces, verb)
 		/*Radios "filter out" this conversation channel so we don't need to account for them.
 		This is another way of saying that we won't bother dealing with them.*/
-		to_chat(src, "<i><span class='game say'>Холопад передает, <span class='name'>[real_name]</span> [combine_message(message_pieces, verb, src)]</span></i>")
+		to_chat(src, "<i><span class='game say'>Голопад передает, <span class='name'>[real_name]</span> [combine_message(message_pieces, verb, src)]</span></i>")
 	else
 		to_chat(src, "Голопад не подключен.")
 		return 0

@@ -73,7 +73,7 @@
 			Confuse(2)
 	flash_eyes(affect_silicon = 1)
 	to_chat(src, "<span class='danger'><B>*BZZZT*</B></span>")
-	to_chat(src, "<span class='danger'>Warning: Electromagnetic pulse detected.</span>")
+	to_chat(src, "<span class='danger'>Предупреждение: обнаружен электромагнитный импульс.</span>")
 	..()
 
 /mob/living/silicon/stun_effect_act(var/stun_amount, var/agony_amount)
@@ -87,9 +87,9 @@
 
 		shock_damage *= siemens_coeff	//take reduced damage
 		take_overall_damage(0, shock_damage)
-		visible_message("<span class='warning'>[src] was shocked by \the [source]!</span>", \
-			"<span class='danger'>Energy pulse detected, system damaged!</span>", \
-			"<span class='warning'>You hear an electrical crack.</span>")
+		visible_message("<span class='warning'>[src] шокируется [source]!</span>", \
+			"<span class='danger'>Обнаружен импульс энергии, система повреждена!</span>", \
+			"<span class='warning'>Вы слышите электрический треск.</span>")
 		if(prob(20))
 			Stun(2)
 		return
@@ -128,9 +128,9 @@
 // this function shows the health of the AI in the Status panel
 /mob/living/silicon/proc/show_system_integrity()
 	if(!src.stat)
-		stat(null, text("System integrity: [round((health/getMaxHealth())*100)]%"))
+		stat(null, text("Целостность системы: [round((health/getMaxHealth())*100)]%"))
 	else
-		stat(null, text("Systems nonfunctional"))
+		stat(null, text("Системы нефункциональны"))
 
 
 // This is a pure virtual function, it should be overwritten by all subclasses
@@ -156,7 +156,7 @@
 //can't inject synths
 /mob/living/silicon/can_inject(var/mob/user, var/error_msg)
 	if(error_msg)
-		to_chat(user, "<span class='alert'>The armoured plating is too tough.</span>")
+		to_chat(user, "<span class='alert'>Бронированная обшивка слишком жесткая.</span>")
 	return 0
 
 
@@ -223,7 +223,7 @@
 				plane_holder.set_vis(VIS_CH_STATUS,FALSE)
 				plane_holder.set_vis(VIS_CH_HEALTH,FALSE)
 
-			to_chat(src, "<span class='notice'>Security records overlay enabled.</span>")
+			to_chat(src, "<span class='notice'>Включено наложение записей безопасности.</span>")
 		if ("Medical")
 			if(plane_holder)
 				//Disable Security planes
@@ -237,7 +237,7 @@
 				plane_holder.set_vis(VIS_CH_STATUS,TRUE)
 				plane_holder.set_vis(VIS_CH_HEALTH,TRUE)
 
-			to_chat(src, "<span class='notice'>Life signs monitor overlay enabled.</span>")
+			to_chat(src, "<span class='notice'>Включено наложение монитора признаков жизни.</span>")
 		if ("Disable")
 			if(plane_holder)
 				//Disable Security planes
@@ -256,7 +256,7 @@
 
 /mob/living/silicon/verb/pose()
 	set name = "Set Pose"
-	set desc = "Sets a description which will be shown when someone examines you."
+	set desc = "Устанавливает описание, которое будет отображаться, когда кто-то вас осмотрит."
 	set category = "IC"
 
 	pose =  sanitize(input(usr, "This is [src]. It is...", "Pose", null)  as text)

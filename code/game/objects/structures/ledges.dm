@@ -1,6 +1,6 @@
 /obj/structure/ledge
-	name = "rock ledge"
-	desc = "An easily scaleable rocky ledge."
+	name = "выступ скалы"
+	desc = "Легко масштабируемый скальный выступ."
 	icon = 'icons/obj/ledges.dmi'
 	density = 1
 	throwpass = 1

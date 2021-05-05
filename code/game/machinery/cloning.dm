@@ -27,8 +27,8 @@
 #define MINIMUM_HEAL_LEVEL 40
 
 /obj/machinery/clonepod
-	name = "cloning pod"
-	desc = "An electronically-lockable pod for growing organic tissue."
+	name = "клонирующая капсула"
+	desc = "Стручок с электронной блокировкой для выращивания органических тканей."
 	density = 1
 	anchored = 1
 	circuit = /obj/item/weapon/circuitboard/clonepod
@@ -121,7 +121,7 @@
 
 	clonemind.transfer_to(H)
 	H.ckey = R.ckey
-	to_chat(H, "<span class='warning'><b>Consciousness slowly creeps over you as your body regenerates.</b><br><b><font size='3'>Your recent memories are fuzzy, and it's hard to remember anything from today...</font></b></span><br><span class='notice'><i>So this is what cloning feels like?</i></span>")
+	to_chat(H, "<span class='warning'><b>Сознание медленно возвращается к вам по мере того, как ваше тело восстанавливается.</b><br><b><font size='3'>Ваши недавние воспоминания расплывчаты, и сегодня сложно что-то вспомнить...</font></b></span><br><span class='notice'><i>Так вот на что похоже клонирование?</i></span>")
 
 	// -- Mode/mind specific stuff goes here
 	callHook("clone", list(H))
@@ -206,7 +206,7 @@
 
 		else if((occupant.health >= heal_level || occupant.health == occupant.getMaxHealth()) && (!eject_wait))
 			playsound(src, 'sound/machines/medbayscanner1.ogg', 50, 1)
-			audible_message("\The [src] signals that the cloning process is complete.")
+			audible_message("[src] сигнализирует о завершении процесса клонирования.")
 			connected_message("Cloning Process Complete.")
 			locked = 0
 			go_out()
@@ -231,12 +231,12 @@
 			return
 	if(istype(W, /obj/item/weapon/card/id)||istype(W, /obj/item/device/pda))
 		if(!check_access(W))
-			to_chat(user, "<span class='warning'>Access Denied.</span>")
+			to_chat(user, "<span class='warning'>Доступ запрещен.</span>")
 			return
 		if((!locked) || (isnull(occupant)))
 			return
 		if((occupant.health < -20) && (occupant.stat != 2))
-			to_chat(user, "<span class='warning'>Access Refused.</span>")
+			to_chat(user, "<span class='warning'>Доступ разрешен.</span>")
 			return
 		else
 			locked = 0

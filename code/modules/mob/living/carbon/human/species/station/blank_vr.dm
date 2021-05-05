@@ -11,9 +11,8 @@
 
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch, /datum/unarmed_attack/bite)
 
-	blurb = "This is a custom species where you can assign various species traits to them as you wish, to \
-	create a (hopefully) balanced species. You will see the options to customize them on the VORE tab once \
-	you select and set this species as your species. Please look at the VORE tab if you select this species."
+	blurb = "Это особая раса, в которой вы можете сами назначать различные расовые особенности по своему усмотрению, чтобы создать (надеюсь) сбалансированную расу. \
+	Вы увидите параметры для их настройки на вкладке VORE, как только вы выберете и установите эту расу в качестве своей текущей расы. Пожалуйста, посмотрите вкладку VORE, если вы выберете эту расу."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/custom_species)
 
 	name_language = null // Use the first-name last-name generator rather than a language scrambler

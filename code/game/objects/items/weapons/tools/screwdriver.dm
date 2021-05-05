@@ -2,8 +2,8 @@
  * Screwdriver
  */
 /obj/item/weapon/tool/screwdriver
-	name = "screwdriver"
-	desc = "You can be totally screwwy with this."
+	name = "отвертка"
+	desc = "С этим можно быть совершенно отвернутым."
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "screwdriver"
 	center_of_mass = list("x" = 13,"y" = 7)
@@ -24,9 +24,9 @@
 	var/random_color = TRUE
 
 /obj/item/weapon/tool/screwdriver/suicide_act(mob/user)
-	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
-	to_chat(viewers(user), pick("<span class='danger'>\The [user] is stabbing the [src.name] into [TU.his] temple! It looks like [TU.hes] trying to commit suicide.</span>", \
-						"<span class='danger'>\The [user] is stabbing the [src.name] into [TU.his] heart! It looks like [TU.hes] trying to commit suicide.</span>"))
+	//var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+	to_chat(viewers(user), pick("<span class='danger'>[user] вонзает [src.name] в свой висок! Похоже [user], пытается покончить с собой.</span>", \
+						"<span class='danger'>[user] вонзает [src.name] в свое сердце! Похоже [user], пытается покончить с собой.</span>"))
 	return(BRUTELOSS)
 
 /obj/item/weapon/tool/screwdriver/New()
@@ -115,8 +115,8 @@
 	toolspeed = 0.5
 
 /obj/item/weapon/tool/screwdriver/power
-	name = "hand drill"
-	desc = "A simple powered hand drill. It's fitted with a screw bit."
+	name = "ручная дрель"
+	desc = "Простая ручная дрель с приводом. Оснащена битой для винта."
 	icon_state = "drill_screw"
 	item_state = "drill"
 	matter = list(DEFAULT_WALL_MATERIAL = 150, MAT_SILVER = 50)
@@ -152,4 +152,4 @@
 	counterpart.forceMove(get_turf(src))
 	src.forceMove(counterpart)
 	user.put_in_active_hand(counterpart)
-	to_chat(user, "<span class='notice'>You attach the bolt driver bit to [src].</span>")
+	to_chat(user, "<span class='notice'>Вы прикрепляете бит отвертки к [src].</span>")

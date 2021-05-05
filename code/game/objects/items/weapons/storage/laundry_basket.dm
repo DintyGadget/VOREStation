@@ -4,11 +4,11 @@
 // An item designed for hauling the belongings of a character.
 // So this cannot be abused for other uses, we make it two-handed and inable to have its storage looked into.
 /obj/item/weapon/storage/laundry_basket
-	name = "laundry basket"
+	name = "корзина для белья"
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "laundry-empty"
 	item_state_slots = list(slot_r_hand_str = "laundry", slot_l_hand_str = "laundry")
-	desc = "The peak of thousands of years of laundry evolution."
+	desc = "Пик тысячелетней эволюции прачечной."
 
 	w_class = ITEMSIZE_HUGE
 	max_w_class = ITEMSIZE_LARGE
@@ -28,17 +28,17 @@
 		if (user.hand)
 			temp = H.get_organ("l_hand")
 		if(!temp)
-			to_chat(user, "<span class='warning'>You need two hands to pick this up!</span>")
+			to_chat(user, "<span class='warning'>Вам понадобятся две руки, чтобы поднять это!</span>")
 			return
 
 	if(user.get_inactive_hand())
-		to_chat(user, "<span class='warning'>You need your other hand to be empty</span>")
+		to_chat(user, "<span class='warning'>Ваша вторая рука должна быть пустой</span>")
 		return
 	return ..()
 
 /obj/item/weapon/storage/laundry_basket/attack_self(mob/user as mob)
 	var/turf/T = get_turf(user)
-	to_chat(user, "<span class='notice'>You dump the [src]'s contents onto \the [T].</span>")
+	to_chat(user, "<span class='notice'>Вы выгружаете содержимое [src] на [T].</span>")
 	return ..()
 
 /obj/item/weapon/storage/laundry_basket/pickup(mob/user)

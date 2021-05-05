@@ -1,8 +1,8 @@
 GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 
 /obj/structure/janitorialcart
-	name = "janitorial cart"
-	desc = "The ultimate in janitorial carts! Has space for water, mops, signs, trash bags, and more!"
+	name = "тележка уборщика"
+	desc = "Лучшая тележка для уборки! Есть место для воды, швабры, знаков, мешков для мусора и многого другого!"
 	description_info = "You can use alt-click while holding a mop to stow the mop. Alt-click holding a reagent container will empty the contents into the bucket without trying to put the container in any attached trash bag."
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "cart"
@@ -35,37 +35,37 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 		))
 
 	if(!is_type_in_typecache(I, equippable_item_whitelist))
-		to_chat(user, "<span class='warning'>There's no room in [src] for [I].</span>")
+		to_chat(user, "<span class='warning'>В [src] нет места для [I].</span>")
 		return FALSE
 
 	if(!user.unEquip(I, 0, src))
-		to_chat(user, "<span class='warning'>[I] is stuck to your hand.</span>")
+		to_chat(user, "<span class='warning'>[I] прилип к вашей руке.</span>")
 		return FALSE
 
 	if(istype(I, /obj/item/weapon/storage/bag/trash))
 		if(mybag)
-			to_chat(user, "<span class='warning'>[src] already has \an [I].</span>")
+			to_chat(user, "<span class='warning'>[src] уже имеет [I].</span>")
 			return FALSE
 		mybag = I
 		setTguiIcon("mybag", mybag)
 
 	else if(istype(I, /obj/item/weapon/mop))
 		if(mymop)
-			to_chat(user, "<span class='warning'>[src] already has \an [I].</span>")
+			to_chat(user, "<span class='warning'>[src] уже имеет [I].</span>")
 			return FALSE
 		mymop = I
 		setTguiIcon("mymop", mymop)
 
 	else if(istype(I, /obj/item/weapon/reagent_containers/spray))
 		if(myspray)
-			to_chat(user, "<span class='warning'>[src] already has \an [I].</span>")
+			to_chat(user, "<span class='warning'>[src] уже имеет [I].</span>")
 			return FALSE
 		myspray = I
 		setTguiIcon("myspray", myspray)
 
 	else if(istype(I, /obj/item/device/lightreplacer))
 		if(myreplacer)
-			to_chat(user, "<span class='warning'>[src] already has \an [I].</span>")
+			to_chat(user, "<span class='warning'>[src] уже имеет [I].</span>")
 			return FALSE
 		myreplacer = I
 		setTguiIcon("myreplacer", myreplacer)
@@ -75,16 +75,16 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 			signs++
 			setTguiIcon("signs", I)
 		else
-			to_chat(user, "<span class='notice'>[src] can't hold any more signs.</span>")
+			to_chat(user, "<span class='notice'>[src] больше не выдерживает знаков.</span>")
 			return FALSE
 	else
 		// This may look like duplicate code, but it's important that we don't call unEquip *and* warn the user if
 		// something horrible goes wrong. (this else is never supposed to happen)
-		to_chat(user, "<span class='warning'>There's no room in [src] for [I].</span>")
+		to_chat(user, "<span class='warning'>В [src] нет места для [I].</span>")
 		return FALSE
 
 	update_icon()
-	to_chat(user, "<span class='notice'>You put [I] into [src].</span>")
+	to_chat(user, "<span class='notice'>Вы помещаете [I] в [src].</span>")
 	return TRUE
 
 /obj/structure/janitorialcart/proc/setTguiIcon(key, atom/A)
@@ -118,16 +118,16 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 	. = ..(user)
 	if(istype(mybucket))
 		var/contains = mybucket.reagents.total_volume
-		. += "[bicon(src)] The bucket contains [contains] unit\s of liquid!"
+		. += "[bicon(src)] ведро содержит [contains] единиц/цу жидкости!"
 	else
-		. += "[bicon(src)] There is no bucket mounted on it!"
+		. += "[bicon(src)] На нем нет ковша!"
 
 /obj/structure/janitorialcart/MouseDrop_T(atom/movable/O as mob|obj, mob/living/user as mob)
 	if (istype(O, /obj/structure/mopbucket) && !mybucket)
 		O.forceMove(src)
 		mybucket = O
 		setTguiIcon("mybucket", mybucket)
-		to_chat(user, "You mount the [O] on the janicart.")
+		to_chat(user, "Вы устанавливаете [O] на тележку.")
 		update_icon()
 	else
 		..()
@@ -137,15 +137,15 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 		if (mybucket)
 			if(I.reagents.total_volume < I.reagents.maximum_volume)
 				if(mybucket.reagents.total_volume < 1)
-					to_chat(user, "<span class='notice'>[mybucket] is empty!</span>")
+					to_chat(user, "<span class='notice'>[mybucket] пусто!</span>")
 				else
 					mybucket.reagents.trans_to_obj(I, 5)	//
-					to_chat(user, "<span class='notice'>You wet [I] in [mybucket].</span>")
+					to_chat(user, "<span class='notice'>Вы намочили [I] в [mybucket].</span>")
 					playsound(src, 'sound/effects/slosh.ogg', 25, 1)
 			else
-				to_chat(user, "<span class='notice'>[I] can't absorb anymore liquid!</span>")
+				to_chat(user, "<span class='notice'>[I] больше не может впитывать жидкость!</span>")
 		else
-			to_chat(user, "<span class='notice'>There is no bucket mounted here to dip [I] into!</span>")
+			to_chat(user, "<span class='notice'>Здесь нет ковша, в который можно было бы окунуть [I]!</span>")
 		return 1
 
 	else if (istype(I, /obj/item/weapon/reagent_containers/glass/bucket) && mybucket)
@@ -230,7 +230,7 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 		if("bag")
 			if(mybag)
 				usr.put_in_hands(mybag)
-				to_chat(usr, "<span class='notice'>You take [mybag] from [src].</span>")
+				to_chat(usr, "<span class='notice'>Вы берете [mybag] из [src].</span>")
 				mybag = null
 				nullTguiIcon("mybag")
 			else if(is_type_in_typecache(I, equippable_item_whitelist))
@@ -238,7 +238,7 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 		if("mop")
 			if(mymop)
 				usr.put_in_hands(mymop)
-				to_chat(usr, "<span class='notice'>You take [mymop] from [src].</span>")
+				to_chat(usr, "<span class='notice'>Вы берете [mymop] из [src].</span>")
 				mymop = null
 				nullTguiIcon("mymop")
 			else if(is_type_in_typecache(I, equippable_item_whitelist))
@@ -246,7 +246,7 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 		if("spray")
 			if(myspray)
 				usr.put_in_hands(myspray)
-				to_chat(usr, "<span class='notice'>You take [myspray] from [src].</span>")
+				to_chat(usr, "<span class='notice'>Вы берете [myspray] из [src].</span>")
 				myspray = null
 				nullTguiIcon("myspray")
 			else if(is_type_in_typecache(I, equippable_item_whitelist))
@@ -254,7 +254,7 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 		if("replacer")
 			if(myreplacer)
 				usr.put_in_hands(myreplacer)
-				to_chat(usr, "<span class='notice'>You take [myreplacer] from [src].</span>")
+				to_chat(usr, "<span class='notice'>Вы берете [myreplacer] из [src].</span>")
 				myreplacer = null
 				nullTguiIcon("myreplacer")
 			else if(is_type_in_typecache(I, equippable_item_whitelist))
@@ -266,20 +266,20 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 				var/obj/item/clothing/suit/caution/sign = locate() in src
 				if(sign)
 					usr.put_in_hands(sign)
-					to_chat(usr, "<span class='notice'>You take \a [sign] from [src].</span>")
+					to_chat(usr, "<span class='notice'>Вы берете [sign] из [src].</span>")
 					signs--
 					if(!signs)
 						nullTguiIcon("signs")
 			else
-				to_chat(usr, "<span class='notice'>[src] doesn't have any signs left.</span>")
+				to_chat(usr, "<span class='notice'>[src] не содержит никаких знаков.</span>")
 		if("bucket")
 			if(mybucket)
 				mybucket.forceMove(get_turf(usr))
-				to_chat(usr, "<span class='notice'>You unmount [mybucket] from [src].</span>")
+				to_chat(usr, "<span class='notice'>Вы открепили[mybucket] от [src].</span>")
 				mybucket = null
 				nullTguiIcon("mybucket")
 			else
-				to_chat(usr, "<span class='notice'>((Drag and drop a mop bucket onto [src] to equip it.))</span>")
+				to_chat(usr, "<span class='notice'>((Перетащите ведро для швабры на [src], чтобы оборудовать его..))</span>")
 				return FALSE
 		else
 			return FALSE
@@ -400,14 +400,14 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 	if(istype(I, /obj/item/weapon/mop))
 		if(reagents.total_volume > 1)
 			reagents.trans_to_obj(I, 2)
-			to_chat(user, "<span class='notice'>You wet [I] in the [callme].</span>")
+			to_chat(user, "<span class='notice'>Вы намочили [I] в [callme].</span>")
 			playsound(src, 'sound/effects/slosh.ogg', 25, 1)
 		else
 			to_chat(user, "<span class='notice'>This [callme] is out of water!</span>")
 	else if(istype(I, /obj/item/key))
 		to_chat(user, "Hold [I] in one of your hands while you drive this [callme].")
 	else if(istype(I, /obj/item/weapon/storage/bag/trash))
-		to_chat(user, "<span class='notice'>You hook the trashbag onto the [callme].</span>")
+		to_chat(user, "<span class='notice'>Вы навешиваете мешок для мусора на [callme].</span>")
 		user.drop_item()
 		I.loc = src
 		mybag = I
@@ -429,7 +429,7 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 		step(src, direction)
 		update_mob()
 	else
-		to_chat(user, "<span class='notice'>You'll need the keys in one of your hands to drive this [callme].</span>")
+		to_chat(user, "<span class='notice'>Вам понадобятся ключи в одной из ваших рук, чтобы управлять этим [callme].</span>")
 
 
 /obj/structure/bed/chair/janicart/post_buckle_mob(mob/living/M)
@@ -494,8 +494,8 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 
 
 /obj/item/key
-	name = "key"
-	desc = "A keyring with a small steel key, and a pink fob reading \"Pussy Wagon\"."
+	name = "ключ"
+	desc = "Брелок с маленьким стальным ключиком и розовым брелком с надписью \"Pussy Wagon\"."
 	icon = 'icons/obj/vehicles.dmi'
 	icon_state = "keys"
 	w_class = ITEMSIZE_TINY

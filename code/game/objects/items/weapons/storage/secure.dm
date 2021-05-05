@@ -31,7 +31,7 @@
 	examine(mob/user)
 		. = ..()
 		if(Adjacent(user))
-			. += "The service panel is [src.open ? "open" : "closed"]."
+			. += "Сервисная панель [src.open ? "открыта" : "закрыта"]."
 
 	attackby(obj/item/weapon/W as obj, mob/user as mob)
 		if(locked)
@@ -47,21 +47,21 @@
 				if (do_after(user, 20 * W.toolspeed))
 					src.open =! src.open
 					playsound(src, W.usesound, 50, 1)
-					user.show_message(text("<span class='notice'>You [] the service panel.</span>", (src.open ? "open" : "close")))
+					user.show_message(text("<span class='notice'>Вы [] сервисную панель.</span>", (src.open ? "открываете" : "закрываете")))
 				return
 			if (istype(W, /obj/item/device/multitool) && (src.open == 1)&& (!src.l_hacking))
-				user.show_message("<span class='notice'>Now attempting to reset internal memory, please hold.</span>", 1)
+				user.show_message("<span class='notice'>Попытка сброса внутренней памяти, пожалуйста, подождите.</span>", 1)
 				src.l_hacking = 1
 				if (do_after(usr, 100))
 					if (prob(40))
 						src.l_setshort = 1
 						src.l_set = 0
-						user.show_message("<span class='notice'>Internal memory reset. Please give it a few seconds to reinitialize.</span>", 1)
+						user.show_message("<span class='notice'>Сброс внутренней памяти. Подождите несколько секунд для повторной инициализации.</span>", 1)
 						sleep(80)
 						src.l_setshort = 0
 						src.l_hacking = 0
 					else
-						user.show_message("<span class='warning'>Unable to reset internal memory.</span>", 1)
+						user.show_message("<span class='warning'>Невозможно сбросить внутреннюю память.</span>", 1)
 						src.l_hacking = 0
 				else	src.l_hacking = 0
 				return
@@ -82,14 +82,14 @@
 
 	attack_self(mob/user as mob)
 		user.set_machine(src)
-		var/dat = text("<TT><B>[]</B><BR>\n\nLock Status: []",src, (src.locked ? "LOCKED" : "UNLOCKED"))
+		var/dat = text("<TT><meta charset=\"utf-8\"><B>[]</B><BR>\n\nСтатус: []",src, (src.locked ? "ЗАКРЫТО" : "ОТКРЫТО"))
 		var/message = "Code"
 		if ((src.l_set == 0) && (!src.emagged) && (!src.l_setshort))
-			dat += text("<p>\n<b>5-DIGIT PASSCODE NOT SET.<br>ENTER NEW PASSCODE.</b>")
+			dat += text("<p>\n<b>5-ТИ ЗНАЧНЫЙ ПАРОЛЬ НЕ УСТАНОВЛЕН.<br>ВВЕДИТЕ НОВЫЙ ПАРОЛЬ.</b>")
 		if (src.emagged)
-			dat += text("<p>\n<font color=red><b>LOCKING SYSTEM ERROR - 1701</b></font>")
+			dat += text("<p>\n<font color=red><b>СИСТЕМНАЯ ОШИБКА КЕЙСА - 1701</b></font>")
 		if (src.l_setshort)
-			dat += text("<p>\n<font color=red><b>ALERT: MEMORY SYSTEM ERROR - 6040 201</b></font>")
+			dat += text("<p>\n<font color=red><b>ТРЕВОГА: СИСТЕМНАЯ ОШИБКА ПАМЯТИ - 6040 201</b></font>")
 		message = text("[]", src.code)
 		if (!src.locked)
 			message = "*****"
@@ -137,18 +137,18 @@
 		src.overlays = null
 		overlays += image('icons/obj/storage.dmi', icon_locking)
 		locked = 0
-		to_chat(user, (feedback ? feedback : "You short out the lock of \the [src]."))
+		to_chat(user, (feedback ? feedback : "Вы замыкаете блокировку [src]."))
 		return 1
 
 // -----------------------------
 //        Secure Briefcase
 // -----------------------------
 /obj/item/weapon/storage/secure/briefcase
-	name = "secure briefcase"
+	name = "безопасный портфель"
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "secure"
 	item_state_slots = list(slot_r_hand_str = "case", slot_l_hand_str = "case")
-	desc = "A large briefcase with a digital locking system."
+	desc = "Большой портфель с цифровой системой запирания."
 	force = 8.0
 	throw_speed = 1
 	throw_range = 4
@@ -158,7 +158,7 @@
 
 	attack_hand(mob/user as mob)
 		if ((src.loc == user) && (src.locked == 1))
-			to_chat(user, "<span class='warning'>[src] is locked and cannot be opened!</span>")
+			to_chat(user, "<span class='warning'>[src] заблокирован и не может быть открыт!</span>")
 		else if ((src.loc == user) && (!src.locked))
 			src.open(usr)
 		else

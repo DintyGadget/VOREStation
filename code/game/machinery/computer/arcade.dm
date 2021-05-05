@@ -77,7 +77,7 @@
 
 /obj/machinery/computer/arcade/battle
 	name = "Battler"
-	desc = "Fight through what space has to offer!"
+	desc = "Сражайтесь через то, что может предложить космос!"
 	icon_state = "arcade2"
 	icon_screen = "battler"
 	circuit = /obj/item/weapon/circuitboard/arcade/battle
@@ -1320,7 +1320,7 @@
 		gameStatus = "CLAWMACHINE_NEW"
 		emagged = 1
 		return 1
-		
+
 /obj/machinery/computer/arcade/attackby(obj/item/O, mob/user, params)
 	if(istype(O, /obj/item/stack/arcadeticket))
 		var/obj/item/stack/arcadeticket/T = O

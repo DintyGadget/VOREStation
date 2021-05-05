@@ -68,6 +68,8 @@ var/global/list/default_medbay_channels = list(
 	var/datum/radio_frequency/radio_connection
 	var/list/datum/radio_frequency/secure_radio_connections = new
 
+	var/last_radio_sound = -INFINITY
+
 /obj/item/device/radio/proc/set_frequency(new_frequency)
 	radio_controller.remove_object(src, frequency)
 	frequency = new_frequency
@@ -355,6 +357,9 @@ GLOBAL_DATUM(autospeaker, /mob/living/silicon/ai/announcer)
 
 	if(!radio_connection)
 		set_frequency(frequency)
+
+	if(loc == M)
+		playsound(loc, 'sound/effects/walkietalkie.ogg', 20, 0, -1)
 
 	/* Quick introduction:
 		This new radio system uses a very robust FTL signaling technology unoriginally

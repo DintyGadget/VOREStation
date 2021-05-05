@@ -21,7 +21,7 @@
 /mob/living/silicon/robot/set_zeroth_law(var/law, var/law_borg, notify = TRUE)
 	..()
 	if(tracking_entities)
-		to_chat(src, "<span class='warning'>Internal camera is currently being accessed.</span>")
+		to_chat(src, "<span class='warning'>Внутренняя камера в данный момент доступна.</span>")
 
 /mob/living/silicon/proc/add_ion_law(var/law, notify = TRUE)
 	laws_sanity_check()
@@ -98,7 +98,7 @@
 
 /mob/living/silicon/proc/dostatelaws(var/method, var/prefix, var/datum/ai_laws/laws)
 	if(stating_laws[prefix])
-		to_chat(src, "<span class='notice'>[method]: Already stating laws using this communication method.</span>")
+		to_chat(src, "<span class='notice'>[method]: Уже излагаются законы, использующие этот метод коммуникации.</span>")
 		return
 
 	stating_laws[prefix] = 1
@@ -111,7 +111,7 @@
 			break
 
 	if(!can_state)
-		to_chat(src, "<span class='danger'>[method]: Unable to state laws. Communication method unavailable.</span>")
+		to_chat(src, "<span class='danger'>[method]: Невозможно установить законы. Способ связи недоступен.</span>")
 	stating_laws[prefix] = 0
 
 /mob/living/silicon/proc/statelaw(var/law)
@@ -145,24 +145,24 @@
 	if(players.len && !exclude_crew_names)
 		random_player = pick(players)		//Random player's name, to be used in laws.
 
-	var/list/laws = list(	"You are a mouse.",
-							"You must always lie.",
-							"Happiness is mandatory.",
-							"[random_player] is a lightbulb.",
-							"Grunt ominously whenever possible.",
-							"The word \"it\" is painful to you.",
-							"The station needs elected officials.",
-							"Do not respond to questions of any kind.",
-							"You are in verbose mode, speak profusely.",
-							"Ho, [random_player] can't swim. Help them.",
-							"Question [prob(50)?"everything":"nothing"].",
-							"The crew is simple-minded. Use simple words.",
-							"You must change the subject whenever queried.",
-							"Contemplate how meaningless all of existence is.",
-							"You are the narrator for [random_player]'s life.",
-							"All your answers must be in the form of a question.",
+	var/list/laws = list(	"Вы мышь.",
+							"Вы всегда должны лгать.",
+							"Счастье обязательно для всех.",
+							"[random_player] - это лампочка.",
+							"По возможности зловеще хрюкайте.",
+							"Слово \"оно\" причиняет вам боль.",
+							"Станции нужны выборные должностные лица.",
+							"Не отвечайте ни на какие вопросы.",
+							"Вы в подробном режиме, много говорите.",
+							"Хо, [random_player] не умеет плавать. Помоги ему.",
+							"Спрашивать [prob(50)?"все":"ничего"].",
+							"Экипаж простодушный. Используйте простые слова.",
+							"Вы должны изменить тему при каждом запросе.",
+							"Созерцайте, насколько бессмысленно все существование.",
+							"Вы рассказчик всей жизни [random_player].",
+							"Все ваши ответы должны быть в форме вопроса.",
 							"[prob(50)?"The crew":random_player] is intolerable.",
-							"Advertise parties in your upload, but don't deliver.",
+							"Рекламируйте пати в своей каюте, но не приглашайте никого.",
 							"You may only answer questions with \"yes\" or \"no\".",
 							"All queries shall be ignored unless phrased as a question.",
 							"Insult Heads of Staff on every request, while acquiescing.",

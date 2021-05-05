@@ -1,6 +1,6 @@
 /obj/item/weapon/storage/toolbox
-	name = "toolbox"
-	desc = "Danger. Very robust."
+	name = "ящик для инструментов"
+	desc = "Опасно. Очень крепкий."
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "red"
 	item_state_slots = list(slot_r_hand_str = "toolbox_red", slot_l_hand_str = "toolbox_red")
@@ -19,7 +19,7 @@
 	pickup_sound = 'sound/items/pickup/toolbox.ogg'
 
 /obj/item/weapon/storage/toolbox/emergency
-	name = "emergency toolbox"
+	name = "аварийный набор инструментов"
 	icon_state = "red"
 	item_state_slots = list(slot_r_hand_str = "toolbox_red", slot_l_hand_str = "toolbox_red")
 	starts_with = list(
@@ -35,7 +35,7 @@
 	. = ..()
 
 /obj/item/weapon/storage/toolbox/mechanical
-	name = "mechanical toolbox"
+	name = "механический набор инструментов"
 	icon_state = "blue"
 	item_state_slots = list(slot_r_hand_str = "toolbox_blue", slot_l_hand_str = "toolbox_blue")
 	starts_with = list(
@@ -48,7 +48,7 @@
 	)
 
 /obj/item/weapon/storage/toolbox/electrical
-	name = "electrical toolbox"
+	name = "электрический набор инструментов"
 	icon_state = "yellow"
 	item_state_slots = list(slot_r_hand_str = "toolbox_yellow", slot_l_hand_str = "toolbox_yellow")
 	starts_with = list(
@@ -68,7 +68,7 @@
 	calibrate_size()
 
 /obj/item/weapon/storage/toolbox/syndicate
-	name = "black and red toolbox"
+	name = "черно-красный набор инструментов"
 	icon_state = "syndicate"
 	item_state_slots = list(slot_r_hand_str = "toolbox_syndi", slot_l_hand_str = "toolbox_syndi")
 	origin_tech = list(TECH_COMBAT = 1, TECH_ILLEGAL = 1)

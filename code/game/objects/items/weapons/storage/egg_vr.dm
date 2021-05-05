@@ -1,8 +1,8 @@
 //Item type vorepanel egg release containers.
 
 /obj/item/weapon/storage/vore_egg
-	name = "egg"
-	desc = "It's an egg; it's smooth to the touch." //This is the default egg.
+	name = "яйцо"
+	desc = "Это яйцо; на ощупь гладкое." //This is the default egg.
 	icon = 'icons/obj/egg_new_vr.dmi'
 	icon_state = "egg"
 	var/open_egg_icon = 'icons/obj/egg_open_vr.dmi'
@@ -21,7 +21,7 @@
 	..()
 
 /obj/item/weapon/storage/vore_egg/proc/hatch(mob/living/user as mob)
-	visible_message("<span class='danger'>\The [src] begins to shake as something pushes out from within!</span>")
+	visible_message("<span class='danger'>[src] начинает дрожать, когда что-то выталкивается изнутри!</span>")
 	animate_shake()
 	if(do_after(user, 50))
 		if(use_sound)

@@ -34,8 +34,8 @@
 
 	siemens_coefficient = 0
 
-	death_message = "falls over and stops moving!"
-	knockout_message = "falls over and stops moving!"
+	death_message = "падает и перестает двигаться!"
+	knockout_message = "падает и перестает двигаться!"
 
 	has_organ = list()
 

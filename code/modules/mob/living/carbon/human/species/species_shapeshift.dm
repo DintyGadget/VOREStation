@@ -78,7 +78,7 @@ var/list/wrapped_species_by_ref = list()
 // Verbs follow.
 /mob/living/carbon/human/proc/shapeshifter_select_hair()
 
-	set name = "Select Hair"
+	set name = "Выбрать прическу"
 	set category = "Abilities"
 
 	if(stat || world.time < last_special)
@@ -109,7 +109,7 @@ var/list/wrapped_species_by_ref = list()
 		valid_facialhairstyles += facialhairstyle
 
 
-	visible_message("<span class='notice'>\The [src]'s form contorts subtly.</span>")
+	visible_message("<span class='notice'>Форма [src] слегка искажается.</span>")
 	if(valid_hairstyles.len)
 		var/new_hair = input("Select a hairstyle.", "Shapeshifter Hair") as null|anything in valid_hairstyles
 		change_hair(new_hair ? new_hair : "Bald")
@@ -122,7 +122,7 @@ var/list/wrapped_species_by_ref = list()
 
 /mob/living/carbon/human/proc/shapeshifter_select_gender()
 
-	set name = "Select Gender"
+	set name = "Выберите пол"
 	set category = "Abilities"
 
 	if(stat || world.time < last_special)
@@ -144,7 +144,7 @@ var/list/wrapped_species_by_ref = list()
 
 /mob/living/carbon/human/proc/shapeshifter_select_shape()
 
-	set name = "Select Body Shape"
+	set name = "Выбрать форму тела"
 	set category = "Abilities"
 
 	if(stat || world.time < last_special)
@@ -169,7 +169,7 @@ var/list/wrapped_species_by_ref = list()
 
 /mob/living/carbon/human/proc/shapeshifter_select_colour()
 
-	set name = "Select Body Colour"
+	set name = "Выбрать цвет тела"
 	set category = "Abilities"
 
 	if(stat || world.time < last_special)
@@ -319,11 +319,11 @@ var/list/wrapped_species_by_ref = list()
 	var/new_eyes = input("Pick a new color for your eyes.","Eye Color", current_color) as null|color
 	if(!new_eyes)
 		return
-	
+
 	shapeshifter_set_eye_color(new_eyes)
 
 /mob/living/carbon/human/proc/shapeshifter_set_eye_color(var/new_eyes)
-	
+
 	var/list/new_color_rgb_list = hex2rgb(new_eyes)
 	// First, update mob vars.
 	r_eyes = new_color_rgb_list[1]

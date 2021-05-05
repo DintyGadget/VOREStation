@@ -3,7 +3,7 @@
 // The communications computer
 /obj/machinery/computer/communications
 	name = "command and communications console"
-	desc = "Used to command and control the station. Can relay long-range communications."
+	desc = "Используется для управления станцией. Может ретранслировать связь на большие расстояния."
 	icon_keyboard = "tech_key"
 	icon_screen = "comm"
 	light_color = "#0099ff"
@@ -20,7 +20,7 @@
 	if(!emagged)
 		emagged = TRUE
 		communications.emagged = TRUE
-		to_chat(user, "You scramble the communication routing circuits!")
+		to_chat(user, "Вы шифруете схемы маршрутизации связи!")
 		return TRUE
 
 /obj/machinery/computer/communications/attack_ai(mob/user)

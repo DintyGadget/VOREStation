@@ -299,7 +299,7 @@
 		if(length(msg) <= 40)
 			return "<span class='notice'>[msg]</span>"
 		else
-			return "<span class='notice'>[copytext_preserve_html(msg, 1, 37)]... <a href='byond://?src=\ref[src];flavor_more=1'>More...</span></a>"
+			return "<span class='notice'>[copytext_char_preserve_html(msg, 1, 37)]... <a href='byond://?src=\ref[src];flavor_more=1'>Еще...</span></a>"
 
 /*
 /mob/verb/help()

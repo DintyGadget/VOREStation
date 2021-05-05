@@ -22,7 +22,7 @@
 	unacidable = 1 //glass
 	var/mode = SYRINGE_DRAW
 	var/image/filling //holds a reference to the current filling overlay
-	var/visible_name = "a syringe"
+	var/visible_name = "шприц"
 	var/time = 30
 	var/drawing = 0
 	drop_sound = 'sound/items/drop/glass.ogg'

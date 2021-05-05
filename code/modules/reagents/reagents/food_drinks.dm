@@ -4148,10 +4148,10 @@
 		M.slurring = max(M.slurring, 30)
 
 /datum/reagent/nutriment/magicdust
-	name = "Magic Dust"
+	name = "Волшебная пыль"
 	id = "magicdust"
-	description = "A dust harvested from gnomes, aptly named by pre-industrial civilizations."
-	taste_description = "something tingly"
+	description = "Пыль, собранная с гномов, метко названных доиндустриальными цивилизациями."
+	taste_description = "как что-то покалывающее"
 	taste_mult = 2
 	reagent_state = LIQUID
 	nutriment_factor = 40 //very filling
@@ -4160,24 +4160,24 @@
 //ADDITIONS BELOW THIS LINE MADE ON 04/03/2021
 
 /datum/reagent/drink/soda/kompot
-	name = "Kompot"
+	name = "Компот"
 	id = "kompot"
-	description = "A traditional Eastern European beverage once used to preserve fruit in the 1980s"
-	taste_description = "refreshuingly sweet and fruity"
+	description = "Традиционный восточноевропейский напиток, который когда-то использовался для консервирования фруктов в 1980-х годах."
+	taste_description = "освежающе сладкий и фруктовый"
 	color = "#ed9415" // rgb: 237, 148, 21
 	adj_drowsy = -1
 	adj_temp = -6
 	glass_name = "kompot"
-	glass_desc = "A glass of refreshing kompot."
+	glass_desc = "Стакан освежающего компота."
 	glass_special = list(DRINK_FIZZ)
 
 /datum/reagent/ethanol/kvass
-	name = "Kvass"
+	name = "Квас"
 	id = "kvass"
-	description = "A traditional fermented Slavic and Baltic beverage commonly made from rye bread."
-	taste_description = "a warm summer day at babushka's cabin"
+	description = "Традиционный ферментированный славянский и балтийский напиток, обычно приготовленный из ржаного хлеба."
+	taste_description = "теплый летний день в домике бабушки"
 	color = "#b78315" // rgb: 183, 131, 21
 	strength = 95 //It's just soda to Russians
 	nutriment_factor = 2
 	glass_name = "kvass"
-	glass_desc = "A hearty glass of Slavic brew."
+	glass_desc = "Сытный бокал славянского самогона."

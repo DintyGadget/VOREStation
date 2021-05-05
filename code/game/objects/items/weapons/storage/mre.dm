@@ -3,14 +3,14 @@ MRE Stuff
  */
 
 /obj/item/weapon/storage/mre
-	name = "standard MRE"
-	desc = "A vacuum-sealed bag containing a day's worth of nutrients for an adult in strenuous situations. There is no visible expiration date on the package."
+	name = "стандартный MRE"
+	desc = "Запечатанный под вакуумом пакет с дневным запасом питательных веществ для взрослого, находящегося в тяжелых условиях. На упаковке нет видимой даты истечения срока годности."
 	icon = 'icons/obj/food.dmi'
 	icon_state = "mre"
 	max_storage_space = ITEMSIZE_COST_SMALL * 6
 	max_w_class = ITEMSIZE_SMALL
 	var/opened = FALSE
-	var/meal_desc = "This one is menu 1, meat pizza."
+	var/meal_desc = "Это меню №1, мясная пицца."
 	starts_with = list(
 	/obj/item/weapon/storage/mrebag,
 	/obj/item/weapon/storage/mrebag/side,
@@ -36,13 +36,13 @@ MRE Stuff
 
 /obj/item/weapon/storage/mre/open(mob/user)
 	if(!opened)
-		to_chat(usr, "<span class='notice'>You tear open the bag, breaking the vacuum seal.</span>")
+		to_chat(usr, "<span class='notice'>Вы открываете пакет, ломая вакуумную пломбу.</span>")
 		opened = 1
 		update_icon()
 	. = ..()
 
 /obj/item/weapon/storage/mre/menu2
-	meal_desc = "This one is menu 2, margherita."
+	meal_desc = "Это меню 2, маргарита."
 	starts_with = list(
 	/obj/item/weapon/storage/mrebag/menu2,
 	/obj/item/weapon/storage/mrebag/side,
@@ -55,7 +55,7 @@ MRE Stuff
 	)
 
 /obj/item/weapon/storage/mre/menu3
-	meal_desc = "This one is menu 3, vegetable pizza."
+	meal_desc = "Это меню 3, овощная пицца."
 	starts_with = list(
 	/obj/item/weapon/storage/mrebag/menu3,
 	/obj/item/weapon/storage/mrebag/side,
@@ -68,7 +68,7 @@ MRE Stuff
 	)
 
 /obj/item/weapon/storage/mre/menu4
-	meal_desc = "This one is menu 4, hamburger."
+	meal_desc = "Это меню 4, гамбургер."
 	starts_with = list(
 	/obj/item/weapon/storage/mrebag/menu4,
 	/obj/item/weapon/storage/mrebag/side,

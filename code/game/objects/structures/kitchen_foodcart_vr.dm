@@ -1,8 +1,8 @@
 /obj/structure/foodcart
-	name = "Foodcart"
+	name = "Продуктовая тележка"
 	icon = 'icons/obj/kitchen_vr.dmi'
 	icon_state = "foodcart-0"
-	desc = "The ultimate in food transport! When opened you notice two compartments with odd blue glows to them. One feels very warm, while the other is very cold."
+	desc = "Лучший транспорт для еды! При открытии вы замечаете два отделения со странным синим светом. Одному очень тепло, а другому очень холодно."
 	anchored = 0
 	opacity = 0
 	density = 1
@@ -24,7 +24,7 @@
 
 /obj/structure/foodcart/attack_hand(var/mob/user as mob)
 	if(contents.len)
-		var/obj/item/weapon/reagent_containers/food/choice = input("What would you like to grab from the cart?") as null|obj in contents
+		var/obj/item/weapon/reagent_containers/food/choice = input("Что бы вы хотели взять из тележки?") as null|obj in contents
 		if(choice)
 			if(!usr.canmove || usr.stat || usr.restrained() || !in_range(loc, usr))
 				return

@@ -3,7 +3,7 @@
 /////////////////////////////////////////////
 /obj/item/weapon/card/id/guest
 	name = "guest pass"
-	desc = "Allows temporary access to station areas."
+	desc = "Обеспечивает временный доступ к участкам станции."
 	icon_state = "guest"
 	light_color = "#0099ff"
 
@@ -21,34 +21,34 @@
 /obj/item/weapon/card/id/guest/examine(mob/user)
 	. = ..()
 	if(world.time < expiration_time)
-		. += "<span class='notice'>This pass expires at [worldtime2stationtime(expiration_time)].</span>"
+		. += "<span class='notice'>Этот пропуск истекает в [worldtime2stationtime(expiration_time)].</span>"
 	else
-		. += "<span class='warning'>It expired at [worldtime2stationtime(expiration_time)].</span>"
+		. += "<span class='warning'>Срок действия истек в [worldtime2stationtime(expiration_time)].</span>"
 
 /obj/item/weapon/card/id/guest/read()
 	if(!Adjacent(usr))
 		return //Too far to read
 	if(world.time > expiration_time)
-		to_chat(usr, "<span class='notice'>This pass expired at [worldtime2stationtime(expiration_time)].</span>")
+		to_chat(usr, "<span class='notice'>Этот пропуск истек в [worldtime2stationtime(expiration_time)].</span>")
 	else
-		to_chat(usr, "<span class='notice'>This pass expires at [worldtime2stationtime(expiration_time)].</span>")
+		to_chat(usr, "<span class='notice'>Этот пропуск истек в [worldtime2stationtime(expiration_time)].</span>")
 
-	to_chat(usr, "<span class='notice'>It grants access to following areas:</span>")
+	to_chat(usr, "<span class='notice'>Он предоставляет доступ к следующим областям:</span>")
 	for (var/A in temp_access)
 		to_chat(usr, "<span class='notice'>[get_access_desc(A)].</span>")
-	to_chat(usr, "<span class='notice'>Issuing reason: [reason].</span>")
+	to_chat(usr, "<span class='notice'>Причина выдачи: [reason].</span>")
 	return
 
 /obj/item/weapon/card/id/guest/attack_self(mob/living/user as mob)
 	if(user.a_intent == I_HURT)
 		if(icon_state == "guest-invalid")
-			to_chat(user, "<span class='warning'>This guest pass is already deactivated!</span>")
+			to_chat(user, "<span class='warning'>Этот гостевой пропуск уже деактивирован!</span>")
 			return
 
-		var/confirm = alert("Do you really want to deactivate this guest pass? (you can't reactivate it)", "Confirm Deactivation", "Yes", "No")
-		if(confirm == "Yes")
+		var/confirm = alert("Вы действительно хотите деактивировать этот гостевой пропуск? (вы не можете его повторно активировать)", "Confirm Deactivation", "Да", "Нет")
+		if(confirm == "Да")
 			//rip guest pass </3
-			user.visible_message("<span class='notice'>\The [user] deactivates \the [src].</span>")
+			user.visible_message("<span class='notice'>[user] деактивирует [src].</span>")
 			icon_state = "guest-invalid"
 			update_icon()
 			expiration_time = world.time
@@ -66,7 +66,7 @@
 
 /obj/item/weapon/card/id/guest/process()
 	if(expired == 0 && world.time >= expiration_time)
-		visible_message("<span class='warning'>\The [src] flashes a few times before turning red.</span>")
+		visible_message("<span class='warning'>[src] мигнет несколько раз, прежде чем становится красным.</span>")
 		icon_state = "guest-invalid"
 		update_icon()
 		expired = 1
@@ -79,7 +79,7 @@
 
 /obj/machinery/computer/guestpass
 	name = "guest pass terminal"
-	desc = "Used to print temporary passes for people. Handy!"
+	desc = "Используется для печати временных пропусков для людей. Удобно!"
 	icon_state = "guest"
 	layer = ABOVE_WINDOW_LAYER
 	icon_keyboard = null
@@ -108,7 +108,7 @@
 			giver = I
 			SStgui.update_uis(src)
 		else if(giver)
-			to_chat(user, "<span class='warning'>There is already ID card inside.</span>")
+			to_chat(user, "<span class='warning'>Внутри уже есть ID-карта.</span>")
 		return
 	..()
 
@@ -162,20 +162,20 @@
 			mode = params["mode"]
 
 		if("giv_name")
-			var/nam = sanitizeName(input("Person pass is issued to", "Name", giv_name) as text|null)
+			var/nam = sanitizeName(input("Персональный пропуск выдается", "Name", giv_name) as text|null)
 			if(nam)
 				giv_name = nam
 		if("reason")
-			var/reas = sanitize(input("Reason why pass is issued", "Reason", reason) as text|null)
+			var/reas = sanitize(input("Причина, по которой выдается пропуск", "Reason", reason) as text|null)
 			if(reas)
 				reason = reas
 		if("duration")
-			var/dur = input("Duration (in minutes) during which pass is valid (up to 360 minutes).", "Duration") as num|null //VOREStation Edit
+			var/dur = input("Продолжительность (в минутах), в течение которой действует пропуск (до 360 минут).", "Duration") as num|null //VOREStation Edit
 			if(dur)
 				if(dur > 0 && dur <= 360) //VOREStation Edit
 					duration = dur
 				else
-					to_chat(usr, "<span class='warning'>Invalid duration.</span>")
+					to_chat(usr, "<span class='warning'>Неверная продолжительность.</span>")
 		if("access")
 			var/A = text2num(params["access"])
 			if(A in accesses)
@@ -184,7 +184,7 @@
 				if(A in giver.access)	//Let's make sure the ID card actually has the access.
 					accesses.Add(A)
 				else
-					to_chat(usr, "<span class='warning'>Invalid selection, please consult technical support if there are any issues.</span>")
+					to_chat(usr, "<span class='warning'>Неверный выбор, обратитесь в службу технической поддержки, если возникнут проблемы.</span>")
 					log_debug("[key_name_admin(usr)] tried selecting an invalid guest pass terminal option.")
 		if("id")
 			if(giver)
@@ -204,7 +204,7 @@
 					giver = I
 
 		if("print")
-			var/dat = "<h3>Activity log of guest pass terminal #[uid]</h3><br>"
+			var/dat = "<h3>Журнал активности терминала гостевых пропусков #[uid]</h3><br>"
 			for (var/entry in internal_log)
 				dat += "[entry]<br><hr>"
 			//to_chat(usr, "Printing the log, standby...")
@@ -232,7 +232,7 @@
 				pass.reason = reason
 				pass.name = "guest pass #[number]"
 			else
-				to_chat(usr, "<span class='warning'>Cannot issue pass without issuing ID.</span>")
+				to_chat(usr, "<span class='warning'>Невозможно оформить пропуск без выдачи ID.</span>")
 
 	add_fingerprint(usr)
 	return TRUE

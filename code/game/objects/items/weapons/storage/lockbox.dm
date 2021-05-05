@@ -1,8 +1,8 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:32
 
 /obj/item/weapon/storage/lockbox
-	name = "lockbox"
-	desc = "A locked box."
+	name = "сейф"
+	desc = "Запертый ящик."
 	icon_state = "lockbox+l"
 	item_state_slots = list(slot_r_hand_str = "syringe_kit", slot_l_hand_str = "syringe_kit")
 	w_class = ITEMSIZE_LARGE
@@ -20,23 +20,23 @@
 	attackby(obj/item/weapon/W as obj, mob/user as mob)
 		if (istype(W, /obj/item/weapon/card/id))
 			if(src.broken)
-				to_chat(user, "<span class='warning'>It appears to be broken.</span>")
+				to_chat(user, "<span class='warning'>Похоже, он сломан.</span>")
 				return
 			if(src.allowed(user))
 				src.locked = !( src.locked )
 				if(src.locked)
 					src.icon_state = src.icon_locked
-					to_chat(user, "<span class='notice'>You lock \the [src]!</span>")
+					to_chat(user, "<span class='notice'>Вы закрываете [src]!</span>")
 					close_all()
 					return
 				else
 					src.icon_state = src.icon_closed
-					to_chat(user, "<span class='notice'>You unlock \the [src]!</span>")
+					to_chat(user, "<span class='notice'>Вы открываете [src]!</span>")
 					return
 			else
-				to_chat(user, "<span class='warning'>Access Denied</span>")
+				to_chat(user, "<span class='warning'>Доступ запрещен</span>")
 		else if(istype(W, /obj/item/weapon/melee/energy/blade))
-			if(emag_act(INFINITY, user, W, "The locker has been sliced open by [user] with an energy blade!", "You hear metal being sliced and sparks flying."))
+			if(emag_act(INFINITY, user, W, "Шкафчик был вскрыт [user] энергетическим лезвием!", "Вы слышите, как режут металл и летят искры."))
 				var/datum/effect/effect/system/spark_spread/spark_system = new /datum/effect/effect/system/spark_spread()
 				spark_system.set_up(5, 0, src.loc)
 				spark_system.start()
@@ -45,13 +45,13 @@
 		if(!locked)
 			..()
 		else
-			to_chat(user, "<span class='warning'>It's locked!</span>")
+			to_chat(user, "<span class='warning'>Заперто!</span>")
 		return
 
 
 	show_to(mob/user as mob)
 		if(locked)
-			to_chat(user, "<span class='warning'>It's locked!</span>")
+			to_chat(user, "<span class='warning'>Заперто!</span>")
 		else
 			..()
 		return
@@ -61,21 +61,21 @@
 		if(visual_feedback)
 			visual_feedback = "<span class='warning'>[visual_feedback]</span>"
 		else
-			visual_feedback = "<span class='warning'>The locker has been sliced open by [user] with an electromagnetic card!</span>"
+			visual_feedback = "<span class='warning'>Шкафчик вскрывает [user] электромагнитной картой!</span>"
 		if(audible_feedback)
 			audible_feedback = "<span class='warning'>[audible_feedback]</span>"
 		else
-			audible_feedback = "<span class='warning'>You hear a faint electrical spark.</span>"
+			audible_feedback = "<span class='warning'>Вы слышите слабую электрическую искру.</span>"
 
 		broken = 1
 		locked = 0
-		desc = "It appears to be broken."
+		desc = "Похоже, он сломан."
 		icon_state = src.icon_broken
 		visible_message(visual_feedback, audible_feedback)
 		return 1
 
 /obj/item/weapon/storage/lockbox/loyalty
-	name = "lockbox of loyalty implants"
+	name = "сейф имплантатов лояльности"
 	req_access = list(access_security)
 	starts_with = list(
 		/obj/item/weapon/implantcase/loyalty = 3,
@@ -83,14 +83,14 @@
 	)
 
 /obj/item/weapon/storage/lockbox/clusterbang
-	name = "lockbox of clusterbangs"
-	desc = "You have a bad feeling about opening this."
+	name = "сейф кластерных взрывов"
+	desc = "У вас плохое предчувствие, перед открытием этого."
 	req_access = list(access_security)
 	starts_with = list(/obj/item/weapon/grenade/flashbang/clusterbang)
 
 /obj/item/weapon/storage/lockbox/medal
-	name = "lockbox of medals"
-	desc = "A lockbox filled with commemorative medals, it has the NanoTrasen logo stamped on it."
+	name = "ящик медалей"
+	desc = "Сундук с памятными медалями, на нем выгравирован логотип NanoTrasen."
 	req_access = list(access_heads)
 	storage_slots = 7
 	starts_with = list(

@@ -49,7 +49,7 @@
 	else
 		return stars(SP.message)
 
-/mob/proc/hear_say(var/list/message_pieces, var/verb = "оворит", var/italics = 0, var/mob/speaker = null, var/sound/speech_sound, var/sound_vol)
+/mob/proc/hear_say(var/list/message_pieces, var/verb = "говорит", var/italics = 0, var/mob/speaker = null, var/sound/speech_sound, var/sound_vol)
 	if(!client && !teleop)
 		return FALSE
 

@@ -1,8 +1,8 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:32
 
 /obj/item/weapon/tank/jetpack
-	name = "jetpack (empty)"
-	desc = "A tank of compressed gas for use as propulsion in zero-gravity areas. Use with caution."
+	name = "реактивный ранец (пустой)"
+	desc = "Резервуар со сжатым газом для использования в качестве движителя в условиях невесомости. Используйте с осторожностью."
 	icon = 'icons/obj/tank_vr.dmi' //VOREStation Edit
 	icon_state = "jetpack"
 	gauge_icon = null
@@ -17,7 +17,7 @@
 	var/on = 0.0
 	var/stabilization_on = 0
 	var/volume_rate = 500              //Needed for borg jetpack transfer
-	action_button_name = "Toggle Jetpack"
+	action_button_name = "Переключить реактивный ранец"
 
 /obj/item/weapon/tank/jetpack/New()
 	..()
@@ -31,17 +31,17 @@
 /obj/item/weapon/tank/jetpack/examine(mob/user)
 	. = ..()
 	if(air_contents.total_moles < 5)
-		. += "<span class='danger'>The meter on \the [src] indicates you are almost out of gas!</span>"
+		. += "<span class='danger'>Счетчик на [src] показывает, что у вас почти закончился газ!</span>"
 		playsound(src, 'sound/effects/alert.ogg', 50, 1)
 
 /obj/item/weapon/tank/jetpack/verb/toggle_rockets()
-	set name = "Toggle Jetpack Stabilization"
+	set name = "Переключить стабилизацию реактивного ранца"
 	set category = "Object"
 	stabilization_on = !( stabilization_on )
-	to_chat(usr, "You toggle the stabilization [stabilization_on? "on":"off"].")
+	to_chat(usr, "Вы [stabilization_on? "включаете":"отключаете"] стабилизацию ранца.")
 
 /obj/item/weapon/tank/jetpack/verb/toggle()
-	set name = "Toggle Jetpack"
+	set name = "Переключить реактивный ранец"
 	set category = "Object"
 
 	on = !on
@@ -57,7 +57,7 @@
 		M.update_inv_back()
 		M.update_action_buttons()
 
-	to_chat(usr, "You toggle the thrusters [on? "on":"off"].")
+	to_chat(usr, "Вы [on? "включаете":"отключаете"] двигатели.")
 
 /obj/item/weapon/tank/jetpack/proc/get_gas_supply()
 	return air_contents
@@ -85,8 +85,8 @@
 	toggle()
 
 /obj/item/weapon/tank/jetpack/void
-	name = "void jetpack (oxygen)"
-	desc = "It works well in a void."
+	name = "Пустотный реактивный ранец (кислород)"
+	desc = "Он хорошо работает в пустоте."
 	icon_state = "jetpack-void"
 	item_state_slots = list(slot_r_hand_str = "jetpack-void", slot_l_hand_str = "jetpack-void")
 
@@ -95,8 +95,8 @@
 	air_contents.adjust_gas("oxygen", (6*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
 
 /obj/item/weapon/tank/jetpack/oxygen
-	name = "jetpack (oxygen)"
-	desc = "A tank of compressed oxygen for use as propulsion in zero-gravity areas. Use with caution."
+	name = "реактивный ранец (кислород)"
+	desc = "Резервуар со сжатым кислородом для использования в качестве двигателя в условиях невесомости. Используйте с осторожностью."
 	icon_state = "jetpack"
 	item_state_slots = list(slot_r_hand_str = "jetpack", slot_l_hand_str = "jetpack")
 
@@ -105,8 +105,8 @@
 	air_contents.adjust_gas("oxygen", (6*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
 
 /obj/item/weapon/tank/jetpack/carbondioxide
-	name = "jetpack (carbon dioxide)"
-	desc = "A tank of compressed carbon dioxide for use as propulsion in zero-gravity areas. Painted black to indicate that it should not be used as a source for internals."
+	name = "реактивный ранец (углекислый газ)"
+	desc = "Резервуар сжатого углекислого газа для использования в качестве движителя в условиях невесомости. Окрашено в черный цвет, чтобы указать, что его не следует использовать в качестве источника для внутренних устройств."
 	distribute_pressure = 0
 	icon_state = "jetpack-black"
 	item_state_slots = list(slot_r_hand_str = "jetpack-black", slot_l_hand_str = "jetpack-black")
@@ -121,7 +121,7 @@
 
 /obj/item/weapon/tank/jetpack/rig/examine()
 	. = ..()
-	. += "It's a jetpack. If you can see this, report it on the bug tracker."
+	. += "Это реактивный ранец. Если вы это видите, сообщите об этом в системе отслеживания ошибок."
 
 /obj/item/weapon/tank/jetpack/rig/get_gas_supply()
 	return holder?.air_supply?.air_contents

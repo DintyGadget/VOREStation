@@ -1,6 +1,6 @@
 /obj/machinery/reagentgrinder
 
-	name = "All-In-One Grinder"
+	name = "Все-в-одном Гриндер"
 	desc = "Размалывает материал на крошечные кусочки."
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "juicer1"
@@ -44,15 +44,15 @@
 /obj/machinery/reagentgrinder/examine(mob/user)
 	. = ..()
 	if(!in_range(user, src) && !issilicon(user) && !isobserver(user))
-		. += "<span class='warning'>You're too far away to examine [src]'s contents and display!</span>"
+		. += "<span class='warning'>Вы слишком далеко, чтобы исследовать содержимое и отображение [src]!</span>"
 		return
 
 	if(inuse)
-		. += "<span class='warning'>\The [src] is operating.</span>"
+		. += "<span class='warning'>[src] работает.</span>"
 		return
 
 	if(beaker || length(holdingitems))
-		. += "<span class='notice'>\The [src] contains:</span>"
+		. += "<span class='notice'>[src] содержит:</span>"
 		if(beaker)
 			. += "<span class='notice'>- \A [beaker].</span>"
 		for(var/i in holdingitems)
@@ -60,10 +60,10 @@
 			. += "<span class='notice'>- \A [O.name].</span>"
 
 	if(!(stat & (NOPOWER|BROKEN)))
-		. += "<span class='notice'>The status display reads:</span>\n"
+		. += "<span class='notice'>На дисплее:</span>\n"
 		if(beaker)
 			for(var/datum/reagent/R in beaker.reagents.reagent_list)
-				. += "<span class='notice'>- [R.volume] units of [R.name].</span>"
+				. += "<span class='notice'>- [R.volume] единиц [R.name].</span>"
 
 /obj/machinery/reagentgrinder/update_icon()
 	icon_state = "juicer"+num2text(!isnull(beaker))
@@ -96,7 +96,7 @@
 			return 0
 
 	if(holdingitems && holdingitems.len >= limit)
-		to_chat(user, "The machine cannot hold anymore items.")
+		to_chat(user, "Машина больше не вмещает предметы.")
 		return 1
 
 	if(!istype(O))
@@ -115,13 +115,13 @@
 				break
 
 		if(failed)
-			to_chat(user, "Nothing in the plant bag is usable.")
+			to_chat(user, "Ничего в мешке для растений нельзя использовать.")
 			return 1
 
 		if(!O.contents.len)
-			to_chat(user, "You empty \the [O] into \the [src].")
+			to_chat(user, "Вы опустошаете [O] в [src].")
 		else
-			to_chat(user, "You fill \the [src] from \the [O].")
+			to_chat(user, "Заполняете [src] из [O].")
 
 		src.updateUsrDialog()
 		return 0
@@ -129,16 +129,16 @@
 	if(istype(O,/obj/item/weapon/gripper))
 		var/obj/item/weapon/gripper/B = O	//B, for Borg.
 		if(!B.wrapped)
-			to_chat(user, "\The [B] is not holding anything.")
+			to_chat(user, "[B] ничего не содержит.")
 			return 0
 		else
 			var/B_held = B.wrapped
-			to_chat(user, "You use \the [B] to load \the [src] with \the [B_held].")
+			to_chat(user, "Вы используете [B], чтобы загрузить [src] с [B_held].")
 
 		return 0
 
 	if(!sheet_reagents[O.type] && (!O.reagents || !O.reagents.total_volume))
-		to_chat(user, "\The [O] is not suitable for blending.")
+		to_chat(user, "[O] не подходит для смешивания.")
 		return 1
 
 	user.remove_from_mob(O)

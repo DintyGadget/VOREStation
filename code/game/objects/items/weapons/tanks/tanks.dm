@@ -5,7 +5,7 @@
 var/list/global/tank_gauge_cache = list()
 
 /obj/item/weapon/tank
-	name = "tank"
+	name = "резервуар"
 	icon = 'icons/obj/tank.dmi'
 	sprite_sheets = list(
 		SPECIES_TESHARI = 'icons/mob/species/teshari/back.dmi'
@@ -40,18 +40,18 @@ var/list/global/tank_gauge_cache = list()
 	var/leaking = 0
 	var/wired = 0
 
-	description_info = "These tanks are utilised to store any of the various types of gaseous substances. \
-	They can be attached to various portable atmospheric devices to be filled or emptied. <br>\
+	description_info = "Эти резервуары используются для хранения любого из различных типов газообразных веществ. \
+	Их можно прикрепить к различным переносным атмосферным устройствам для наполнения или опустошения. <br>\
 	<br>\
-	Each tank is fitted with an emergency relief valve. This relief valve will open if the tank is pressurised to over ~3000kPa or heated to over 173ºC. \
+	Каждый резервуар оборудован аварийным предохранительным клапаном. Этот предохранительный клапан открывается, если в баллоне повышается давление до ~3000кПа или нагревается до более чем 173°C. \
 	The valve itself will close after expending most or all of the contents into the air.<br>\
 	<br>\
-	Filling a tank such that experiences ~4000kPa of pressure will cause the tank to rupture, spilling out its contents and destroying the tank. \
-	Tanks filled over ~5000kPa will rupture rather violently, exploding with significant force."
+	Наполнение резервуара таким образом, чтобы оно испытывало давление ~4000кПа, вызовет разрыв резервуара, выливание его содержимого и разрушение резервуара. \
+	Резервуары, заполненные более чем на ~5000кПа, разорвутся довольно сильно, взорвавшись со значительной силой."
 
-	description_antag = "Each tank may be incited to burn by attaching wires and an igniter assembly, though the igniter can only be used once and the mixture only burn if the igniter pushes a flammable gas mixture above the minimum burn temperature (126ºC). \
-	Wired and assembled tanks may be disarmed with a set of wirecutters. Any exploding or rupturing tank will generate shrapnel, assuming their relief valves have been welded beforehand. Even if not, they can be incited to expel hot gas on ignition if pushed above 173ºC. \
-	Relatively easy to make, the single tank bomb requries no tank transfer valve, and is still a fairly formidable weapon that can be manufactured from any tank."
+	description_antag = "Каждый баллон можно поджечь, подключив провода и узел воспламенителя, хотя воспламенитель можно использовать только один раз, а смесь воспламенится только в том случае, если воспламенитель нагнетает горючую газовую смесь выше минимальной температуры горения (126°C). \
+	Смонтированные и собранные резервуары можно разоружить с помощью набора кусачков. Любой взорвавшийся или разрушающийся резервуар приведет к образованию шрапнели, если их предохранительные клапаны были приварены заранее. Даже в противном случае они могут быть спровоцированы на выброс горячего газа при воспламенении, если температура поднимется выше 173°C. \
+	Относительно простая в изготовлении бомба для одного резервуара не требует перепускного клапана и по-прежнему представляет собой довольно грозное оружие, которое можно изготовить из любого резервуара."
 
 /obj/item/weapon/tank/proc/init_proxy()
 	var/obj/item/device/tankassemblyproxy/proxy = new /obj/item/device/tankassemblyproxy(src)
@@ -94,20 +94,20 @@ var/list/global/tank_gauge_cache = list()
 		var/descriptive
 		switch(celsius_temperature)
 			if(300 to INFINITY)
-				descriptive = "furiously hot"
+				descriptive = "ужасно горячий"
 			if(100 to 300)
-				descriptive = "hot"
+				descriptive = "горячий"
 			if(80 to 100)
-				descriptive = "warm"
+				descriptive = "теплый"
 			if(40 to 80)
-				descriptive = "lukewarm"
+				descriptive = "тепловатый"
 			if(20 to 40)
-				descriptive = "room temperature"
+				descriptive = "комнатной температуры"
 			if(-20 to 20)
-				descriptive = "cold"
+				descriptive = "холодным"
 			else
-				descriptive = "bitterly cold"
-		. += "<span class='notice'>\The [src] feels [descriptive].</span>"
+				descriptive = "ледяной"
+		. += "<span class='notice'>[src] кажется [descriptive].</span>"
 
 	if(src.proxyassembly.assembly || wired)
 		. += "<span class='warning'>It seems to have [wired? "some wires ": ""][wired && src.proxyassembly.assembly? "and ":""][src.proxyassembly.assembly ? "some sort of assembly ":""]attached to it.</span>"
@@ -129,17 +129,17 @@ var/list/global/tank_gauge_cache = list()
 		var/obj/item/stack/cable_coil/C = W
 		if(C.use(1))
 			wired = 1
-			to_chat(user, "<span class='notice'>You attach the wires to the tank.</span>")
+			to_chat(user, "<span class='notice'>Вы присоединяете провода к резервуару.</span>")
 			src.add_bomb_overlay()
 
 	if(W.is_wirecutter())
 		if(wired && src.proxyassembly.assembly)
 
-			to_chat(user, "<span class='notice'>You carefully begin clipping the wires that attach to the tank.</span>")
+			to_chat(user, "<span class='notice'>Вы осторожно начинаете обрезать провода, которые крепятся к резервуару.</span>")
 			if(do_after(user, 100,src))
 				wired = 0
 				src.overlays -= "bomb_assembly"
-				to_chat(user, "<span class='notice'>You cut the wire and remove the device.</span>")
+				to_chat(user, "<span class='notice'>Вы перерезаете провод и извлекаете устройство.</span>")
 
 				var/obj/item/device/assembly_holder/assy = src.proxyassembly.assembly
 				if(assy.a_left && assy.a_right)
@@ -158,26 +158,26 @@ var/list/global/tank_gauge_cache = list()
 				update_gauge()
 
 			else
-				to_chat(user, "<span class='danger'>You slip and bump the igniter!</span>")
+				to_chat(user, "<span class='danger'>Вы поскользнулись и ударились о воспламенитель!</span>")
 				if(prob(85))
 					src.proxyassembly.receive_signal()
 
 		else if(wired)
 			if(do_after(user, 10, src))
-				to_chat(user, "<span class='notice'>You quickly clip the wire from the tank.</span>")
+				to_chat(user, "<span class='notice'>Вы быстро отрезаете провод от резервуара.</span>")
 				wired = 0
 				src.overlays -= "bomb_assembly"
 
 		else
-			to_chat(user, "<span class='notice'>There are no wires to cut!</span>")
+			to_chat(user, "<span class='notice'>Нет проводов, которые нужно разрезать!</span>")
 
 
 
 	if(istype(W, /obj/item/device/assembly_holder))
 		if(wired)
-			to_chat(user, "<span class='notice'>You begin attaching the assembly to \the [src].</span>")
+			to_chat(user, "<span class='notice'>Вы начинаете прикреплять сборку к [src].</span>")
 			if(do_after(user, 50, src))
-				to_chat(user, "<span class='notice'>You finish attaching the assembly to \the [src].</span>")
+				to_chat(user, "<span class='notice'>Вы завершаете прикрепление сборки к [src].</span>")
 				bombers += "[key_name(user)] attached an assembly to a wired [src]. Temp: [src.air_contents.temperature-T0C]"
 				message_admins("[key_name_admin(user)] attached an assembly to a wired [src]. Temp: [src.air_contents.temperature-T0C]")
 				assemble_bomb(W,user)
@@ -191,22 +191,22 @@ var/list/global/tank_gauge_cache = list()
 		var/obj/item/weapon/weldingtool/WT = W
 		if(WT.remove_fuel(1,user))
 			if(!valve_welded)
-				to_chat(user, "<span class='notice'>You begin welding the \the [src] emergency pressure relief valve.</span>")
+				to_chat(user, "<span class='notice'>Вы начинаете приваривать аварийный предохранительный клапан [src].</span>")
 				if(do_after(user, 40,src))
-					to_chat(user, "<span class='notice'>You carefully weld \the [src] emergency pressure relief valve shut.</span><span class='warning'> \The [src] may now rupture under pressure!</span>")
+					to_chat(user, "<span class='notice'>Вы осторожно привариваете клапан аварийного сброса давления [src] до закрытия.</span><span class='warning'> [src] теперь может разорваться под давлением!</span>")
 					src.valve_welded = 1
 					src.leaking = 0
 				else
 					bombers += "[key_name(user)] attempted to weld a [src]. [src.air_contents.temperature-T0C]"
 					message_admins("[key_name_admin(user)] attempted to weld a [src]. [src.air_contents.temperature-T0C]")
 					if(WT.welding)
-						to_chat(user, "<span class='danger'>You accidentally rake \the [W] across \the [src]!</span>")
+						to_chat(user, "<span class='danger'>Вы случайно сгребаете [W] по [src]!</span>")
 						maxintegrity -= rand(2,6)
 						integrity = min(integrity,maxintegrity)
 						src.air_contents.add_thermal_energy(rand(2000,50000))
 				WT.eyecheck(user)
 			else
-				to_chat(user, "<span class='notice'>The emergency pressure relief valve has already been welded.</span>")
+				to_chat(user, "<span class='notice'>Клапан аварийного сброса давления уже сварен.</span>")
 		add_fingerprint(user)
 
 
@@ -291,7 +291,7 @@ var/list/global/tank_gauge_cache = list()
 		if(location.internal == src)
 			location.internal = null
 			location.internals.icon_state = "internal0"
-			to_chat(user, "<span class='notice'>You close the tank release valve.</span>")
+			to_chat(user, "<span class='notice'>Вы закрываете выпускной клапан резервуара.</span>")
 			if (location.internals)
 				location.internals.icon_state = "internal0"
 		else
@@ -305,11 +305,11 @@ var/list/global/tank_gauge_cache = list()
 
 			if(can_open_valve)
 				location.internal = src
-				to_chat(user, "<span class='notice'>You open \the [src] valve.</span>")
+				to_chat(user, "<span class='notice'>Вы открываете клапан [src].</span>")
 				if (location.internals)
 					location.internals.icon_state = "internal1"
 			else
-				to_chat(user, "<span class='warning'>You need something to connect to \the [src].</span>")
+				to_chat(user, "<span class='warning'>Вам нужно что-то, чтобы подключиться к [src].</span>")
 
 
 
@@ -457,7 +457,7 @@ var/list/global/tank_gauge_cache = list()
 				return
 			T.assume_air(air_contents)
 			playsound(src, 'sound/weapons/Gunshot_shotgun.ogg', 20, 1)
-			visible_message("[bicon(src)] <span class='danger'>\The [src] flies apart!</span>", "<span class='warning'>You hear a bang!</span>")
+			visible_message("[bicon(src)] <span class='danger'>[src] разлетелся!</span>", "<span class='warning'>Вы слышите выстрел!</span>")
 			T.hotspot_expose(air_contents.temperature, 70, 1)
 
 
@@ -502,7 +502,7 @@ var/list/global/tank_gauge_cache = list()
 
 			T.assume_air(leaked_gas)
 			if(!leaking)
-				visible_message("[bicon(src)] <span class='warning'>\The [src] relief valve flips open with a hiss!</span>", "You hear hissing.")
+				visible_message("[bicon(src)] <span class='warning'>Предохранительный клапан [src] с шипением открывается!</span>", "Вы слышите шипение.")
 				playsound(src, 'sound/effects/spray.ogg', 10, 1, -3)
 				leaking = 1
 				#ifdef FIREDBG
@@ -595,8 +595,8 @@ var/list/global/tank_gauge_cache = list()
 /////////////////////////////////
 
 /obj/item/device/tankassemblyproxy
-	name = "Tank assembly proxy"
-	desc = "Used as a stand in to trigger single tank assemblies... but you shouldn't see this."
+	name = "Прокси для сборки резервуаров"
+	desc = "Используется как подставка для запуска сборок одиночных резервуаров... но вы не должны этого видеть."
 	var/obj/item/weapon/tank/tank = null
 	var/obj/item/device/assembly_holder/assembly = null
 

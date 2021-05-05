@@ -57,14 +57,11 @@
 
 	reagent_tag = IS_ALRAUNE
 
-	blurb = "Alraunes are a rare sight in space. Their bodies are reminiscent of that of plants, and yet they share many\
-	traits with other humanoid beings.\
+	blurb = "Альраунес - редкое зрелище в космосе. Их тела напоминают тела растений, но все же они имеют много общих черт с другими гуманоидными существами.\
 	\
-	Most Alraunes are not interested in traversing space, their heavy preference for natural environments and general\
-	disinterest in things outside it keeps them as a species at a rather primal stage.\
+	Большинство Альраунесов не заинтересованы в путешествии по космосу, их сильное предпочтение естественной среде обитания и общая незаинтересованность в вещах за ее пределами удерживают их как вид на довольно примитивной стадии.\
 	\
-	However, after their discovery by the angels of Sanctum, many alraunes succumbed to their curiosity, and took the offer\
-	to learn of the world and venture out, whether it's to Sanctum, or elsewhere in the galaxy."
+	Однако после своего открытия ангелами Санктума многие Альраунес поддались своему любопытству и приняли предложение узнать мир и отправиться в путь, будь то Санктум или другое место в галактике."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/alraune)
 
 	has_limbs = list(
@@ -261,10 +258,10 @@
 
 		if(breath.temperature <= breath_cold_level_1)
 			if(prob(20))
-				to_chat(H, "<span class='danger'>You feel icicles forming on your skin!</span>")
+				to_chat(H, "<span class='danger'>Вы чувствуете, как на коже образуются сосульки!</span>")
 		else if(breath.temperature >= breath_heat_level_1)
 			if(prob(20))
-				to_chat(H, "<span class='danger'>You feel yourself smouldering in the heat!</span>")
+				to_chat(H, "<span class='danger'>Вы чувствуете, как тлеете от жары!</span>")
 
 		var/bodypart = pick(BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND,BP_TORSO,BP_GROIN,BP_HEAD)
 		if(breath.temperature >= breath_heat_level_1)
@@ -311,40 +308,40 @@
 	icon = 'icons/mob/species/alraune/organs.dmi'
 	icon_state = "neurostroma"
 	name = "neuro-stroma"
-	desc = "A knot of fibrous plant matter."
+	desc = "Сучок волокнистой растительной материи."
 	parent_organ = BP_TORSO // brains in their core
 
 /obj/item/organ/internal/eyes/alraune
 	icon = 'icons/mob/species/alraune/organs.dmi'
 	icon_state = "photoreceptors"
 	name = "photoreceptors"
-	desc = "Bulbous and fleshy plant matter."
+	desc = "Луковичные и мясистые растения."
 
 /obj/item/organ/internal/kidneys/alraune
 	icon = 'icons/mob/species/alraune/organs.dmi'
 	icon_state = "rhyzofilter"
 	name = "rhyzofilter"
-	desc = "A tangle of root nodules."
+	desc = "Клубок корневых узелков."
 
 /obj/item/organ/internal/liver/alraune
 	icon = 'icons/mob/species/alraune/organs.dmi'
 	icon_state = "phytoextractor"
 	name = "enzoretector"
-	desc = "A bulbous gourd-like structure."
+	desc = "Выпуклая тыквенная структура."
 
 //Begin fruit gland and its code.
 /obj/item/organ/internal/fruitgland //Amazing name, I know.
 	icon = 'icons/mob/species/alraune/organs.dmi'
 	icon_state = "phytoextractor"
 	name = "fruit gland"
-	desc = "A bulbous gourd-like structure."
+	desc = "Выпуклая тыквенная структура."
 	organ_tag = A_FRUIT
 	var/generated_reagents = list("sugar" = 2) //This actually allows them. This could be anything, but sugar seems most fitting.
 	var/usable_volume = 250 //Five fruit.
 	var/transfer_amount = 50
-	var/empty_message = list("Your have no fruit on you.", "You have a distinct lack of fruit..")
-	var/full_message = list("You have a multitude of fruit that is ready for harvest!", "You have fruit that is ready to be picked!")
-	var/emote_descriptor = list("fruit right off of the Alraune!", "a fruit from the Alraune!")
+	var/empty_message = list("У вас нет фруктов.", "У вас явная нехватка фруктов ..")
+	var/full_message = list("У вас есть множество фруктов, готовых к сбору урожая!", "У вас есть фрукты, которые можно собирать!")
+	var/emote_descriptor = list("фрукты прямо с Альраунеса!", "фрукт из Альраунеса!")
 	var/verb_descriptor = list("grabs", "snatches", "picks")
 	var/self_verb_descriptor = list("grab", "snatch", "pick")
 	var/short_emote_descriptor = list("picks", "grabs")
@@ -381,8 +378,8 @@
 
 
 /mob/living/carbon/human/proc/alraune_fruit_select() //So if someone doesn't want fruit/vegetables, they don't have to select one.
-	set name = "Select fruit"
-	set desc = "Select what fruit/vegetable you wish to grow."
+	set name = "Выбрать фрукт"
+	set desc = "Выберите, какой фрукт/овощ вы хотите выращивать."
 	set category = "Abilities"
 	var/obj/item/organ/internal/fruitgland/fruit_gland
 	for(var/F in contents)
@@ -391,7 +388,7 @@
 			break
 
 	if(fruit_gland)
-		var/selection = input(src, "Choose your character's fruit type. Choosing nothing will result in a default of apples.", "Fruit Type", fruit_gland.fruit_type) as null|anything in acceptable_fruit_types
+		var/selection = input(src, "Выберите сорт фруктов вашего персонажа. Если ничего не выбрать, по умолчанию будут выбраны яблоки.", "Fruit Type", fruit_gland.fruit_type) as null|anything in acceptable_fruit_types
 		if(selection)
 			fruit_gland.fruit_type = selection
 		verbs |= /mob/living/carbon/human/proc/alraune_fruit_pick
@@ -400,7 +397,7 @@
 		fruit_gland.emote_descriptor = list("fruit right off of [fruit_gland.organ_owner]!", "a fruit from [fruit_gland.organ_owner]!")
 
 	else
-		to_chat(src, "<span class='notice'>You lack the organ required to produce fruit.</span>")
+		to_chat(src, "<span class='notice'>Вам не хватает органа, необходимого для производства фруктов.</span>")
 		return
 
 /mob/living/carbon/human/proc/alraune_fruit_pick()
