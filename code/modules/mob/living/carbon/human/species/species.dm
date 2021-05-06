@@ -75,27 +75,12 @@
 	var/list/assisted_langs = list(LANGUAGE_EAL, LANGUAGE_SKRELLIAN, LANGUAGE_SKRELLIANFAR, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX) //VOREStation Edit
 
 	//Soundy emotey things.
-	var/scream_verb = "screams"
-	var/male_scream_sound		= 'sound/voice/human/man_scream.ogg' //Removed due to licensing, replace!
-	var/female_scream_sound		= 'sound/voice/human/woman_scream.ogg' //Removed due to licensing, replace!
-	var/male_gasp_sound = list('sound/voice/gasp_male1.ogg','sound/voice/gasp_male2.ogg','sound/voice/gasp_male3.ogg','sound/voice/gasp_male4.ogg','sound/voice/gasp_male5.ogg','sound/voice/gasp_male6.ogg','sound/voice/gasp_male7.ogg')
-	var/female_gasp_sound = list('sound/voice/gasp_female1.ogg','sound/voice/gasp_female2.ogg','sound/voice/gasp_female3.ogg','sound/voice/gasp_female4.ogg','sound/voice/gasp_female5.ogg','sound/voice/gasp_female6.ogg','sound/voice/gasp_female7.ogg')
+	var/scream_verb_1p = "scream"
+	var/scream_verb_3p = "screams"
+	var/male_scream_sound		//= 'sound/goonstation/voice/male_scream.ogg' Removed due to licensing, replace!
+	var/female_scream_sound		//= 'sound/goonstation/voice/female_scream.ogg' Removed due to licensing, replace!
 	var/male_cough_sounds = list('sound/effects/mob_effects/m_cougha.ogg','sound/effects/mob_effects/m_coughb.ogg', 'sound/effects/mob_effects/m_coughc.ogg')
 	var/female_cough_sounds = list('sound/effects/mob_effects/f_cougha.ogg','sound/effects/mob_effects/f_coughb.ogg')
-	var/female_giggle_sounds = list('sound/voice/human/giggle_female_1.ogg', 'sound/voice/human/giggle_female_2.ogg', 'sound/voice/human/giggle_female_3.ogg')
-	var/male_giggle_sounds = list('sound/voice/human/giggle_male_1.ogg', 'sound/voice/human/giggle_male_2.ogg')
-	var/female_cry_sounds = list('sound/voice/human/cry_female_1.ogg', 'sound/voice/human/cry_female_2.ogg', 'sound/voice/human/cry_female_3.ogg')
-	var/male_cry_sounds = list('sound/voice/human/cry_male_1.ogg', 'sound/voice/human/cry_male_2.ogg')
-	var/female_laugh_sounds = list('sound/voice/human/laugh_female_1.ogg', 'sound/voice/human/laugh_female_2.ogg', 'sound/voice/human/laugh_female_3.ogg')
-	var/male_laugh_sounds = list('sound/voice/human/laugh_male_1.ogg', 'sound/voice/human/laugh_male_2.ogg', 'sound/voice/human/laugh_male_3.ogg')
-	var/female_moan_sounds = list('sound/voice/human/moan_female_1.ogg', 'sound/voice/human/moan_female_2.ogg', 'sound/voice/human/moan_female_3.ogg')
-	var/male_moan_sounds = list('sound/voice/human/moan_male_1.ogg', 'sound/voice/human/moan_male_2.ogg', 'sound/voice/human/moan_male_3.ogg')
-	var/female_sigh_sounds = 'sound/voice/human/sigh_female.ogg'
-	var/male_sigh_sounds = 'sound/voice/human/sigh_male.ogg'
-	var/female_snore_sounds = list('sound/voice/human/snore_1.ogg', 'sound/voice/human/snore_2.ogg', 'sound/voice/human/snore_3.ogg', 'sound/voice/human/snore_4.ogg', 'sound/voice/human/snore_5.ogg', 'sound/voice/human/snore_6.ogg', 'sound/voice/human/snore_7.ogg')
-	var/male_snore_sounds = list('sound/voice/human/snore_1.ogg', 'sound/voice/human/snore_2.ogg', 'sound/voice/human/snore_3.ogg', 'sound/voice/human/snore_4.ogg', 'sound/voice/human/snore_5.ogg', 'sound/voice/human/snore_6.ogg', 'sound/voice/human/snore_7.ogg')
-	var/female_yawn_sounds = list('sound/voice/human/yawn_female_1.ogg', 'sound/voice/human/yawn_female_2.ogg', 'sound/voice/human/yawn_female_3.ogg')
-	var/male_yawn_sounds = list('sound/voice/human/yawn_male_1.ogg', 'sound/voice/human/yawn_male_2.ogg')
 	var/male_sneeze_sound = 'sound/effects/mob_effects/sneeze.ogg'
 	var/female_sneeze_sound = 'sound/effects/mob_effects/f_sneeze.ogg'
 
@@ -122,7 +107,7 @@
 	var/alcohol_mod =		1						// Multiplier to alcohol strength; 0.5 = half, 0 = no effect at all, 2 = double, etc.
 	var/pain_mod =			1						// Multiplier to pain effects; 0.5 = half, 0 = no effect (equal to NO_PAIN, really), 2 = double, etc.
 	var/spice_mod =			1						// Multiplier to spice/capsaicin/frostoil effects; 0.5 = half, 0 = no effect (immunity), 2 = double, etc.
-	var/trauma_mod = 		1						// Affects traumatic shock (how fast pain crit happens). 0 = no effect (immunity to pain crit), 2 = double etc.Overriden by "can_feel_pain" var
+	var/trauma_mod = 		1						// Affects traumatic shock (how fast pain crit happens). 0 = no effect (immunity to pain crit), 2 = double etc.Overriden by "can_feel_pain" var	
 	// set below is EMP interactivity for nonsynth carbons
 	var/emp_sensitivity =		0			// bitflag. valid flags are: EMP_PAIN, EMP_BLIND, EMP_DEAFEN, EMP_CONFUSE, EMP_STUN, and EMP_(BRUTE/BURN/TOX/OXY)_DMG
 	var/emp_dmg_mod =		1			// Multiplier to all EMP damage sustained by the mob, if it's EMP-sensitive

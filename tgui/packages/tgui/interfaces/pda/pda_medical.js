@@ -20,77 +20,77 @@ export const pda_medical = (props, context) => {
 
     return (
       <Box>
-        <Section level={2} title="Общие данные">
+        <Section level={2} title="General Data">
           {general && (
             <LabeledList>
-              <LabeledList.Item label="Ф.И">
+              <LabeledList.Item label="Name">
                 {general.name}
               </LabeledList.Item>
-              <LabeledList.Item label="Пол">
+              <LabeledList.Item label="Sex">
                 {general.sex}
               </LabeledList.Item>
-              <LabeledList.Item label="Раса">
+              <LabeledList.Item label="Species">
                 {general.species}
               </LabeledList.Item>
-              <LabeledList.Item label="Возраст">
+              <LabeledList.Item label="Age">
                 {general.age}
               </LabeledList.Item>
-              <LabeledList.Item label="Должность">
+              <LabeledList.Item label="Rank">
                 {general.rank}
               </LabeledList.Item>
-              <LabeledList.Item label="Отпечаток">
+              <LabeledList.Item label="Fingerprint">
                 {general.fingerprint}
               </LabeledList.Item>
-              <LabeledList.Item label="физ. состояние">
+              <LabeledList.Item label="Physical Status">
                 {general.p_stat}
               </LabeledList.Item>
-              <LabeledList.Item label="Псих. состояние">
+              <LabeledList.Item label="Mental Status">
                 {general.m_stat}
               </LabeledList.Item>
             </LabeledList>
           ) || (
             <Box color="bad">
-              Общие даннные потеряны!
+              General record lost!
             </Box>
           )}
         </Section>
-        <Section level={2} title="Медицинские данные">
+        <Section level={2} title="Medical Data">
           {medical && (
             <LabeledList>
-              <LabeledList.Item label="Группа крови">
+              <LabeledList.Item label="Blood Type">
                 {medical.b_type}
               </LabeledList.Item>
               <LabeledList.Item label="Minor Disabilities">
                 {medical.mi_dis}
               </LabeledList.Item>
-              <LabeledList.Item label="Детали">
+              <LabeledList.Item label="Details">
                 {medical.mi_dis_d}
               </LabeledList.Item>
               <LabeledList.Item label="Major Disabilities">
                 {medical.ma_dis}
               </LabeledList.Item>
-              <LabeledList.Item label="Детали">
+              <LabeledList.Item label="Details">
                 {medical.ma_dis_d}
               </LabeledList.Item>
-              <LabeledList.Item label="Аллергии">
+              <LabeledList.Item label="Allergies">
                 {medical.alg}
               </LabeledList.Item>
-              <LabeledList.Item label="Детали">
+              <LabeledList.Item label="Details">
                 {medical.alg_d}
               </LabeledList.Item>
               <LabeledList.Item label="Current Disease">
                 {medical.cdi}
               </LabeledList.Item>
-              <LabeledList.Item label="Детали">
+              <LabeledList.Item label="Details">
                 {medical.cdi_d}
               </LabeledList.Item>
-              <LabeledList.Item label="Важные заметки">
+              <LabeledList.Item label="Important Notes" prewrap>
                 {medical.notes}
               </LabeledList.Item>
             </LabeledList>
           ) || (
             <Box color="bad">
-              Медицинские данные утеряны!
+              Medical record lost!
             </Box>
           )}
         </Section>

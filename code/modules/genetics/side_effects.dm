@@ -15,13 +15,13 @@
 
 /datum/genetics/side_effect/genetic_burn
 	name = "Genetic Burn"
-	symptom = "Кожа субъекта становится необычно красной."
-	treatment = "Впрысните небольшую дозу дексалина."
+	symptom = "Subject's skin turns unusualy red."
+	treatment = "Inject small dose of dexalin."
 	effect = "Subject's skin burns."
 	duration = 10*30
 
 	start(mob/living/carbon/human/H)
-		H.emote("me", 1, "начинает краснеть, буквально..")
+		H.custom_emote(VISIBLE_MESSAGE, "starts turning very red..")
 
 	finish(mob/living/carbon/human/H)
 		if(!H.reagents.has_reagent("dexalin"))
@@ -31,13 +31,13 @@
 
 /datum/genetics/side_effect/bone_snap
 	name = "Bone Snap"
-	symptom = "Конечности субъекта заметно дрожат."
-	treatment = "Ввести небольшую дозу бикаридина."
+	symptom = "Subject's limbs tremble notably."
+	treatment = "Inject small dose of bicaridine."
 	effect = "Subject's bone breaks."
 	duration = 10*60
 
 	start(mob/living/carbon/human/H)
-		H.emote("me", 1, " начинают неудержимо дрожать на своих двоих.")
+		H.custom_emote(VISIBLE_MESSAGE, "'s limbs start shivering uncontrollably.")
 
 	finish(mob/living/carbon/human/H)
 		if(!H.reagents.has_reagent("bicaridine"))
@@ -54,7 +54,7 @@
 	duration = 10*90
 
 	start(mob/living/carbon/human/H)
-		H.emote("me", 1, "has drool running down from [H.gender == MALE ? "his" : H.gender == FEMALE ? "her" : "their"] mouth.")
+		H.custom_emote(VISIBLE_MESSAGE, "has drool running down from [H.gender == MALE ? "his" : H.gender == FEMALE ? "her" : "their"] mouth.")
 
 	finish(mob/living/carbon/human/H)
 		if(!H.reagents.has_reagent("anti_toxin"))
@@ -62,14 +62,14 @@
 
 /datum/genetics/side_effect/confuse
 	name = "Confuse"
-	symptom = "Субъект начинает неудержимо пускать слюни."
-	treatment = "Ввести небольшую дозу диловена."
+	symptom = "Subject starts drooling uncontrollably."
+	treatment = "Inject small dose of dylovene."
 	effect = "Subject becomes confused."
 	duration = 10*30
 
 	start(mob/living/carbon/human/H)
 		var/datum/gender/T = gender_datums[H.get_visible_gender()]
-		H.emote("me", 1, "пускат слюни, из [T.his] рта.")
+		H.custom_emote(VISIBLE_MESSAGE, "has drool running down from [T.his] mouth.")
 
 	finish(mob/living/carbon/human/H)
 		if(!H.reagents.has_reagent("anti_toxin"))
