@@ -1,7 +1,7 @@
 /decl/emote/audible/sneeze
 	key = "sneeze"
-	emote_message_1p = "You sneeze."
-	emote_message_3p = "sneezes."
+	emote_message_1p = "Вы чихаете."
+	emote_message_3p = "чихает."
 	emote_sound_synthetic = list(
 		FEMALE = 'sound/effects/mob_effects/machine_sneeze.ogg',
 		MALE =   'sound/effects/mob_effects/f_machine_sneeze.ogg',

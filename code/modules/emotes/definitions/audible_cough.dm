@@ -1,13 +1,13 @@
 /decl/emote/audible/cough
 	key = "cough"
-	emote_message_1p = "You cough!"
-	emote_message_1p_target = "You cough on TARGET!"
-	emote_message_3p = "coughs!"
-	emote_message_3p_target = "coughs on TARGET!"
-	emote_message_synthetic_1p_target = "You emit a robotic cough towards TARGET."
-	emote_message_synthetic_1p = "You emit a robotic cough."
-	emote_message_synthetic_3p_target = "emits a robotic cough towards TARGET."
-	emote_message_synthetic_3p = "emits a robotic cough."
+	emote_message_1p = "Вы кашляете!"
+	emote_message_1p_target = "Вы кашляете на TARGET!"
+	emote_message_3p = "кашляет!"
+	emote_message_3p_target = "кашляет на TARGET!"
+	emote_message_synthetic_1p_target = "Вы кашляете в сторону TARGET."
+	emote_message_synthetic_1p = "Вы испускаете роботизированный кашель."
+	emote_message_synthetic_3p_target = "издает роботизированный кашель в сторону TARGET."
+	emote_message_synthetic_3p = "издает роботизированный кашель."
 	emote_volume = 120
 	emote_volume_synthetic = 50
 
@@ -19,17 +19,17 @@
 		),
 		MALE = list(
 			'sound/effects/mob_effects/m_machine_cougha.ogg',
-			'sound/effects/mob_effects/m_machine_coughb.ogg', 
+			'sound/effects/mob_effects/m_machine_coughb.ogg',
 			'sound/effects/mob_effects/m_machine_coughc.ogg'
 		),
 		NEUTER = list(
 			'sound/effects/mob_effects/m_machine_cougha.ogg',
-			'sound/effects/mob_effects/m_machine_coughb.ogg', 
+			'sound/effects/mob_effects/m_machine_coughb.ogg',
 			'sound/effects/mob_effects/m_machine_coughc.ogg'
 		),
 		PLURAL = list(
 			'sound/effects/mob_effects/m_machine_cougha.ogg',
-			'sound/effects/mob_effects/m_machine_coughb.ogg', 
+			'sound/effects/mob_effects/m_machine_coughb.ogg',
 			'sound/effects/mob_effects/m_machine_coughc.ogg'
 		)
 	)
@@ -40,7 +40,7 @@
 		if(H.get_gender() == FEMALE)
 			if(length(H.species.female_cough_sounds))
 				return list(
-					"sound" = H.species.female_cough_sounds, 
+					"sound" = H.species.female_cough_sounds,
 					"vol" = emote_volume
 				)
 		else

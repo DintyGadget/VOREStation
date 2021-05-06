@@ -15,24 +15,24 @@
 
 	if(is_bruised())
 		if(prob(4))
-			spawn owner?.custom_emote(VISIBLE_MESSAGE, "coughs up blood!")
+			spawn owner?.custom_emote(VISIBLE_MESSAGE, "кашляет кровью!")
 			owner.drip(10)
 		if(prob(8))
-			spawn owner?.custom_emote(VISIBLE_MESSAGE, "gasps for air!")
+			spawn owner?.custom_emote(VISIBLE_MESSAGE, "задыхается!")
 			owner.AdjustLosebreath(15)
 
 	if(owner.internal_organs_by_name[O_BRAIN]) // As the brain starts having Trouble, the lungs start malfunctioning.
 		var/obj/item/organ/internal/brain/Brain = owner.internal_organs_by_name[O_BRAIN]
 		if(Brain.get_control_efficiency() <= 0.8)
 			if(prob(4 / max(0.1,Brain.get_control_efficiency())))
-				spawn owner?.custom_emote(VISIBLE_MESSAGE, "gasps for air!")
+				spawn owner?.custom_emote(VISIBLE_MESSAGE, "задыхается!")
 				owner.AdjustLosebreath(round(3 / max(0.1,Brain.get_control_efficiency())))
 
 /obj/item/organ/internal/lungs/proc/rupture()
 	if(owner)
 		var/obj/item/organ/external/parent = owner.get_organ(parent_organ)
 		if(istype(parent))
-			owner.custom_pain("You feel a stabbing pain in your [parent.name]!", 50)
+			owner.custom_pain("Вы чувствуете колющую боль в [parent.name]!", 50)
 	bruise()
 
 /obj/item/organ/internal/lungs/handle_germ_effects()
@@ -45,7 +45,7 @@
 			owner.emote("cough")
 	if (. >= 2)
 		if(prob(1))
-			owner.custom_pain("You suddenly feel short of breath and take a sharp, painful breath!",1)
+			owner.custom_pain("Вы внезапно чувствуете одышку и делаете резкий, болезненный вдох!",1)
 			owner.adjustOxyLoss(30) //Look it's hard to simulate low O2 perfusion okay
 
 /obj/item/organ/internal/lungs/grey

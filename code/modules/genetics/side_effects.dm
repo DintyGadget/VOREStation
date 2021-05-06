@@ -15,13 +15,13 @@
 
 /datum/genetics/side_effect/genetic_burn
 	name = "Genetic Burn"
-	symptom = "Subject's skin turns unusualy red."
-	treatment = "Inject small dose of dexalin."
+	symptom = "Кожа субъекта становится необычно красной."
+	treatment = "Впрысните небольшую дозу дексалина."
 	effect = "Subject's skin burns."
 	duration = 10*30
 
 	start(mob/living/carbon/human/H)
-		H.custom_emote(VISIBLE_MESSAGE, "starts turning very red..")
+		H.custom_emote(VISIBLE_MESSAGE, " начинает краснеть, буквально..")
 
 	finish(mob/living/carbon/human/H)
 		if(!H.reagents.has_reagent("dexalin"))
@@ -31,13 +31,13 @@
 
 /datum/genetics/side_effect/bone_snap
 	name = "Bone Snap"
-	symptom = "Subject's limbs tremble notably."
-	treatment = "Inject small dose of bicaridine."
+	symptom = "Конечности субъекта заметно дрожат."
+	treatment = "Ввести небольшую дозу бикаридина."
 	effect = "Subject's bone breaks."
 	duration = 10*60
 
 	start(mob/living/carbon/human/H)
-		H.custom_emote(VISIBLE_MESSAGE, "'s limbs start shivering uncontrollably.")
+		H.custom_emote(VISIBLE_MESSAGE, " начинает неудержимо дрожать на своих двоих.")
 
 	finish(mob/living/carbon/human/H)
 		if(!H.reagents.has_reagent("bicaridine"))
@@ -62,14 +62,14 @@
 
 /datum/genetics/side_effect/confuse
 	name = "Confuse"
-	symptom = "Subject starts drooling uncontrollably."
-	treatment = "Inject small dose of dylovene."
+	symptom = "Субъект начинает неудержимо пускать слюни."
+	treatment = "Ввести небольшую дозу диловена."
 	effect = "Subject becomes confused."
 	duration = 10*30
 
 	start(mob/living/carbon/human/H)
 		var/datum/gender/T = gender_datums[H.get_visible_gender()]
-		H.custom_emote(VISIBLE_MESSAGE, "has drool running down from [T.his] mouth.")
+		H.emote("me", 1, "пускат слюни, из [T.his] рта.")
 
 	finish(mob/living/carbon/human/H)
 		if(!H.reagents.has_reagent("anti_toxin"))

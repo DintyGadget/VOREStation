@@ -9,8 +9,8 @@
 	attack_verb = list("jabbed","stabbed","ripped")
 
 /obj/item/weapon/material/knife/machete/hatchet
-	name = "hatchet"
-	desc = "A very sharp axe blade upon a short fibremetal handle. It has a long history of chopping things, but now it is used for chopping wood."
+	name = "топор"
+	desc = "Очень острое лезвие топора на короткой ручке из волокнистого металла. Он имеет долгую историю рубки вещей, но теперь его используют для рубки дров."
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "hatchet"
 	force_divisor = 0.2 // 12 with hardness 60 (steel)
@@ -25,8 +25,8 @@
 	pickup_sound = 'sound/items/pickup/axe.ogg'
 
 /obj/item/weapon/material/knife/machete/hatchet/unathiknife
-	name = "duelling knife"
-	desc = "A length of leather-bound wood studded with razor-sharp teeth. How crude."
+	name = "дуэльный нож"
+	desc = "Кусок дерева в кожаном переплете с острыми как бритва зубцами. Как грубо."
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "unathiknife"
 	attack_verb = list("ripped", "torn", "cut")
@@ -49,8 +49,8 @@
 	..()
 
 /obj/item/weapon/material/minihoe // -- Numbers
-	name = "mini hoe"
-	desc = "It's used for removing weeds or scratching your back."
+	name = "мини-мотыга"
+	desc = "Его используют для удаления сорняков или почесывания спины."
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "hoe"
 	force_divisor = 0.25 // 5 with weight 20 (steel)
@@ -60,8 +60,8 @@
 	attack_verb = list("slashed", "sliced", "cut", "clawed")
 
 /obj/item/weapon/material/snow/snowball
-	name = "loose packed snowball"
-	desc = "A fun snowball. Throw it at your friends!"
+	name = "снежнок"
+	desc = "Веселый снежок. Бросьте это своим друзьям!"
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "snowball"
 	default_material = MAT_SNOW
@@ -74,31 +74,31 @@
 
 /obj/item/weapon/material/snow/snowball/attack_self(mob/user as mob)
 	if(user.a_intent == I_HURT)
-		to_chat(user, SPAN_NOTICE("You smash the snowball in your hand."))
+		to_chat(user, SPAN_NOTICE("Вы разбиваете снежок в руке."))
 		var/atom/S = new /obj/item/stack/material/snow(user.loc)
 		qdel(src)
 		user.put_in_hands(S)
 	else
-		to_chat(user, SPAN_NOTICE("You start compacting the snowball."))
+		to_chat(user, SPAN_NOTICE("Вы начинаете уплотнять снежок."))
 		if(do_after(user, 2 SECONDS))
 			var/atom/S = new /obj/item/weapon/material/snow/snowball/reinforced(user.loc)
 			qdel(src)
 			user.put_in_hands(S)
 
 /obj/item/weapon/material/snow/snowball/reinforced
-	name = "snowball"
-	desc = "A well-formed and fun snowball. It looks kind of dangerous."
+	name = "снежок"
+	desc = "Грамотный и веселый снежок. Это выглядит опасно."
 	//icon_state = "reinf-snowball"
 	force_divisor = 0.20
 	thrown_force_divisor = 0.25
 
 /obj/item/weapon/material/whip
-	name = "whip"
-	desc = "A tool used to discipline animals, or look cool. Mostly the latter."
-	description_info = "Help - Standard attack, no modifiers.<br>\
-	Disarm - Disarming strike. Attempts to disarm the target at range, similar to an unarmed disarm. Additionally, will force the target (if possible) to move away from you.<br>\
-	Grab - Grappling strike. Attempts to pull the target toward you. This can also move objects.<br>\
-	Harm - A standard strike with a small chance to disarm."
+	name = "хлыст"
+	desc = "Инструмент, используемый, чтобы дисциплинировать животных или выглядеть круто. В основном последнее."
+	description_info = "Help - Стандартная атака, без модификаторов.<br>\
+	Disarm - обезвреживающий удар. Пытается обезоружить цель на расстоянии, аналогично обезоруживанию без оружия. Кроме того, заставит цель (если возможно) отойти от вас.<br>\
+	Grab - захватывающий удар. Пытается притянуть цель к себе. Это также может перемещать объекты.<br>\
+	Harm - стандартный удар с небольшим шансом обезоружить."
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "whip"
 	item_state = "chain"
@@ -125,17 +125,17 @@
 	if(istype(A, /atom/movable))
 		var/atom/movable/AM = A
 		if(AM.anchored)
-			to_chat(user, "<span class='notice'>\The [AM] won't budge.</span>")
+			to_chat(user, "<span class='notice'>[AM] не сдвинется с места.</span>")
 			return
 
 		else
 			if(!istype(AM, /obj/item))
-				user.visible_message("<span class='warning'>\The [AM] is pulled along by \the [src]!</span>")
+				user.visible_message("<span class='warning'>[AM] тянет за собой [src]!</span>")
 				AM.Move(get_step(AM, get_dir(AM, src)))
 				return
 
 			else
-				user.visible_message("<span class='warning'>\The [AM] is snatched by \the [src]!</span>")
+				user.visible_message("<span class='warning'>[AM] перехватывается [src]!</span>")
 				AM.throw_at(user, reach, 0.1, user)
 
 /obj/item/weapon/material/whip/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
@@ -143,19 +143,19 @@
 		switch(user.a_intent)
 			if(I_HURT)
 				if(prob(10) && istype(target, /mob/living/carbon/human) && user.zone_sel in list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT, BP_L_ARM, BP_R_ARM, BP_L_HAND, BP_R_HAND))
-					to_chat(target, "<span class='warning'>\The [src] rips at your hands!</span>")
+					to_chat(target, "<span class='warning'>[src] разрывается в ваших руках!</span>")
 					ranged_disarm(target)
 			if(I_DISARM)
 				if(prob(min(90, force * 3)) && istype(target, /mob/living/carbon/human) && user.zone_sel in list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT, BP_L_ARM, BP_R_ARM, BP_L_HAND, BP_R_HAND))
 					ranged_disarm(target)
 				else
-					target.visible_message("<span class='danger'>\The [src] sends \the [target] stumbling away.</span>")
+					target.visible_message("<span class='danger'>[src] заставляет [target] спотыкаться.</span>")
 					target.Move(get_step(target,get_dir(user,target)))
 			if(I_GRAB)
 				var/turf/STurf = get_turf(target)
 				spawn(2)
 					playsound(STurf, 'sound/effects/snap.ogg', 60, 1)
-				target.visible_message("<span class='critical'>\The [src] yanks \the [target] towards \the [user]!</span>")
+				target.visible_message("<span class='critical'>[src] подталкивает [target] к [user]!</span>")
 				target.throw_at(get_turf(get_step(user,get_dir(user,target))), 2, 1, src)
 
 	..()
@@ -172,7 +172,7 @@
 						turfs += T
 					if(turfs.len)
 						var/turf/target = pick(turfs)
-						visible_message("<span class='danger'>[H]'s [W] goes off due to \the [src]!</span>")
+						visible_message("<span class='danger'>[W] [H] гаснет из-за [src]!</span>")
 						return W.afterattack(target,H)
 
 		if(!(H.species.flags & NO_SLIP) && prob(10) && user.zone_sel in list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT))
@@ -180,9 +180,9 @@
 			H.apply_effect(3, WEAKEN, armor_check)
 			playsound(src, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 			if(armor_check < 60)
-				visible_message("<span class='danger'>\The [src] has tripped [H]!</span>")
+				visible_message("<span class='danger'>[src] отключает [H]!</span>")
 			else
-				visible_message("<span class='warning'>\The [src] attempted to trip [H]!</span>")
+				visible_message("<span class='warning'>[src] пытается сбить [H]!</span>")
 			return
 
 		else
@@ -194,15 +194,15 @@
 				for(var/obj/item/I in holding)
 					if(I && prob(holding[I]))
 						H.drop_from_inventory(I)
-						visible_message("<span class='danger'>\The [src] has disarmed [H]!</span>")
+						visible_message("<span class='danger'>[src] разоружает [H]!</span>")
 						playsound(src, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 						return
 
 /obj/item/weapon/material/whip/suicide_act(mob/user)
 	var/datum/gender/T = gender_datums[user.get_visible_gender()]
-	user.visible_message(span("danger", "\The [user] [T.is] strangling [T.himself] with \the [src]! It looks like [T.he] [T.is] trying to commit suicide."), span("danger", "You start to strangle yourself with \the [src]!"), span("danger", "You hear the sound of someone choking!"))
+	user.visible_message(span("danger", "\The [user] [T.is] strangling [T.himself] with \the [src]! It looks like [T.he] [T.is] trying to commit suicide."), span("danger", "Вы начинаете душить себя [src]!"), span("danger", "Вы слышите звук удушья!"))
 	return (OXYLOSS)
 
 /obj/item/weapon/material/whip/attack_self(mob/user)
-	user.visible_message("<span class='warning'>\The [user] cracks \the [src]!</span>")
+	user.visible_message("<span class='warning'>[user] рассекает [src]!</span>")
 	playsound(src, 'sound/effects/snap.ogg', 50, 1)

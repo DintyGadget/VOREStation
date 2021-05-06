@@ -61,7 +61,7 @@
 			if (!lying && !buckled && world.time - l_move_time < 15)
 			//Moving around with fractured ribs won't do you any good
 				if (prob(10) && !stat && can_feel_pain() && chem_effects[CE_PAINKILLER] < 50 && E.is_broken() && E.internal_organs.len)
-					custom_pain("Pain jolts through your broken [E.encased ? E.encased : E.name], staggering you!", 50)
+					custom_pain("Боль пронизывает ваш сломанный [E.encased ? E.encased : E.name], потрясая вас!", 50)
 					drop_item(loc)
 					Stun(2)
 
@@ -92,7 +92,7 @@
 			//malfunctioning only happens intermittently so treat it as a missing limb when it procs
 			stance_damage += 2
 			if(isturf(loc) && prob(10))
-				visible_message("\The [src]'s [E.name] [pick("twitches", "shudders")] and sparks!")
+				visible_message("[src] [E.name] [pick("дергается", "содрогается")] и искрится!")
 				var/datum/effect/effect/system/spark_spread/spark_system = new ()
 				spark_system.set_up(5, 0, src)
 				spark_system.attach(src)
@@ -132,7 +132,7 @@
 		for(var/limb_tag in list(BP_L_HAND, BP_L_ARM))
 			var/obj/item/organ/external/E = get_organ(limb_tag)
 			if(!E)
-				visible_message("<span class='danger'>Lacking a functioning left hand, \the [src] drops \the [l_hand].</span>")
+				visible_message("<span class='danger'>При отсутствии работающей левой руки, [src] отбрасывает [l_hand].</span>")
 				drop_from_inventory(l_hand)
 				break
 
@@ -140,7 +140,7 @@
 		for(var/limb_tag in list(BP_R_HAND, BP_R_ARM))
 			var/obj/item/organ/external/E = get_organ(limb_tag)
 			if(!E)
-				visible_message("<span class='danger'>Lacking a functioning right hand, \the [src] drops \the [r_hand].</span>")
+				visible_message("<span class='danger'>При отсутствии работающей правой руки, [src] отбрасывает [r_hand].</span>")
 				drop_from_inventory(r_hand)
 				break
 
@@ -163,8 +163,8 @@
 						continue
 					drop_from_inventory(r_hand)
 
-			var/emote_scream = pick("screams in pain and ", "lets out a sharp cry and ", "cries out and ")
-			custom_emote(VISIBLE_MESSAGE, "[(can_feel_pain()) ? "" : emote_scream ]drops what they were holding in their [E.name]!")
+			var/emote_scream = pick("кричит от боли и ", "издает резкий крик и ", "кричит и ")
+			custom_emote(VISIBLE_MESSAGE, "[(can_feel_pain()) ? "" : emote_scream ]роняет то, что держит в своей [E.name]!")
 
 		else if(E.is_malfunctioning())
 			switch(E.body_part)
@@ -177,7 +177,7 @@
 						continue
 					drop_from_inventory(r_hand)
 
-			custom_emote(VISIBLE_MESSAGE, "drops what they were holding, their [E.name] malfunctioning!")
+			custom_emote(VISIBLE_MESSAGE, "роняет то, что было в руке, похоже [E.name] неисправно!")
 
 			var/datum/effect/effect/system/spark_spread/spark_system = new /datum/effect/effect/system/spark_spread()
 			spark_system.set_up(5, 0, src)
@@ -201,7 +201,7 @@
 /mob/living/carbon/human/proc/set_gender(var/g)
 	if(g != gender)
 		gender = g
-	
+
 	if(dna.GetUIState(DNA_UI_GENDER) ^ gender == FEMALE) // XOR will catch both cases where they do not match
 		dna.SetUIState(DNA_UI_GENDER, gender == FEMALE)
 		sync_organ_dna(dna)
