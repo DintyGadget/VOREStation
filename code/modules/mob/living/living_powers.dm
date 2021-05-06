@@ -6,7 +6,7 @@
 			to_chat(src, message)
 
 /mob/living/proc/hide()
-	set name = "Hide"
+	set name = "Спрятаться"
 	set desc = "Allows to hide beneath tables or certain items. Toggled on or off."
 	set category = "Abilities"
 
@@ -14,19 +14,19 @@
 		return
 
 	if(status_flags & HIDING)
-		reveal("<span class='notice'>You have stopped hiding.</span>")
+		reveal("<span class='notice'>Вы перестали прятаться.</span>")
 	else
 		status_flags |= HIDING
 		layer = HIDING_LAYER //Just above cables with their 2.44
 		plane = OBJ_PLANE
-		to_chat(src,"<span class='notice'>You are now hiding.</span>")
+		to_chat(src,"<span class='notice'>Вы сейчас прячетесь.</span>")
 
 /mob/living/proc/toggle_selfsurgery()
-	set name = "Allow Self Surgery"
-	set desc = "Toggles the 'safeties' on self-surgery, allowing you to do so."
+	set name = "Разрешить операцию на себе"
+	set desc = "Включает \"меры безопасности\" при самостоятельной операции, позволяя вам это сделать."
 	set category = "Object"
 
 	allow_self_surgery = !allow_self_surgery
 
-	to_chat(usr, "<span class='notice'>You will [allow_self_surgery ? "now" : "no longer"] attempt to operate upon yourself.</span>")
+	to_chat(usr, "<span class='notice'>Вы [allow_self_surgery ? "можете" : "не можете"] прооперировать себя самостоятельно.</span>")
 	log_admin("DEBUG \[[world.timeofday]\]: [src.ckey ? "[src.name]:([src.ckey])" : "[src.name]"] has [allow_self_surgery ? "Enabled" : "Disabled"] self surgery.")

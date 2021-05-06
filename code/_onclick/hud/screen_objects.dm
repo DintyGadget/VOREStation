@@ -275,7 +275,7 @@
 				if(iscarbon(usr))
 					var/mob/living/carbon/C = usr
 					if(C.legcuffed)
-						to_chat(C, "<span class='notice'>You are legcuffed! You cannot run until you get [C.legcuffed] removed!</span>")
+						to_chat(C, "<span class='notice'>Вы в наручниках! Вы не можете бежать, пока не удалите [C.legcuffed]!</span>")
 						C.m_intent = "walk"	//Just incase
 						C.hud_used.move_intent.icon_state = "walking"
 						return 1
@@ -315,7 +315,7 @@
 				if(!C.stat && !C.stunned && !C.paralysis && !C.restrained())
 					if(C.internal)
 						C.internal = null
-						to_chat(C, "<span class='notice'>No longer running on internals.</span>")
+						to_chat(C, "<span class='notice'>Внутреннее устройство отключено.</span>")
 						if(C.internals)
 							C.internals.icon_state = "internal0"
 					else
@@ -327,7 +327,7 @@
 								no_mask = 1
 
 						if(no_mask)
-							to_chat(C, "<span class='notice'>You are not wearing a suitable mask or helmet.</span>")
+							to_chat(C, "<span class='notice'>На вас нет подходящей маски или шлема.</span>")
 							return 1
 						else
 							var/list/nicename = null
@@ -408,15 +408,14 @@
 							//We've determined the best container now we set it as our internals
 
 							if(best)
-								to_chat(C, "<span class='notice'>You are now running on internals from [tankcheck[best]] [from] your [nicename[best]].</span>")
+								to_chat(C, "<span class='notice'>Теперь вы используете [tankcheck[best]] [from] вашего [nicename[best]].</span>")
 								C.internal = tankcheck[best]
-
 
 							if(C.internal)
 								if(C.internals)
 									C.internals.icon_state = "internal1"
 							else
-								to_chat(C, "<span class='notice'>You don't have a[breathes=="oxygen" ? "n oxygen" : addtext(" ",breathes)] tank.</span>")
+								to_chat(C, "<span class='notice'>У вас нет[breathes=="oxygen" ? " кислородного" : addtext(" ",breathes)] баллона.</span>")
 		if("act_intent")
 			usr.a_intent_change("right")
 		if(I_HELP)
@@ -456,7 +455,7 @@
 					R.hud_used.toggle_show_robot_modules()
 					return 1
 				else
-					to_chat(R, "You haven't selected a module yet.")
+					to_chat(R, "Вы еще не выбрали модуль.")
 
 		if("radio")
 			if(issilicon(usr))
@@ -471,7 +470,7 @@
 				if(R.module)
 					R.uneq_active()
 				else
-					to_chat(R, "You haven't selected a module yet.")
+					to_chat(R, "Вы еще не выбрали модуль.")
 
 		if("module1")
 			if(istype(usr, /mob/living/silicon/robot))

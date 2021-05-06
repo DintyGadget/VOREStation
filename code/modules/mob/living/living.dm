@@ -54,7 +54,7 @@
 
 //mob verbs are faster than object verbs. See mob/verb/examine.
 /mob/living/verb/pulled(atom/movable/AM as mob|obj in oview(1))
-	set name = "Pull"
+	set name = "Тащить"
 	set category = "Object"
 
 	if(AM.Adjacent(src))
@@ -71,7 +71,7 @@
 	if(!..())
 		return 0
 
-	usr.visible_message("<b>[src]</b> points to [A]")
+	usr.visible_message("<b>[src]</b> указывает на [A]")
 	return 1
 
 /mob/living/verb/succumb()
@@ -614,7 +614,7 @@
 		else if(client)
 			to_chat(usr, "[src]'s Metainfo:<br>[client.prefs.metadata]")
 		else
-			to_chat(usr, "[src] does not have any stored infomation!")
+			to_chat(usr, "[src] не сожержит информации!")
 	else
 		to_chat(usr, "OOC Metadata is not supported by this server!")
 	//VOREStation Edit End - Making it so SSD people have prefs with fallback to original style.
@@ -622,7 +622,7 @@
 	return
 
 /mob/living/verb/resist()
-	set name = "Resist"
+	set name = "Сопротивляться"
 	set category = "IC"
 
 	if(!incapacitated(INCAPACITATION_KNOCKOUT) && checkClickCooldown())
@@ -679,7 +679,7 @@
 	return
 
 /mob/living/verb/lay_down()
-	set name = "Отдохнуть"
+	set name = "Лечь/Встать"
 	set category = "IC"
 
 	resting = !resting
@@ -765,7 +765,7 @@
 			src.Weaken(5)
 		else
 			if (nutrition <= 100)
-				to_chat(src, "<span class='danger'>Ты давишься, как хочешь, но в желудке ничего нет!</span>")
+				to_chat(src, "<span class='danger'>Вы давитесь, но в желудке ничего нет!</span>")
 				src.Weaken(10)
 			else
 				to_chat(src, "<span class='warning'>Вас тошнит ...</span>")
@@ -848,9 +848,9 @@
 
 	if(lying)
 		density = 0
-		if(l_hand) 
+		if(l_hand)
 			unEquip(l_hand)
-		if(r_hand) 
+		if(r_hand)
 			unEquip(r_hand)
 		for(var/obj/item/weapon/holder/holder in get_mob_riding_slots())
 			unEquip(holder)

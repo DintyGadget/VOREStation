@@ -45,7 +45,7 @@
 				var/mob/living/carbon/C = usr
 				C.toggle_throw_mode()
 			else
-				to_chat(usr, "<font color='red'>This mob type cannot throw items.</font>")
+				to_chat(usr, "<font color='red'>Этот тип моба не может бросать предметы.</font>")
 			return
 		if(NORTHWEST)
 			if(isliving(usr))
@@ -54,11 +54,11 @@
 					if(C.pulling)
 						C.stop_pulling()
 						return
-					to_chat(usr, "<font color='red'>You have nothing to drop in your hand.</font>")
+					to_chat(usr, "<font color='red'>Вам нечего бросить из рук.</font>")
 					return
 				drop_item()
 			else
-				to_chat(usr, "<font color='red'>This mob type cannot drop items.</font>")
+				to_chat(usr, "<font color='red'>Этот тип мобов не может сбрасывать предметы.</font>")
 			return
 
 //This gets called when you press the delete button.
@@ -66,7 +66,7 @@
 	set hidden = 1
 
 	if(!usr.pulling)
-		to_chat(usr, "<font color='blue'>You are not pulling anything.</font>")
+		to_chat(usr, "<font color='blue'>Вы ничего не тянете.</font>")
 		return
 	usr.stop_pulling()
 

@@ -132,7 +132,7 @@
 	return L
 
 /mob/living/mode()
-	set name = "Использовать Предмет В Руке"
+	set name = "Использовать предмет в руке"
 	set category = "Object"
 	set src = usr
 

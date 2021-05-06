@@ -10,7 +10,7 @@
 /mob/observer/eye/aiEye/New()
 	..()
 	visualnet = cameranet
-	
+
 /mob/observer/eye/aiEye/Destroy()
 	if(owner)
 		var/mob/living/silicon/ai/ai = owner
@@ -106,10 +106,10 @@
 
 /mob/living/silicon/ai/proc/toggle_acceleration()
 	set category = "AI Settings"
-	set name = "Toggle Camera Acceleration"
+	set name = "Переключить ускорение камеры"
 
 	if(!eyeobj)
 		return
 
 	eyeobj.acceleration = !eyeobj.acceleration
-	to_chat(usr, "Camera acceleration has been toggled [eyeobj.acceleration ? "on" : "off"].")
+	to_chat(usr, "Ускорение камеры [eyeobj.acceleration ? "включено" : "Выключено"].")

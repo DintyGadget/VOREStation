@@ -9,41 +9,41 @@
 
 	user.visible_message("<span class='notice'>[user] starts inspecting [affecting]'s [E.name] carefully.</span>")
 	if(!do_mob(user,H, 10))
-		to_chat(user, "<span class='notice'>You must stand still to inspect [E] for wounds.</span>")
+		to_chat(user, "<span class='notice'>Вы должны стоять неподвижно, чтобы осмотреть [E] на наличие ран.</span>")
 	else if(E.wounds.len)
-		to_chat(user, "<span class='warning'>You find [E.get_wounds_desc()]</span>")
+		to_chat(user, "<span class='warning'>Вы находите [E.get_wounds_desc()]</span>")
 	else
-		to_chat(user, "<span class='notice'>You find no visible wounds.</span>")
+		to_chat(user, "<span class='notice'>Вы не находите видимых ран.</span>")
 
-	to_chat(user, "<span class='notice'>Checking bones now...</span>")
+	to_chat(user, "<span class='notice'>Сейчас проверяю кости...</span>")
 	if(!do_mob(user, H, 20))
-		to_chat(user, "<span class='notice'>You must stand still to feel [E] for fractures.</span>")
+		to_chat(user, "<span class='notice'>Вы должны стоять неподвижно, чтобы почувствовать переломы [E].</span>")
 	else if(E.status & ORGAN_BROKEN)
 		to_chat(user, "<span class='warning'>The [E.encased ? E.encased : "bone in the [E.name]"] moves slightly when you poke it!</span>")
 		H.custom_pain("Your [E.name] hurts where it's poked.", 40)
 	else
 		to_chat(user, "<span class='notice'>The [E.encased ? E.encased : "bones in the [E.name]"] seem to be fine.</span>")
 
-	to_chat(user, "<span class='notice'>Checking skin now...</span>")
+	to_chat(user, "<span class='notice'>Сейчас проверяю кожу...</span>")
 	if(!do_mob(user, H, 10))
-		to_chat(user, "<span class='notice'>You must stand still to check [H]'s skin for abnormalities.</span>")
+		to_chat(user, "<span class='notice'>Вы должны стоять неподвижно, чтобы проверить кожу [H] на наличие аномалий.</span>")
 	else
 		var/bad = 0
 		if(H.getToxLoss() >= 40)
-			to_chat(user, "<span class='warning'>[H] has an unhealthy skin discoloration.</span>")
+			to_chat(user, "<span class='warning'>[H] имеет нездоровое обесцвечивание кожи.</span>")
 			bad = 1
 		if(H.getOxyLoss() >= 20)
-			to_chat(user, "<span class='warning'>[H]'s skin is unusaly pale.</span>")
+			to_chat(user, "<span class='warning'>Кожа [H] очень бледная.</span>")
 			bad = 1
 		if(E.status & ORGAN_DEAD)
-			to_chat(user, "<span class='warning'>[E] is decaying!</span>")
+			to_chat(user, "<span class='warning'>[E] разлагается!</span>")
 			bad = 1
 		if(!bad)
-			to_chat(user, "<span class='notice'>[H]'s skin is normal.</span>")
+			to_chat(user, "<span class='notice'>Кожа [H] в норме.</span>")
 
 /obj/item/weapon/grab/proc/jointlock(mob/living/carbon/human/target, mob/attacker, var/target_zone)
 	if(state < GRAB_AGGRESSIVE)
-		to_chat(attacker, "<span class='warning'>You require a better grab to do this.</span>")
+		to_chat(attacker, "<span class='warning'>Для этого вам нужен более жесткий захват захват.</span>")
 		return
 
 	var/obj/item/organ/external/organ = target.get_organ(check_zone(target_zone))
@@ -58,7 +58,7 @@
 	var/armor = target.run_armor_check(target, "melee")
 	var/soaked = target.get_armor_soak(target, "melee")
 	if(armor + soaked < 60)
-		to_chat(target, "<span class='danger'>You feel extreme pain!</span>")
+		to_chat(target, "<span class='danger'>Вы чувствуете сильную боль!</span>")
 
 		var/max_halloss = round(target.species.total_health * 0.8) //up to 80% of passing out
 		affecting.adjustHalLoss(CLAMP(max_halloss - affecting.halloss, 0, 30))
@@ -72,14 +72,14 @@
 	if(!attack)
 		return
 	if(state < GRAB_NECK)
-		to_chat(attacker, "<span class='warning'>You require a better grab to do this.</span>")
+		to_chat(attacker, "<span class='warning'>Для этого вам нужен более жесткий захват захват.</span>")
 		return
 	for(var/obj/item/protection in list(target.head, target.wear_mask, target.glasses))
 		if(protection && (protection.body_parts_covered & EYES))
-			to_chat(attacker, "<span class='danger'>You're going to need to remove the eye covering first.</span>")
+			to_chat(attacker, "<span class='danger'>Сначала вам нужно будет снять повязку с глаз.</span>")
 			return
 	if(!target.has_eyes())
-		to_chat(attacker, "<span class='danger'>You cannot locate any eyes on [target]!</span>")
+		to_chat(attacker, "<span class='danger'>Вы не можете найти никаких глаз у [target]!</span>")
 		return
 
 	add_attack_logs(attacker,target,"Eye gouge using grab")
@@ -91,8 +91,8 @@
 		return
 	if(target.lying)
 		return
-	var/datum/gender/T = gender_datums[attacker.get_visible_gender()]
-	attacker.visible_message("<span class='danger'>[attacker] thrusts [T.his] head into [target]'s skull!</span>")
+	//var/datum/gender/T = gender_datums[attacker.get_visible_gender()]
+	attacker.visible_message("<span class='danger'>[attacker] врезает свою голову в череп [target]!</span>")
 
 	var/damage = 20
 	var/obj/item/clothing/hat = attacker.head
@@ -118,7 +118,7 @@
 
 /obj/item/weapon/grab/proc/dislocate(mob/living/carbon/human/target, mob/living/attacker, var/target_zone)
 	if(state < GRAB_NECK)
-		to_chat(attacker, "<span class='warning'>You require a better grab to do this.</span>")
+		to_chat(attacker, "<span class='warning'>Для этого вам нужен более жесткий захват захват.</span>")
 		return
 	if(target.grab_joint(attacker, target_zone))
 		playsound(src, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
@@ -126,13 +126,13 @@
 
 /obj/item/weapon/grab/proc/pin_down(mob/target, mob/attacker)
 	if(state < GRAB_AGGRESSIVE)
-		to_chat(attacker, "<span class='warning'>You require a better grab to do this.</span>")
+		to_chat(attacker, "<span class='warning'>Для этого вам нужен более жесткий захват захват.</span>")
 		return
 	if(force_down)
-		to_chat(attacker, "<span class='warning'>You are already pinning [target] to the ground.</span>")
+		to_chat(attacker, "<span class='warning'>Вы уже прижимаете [target] к земле.</span>")
 		return
 	if(size_difference(affecting, assailant) > 0)
-		to_chat(attacker, "<span class='warning'>You are too small to do that!</span>")
+		to_chat(attacker, "<span class='warning'>Вы слишком малы, чтобы сделать это!</span>")
 		return
 
 	attacker.visible_message("<span class='danger'>[attacker] starts forcing [target] to the ground!</span>")

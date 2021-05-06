@@ -64,7 +64,7 @@
 /mob/living/carbon/human/Stat()
 	..()
 	if(statpanel("Статус"))
-		stat("Намерение:", "[a_intent]")
+		stat("Режим:", "[a_intent]")
 		stat("Режим передвижения:", "[m_intent]")
 		if(emergency_shuttle)
 			var/eta_status = emergency_shuttle.get_status_panel_eta()

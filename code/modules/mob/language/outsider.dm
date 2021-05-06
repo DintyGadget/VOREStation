@@ -1,7 +1,7 @@
 /datum/language/ling
 	name = LANGUAGE_CHANGELING
 	desc = "Although they are normally wary and suspicious of each other, changelings can commune over a distance."
-	speech_verb = "says"
+	speech_verb = "говорит"
 	colour = "changeling"
 	key = "g"
 	machine_understands = 0

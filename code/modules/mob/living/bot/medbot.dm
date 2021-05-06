@@ -63,11 +63,11 @@
 
 	if(vocal && prob(1))
 		var/message_options = list(
-			"Radar, put a mask on!" = 'sound/voice/medbot/mradar.ogg',
-			"There's always a catch, and it's the best there is." = 'sound/voice/medbot/mcatch.ogg',
-			"I knew it, I should've been a plastic surgeon." = 'sound/voice/medbot/msurgeon.ogg',
-			"What kind of medbay is this? Everyone's dropping like flies." = 'sound/voice/medbot/mflies.ogg',
-			"Delicious!" = 'sound/voice/medbot/mdelicious.ogg'
+			"Радар, надень маску!" = 'sound/voice/medbot/mradar.ogg',
+			"Во всем есть подвох, и это лучшее, что есть на свете." = 'sound/voice/medbot/mcatch.ogg',
+			"Я всегда знал что, должен был стать пластическим хирургом." = 'sound/voice/medbot/msurgeon.ogg',
+			"Что это за МедОтсек? Все дохнут как мухи." = 'sound/voice/medbot/mflies.ogg',
+			"Деликатес!" = 'sound/voice/medbot/mdelicious.ogg'
 			)
 		var/message = pick(message_options)
 		say(message)
@@ -115,9 +115,9 @@
 			if(last_newpatient_speak + 30 SECONDS < world.time)
 				if(vocal)
 					var/message_options = list(
-						"Hey, [H.name]! Hold on, I'm coming." = 'sound/voice/medbot/mcoming.ogg',
-						"Wait [H.name]! I want to help!" = 'sound/voice/medbot/mhelp.ogg',
-						"[H.name], you appear to be injured!" = 'sound/voice/medbot/minjured.ogg'
+						"Эй, [H.name]! Держись, Я иду." = 'sound/voice/medbot/mcoming.ogg',
+						"Подожди [H.name]! Я иду на помощь!" = 'sound/voice/medbot/mhelp.ogg',
+						"[H.name], кажется вы ранены!" = 'sound/voice/medbot/minjured.ogg'
 						)
 					var/message = pick(message_options)
 					say(message)
@@ -143,10 +143,10 @@
 	if(!t)
 		return
 
-	visible_message("<span class='warning'>[src] is trying to inject [H]!</span>")
+	visible_message("<span class='warning'>[src] пытается ввести [H]!</span>")
 	if(declare_treatment)
 		var/area/location = get_area(src)
-		global_announcer.autosay("[src] is treating <b>[H]</b> in <b>[location]</b>", "[src]", "Medical")
+		global_announcer.autosay("[src] лечит <b>[H]</b> in <b>[location]</b>", "[src]", "Medical")
 	busy = 1
 	update_icons()
 	if(do_mob(src, H, 30))
@@ -154,15 +154,15 @@
 			reagent_glass.reagents.trans_to_mob(H, injection_amount, CHEM_BLOOD)
 		else
 			H.reagents.add_reagent(t, injection_amount)
-		visible_message("<span class='warning'>[src] injects [H] with the syringe!</span>")
+		visible_message("<span class='warning'>[src] вводит [H] шприцем!</span>")
 
 	if(H.stat == DEAD) // This is down here because this proc won't be called again due to losing a target because of parent AI loop.
 		target = null
 		if(vocal)
 			var/death_messages = list(
-				"No! Stay with me!" = 'sound/voice/medbot/mno.ogg',
-				"Live, damnit! LIVE!" = 'sound/voice/medbot/mlive.ogg',
-				"I... I've never lost a patient before. Not today, I mean." = 'sound/voice/medbot/mlost.ogg'
+				"Нет! Останься со мной!" = 'sound/voice/medbot/mno.ogg',
+				"Живи, черт возьми! ЖИВИ!" = 'sound/voice/medbot/mlive.ogg',
+				"Я ... я никогда раньше не терял пациента. Я имею в виду, не сегодня." = 'sound/voice/medbot/mlost.ogg'
 				)
 			var/message = pick(death_messages)
 			say(message)
@@ -175,9 +175,9 @@
 			target = null
 			if(vocal)
 				var/possible_messages = list(
-					"All patched up!" = 'sound/voice/medbot/mpatchedup.ogg',
-					"An apple a day keeps me away." = 'sound/voice/medbot/mapple.ogg',
-					"Feel better soon!" = 'sound/voice/medbot/mfeelbetter.ogg'
+					"Все залатано!" = 'sound/voice/medbot/mpatchedup.ogg',
+					"Советую есть по яблочку в день." = 'sound/voice/medbot/mapple.ogg',
+					"Поправляйся!" = 'sound/voice/medbot/mfeelbetter.ogg'
 					)
 				var/message = pick(possible_messages)
 				say(message)
@@ -197,11 +197,11 @@
 
 /mob/living/bot/medbot/attack_hand(mob/living/carbon/human/H)
 	if(H.a_intent == I_DISARM && !is_tipped)
-		H.visible_message("<span class='danger'>[H] begins tipping over [src].</span>", "<span class='warning'>You begin tipping over [src]...</span>")
+		H.visible_message("<span class='danger'>[H] начинает опрокидывать [src].</span>", "<span class='warning'>Вы начинаете опрокидывать [src] ...</span>")
 
 		if(world.time > last_tipping_action_voice + 15 SECONDS)
 			last_tipping_action_voice = world.time // message for tipping happens when we start interacting, message for righting comes after finishing
-			var/list/messagevoice = list("Hey, wait..." = 'sound/voice/medbot/hey_wait.ogg',"Please don't..." = 'sound/voice/medbot/please_dont.ogg',"I trusted you..." = 'sound/voice/medbot/i_trusted_you.ogg', "Nooo..." = 'sound/voice/medbot/nooo.ogg', "Oh fuck-" = 'sound/voice/medbot/oh_fuck.ogg')
+			var/list/messagevoice = list("Эй, подожди..." = 'sound/voice/medbot/hey_wait.ogg',"Пожалуйста, не..." = 'sound/voice/medbot/please_dont.ogg',"Я тебе доверял..." = 'sound/voice/medbot/i_trusted_you.ogg', "Нееет..." = 'sound/voice/medbot/nooo.ogg', "Вот блядь-" = 'sound/voice/medbot/oh_fuck.ogg')
 			var/message = pick(messagevoice)
 			say(message)
 			playsound(src, messagevoice[message], 70, FALSE)
@@ -210,7 +210,7 @@
 			tip_over(H)
 
 	else if(H.a_intent == I_HELP && is_tipped)
-		H.visible_message("<span class='notice'>[H] begins righting [src].</span>", "<span class='notice'>You begin righting [src]...</span>")
+		H.visible_message("<span class='notice'>[H] начинает исправлять [src].</span>", "<span class='notice'>Вы начинаете исправлять [src]...</span>")
 		if(do_after(H, 3 SECONDS, target=src))
 			set_right(H)
 	else
@@ -251,16 +251,16 @@
 /mob/living/bot/medbot/attackby(var/obj/item/O, var/mob/user)
 	if(istype(O, /obj/item/weapon/reagent_containers/glass))
 		if(locked)
-			to_chat(user, "<span class='notice'>You cannot insert a beaker because the panel is locked.</span>")
+			to_chat(user, "<span class='notice'>Вы не можете вставить емкость, потому что панель заблокирована.</span>")
 			return
 		if(!isnull(reagent_glass))
-			to_chat(user, "<span class='notice'>There is already a beaker loaded.</span>")
+			to_chat(user, "<span class='notice'>Емкость уже установлена.</span>")
 			return
 
 		user.drop_item()
 		O.loc = src
 		reagent_glass = O
-		to_chat(user, "<span class='notice'>You insert [O].</span>")
+		to_chat(user, "<span class='notice'>Вы вставляете [O].</span>")
 		return
 	else
 		..()
@@ -268,10 +268,10 @@
 /mob/living/bot/medbot/tgui_act(action, list/params, datum/tgui/ui, datum/tgui_state/state)
 	if(..())
 		return TRUE
-	
+
 	usr.set_machine(src)
 	add_fingerprint(usr)
-	
+
 	. = TRUE
 	switch(action)
 		if("power")
@@ -316,8 +316,8 @@
 	. = ..()
 	if(!emagged)
 		if(user)
-			to_chat(user, "<span class='warning'>You short out [src]'s reagent synthesis circuits.</span>")
-		visible_message("<span class='warning'>[src] buzzes oddly!</span>")
+			to_chat(user, "<span class='warning'>Вы замыкаете цепи синтеза реагентов [src].</span>")
+		visible_message("<span class='warning'>[src] странно гудит!</span>")
 		flick("medibot_spark", src)
 		target = null
 		busy = 0
@@ -329,7 +329,7 @@
 
 /mob/living/bot/medbot/explode()
 	on = 0
-	visible_message("<span class='danger'>[src] blows apart!</span>")
+	visible_message("<span class='danger'>[src] разлетается на части!</span>")
 	var/turf/Tsec = get_turf(src)
 
 	new /obj/item/weapon/storage/firstaid(Tsec)
@@ -360,7 +360,7 @@
 
 /mob/living/bot/medbot/proc/tip_over(mob/user)
 	playsound(src, 'sound/machines/warning-buzzer.ogg', 50)
-	user.visible_message("<span class='danger'>[user] tips over [src]!</span>", "<span class='danger'>You tip [src] over!</span>")
+	user.visible_message("<span class='danger'>[user] опрокидывает [src]!</span>", "<span class='danger'>Вы опрокидываете [src]!</span>")
 	is_tipped = TRUE
 	tipper_name = user.name
 	var/matrix/mat = transform
@@ -371,12 +371,12 @@
 	if(user)
 		user.visible_message("<span class='notice'>[user] sets [src] right-side up!</span>", "<span class='green'>You set [src] right-side up!</span>")
 		if(user.name == tipper_name)
-			messagevoice = list("I forgive you." = 'sound/voice/medbot/forgive.ogg')
+			messagevoice = list("Я прощаю вас." = 'sound/voice/medbot/forgive.ogg')
 		else
-			messagevoice = list("Thank you!" = 'sound/voice/medbot/thank_you.ogg', "You are a good person." = 'sound/voice/medbot/youre_good.ogg')
+			messagevoice = list("Спасибо!" = 'sound/voice/medbot/thank_you.ogg', "You are a good person." = 'sound/voice/medbot/youre_good.ogg')
 	else
 		visible_message("<span class='notice'>[src] manages to [pick("writhe", "wriggle", "wiggle")] enough to right itself.</span>")
-		messagevoice = list("Fuck you." = 'sound/voice/medbot/fuck_you.ogg', "Your behavior has been reported, have a nice day." = 'sound/voice/medbot/reported.ogg')
+		messagevoice = list("Пошел нахуй." = 'sound/voice/medbot/fuck_you.ogg', "О вашем поведении сообщили, хорошего дня." = 'sound/voice/medbot/reported.ogg')
 
 	tipper_name = null
 	if(world.time > last_tipping_action_voice + 15 SECONDS)
@@ -394,17 +394,17 @@
 	var/list/messagevoice
 	switch(tipped_status)
 		if(MEDBOT_PANIC_LOW)
-			messagevoice = list("I require assistance." = 'sound/voice/medbot/i_require_asst.ogg')
+			messagevoice = list("Мне нужна помощь." = 'sound/voice/medbot/i_require_asst.ogg')
 		if(MEDBOT_PANIC_MED)
-			messagevoice = list("Please put me back." = 'sound/voice/medbot/please_put_me_back.ogg')
+			messagevoice = list("Пожалуйста, поставьте меня на место" = 'sound/voice/medbot/please_put_me_back.ogg')
 		if(MEDBOT_PANIC_HIGH)
-			messagevoice = list("Please, I am scared!" = 'sound/voice/medbot/please_im_scared.ogg')
+			messagevoice = list("Пожалуйста, мне страшно!" = 'sound/voice/medbot/please_im_scared.ogg')
 		if(MEDBOT_PANIC_FUCK)
-			messagevoice = list("I don't like this, I need help!" = 'sound/voice/medbot/dont_like.ogg', "This hurts, my pain is real!" = 'sound/voice/medbot/pain_is_real.ogg')
+			messagevoice = list("Мне это не нравится, мне нужна помощь!" = 'sound/voice/medbot/dont_like.ogg', "Это больно, моя боль настоящая!" = 'sound/voice/medbot/pain_is_real.ogg')
 		if(MEDBOT_PANIC_ENDING)
-			messagevoice = list("Is this the end?" = 'sound/voice/medbot/is_this_the_end.ogg', "Nooo!" = 'sound/voice/medbot/nooo.ogg')
+			messagevoice = list("Это конец?" = 'sound/voice/medbot/is_this_the_end.ogg', "Неееет!" = 'sound/voice/medbot/nooo.ogg')
 		if(MEDBOT_PANIC_END)
-			global_announcer.autosay("PSYCH ALERT: Crewmember [tipper_name] recorded displaying antisocial tendencies torturing bots in [get_area(src)]. Please schedule psych evaluation.", "[src]", "Medical")
+			global_announcer.autosay("ПСИХИЧЕСКОЕ ПРЕДУПРЕЖДЕНИЕ: член экипажа [tipper_name] записал демонстрацию антиобщественных действий, а именно пытку ботов в [get_area(src)]. Проведите психологическую оценку.", "[src]", "Medical")
 			set_right() // strong independent medbot
 
 	// if(prob(tipped_status)) // Commented out pending introduction of jitter stuff from /tg/
@@ -424,15 +424,15 @@
 
 	switch(tipped_status)
 		if(MEDBOT_PANIC_NONE to MEDBOT_PANIC_LOW)
-			. += "It appears to be tipped over, and is quietly waiting for someone to set it right."
+			. += "Кажется, что он перевернулся и спокойно ждет, чтобы кто-то его исправил."
 		if(MEDBOT_PANIC_LOW to MEDBOT_PANIC_MED)
-			. += "It is tipped over and requesting help."
+			. += "Он опрокидывается и просит помощи."
 		if(MEDBOT_PANIC_MED to MEDBOT_PANIC_HIGH)
-			. += "They are tipped over and appear visibly distressed." // now we humanize the medbot as a they, not an it
+			. += "Он опрокидывается и выглядит обеспокоенными." // now we humanize the medbot as a they, not an it
 		if(MEDBOT_PANIC_HIGH to MEDBOT_PANIC_FUCK)
-			. += "<span class='warning'>They are tipped over and visibly panicking!</span>"
+			. += "<span class='warning'>Он опрокинут и явно запаниковал!</span>"
 		if(MEDBOT_PANIC_FUCK to INFINITY)
-			. += "<span class='warning'><b>They are freaking out from being tipped over!</b></span>"
+			. += "<span class='warning'><b>Он в ужасе от того, что его опрокинули!</b></span>"
 
 /mob/living/bot/medbot/confirmTarget(var/mob/living/carbon/human/H)
 	if(!..())
@@ -477,7 +477,7 @@
 		return
 
 	if(contents.len >= 1)
-		to_chat(user, "<span class='notice'>You need to empty [src] out first.</span>")
+		to_chat(user, "<span class='notice'>Сначала вам нужно опустошить [src].</span>")
 		return
 
 	var/obj/item/weapon/firstaid_arm_assembly/A = new /obj/item/weapon/firstaid_arm_assembly
@@ -490,7 +490,7 @@
 
 	qdel(S)
 	user.put_in_hands(A)
-	to_chat(user, "<span class='notice'>You add the robot arm to the first aid kit.</span>")
+	to_chat(user, "<span class='notice'>Вы добавляете руку робота в аптечку.</span>")
 	user.drop_from_inventory(src)
 	qdel(src)
 
@@ -500,7 +500,7 @@
 		return
 
 	if(contents.len >= 1)
-		to_chat(user, "<span class='notice'>You need to empty [src] out first.</span>")
+		to_chat(user, "<span class='notice'>Сначала вам нужно опустошить [src].</span>")
 		return
 
 	var/obj/item/weapon/firstaid_arm_assembly/A = new /obj/item/weapon/firstaid_arm_assembly
@@ -513,13 +513,13 @@
 
 	qdel(S)
 	user.put_in_hands(A)
-	to_chat(user, "<span class='notice'>You add the robot arm to the first aid kit.</span>")
+	to_chat(user, "<span class='notice'>Вы добавляете руку робота в аптечку.</span>")
 	user.drop_from_inventory(src)
 	qdel(src)
 
 /obj/item/weapon/firstaid_arm_assembly
 	name = "first aid/robot arm assembly"
-	desc = "A first aid kit with a robot arm permanently grafted to it."
+	desc = "Аптечка, к которой постоянно прикреплена рука робота."
 	icon = 'icons/obj/aibots.dmi'
 	icon_state = "firstaid_arm"
 	var/build_step = 0
@@ -535,7 +535,7 @@
 /obj/item/weapon/firstaid_arm_assembly/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	..()
 	if(istype(W, /obj/item/weapon/pen))
-		var/t = sanitizeSafe(input(user, "Enter new robot name", name, created_name), MAX_NAME_LEN)
+		var/t = sanitizeSafe(input(user, "Введите новое имя", name, created_name), MAX_NAME_LEN)
 		if(!t)
 			return
 		if(!in_range(src, usr) && loc != usr)
@@ -548,7 +548,7 @@
 					user.drop_item()
 					qdel(W)
 					build_step++
-					to_chat(user, "<span class='notice'>You add the health sensor to [src].</span>")
+					to_chat(user, "<span class='notice'>Вы добавляете датчик здоровья в [src].</span>")
 					name = "First aid/robot arm/health analyzer assembly"
 					overlays += image('icons/obj/aibots.dmi', "na_scanner")
 
@@ -556,7 +556,7 @@
 				if(isprox(W))
 					user.drop_item()
 					qdel(W)
-					to_chat(user, "<span class='notice'>You complete the Medibot! Beep boop.</span>")
+					to_chat(user, "<span class='notice'>Вы завершили Medibot! Бип-буп.</span>")
 					var/turf/T = get_turf(src)
 					var/mob/living/bot/medbot/S = new /mob/living/bot/medbot(T)
 					S.skin = skin

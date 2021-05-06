@@ -48,7 +48,7 @@
 			return
 
 	if(!is_preference_enabled(/datum/client_preference/show_dsay))
-		to_chat(usr, "<span class='danger'>You have deadchat muted.</span>")
+		to_chat(usr, "<span class='danger'>У вас отключен мертвый чат.</span>")
 		return
 
 	message = encode_html_emphasis(message)

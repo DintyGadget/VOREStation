@@ -1,6 +1,6 @@
 /obj/item/clothing/mask/breath
-	desc = "A close-fitting mask that can be connected to an air supply."
-	name = "breath mask"
+	desc = "Плотно прилегающая маска, которую можно подключить к источнику воздуха."
+	name = "дыхательная маска"
 	icon_state = "breath"
 	item_state_slots = list(slot_r_hand_str = "breath", slot_l_hand_str = "breath")
 	item_flags = AIRTIGHT|FLEXIBLEMATERIAL
@@ -22,13 +22,13 @@
 			body_parts_covered = body_parts_covered & ~FACE
 			item_flags = item_flags & ~AIRTIGHT
 			icon_state = "breathdown"
-			to_chat(user, "Your mask is now hanging on your neck.")
+			to_chat(user, "Ваша маска теперь висит у вас на шее.")
 		else
 			gas_transfer_coefficient = initial(gas_transfer_coefficient)
 			body_parts_covered = initial(body_parts_covered)
 			item_flags = initial(item_flags)
 			icon_state = initial(icon_state)
-			to_chat(user, "You pull the mask up to cover your face.")
+			to_chat(user, "Вы натягиваете маску, чтобы закрыть лицо.")
 		update_clothing_icon()
 
 /obj/item/clothing/mask/breath/attack_self(mob/user)
@@ -36,14 +36,14 @@
 
 /obj/item/clothing/mask/breath/verb/toggle()
 		set category = "Object"
-		set name = "Adjust mask"
+		set name = "Настроить маску"
 		set src in usr
 
 		adjust_mask(usr)
 
 /obj/item/clothing/mask/breath/medical
-	desc = "A close-fitting sterile mask that can be connected to an air supply."
-	name = "medical mask"
+	desc = "Плотно прилегающая стерильная маска, которую можно подключить к источнику воздуха."
+	name = "медицинская маска"
 	icon_state = "medical"
 	item_state_slots = list(slot_r_hand_str = "medical", slot_l_hand_str = "medical")
 	permeability_coefficient = 0.01

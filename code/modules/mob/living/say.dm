@@ -40,18 +40,18 @@ var/list/department_radio_keys = list(
 
 	  //kinda localization -- rastaf0
 	  //same keys as above, but on russian keyboard layout. This file uses cp1251 as encoding.
-	  ":к" = "right ear",	".к" = "right ear",
-	  ":д" = "left ear",	".д" = "left ear",
-	  ":ш" = "intercom",	".ш" = "intercom",
-	  ":р" = "department",	".р" = "department",
-	  ":с" = "Command",		".с" = "Command",
-	  ":т" = "Science",		".т" = "Science",
-	  ":ь" = "Medical",		".ь" = "Medical",
-	  ":у" = "Engineering",	".у" = "Engineering",
-	  ":ы" = "Security",	".ы" = "Security",
-	  ":ц" = "whisper",		".ц" = "whisper",
-	  ":е" = "Mercenary",	".е" = "Mercenary",
-	  ":й" = "Supply",		".й" = "Supply",
+	  ":ПУ" = "right ear",	".пу" = "right ear",
+	  ":ЛУ" = "left ear",	".лу" = "left ear",
+	  ":И" = "intercom",	".и" = "intercom",
+	  ":О" = "department",	".о" = "department",
+	  ":К" = "Command",		".к" = "Command",
+	  ":Н" = "Science",		".н" = "Science",
+	  ":М" = "Medical",		".м" = "Medical",
+	  ":Ж" = "Engineering",	".ж" = "Engineering",
+	  ":Б" = "Security",	".б" = "Security",
+	  ":Ш" = "whisper",		".ш" = "whisper",
+	  ":С" = "Mercenary",	".с" = "Mercenary",
+	  ":П" = "Supply",		".п" = "Supply",
 )
 
 
@@ -154,20 +154,20 @@ proc/get_radio_key_from_channel(var/channel)
 	var/message_mode = parse_message_mode(message, "headset")
 
 	//Maybe they are using say/whisper to do a quick emote, so do those
-	switch(copytext(message, 1, 2))
-		if("*") return emote(copytext(message, 2))
-		if("^") return custom_emote(1, copytext(message, 2))
+	switch(copytext_char(message, 1, 2))
+		if("*") return emote(copytext_char(message, 2))
+		if("^") return custom_emote(1, copytext_char(message, 2))
 
 	//Parse the radio code and consume it
 	if(message_mode)
 		if(message_mode == "headset")
-			message = copytext(message, 2)	//it would be really nice if the parse procs could do this for us.
+			message = copytext_char(message, 2)	//it would be really nice if the parse procs could do this for us.
 		else if(message_mode == "whisper")
 			whispering = 1
 			message_mode = null
-			message = copytext(message, 3)
+			message = copytext_char(message, 3)
 		else
-			message = copytext(message, 3)
+			message = copytext_char(message, 3)
 
 	//Clean up any remaining space on the left
 	message = trim_left(message)
@@ -191,7 +191,7 @@ proc/get_radio_key_from_channel(var/channel)
 	// If you're muzzled, you can only speak sign language
 	// However, sign language is handled above.
 	if(is_muzzled())
-		to_chat(src, "<span class='danger'>You're muzzled and cannot speak!</span>")
+		to_chat(src, "<span class='danger'>Вы в наморднике и не можете говорить.</span>")
 		return
 
 	//Whisper vars
@@ -254,7 +254,7 @@ proc/get_radio_key_from_channel(var/channel)
 			message_range = first_piece.speaking.get_talkinto_msg_range(message)
 		var/msg
 		if(!first_piece.speaking || !(first_piece.speaking.flags & NO_TALK_MSG))
-			msg = "<span class='notice'>[src] talks into [used_radios[1]]</span>"
+			msg = "<span class='notice'>[src] разговаривает с [used_radios[1]]</span>"
 
 		if(msg)
 			for(var/mob/living/M in hearers(5, src) - src)
@@ -271,7 +271,7 @@ proc/get_radio_key_from_channel(var/channel)
 
 	//VOREStation edit - allows for custom say verbs, overriding all other say-verb types- e.g. "says loudly" instead of "shouts"
 	//You'll still stammer if injured or slur if drunk, but it won't have those specific words
-	var/ending = copytext(message, length(message))
+	var/ending = copytext_char(message, length(message))
 
 	if(custom_whisper && whispering)
 		verb = "[custom_whisper]"

@@ -1,16 +1,16 @@
 /mob/living/proc/toggle_rider_reins()
-	set name = "Give Reins"
+	set name = "Дать поводья"
 	set category = "Abilities"
-	set desc = "Let people riding on you control your movement."
+	set desc = "Позвольте людям, которые едут на вас, контролировать ваше движение."
 
 	if(riding_datum)
 		if(istype(riding_datum,/datum/riding))
 			if(riding_datum.keytype)
 				riding_datum.keytype = null
-				to_chat(src, "Rider control enabled.")
+				to_chat(src, "Включено управление наездником.")
 				return
 			else
 				riding_datum.keytype = /obj/item/weapon/material/twohanded/riding_crop
-				to_chat(src, "Rider control restricted.")
+				to_chat(src, "Управление наездником отключено.")
 				return
 	return

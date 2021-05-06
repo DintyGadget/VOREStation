@@ -16,7 +16,7 @@
 	// Unless the walker is confused.
 	if(m_intent == "walk" && confused <= 0)
 		if(!n.is_safe_to_enter(src))
-			to_chat(src, span("warning", "\The [n] is dangerous to move into."))
+			to_chat(src, span("warning", "Входить в [n] опасно."))
 			return FALSE // In case any code wants to know if movement happened.
 	return ..() // Parent call should make the mob move.
 
@@ -57,12 +57,12 @@ default behaviour is:
 		for(var/mob/living/M in range(tmob, 1))
 			if(tmob.pinned.len ||  ((M.pulling == tmob && ( tmob.restrained() && !( M.restrained() ) && M.stat == 0)) || locate(/obj/item/weapon/grab, tmob.grabbed_by.len)) )
 				if ( !(world.time % 5) )
-					to_chat(src, "<span class='warning'>[tmob] is restrained, you cannot push past</span>")
+					to_chat(src, "<span class='warning'>[tmob] ограничен, вы не можете пройти мимо</span>")
 				now_pushing = 0
 				return
 			if( tmob.pulling == M && ( M.restrained() && !( tmob.restrained() ) && tmob.stat == 0) )
 				if ( !(world.time % 5) )
-					to_chat(src, "<span class='warning'>[tmob] is restraining [M], you cannot push past</span>")
+					to_chat(src, "<span class='warning'>[tmob] сдерживает [M], вы не можете пройти мимо</span>")
 				now_pushing = 0
 				return
 
@@ -141,7 +141,7 @@ default behaviour is:
 		if(ishuman(tmob))
 			var/mob/living/carbon/human/H = tmob
 			if(H.species.lightweight == 1 && prob(50))
-				H.visible_message("<span class='warning'>[src] bumps into [H], knocking them off balance!</span>")
+				H.visible_message("<span class='warning'>[src] врезается в [H], сбивая с ног [H]!</span>")
 				H.Weaken(5)
 				now_pushing = 0
 				return
@@ -151,7 +151,7 @@ default behaviour is:
 		// VOREStation Edit - End
 		if(istype(tmob, /mob/living/carbon/human) && (FAT in tmob.mutations))
 			if(prob(40) && !(FAT in src.mutations))
-				to_chat(src, "<span class='danger'>You fail to push [tmob]'s fat ass out of the way.</span>")
+				to_chat(src, "<span class='danger'>Вам не удается оттолкнуть толстую задницу [tmob] с дороги.</span>")
 				now_pushing = 0
 				return
 		if(tmob.r_hand && istype(tmob.r_hand, /obj/item/weapon/shield/riot))

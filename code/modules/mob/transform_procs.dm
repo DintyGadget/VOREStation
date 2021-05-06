@@ -36,7 +36,7 @@
 	dna.SetSEState(MONKEYBLOCK,1)
 	dna.SetSEValueRange(MONKEYBLOCK,0xDAC, 0xFFF)
 
-	to_chat(src, "<B>You are now [species.name]. </B>")
+	to_chat(src, "<B>Теперь вы [species.name]. </B>")
 	qdel(animation)
 
 	return src
@@ -50,12 +50,12 @@
 		return
 	for(var/t in organs)
 		qdel(t)
-	
+
 	//VOREStation Edit Start - Hologram examine flavor
 	var/mob/living/silicon/ai/O = ..(move)
 	if(O)
 		O.flavor_text = O.client?.prefs?.flavor_texts["general"]
-	
+
 	return O
 	//VOREStation Edit End
 
@@ -92,7 +92,7 @@
 						continue
 					loc_landmark = tripai
 		if (!loc_landmark)
-			to_chat(src, "Oh god sorry we can't find an unoccupied AI spawn location, so we're spawning you on top of someone.")
+			to_chat(src, "О боже, извините, мы не можем найти незанятую точку появления ИИ, поэтому мы создаем вас поверх кого-то.")
 			for(var/obj/effect/landmark/start/sloc in landmarks_list)
 				if (sloc.name == "AI")
 					loc_landmark = sloc
@@ -172,7 +172,7 @@
 		if(O.mind.assigned_role == "Cyborg")
 			O.mind.original = O
 		else if(mind && mind.special_role)
-			O.mind.store_memory("In case you look at this after being borged, the objectives are only here until I find a way to make them not show up for you, as I can't simply delete them without screwing up round-end reporting. --NeoFite")
+			O.mind.store_memory("На случай, если вы посмотрите на это после того, как вас обидели, цели здесь только до тех пор, пока я не найду способ сделать так, чтобы они не отображались для вас, так как я не могу просто удалить их, не испортив отчет о раунде. --NeoFite")
 	else
 		O.key = key
 
@@ -222,7 +222,7 @@
 	new_xeno.a_intent = I_HURT
 	new_xeno.key = key
 
-	to_chat(new_xeno, "<B>You are now an alien.</B>")
+	to_chat(new_xeno, "<B>Теперь вы чужой.</B>")
 	qdel(src)
 	return
 
@@ -244,7 +244,7 @@
 	new_corgi.a_intent = I_HURT
 	new_corgi.key = key
 
-	to_chat(new_corgi, "<B>You are now a Corgi. Yap Yap!</B>")
+	to_chat(new_corgi, "<B>Теперь вы Коги. Гав Гав!</B>")
 	qdel(src)
 	return
 
@@ -254,7 +254,7 @@
 	var/mobpath = input("Which type of mob should [src] turn into?", "Choose a type") in mobtypes
 
 	if(!safe_animal(mobpath))
-		to_chat(usr, "<font color='red'>Sorry but this mob type is currently unavailable.</font>")
+		to_chat(usr, "<font color='red'>Извините, но этот тип мобов в настоящее время недоступен.</font>")
 		return
 
 	if(transforming)
@@ -277,7 +277,7 @@
 	new_mob.a_intent = I_HURT
 
 
-	to_chat(new_mob, "You suddenly feel more... animalistic.")
+	to_chat(new_mob, "Вы внезапно чувствуете себя более ... животным.")
 	spawn()
 		qdel(src)
 	return
@@ -288,7 +288,7 @@
 	var/mobpath = input("Which type of mob should [src] turn into?", "Choose a type") in mobtypes
 
 	if(!safe_animal(mobpath))
-		to_chat(usr, "<font color='red'>Sorry but this mob type is currently unavailable.</font>")
+		to_chat(usr, "<font color='red'>Извините, но этот тип мобов в настоящее время недоступен.</font>")
 		return
 
 	var/mob/new_mob = new mobpath(src.loc)
