@@ -22,8 +22,8 @@
 
 
 /obj/item/stack/medical/advanced/clotting
-	name = "liquid bandage kit"
-	singular_name = "liquid bandage kit"
+	name = "набор жидких повязок"
+	singular_name = "набор жидких повязок"
 	desc = "Спрей, останавливающий кровотечение, с использованием запатентованного химического коктейля. Одноразовый. На одного пациента требуется только одно использование."
 	icon_state = "clotkit"
 	heal_burn = 0

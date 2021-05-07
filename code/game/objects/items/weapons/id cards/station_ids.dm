@@ -1,5 +1,5 @@
 /obj/item/weapon/card/id
-	name = "identification card"
+	name = "ID карта"
 	desc = "Карта, используемая для удостоверения личности и определения доступа через станцию."
 	icon_state = "generic-nt"
 	item_state = "card-id"
@@ -50,7 +50,7 @@
 		ui.open()
 
 /obj/item/weapon/card/id/proc/update_name()
-	name = "ID Карта [src.registered_name] ([src.assignment])"
+	name = "ID карта [src.registered_name] ([src.assignment])"
 
 /obj/item/weapon/card/id/proc/set_id_photo(var/mob/M)
 	COMPILE_OVERLAYS(M)
@@ -125,13 +125,13 @@
 		access = J.get_access()
 
 /obj/item/weapon/card/id/silver
-	name = "identification card"
+	name = "ID карта"
 	desc = "Серебряная карта, которая свидетельствует о чести и преданности делу."
 	icon_state = "silver-id"
 	item_state = "silver_id"
 
 /obj/item/weapon/card/id/gold
-	name = "identification card"
+	name = "ID карта"
 	desc = "Золотая карта, которая показывает силу и мощь."
 	icon_state = "gold-id"
 	item_state = "gold_id"
@@ -196,14 +196,14 @@
 
 // Department-flavor IDs
 /obj/item/weapon/card/id/medical
-	name = "identification card"
+	name = "ID карта"
 	desc = "Карточка, выданная медперсоналу станции."
 	icon_state = "medical-id"
 	primary_color = rgb(189,237,237)
 	secondary_color = rgb(223,255,255)
 
 /obj/item/weapon/card/id/medical/head
-	name = "identification card"
+	name = "ID карта"
 	desc = "Карта, олицетворяющая заботу и сострадание."
 	primary_color = rgb(189,237,237)
 	secondary_color = rgb(255,223,127)
@@ -211,7 +211,7 @@
 	rank = "Chief Medical Officer"
 
 /obj/item/weapon/card/id/security
-	name = "identification card"
+	name = "ID карта"
 	desc = "Карточка, выданная сотрудникам службы безопасности станции."
 	icon_state = "security-id"
 	primary_color = rgb(189,47,0)
@@ -222,7 +222,7 @@
 	rank = "Warden"
 
 /obj/item/weapon/card/id/security/head
-	name = "identification card"
+	name = "ID карта"
 	desc = "Карта, олицетворяющая честь и защиту."
 	primary_color = rgb(189,47,0)
 	secondary_color = rgb(255,223,127)
@@ -230,7 +230,7 @@
 	rank = "Head of Security"
 
 /obj/item/weapon/card/id/engineering
-	name = "identification card"
+	name = "ID карта"
 	desc = "Карта выдается инженерному составу станции."
 	icon_state = "engineering-id"
 	primary_color = rgb(189,94,0)
@@ -241,7 +241,7 @@
 	rank = "Atmospheric Technician"
 
 /obj/item/weapon/card/id/engineering/head
-	name = "identification card"
+	name = "ID карта"
 	desc = "Карта, олицетворяющая креативность и изобретательность."
 	primary_color = rgb(189,94,0)
 	secondary_color = rgb(255,223,127)
@@ -249,14 +249,14 @@
 	rank = "Chief Engineer"
 
 /obj/item/weapon/card/id/science
-	name = "identification card"
+	name = "ID карта"
 	desc = "Карточка, выданная научным сотрудникам станции."
 	icon_state = "science-id"
 	primary_color = rgb(142,47,142)
 	secondary_color = rgb(191,127,191)
 
 /obj/item/weapon/card/id/science/head
-	name = "identification card"
+	name = "ID карта"
 	desc = "Карта, представляющая знания и рассуждения."
 	primary_color = rgb(142,47,142)
 	secondary_color = rgb(255,223,127)
@@ -264,14 +264,14 @@
 	rank = "Research Director"
 
 /obj/item/weapon/card/id/cargo
-	name = "identification card"
+	name = "ID карта"
 	desc = "Карточка, выдаваемая сотрудникам грузовой станции."
 	icon_state = "cargo-id"
 	primary_color = rgb(142,94,0)
 	secondary_color = rgb(191,159,95)
 
 /obj/item/weapon/card/id/cargo/head
-	name = "identification card"
+	name = "ID карта"
 	desc = "Карта, представляющая обслуживание и планирование."
 	primary_color = rgb(142,94,0)
 	secondary_color = rgb(255,223,127)
@@ -283,7 +283,7 @@
 	rank = USELESS_JOB //VOREStation Edit - Visitor not Assistant
 
 /obj/item/weapon/card/id/civilian
-	name = "identification card"
+	name = "ID карта"
 	desc = "Карта, выданная гражданскому персоналу станции."
 	icon_state = "civilian-id"
 	primary_color = rgb(0,94,142)
@@ -292,13 +292,13 @@
 	rank = "Assistant"
 
 /obj/item/weapon/card/id/civilian/head //This is not the HoP. There's no position that uses this right now.
-	name = "identification card"
+	name = "ID карта"
 	desc = "Карта, олицетворяющая здравый смысл и ответственность."
 	primary_color = rgb(0,94,142)
 	secondary_color = rgb(255,223,127)
 
 /obj/item/weapon/card/id/external
-	name = "identification card"
+	name = "ID карта"
 	desc = "Какое-то удостоверение личности. Не похоже, что он выпущен NT."
 	icon_state = "generic"
 	primary_color = rgb(142,94,0)

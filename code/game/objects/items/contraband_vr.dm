@@ -1,5 +1,5 @@
 /obj/item/stolenpackage
-	name = "stolen package"
+	name = "украденный пакет"
 	desc = "Что в коробке?"
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "deliverycrate5"
@@ -89,7 +89,7 @@
 		qdel(src)
 
 /obj/item/weapon/storage/fancy/cigar/havana // Putting this here 'cuz fuck it. -Spades
-	name = "\improper Havana cigar case"
+	name = "Портсигар гавана"
 	desc = "Приберегите их для модных брюк на следующем приеме от Центкома. Вы не можете выпустить дым от таких величественных столов никому в лицо."
 	icon_state = "cigarcase"
 	icon = 'icons/obj/cigarettes.dmi'
@@ -101,11 +101,11 @@
 	icon_type = "cigar"
 
 /obj/item/weapon/miscdisc
-	name = "strange artefact"
-	desc = "A large disc-shaped item, with a red, opaque crystal embedded in the center. It is some what heavy. There are indentations along the ring of the disc. Alien scripture lines the disc."
+	name = "странный артефакт"
+	desc = "Большой предмет в форме диска с красным непрозрачным кристаллом в центре. Это что-то тяжелое. Вдоль кольца диска есть углубления. Чужеродное Священное Писание выстилает диск."
 	icon_state = "wahdisc"
 	icon = 'icons/obj/contraband_vr.dmi'
 	w_class = ITEMSIZE_NORMAL
 
 /obj/item/weapon/miscdisc/attack_self(mob/living/user as mob)
-	to_chat(user, "As you hold the large disc in your open palm, fingers cusped around the edge, the crystal embedded in the item begins to vibrate. It lifts itself from the disc a few cenimetres, before beginning to glow with a bright red light. The glow lasts for a few seconds, before the crystal embeds itself back into the disc with a quick snap.")
+	to_chat(user, "Когда вы держите большой диск в раскрытой ладони, пальцы согнуты по краю, кристалл, встроенный в предмет, начинает вибрировать. Он отрывается от диска на несколько сантиметров, а затем начинает светиться ярким красным светом. Свечение длится несколько секунд, после чего кристалл с быстрым щелчком снова встраивается в диск.")

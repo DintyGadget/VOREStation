@@ -1,6 +1,6 @@
 /obj/item/weapon/mop_deploy
-	name = "mop"
-	desc = "Deployable mop."
+	name = "швабра"
+	desc = "Раздвижная швабра."
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "mop"
 	force = 3

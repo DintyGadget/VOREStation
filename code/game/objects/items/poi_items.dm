@@ -1,10 +1,10 @@
 
 /obj/item/poi
 	icon = 'icons/obj/objects.dmi'
-	desc = "This is definitely something cool."
+	desc = "Это определенно что-то крутое."
 
 /datum/category_item/catalogue/information/objects/pascalb
-	name = "Object - Pascal B Steel Shaft Cap"
+	name = "Объект - Стальная крышка вала Pascal B"
 	desc = "In the year 1957, the United States of America - an Earth nation - performed a series \
 	of earth nuclear weapons tests codenamed 'Operation Plumbbob', which remain the largest and \
 	longest running nuclear test series performed on the American continent. Test data included \
@@ -24,8 +24,8 @@
 
 /obj/item/poi/pascalb
 	icon_state = "pascalb"
-	name = "misshapen manhole cover"
-	desc = "The top of this twisted chunk of metal is faintly stamped with a five pointed star. 'Property of US Army, Pascal B - 1957'."
+	name = "деформированная крышка люка"
+	desc = "На вершине этого скрученного куска металла слегка выбита пятиконечная звезда. «Собственность армии США, Паскаль Б - 1957»."
 	catalogue_data = list(/datum/category_item/catalogue/information/objects/pascalb)
 
 /obj/item/poi/pascalb/New()

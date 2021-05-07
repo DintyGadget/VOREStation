@@ -1,7 +1,7 @@
 //Body snatcher. Based off the sleevemate, but instead of storing a mind it lets you swap your mind with someone. Extremely illegal and being caught with one s
 /obj/item/device/bodysnatcher
-	name = "\improper Body Snatcher Device"
-	desc = "An extremely illegal tool that allows the user to swap minds with the selected humanoid victim. The LED panel on the side states 'Place both heads on the device, pull trigger, then wait for the transfer to complete.'"
+	name = "Устройство похитителя тела"
+	desc = "Крайне незаконный инструмент, позволяющий пользователю обмениваться сознанием с выбранной жертвой-гуманоидом. Светодиодная панель сбоку показывает: «Поместите обе головки на устройство, нажмите спусковой крючок, затем дождитесь завершения передачи»."
 	icon = 'icons/obj/device_alt.dmi'
 	icon_state = "sleevemate" //Give this a fancier sprite later.
 	item_state = "healthanalyzer"

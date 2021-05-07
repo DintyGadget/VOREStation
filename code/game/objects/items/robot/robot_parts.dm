@@ -16,52 +16,52 @@
 	..(newloc)
 
 /obj/item/robot_parts/l_arm
-	name = "cyborg left arm"
-	desc = "A skeletal limb wrapped in pseudomuscles, with a low-conductivity case."
+	name = "левая рука киборга"
+	desc = "Скелетная конечность, обернутая псевдомышцами, с корпусом с низкой проводимостью."
 	icon_state = "l_arm"
 	part = list(BP_L_ARM, BP_L_HAND)
 	model_info = 1
 
 /obj/item/robot_parts/r_arm
-	name = "cyborg right arm"
-	desc = "A skeletal limb wrapped in pseudomuscles, with a low-conductivity case."
+	name = "правая рука киборга"
+	desc = "Скелетная конечность, обернутая псевдомышцами, с корпусом с низкой проводимостью."
 	icon_state = "r_arm"
 	part = list(BP_R_ARM, BP_R_HAND)
 	model_info = 1
 
 /obj/item/robot_parts/l_leg
-	name = "cyborg left leg"
+	name = "левая нога киборга"
 	desc = "A skeletal limb wrapped in pseudomuscles, with a low-conductivity case."
 	icon_state = "l_leg"
 	part = list(BP_L_LEG, BP_L_FOOT)
 	model_info = 1
 
 /obj/item/robot_parts/r_leg
-	name = "cyborg leg"
-	desc = "A skeletal limb wrapped in pseudomuscles, with a low-conductivity case."
+	name = "правая нога киборга"
+	desc = "Скелетная конечность, обернутая псевдомышцами, с корпусом с низкой проводимостью."
 	icon_state = "r_leg"
 	part = list(BP_R_LEG, BP_R_FOOT)
 	model_info = 1
 
 /obj/item/robot_parts/chest
-	name = "cyborg chest"
-	desc = "A heavily reinforced case containing cyborg logic boards, with space for a standard power cell."
+	name = "тело киборга"
+	desc = "Сильно усиленный корпус, содержащий логические платы киборга, с местом для стандартной энергоячейки."
 	icon_state = "chest"
 	part = list(BP_GROIN,BP_TORSO)
 	var/wires = 0.0
 	var/obj/item/weapon/cell/cell = null
 
 /obj/item/robot_parts/head
-	name = "cyborg head"
-	desc = "A standard reinforced braincase, with spine-plugged neural socket and sensor gimbals."
+	name = "голова киборга"
+	desc = "Стандартная усиленная мозговая оболочка с подключенным к позвоночнику нейронным гнездом и сенсорными карданами."
 	icon_state = "head"
 	part = list(BP_HEAD)
 	var/obj/item/device/flash/flash1 = null
 	var/obj/item/device/flash/flash2 = null
 
 /obj/item/robot_parts/robot_suit
-	name = "endoskeleton"
-	desc = "A complex metal backbone with standard limb sockets and pseudomuscle anchors."
+	name = "эндоскелет"
+	desc = "Сложный металлический позвоночник со стандартными гнездами для конечностей и псевдомышечными якорями."
 	icon_state = "robo_suit"
 	var/obj/item/robot_parts/l_arm/l_arm = null
 	var/obj/item/robot_parts/r_arm/r_arm = null
@@ -105,13 +105,13 @@
 		if (M.use(1))
 			var/obj/item/weapon/secbot_assembly/ed209_assembly/B = new /obj/item/weapon/secbot_assembly/ed209_assembly
 			B.loc = get_turf(src)
-			to_chat(user, "<span class='notice'>You armed the robot frame.</span>")
+			to_chat(user, "<span class='notice'>Вы вооружили раму робота.</span>")
 			if (user.get_inactive_hand()==src)
 				user.remove_from_mob(src)
 				user.put_in_inactive_hand(B)
 			qdel(src)
 		else
-			to_chat(user, "<span class='warning'>You need one sheet of metal to arm the robot frame.</span>")
+			to_chat(user, "<span class='warning'>Вам нужен один лист металла, чтобы вооружить раму робота.</span>")
 	if(istype(W, /obj/item/robot_parts/l_leg))
 		if(src.l_leg)	return
 		user.drop_item()

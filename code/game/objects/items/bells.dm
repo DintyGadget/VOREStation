@@ -1,5 +1,5 @@
 /obj/item/weapon/deskbell
-	name = "desk bell"
+	name = "настольный звонок"
 	desc = "Раздражающий колокольчик. Колокольчик для обслуживания."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "deskbell"

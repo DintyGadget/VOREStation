@@ -1,7 +1,7 @@
 /obj/item/stack/nanopaste
-	name = "nanopaste"
+	name = "нанопаста"
 	singular_name = "nanite swarm"
-	desc = "A tube of paste containing swarms of repair nanites. Very effective in repairing robotic machinery."
+	desc = "Тюбик пасты, содержащий рои ремонтных нанитов. Очень эффективен при ремонте робототехники."
 	icon = 'icons/obj/stacks_vr.dmi' //VOREStation Edit
 	icon_state = "nanopaste"
 	origin_tech = list(TECH_MATERIAL = 4, TECH_ENGINEERING = 3)

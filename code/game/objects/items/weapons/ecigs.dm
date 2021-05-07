@@ -1,6 +1,6 @@
 /obj/item/clothing/mask/smokable/ecig
-	name = "electronic cigarette"
-	desc = "For the modern approach to smoking."
+	name = "электронная сигарета"
+	desc = "За современный подход к курению."
 	icon = 'icons/obj/ecig.dmi'
 	var/active = 0
 	//var/obj/item/weapon/cell/ec_cell = /obj/item/weapon/cell/device
@@ -8,7 +8,7 @@
 	var/obj/item/weapon/reagent_containers/ecig_cartridge/ec_cartridge
 	w_class = ITEMSIZE_TINY
 	slot_flags = SLOT_EARS | SLOT_MASK
-	attack_verb = list("attacked", "poked", "battered")
+	attack_verb = list("атакует", "тыкает", "трепает")
 	body_parts_covered = 0
 	var/brightness_on = 1
 	chem_volume = 0 //ecig has no storage on its own but has reagent container created by parent obj
@@ -24,11 +24,11 @@
 
 /obj/item/clothing/mask/smokable/ecig/examine(mob/user)
 	. = ..()
-	
+
 	if(active)
-		. += "<span class='notice'>It is turned on.</span>"
+		. += "<span class='notice'>Она включена.</span>"
 	else
-		. += "<span class='notice'>It is turned off.</span>"
+		. += "<span class='notice'>Она выключена.</span>"
 	if(Adjacent(user))
 		if(ec_cartridge)
 			if(!ec_cartridge.reagents?.total_volume)

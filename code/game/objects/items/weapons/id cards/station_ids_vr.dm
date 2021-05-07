@@ -49,7 +49,7 @@
 	rank = "null"
 
 /obj/item/weapon/card/id/event/accessset/itg
-	name = "identification card"
+	name = "ID карта"
 	desc = "Маленькая карточка, обозначающая принадлежность к Ironcrest Transport Group."
 	icon = 'icons/obj/card_vr.dmi'
 	base_icon = 'icons/obj/card_vr.dmi'

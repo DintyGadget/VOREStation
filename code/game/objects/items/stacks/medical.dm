@@ -1,5 +1,5 @@
 /obj/item/stack/medical
-	name = "medical pack"
+	name = "медицинский набор"
 	singular_name = "medical pack"
 	icon = 'icons/obj/stacks.dmi'
 	amount = 10
@@ -81,8 +81,8 @@
 	return .
 
 /obj/item/stack/medical/crude_pack
-	name = "crude bandage"
-	singular_name = "crude bandage length"
+	name = "грубая повязка"
+	singular_name = "длинная грубая повязка"
 	desc = "Несколько бинтов, чтобы обмотать окровавленные культяпки."
 	icon_state = "gauze"
 	origin_tech = list(TECH_BIO = 1)
@@ -100,11 +100,11 @@
 		var/obj/item/organ/external/affecting = H.get_organ(user.zone_sel.selecting)
 
 		if(affecting.open)
-			to_chat(user, "<span class='notice'>The [affecting.name] is cut open, you'll need more than a bandage!</span>")
+			to_chat(user, "<span class='notice'>[affecting.name] разрезана, вам понадобится что-то большее, чем повязка!</span>")
 			return
 
 		if(affecting.is_bandaged())
-			to_chat(user, "<span class='warning'>The wounds on [M]'s [affecting.name] have already been bandaged.</span>")
+			to_chat(user, "<span class='warning'>Раны [M] на [affecting.name] уже были перевязаны.</span>")
 			return 1
 		else
 			var/available = get_amount()
@@ -123,7 +123,7 @@
 					break
 
 				if(affecting.is_bandaged()) // We do a second check after the delay, in case it was bandaged after the first check.
-					to_chat(user, "<span class='warning'>The wounds on [M]'s [affecting.name] have already been bandaged.</span>")
+					to_chat(user, "<span class='warning'>Раны [M] на [affecting.name] уже были перевязаны.</span>")
 					return 1
 
 				if(used >= available)
@@ -148,7 +148,7 @@
 			use(used)
 
 /obj/item/stack/medical/bruise_pack
-	name = "roll of gauze"
+	name = "рулон марли"
 	singular_name = "gauze length"
 	desc = "Немного стерильной марли, чтобы обернуть вокруг окровавленных культей."
 	icon_state = "brutepack"

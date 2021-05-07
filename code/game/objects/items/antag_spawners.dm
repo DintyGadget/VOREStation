@@ -42,14 +42,14 @@
 	return
 
 /obj/item/weapon/antag_spawner/technomancer_apprentice
-	name = "apprentice teleporter"
-	desc = "A teleportation device, which will bring a less potent manipulator of space to you."
+	name = "телепортер ученика"
+	desc = "Устройство телепортации, которое принесет вам менее мощный манипулятор пространства."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "oldshieldoff"
 	ghost_query_type = /datum/ghost_query/apprentice
 
 /obj/item/weapon/antag_spawner/technomancer_apprentice/attack_self(mob/user)
-	to_chat(user, "<span class='notice'>Teleporter attempting to lock on to your apprentice.</span>")
+	to_chat(user, "<span class='notice'>Телепорт пытается захватить вашего ученика.</span>")
 	request_player()
 
 /obj/item/weapon/antag_spawner/technomancer_apprentice/request_player()
@@ -60,7 +60,7 @@
 	..()
 	if(!used)
 		icon_state = "oldshieldoff"
-		visible_message("<span class='warning'>The teleporter failed to find the apprentice.  Perhaps another attempt could be made later?</span>")
+		visible_message("<span class='warning'>Телепортеру не удалось найти ученика. Может быть, позже можно будет сделать еще одну попытку?</span>")
 
 /obj/item/weapon/antag_spawner/technomancer_apprentice/spawn_antag(client/C, turf/T)
 	sparks.start()
@@ -68,10 +68,10 @@
 	C.prefs.copy_to(H)
 	H.key = C.key
 
-	to_chat(H, "<b>You are the Technomancer's apprentice!  Your goal is to assist them in their mission at the [station_name()].</b>")
-	to_chat(H, "<b>Your service has not gone unrewarded, however. Studying under them, you have learned how to use a Manipulation Core \
-	of your own.  You also have a catalog, to purchase your own functions and equipment as you see fit.</b>")
-	to_chat(H, "<b>It would be wise to speak to your master, and learn what their plans are for today.</b>")
+	to_chat(H, "<b>Вы ученик Техноманта! Ваша цель - помочь им в их миссии на [station_name()].</b>")
+	to_chat(H, "<b>Однако ваша услуга не осталась без награды. Обучаясь под его взором, вы научились использовать собственное ядро манипуляции. \
+    У вас также есть каталог, в котором вы можете приобрести собственные способности и оборудование по своему усмотрению.</b>")
+	to_chat(H, "<b>Было бы разумно поговорить со своим хозяином и узнать, каковы его планы на сегодня.</b>")
 
 	spawn(1)
 		technomancers.add_antagonist(H.mind, 0, 1, 0, 0, 0)

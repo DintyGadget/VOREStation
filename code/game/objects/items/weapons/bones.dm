@@ -1,6 +1,6 @@
 //These bone objects are mostly for mapping and decoration. They have no actual medical use, so maybe don't try to put them in anybody.
 /obj/item/weapon/bone
-	name = "bone"
+	name = "кость"
 	desc = "Неописуемая кость. Она такая старая и изношенная, что едва ли можно сказать, из какой части тела она сделана."
 	icon = 'icons/obj/bones.dmi'
 	icon_state = "bone"
@@ -11,7 +11,7 @@
 	attack_verb = list("attacked", "bashed", "battered", "bludgeoned", "whacked", "bonked", "boned")
 
 /obj/item/weapon/bone/skull
-	name = "skull"
+	name = "череп"
 	desc = "Череп. Судя по форме и размеру, можно было предположить, что это человек."
 	icon_state = "skull"
 	throwforce = 7
@@ -29,18 +29,18 @@
 	icon_state = "xenoskull"
 
 /obj/item/weapon/bone/arm
-	name = "arm bone"
+	name = "кость руки"
 	desc = "Вооружившись этим, вы вооружены и опасны, без всяких сомнений."
 	attack_verb = list("attacked", "bashed", "battered", "bludgeoned", "whacked", "bonked", "boned", "slapped", "punched")
 	icon_state = "arm"
 
 /obj/item/weapon/bone/leg
-	name = "leg bone"
+	name = "кость ноги"
 	desc = "Не беспокойтесь о том, чтобы спорить с владельцем этого. У них нет ноги, на которой можно стоять."
 	attack_verb = list("attacked", "bashed", "battered", "bludgeoned", "whacked", "bonked", "boned", "kicked")
 	icon_state = "leg"
 
 /obj/item/weapon/bone/ribs
-	name = "ribcage"
+	name = "грудная клетка"
 	desc = "Если бы у вас были молотки, вы, вероятно, могли бы использовать их как импровизированный ксилофон."
 	icon_state = "ribs"

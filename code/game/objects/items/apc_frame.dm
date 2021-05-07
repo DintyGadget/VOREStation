@@ -1,7 +1,7 @@
 // APC HULL
 
 /obj/item/frame/apc
-	name = "\improper APC frame"
+	name = "рама APC"
 	desc = "Используется для ремонта или сборки APC"
 	icon = 'icons/obj/apc_repair.dmi'
 	icon_state = "apc_frame"

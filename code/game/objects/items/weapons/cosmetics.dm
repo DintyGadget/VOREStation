@@ -1,7 +1,7 @@
 /obj/item/weapon/lipstick
 	gender = PLURAL
-	name = "red lipstick"
-	desc = "A generic brand of lipstick."
+	name = "красная помада"
+	desc = "Универсальный бренд помады."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "lipstick"
 	w_class = ITEMSIZE_TINY
@@ -12,26 +12,26 @@
 	pickup_sound = 'sound/items/pickup/glass.ogg'
 
 /obj/item/weapon/lipstick/purple
-	name = "purple lipstick"
+	name = "фиолетовая помада"
 	colour = "purple"
 
 /obj/item/weapon/lipstick/jade
-	name = "jade lipstick"
+	name = "нефритовая помада"
 	colour = "jade"
 
 /obj/item/weapon/lipstick/black
-	name = "black lipstick"
+	name = "черная помада"
 	colour = "black"
 
 /obj/item/weapon/lipstick/random
-	name = "lipstick"
+	name = "помада"
 
 /obj/item/weapon/lipstick/random/New()
 	colour = pick("red","purple","jade","black")
-	name = "[colour] lipstick"
+	name = "[colour] помада"
 
 /obj/item/weapon/lipstick/attack_self(mob/user as mob)
-	to_chat(user, "<span class='notice'>You twist \the [src] [open ? "closed" : "open"].</span>")
+	to_chat(user, "<span class='notice'>Вы [open ? "закрываете" : "открывает"] [src].</span>")
 	open = !open
 	if(open)
 		icon_state = "[initial(icon_state)]_[colour]"
@@ -46,7 +46,7 @@
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(H.lip_style)	//if they already have lipstick on
-			to_chat(user, "<span class='notice'>You need to wipe off the old lipstick first!</span>")
+			to_chat(user, "<span class='notice'>Сначала нужно стереть старую помаду!</span>")
 			return
 		if(H == user)
 			user.visible_message("<span class='notice'>[user] does their lips with \the [src].</span>", \
@@ -67,8 +67,8 @@
 //you can wipe off lipstick with paper! see code/modules/paperwork/paper.dm, paper/attack()
 
 /obj/item/weapon/haircomb //sparklysheep's comb
-	name = "purple comb"
-	desc = "A pristine purple comb made from flexible plastic."
+	name = "фиолетовый гребень"
+	desc = "Нетронутая фиолетовая расческа из гибкого пластика."
 	w_class = ITEMSIZE_TINY
 	slot_flags = SLOT_EARS
 	icon = 'icons/obj/items.dmi'

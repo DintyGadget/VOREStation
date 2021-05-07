@@ -96,11 +96,11 @@
 // Description: Allows a ghost to send a text message to a communicator.
 /mob/observer/dead/verb/text_communicator()
 	set category = "Ghost"
-	set name = "Text Communicator"
-	set desc = "If there is a communicator available, send a text message to it."
+	set name = "Призрачный коммуникатор"
+	set desc = "Если есть доступный коммуникатор, отправьте ему текстовое сообщение."
 
 	if(ticker.current_state < GAME_STATE_PLAYING)
-		to_chat(src, "<span class='danger'>The game hasn't started yet!</span>")
+		to_chat(src, "<span class='danger'>Игра еще не началась!</span>")
 		return
 
 	if (!src.stat)
@@ -111,13 +111,12 @@
 
 	for(var/mob/living/L in mob_list) //Simple check so you don't have dead people calling.
 		if(src.client.prefs.real_name == L.real_name)
-			to_chat(src, "<span class='danger'>Your identity is already present in the game world.  Please load in a different character first.</span>")
+			to_chat(src, "<span class='danger'>Ваша личность уже присутствует в игровом мире.  Пожалуйста, сначала загрузите другого персонажа.</span>")
 			return
 
 	var/obj/machinery/exonet_node/E = get_exonet_node()
 	if(!E || !E.on || !E.allow_external_communicators)
-		to_chat(src, "<span class='danger'>The Exonet node at telecommunications is down at the moment, or is actively blocking you, \
-		so your call can't go through.</span>")
+		to_chat(src, "<span class='danger'>Узел Exonet в телекоммуникациях в данный момент отключен или активно блокирует вас, поэтому ваш вызов не может пройти.</span>")
 		return
 
 	var/list/choices = list()
@@ -127,20 +126,20 @@
 		choices.Add(comm)
 
 	if(!choices.len)
-		to_chat(src, "<span class='danger'>There are no available communicators, sorry.</span>")
+		to_chat(src, "<span class='danger'>К сожалению, нет доступных коммуникаторов.</span>")
 		return
 
-	var/choice = input(src,"Send a text message to whom?") as null|anything in choices
+	var/choice = input(src,"Кому отправить текстовое сообщение?") as null|anything in choices
 	if(choice)
 		var/obj/item/device/communicator/chosen_communicator = choice
 		var/mob/observer/dead/O = src
-		var/text_message = sanitize(input(src, "What do you want the message to say?")) as message
+		var/text_message = sanitize(input(src, "Что вы хотите, чтобы в сообщении говорилось?")) as message
 		if(text_message && O.exonet)
 			O.exonet.send_message(chosen_communicator.exonet.address, "text", text_message)
 
-			to_chat(src, "<span class='notice'>You have sent '[text_message]' to [chosen_communicator].</span>")
-			exonet_messages.Add("<b>To [chosen_communicator]:</b><br>[text_message]")
-			log_pda("(DCOMM: [src]) sent \"[text_message]\" to [chosen_communicator]", src)
+			to_chat(src, "<span class='notice'>Вы послали '[text_message]' [chosen_communicator].</span>")
+			exonet_messages.Add("<b>[chosen_communicator]:</b><br>[text_message]")
+			log_pda("(DCOMM: [src]) получено \"[text_message]\" [chosen_communicator]", src)
 			for(var/mob/M in player_list)
 				if(M.stat == DEAD && M.is_preference_enabled(/datum/client_preference/ghost_ears))
 					if(istype(M, /mob/new_player) || M.forbid_seeing_deadchat)
@@ -156,10 +155,10 @@
 // Description: Lets ghosts review messages they've sent or received.
 /mob/observer/dead/verb/show_text_messages()
 	set category = "Ghost"
-	set name = "Show Text Messages"
+	set name = "Показывать Текстовые сообщения"
 	set desc = "Allows you to see exonet text messages you've sent and received."
 
-	var/HTML = "<html><head><title>Exonet Message Log</title></head><body>"
+	var/HTML = "<html><meta charset=\"utf-8\"><head><title>Exonet Message Log</title></head><body>"
 	for(var/line in exonet_messages)
 		HTML += line + "<br>"
 	HTML +="</body></html>"

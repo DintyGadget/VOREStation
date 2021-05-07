@@ -3,8 +3,8 @@
 //I opted to show exact radiation levels
 
 /obj/item/device/geiger
-	name = "geiger counter"
-	desc = "A handheld device used for detecting and measuring radiation in an area."
+	name = "счетчик Гейгера"
+	desc = "Портативное устройство, используемое для обнаружения и измерения радиации в зоне."
 	icon_state = "geiger_off"
 	item_state = "multitool"
 	w_class = ITEMSIZE_SMALL
@@ -34,7 +34,7 @@
 /obj/item/device/geiger/examine(mob/user)
 	. = ..()
 	get_radiation()
-	. += "<span class='warning'>[scanning ? "Ambient" : "Stored"] radiation level: [radiation_count ? radiation_count : "0"]Bq.</span>"
+	. += "<span class='warning'>[scanning ? "Внешний" : "Сохраненный"] уровень радцации: [radiation_count ? radiation_count : "0"]Bq.</span>"
 
 /obj/item/device/geiger/rad_act(amount)
 	if(!amount || !scanning)
@@ -65,7 +65,7 @@
 		STOP_PROCESSING(SSobj, src)
 	update_icon()
 	update_sound()
-	to_chat(user, "<span class='notice'>[bicon(src)] You switch [scanning ? "on" : "off"] \the [src].</span>")
+	to_chat(user, "<span class='notice'>[bicon(src)] Вы [scanning ? "включаете" : "отключаете"] [src].</span>")
 
 /obj/item/device/geiger/update_icon()
 	if(!scanning)

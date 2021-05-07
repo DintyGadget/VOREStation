@@ -1,5 +1,5 @@
 /obj/item/weapon/card/id/syndicate
-	name = "agent card"
+	name = "карта агента"
 	icon_state = "generic-s"
 	assignment = "Agent"
 	origin_tech = list(TECH_ILLEGAL = 3)
@@ -88,7 +88,7 @@
 	return name
 
 /obj/item/weapon/card/id/syndicate_command
-	name = "syndicate ID card"
+	name = "ID карта синдиката"
 	desc = "ID прямо из Syndicate."
 	registered_name = "Syndicate"
 	assignment = "Syndicate Commander"

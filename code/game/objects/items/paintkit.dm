@@ -60,8 +60,8 @@
 // Root hardsuit kit defines.
 // Icons for modified hardsuits need to be in the proper .dmis because suit cyclers may cock them up.
 /obj/item/device/kit/suit
-	name = "voidsuit modification kit"
-	desc = "A kit for modifying a voidsuit."
+	name = "комплект модификации voidsuit"
+	desc = "Набор для модификации voidsuit."
 	uses = 2
 	var/new_light_overlay
 
@@ -88,7 +88,7 @@
 				helmet.icon_override = new_icon_override_file
 			if(new_light_overlay)
 				helmet.light_overlay = new_light_overlay
-			to_chat(user, "You set about modifying the helmet into [helmet].")
+			to_chat(user, "Вы приступили к переделке шлема в [helmet].")
 			var/mob/living/carbon/human/H = user
 			if(istype(H))
 				helmet.species_restricted = list(H.species.get_bodytype(H))
@@ -108,7 +108,7 @@
 			if(new_icon_override_file)
 				suit.icon_override = new_icon_override_file
 				S.icon_override = new_icon_override_file
-			to_chat(user, "You set about modifying the suit into [suit].")
+			to_chat(user, "Вы приступили к переделке костюма в [suit].")
 //			var/mob/living/carbon/human/H = user
 //			if(istype(H))
 //				suit.species_restricted = list(H.species.get_bodytype(H)) Does not quite make sense for something usually very pliable.
@@ -122,7 +122,7 @@
 				suit.icon = new_icon_file
 			if(new_icon_override_file)
 				suit.icon_override = new_icon_override_file
-			to_chat(user, "You set about modifying the suit into [suit].")
+			to_chat(user, "Вы приступили к переделке костюма в [suit].")
 			var/mob/living/carbon/human/H = user
 			if(istype(H))
 				suit.species_restricted = list(H.species.get_bodytype(H))
@@ -168,7 +168,7 @@
 		if(!istype(piece))
 			continue
 		piece.name = "[RIG.suit_type] [initial(piece.name)]"
-		piece.desc = "It seems to be part of a [RIG.name]."
+		piece.desc = "Кажется, это часть [RIG.name]."
 		piece.icon_state = "[RIG.suit_state]"
 		if(istype(piece, /obj/item/clothing/shoes))
 			piece.icon = 'icons/mob/custom_items_rig_boots.dmi'
@@ -202,7 +202,7 @@
 
 /obj/item/device/kit/paint
 	name = "mecha customisation kit"
-	desc = "A kit containing all the needed tools and parts to repaint a mech."
+	desc = "Набор, содержащий все необходимые инструменты и детали для перекраски меха."
 	var/removable = null
 
 /obj/item/device/kit/paint/can_customize(var/obj/mecha/M)

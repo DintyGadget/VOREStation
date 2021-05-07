@@ -1,6 +1,6 @@
 
 /obj/item/bodybag/cryobag/robobag
-	name = "synthmorph bag"
+	name = "мешок для синтморфа"
 	desc = "A reusable polymer bag designed to slow down synthetic functions such as data corruption and coolant flow, \
 	especially useful if short on time or in a hostile enviroment."
 	icon = 'icons/obj/robobag.dmi'

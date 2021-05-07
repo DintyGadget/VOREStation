@@ -8,8 +8,8 @@
 
 
 /obj/item/weapon/melee/augment/blade
-	name = "handblade"
-	desc = "A sleek-looking telescopic blade that fits inside the hand. Favored by infiltration specialists and assassins."
+	name = "ручное лезвие"
+	desc = "Элегантное телескопическое лезвие, которое легко помещается в руке. Излюбленный специалистами по проникновению и убийцами."
 	icon_state = "augment_handblade"
 	item_icons = list(
 			slot_l_hand_str = 'icons/mob/items/lefthand_melee.dmi',
@@ -19,14 +19,14 @@
 	force = 15
 	armor_penetration = 25
 	sharp = 1
-	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	attack_verb = list("атакует", "режет", "зарезает", "нарезает", "разрывает", "нарезает кубиками", "режет")
 	defend_chance = 10
 	projectile_parry_chance = 5
 	hitsound = 'sound/weapons/bladeslice.ogg'
 
 /obj/item/weapon/melee/augment/blade/arm
-	name = "armblade"
-	desc = "A sleek-looking cybernetic blade that cleaves through people like butter. Favored by psychopaths and assassins."
+	name = "рука лезвие"
+	desc = "Гладкий кибернетический клинок, пронзающий людей, как масло. Излюбленный психопатами и убийцами."
 	icon_state = "augment_armblade"
 	w_class = ITEMSIZE_HUGE
 	force = 30

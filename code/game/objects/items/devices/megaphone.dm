@@ -1,13 +1,13 @@
 /obj/item/device/megaphone
-	name = "megaphone"
-	desc = "A device used to project your voice. Loudly."
+	name = "мегафон"
+	desc = "Устройство, используемое для проецирования вашего голоса. Громко."
 	icon_state = "megaphone"
 	w_class = ITEMSIZE_SMALL
 
 	var/spamcheck = 0
 	var/emagged = 0
 	var/insults = 0
-	var/list/insultmsg = list("FUCK EVERYONE!", "I'M A TERRORIST!", "ALL SECURITY TO SHOOT ME ON SIGHT!", "I HAVE A BOMB!", "CAPTAIN IS A COMDOM!", "GLORY TO ALMACH!")
+	var/list/insultmsg = list("К ЧЕРТУ ВСЕХ!", "Я ТЕРРОРИСТ!", "ВСЯ ОХРАНА ПРИСТРЕЛИТ МЕНЯ НА МЕСТЕ!", "У МЕНЯ ЕСТЬ БОМБА!", "КАПИТАН - НАСТОЯЩИЙ ГАНДОН!", "СЛАВА АЛЛАХУ!")
 
 /obj/item/device/megaphone/proc/can_broadcast(var/mob/living/user)
 	if(user.client)

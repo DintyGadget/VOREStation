@@ -1,8 +1,8 @@
 GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/weapon/mop)
 
 /obj/item/weapon/mop
-	desc = "The world of janitalia wouldn't be complete without a mop."
-	name = "mop"
+	desc = "Мир уборнии не был бы полным без швабры."
+	name = "швабра"
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "mop"
 	force = 3.0
@@ -23,16 +23,16 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/weapon/mop)
 	if(!proximity) return
 	if(istype(A, /turf) || istype(A, /obj/effect/decal/cleanable) || istype(A, /obj/effect/overlay) || istype(A, /obj/effect/rune))
 		if(reagents.total_volume < 1)
-			to_chat(user, "<span class='notice'>Your mop is dry!</span>")
+			to_chat(user, "<span class='notice'>Ваша швабра сухая!</span>")
 			return
 
-		user.visible_message("<span class='warning'>[user] begins to clean \the [get_turf(A)].</span>")
+		user.visible_message("<span class='warning'>[user] начинает чистить [get_turf(A)].</span>")
 
 		if(do_after(user, 40))
 			var/turf/T = get_turf(A)
 			if(T)
 				T.clean(src, user)
-			to_chat(user, "<span class='notice'>You have finished mopping!</span>")
+			to_chat(user, "<span class='notice'>Вы закончили мыть шваброй!</span>")
 
 
 /obj/effect/attackby(obj/item/I, mob/user)

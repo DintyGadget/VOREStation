@@ -1,6 +1,6 @@
 /obj/item/pizzavoucher
-	name = "free pizza voucher"
-	desc = "A pocket-sized plastic slip with a button in the middle. The writing on it seems to have faded."
+	name = "бесплатный ваучер на пиццу"
+	desc = "Карманный пластиковый слип с пуговицей посередине. Надпись на нем, кажется, потускнела."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "pizza_voucher"
 	var/spent = FALSE
@@ -9,44 +9,44 @@
 
 /obj/item/pizzavoucher/New()
 	..()
-	var/list/descstrings = list("24/7 PIZZA PIE HEAVEN",
-	"WE ALWAYS DELIVER!",
-	"24-HOUR PIZZA PIE POWER!",
-	"TOMATO SAUCE, CHEESE, WE'VE BOTH BOTH OF THESE!",
-	"COOKED WITH LOVE INSIDE A BIG OVEN!",
-	"WHEN YOU NEED A SLICE OF JOY IN YOUR LIFE!",
-	"WHEN YOU NEED A DISK OF OVEN BAKED BLISS!",
-	"EVERY TIME YOU DREAM OF CIRCULAR CUISINE!",
-	"WE ALWAYS DELIVER! WE ALWAYS DELIVER! WE ALWAYS DELIVER!")
-	desc = "A pocket-sized plastic slip with a button in the middle. \"[pick(descstrings)]\" is written on the back."
+	var/list/descstrings = list("24/7 ПИЦЦА ПИРОГ НЕБО",
+	"МЫ ВСЕГДА ДОСТАВЛЯЕМ!",
+	"24-ЧАСОВАЯ СИЛА ПИЦЦЫ!",
+	"ТОМАТНЫЙ СОУС, СЫР, У НАС ЕСТЬ И ТО, И ДРУГОЕ!",
+	"ПРИГОТОВЛЕНО С ЛЮБОВЬЮ В БОЛЬШОЙ ДУХОВКЕ!",
+	"КОГДА ВАМ НУЖЕН КУСОЧЕК РАДОСТИ В ВАШЕЙ ЖИЗНИ!",
+	"КОГДА ВАМ НУЖЕН ДИСК ЗАПЕЧЕННОГО В ДУХОВКЕ БЛАЖЕНСТВА!",
+	"КАЖДЫЙ РАЗ, КОГДА ВЫ МЕЧТАЕТЕ О КРУГЛОЙ КУХНЕ!",
+	"МЫ ВСЕГДА ДОСТАВЛЯЕМ! МЫ ВСЕГДА ДОСТАВЛЯЕМ! МЫ ВСЕГДА ДОСТАВЛЯЕМ!")
+	desc = "Пластиковая накладка карманного размера с пуговицей посередине. \"[pick(descstrings)]\" написано на обороте."
 
 /obj/item/pizzavoucher/attack_self(mob/user)
 	add_fingerprint(user)
 	if(!spent)
-		user.visible_message("<span class='notice'>[user] presses a button on [src]!</span>")
-		desc = desc + " This one seems to be used-up."
+		user.visible_message("<span class='notice'>[user] нажимает кнопку на [src]!</span>")
+		desc = desc + " Этот, кажется, израсходован."
 		spent = TRUE
-		user.visible_message("<span class='notice'>A small bluespace rift opens just above [user]'s head and spits out a pizza box!</span>",
-			"<span class='notice'>A small bluespace rift opens just above your head and spits out a pizza box!</span>",
-			"<span class='notice'>You hear a fwoosh followed by a thump.</span>")
+		user.visible_message("<span class='notice'>Небольшая bluespace трещина открывается прямо над головой [user] и выплевывает коробку из-под пиццы!</span>",
+			"<span class='notice'>Прямо над вашей головой открывается небольшой bluespace, из которого выплевывается коробка из-под пиццы!</span>",
+			"<span class='notice'>Вы слышите фуршет, за которым следует стук.</span>")
 		if(special_delivery)
-			command_announcement.Announce("SPECIAL DELIVERY PIZZA ORDER #[rand(1000,9999)]-[rand(100,999)] HAS BEEN RECIEVED. SHIPMENT DISPATCHED VIA EXTRA-POWERFUL BALLISTIC LAUNCHERS FOR IMMEDIATE DELIVERY! THANK YOU AND ENJOY YOUR PIZZA!", "WE ALWAYS DELIVER!")
+			command_announcement.Announce("СПЕЦИАЛЬНАЯ ДОСТАВКА ЗАКАЗ ПИЦЦЫ #[rand(1000,9999)]-[rand(100,999)] БЫЛ ПОЛУЧЕН. ОТГРУЗКА ОТПРАВЛЯЕТСЯ С ПОМОЩЬЮ МОЩНЫХ БАЛЛИСТИЧЕСКИХ ПУСКОВ ДЛЯ НЕМЕДЛЕННОЙ ДОСТАВКИ! СПАСИБО И НАСЛАЖДАЙТЕСЬ ПИЦЦЕЙ!", "МЫ ВСЕГДА ДОСТАВЛЯЕМ!")
 			new /obj/effect/falling_effect/pizza_delivery/special(user.loc)
 		else
 			new /obj/effect/falling_effect/pizza_delivery(user.loc)
 	else
-		to_chat(user, "<span class='warning'>The [src] is spent!</span>")
+		to_chat(user, "<span class='warning'>[src] потрачен!</span>")
 
 /obj/item/pizzavoucher/emag_act(var/remaining_charges, var/mob/user)
 	if(spent)
-		to_chat(user, "<span class='warning'>The [src] is spent!</span>")
+		to_chat(user, "<span class='warning'>[src] потрачен!</span>")
 		return
 	if(!special_delivery)
-		to_chat(user, "<span class='warning'>You activate the special delivery protocol on the [src]!</span>")
+		to_chat(user, "<span class='warning'>Вы активируете специальный протокол доставки на [src]!</span>")
 		special_delivery = TRUE
 		return 1
 	else
-		to_chat(user, "<span class='warning'>The [src] is already in special delivery mode!</span>")
+		to_chat(user, "<span class='warning'>[src] уже находится в специальном режиме доставки!</span>")
 
 /obj/effect/falling_effect/pizza_delivery
 	name = "PIZZA PIE POWER!"

@@ -1,5 +1,5 @@
 /obj/item/device/floor_painter
-	name = "paint sprayer"
+	name = "распылитель краски"
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "labeler1"
 

@@ -1,6 +1,6 @@
 /obj/item/weapon/handcuffs
-	name = "handcuffs"
-	desc = "Use this to keep prisoners in line."
+	name = "наручники"
+	desc = "Используйте это, чтобы держать заключенных в очереди."
 	gender = PLURAL
 	icon = 'icons/obj/items.dmi'
 	icon_state = "handcuff"
@@ -33,7 +33,7 @@
 		return
 
 	if ((CLUMSY in user.mutations) && prob(50))
-		to_chat(user, "<span class='warning'>Uh ... how do those things work?!</span>")
+		to_chat(user, "<span class='warning'>Э... как эти штуки работают ?!</span>")
 		place_handcuffs(user, user)
 		return
 
@@ -46,7 +46,7 @@
 		if(can_place(C, user))
 			place_handcuffs(C, user)
 		else
-			to_chat(user, "<span class='danger'>You need to have a firm grip on [C] before you can put \the [src] on!</span>")
+			to_chat(user, "<span class='danger'>Прежде чем надеть [src], вам нужно крепко ухватиться за [C]!</span>")
 
 /obj/item/weapon/handcuffs/proc/can_place(var/mob/target, var/mob/user)
 	if(user == target)
@@ -68,14 +68,14 @@
 		return 0
 
 	if (!H.has_organ_for_slot(slot_handcuffed))
-		to_chat(user, "<span class='danger'>\The [H] needs at least two wrists before you can cuff them together!</span>")
+		to_chat(user, "<span class='danger'>[H] нужно как минимум два запястья, прежде чем вы сможете сковать их вместе!</span>")
 		return 0
 
 	if(istype(H.gloves,/obj/item/clothing/gloves/gauntlets/rig) && !elastic) // Can't cuff someone who's in a deployed hardsuit.
-		to_chat(user, "<span class='danger'>\The [src] won't fit around \the [H.gloves]!</span>")
+		to_chat(user, "<span class='danger'>[src] не поместится вокруг [H.gloves]!</span>")
 		return 0
 
-	user.visible_message("<span class='danger'>\The [user] is attempting to put [cuff_type] on \the [H]!</span>")
+	user.visible_message("<span class='danger'>[user] пытается поставить [cuff_type] на [H]!</span>")
 
 	if(!do_after(user,use_time))
 		return 0

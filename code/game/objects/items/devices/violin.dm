@@ -34,8 +34,8 @@
 	song.interact(user)
 
 /obj/item/device/instrument/violin
-	name = "space violin"
-	desc = "A wooden musical instrument with four strings and a bow. \"The devil went down to space, he was looking for an assistant to grief.\""
+	name = "космическая скрипка"
+	desc = "Деревянный музыкальный инструмент с четырьмя струнами и смычком. \"Дьявол спустился в космос, он искал помощника скорби.\""
 	icon_state = "violin"
 	attack_verb = list("smashed")
 	instrumentId = "violin"

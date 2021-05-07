@@ -1,6 +1,6 @@
 /obj/item/gunbox
 	name = "security sidearm box"
-	desc = "A secure box containing a security sidearm."
+	desc = "Сейф с охранным пистолетом."
 
 /obj/item/gunbox/attack_self(mob/living/user)
 	var/list/options = list()

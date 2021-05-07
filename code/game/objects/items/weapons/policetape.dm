@@ -1,6 +1,6 @@
 //Define all tape types in policetape.dm
 /obj/item/taperoll
-	name = "tape roll"
+	name = "рулон ленты"
 	icon = 'icons/policetape.dmi'
 	icon_state = "tape"
 	w_class = ITEMSIZE_SMALL
@@ -30,7 +30,7 @@ var/list/image/hazard_overlays
 var/list/tape_roll_applications = list()
 
 /obj/item/tape
-	name = "tape"
+	name = "рулетка"
 	icon = 'icons/policetape.dmi'
 	anchored = 1
 	layer = WINDOW_LAYER
@@ -140,14 +140,14 @@ var/list/tape_roll_applications = list()
 /obj/item/taperoll/attack_self(mob/user as mob)
 	if(!start)
 		start = get_turf(src)
-		to_chat(user, "<span class='notice'>You place the first end of \the [src].</span>")
+		to_chat(user, "<span class='notice'>Вы размещаете первый конец [src].</span>")
 		update_icon()
 	else
 		end = get_turf(src)
 		if(start.y != end.y && start.x != end.x || start.z != end.z)
 			start = null
 			update_icon()
-			to_chat(user, "<span class='notice'>\The [src] can only be laid horizontally or vertically.</span>")
+			to_chat(user, "<span class='notice'>[src] можно укладывать только горизонтально или вертикально.</span>")
 			return
 
 		if(start == end)
@@ -168,7 +168,7 @@ var/list/tape_roll_applications = list()
 			if(!possible_dirs)
 				start = null
 				update_icon()
-				to_chat(user, "<span class='notice'>You can't place \the [src] here.</span>")
+				to_chat(user, "<span class='notice'>Вы не можете разместить здесь [src].</span>")
 				return
 			if(possible_dirs & (NORTH|SOUTH))
 				var/obj/item/tape/TP = new tape_type(start)
@@ -184,7 +184,7 @@ var/list/tape_roll_applications = list()
 				TP.update_icon()
 			start = null
 			update_icon()
-			to_chat(user, "<span class='notice'>You finish placing \the [src].</span>")
+			to_chat(user, "<span class='notice'>Вы завершаете размещение [src].</span>")
 			return
 
 		var/turf/cur = start
@@ -233,7 +233,7 @@ var/list/tape_roll_applications = list()
 		if (!can_place)
 			start = null
 			update_icon()
-			to_chat(user, "<span class='warning'>You can't run \the [src] through that!</span>")
+			to_chat(user, "<span class='warning'>Вы не можете запустить [src] через это!</span>")
 			return
 
 		cur = start
@@ -277,7 +277,7 @@ var/list/tape_roll_applications = list()
 			cur = get_step_towards(cur,end)
 		start = null
 		update_icon()
-		to_chat(user, "<span class='notice'>You finish placing \the [src].</span>")
+		to_chat(user, "<span class='notice'>Вы завершаете размещение [src].</span>")
 		return
 
 /obj/item/taperoll/afterattack(var/atom/A, mob/user as mob, proximity)
@@ -287,12 +287,12 @@ var/list/tape_roll_applications = list()
 	if (istype(A, /obj/machinery/door))
 		var/turf/T = get_turf(A)
 		if(locate(/obj/item/tape, A.loc))
-			to_chat(user, "There's already tape over that door!")
+			to_chat(user, "Дверь уже заклеена лентой!")
 		else
 			var/obj/item/tape/P = new tape_type(T)
 			P.update_icon()
 			P.layer = WINDOW_LAYER
-			to_chat(user, "<span class='notice'>You finish placing \the [src].</span>")
+			to_chat(user, "<span class='notice'>Вы завершаете размещение [src].</span>")
 
 	if (istype(A, /turf/simulated/floor) ||istype(A, /turf/unsimulated/floor))
 		var/turf/F = A
@@ -302,7 +302,7 @@ var/list/tape_roll_applications = list()
 			tape_roll_applications[F] = 0
 
 		if(tape_roll_applications[F] & direction) // hazard_overlay in F.overlays wouldn't work.
-			user.visible_message("\The [user] uses the adhesive of \the [src] to remove area markings from \the [F].", "You use the adhesive of \the [src] to remove area markings from \the [F].")
+			user.visible_message("[user] использует клей [src] чтобы удалить отметки области с [F].", "You use the adhesive of \the [src] to remove area markings from \the [F].")
 			F.overlays -= hazard_overlay
 			tape_roll_applications[F] &= ~direction
 		else
@@ -322,7 +322,7 @@ var/list/tape_roll_applications = list()
 		var/mob/M = mover
 		add_fingerprint(M)
 		if(!allowed(M))	//only select few learn art of not crumpling the tape
-			to_chat(M, span("warning", "You are not supposed to go past \the [src]..."))
+			to_chat(M, span("warning", "Вы не должны проходить [src] ..."))
 			if(M.a_intent == I_HELP && !(istype(M, /mob/living/simple_mob)))
 				return FALSE
 			crumple()

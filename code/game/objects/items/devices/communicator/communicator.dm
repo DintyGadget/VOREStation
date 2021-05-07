@@ -16,9 +16,8 @@ var/global/list/obj/item/device/communicator/all_communicators = list()
 #define SETTTAB 9
 
 /obj/item/device/communicator
-	name = "communicator"
-	desc = "A personal device used to enable long range dialog between two people, utilizing existing telecommunications infrastructure to allow \
-	communications across different stations, planets, or even star systems."
+	name = "коммуникатор"
+	desc = "Персональное устройство, используемое для обеспечения диалога на большом расстоянии между двумя людьми, использующее существующую телекоммуникационную инфраструктуру для обеспечения связи между различными станциями, планетами или даже звездными системами."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "communicator"
 	w_class = ITEMSIZE_SMALL

@@ -1,8 +1,8 @@
 var/list/GPS_list = list()
 
 /obj/item/device/gps
-	name = "global positioning system"
-	desc = "Triangulates the approximate co-ordinates using a nearby satellite network. Alt+click to toggle power."
+	name = "глобальная система позиционирования"
+	desc = "Триангулирует приблизительные координаты с помощью близлежащей спутниковой сети. Alt+нажмите, чтобы переключить питание."
 	icon = 'icons/obj/gps.dmi'
 	icon_state = "gps-gen"
 	w_class = ITEMSIZE_TINY
@@ -137,7 +137,7 @@ var/list/GPS_list = list()
 	if(emped)
 		to_chat(user, "It's busted!")
 		return
-	
+
 	toggle_tracking()
 	if(tracking)
 		to_chat(user, "[src] is no longer tracking, or visible to other GPS devices.")
@@ -195,7 +195,7 @@ var/list/GPS_list = list()
 	dat["curr_z_name"] = strip_improper(using_map.get_zlevel_name(curr.z))
 	dat["gps_list"] = list()
 	dat["z_level_detection"] = using_map.get_map_levels(curr.z, long_range)
-	
+
 	for(var/obj/item/device/gps/G in GPS_list - src)
 
 		if(!can_track(G, dat["z_level_detection"]))
@@ -247,7 +247,7 @@ var/list/GPS_list = list()
 				dat += "<tr>"
 				var/gps_ref = "\ref[gps["ref"]]"
 				dat += "<td>[gps["gps_tag"]]</td><td>[gps["area_name"]]</td>"
-				
+
 				if(istype(gps_data["ref"], /obj/item/device/gps/internal/poi))
 					dat += "<td>[gps["local"] ? "[gps["direction"]] Dist: [round(gps["distance"], 10)]m" : "[gps["z_name"]]"]</td>"
 				else

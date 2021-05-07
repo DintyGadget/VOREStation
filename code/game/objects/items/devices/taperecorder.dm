@@ -323,7 +323,7 @@
 
 	to_chat(usr, "<span class='notice'>Транскрипт распечатан.</span>")
 	var/obj/item/weapon/paper/P = new /obj/item/weapon/paper(get_turf(src))
-	var/t1 = "<B>Transcript:</B><BR><BR>"
+	var/t1 = "<B>Транскрипт:</B><BR><BR>"
 	for(var/i=1,mytape.storedinfo.len >= i,i++)
 		var/printedmessage = mytape.storedinfo[i]
 		if (findtextEx(printedmessage,"*",1,2)) //replace action sounds

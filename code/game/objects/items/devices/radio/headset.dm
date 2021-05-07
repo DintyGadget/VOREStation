@@ -1,6 +1,6 @@
 /obj/item/device/radio/headset
-	name = "radio headset"
-	desc = "An updated, modular intercom that fits over the head. Takes encryption keys"
+	name = "радиогарнитура"
+	desc = "Обновленный модульный наушник, который помещается над головой. Принимает ключи шифрования"
 	var/radio_desc = ""
 	icon_state = "headset"
 	item_state = null //To remove the radio's state
@@ -16,7 +16,7 @@
 	var/obj/item/device/encryptionkey/keyslot2 = null
 	var/ks1type = null
 	var/ks2type = null
-	
+
 	drop_sound = 'sound/items/drop/component.ogg'
 	pickup_sound = 'sound/items/pickup/component.ogg'
 
@@ -43,7 +43,7 @@
 	. = ..()
 
 	if(radio_desc && Adjacent(user))
-		. += "The following channels are available:"
+		. += "Доступны следующие каналы:"
 		. += radio_desc
 
 /obj/item/device/radio/headset/handle_message_mode(mob/living/M as mob, list/message_pieces, channel)

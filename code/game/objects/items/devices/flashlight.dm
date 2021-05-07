@@ -1,5 +1,5 @@
 /obj/item/device/flashlight
-	name = "flashlight"
+	name = "фонарик"
 	desc = "Ручной фонарик."
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "flashlight"
@@ -235,7 +235,7 @@
 		..()
 
 /obj/item/device/flashlight/pen
-	name = "penlight"
+	name = "фонаричек"
 	desc = "Фонарик размером с ручку. Используется врачами."
 	icon_state = "penlight"
 	item_state = "pen"
@@ -247,27 +247,27 @@
 	power_use = 0
 
 /obj/item/device/flashlight/color	//Default color is blue, just roll with it.
-	name = "blue flashlight"
+	name = "синий фонарик"
 	desc = "Ручной фонарик. Этот синего цвета."
 	icon_state = "flashlight_blue"
 
 /obj/item/device/flashlight/color/red
-	name = "red flashlight"
+	name = "красный фонарик"
 	desc = "Ручной фонарик. Этот красного цвета."
 	icon_state = "flashlight_red"
 
 /obj/item/device/flashlight/color/orange
-	name = "orange flashlight"
+	name = "оранжевый фонарик"
 	desc = "Ручной фонарик. Этот оранжевого цвета."
 	icon_state = "flashlight_orange"
 
 /obj/item/device/flashlight/color/yellow
-	name = "yellow flashlight"
+	name = "желтый фонарик"
 	desc = "Ручной фонарик. Этот желтого цвета."
 	icon_state = "flashlight_yellow"
 
 /obj/item/device/flashlight/maglight
-	name = "maglight"
+	name = "фонарь"
 	desc = "Очень и очень тяжёлый военный фонарик."
 	icon_state = "maglight"
 	flashlight_colour = LIGHT_COLOR_FLUORESCENT_FLASHLIGHT
@@ -279,7 +279,7 @@
 	hitsound = "swing_hit"
 
 /obj/item/device/flashlight/drone
-	name = "low-power flashlight"
+	name = "маломощный фонарик"
 	desc = "A miniature lamp, that might be used by small robots."
 	icon_state = "penlight"
 	item_state = null
@@ -289,8 +289,8 @@
 
 // the desk lamps are a bit special
 /obj/item/device/flashlight/lamp
-	name = "desk lamp"
-	desc = "A desk lamp with an adjustable mount."
+	name = "настольная лампа"
+	desc = "Настольная лампа с регулируемым креплением."
 	icon_state = "lamp"
 	force = 10
 	center_of_mass = list("x" = 13,"y" = 11)
@@ -302,7 +302,7 @@
 
 // green-shaded desk lamp
 /obj/item/device/flashlight/lamp/green
-	desc = "A classic green-shaded desk lamp."
+	desc = "Классическая настольная лампа зеленого абажура."
 	icon_state = "lampgreen"
 	center_of_mass = list("x" = 15,"y" = 11)
 	brightness_on = 5
@@ -319,8 +319,8 @@
 // FLARES
 
 /obj/item/device/flashlight/flare
-	name = "flare"
-	desc = "A red standard-issue flare. There are instructions on the side reading 'pull cord, make light'."
+	name = "сигнальная шашка"
+	desc = "Красная сигнальная ракета. Сбоку есть инструкция «потяни шнур, зажги»."
 	w_class = ITEMSIZE_SMALL
 	brightness_on = 8 // Pretty bright.
 	flashlight_power = 0.8
@@ -360,7 +360,7 @@
 
 	// Usual checks
 	if(!fuel)
-		to_chat(user, "<span class='notice'>It's out of fuel.</span>")
+		to_chat(user, "<span class='notice'>Закончилось топливо.</span>")
 		return
 	if(on)
 		return
@@ -368,7 +368,7 @@
 	. = ..()
 	// All good, turn it on.
 	if(.)
-		user.visible_message("<span class='notice'>[user] activates the flare.</span>", "<span class='notice'>You pull the cord on the flare, activating it!</span>")
+		user.visible_message("<span class='notice'>[user] активирует сигнальную шашку.</span>", "<span class='notice'>Вы тянете шнур на ракете, активируя ее!</span>")
 		src.force = on_damage
 		src.damtype = "fire"
 		START_PROCESSING(SSobj, src)
@@ -384,8 +384,8 @@
 //Glowsticks
 
 /obj/item/device/flashlight/glowstick
-	name = "green glowstick"
-	desc = "A green military-grade glowstick."
+	name = "зеленая светящаяся палочка"
+	desc = "Зеленая светящаяся палочка военного образца."
 	w_class = ITEMSIZE_SMALL
 	brightness_on = 4
 	flashlight_power = 0.9
@@ -414,7 +414,7 @@
 /obj/item/device/flashlight/glowstick/attack_self(mob/user)
 
 	if(!fuel)
-		to_chat(user, "<span class='notice'>The glowstick has already been turned on.</span>")
+		to_chat(user, "<span class='notice'>Светящаяся палочка уже была включена.</span>")
 		return
 	if(on)
 		return

@@ -1,7 +1,7 @@
 //For synths who have no hands.
 /obj/item/device/communicator/integrated
-	name = "integrated communicator"
-	desc = "A circuit used for long-range communications, able to be integrated into a system."
+	name = "интегрированный коммуникатор"
+	desc = "Схема, используемая для дальней связи, способная быть интегрированной в систему."
 
 //A stupid hack because synths don't use languages properly or something.
 //I don't want to go digging in saycode for a week, so BS it as translation software or something.

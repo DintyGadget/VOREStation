@@ -12,7 +12,7 @@
  * DATA CARDS - Used for the teleporter
  */
 /obj/item/weapon/card
-	name = "card"
+	name = "карта"
 	desc = "Занимается карточными делами."
 	icon = 'icons/obj/card_new.dmi'
 	w_class = ITEMSIZE_TINY
@@ -53,7 +53,7 @@
 		icon = I
 
 /obj/item/weapon/card/data
-	name = "data card"
+	name = "карта памяти"
 	desc = "Твердотельная карта памяти, используемая для резервного копирования или передачи информации. Какие знания он мог содержать?"
 	icon_state = "data"
 	var/function = "storage"
@@ -69,9 +69,9 @@
 	set src in usr
 
 	if (t)
-		src.name = text("data card- '[]'", t)
+		src.name = text("карта памяти- '[]'", t)
 	else
-		src.name = "data card"
+		src.name = "карта памяти"
 	src.add_fingerprint(usr)
 	return
 

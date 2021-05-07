@@ -1,6 +1,6 @@
 /obj/item/weapon/flame/candle
-	name = "red candle"
-	desc = "a red pillar candle. Its specially-formulated fuel-oxidizer wax mixture allows continued combustion in airless environments."
+	name = "красная свеча"
+	desc = "красная свеча-столб. Его специально разработанная смесь топлива и парафина-окислителя позволяет продолжать горение в безвоздушной среде."
 	icon = 'icons/obj/candle.dmi'
 	icon_state = "candle1"
 	drop_sound = 'sound/items/drop/gloves.ogg'

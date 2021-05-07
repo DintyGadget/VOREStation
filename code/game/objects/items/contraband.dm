@@ -2,13 +2,13 @@
 
 //Illicit drugs~
 /obj/item/weapon/storage/pill_bottle/happy
-	name = "bottle of Happy pills"
+	name = "баночка Веселых таблеток"
 	desc = "Совершенно нелегальный препарат. Когда хочешь увидеть радугу."
 	wrapper_color = COLOR_PINK
 	starts_with = list(/obj/item/weapon/reagent_containers/pill/happy = 7)
 
 /obj/item/weapon/storage/pill_bottle/zoom
-	name = "bottle of Zoom pills"
+	name = "баночка Разгоняющих таблеток"
 	desc = "Совершенно нелегальный препарат. Обменяйте мозг на скорость."
 	wrapper_color = COLOR_BLUE
 	starts_with = list(/obj/item/weapon/reagent_containers/pill/zoom = 7)

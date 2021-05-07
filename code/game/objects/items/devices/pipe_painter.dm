@@ -1,6 +1,6 @@
 /obj/item/device/pipe_painter
-	name = "pipe painter"
-	desc = "Used to apply a even coat of paint to pipes. Atmospheric usage reccomended."
+	name = "маляр труб"
+	desc = "Используется для нанесения ровного слоя краски на трубы. Рекомендуется использование в атмосфере."
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "labeler1"
 	var/list/modes

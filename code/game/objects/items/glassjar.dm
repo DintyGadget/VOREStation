@@ -5,7 +5,7 @@
 #define JAR_SPIDER  3
 
 /obj/item/glass_jar
-	name = "glass jar"
+	name = "стеклянная банка"
 	desc = "Маленькая пустая баночка."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "jar"
@@ -30,10 +30,10 @@
 			if(istype(A, D))
 				accept = 1
 		if(!accept)
-			to_chat(user, "[A] doesn't fit into \the [src].")
+			to_chat(user, "[A] не вписывается в [src].")
 			return
 		var/mob/L = A
-		user.visible_message("<span class='notice'>[user] scoops [L] into \the [src].</span>", "<span class='notice'>You scoop [L] into \the [src].</span>")
+		user.visible_message("<span class='notice'>[user] зачерпывает [L] в [src].</span>", "<span class='notice'>Вы зачерпываете [L] в [src].</span>")
 		L.loc = src
 		contains = JAR_ANIMAL
 		update_icon()
@@ -52,7 +52,7 @@
 		if(JAR_MONEY)
 			for(var/obj/O in src)
 				O.loc = user.loc
-			to_chat(user, "<span class='notice'>You take money out of \the [src].</span>")
+			to_chat(user, "<span class='notice'>Вы берете деньги из [src].</span>")
 			contains = JAR_NOTHING
 			update_icon()
 			return
@@ -92,8 +92,8 @@
 			name = initial(name)
 			desc = initial(desc)
 		if(JAR_MONEY)
-			name = "tip jar"
-			desc = "A small jar with money inside."
+			name = "банка для чаевых"
+			desc = "баночка с деньгами внутри."
 			for(var/obj/item/weapon/spacecash/S in src)
 				var/image/money = image(S.icon, S.icon_state)
 				money.pixel_x = rand(-2, 3)
@@ -111,19 +111,19 @@
 					victim_glow.color = M.color
 					underlays += victim_glow
 				underlays += victim
-				name = "glass jar with [M]"
-				desc = "A small jar with [M] inside."
+				name = "стеклянная банка с [M]"
+				desc = "баночка с [M] внутри."
 		if(JAR_SPIDER)
 			for(var/obj/effect/spider/spiderling/S in src)
 				var/image/victim = image(S.icon, S.icon_state)
 				underlays += victim
-				name = "glass jar with [S]"
-				desc = "A small jar with [S] inside."
+				name = "стеклянная банка с [S]"
+				desc = "баночка с [S] внутри."
 	return
 
 /obj/item/glass_jar/fish
-	name = "glass tank"
-	desc = "A large glass tank."
+	name = "стеклянный бак"
+	desc = "Большой стеклянный бак."
 
 	var/filled = FALSE
 
@@ -132,8 +132,8 @@
 	accept_mobs = list(/mob/living/simple_mob/animal/passive/lizard, /mob/living/simple_mob/animal/passive/mouse, /mob/living/simple_mob/animal/sif/leech, /mob/living/simple_mob/animal/sif/frostfly, /mob/living/simple_mob/animal/sif/glitterfly, /mob/living/simple_mob/animal/passive/fish)
 
 /obj/item/glass_jar/fish/plastic
-	name = "plastic tank"
-	desc = "A large plastic tank."
+	name = "пластиковый бак"
+	desc = "Большой пластиковый бак."
 	matter = list("plastic" = 4000)
 
 /obj/item/glass_jar/fish/update_icon() // Also updates name and desc

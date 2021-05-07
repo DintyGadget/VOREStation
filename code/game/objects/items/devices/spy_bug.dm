@@ -1,6 +1,6 @@
 /obj/item/device/camerabug
-	name = "mobile camera pod"
-	desc = "A camera pod used by tactical operators. Must be linked to a camera scanner unit."
+	name = "модуль мобильной камеры"
+	desc = "Камера, используемая тактическими операторами. Должен быть подключен к блоку сканера камеры."
 	icon = 'icons/obj/grenade.dmi'
 	icon_state = "camgrenade"
 	item_state = "empgrenade"
@@ -24,8 +24,8 @@
 
 /obj/item/device/camerabug/attack_self(mob/user)
 	if(user.a_intent == I_HURT)
-		to_chat(user, "<span class='notice'>You crush the [src] under your foot, breaking it.</span>")
-		visible_message("[user.name] crushes the [src] under their foot, breaking it!</span>")
+		to_chat(user, "<span class='notice'>Вы раздавливаете [src] под ногой, ломая его.</span>")
+		visible_message("[user.name] сокрушает [src] под своей ногой, ломая его!</span>")
 		new brokentype(get_turf(src))
 		spawn(0)
 		qdel(src)
@@ -34,18 +34,18 @@
 		radio.interact(user)
 */
 /obj/item/device/camerabug/verb/reset()
-	set name = "Reset camera bug"
+	set name = "Сброс камеры (фикс бага)"
 	set category = "Object"
 	if(linkedmonitor)
 		linkedmonitor.unpair(src)
 	linkedmonitor = null
 	qdel(camera)
 	camera = new camtype(src)
-	to_chat(usr, "<span class='notice'>You turn the [src] off and on again, delinking it from any monitors.")
+	to_chat(usr, "<span class='notice'>Вы выключаете и снова включаете [src], удаляя его с любых мониторов.")
 
 /obj/item/brokenbug
-	name = "broken mobile camera pod"
-	desc = "A camera pod formerly used by tactical operators. The lens is smashed, and the circuits are damaged beyond repair."
+	name = "сломанный модуль мобильной камеры"
+	desc = "Камера, которая раньше использовалась тактическими операторами. Линза разбита, и цепи повреждены без возможности ремонта."
 	icon = 'icons/obj/grenade.dmi'
 	icon_state = "camgrenadebroken"
 	item_state = "empgrenade"
@@ -57,7 +57,7 @@
 	origin_tech = list(TECH_ENGINEERING = 1)
 
 /obj/item/brokenbug/spy
-	name = "broken bug"
+	name = "сломанный жучок"
 	desc = ""	//Even when it's broken it's inconspicuous
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "eshield"
@@ -72,7 +72,7 @@
 	throw_speed = 3
 
 /obj/item/device/camerabug/spy
-	name = "bug"
+	name = "жучок"
 	desc = ""	//Nothing to see here
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "eshield"
@@ -86,7 +86,7 @@
 /obj/item/device/camerabug/examine(mob/user)
 	. = ..()
 	if(get_dist(user, src) == 0)
-		. += "It has a tiny camera inside. Needs to be both configured and brought in contact with monitor device to be fully functional."
+		. += "Внутри у него крошечная камера. Необходимо как настроить, так и привести в контакт с устройством монитора, чтобы оно было полностью функциональным."
 
 /obj/item/device/camerabug/update_icon()
 	..()
@@ -100,15 +100,15 @@
 	if(istype(W, /obj/item/device/bug_monitor))
 		var/obj/item/device/bug_monitor/SM = W
 		if(!linkedmonitor)
-			to_chat(user, "<span class='notice'>\The [src] has been paired with \the [SM].</span>")
+			to_chat(user, "<span class='notice'>[src] был сопряжен с [SM].</span>")
 			SM.pair(src)
 			linkedmonitor = SM
 		else if (linkedmonitor == SM)
-			to_chat(user, "<span class='notice'>\The [src] has been unpaired from \the [SM].</span>")
+			to_chat(user, "<span class='notice'>[src] был отделен от [SM].</span>")
 			linkedmonitor.unpair(src)
 			linkedmonitor = null
 		else
-			to_chat(user, "Error: The device is linked to another monitor.")
+			to_chat(user, "Ошибка: Устройство подключено к другому монитору.")
 
 	else if(W.is_wrench() && user.a_intent != I_HURT)
 		if(isturf(loc))
@@ -130,7 +130,7 @@
 		..()
 
 /obj/item/device/camerabug/bullet_act()
-	visible_message("The [src] lens shatters!")
+	visible_message("Линза [src] разбивается вдребезги!")
 	new brokentype(get_turf(src))
 	if(linkedmonitor)
 		linkedmonitor.unpair(src)
@@ -145,8 +145,8 @@
 	..()
 
 /obj/item/device/bug_monitor
-	name = "mobile camera pod monitor"
-	desc = "A portable camera console designed to work with mobile camera pods."
+	name = "монитор модуля мобильной камеры"
+	desc = "Портативная консоль камеры, предназначенная для работы с мобильными камерами."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "forensic0"
 	item_state = "electronic"
@@ -191,7 +191,7 @@
 
 	operating = 1
 	while(selected_camera && Adjacent(user))
-		selected_camera = input("Select camera to view.") as null|anything in cameras
+		selected_camera = input("Выберите камеру для просмотра.") as null|anything in cameras
 	selected_camera = null
 	operating = 0
 

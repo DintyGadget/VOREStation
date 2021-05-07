@@ -1,6 +1,6 @@
 /obj/item/device/holowarrant
-	name = "warrant projector"
-	desc = "The practical paperwork replacement for the officer on the go."
+	name = "гарантийный проектор"
+	desc = "Практическая замена документов для офицера на ходу."
 	icon_state = "holowarrant"
 	item_state = "flashtool"
 	throwforce = 5
@@ -17,7 +17,7 @@
 	if(in_range(user, src) || istype(user, /mob/observer/dead))
 		show_content(user) //Opens a browse window, not chatbox related
 	else
-		. += "<span class='notice'>You have to go closer if you want to read it.</span>"
+		. += "<span class='notice'>Вы должны подойти ближе, если хотите прочитать его.</span>"
 
 //hit yourself with it
 /obj/item/device/holowarrant/attack_self(mob/living/user as mob)
@@ -115,7 +115,7 @@
 	name = "holowarrant devices"
 	desc = "A box of holowarrant diplays for security use."
 
-/obj/item/weapon/storage/box/holowarrants/New() 
+/obj/item/weapon/storage/box/holowarrants/New()
 	..()
 	for(var/i = 0 to 3)
 		new /obj/item/device/holowarrant(src) // VOREStation addition ends

@@ -12,8 +12,8 @@ HALOGEN COUNTER	- Radcount on mobs
 
 
 /obj/item/device/healthanalyzer
-	name = "health analyzer"
-	desc = "A hand-held body scanner able to distinguish vital signs of the subject."
+	name = "анализатор здоровья"
+	desc = "Ручной сканер тела, способный различать жизненно важные признаки субъекта."
 	icon_state = "health"
 	item_state = "healthanalyzer"
 	slot_flags = SLOT_BELT

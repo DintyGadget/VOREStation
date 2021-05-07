@@ -29,15 +29,15 @@
 		"}
 
 /obj/item/weapon/book/manual/engineering_particle_accelerator
-	name = "Particle Accelerator User's Guide"
+	name = "Руководство пользователя по ускорителю частиц"
 	icon_state ="bookParticleAccelerator"
 	item_state = "book15"
-	author = "Engineering Encyclopedia"		 // Who wrote the thing, can be changed by pen or PC. It is not automatically assigned
-	title = "Particle Accelerator User's Guide"
+	author = "Инженерная энциклопедия"		 // Who wrote the thing, can be changed by pen or PC. It is not automatically assigned
+	title = "Руководство пользователя по ускорителю частиц"
 
 /obj/item/weapon/book/manual/engineering_particle_accelerator/New()
 	..()
-	dat = {"<html>
+	dat = {"<html><meta charset=\"utf-8\">
 				<head>
 				<style>
 				h1 {font-size: 18px; margin: 15px 0px 5px;}
@@ -51,24 +51,24 @@
 				</head>
 				<body>
 
-				<h1>Experienced User's Guide</h1>
+				<h1>Руководство опытного пользователя</h1>
 
-				<h2>Setting up the accelerator</h2>
+				<h2>Настройка ускорителя</h2>
 
 				<ol>
-					<li><b>Wrench</b> all pieces to the floor</li>
-					<li>Add <b>wires</b> to all the pieces</li>
-					<li>Close all the panels with your <b>screwdriver</b></li>
+					<li><b>Прикрутите</b> все части к полу</li>
+					<li>Добавьте <b>провода</b> во все части</li>
+					<li>Закройте все панели с помощью <b>отвертки</b></li>
 				</ol>
 
-				<h2>Using the accelerator</h2>
+				<h2>Использование ускорителя</h2>
 
 				<ol>
-					<li>Open the control panel</li>
-					<li>Set the speed to 2</li>
-					<li>Start firing at the singularity generator</li>
-					<li><font color='red'><b>When the singularity reaches a large enough size so it starts moving on it's own set the speed down to 0, but don't shut it off</b></font></li>
-					<li>Remember to wear a radiation suit when working with this machine... we did tell you that at the start, right?</li>
+					<li>Откройте панель управления</li>
+					<li>Установите скорость на 2</li>
+					<li>Начните стрелять по генератору сингулярности/тесле</li>
+					<li><font color='red'><b>Когда сингулярность/тесла достигнет достаточно большого размера, чтобы она начала двигаться самостоятельно, установите скорость до 0, но не выключайте ее</b></font></li>
+					<li>Не забудьте надеть радиационный костюм при работе с этой машиной... мы ведь говорили тебе об этом с самого начала, верно?</li>
 				</ol>
 
 				</body>
@@ -77,7 +77,7 @@
 
 
 /obj/item/weapon/book/manual/supermatter_engine
-	name = "Supermatter Engine Operating Manual"
+	name = "Руководство по эксплуатации двигателя Supermatter"
 	icon_state = "bookSupermatter"
 	item_state = "book15"
 	author = "Центральный Инженерный Отдел"
@@ -161,7 +161,7 @@
 // TESLA Engine
 
 /obj/item/weapon/book/manual/tesla_engine
-	name = "Tesla Operating Manual"
+	name = "Руководство по эксплуатации Tesla"
 	icon_state ="bookTesla"
 	item_state = "book15"
 	author = "Инженерная энциклопедия"
@@ -295,7 +295,7 @@
 
 
 /obj/item/weapon/book/manual/engineering_singularity_safety
-	name = "Singularity Safety in Special Circumstances"
+	name = "Безопасность сингулярности в особых обстоятельствах"
 	icon_state ="bookEngineeringSingularitySafety"
 	item_state = "book15"
 	author = "Инженерная энциклопедия"		 // Who wrote the thing, can be changed by pen or PC. It is not automatically assigned
@@ -348,13 +348,13 @@
 
 
 /obj/item/weapon/book/manual/hydroponics_pod_people
-	name = "The Diona Harvest - From Seed to Market"
+	name = "Урожай Дионы - От семян до рынка"
 	icon_state ="bookHydroponicsPodPeople"
 	item_state = "book5"
-	author = "Farmer John"
-	title = "The Diona Harvest - From Seed to Market"
+	author = "Фермер Джон"
+	title = "Урожай Дионы - От семян до рынка"
 
-	dat = {"<html>
+	dat = {"<html><meta charset=\"utf-8\">
 				<head>
 				<style>
 				h1 {font-size: 18px; margin: 15px 0px 5px;}
@@ -366,20 +366,20 @@
 				</style>
 				</head>
 				<body>
-				<h3>Growing a Diona</h3>
+				<h3>Выращивание Дионы</h3>
 
-				Growing a Diona is easy!
+				Вырастить Диону легко!
 				<p>
 				<ol>
-					<li>Take a syringe of blood from the body you wish to turn into a Diona.</li>
-					<li>Inject 5 units of blood into the pack of dionaea-replicant seeds.</li>
-					<li>Plant the seeds.</li>
-					<li>Tend to the plants water and nutrition levels until it is time to harvest the Diona.</li>
+					<li>Возьмите шприц с кровью из тела, которое вы хотите превратить в Диону.</li>
+					<li>Введите 5 единиц крови в упаковку семян дионеи-репликанта.</li>
+					<li>Посадите семена.</li>
+					<li>Следите за уровнем воды и питания растений, пока не придет время собирать урожай Дионы.</li>
 				</ol>
 				<p>
-				Note that for a successful harvest, the body from which the blood was taken from must be dead BEFORE harvesting the pod, however the pod can be growing while they are still alive. Otherwise, the soul would not be able to migrate to the new Diona body.<br><br>
+				Обратите внимание, что для успешного сбора урожая тело, из которого была взята кровь, должно быть мертвым ДО сбора стручка, однако стручок может расти, пока они еще живы. В противном случае душа не смогла бы мигрировать в новое тело Дионы.<br><br>
 
-				It really is that easy! Good luck!
+				Это действительно так просто! Удачи!
 
 				</body>
 				</html>

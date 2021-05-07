@@ -45,10 +45,10 @@
 
 /obj/item/device/multitool/hacktool/proc/attempt_hack(var/mob/user, var/atom/target)
 	if(is_hacking)
-		to_chat(user, "<span class='warning'>You are already hacking!</span>")
+		to_chat(user, "<span class='warning'>Вы уже взламываете!</span>")
 		return 0
 	if(!is_type_in_list(target, supported_types))
-		to_chat(user, "[bicon(src)] <span class='warning'>Unable to hack this target!</span>")
+		to_chat(user, "[bicon(src)] <span class='warning'>Невозможно взломать эту цель!</span>")
 		return 0
 	var/found = known_targets.Find(target)
 	if(found)

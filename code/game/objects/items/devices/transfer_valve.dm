@@ -1,6 +1,6 @@
 /obj/item/device/transfer_valve
-	name = "tank transfer valve"
-	desc = "Regulates the transfer of air between two tanks"
+	name = "перекачивающий клапан бака"
+	desc = "Регулирует передачу воздуха между двумя баками"
 	icon = 'icons/obj/assemblies.dmi'
 	icon_state = "valve_1"
 	var/obj/item/weapon/tank/tank_one
@@ -14,14 +14,14 @@
 	var/turf/location = get_turf(src) // For admin logs
 	if(istype(item, /obj/item/weapon/tank))
 		if(tank_one && tank_two)
-			to_chat(user, "<span class='warning'>There are already two tanks attached, remove one first.</span>")
+			to_chat(user, "<span class='warning'>Там уже прикреплены два бака, сначала снимите один.</span>")
 			return
 
 		if(!tank_one)
 			tank_one = item
 			user.drop_item()
 			item.forceMove(src)
-			to_chat(user, "<span class='notice'>You attach the tank to the transfer valve.</span>")
+			to_chat(user, "<span class='notice'>Вы прикрепляете бак к передаточному клапану.</span>")
 		else if(!tank_two)
 			tank_two = item
 			user.drop_item()

@@ -1,7 +1,7 @@
 //Also contains /obj/structure/closet/body_bag because I doubt anyone would think to look for bodybags in /object/structures
 
 /obj/item/bodybag
-	name = "body bag"
+	name = "мешок для трупа"
 	desc = "Сложенная сумка, предназначенная для хранения и транспортировки трупов."
 	icon = 'icons/obj/closets/bodybag.dmi'
 	icon_state = "bodybag_folded"
@@ -14,7 +14,7 @@
 
 
 /obj/item/weapon/storage/box/bodybags
-	name = "body bags"
+	name = "мешки для трупов"
 	desc = "В этой коробке находятся мешки для тел."
 	icon_state = "bodybags"
 	New()
@@ -29,7 +29,7 @@
 
 
 /obj/structure/closet/body_bag
-	name = "body bag"
+	name = "мешок для трупа"
 	desc = "Пластиковый пакет, предназначенный для хранения и транспортировки трупов."
 	icon = 'icons/obj/closets/bodybag.dmi'
 	closet_appearance = null
@@ -49,16 +49,16 @@
 			return
 		t = sanitizeSafe(t, MAX_NAME_LEN)
 		if (t)
-			src.name = "body bag - "
+			src.name = "мешок для трупа - "
 			src.name += t
 			src.overlays += image(src.icon, "bodybag_label")
 		else
-			src.name = "body bag"
+			src.name = "мешок для трупа"
 	//..() //Doesn't need to run the parent. Since when can fucking bodybags be welded shut? -Agouri
 		return
 	else if(W.is_wirecutter())
 		to_chat(user, "Вы отрезаете бирку от сумки")
-		src.name = "body bag"
+		src.name = "мешок для трупа"
 		src.overlays.Cut()
 		return
 
@@ -115,7 +115,7 @@
 
 
 /obj/item/bodybag/cryobag
-	name = "stasis bag"
+	name = "стазисный мешок"
 	desc = "Одноразовый пластиковый пакет, предназначенный для замедления функций организма, таких как кровообращение и дыхание, особенно полезен, если мало времени или во враждебной среде."
 	icon = 'icons/obj/closets/cryobag.dmi'
 	icon_state = "bodybag_folded"
@@ -132,7 +132,7 @@
 	qdel(src)
 
 /obj/structure/closet/body_bag/cryobag
-	name = "stasis bag"
+	name = "стазисный мешок"
 	desc = "Одноразовый пластиковый пакет, предназначенный для замедления функций организма, таких как кровообращение и дыхание, особенно полезен, если мало времени или во враждебной среде."
 	icon = 'icons/obj/closets/cryobag.dmi'
 	item_path = /obj/item/bodybag/cryobag
@@ -265,7 +265,7 @@
 			..()
 
 /obj/item/usedcryobag
-	name = "used stasis bag"
+	name = "использованный стазисный мешок"
 	desc = "Довольно бесполезно сейчас .."
 	icon_state = "bodybag_used"
 	icon = 'icons/obj/closets/cryobag.dmi'
