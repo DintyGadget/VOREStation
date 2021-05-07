@@ -272,6 +272,7 @@
 	desc = "Резиновая уточка, ты такая хорошая, ты делаешь купание веселее."	//thanks doohl
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "rubberducky"
+	honk_sound = 'sound/voice/quack.ogg' //VOREStation edit
 
 /obj/structure/sink
 	name = "sink"

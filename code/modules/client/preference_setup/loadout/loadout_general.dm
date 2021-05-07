@@ -76,6 +76,7 @@
 	description = "Различные игрушки на выбор."
 	path = /obj/item/toy/
 
+/* VOREStation removal
 /datum/gear/toy/New()
 	..()
 	var/toytype = list()
@@ -86,7 +87,7 @@
 	toytype["Волшебный шар"] = /obj/item/toy/eight_ball
 	toytype["Волшебная ракушка"] = /obj/item/toy/eight_ball/conch
 	gear_tweaks += new/datum/gear_tweak/path(toytype)
-
+*/
 
 /datum/gear/flask
 	display_name = "Фляга"
