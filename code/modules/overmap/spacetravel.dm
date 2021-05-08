@@ -4,7 +4,7 @@ var/list/cached_space = list()
 //Space stragglers go here
 
 /obj/effect/overmap/visitable/sector/temporary
-	name = "Deep Space"
+	name = "Глубокий космос"
 	invisibility = 101
 	known = 0
 

@@ -1,5 +1,5 @@
 /obj/item/weapon/folder
-	name = "folder"
+	name = "папка"
 	desc = "Папка для бумаг."
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "folder"

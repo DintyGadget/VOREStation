@@ -1,6 +1,6 @@
 /obj/machinery/power/tesla_coil
-	name = "tesla coil"
-	desc = "For the union!"
+	name = "катушка теслы"
+	desc = "За союз!"
 	icon = 'icons/obj/tesla_engine/tesla_coil.dmi'
 	icon_state = "coil0"
 	anchored = FALSE
@@ -96,8 +96,8 @@
 	tesla_zap(src, 10, power/(coeff/2))
 
 /obj/machinery/power/grounding_rod
-	name = "grounding rod"
-	desc = "Keep an area from being fried from Edison's Bane."
+	name = "заземляющий стержень"
+	desc = "Держите область от поджаривания генератором Edison's Bane."
 	icon = 'icons/obj/tesla_engine/tesla_coil.dmi'
 	icon_state = "grounding_rod0"
 	anchored = FALSE

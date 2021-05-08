@@ -1,7 +1,7 @@
 //Adminpaper - it's like paper, but more adminny!
 /obj/item/weapon/paper/admin
-	name = "administrative paper"
-	desc = "If you see this, something has gone horribly wrong."
+	name = "административный документ"
+	desc = "Если вы видите это, значит, что-то пошло ужасно неправильно."
 	var/datum/admins/admindatum = null
 
 	var/interactions = null
@@ -26,21 +26,21 @@
 	interactions = null
 
 	//Snapshot is crazy and likes putting each topic hyperlink on a seperate line from any other tags so it's nice and clean.
-	interactions += "<HR><center><font size= \"1\">The fax will transmit everything above this line</font><br>"
-	interactions += "<A href='?src=\ref[src];confirm=1'>Send fax</A> "
-	interactions += "<A href='?src=\ref[src];penmode=1'>Pen mode: [isCrayon ? "Crayon" : "Pen"]</A> "
-	interactions += "<A href='?src=\ref[src];cancel=1'>Cancel fax</A> "
+	interactions += "<HR><meta charset=\"utf-8\"><center><font size= \"1\">Факс передаст все, что находится выше этой строки</font><br>"
+	interactions += "<A href='?src=\ref[src];confirm=1'>Отправить факс</A> "
+	interactions += "<A href='?src=\ref[src];penmode=1'>Режим ручки: [isCrayon ? "Мелок" : "Ручка"]</A> "
+	interactions += "<A href='?src=\ref[src];cancel=1'>Отмена факса</A> "
 	interactions += "<BR>"
 	interactions += "<A href='?src=\ref[src];toggleheader=1'>Toggle Header</A> "
 	interactions += "<A href='?src=\ref[src];togglefooter=1'>Toggle Footer</A> "
-	interactions += "<A href='?src=\ref[src];clear=1'>Clear page</A> "
+	interactions += "<A href='?src=\ref[src];clear=1'>Очистить страницу</A> "
 	interactions += "</center>"
 
 /obj/item/weapon/paper/admin/proc/generateHeader()
 	var/originhash = md5("[origin]")
 	var/timehash = copytext(md5("[world.time]"),1,10)
 	var/text = null
-	var/logo = alert(usr, "Do you want the header of your fax to have a NanoTrasen, SolGov, or Trader logo?","Fax Logo","NanoTrasen","SolGov","Trader") //VOREStation Add - Trader
+	var/logo = alert(usr, "Вы хотите, чтобы в заголовке вашего факса был логотип NanoTrasen, ЦПСС или Trader?","Fax Logo","NanoTrasen","SolGov","Trader") //VOREStation Add - Trader
 	if(logo == "SolGov")
 		logo = "sglogo.png"
 	//VOREStation Edit/Add

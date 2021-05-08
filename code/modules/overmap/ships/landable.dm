@@ -82,7 +82,7 @@
 //
 
 /obj/effect/shuttle_landmark/ship
-	name = "Open Space"
+	name = "Открытый космос"
 	landmark_tag = "ship"
 	flags = SLANDMARK_FLAG_ZERO_G // *Not* AUTOSET, these must be world.turf and world.area for lazy loading to work.
 	var/shuttle_name

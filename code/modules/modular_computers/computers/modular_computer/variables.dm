@@ -1,8 +1,8 @@
 // This is the base type that handles everything. Subtypes can be easily created by tweaking variables in this file to your liking.
 
 /obj/item/modular_computer
-	name = "Modular Computer"
-	desc = "A modular computer. You shouldn't see this."
+	name = "Модульный Компьютер"
+	desc = "Модульный компьютер. Вы не должны этого видеть."
 
 	var/enabled = 0											// Whether the computer is turned on.
 	var/screen_on = 1										// Whether the computer is active/opened/it's screen is on.

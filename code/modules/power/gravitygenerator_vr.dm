@@ -19,8 +19,8 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 //
 
 /obj/machinery/gravity_generator
-	name = "gravitational generator"
-	desc = "A device which produces a graviton field when set up."
+	name = "гравитационный генератор"
+	desc = "Устройство, которое создает гравитонное поле при настройке."
 	icon = 'icons/obj/machines/gravity_generator.dmi'
 	anchored = TRUE
 	density = TRUE
@@ -95,7 +95,7 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 /obj/machinery/gravity_generator/main/station/Initialize()
 	. = ..()
 	setup_parts()
-	middle.add_overlay("activated")	
+	middle.add_overlay("activated")
 
 //
 // Generator an admin can spawn
@@ -204,7 +204,7 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 	switch(broken_state)
 		if(GRAV_NEEDS_SCREWDRIVER)
 			if(I.is_screwdriver())
-				to_chat(user, "<span class='notice'>You secure the screws of the framework.</span>")
+				to_chat(user, "<span class='notice'>Вы закрепляете винты каркаса.</span>")
 				playsound(src, I.usesound, 75, 1)
 				broken_state++
 				update_icon()
@@ -213,7 +213,7 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 			if(I.has_tool_quality(TOOL_WELDER))
 				var/obj/item/weapon/weldingtool/W = I
 				if(W.remove_fuel(0,user))
-					to_chat(user, "<span class='notice'>You mend the damaged framework.</span>")
+					to_chat(user, "<span class='notice'>Вы чините поврежденный каркас.</span>")
 					broken_state++
 					update_icon()
 				return
@@ -222,16 +222,16 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 				var/obj/item/stack/material/plasteel/PS = I
 				if(PS.get_amount() >= 10)
 					PS.use(10)
-					to_chat(user, "<span class='notice'>You add the plating to the framework.</span>")
+					to_chat(user, "<span class='notice'>Вы добавляете покрытие в каркас.</span>")
 					playsound(src, 'sound/machines/click.ogg', 75, 1)
 					broken_state++
 					update_icon()
 				else
-					to_chat(user, "<span class='warning'>You need 10 sheets of plasteel!</span>")
+					to_chat(user, "<span class='warning'>Вам нужно 10 листов пластали!</span>")
 				return
 		if(GRAV_NEEDS_WRENCH)
 			if(I.is_wrench())
-				to_chat(user, "<span class='notice'>You secure the plating to the framework.</span>")
+				to_chat(user, "<span class='notice'>Вы закрепляете обшивку на каркасе.</span>")
 				playsound(src, I.usesound, 75, 1)
 				set_fix()
 				return
@@ -408,7 +408,7 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 /obj/machinery/gravity_generator/main/proc/update_list()
 	levels.Cut()
 	var/my_z = get_z(src)
-	
+
 	//Actually doing it special this time instead of letting using_map decide
 	if(using_map.use_overmap)
 		var/obj/effect/overmap/visitable/S = get_overmap_sector(my_z)
@@ -418,7 +418,7 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 			levels = GetConnectedZlevels(my_z)
 	else
 		levels = GetConnectedZlevels(my_z)
-		
+
 	for(var/z in levels)
 		if(!GLOB.gravity_generators["[z]"])
 			GLOB.gravity_generators["[z]"] = list()

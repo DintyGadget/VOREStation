@@ -4,7 +4,7 @@
  */
 
 /obj/item/weapon/paper
-	name = "sheet of paper"
+	name = "лист бумаги"
 	gender = NEUTER
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "paper"
@@ -43,7 +43,7 @@
 	var/const/crayonfont = "Comic Sans MS"
 
 /obj/item/weapon/paper/card
-	name = "blank card"
+	name = "пустая карточка"
 	desc = "Подарочная карта с местом для надписи на обложке."
 	icon_state = "greetingcard"
 	slot_flags = null //no fun allowed!!!!

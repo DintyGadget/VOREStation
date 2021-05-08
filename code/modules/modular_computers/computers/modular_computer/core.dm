@@ -62,7 +62,7 @@
 
 /obj/item/modular_computer/emag_act(var/remaining_charges, var/mob/user)
 	if(computer_emagged)
-		to_chat(user, "\The [src] was already emagged.")
+		to_chat(user, "[src] уже был открыт Emag.")
 		return //NO_EMAG_ACT
 	else
 		computer_emagged = 1
@@ -97,22 +97,22 @@
 	var/issynth = issilicon(user) // Robots and AIs get different activation messages.
 	if(damage > broken_damage)
 		if(issynth)
-			to_chat(user, "You send an activation signal to \the [src], but it responds with an error code. It must be damaged.")
+			to_chat(user, "Вы отправляете сигнал активации на [src], но он отвечает кодом ошибки. Он должен быть поврежден.")
 		else
-			to_chat(user, "You press the power button, but the computer fails to boot up, displaying variety of errors before shutting down again.")
+			to_chat(user, "Вы нажимаете кнопку питания, но компьютер не загружается, перед повторным выключением отображается множество ошибок.")
 		return
 	if(processor_unit && (apc_power(0) || battery_power(0))) // Battery-run and charged or non-battery but powered by APC.
 		if(issynth)
-			to_chat(user, "You send an activation signal to \the [src], turning it on")
+			to_chat(user, "Вы отправляете сигнал активации на [src], включаете его")
 		else
-			to_chat(user, "You press the power button and start up \the [src]")
+			to_chat(user, "Вы нажимаете кнопку питания и запускаете [src]")
 		enable_computer(user)
 
 	else // Unpowered
 		if(issynth)
-			to_chat(user, "You send an activation signal to \the [src] but it does not respond")
+			to_chat(user, "Вы отправляете сигнал активации на [src], но он не отвечает")
 		else
-			to_chat(user, "You press the power button but \the [src] does not respond")
+			to_chat(user, "Вы нажимаете кнопку питания, но [src] не отвечает")
 
 // Relays kill program request to currently active program. Use this to quit current program.
 /obj/item/modular_computer/proc/kill_program(var/forced = 0)
@@ -142,7 +142,7 @@
 		P.kill_program(1)
 		idle_threads.Remove(P)
 	if(loud)
-		visible_message("\The [src] shuts down.")
+		visible_message("[src] выключается.")
 	enabled = 0
 	update_icon()
 

@@ -1,6 +1,6 @@
 /obj/item/ammo_casing
-	name = "bullet casing"
-	desc = "A bullet casing."
+	name = "гильза от пули"
+	desc = "Гильза от пули."
 	icon = 'icons/obj/ammo.dmi'
 	icon_state = "s-casing"
 	randpixel = 10
@@ -33,7 +33,7 @@
 /obj/item/ammo_casing/attackby(obj/item/I as obj, mob/user as mob)
 	if(I.is_screwdriver())
 		if(!BB)
-			to_chat(user, "<font color='blue'>There is no bullet in the casing to inscribe anything into.</font>")
+			to_chat(user, "<font color='blue'>В гильзе нет пули, в которую можно было бы что-то вписать.</font>")
 			return
 
 		var/tmp_label = ""
@@ -96,8 +96,8 @@
 
 //An item that holds casings and can be used to put them inside guns
 /obj/item/ammo_magazine
-	name = "magazine"
-	desc = "A magazine for some kind of gun."
+	name = "магазин"
+	desc = "Магазин для какого-то пистолета."
 	icon_state = ".357"
 	icon = 'icons/obj/ammo.dmi'
 	slot_flags = SLOT_BELT

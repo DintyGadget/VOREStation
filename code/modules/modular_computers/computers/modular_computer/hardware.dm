@@ -50,7 +50,7 @@
 		found = 1
 		tesla_link = H
 	if(found)
-		to_chat(user, "You install \the [H] into \the [src]")
+		to_chat(user, "Вы устанавливаете [H] в [src]")
 		H.holder2 = src
 		user.drop_from_inventory(H)
 		H.forceMove(src)

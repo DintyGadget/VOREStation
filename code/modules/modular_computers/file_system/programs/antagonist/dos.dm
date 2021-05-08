@@ -30,7 +30,7 @@
 		if(!target.operable())
 			target.dos_sources.Remove(src)
 			target = null
-			error = "Connection to destination relay lost."
+			error = "Соединение с ретранслятором назначения потеряно."
 
 /datum/computer_file/program/ntnet_dos/kill_program(var/forced)
 	if(target)

@@ -134,7 +134,7 @@
 
 /obj/effect/overmap/visitable/sector
 	name = "generic sector"
-	desc = "Sector with some stuff in it."
+	desc = "Сектор с какими-то вещами внутри."
 	icon_state = "sector"
 	anchored = 1
 

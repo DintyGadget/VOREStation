@@ -3,11 +3,11 @@
 // Note: It depends on the area being sane.  In theory players could use this to make pretty much any room a shuttle.
 //
 /obj/item/champagne
-	name = "bottle of champagne"
-	desc = "Made from grapes grown in the champagne asteroid belt, the bubbly liquid inside is softly glowing.  Suitable for christening boats, not so much for drinking."
-	description_info = "This lets you create a new overmap shuttle from scratch. \
-			The shuttle must already be constructed and have an area defined (use the blueprints). \
-			Only a single area is supported (for now).  Build a shuttle console and hit it with the bottle."
+	name = "бутылка шампанского"
+	desc = "Изготовленная из винограда, выращенного в поясе астероидов Шампани, пузырящаяся жидкость внутри мягко светится.  Подходит для крещения лодок, а не столько для питья."
+	description_info = "Это позволяет создать новый челнок отбытия с нуля. \
+			Шаттл уже должен быть построен и иметь определенную площадь (используйте чертежи). \
+			Поддерживается только одна область (на данный момент). Постройте консоль шаттла и ударьте по ней бутылкой."
 	icon = 'icons/obj/drinks.dmi'
 	icon_state = "champagne"
 	attack_verb = list("attacked", "bonked", "hit")

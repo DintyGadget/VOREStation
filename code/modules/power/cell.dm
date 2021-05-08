@@ -3,8 +3,8 @@
 // fits in APC to provide backup power
 
 /obj/item/weapon/cell
-	name = "power cell"
-	desc = "A rechargable electrochemical power cell."
+	name = "энергоячейка"
+	desc = "Перезаряжаемый электрохимический элемент питания."
 	icon = 'icons/obj/power.dmi'
 	icon_state = "cell"
 	item_state = "cell"
@@ -152,15 +152,15 @@
 /obj/item/weapon/cell/examine(mob/user)
 	. = ..()
 	if(Adjacent(user))
-		. += "It has a power rating of [maxcharge]."
-		. += "The charge meter reads [round(src.percent() )]%."
+		. += "Имеет номинальную мощность [maxcharge]."
+		. += "Счетчик заряда показывает [round(src.percent() )]%."
 
 /obj/item/weapon/cell/attackby(obj/item/W, mob/user)
 	..()
 	if(istype(W, /obj/item/weapon/reagent_containers/syringe))
 		var/obj/item/weapon/reagent_containers/syringe/S = W
 
-		to_chat(user, "You inject the solution into the power cell.")
+		to_chat(user, "Вы вводите раствор в энергоячейку.")
 
 		if(S.reagents.has_reagent("phoron", 5))
 

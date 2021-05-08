@@ -57,8 +57,8 @@ var/global/list/SKILL_PRE = list("Инженер" = SKILL_ENGINEER, "Робот�
 
 /datum/skill/management
 	ID = "management"
-	name = "Command"
-	desc = "Your ability to manage and commandeer other crew members."
+	name = "Коммандование"
+	desc = "Ваша способность управлять другими членами экипажа и командовать ими."
 
 /datum/skill/knowledge/law
 	ID = "law"
@@ -152,8 +152,8 @@ var/global/list/SKILL_PRE = list("Инженер" = SKILL_ENGINEER, "Робот�
 
 /datum/attribute/var
 	ID = "none"
-	name = "None"
-	desc = "This is a placeholder"
+	name = "Нет"
+	desc = "Это заполнитель"
 
 
 /proc/setup_skills()

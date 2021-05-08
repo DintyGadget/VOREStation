@@ -1,6 +1,6 @@
 /obj/item/weapon/hand_labeler
-	name = "hand labeler"
-	desc = "Label everything like you've always wanted to! Stuck to the side is a label reading \'Labeler\'. Seems you're too late for that one."
+	name = "ручной маркеровщик"
+	desc = "Маркируйте все так, как вы всегда хотели! Сбоку приклеена этикетка с надписью \"Label\". Похоже, для этого ты опоздал."
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "labeler0"
 	var/label = null
@@ -21,10 +21,10 @@
 		return		// don't set a label
 
 	if(!labels_left)
-		to_chat(user, SPAN_WARNING("\The [src] has no labels left."))
+		to_chat(user, SPAN_WARNING("В [src] не осталось меток."))
 		return
 	if(!label || !length(label))
-		to_chat(user, SPAN_WARNING("\The [src] has no label text set."))
+		to_chat(user, SPAN_WARNING("В [src] нет набора текста метки."))
 		return
 	if(length(A.name) + length(label) > 64)
 		to_chat(user, SPAN_WARNING("\The [src]'s label too big."))
@@ -32,7 +32,7 @@
 	if(istype(A, /mob/living/silicon/robot/platform))
 		var/mob/living/silicon/robot/platform/P = A
 		if(!P.allowed(user))
-			to_chat(usr, SPAN_WARNING("Access denied."))
+			to_chat(usr, SPAN_WARNING("Доступ запрещен."))
 		else if(P.client || P.key)
 			to_chat(user, SPAN_NOTICE("You rename \the [P] to [label]."))
 			to_chat(P, SPAN_NOTICE("\The [user] renames you to [label]."))

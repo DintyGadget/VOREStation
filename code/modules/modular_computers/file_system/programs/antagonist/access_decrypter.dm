@@ -4,7 +4,7 @@
 	program_icon_state = "hostile"
 	program_key_state = "security_key"
 	program_menu_icon = "unlocked"
-	extended_desc = "This highly advanced script can very slowly decrypt operational codes used in almost any network. These codes can be downloaded to an ID card to expand the available access. The system administrator will probably notice this."
+	extended_desc = "Этот высокоразвитый скрипт может очень медленно расшифровывать операционные коды, используемые практически в любой сети. Эти коды можно загрузить на ID карту, чтобы расширить доступный доступ. Системный администратор, вероятно, заметит это."
 	size = 34
 	requires_ntnet = TRUE
 	available_on_ntnet = FALSE
@@ -34,10 +34,10 @@
 	var/obj/item/weapon/computer_hardware/processor_unit/CPU = computer.processor_unit
 	var/obj/item/weapon/computer_hardware/card_slot/RFID = computer.card_slot
 	if(!istype(CPU) || !CPU.check_functionality() || !istype(RFID) || !RFID.check_functionality())
-		message = "A fatal hardware error has been detected."
+		message = "Обнаружена фатальная аппаратная ошибка."
 		return
 	if(!istype(RFID.stored_card))
-		message = "RFID card has been removed from the device. Operation aborted."
+		message = "RFID-карта была удалена из устройства. Операция прервана."
 		return
 
 	progress += CPU.max_idle_programs
@@ -47,7 +47,7 @@
 		if(ntnet_global.intrusion_detection_enabled)
 			ntnet_global.add_log("IDS WARNING - Unauthorised access to primary keycode database from device: [computer.network_card.get_network_tag()]  - downloaded access codes for: [target_access.desc].")
 			ntnet_global.intrusion_detection_alarm = 1
-		message = "Successfully decrypted and saved operational key codes. Downloaded access codes for: [target_access.desc]"
+		message = "Успешно расшифрованы и сохранены коды операционных ключей. Загруженные коды доступа для: [target_access.desc]"
 		target_access = null
 
 /datum/computer_file/program/access_decrypter/tgui_act(action, list/params, datum/tgui/ui)
@@ -65,10 +65,10 @@
 			var/obj/item/weapon/computer_hardware/processor_unit/CPU = computer.processor_unit
 			var/obj/item/weapon/computer_hardware/card_slot/RFID = computer.card_slot
 			if(!istype(CPU) || !CPU.check_functionality() || !istype(RFID) || !RFID.check_functionality())
-				message = "A fatal hardware error has been detected."
+				message = "Обнаружена фатальная аппаратная ошибка."
 				return
 			if(!istype(RFID.stored_card))
-				message = "RFID card is not present in the device. Operation aborted."
+				message = "RFID-карты в устройстве нет. Операция прервана."
 				return
 			running = TRUE
 			target_access = get_access_by_id("[params["access_target"]]")

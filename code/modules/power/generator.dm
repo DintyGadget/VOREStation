@@ -1,8 +1,8 @@
 GLOBAL_LIST_EMPTY(all_turbines)
 
 /obj/machinery/power/generator
-	name = "thermoelectric generator"
-	desc = "It's a high efficiency thermoelectric generator."
+	name = "термоэлектрический генератор"
+	desc = "Это высокоэффективный термоэлектрический генератор."
 	icon_state = "teg-unassembled"
 	density = 1
 	anchored = 0

@@ -1,6 +1,6 @@
 /obj/item/weapon/clipboard
-	name = "clipboard"
-	desc = "Used to clip paper to, for an on-the-go writing board."
+	name = "планшет"
+	desc = "Используется для скрепки бумаги на деревяшке для письма на ходу."
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "clipboard"
 	item_state = "clipboard"

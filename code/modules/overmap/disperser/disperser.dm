@@ -19,7 +19,7 @@
 /obj/machinery/disperser/examine(mob/user)
 	. = ..()
 	if(panel_open)
-		to_chat(user, "The maintenance panel is open.")
+		to_chat(user, "Панель технического обслуживания открыта.")
 
 /obj/machinery/disperser/attackby(obj/item/I, mob/user)
 	if(I && I.is_wrench())

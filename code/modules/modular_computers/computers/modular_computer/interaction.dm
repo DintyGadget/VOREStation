@@ -8,23 +8,23 @@
 
 // Forcibly shut down the device. To be used when something bugs out and the UI is nonfunctional.
 /obj/item/modular_computer/verb/emergency_shutdown()
-	set name = "Forced Shutdown"
+	set name = "Принудительное выключение"
 	set category = "Object"
 	set src in view(1)
 
 	if(usr.incapacitated() || !istype(usr, /mob/living))
-		to_chat(usr, "<span class='warning'>You can't do that.</span>")
+		to_chat(usr, "<span class='warning'>Вы не можете этого сделать.</span>")
 		return
 
 	if(!Adjacent(usr))
-		to_chat(usr, "<span class='warning'>You can't reach it.</span>")
+		to_chat(usr, "<span class='warning'>Вы не можете дотянуться до него.</span>")
 		return
 
 	if(enabled)
 		bsod = 1
 		update_icon()
 		shutdown_computer()
-		to_chat(usr, "You press a hard-reset button on \the [src]. It displays a brief debug screen before shutting down.")
+		to_chat(usr, "Вы нажимаете кнопку аппаратного сброса на [src]. Перед завершением работы он отображает краткий экран отладки.")
 		spawn(2 SECONDS)
 			bsod = 0
 			update_icon()
@@ -32,32 +32,32 @@
 
 // Eject ID card from computer, if it has ID slot with card inside.
 /obj/item/modular_computer/verb/eject_id()
-	set name = "Eject ID"
+	set name = "Извлечь ID карту"
 	set category = "Object"
 	set src in view(1)
 
 	if(usr.incapacitated() || !istype(usr, /mob/living))
-		to_chat(usr, "<span class='warning'>You can't do that.</span>")
+		to_chat(usr, "<span class='warning'>Вы не можете этого сделать.</span>")
 		return
 
 	if(!Adjacent(usr))
-		to_chat(usr, "<span class='warning'>You can't reach it.</span>")
+		to_chat(usr, "<span class='warning'>Вы не можете дотянуться до него.</span>")
 		return
 
 	proc_eject_id(usr)
 
 // Eject ID card from computer, if it has ID slot with card inside.
 /obj/item/modular_computer/verb/eject_usb()
-	set name = "Eject Portable Storage"
+	set name = "Извлечь портативное хранилище"
 	set category = "Object"
 	set src in view(1)
 
 	if(usr.incapacitated() || !istype(usr, /mob/living))
-		to_chat(usr, "<span class='warning'>You can't do that.</span>")
+		to_chat(usr, "<span class='warning'>Вы не можете этого сделать.</span>")
 		return
 
 	if(!Adjacent(usr))
-		to_chat(usr, "<span class='warning'>You can't reach it.</span>")
+		to_chat(usr, "<span class='warning'>Вы не можете дотянуться до него.</span>")
 		return
 
 	proc_eject_usb(usr)
