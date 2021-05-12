@@ -3,8 +3,8 @@
 //please preference put stuff where it's easy to find - C
 
 /obj/item/weapon/autopsy_scanner
-	name = "biopsy scanner"
-	desc = "Extracts information on wounds."
+	name = "биопсийный сканер"
+	desc = "Извлекает информацию о ранах."
 	icon = 'icons/obj/autopsy_scanner.dmi'
 	icon_state = ""
 	item_state = "autopsy_scanner"
@@ -88,7 +88,7 @@
 	var/scan_data = ""
 
 	if(timeofdeath)
-		scan_data += "<b>Time of death:</b> [worldtime2stationtime(timeofdeath)]<br><br>"
+		scan_data += "<b>Время смерти:</b> [worldtime2stationtime(timeofdeath)]<br><br>"
 
 	var/n = 1
 	for(var/wdata_idx in wdata)

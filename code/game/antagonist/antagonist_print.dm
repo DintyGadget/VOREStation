@@ -3,7 +3,7 @@
 	if(!current_antagonists.len)
 		return FALSE
 
-	var/text = "<br><meta charset=\"utf-8\"><br><font size = 2><b>The [current_antagonists.len == 1 ? "[role_text] was" : "[role_text_plural] were"]:</b></font>"
+	var/text = "<br><meta charset=\"utf-8\"><br><font size = 2><b>[current_antagonists.len == 1 ? "[role_text] был" : "[role_text_plural] были"]:</b></font>"
 	for(var/datum/mind/P in current_antagonists)
 		text += print_player_full(P)
 		text += get_special_objective_text(P)
@@ -52,15 +52,15 @@
 	var/text = "<br><b>[ply.name]</b> (<b>[ply.key]</b>) as \a <b>[role]</b> ("
 	if(ply.current)
 		if(ply.current.stat == DEAD)
-			text += "died"
+			text += "мертв"
 		else if(isNotStationLevel(ply.current.z))
-			text += "fled the station"
+			text += "сбегает со станции"
 		else
-			text += "survived"
+			text += "выживает"
 		if(ply.current.real_name != ply.name)
 			text += " as <b>[ply.current.real_name]</b>"
 	else
-		text += "body destroyed"
+		text += "тело уничтожено"
 	text += ")"
 
 	return text

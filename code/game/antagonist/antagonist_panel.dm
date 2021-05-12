@@ -1,6 +1,6 @@
 /datum/antagonist/proc/get_panel_entry(var/datum/mind/player)
 
-	var/dat = "<tr><td><b>[role_text]:</b>"
+	var/dat = "<tr><meta charset=\"utf-8\"><td><b>[role_text]:</b>"
 	var/extra = get_extra_panel_options(player)
 	if(is_antagonist(player))
 		dat += "<a href='?src=\ref[player];remove_antagonist=[id]'>\[-\]</a>"

@@ -38,7 +38,7 @@ var/global/list/obj/item/device/communicator/all_communicators = list()
 	var/list/im_contacts = list()
 	var/list/im_list = list()
 
-	var/note = "Thank you for choosing the T-14.2 Communicator, this is your notepad!" //Current note in the notepad function
+	var/note = "Спасибо, что выбрали коммуникатор Т-14.2, это ваш блокнот!" //Current note in the notepad function
 	var/notehtml = ""
 
 	var/fon = 0 // Internal light
@@ -129,19 +129,19 @@ var/global/list/obj/item/device/communicator/all_communicators = list()
 	. = ..()
 
 	for(var/mob/living/voice/voice in contents)
-		. += "<span class='notice'>On the screen, you can see a image feed of [voice].</span>"
+		. += "<span class='notice'>На экране вы можете увидеть изображение [voice].</span>"
 
 		if(voice && voice.key)
 			switch(voice.stat)
 				if(CONSCIOUS)
 					if(!voice.client)
-						. += "<span class='warning'>[voice] appears to be asleep.</span>" //afk
+						. += "<span class='warning'>[voice] кажется спящим.</span>" //afk
 				if(UNCONSCIOUS)
-					. += "<span class='warning'>[voice] doesn't appear to be conscious.</span>"
+					. += "<span class='warning'>[voice] кажется, не в сознании.</span>"
 				if(DEAD)
-					. += "<span class='deadsay'>[voice] appears to have died...</span>" //Hopefully this never has to be used.
+					. += "<span class='deadsay'>[voice] кажется, умирает...</span>" //Hopefully this never has to be used.
 		else
-			. += "<span class='notice'>The device doesn't appear to be transmitting any data.</span>"
+			. += "<span class='notice'>Устройство не передает никаких данных.</span>"
 
 // Proc: emp_act()
 // Parameters: None

@@ -12,7 +12,7 @@
 
 /datum/dna/gene/basic/remoteview
 	name="Remote Viewing"
-	activation_messages=list("Ваш ум расширяется.")
+	activation_messages=list("Ваш разум расширяется.")
 	mutation=mRemote
 
 	New()
@@ -40,7 +40,7 @@
 
 /datum/dna/gene/basic/remotetalk
 	name="Telepathy"
-	activation_messages=list("You expand your mind outwards.")
+	activation_messages=list("Вы расширяете свой разум вовне.")
 	mutation=mRemotetalk
 
 	New()
@@ -52,7 +52,7 @@
 
 /datum/dna/gene/basic/morph
 	name="Morph"
-	activation_messages=list("Your skin feels strange.")
+	activation_messages=list("Ваша кожа ощущается очень странно.")
 	mutation=mMorph
 
 	New()
@@ -87,7 +87,7 @@
 
 /datum/dna/gene/basic/cold_resist
 	name="Cold Resistance"
-	activation_messages=list("Your body is filled with warmth.")
+	activation_messages=list("Ваше тело наполнено теплом.")
 	mutation=COLD_RESISTANCE
 
 	New()
@@ -109,7 +109,7 @@
 
 /datum/dna/gene/basic/noprints
 	name="No Prints"
-	activation_messages=list("Your fingers feel numb.")
+	activation_messages=list("Ваши пальцы онемели.")
 	mutation=mFingerprints
 
 	New()
@@ -117,7 +117,7 @@
 
 /datum/dna/gene/basic/noshock
 	name="Shock Immunity"
-	activation_messages=list("Your skin feels strange.")
+	activation_messages=list("Ваша кожа ощущается странной.")
 	mutation=mShock
 
 	New()
@@ -125,7 +125,7 @@
 
 /datum/dna/gene/basic/midget
 	name="Midget"
-	activation_messages=list("Your skin feels rubbery.")
+	activation_messages=list("Ваша кожа ощущается странной.")
 	mutation=mSmallsize
 
 	New()
@@ -147,7 +147,7 @@
 
 /datum/dna/gene/basic/hulk
 	name="Hulk"
-	activation_messages=list("Your muscles hurt.")
+	activation_messages=list("Ваши мускулы болят.")
 	mutation=HULK
 
 	New()

@@ -126,7 +126,7 @@
 
 /obj/machinery/autolathe/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(busy)
-		to_chat(user, "<span class='notice'>\The [src] is busy. Please wait for completion of previous operation.</span>")
+		to_chat(user, "<span class='notice'>[src] занят. Дождитесь завершения предыдущей операции.</span>")
 		return
 
 	if(default_deconstruction_screwdriver(user, O))
@@ -153,13 +153,13 @@
 		return 0
 
 	if(istype(O,/obj/item/ammo_magazine/clip) || istype(O,/obj/item/ammo_magazine/s357) || istype(O,/obj/item/ammo_magazine/s38) || istype (O,/obj/item/ammo_magazine/s44)/* VOREstation Edit*/) // Prevents ammo recycling exploit with speedloaders.
-		to_chat(user, "\The [O] is too hazardous to recycle with the autolathe!")
+		to_chat(user, "[O] слишком опасен для повторного использования на автолате!")
 		return
 
 	//Resources are being loaded.
 	var/obj/item/eating = O
 	if(!eating.matter)
-		to_chat(user, "\The [eating] does not contain significant amounts of useful materials and cannot be accepted.")
+		to_chat(user, "[eating] не содержит значительного количества полезных материалов и не может быть принят.")
 		return
 
 	var/filltype = 0       // Used to determine message.

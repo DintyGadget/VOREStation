@@ -3,7 +3,7 @@
 /obj/machinery/bodyscanner
 	var/mob/living/carbon/human/occupant
 	var/locked
-	name = "Body Scanner"
+	name = "Сканер тела"
 	icon = 'icons/obj/Cryogenic2.dmi'
 	icon_state = "body_scanner_0"
 	density = 1
@@ -36,22 +36,22 @@
 	if(istype(G, /obj/item/weapon/grab))
 		var/obj/item/weapon/grab/H = G
 		if(panel_open)
-			to_chat(user, "<span class='notice'>Close the maintenance panel first.</span>")
+			to_chat(user, "<span class='notice'>Сначала закройте панель обслуживания.</span>")
 			return
 		if(!ismob(H.affecting))
 			return
 		if(!ishuman(H.affecting))
-			to_chat(user, "<span class='warning'>\The [src] is not designed for that organism!</span>")
+			to_chat(user, "<span class='warning'>[src] не предназначен для этого организма!</span>")
 			return
 		if(occupant)
-			to_chat(user, "<span class='notice'>\The [src] is already occupied!</span>")
+			to_chat(user, "<span class='notice'>[src] уже занят!</span>")
 			return
 		if(H.affecting.has_buckled_mobs())
-			to_chat(user, span("warning", "\The [H.affecting] has other entities attached to it. Remove them first."))
+			to_chat(user, span("warning", "К [H.affecting] прикреплены другие сущности. Сначала удалите их."))
 			return
 		var/mob/M = H.affecting
 		if(M.abiotic())
-			to_chat(user, "<span class='notice'>Subject cannot have abiotic items on.</span>")
+			to_chat(user, "<span class='notice'>На субъекте нельзя носить абиотические предметы.</span>")
 			return
 		M.forceMove(src)
 		occupant = M
@@ -78,25 +78,25 @@
 	if(!ishuman(user) && !isrobot(user))
 		return 0 //not a borg or human
 	if(panel_open)
-		to_chat(user, "<span class='notice'>Close the maintenance panel first.</span>")
+		to_chat(user, "<span class='notice'>Сначала закройте панель обслуживания.</span>")
 		return 0 //panel open
 	if(occupant)
-		to_chat(user, "<span class='notice'>\The [src] is already occupied.</span>")
+		to_chat(user, "<span class='notice'>[src] уже занят.</span>")
 		return 0 //occupied
 
 	if(O.buckled)
 		return 0
 	if(O.abiotic())
-		to_chat(user, "<span class='notice'>Subject cannot have abiotic items on.</span>")
+		to_chat(user, "<span class='notice'>На субъекте нельзя носить абиотические предметы.</span>")
 		return 0
 	if(O.has_buckled_mobs())
-		to_chat(user, span("warning", "\The [O] has other entities attached to it. Remove them first."))
+		to_chat(user, span("warning", "К [O] прикреплены другие объекты. Сначала удалите их."))
 		return
 
 	if(O == user)
-		visible_message("[user] climbs into \the [src].")
+		visible_message("[user] залезает в [src].")
 	else
-		visible_message("[user] puts [O] into the body scanner.")
+		visible_message("[user] вставляет [O] в сканер тела.")
 
 	O.forceMove(src)
 	occupant = O
@@ -218,7 +218,7 @@
 		if(H.reagents.reagent_list.len >= 1)
 			for(var/datum/reagent/R in H.reagents.reagent_list)
 				reagentData[++reagentData.len] = list(
-					"name" = R.name, 
+					"name" = R.name,
 					"amount" = R.volume,
 					"overdose" = (R.overdose && R.volume > R.overdose) ? TRUE : FALSE,
 				)
@@ -290,7 +290,7 @@
 
 			if(istype(E, /obj/item/organ/external/chest) && H.is_lung_ruptured())
 				organData["lungRuptured"] = 1
-			
+
 			for(var/datum/wound/W in E.wounds)
 				if(W.internal)
 					organData["internalBleeding"] = 1
@@ -343,22 +343,22 @@
 			eject()
 		if("print_p")
 			var/atom/target = console ? console : src
-			visible_message("<span class='notice'>[target] rattles and prints out a sheet of paper.</span>")
+			visible_message("<span class='notice'>[target] гремит и распечатывает лист бумаги.</span>")
 			playsound(src, 'sound/machines/printer.ogg', 50, 1)
 			var/obj/item/weapon/paper/P = new /obj/item/weapon/paper(get_turf(target))
 			var/name = occupant ? occupant.name : "Unknown"
-			P.info = "<CENTER><B>Body Scan - [name]</B></CENTER><BR>"
-			P.info += "<b>Time of scan:</b> [worldtime2stationtime(world.time)]<br><br>"
+			P.info = "<CENTER><B>Скан тела - [name]</B></CENTER><BR>"
+			P.info += "<b>Время скана:</b> [worldtime2stationtime(world.time)]<br><br>"
 			P.info += "[generate_printing_text()]"
-			P.info += "<br><br><b>Notes:</b><br>"
-			P.name = "Body Scan - [name] ([worldtime2stationtime(world.time)]"
+			P.info += "<br><br><b>Заметки:</b><br>"
+			P.name = "Скан тела - [name] ([worldtime2stationtime(world.time)]"
 		else
 			return FALSE
 
 /obj/machinery/bodyscanner/proc/generate_printing_text()
 	var/dat = ""
 
-	dat = "<font color='blue'><b>Occupant Statistics:</b></font><br>" //Blah obvious
+	dat = "<font color='blue'><b>Статистика пациента:</b></font><br>" //Blah obvious
 	if(istype(occupant)) //is there REALLY someone in there?
 		var/t1
 		switch(occupant.stat) // obvious, see what their status is
@@ -367,11 +367,11 @@
 			if(1)
 				t1 = "Unconscious"
 			else
-				t1 = "*dead*"
-		dat += "<font color=[occupant.health > (occupant.getMaxHealth() / 2) ? "blue" : "red"]>\tHealth %: [(occupant.health / occupant.getMaxHealth())*100], ([t1])</font><br>"
+				t1 = "*смерть*"
+		dat += "<font color=[occupant.health > (occupant.getMaxHealth() / 2) ? "blue" : "red"]>\tЗдоровье %: [(occupant.health / occupant.getMaxHealth())*100], ([t1])</font><br>"
 
 		if(occupant.virus2.len)
-			dat += "<font color='red'>Viral pathogen detected in blood stream.</font><BR>"
+			dat += "<font color='red'>Вирусный возбудитель обнаружен в кровотоке.</font><BR>"
 
 		var/extra_font = null
 		extra_font = "<font color=[occupant.getBruteLoss() < 60 ? "blue" : "red"]>"
@@ -410,15 +410,15 @@
 			blood_percent *= 100
 
 			extra_font = "<font color=[blood_volume > 448 ? "blue" : "red"]>"
-			dat += "[extra_font]\tBlood Level %: [blood_percent] ([blood_volume] units)</font><br>"
+			dat += "[extra_font]\tУровень крови %: [blood_percent] ([blood_volume] единиц)</font><br>"
 
 		if(occupant.reagents)
 			for(var/datum/reagent/R in occupant.reagents.reagent_list)
-				dat += "Reagent: [R.name], Amount: [R.volume]<br>"
+				dat += "Реагент: [R.name], Кол-во: [R.volume]<br>"
 
 		if(occupant.ingested)
 			for(var/datum/reagent/R in occupant.ingested.reagent_list)
-				dat += "Stomach: [R.name], Amount: [R.volume]<br>"
+				dat += "Желудок: [R.name], Кол-во: [R.volume]<br>"
 
 		dat += "<hr><table border='1'>"
 		dat += "<tr>"

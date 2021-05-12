@@ -6,7 +6,7 @@
 //Might want to move this into several files later but for now it works here
 
 /obj/item/weapon/melee/baton/robot/arm
-	name = "electrified arm"
+	name = "наэлектризованная рука"
 	icon = 'icons/obj/decals.dmi'
 	icon_state = "shock"
 
@@ -20,7 +20,7 @@
 		set_light(0)
 
 /obj/item/borg/overdrive
-	name = "overdrive"
+	name = "овердрайв"
 	icon = 'icons/obj/decals.dmi'
 	icon_state = "shock"
 

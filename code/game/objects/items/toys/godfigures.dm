@@ -1,6 +1,6 @@
 /obj/item/godfig
-	name = "religious icon"
-	desc = "A painted holy figure of a plain looking human man in a robe."
+	name = "религиозная икона"
+	desc = "Раскрашенная святая фигура простого человека в мантии."
 	description_info = "Right click to select a new sprite to fit your needs."
 	icon = 'icons/obj/chaplain.dmi'
 	icon_state = "mrobe"
@@ -12,7 +12,7 @@
 
 
 /obj/item/godfig/verb/resprite_figure()
-	set name = "Customize Figure"
+	set name = "Настроить фигуру иконы"
 	set category = "Object"
 	set desc = "Click to choose an appearance for your icon."
 

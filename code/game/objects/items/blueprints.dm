@@ -1,5 +1,5 @@
 /obj/item/blueprints
-	name = "station blueprints"
+	name = "чертежи станции"
 	desc = "Чертежи станции. На ней марка \"секретно\" и несколько кофейных пятен."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "blueprints"
@@ -81,20 +81,20 @@
 
 /obj/item/blueprints/interact()
 	var/area/A = get_area()
-	var/text = {"<HTML><head><title>[src]</title></head><BODY>
+	var/text = {"<HTML><meta charset=\"utf-8\"><head><title>[src]</title></head><BODY>
 <h2>[station_name()] blueprints</h2>
-<small>Property of [using_map.company_name]. For heads of staff only. Store in high-secure storage.</small><hr>
+<small>Свойство [using_map.company_name]. Только для руководителей. Хранить в надежном хранилище.</small><hr>
 "}
 	var/curAreaType = get_area_type()
 	switch (curAreaType)
 		if (AREA_SPACE)
-			text += "<p>According the blueprints, you are now in <b>outer space</b>.  Hold your breath.</p>"
+			text += "<p>Согласно чертежам, вы сейчас находитесь в <b>открытом космосе</b>. Задержите дыхание.</p>"
 		if (AREA_STATION)
-			text += "<p>According the blueprints, you are now in <b>\"[A.name]\"</b>.</p>"
+			text += "<p>Согласно чертежам, вы сейчас в <b>\"[A.name]\"</b>.</p>"
 		if (AREA_SPECIAL)
-			text += "<p>This place isn't noted on the blueprint.</p>"
+			text += "<p>Это место не указано на чертеже.</p>"
 		else
-			text += "<p class='danger'>There is a coffee stain over this part of the blueprint.</p>"
+			text += "<p class='danger'>На этой части чертежа есть пятно от кофе.</p>"
 			return // Shouldn ever get here, just sanity check
 
 	// Offer links for what user is allowed to do based on current area

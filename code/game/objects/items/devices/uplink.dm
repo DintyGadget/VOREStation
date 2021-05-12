@@ -11,7 +11,7 @@
 	return FALSE
 
 /obj/item/device/uplink
-	var/welcome = "Welcome, Operative"	// Welcoming menu message
+	var/welcome = "Здравствуйте, Оперативник"	// Welcoming menu message
 	var/list/ItemsCategory				// List of categories with lists of items
 	var/list/ItemsReference				// List of references with an associated item
 	var/list/nanoui_items				// List of items for NanoUI use
@@ -46,8 +46,8 @@
 */
 
 /obj/item/device/uplink/hidden
-	name = "hidden uplink"
-	desc = "There is something wrong if you're examining this."
+	name = "скрытый аплинк"
+	desc = "Что-то не так, если вы изучаете это."
 	var/active = 0
 	var/exploit_id								// Id of the current exploit record we are viewing
 	var/selected_cat

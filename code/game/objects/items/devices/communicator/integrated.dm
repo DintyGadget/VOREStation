@@ -21,12 +21,12 @@
 // Description: Lets synths use their communicators without hands.
 /obj/item/device/communicator/integrated/verb/activate()
 	set category = "AI IM"
-	set name = "Use Communicator"
-	set desc = "Utilizes your built-in communicator."
+	set name = "Исп. коммуникатор"
+	set desc = "Использует встроенный коммуникатор."
 	set src in usr
 
 	if(usr.stat == 2)
-		to_chat(usr, "You can't do that because you are dead!")
+		to_chat(usr, "Вы не можете этого сделать, потому что вы мертвы!")
 		return
 
 	src.attack_self(usr)

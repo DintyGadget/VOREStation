@@ -2,7 +2,7 @@
 
 /obj/machinery/mass_driver
 	name = "mass driver"
-	desc = "Shoots things into space."
+	desc = "Стреляет в космос."
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "mass_driver"
 	anchored = 1.0

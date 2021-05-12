@@ -31,7 +31,7 @@ var/const/HOLOPAD_MODE = RANGE_BASED
 
 /obj/machinery/hologram/holopad
 	name = "\improper AI holopad"
-	desc = "It's a floor-mounted device for projecting holographic images. It is activated remotely."
+	desc = "Это напольное устройство для проецирования голографических изображений. Активируется удаленно."
 	icon_state = "holopad0"
 	show_messages = 1
 	circuit = /obj/item/weapon/circuitboard/holopad
@@ -54,16 +54,16 @@ var/const/HOLOPAD_MODE = RANGE_BASED
 /obj/machinery/hologram/holopad/attack_hand(var/mob/living/carbon/human/user) //Carn: Hologram requests.
 	if(!istype(user))
 		return
-	if(alert(user,"Would you like to request an AI's presence?",,"Yes","No") == "Yes")
+	if(alert(user,"Хотите запросить присутствие ИИ?",,"Да","Нет") == "Да")
 		if(last_request + 200 < world.time) //don't spam the AI with requests you jerk!
 			last_request = world.time
-			to_chat(user, "<span class='notice'>You request an AI's presence.</span>")
+			to_chat(user, "<span class='notice'>Вы запрашиваете присутствие ИИ.</span>")
 			var/area/area = get_area(src)
 			for(var/mob/living/silicon/ai/AI in living_mob_list)
 				if(!AI.client)	continue
-				to_chat(AI, "<span class='info'>Your presence is requested at <a href='?src=\ref[AI];jumptoholopad=\ref[src]'>\the [area]</a>.</span>")
+				to_chat(AI, "<span class='info'>Ваше присутствие требуется в <a href='?src=\ref[AI];jumptoholopad=\ref[src]'> [area]</a>.</span>")
 		else
-			to_chat(user, "<span class='notice'>A request for AI presence was already sent recently.</span>")
+			to_chat(user, "<span class='notice'>Запрос на присутствие ИИ уже был отправлен недавно.</span>")
 
 /obj/machinery/hologram/holopad/attack_ai(mob/living/silicon/ai/user)
 	if(!istype(user))
@@ -82,12 +82,12 @@ var/const/HOLOPAD_MODE = RANGE_BASED
 /obj/machinery/hologram/holopad/proc/activate_holo(mob/living/silicon/ai/user)
 	if(!(stat & NOPOWER) && user.eyeobj.loc == src.loc)//If the projector has power and client eye is on it
 		if(user.holo)
-			to_chat(user, "<span class='danger'>ERROR:</span> Image feed in progress.")
+			to_chat(user, "<span class='danger'>ОШИБКА:</span> Подача изображений выполняется.")
 			return
 		create_holo(user)//Create one.
-		visible_message("A holographic image of [user] flicks to life right before your eyes!")
+		visible_message("Голографическое изображение [user] оживает прямо у вас на глазах!")
 	else
-		to_chat(user, "<span class='danger'>ERROR:</span> Unable to project hologram.")
+		to_chat(user, "<span class='danger'>ОШИБКА:</span> Невозможно проецировать голограмму.")
 	return
 
 /*This is the proc for special two-way communication between AI and holopad/people talking near holopad.
@@ -238,7 +238,7 @@ Holographic project of everything else.
  */
 /obj/machinery/hologram/projector
 	name = "hologram projector"
-	desc = "It makes a hologram appear...with magnets or something..."
+	desc = "Это заставляет появляться голограмму ... с магнитами или чем-то в этом роде ..."
 	icon = 'icons/obj/stationobjs_vr.dmi' //VOREStation Edit
 	icon_state = "hologram0"
 

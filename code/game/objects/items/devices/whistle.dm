@@ -1,12 +1,12 @@
 /obj/item/device/hailer
 	name = "hailer"
-	desc = "Used by obese officers to save their breath for running."
+	desc = "Используется тучными офицерами, чтобы сберечь дыхание перед бегом."
 	icon_state = "voice0"
 	item_state = "flashbang"	//looks exactly like a flash (and nothing like a flashbang)
 	w_class = ITEMSIZE_TINY
 	slot_flags = SLOT_EARS
 
-	var/use_message = "Halt! Security!"
+	var/use_message = "Стоять! Безопасность...!"
 	var/spamcheck = 0
 	var/insults
 

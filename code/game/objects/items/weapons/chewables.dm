@@ -67,8 +67,8 @@ obj/item/clothing/mask/chewable/Destroy()
 		spitout()
 
 /obj/item/clothing/mask/chewable/tobacco
-	name = "wad"
-	desc = "A chewy wad of tobacco. Cut in long strands and treated with syrup so it doesn't taste like an ash-tray when you stuff it into your face."
+	name = "пыж"
+	desc = "Жевательная пачка табака. Нарежьте длинные пряди и обработайте сиропом, чтобы он не походил на пепельницу, когда вы набиваете его себе на лицо."
 	throw_speed = 0.5
 	icon_state = "chew"
 	type_butt = /obj/item/trash/spitwad
@@ -86,7 +86,7 @@ obj/item/clothing/mask/chewable/Destroy()
 		if(transfer_color)
 			butt.color = color
 		if(brand)
-			butt.desc += " This one is \a [brand]."
+			butt.desc += " Это [brand]."
 		if(ismob(loc))
 			var/mob/living/M = loc
 			if(!no_message)
@@ -102,18 +102,18 @@ obj/item/clothing/mask/chewable/Destroy()
 	qdel(src)
 
 /obj/item/clothing/mask/chewable/tobacco/cheap
-	name = "chewing tobacco"
-	desc = "A chewy wad of tobacco. Cut in long strands and treated with syrup so it tastes less like an ash-tray when you stuff it into your face."
+	name = "жевательный табак"
+	desc = "Жевательная пачка табака. Нарежьте длинные пряди и обработайте сиропом, чтобы он не походил на пепельницу, когда вы кладете его себе на лицо."
 	filling = list("nicotine" = 2)
 
 /obj/item/clothing/mask/chewable/tobacco/fine
-	name = "deluxe chewing tobacco"
-	desc = "A chewy wad of fine tobacco. Cut in long strands and treated with syrup so it doesn't taste like an ash-tray when you stuff it into your face."
+	name = "роскошный жевательный табак"
+	desc = "Жевательная пачка прекрасного табака. Нарежьте длинные пряди и обработайте сиропом, чтобы он не походил на пепельницу, когда вы набиваете его себе на лицо."
 	filling = list("nicotine" = 3)
 
 /obj/item/clothing/mask/chewable/tobacco/nico
-	name = "nicotine gum"
-	desc = "A chewy wad of synthetic rubber, laced with nicotine. Possibly the least disgusting method of nicotine delivery."
+	name = "никотиновая жвачка"
+	desc = "Жевательный комок из синтетического каучука с добавлением никотина. Возможно, наименее отвратительный способ доставки никотина."
 	icon_state = "nic_gum"
 	type_butt = /obj/item/trash/spitgum
 	wrapped = TRUE
@@ -124,8 +124,8 @@ obj/item/clothing/mask/chewable/Destroy()
 	color = reagents.get_color()
 
 /obj/item/weapon/storage/chewables
-	name = "box of chewing wads master"
-	desc = "A generic brand of Waffle Co Wads, unflavored chews. Why do these exist?"
+	name = "коробка никотиновой жвачки master"
+	desc = "Универсальная марка вафельных колбас, жевательных конфет без вкуса. Почему они существуют?"
 	icon = 'icons/obj/cigarettes.dmi'
 	icon_state = "cigpacket"
 	item_state = "cigpacket"
@@ -140,16 +140,16 @@ obj/item/clothing/mask/chewable/Destroy()
 //Tobacco Tins
 
 /obj/item/weapon/storage/chewables/tobacco
-	name = "tin of Al Mamun Smooth chewing tobacco"
-	desc = "Packaged and shipped straight from Kishar, popularised by the biosphere farmers of Kanondaga."
+	name = "банка жевательного табака Al Mamun Smooth"
+	desc = "Упаковано и отправлено прямо из Кишара, популяризированного биосферными фермерами Канондаги."
 	icon_state = "chew_generic"
 	item_state = "cigpacket"
 	starts_with = list(/obj/item/clothing/mask/chewable/tobacco/cheap = 6)
 	storage_slots = 6
 
 /obj/item/weapon/storage/chewables/tobacco/fine
-	name = "tin of Suamalie chewing tobacco"
-	desc = "Once reserved for the first-class tourists of Oasis, this premium blend has been released for the public to enjoy."
+	name = "банка жевательного табака Suamalie"
+	desc = "Когда-то зарезервированный для первоклассных туристов Оазиса, этот премиальный купаж был выпущен для всеобщего ознакомления."
 	icon_state = "chew_fine"
 	item_state = "Dpacket"
 	starts_with = list(/obj/item/clothing/mask/chewable/tobacco/fine = 6)
@@ -170,8 +170,8 @@ obj/item/clothing/mask/chewable/Destroy()
 
 
 /obj/item/clothing/mask/chewable/candy
-	name = "wad"
-	desc = "A chewy wad of wadding material."
+	name = "пыж"
+	desc = "Жевательный комок ватного материала."
 	throw_speed = 0.5
 	icon_state = "chew"
 	type_butt = /obj/item/trash/spitgum
@@ -182,8 +182,8 @@ obj/item/clothing/mask/chewable/Destroy()
 	filling = list("sugar" = 2)
 
 /obj/item/clothing/mask/chewable/candy/gum
-	name = "chewing gum"
-	desc = "A chewy wad of fine synthetic rubber and artificial flavoring. Be sure to unwrap it, genius."
+	name = "жвачка"
+	desc = "Жевательный комок из высококачественного синтетического каучука и искусственного ароматизатора. Обязательно разверни его, гений."
 	icon_state = "gum"
 	item_state = "gum"
 	wrapped = TRUE
@@ -213,8 +213,8 @@ obj/item/clothing/mask/chewable/Destroy()
 	trash = /obj/item/trash/gumpack
 
 /obj/item/clothing/mask/chewable/candy/lolli
-	name = "lollipop"
-	desc = "A simple artificially flavored sphere of sugar on a handle, colloquially known as a sucker. Allegedly one is born every minute. Make sure to unwrap it, genius."
+	name = "леденец"
+	desc = "Простая искусственно ароматизированная сфера сахара на ручке, в просторечии известная как присоска. Якобы каждую минуту кто-то рождается. Обязательно разверни его, гений."
 	type_butt = /obj/item/trash/lollibutt
 	icon_state = "lollipop"
 	item_state = "lollipop"

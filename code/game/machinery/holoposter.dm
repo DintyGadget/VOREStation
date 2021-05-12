@@ -1,7 +1,7 @@
 GLOBAL_LIST_EMPTY(holoposters)
 /obj/machinery/holoposter
 	name = "Holographic Poster"
-	desc = "A wall-mounted holographic projector displaying advertisements by all manner of factions. How much do they pay to advertise here?"
+	desc = "Настенный голографический проектор, показывающий рекламу всевозможных фракций. Сколько они платят за рекламу здесь?"
 	icon = 'icons/obj/holoposter_vr.dmi'
 	icon_state = "off"
 	anchored = 1
@@ -14,14 +14,14 @@ GLOBAL_LIST_EMPTY(holoposters)
 	var/alerting = FALSE
 
 	var/list/postertypes = list(
-		"hephaestus" = list(LIGHT_COLOR_CYAN, "Hephaestus Aeronautics, a subsidiary of Hephaestus Industries. Known to make the best - if pricy - atmospheric to orbit shuttles and gliders for the consumer market."),
-		"aether" = list(LIGHT_COLOR_CYAN, "Aether Atmospherics, one of the lesser-known TSCs. They're ubiquitious in the Periphery - the very air you're breathing was probably sold and delivered by them."),
-		"moreau" = list(LIGHT_COLOR_ORANGE, "Children of Moreau. The hologram is a call to action by the local Moreau sect. 'Terraform, Prosper, and Be Sustainable, children!'"),
-		"cybersun" = list(LIGHT_COLOR_GREEN, "Cybersun Industries. A complex diagram without labels, showing the inner workings of a backup implant sold by Cybersun. 'The highest quality, for an affordable price!' says the tagline."),
-		"veymed" = list(LIGHT_COLOR_GREEN, "Vey-Med. This is an advertisement for a local clinic a few systems away. The tagline reads 'The mark of a truly civilized civilization is rewriting what evolution could not'."),
-		"grayson" = list(LIGHT_COLOR_ORANGE, "Grayson Manufactories Ltd. An advertisement for a sale from Grayson, including up to 50% off on lathe parts. Truly, a delight for DIY tinkerers out there."),
-		"ares" = list(LIGHT_COLOR_PINK, "Friends of Ares. Who managed to slip this poster into the rotation? A local charity set up by the Ares Confederation to help workers unionize or found their own colonies. 'Donate today!'"),
-		"moebius" = list(LIGHT_COLOR_PURPLE, "Moebius. One of the few companies worth merit beyond their local bubble staffed completely by synthetics. 'For synths, by synths.'")
+		"hephaestus" = list(LIGHT_COLOR_CYAN, "Hephaestus Aeronautics, дочерняя компания Hephaestus Industries. Известно, что делает лучшие из дорогих атмосферных шаттлов и планеров для потребительского рынка."),
+		"aether" = list(LIGHT_COLOR_CYAN, "Aether Atmospherics, одна из малоизвестных TSC. Они повсеместно распространены на Периферии - сам воздух, которым вы дышите, вероятно, был продан и доставлен ими."),
+		"moreau" = list(LIGHT_COLOR_ORANGE, "Дети Моро. Голограмма - это призыв к действию местной секты Моро. «Terraform, процветайте и будьте устойчивы, дети!»"),
+		"cybersun" = list(LIGHT_COLOR_GREEN, "Cybersun Industries. Сложная диаграмма без этикеток, показывающая внутреннюю работу резервного имплантата, продаваемого Cybersun. «Высочайшее качество по доступной цене!» гласит слоган."),
+		"veymed" = list(LIGHT_COLOR_GREEN, "Вей-Мед. Это реклама местной клиники, расположенной в нескольких системах отсюда. Слоган гласит: «Признак истинно цивилизованной цивилизации переписывает то, чего не могла сделать эволюция»."),
+		"grayson" = list(LIGHT_COLOR_ORANGE, "Grayson Manufactories Ltd. Объявление о распродаже от Grayson, включая скидку до 50% на детали для автолатов. Поистине восхищение для мастеров своими руками."),
+		"ares" = list(LIGHT_COLOR_PINK, "Друзья Ареса. Кому удалось подсунуть этот плакат в ротацию? Местная благотворительная организация, созданная Конфедерацией Ареса, чтобы помочь рабочим объединиться в профсоюзы или основать свои собственные колонии. «Пожертвуйте сегодня!»"),
+		"moebius" = list(LIGHT_COLOR_PURPLE, "Мебиус. Одна из немногих компаний, стоящих за пределами местного пузыря, полностью укомплектованная синтетикой. «Для синтов - от синтов».")
 	)
 
 /obj/machinery/holoposter/Initialize()
@@ -44,18 +44,18 @@ GLOBAL_LIST_EMPTY(holoposters)
 /obj/machinery/holoposter/update_icon()
 	if(stat & NOPOWER)
 		icon_state = "off"
-		examine_addon = "It appears to be powered off."
+		examine_addon = "Похоже, он выключен."
 		set_light(0)
 		return
 	var/new_color = LIGHT_COLOR_HALOGEN
 	if(stat & BROKEN)
 		icon_state = "glitch"
-		examine_addon = "It appears to be malfunctioning."
+		examine_addon = "Похоже, он неисправен."
 		new_color = "#6A6C71"
 	else
 		if((z in using_map.station_levels) && global.security_level) // 0 is fine, everything higher is alert levels
 			icon_state = "attention"
-			examine_addon = "It warns you to remain calm and contact your supervisor as soon as possible."
+			examine_addon = "Он предупреждает вас о том, чтобы сохранять спокойствие и как можно скорее связаться со своим руководителем."
 			new_color =  "#AA7039"
 			alerting = TRUE
 		else if(alerting && !global.security_level) // coming out of alert

@@ -1,6 +1,6 @@
 /obj/machinery/pda_multicaster
 	name = "\improper PDA multicaster"
-	desc = "This machine mirrors messages sent to it to specific departments."
+	desc = "Эта машина копирует сообщения, отправленные ей в определенные отделы."
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "pdamulti"
 	density = 1

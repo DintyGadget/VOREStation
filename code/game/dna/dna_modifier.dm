@@ -132,7 +132,7 @@
 /obj/machinery/dna_scannernew/verb/move_inside()
 	set src in oview(1)
 	set category = "Object"
-	set name = "Enter DNA Scanner"
+	set name = "Извлечь сканер ДНК"
 
 	if(usr.stat != 0)
 		return
@@ -157,19 +157,19 @@
 /obj/machinery/dna_scannernew/attackby(var/obj/item/weapon/item as obj, var/mob/user as mob)
 	if(istype(item, /obj/item/weapon/reagent_containers/glass))
 		if(beaker)
-			to_chat(user, "<span class='warning'>Стакан уже загружен в машину.</span>")
+			to_chat(user, "<span class='warning'>Емкость уже загружена в машину.</span>")
 			return
 
 		beaker = item
 		user.drop_item()
 		item.loc = src
-		user.visible_message("\The [user] adds \a [item] to \the [src]!", "You add \a [item] to \the [src]!")
+		user.visible_message("[user] добавляет [item] в [src]!", "Вы добавляете [item] в [src]!")
 		SStgui.update_uis(src)
 		return
 
 	else if(istype(item, /obj/item/organ/internal/brain))
 		if(src.occupant)
-			to_chat(user, "<span class='warning'>The scanner is already occupied!</span>")
+			to_chat(user, "<span class='warning'>Сканер уже занят!</span>")
 			return
 		var/obj/item/organ/internal/brain/brain = item
 		if(brain.clone_source)
@@ -177,11 +177,11 @@
 			brain.loc = src
 			put_in(brain.brainmob)
 			src.add_fingerprint(user)
-			user.visible_message("\The [user] adds \a [item] to \the [src]!", "You add \a [item] to \the [src]!")
+			user.visible_message("[user] добавляет [item] в [src]!", "Вы добавляете [item] в [src]!")
 			SStgui.update_uis(src)
 			return
 		else
-			to_chat(user, "\The [brain] is not acceptable for genetic sampling!")
+			to_chat(user, "[brain] неприемлем для генетической выборки!!")
 
 	else if(!istype(item, /obj/item/weapon/grab))
 		return
@@ -189,10 +189,10 @@
 	if(!ismob(G.affecting))
 		return
 	if(src.occupant)
-		to_chat(user, "<span class='warning'>The scanner is already occupied!</span>")
+		to_chat(user, "<span class='warning'>Сканер уже занят!</span>")
 		return
 	if(G.affecting.abiotic())
-		to_chat(user, "<span class='warning'>The subject cannot have abiotic items on.</span>")
+		to_chat(user, "<span class='warning'>Субъект не может иметь абиотических предметов.</span>")
 		return
 	put_in(G.affecting)
 	src.add_fingerprint(user)
@@ -216,7 +216,7 @@
 		if(!M.client && M.mind)
 			for(var/mob/observer/dead/ghost in player_list)
 				if(ghost.mind == M.mind)
-					to_chat(ghost, "<b><font color = #330033><font size = 3>Your corpse has been placed into a cloning scanner. Return to your body if you want to be resurrected/cloned!</b> (Verbs -> Ghost -> Re-enter corpse)</font></font>")
+					to_chat(ghost, "<b><font color = #330033><font size = 3>Ваш труп был помещен в сканер клонирования. Вернитесь в свое тело, если хотите быть воскрешенным/клонированным!</b> (Вкладки -> Ghost -> Вернуться в тело)</font></font>")
 					break
 	SStgui.update_uis(src)
 
@@ -270,8 +270,8 @@
 	return
 
 /obj/machinery/computer/scan_consolenew
-	name = "DNA Modifier Access Console"
-	desc = "Scan DNA."
+	name = "Консоль доступа к Модификатору ДНК"
+	desc = "Сканирование ДНК."
 	icon_keyboard = "med_key"
 	icon_screen = "dna"
 	density = 1
@@ -301,7 +301,7 @@
 			user.drop_item()
 			I.loc = src
 			src.disk = I
-			to_chat(user, "You insert [I].")
+			to_chat(user, "Вы вставляете [I].")
 			SStgui.update_uis(src) // update all UIs attached to src
 			return
 	else
@@ -634,7 +634,7 @@
 							databuf.dna.real_name = H.dna.real_name
 							databuf.gender = H.gender
 							databuf.body_descriptors = H.descriptors
-						databuf.name = "Unique Identifier"
+						databuf.name = "Уникальный ID"
 						buffers[bufferId] = databuf
 				if("saveUIAndUE")
 					if(connected.occupant && connected.occupant.dna)
@@ -646,7 +646,7 @@
 							databuf.dna.real_name = H.dna.real_name
 							databuf.gender = H.gender
 							databuf.body_descriptors = H.descriptors
-						databuf.name = "Unique Identifier + Unique Enzymes"
+						databuf.name = "Уникальный ID + Уникальные Ферменты"
 						buffers[bufferId] = databuf
 				if("saveSE")
 					if(connected.occupant && connected.occupant.dna)
@@ -658,12 +658,12 @@
 							databuf.dna.real_name = H.dna.real_name
 							databuf.gender = H.gender
 							databuf.body_descriptors = H.descriptors
-						databuf.name = "Structural Enzymes"
+						databuf.name = "Структурные ферменты"
 						buffers[bufferId] = databuf
 				if("clear")
 					buffers[bufferId] = new /datum/dna2/record()
 				if("changeLabel")
-					tgui_modal_input(src, "changeBufferLabel", "Please enter the new buffer label:", null, list("id" = bufferId), buffer.name, TGUI_MODAL_INPUT_MAX_LENGTH_NAME)
+					tgui_modal_input(src, "changeBufferLabel", "Пожалуйста, введите новую метку буфера:", null, list("id" = bufferId), buffer.name, TGUI_MODAL_INPUT_MAX_LENGTH_NAME)
 				if("transfer")
 					if(!connected.occupant || (NOCLONE in connected.occupant.mutations) || !connected.occupant.dna)
 						return
@@ -703,7 +703,7 @@
 						return
 					if(text2num(params["block"]) > 0)
 						var/list/choices = all_dna_blocks((buffer.types & DNA2_BUF_SE) ? buffer.dna.SE : buffer.dna.UI)
-						tgui_modal_choice(src, "createInjectorBlock", "Please select the block to create an injector from:", null, list("id" = bufferId), null, choices)
+						tgui_modal_choice(src, "createInjectorBlock", "Пожалуйста, выберите блок для создания инжектора:", null, list("id" = bufferId), null, choices)
 					else
 						create_injector(bufferId, TRUE)
 				if("loadDisk")

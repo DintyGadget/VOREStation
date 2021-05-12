@@ -2,8 +2,8 @@
 // can have multiple per area
 // can also operate on non-loc area through "otherarea" var
 /obj/machinery/light_switch
-	name = "light switch"
-	desc = "It turns lights on and off. What are you, simple?"
+	name = "переключатель"
+	desc = "Он включает и выключает свет. Ты что, тупой?"
 	icon = 'icons/obj/power_vr.dmi' // VOREStation Edit
 	icon_state = "light1"
 	layer = ABOVE_WINDOW_LAYER

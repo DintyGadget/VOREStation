@@ -80,7 +80,7 @@
 	if(title)
 		newMsg.title = title
 	else
-		newMsg.title = "News Update"
+		newMsg.title = "Обновление новостей"
 	newMsg.post_time = round_duration_in_ds // Should be almost universally unique
 	if(message_type)
 		newMsg.message_type = message_type
@@ -276,7 +276,7 @@ GLOBAL_LIST_BOILERPLATE(allCasters, /obj/machinery/newscaster)
 /obj/machinery/newscaster/tgui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "Newscaster", "Newscaster Unit #[unit_no]")
+		ui = new(user, src, "Новостник", "Новостник #[unit_no]")
 		ui.open()
 
 /obj/machinery/newscaster/tgui_data(mob/user, datum/tgui/ui, datum/tgui_state/state)

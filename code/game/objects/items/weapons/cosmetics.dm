@@ -49,8 +49,8 @@
 			to_chat(user, "<span class='notice'>Сначала нужно стереть старую помаду!</span>")
 			return
 		if(H == user)
-			user.visible_message("<span class='notice'>[user] does their lips with \the [src].</span>", \
-								 "<span class='notice'>You take a moment to apply \the [src]. Perfect!</span>")
+			user.visible_message("<span class='notice'>[user] красив свои губы с помощью [src].</span>", \
+								 "<span class='notice'>Вы уделяете некоторое время, чтобы нанести [src]. Прекрасно!</span>")
 			H.lip_style = colour
 			H.update_icons_body()
 		else
