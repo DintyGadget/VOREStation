@@ -125,10 +125,10 @@ var/list/_human_default_emotes = list(
 	/decl/emote/audible/gao,
 	/decl/emote/audible/cackle,
 	/decl/emote/audible/squish,
-	
+
 	/decl/emote/visible/mlem,
 	/decl/emote/visible/blep,
-	
+
 	/decl/emote/helper/vwag,
 	/decl/emote/helper/vflap
 	//VOREStation Add End
@@ -138,7 +138,7 @@ var/list/_human_default_emotes = list(
 	return global._human_default_emotes
 
 /mob/living/carbon/human/verb/pose()
-	set name = "Set Pose"
+	set name = "Установить Позу"
 	set desc = "Sets a description which will be shown when someone examines you."
 	set category = "IC"
 
@@ -147,43 +147,43 @@ var/list/_human_default_emotes = list(
 	pose = sanitize(input(usr, "This is [src]. [T.he]...", "Pose", null)  as text)
 
 /mob/living/carbon/human/verb/set_flavor()
-	set name = "Set Flavour Text"
+	set name = "Установить Описание Персонажа"
 	set desc = "Sets an extended description of your character's features."
 	set category = "IC"
 
-	var/HTML = "<body>"
+	var/HTML = "<meta charset=\"utf-8\"><body>"
 	HTML += "<tt><center>"
 	HTML += "<b>Update Flavour Text</b> <hr />"
 	HTML += "<br></center>"
-	HTML += "<a href='byond://?src=\ref[src];flavor_change=general'>General:</a> "
+	HTML += "<a href='byond://?src=\ref[src];flavor_change=general'>Общее:</a> "
 	HTML += TextPreview(flavor_texts["general"])
 	HTML += "<br>"
-	HTML += "<a href='byond://?src=\ref[src];flavor_change=head'>Head:</a> "
+	HTML += "<a href='byond://?src=\ref[src];flavor_change=head'>Голова:</a> "
 	HTML += TextPreview(flavor_texts["head"])
 	HTML += "<br>"
-	HTML += "<a href='byond://?src=\ref[src];flavor_change=face'>Face:</a> "
+	HTML += "<a href='byond://?src=\ref[src];flavor_change=face'>Лицо:</a> "
 	HTML += TextPreview(flavor_texts["face"])
 	HTML += "<br>"
-	HTML += "<a href='byond://?src=\ref[src];flavor_change=eyes'>Eyes:</a> "
+	HTML += "<a href='byond://?src=\ref[src];flavor_change=eyes'>Глаза:</a> "
 	HTML += TextPreview(flavor_texts["eyes"])
 	HTML += "<br>"
-	HTML += "<a href='byond://?src=\ref[src];flavor_change=torso'>Body:</a> "
+	HTML += "<a href='byond://?src=\ref[src];flavor_change=torso'>Тело:</a> "
 	HTML += TextPreview(flavor_texts["torso"])
 	HTML += "<br>"
-	HTML += "<a href='byond://?src=\ref[src];flavor_change=arms'>Arms:</a> "
+	HTML += "<a href='byond://?src=\ref[src];flavor_change=arms'>Руки:</a> "
 	HTML += TextPreview(flavor_texts["arms"])
 	HTML += "<br>"
-	HTML += "<a href='byond://?src=\ref[src];flavor_change=hands'>Hands:</a> "
+	HTML += "<a href='byond://?src=\ref[src];flavor_change=hands'>Кисти:</a> "
 	HTML += TextPreview(flavor_texts["hands"])
 	HTML += "<br>"
-	HTML += "<a href='byond://?src=\ref[src];flavor_change=legs'>Legs:</a> "
+	HTML += "<a href='byond://?src=\ref[src];flavor_change=legs'>Ноги:</a> "
 	HTML += TextPreview(flavor_texts["legs"])
 	HTML += "<br>"
-	HTML += "<a href='byond://?src=\ref[src];flavor_change=feet'>Feet:</a> "
+	HTML += "<a href='byond://?src=\ref[src];flavor_change=feet'>Стопы:</a> "
 	HTML += TextPreview(flavor_texts["feet"])
 	HTML += "<br>"
 	HTML += "<hr />"
-	HTML +="<a href='?src=\ref[src];flavor_change=done'>\[Done\]</a>"
+	HTML +="<a href='?src=\ref[src];flavor_change=done'>\[Готово\]</a>"
 	HTML += "<tt>"
 	src << browse(HTML, "window=flavor_changes;size=430x300")
 
