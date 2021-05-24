@@ -1,7 +1,22 @@
-node_modules
+#ignore misc BYOND files
+Thumbs.db
+vchat.db
+vchat.db*
 *.log
-package-lock.json
+*.int
+*.rsc
+*.dmb
+*.lk
+*.backup
+*.before
+*.pyc
+*.pid
+data
+data/
+cfg/
+.vscode
 
-/packages/tgui/public/.tmp/**/*
-/packages/tgui/public/**/*.hot-update.*
-/packages/tgui/public/**/*.map
+code/game/gamemodes/technomancer/spells/projectile/overload.dm
+code/game/gamemodes/technomancer/spells/projectile/overload.dm
+code/modules/client/preference_setup/loadout/loadout_xeno.dm
+temp.dmi
