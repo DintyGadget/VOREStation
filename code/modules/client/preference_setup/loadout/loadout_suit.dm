@@ -1,13 +1,13 @@
 // Suit slot
 /datum/gear/suit
-	display_name = "Фартук, синий"
+	display_name = "apron, blue"
 	path = /obj/item/clothing/suit/storage/apron
 	slot = slot_wear_suit
-	sort_category = "Костюмы и верхняя одежда"
+	sort_category = "Suits and Overwear"
 	cost = 2
 
 /datum/gear/suit/apron_white
-	display_name = "Фартук (окрашиваемый)"
+	display_name = "apron, colorable"
 	path = /obj/item/clothing/suit/storage/apron/white
 
 /datum/gear/suit/apron_white/New()
@@ -15,67 +15,67 @@
 	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/suit/greatcoat
-	display_name = "Шинель"
+	display_name = "greatcoat"
 	path = /obj/item/clothing/suit/greatcoat
 
 /datum/gear/suit/leather_coat
-	display_name = "Пальто кожаное"
+	display_name = "leather coat"
 	path = /obj/item/clothing/suit/leathercoat
 
 /datum/gear/suit/puffer_coat
-	display_name = "Куртка, пуховик"
+	display_name = "puffer coat"
 	path = /obj/item/clothing/suit/jacket/puffer
 
 /datum/gear/suit/puffer_vest
-	display_name = "Безрукавка, пуховик"
+	display_name = "puffer vest"
 	path = /obj/item/clothing/suit/jacket/puffer/vest
 
 /datum/gear/suit/bomber
-	display_name = "Куртка, бомбер"
+	display_name = "bomber jacket"
 	path = /obj/item/clothing/suit/storage/toggle/bomber
 
 /datum/gear/suit/bomber_alt
-	display_name = "Куртка, бомбер, альт"
+	display_name = "bomber jacket 2"
 	path = /obj/item/clothing/suit/storage/bomber/alt
 
 /datum/gear/suit/leather_jacket
-	display_name = "Куртка, кожаная, черная"
+	display_name = "leather jacket, black"
 	path = /obj/item/clothing/suit/storage/toggle/leather_jacket
 
 /datum/gear/suit/leather_jacket_sleeveless
-	display_name = "Безрукавка, кожаная, черная"
+	display_name = "leather vest, black"
 	path = /obj/item/clothing/suit/storage/toggle/leather_jacket/sleeveless
 
 /datum/gear/suit/leather_jacket_alt
-	display_name = "Куртка, кожаная, черная, альт"
+	display_name = "leather jacket 2, black"
 	path = /obj/item/clothing/suit/storage/leather_jacket_alt
 
 /datum/gear/suit/leather_jacket_nt
-	display_name = "Куртка, кожаная, фирменная, черная"
+	display_name = "leather jacket, corporate, black"
 	path = /obj/item/clothing/suit/storage/toggle/leather_jacket/nanotrasen
 
 /datum/gear/suit/leather_jacket_nt/sleeveless
-	display_name = "Безрукавка, кожаная, фирменная, черная"
+	display_name = "leather vest, corporate, black"
 	path = /obj/item/clothing/suit/storage/toggle/leather_jacket/nanotrasen/sleeveless
 
 /datum/gear/suit/brown_jacket
-	display_name = "Куртка, кожаная, коричневая"
+	display_name = "leather jacket, brown"
 	path = /obj/item/clothing/suit/storage/toggle/brown_jacket
 
 /datum/gear/suit/brown_jacket_sleeveless
-	display_name = "Безрукавка, кожаная, коричневая"
+	display_name = "leather vest, brown"
 	path = /obj/item/clothing/suit/storage/toggle/brown_jacket/sleeveless
 
 /datum/gear/suit/brown_jacket_nt
-	display_name = "Куртка, кожаная, фирменная, коричневая"
+	display_name = "leather jacket, corporate, brown"
 	path = /obj/item/clothing/suit/storage/toggle/brown_jacket/nanotrasen
 
 /datum/gear/suit/brown_jacket_nt/sleeveless
-	display_name = "Безрукавка, кожаная, фирменная, коричневая"
+	display_name = "leather vest, corporate, brown"
 	path = /obj/item/clothing/suit/storage/toggle/brown_jacket/nanotrasen/sleeveless
 
 /datum/gear/suit/mil
-	display_name = "Куртка, милитари (выбор)"
+	display_name = "military jacket selection"
 	path = /obj/item/clothing/suit/storage/miljacket
 
 /datum/gear/suit/mil/New()
@@ -87,19 +87,19 @@
 	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(mil_jackets))
 
 /datum/gear/suit/greyjacket
-	display_name = "Куртка, серая"
+	display_name = "grey jacket"
 	path = /obj/item/clothing/suit/storage/greyjacket
 
 /datum/gear/suit/brown_trenchcoat
-	display_name = "Тренчкот, коричневый"
+	display_name = "trenchcoat, brown"
 	path = /obj/item/clothing/suit/storage/trench
 
 /datum/gear/suit/grey_trenchcoat
-	display_name = "Тренчкот, серый"
+	display_name = "trenchcoat, grey"
 	path = /obj/item/clothing/suit/storage/trench/grey
 
 datum/gear/suit/duster
-	display_name = "Ковбойский пыльник"
+	display_name = "cowboy duster"
 	path = /obj/item/clothing/suit/storage/duster
 
 /datum/gear/suit/duster/New()
@@ -107,7 +107,7 @@ datum/gear/suit/duster
 	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/suit/hazard_vest
-	display_name = "Аварийный жилет (выбор)"
+	display_name = "hazard vest selection"
 	path = /obj/item/clothing/suit/storage/hazardvest
 
 /datum/gear/suit/hazard_vest/New()
@@ -121,7 +121,7 @@ datum/gear/suit/duster
 	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(hazards))
 
 /datum/gear/suit/hoodie
-	display_name = "Худи (выбор)"
+	display_name = "hoodie selection"
 	path = /obj/item/clothing/suit/storage/toggle/hoodie
 
 /datum/gear/suit/hoodie/New()
@@ -133,43 +133,43 @@ datum/gear/suit/duster
 	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(hoodies))
 
 /datum/gear/suit/labcoat
-	display_name = "Лаб. халат"
+	display_name = "labcoat"
 	path = /obj/item/clothing/suit/storage/toggle/labcoat
 
 /datum/gear/suit/labcoat/blue
-	display_name = "Лаб. халат, синий"
+	display_name = "labcoat, blue"
 	path = /obj/item/clothing/suit/storage/toggle/labcoat/blue
 
 /datum/gear/suit/labcoat/blue_edge
-	display_name = "Лаб. халат, синяя кромка"
+	display_name = "labcoat, blue-edged"
 	path = /obj/item/clothing/suit/storage/toggle/labcoat/blue_edge
 
 /datum/gear/suit/labcoat/green
-	display_name = "Лаб. халат, зеленый"
+	display_name = "labcoat, green"
 	path = /obj/item/clothing/suit/storage/toggle/labcoat/green
 
 /datum/gear/suit/labcoat/orange
-	display_name = "Лаб. халат, оранжевый"
+	display_name = "labcoat, orange"
 	path = /obj/item/clothing/suit/storage/toggle/labcoat/orange
 
 /datum/gear/suit/labcoat/purple
-	display_name = "Лаб. халат, фиолетовый"
+	display_name = "labcoat, purple"
 	path = /obj/item/clothing/suit/storage/toggle/labcoat/purple
 
 /datum/gear/suit/labcoat/pink
-	display_name = "Лаб. халат, розовый"
+	display_name = "labcoat, pink"
 	path = /obj/item/clothing/suit/storage/toggle/labcoat/pink
 
 /datum/gear/suit/labcoat/red
-	display_name = "Лаб. халат, красный"
+	display_name = "labcoat, red"
 	path = /obj/item/clothing/suit/storage/toggle/labcoat/red
 
 /datum/gear/suit/labcoat/yellow
-	display_name = "Лаб. халат, желтый"
+	display_name = "labcoat, yellow"
 	path = /obj/item/clothing/suit/storage/toggle/labcoat/yellow
 
 /datum/gear/suit/labcoat/emt
-	display_name = "Врач: Халат"
+	display_name = "labcoat, EMT (Medical)"
 	path = /obj/item/clothing/suit/storage/toggle/labcoat/emt
 	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Paramedic","Geneticist", "Psychiatrist")
 
@@ -178,17 +178,17 @@ datum/gear/suit/duster
 	path = /obj/item/clothing/suit/storage/toggle/labcoat/plaguedoctor
 
 /datum/gear/suit/roles/surgical_apron
-	display_name = "Врач: Фартук хирурга"
+	display_name = "surgical apron"
 	path = /obj/item/clothing/suit/surgicalapron
 	allowed_roles = list("Medical Doctor","Chief Medical Officer")
 
 /datum/gear/suit/overalls
-	display_name = "Комбинезон"
+	display_name = "overalls"
 	path = /obj/item/clothing/suit/storage/apron/overalls
 	cost = 1
 
 /datum/gear/suit/poncho
-	display_name = "Пончо (выбор)"
+	display_name = "poncho selection"
 	path = /obj/item/clothing/accessory/poncho
 	cost = 1
 
@@ -201,95 +201,95 @@ datum/gear/suit/duster
 	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(ponchos))
 
 /datum/gear/suit/roles/poncho
-	display_name = "Карго: Пончо"
+	display_name = "poncho, cargo"
 	path = /obj/item/clothing/accessory/poncho/roles/cargo
 	cost = 1
 
 /datum/gear/suit/roles/poncho/security
-	display_name = "СБ: Пончо"
+	display_name = "poncho, security"
 	path = /obj/item/clothing/accessory/poncho/roles/security
 
 /datum/gear/suit/roles/poncho/medical
-	display_name = "Врач: Пончо"
+	display_name = "poncho, medical"
 	path = /obj/item/clothing/accessory/poncho/roles/medical
 
 /datum/gear/suit/roles/poncho/engineering
-	display_name = "Инженер: Пончо"
+	display_name = "poncho, engineering"
 	path = /obj/item/clothing/accessory/poncho/roles/engineering
 
 /datum/gear/suit/roles/poncho/science
-	display_name = "Учёный: Пончо"
+	display_name = "poncho, science"
 	path = /obj/item/clothing/accessory/poncho/roles/science
 
 /datum/gear/suit/roles/poncho/cloak/hos
-	display_name = "СБ: Плащ Главы Службы Безопасности"
+	display_name = "cloak, head of security"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/hos
 	allowed_roles = list("Head of Security")
 
 /datum/gear/suit/roles/poncho/cloak/cmo
-	display_name = "Врач: Плащ Главврача"
+	display_name = "cloak, chief medical officer"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/cmo
 	allowed_roles = list("Chief Medical Officer")
 
 /datum/gear/suit/roles/poncho/cloak/ce
-	display_name = "Инженер: Плащ Главного Инженера"
+	display_name = "cloak, chief engineer"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/ce
 	allowed_roles = list("Chief Engineer")
 
 /datum/gear/suit/roles/poncho/cloak/rd
-	display_name = "Учёный: Плащ Директора Исследований"
+	display_name = "cloak, research director"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/rd
 	allowed_roles = list("Research Director")
 
 /datum/gear/suit/roles/poncho/cloak/qm
-	display_name = "Карго: Плащ Квартирмейстера"
+	display_name = "cloak, quartermaster"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/qm
 	allowed_roles = list("Quartermaster")
 
 /datum/gear/suit/roles/poncho/cloak/captain
-	display_name = "Управление: Плащ Директора Колонии"
+	display_name = "cloak, site manager"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/captain
 	allowed_roles = list("Site Manager")
 
 /datum/gear/suit/roles/poncho/cloak/hop
-	display_name = "Управление: Плащ Главы Персонала"
+	display_name = "cloak, head of personnel"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/hop
 	allowed_roles = list("Head of Personnel")
 
 /datum/gear/suit/roles/poncho/cloak/cargo
-	display_name = "Карго: Плащ карго"
+	display_name = "cloak, cargo"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/cargo
 
 /datum/gear/suit/roles/poncho/cloak/mining
-	display_name = "Карго: Плащ шахтёра"
+	display_name = "cloak, mining"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/mining
 
 /datum/gear/suit/roles/poncho/cloak/security
-	display_name = "СБ: Плащ"
+	display_name = "cloak, security"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/security
 
 /datum/gear/suit/roles/poncho/cloak/service
-	display_name = "Сервис: Плащ"
+	display_name = "cloak, service"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/service
 
 /datum/gear/suit/roles/poncho/cloak/engineer
-	display_name = "Инженер: Плащ инженера"
+	display_name = "cloak, engineer"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/engineer
 
 /datum/gear/suit/roles/poncho/cloak/atmos
-	display_name = "Инженер: Плащ атмосферщика"
+	display_name = "cloak, atmos"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/atmos
 
 /datum/gear/suit/roles/poncho/cloak/research
-	display_name = "Учёный: Плащ"
+	display_name = "cloak, science"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/research
 
 /datum/gear/suit/roles/poncho/cloak/medical
-	display_name = "Врач: Плащ"
+	display_name = "cloak, medical"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/medical
 
 /datum/gear/suit/roles/poncho/cloak/custom //A colorable cloak
-	display_name = "Плащ (окрашиваемый)"
+	display_name = "cloak (colorable)"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/custom
 
 /datum/gear/suit/roles/poncho/cloak/custom/New()
@@ -297,90 +297,188 @@ datum/gear/suit/duster
 	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/suit/unathi_robe
-	display_name = "Домотканая туника"
+	display_name = "roughspun robe"
 	path = /obj/item/clothing/suit/unathi/robe
 	cost = 1
 
 /datum/gear/suit/black_lawyer_jacket
-	display_name = "Формальный пиджак, черный"
+	display_name = "suit jacket, black"
 	path = /obj/item/clothing/suit/storage/toggle/internalaffairs
 
 /datum/gear/suit/blue_lawyer_jacket
-	display_name = "Формальный пиджак, синий"
+	display_name = "suit jacket, blue"
 	path = /obj/item/clothing/suit/storage/toggle/lawyer/bluejacket
 
 /datum/gear/suit/purple_lawyer_jacket
-	display_name = "Формальный пиджак, фиолетовый"
+	display_name = "suit jacket, purple"
 	path = /obj/item/clothing/suit/storage/toggle/lawyer/purpjacket
 
 /datum/gear/suit/suspenders
-	display_name = "Подтяжки"
+	display_name = "suspenders"
 	path = /obj/item/clothing/suit/suspenders
 
 /datum/gear/suit/forensics
-	display_name = "Детектив: Длинный пиджак, красный"
+	display_name = "forensics long, red"
 	path = /obj/item/clothing/suit/storage/forensics/red/long
 	allowed_roles = list("Detective")
 
 /datum/gear/suit/forensics/blue
-	display_name = "Детектив: Длинный пиджак, синий"
+	display_name = "forensics long, blue"
 	path = /obj/item/clothing/suit/storage/forensics/blue/long
 	allowed_roles = list("Detective")
 
 /datum/gear/suit/forensics/blue/short
-	display_name = "Детектив: Пиджак, синий"
+	display_name = "forensics, blue"
 	path = /obj/item/clothing/suit/storage/forensics/blue
 	allowed_roles = list("Detective")
 
 /datum/gear/suit/forensics/red/short
-	display_name = "Детектив: Пиджак, красный"
+	display_name = "forensics, red"
 	path = /obj/item/clothing/suit/storage/forensics/red
 	allowed_roles = list("Detective")
 
+// winter coats go here
+
 /datum/gear/suit/wintercoat
-	display_name = "Пальто зимнее"
+	display_name = "winter coat"
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat
 
 /datum/gear/suit/wintercoat/captain
-	display_name = "Управление: Зимнее пальто ДК"
+	display_name = "winter coat, site manager"
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat/captain
 	allowed_roles = list("Site Manager")
 
+/datum/gear/suit/wintercoat/hop
+	display_name = "winter coat, head of personnel"
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/hop
+	allowed_roles = list("Head of Personnel")
+
 /datum/gear/suit/wintercoat/security
-	display_name = "СБ: Зимнее пальто"
+	display_name = "winter coat, security"
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat/security
 	allowed_roles = list("Security Officer", "Head of Security", "Warden", "Detective")
 
+/datum/gear/suit/wintercoat/security/hos
+	display_name = "winter coat, head of security"
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/security/hos
+	allowed_roles = list("Head of Security")
+
 /datum/gear/suit/wintercoat/medical
-	display_name = "Врач: Зимнее пальто"
+	display_name = "winter coat, medical"
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat/medical
+	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Paramedic","Geneticist", "Psychiatrist", "Field Medic")
+
+/datum/gear/suit/wintercoat/medical/alt
+	display_name = "winter coat, medical alt"
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/medical/alt
+	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Paramedic","Geneticist", "Psychiatrist", "Field Medic")
+
+/datum/gear/suit/wintercoat/medical/viro
+	display_name = "winter coat, virologist"
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/medical/viro
+	allowed_roles = list("Medical Doctor","Chief Medical Officer")
+
+/datum/gear/suit/wintercoat/medical/para
+	display_name = "winter coat, paramedic"
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/medical/para
+	allowed_roles = list("Medical Doctor","Chief Medical Officer","Paramedic")
+
+/datum/gear/suit/wintercoat/medical/chemist
+	display_name = "winter coat, chemist"
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/medical/chemist
+	allowed_roles = list("Chief Medical Officer","Chemist")
+
+/datum/gear/suit/wintercoat/medical/cmo
+	display_name = "winter coat, chief medical officer"
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/medical/cmo
+	allowed_roles = list("Chief Medical Officer")
+
+/datum/gear/suit/wintercoat/medical/sar
+	display_name = "winter coat, search and rescue"
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/medical/sar
+	allowed_roles = list("Chief Medical Officer", "Field Medic")
 
 /datum/gear/suit/wintercoat/science
-	display_name = "Учёный: Зимнее пальто"
+	display_name = "winter coat, science"
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat/science
+	allowed_roles = list("Research Director","Scientist", "Roboticist", "Xenobiologist", "Xenobotanist")
+
+
+/datum/gear/suit/wintercoat/science/robotics
+	display_name = "winter coat, robotics"
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/science/robotics
+	allowed_roles = list("Research Director", "Roboticist")
+
+/datum/gear/suit/wintercoat/science/rd
+	display_name = "winter coat, research director"
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/science/rd
+	allowed_roles = list("Research Director")
 
 /datum/gear/suit/wintercoat/engineering
-	display_name = "Инженер: Зимнее пальто инженера"
+	display_name = "winter coat, engineering"
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat/engineering
+	allowed_roles = list("Chief Engineer","Atmospheric Technician", "Station Engineer")
 
-/datum/gear/suit/wintercoat/atmos
-	display_name = "Инженер: Зимнее пальто атмосферщика"
+/datum/gear/suit/wintercoat/engineering/atmos
+	display_name = "winter coat, atmospherics"
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat/engineering/atmos
+	allowed_roles = list("Chief Engineer", "Atmospheric Technician")
+
+/datum/gear/suit/wintercoat/engineering/ce
+	display_name = "winter coat, chief engineer"
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/engineering/ce
+	allowed_roles = list("Chief Engineer")
 
 /datum/gear/suit/wintercoat/hydro
-	display_name = "Сервис: Зимнее пальто ботаника"
+	display_name = "winter coat, hydroponics"
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat/hydro
+	allowed_roles = list("Botanist", "Xenobotanist")
 
 /datum/gear/suit/wintercoat/cargo
-	display_name = "Карго: Зимнее пальто карго"
+	display_name = "winter coat, cargo"
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat/cargo
+	allowed_roles = list("Quartermaster","Cargo Technician")
 
 /datum/gear/suit/wintercoat/miner
-	display_name = "Карго: Зимнее пальто шахтера"
+	display_name = "winter coat, mining"
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat/miner
+	allowed_roles = list("Shaft Miner")
+
+/datum/gear/suit/wintercoat/cargo/qm
+	display_name = "winter coat, quartermaster"
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/cargo/qm
+	allowed_roles = list("Quartermaster")
+
+/datum/gear/suit/wintercoat/bar
+	display_name = "winter coat, bartender"
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/bar
+	allowed_roles = list("Bartender")
+
+/datum/gear/suit/wintercoat/janitor
+	display_name = "winter coat, janitor"
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/janitor
+	allowed_roles = list("Janitor")
+
+/datum/gear/suit/wintercoat/aformal
+	display_name = "winter coat, assistant formal"
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/aformal
+
+/datum/gear/suit/wintercoat/ratvar
+	display_name = "winter coat, brassy"
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/ratvar
+
+/datum/gear/suit/wintercoat/narsie
+	display_name = "winter coat, runed"
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/narsie
+
+/datum/gear/suit/wintercoat/cosmic
+	display_name = "winter coat, cosmic"
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/cosmic
+
+// winter coats end here
 
 /datum/gear/suit/varsity
-	display_name = "Куртка, университетская (выбор)"
+	display_name = "varsity jacket selection"
 	path = /obj/item/clothing/suit/varsity
 
 /datum/gear/suit/varsity/New()
@@ -392,7 +490,7 @@ datum/gear/suit/duster
 	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(varsities))
 
 /datum/gear/suit/track
-	display_name = "Куртка, спортивная (выбор)"
+	display_name = "track jacket selection"
 	path = /obj/item/clothing/suit/storage/toggle/track
 
 /datum/gear/suit/track/New()
@@ -404,39 +502,39 @@ datum/gear/suit/duster
 	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(tracks))
 
 /datum/gear/suit/flannel
-	display_name = "Рубашка фланелевая, серая"
+	display_name = "grey flannel"
 	path = /obj/item/clothing/suit/storage/flannel
 
 /datum/gear/suit/flannel/red
-	display_name = "Рубашка фланелевая, красная"
+	display_name = "red flannel"
 	path = /obj/item/clothing/suit/storage/flannel/red
 
 /datum/gear/suit/flannel/aqua
-	display_name = "Рубашка фланелевая, морская волна"
+	display_name = "aqua flannel"
 	path = /obj/item/clothing/suit/storage/flannel/aqua
 
 /datum/gear/suit/flannel/brown
-	display_name = "Рубашка фланелевая, коричневая"
+	display_name = "brown flannel"
 	path = /obj/item/clothing/suit/storage/flannel/brown
 
 /datum/gear/suit/denim_jacket
-	display_name = "Куртка, деним"
+	display_name = "denim jacket"
 	path = /obj/item/clothing/suit/storage/toggle/denim_jacket
 
 /datum/gear/suit/denim_jacket/corporate
-	display_name = "Куртка, деним, фирменная"
+	display_name = "denim jacket, corporate"
 	path = /obj/item/clothing/suit/storage/toggle/denim_jacket/nanotrasen
 
 /datum/gear/suit/denim_vest
-	display_name = "Безрукавка, деним"
+	display_name = "denim vest"
 	path = /obj/item/clothing/suit/storage/toggle/denim_jacket/sleeveless
 
 /datum/gear/suit/denim_vest/corporate
-	display_name = "Безрукавка, деним, фирменная"
+	display_name = "denim vest, corporate"
 	path = /obj/item/clothing/suit/storage/toggle/denim_jacket/nanotrasen/sleeveless
 
 /datum/gear/suit/miscellaneous/kimono
-	display_name = "Кимоно"
+	display_name = "kimono"
 	path = /obj/item/clothing/suit/kimono
 
 /datum/gear/suit/miscellaneous/kimono/New()
@@ -444,27 +542,27 @@ datum/gear/suit/duster
 	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/suit/miscellaneous/sec_dep_jacket
-	display_name = "СБ: Куртка отдела"
+	display_name = "department jacket, security"
 	path = /obj/item/clothing/suit/storage/toggle/sec_dep_jacket
 
 /datum/gear/suit/miscellaneous/engi_dep_jacket
-	display_name = "Инженер: Куртка отдела"
+	display_name = "department jacket, engineering"
 	path = /obj/item/clothing/suit/storage/toggle/engi_dep_jacket
 
 /datum/gear/suit/miscellaneous/supply_dep_jacket
-	display_name = "Карго: Куртка отдела"
+	display_name = "department jacket, supply"
 	path = /obj/item/clothing/suit/storage/toggle/supply_dep_jacket
 
 /datum/gear/suit/miscellaneous/sci_dep_jacket
-	display_name = "Учёный: Куртка отдела"
+	display_name = "department jacket, science"
 	path = /obj/item/clothing/suit/storage/toggle/sci_dep_jacket
 
 /datum/gear/suit/miscellaneous/med_dep_jacket
-	display_name = "Врача: Куртка отдела"
+	display_name = "department jacket, medical"
 	path = /obj/item/clothing/suit/storage/toggle/med_dep_jacket
 
 /datum/gear/suit/miscellaneous/peacoat
-	display_name = "Бушлат"
+	display_name = "peacoat"
 	path = /obj/item/clothing/suit/storage/toggle/peacoat
 
 /datum/gear/suit/miscellaneous/peacoat/New()
@@ -472,45 +570,45 @@ datum/gear/suit/duster
 	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/suit/miscellaneous/kamishimo
-	display_name = "Камисимо"
+	display_name = "kamishimo"
 	path = /obj/item/clothing/suit/kamishimo
 
 /datum/gear/suit/snowsuit
-	display_name = "Зимняя куртка"
+	display_name = "snowsuit"
 	path = /obj/item/clothing/suit/storage/snowsuit
 
 /datum/gear/suit/snowsuit/command
-	display_name = "Управление: Зимняя куртка"
+	display_name = "snowsuit, command"
 	path = /obj/item/clothing/suit/storage/snowsuit/command
 	allowed_roles = list("Site Manager","Research Director","Head of Personnel","Head of Security","Chief Engineer","Command Secretary")
 
 /datum/gear/suit/snowsuit/security
-	display_name = "СБ: Зимняя куртка"
+	display_name = "snowsuit, security"
 	path = /obj/item/clothing/suit/storage/snowsuit/security
 	allowed_roles = list("Security Officer", "Head of Security", "Warden", "Detective")
 
 /datum/gear/suit/snowsuit/medical
-	display_name = "Врач: Зимняя куртка"
+	display_name = "snowsuit, medical"
 	path = /obj/item/clothing/suit/storage/snowsuit/medical
 	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Paramedic","Geneticist", "Psychiatrist", "Search and Rescue")
 
 /datum/gear/suit/snowsuit/science
-	display_name = "Учёный: Зимняя куртка"
+	display_name = "snowsuit, science"
 	path = /obj/item/clothing/suit/storage/snowsuit/science
 	allowed_roles = list("Research Director","Scientist", "Roboticist", "Xenobiologist")
 
 /datum/gear/suit/snowsuit/engineering
-	display_name = "Инженер: Зимняя куртка"
+	display_name = "snowsuit, engineering"
 	path = /obj/item/clothing/suit/storage/snowsuit/engineering
 	allowed_roles = list("Chief Engineer","Atmospheric Technician", "Station Engineer")
 
 /datum/gear/suit/snowsuit/cargo
-	display_name = "Карго: Зимняя куртка"
+	display_name = "snowsuit, supply"
 	path = /obj/item/clothing/suit/storage/snowsuit/cargo
 	allowed_roles = list("Quartermaster","Shaft Miner","Cargo Technician","Head of Personnel")
 
 /datum/gear/suit/miscellaneous/cardigan
-	display_name = "Кардиган (окрашиваемый)"
+	display_name = "cardigan"
 	path = /obj/item/clothing/suit/storage/toggle/cardigan
 
 /datum/gear/suit/miscellaneous/cardigan/New()
