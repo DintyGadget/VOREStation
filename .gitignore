@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #ignore misc BYOND files
 Thumbs.db
 vchat.db
@@ -14,7 +15,9 @@ vchat.db*
 data
 data/
 cfg/
+=======
 .vscode
+>>>>>>> newfeature
 
 code/game/gamemodes/technomancer/spells/projectile/overload.dm
 code/game/gamemodes/technomancer/spells/projectile/overload.dm
