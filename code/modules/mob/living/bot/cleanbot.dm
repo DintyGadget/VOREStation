@@ -1,5 +1,5 @@
 /mob/living/bot/cleanbot
-	name = "Cleanbot"
+	name = "Чистильщик"
 	desc = "A little cleaning robot, it looks so excited!"
 	icon_state = "cleanbot0"
 	req_one_access = list(access_robotics, access_janitor)
@@ -27,7 +27,7 @@
 
 /mob/living/bot/cleanbot/handleIdle()
 	if(!wet_floors && !spray_blood && vocal && prob(2))
-		custom_emote(2, "makes an excited booping sound!")
+		custom_emote(2, "издает взволнованный писк!")
 		playsound(src, 'sound/machines/synth_yes.ogg', 50, 0)
 
 	if(wet_floors && prob(5)) // Make a mess
@@ -36,7 +36,7 @@
 			T.wet_floor()
 
 	if(spray_blood && prob(5)) // Make a big mess
-		visible_message("Something flies out of [src]. It seems to be acting oddly.")
+		visible_message("Что-то вылетает из [src]. Вроде так быть не должно.")
 		var/obj/effect/decal/cleanable/blood/gibs/gib = new /obj/effect/decal/cleanable/blood/gibs(loc)
 		// TODO - I have a feeling weakrefs will not work in ignore_list, verify this ~Leshana
 		var/weakref/g = weakref(gib)
@@ -111,7 +111,7 @@
 
 	busy = 1
 	if(prob(20))
-		custom_emote(2, "begins to clean up \the [D]")
+		custom_emote(2, "начинает чистить [D]")
 	update_icons()
 	var/cleantime = istype(D, /obj/effect/decal/cleanable/dirt) ? 10 : 50
 	if(do_after(src, cleantime))
@@ -129,7 +129,7 @@
 
 /mob/living/bot/cleanbot/explode()
 	on = 0
-	visible_message("<span class='danger'>[src] blows apart!</span>")
+	visible_message("<span class='danger'>[src] разлетается на части!</span>")
 	var/turf/Tsec = get_turf(src)
 
 	new /obj/item/weapon/reagent_containers/glass/bucket(Tsec)
@@ -155,7 +155,7 @@
 /mob/living/bot/cleanbot/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "Cleanbot", name)
+		ui = new(user, src, "Чистильщик", name)
 		ui.open()
 
 /mob/living/bot/cleanbot/tgui_data(mob/user, datum/tgui/ui, datum/tgui_state/state)
@@ -193,18 +193,18 @@
 			. = TRUE
 		if("wet_floors")
 			wet_floors = !wet_floors
-			to_chat(usr, "<span class='notice'>You twiddle the screw.</span>")
+			to_chat(usr, "<span class='notice'>Вы вертите винт.</span>")
 			. = TRUE
 		if("spray_blood")
 			spray_blood = !spray_blood
-			to_chat(usr, "<span class='notice'>You press the weird button.</span>")
+			to_chat(usr, "<span class='notice'>Вы нажимаете странную кнопку.</span>")
 			. = TRUE
 
 /mob/living/bot/cleanbot/emag_act(var/remaining_uses, var/mob/user)
 	. = ..()
 	if(!wet_floors || !spray_blood)
 		if(user)
-			to_chat(user, "<span class='notice'>The [src] buzzes and beeps.</span>")
+			to_chat(user, "<span class='notice'>[src] гудит и издает звуковой сигнал.</span>")
 			playsound(src, 'sound/machines/buzzbeep.ogg', 50, 0)
 		spray_blood = 1
 		wet_floors = 1
@@ -216,8 +216,8 @@
 /* Assembly */
 
 /obj/item/weapon/bucket_sensor
-	desc = "It's a bucket. With a sensor attached."
-	name = "proxy bucket"
+	desc = "Это ведро. С прикрепленным датчиком."
+	name = "ведро с датчиком"
 	icon = 'icons/obj/aibots.dmi'
 	icon_state = "bucket_proxy"
 	force = 3.0
@@ -225,7 +225,7 @@
 	throw_speed = 2
 	throw_range = 5
 	w_class = ITEMSIZE_NORMAL
-	var/created_name = "Cleanbot"
+	var/created_name = "Чистильщик"
 
 /obj/item/weapon/bucket_sensor/attackby(var/obj/item/W, var/mob/user)
 	..()
@@ -235,12 +235,12 @@
 		var/turf/T = get_turf(loc)
 		var/mob/living/bot/cleanbot/A = new /mob/living/bot/cleanbot(T)
 		A.name = created_name
-		to_chat(user, "<span class='notice'>You add the robot arm to the bucket and sensor assembly. Beep boop!</span>")
+		to_chat(user, "<span class='notice'>Вы добавляете руку робота в ведро с датчиками. Бип-буп!</span>")
 		user.drop_from_inventory(src)
 		qdel(src)
 
 	else if(istype(W, /obj/item/weapon/pen))
-		var/t = sanitizeSafe(input(user, "Enter new robot name", name, created_name), MAX_NAME_LEN)
+		var/t = sanitizeSafe(input(user, "Введите новое имя", name, created_name), MAX_NAME_LEN)
 		if(!t)
 			return
 		if(!in_range(src, usr) && src.loc != usr)
