@@ -1,0 +1,29 @@
+[
+{
+"url": "http://ponywave.servegame.com:256/menu.mp3",
+"title": "Embrace the Abyss",
+"artist": "Jussi Elsilä",
+"duration": 2530,
+"secret": false,
+"lobby": true,
+"jukebox": false
+},
+{
+"url": "http://ponywave.servegame.com:256/1.mp3",
+"title": "Chippin' In",
+"duration": 2110,
+"artist": "Samurai",
+"secret": false,
+"lobby": false,
+"jukebox": true
+},
+{
+"url": "http://ponywave.servegame.com:256/2.mp3",
+"title": "Resist and Disorder",
+"duration": 2760,
+"artist": "Samurai",
+"secret": false,
+"lobby": false,
+"jukebox": true
+}
+]
