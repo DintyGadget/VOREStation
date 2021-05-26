@@ -124,7 +124,7 @@
 		/obj/item/weapon/storage/backpack/parachute,
 		/obj/item/weapon/material/knife/tacknife/survival,
 		/obj/item/weapon/gun/energy/locked/frontier/holdout,
-		/obj/item/clothing/head/ompilot,
+		/obj/item/clothing/head/pilot_vr,
 		/obj/item/clothing/under/rank/pilot1,
 		/obj/item/clothing/suit/storage/toggle/bomber/pilot,
 		/obj/item/clothing/shoes/boots/winter/explorer,
@@ -180,7 +180,8 @@
 		/obj/random/explorer_shield,
 		/obj/item/weapon/reagent_containers/food/snacks/liquidfood,
 		/obj/item/weapon/reagent_containers/food/snacks/liquidprotein,
-		/obj/item/device/cataloguer/compact/pathfinder)
+		/obj/item/device/cataloguer/compact/pathfinder,
+		/obj/item/device/mapping_unit)
 
 /obj/structure/closet/secure_closet/pathfinder/Initialize()
 	if(prob(50))
